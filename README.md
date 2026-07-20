@@ -1,4 +1,4 @@
-# iGEM TeamName Wiki
+# Team SUSTech 2026 Wiki
 
 This repository **MUST** contain all coding assets to generate your team's wiki (HTML, CSS, JavaScript, TypeScript, Python, etc).
 
@@ -60,8 +60,8 @@ Ensure you are using Python `>=3.8` (Python 3.12 recommended) to avoid compatibi
 
 #### Install
 ```bash
-git clone https://gitlab.igem.org/templates/wiki-frozen-flask.git
-cd wiki-frozen-flask
+git clone https://gitlab.igem.org/2026/sustech.git
+cd sustech
 python3 -m venv venv
 . venv/bin/activate # on Linux, MacOS; or
 . venv\Scripts\activate # on Windows
