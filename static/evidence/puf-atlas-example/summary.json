@@ -1,0 +1,11 @@
+{
+  "input_motif": "AACGUCUAUA",
+  "motif_length": 10,
+  "maximum_mismatches": 2,
+  "gencode_release": 50,
+  "candidate_sites": 318200,
+  "candidate_genes": 26575,
+  "candidate_transcripts": 204091,
+  "unique_genomic_loci": 53514,
+  "runtime_seconds": 237.119871
+}

@@ -1,56 +1,28 @@
 {% extends "layout.html" %}
-  
+{% from "macros.html" import evidence, section_nav %}
+
 {% block title %}Software{% endblock %}
-{% block lead %}Software in iGEM should make synthetic biology based on standard parts easier, faster, better or more accessible to our community.{% endblock %}
+{% block eyebrow %}Dry Lab · Reproducibility{% endblock %}
+{% block page_title %}Run the tools.<br>Inspect every handoff.{% endblock %}
+{% block lead %}The two scientific tools run independently. Candidate data moves through explicit files, never hidden server-to-server communication.{% endblock %}
 
 {% block page_content %}
+{{ section_nav([('tools', 'Tools'), ('handoff', 'Handoff'), ('reproduce', 'Reproduce'), ('guardrails', 'Guardrails')]) }}
+<section class="content-section shell" id="tools"><div class="app-grid"><article class="app-panel app-panel--brain reveal"><span>TOOL 01</span><h2>Brain Delivery Model</h2><p>Forward simulation, candidate-panel aggregation and comparative design screening.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4">Browse public source →</a></article><article class="app-panel app-panel--atlas reveal"><span>TOOL 02</span><h2>PUF-OffTarget Atlas</h2><p>Transcriptome scans, candidate inspection and downloadable reports.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/puf-offtarget-atlas">Browse public source →</a></article></div>{{ evidence('Implemented software · source linked above', 'The commands below reproduce the setup from a standalone clone. Full reference datasets and optional RNAplfold are separate inputs whose versions must be recorded.', 'software') }}</section>
 
-<div class="row mt-4">
-  <div class="col">
-    <div class="bd-callout bd-callout-info">
-      <h4>Best Software</h4>
-      <p>iGEM projects often build or adapt computational tools to move their work forward. Born out of practical need, these tools can be surprisingly useful for others, and they don't have to be large or complex to make a real difference. This award finds and honors such "nuggets" of computational work.</p>
-      <p>To be eligible:</p>
-      <ul>
-        <li>Your software must be documented and released under an OSI-approved open-source license.</li>
-        <li>The source code must be hosted on the dedicated repository in iGEM's GitLab. See the <a href="https://teams.igem.org/go/deliverables/software">Software Project</a> page for full requirements.</li>
-        <li>Software &amp; AI Village teams are not eligible for this award.</li>
-      </ul>
-      <hr />
-      <p>Visit the <a href="https://competition.igem.org/judging/awards/special">Special Awards page</a> for more information.</p>
-    </div>
-  </div>
-</div>
+<section class="ink-section" id="handoff"><div class="shell"><p class="section-kicker section-kicker--light">Manual by design</p><h2>The CSV is the interface.</h2><div class="handoff-steps"><article><b>01</b><h3>Complete a scan</h3><p>Run the Atlas with recorded transcriptome, tissue and scoring settings.</p></article><article><b>02</b><h3>Download the panel</h3><p>Keep the CSV with its metadata and warnings.</p></article><article><b>03</b><h3>Inspect the evidence</h3><p>Review candidate rows and missing components before transfer.</p></article><article><b>04</b><h3>Load the digital twin</h3><p>Validate fields, aggregate the panel and compare simulated designs.</p></article></div></div></section>
 
-<div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>What Should this Page Contain?</h2>
-    <hr />
-    <p>This page should aim to make your software accessible and understandable to a wide audience, supplementing the detailed technical documentation available on the repository.</p>
-    <ul>
-      <li>Provide a clear and concise overview of the software's purpose and functionality.</li>
-      <li>Use non-technical language to make it accessible to a broad audience.</li>
-      <li>Create step-by-step instructions on how to use the software.</li>
-      <li>Include screenshots and visual aids to guide users.</li>
-      <li>Explain how to integrate the software with other tools or platforms.</li>
-      <li>Explain the key design choices made during the software's development.</li>
-      <li>Discuss any trade-offs or compromises made during the design process.</li>
-      <li>Provide a high-level overview of the software's architecture.</li>
-      <li>Provide clear instructions on how to deploy and install the software.</li>
-      <li>Provide an overview of the software's API, if applicable.</li>
-    </ul>
-  </div>
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
-    <hr />
-    <ul>
-      <li><a href="https://2025.igem.wiki/marburg/software">2025 Marburg</a></li>
-      <li><a href="https://2025.igem.wiki/munich/software">2025 Munich</a></li>
-      <li><a href="https://2025.igem.wiki/epfl/software">2025 EPFL</a></li>
-      <li><a href="https://2025.igem.wiki/lambert-ga/software">2025 Lambert-GA</a></li>
-      <li><a href="https://2025.igem.wiki/bit-china/software">2025 BIT-China</a></li>
-    </ul>
-  </div>
-</div>
+<section class="content-section shell" id="reproduce"><div class="editorial-split"><div><p class="section-kicker">Reproducibility</p><h2>Start from one public source snapshot.</h2></div><div><ul class="check-list"><li>Record the Git commit and data versions.</li><li>Archive resolved parameters and input checksums.</li><li>Keep warnings beside outputs.</li><li>Distinguish missing evidence from zero.</li><li>Re-run automated tests before reporting.</li><li>Describe hardware and runtime for large scans.</li></ul></div></div>
+  <div class="code-panel reveal"><span>CLONE AND ACTIVATE</span><pre><code>git clone https://github.com/XiaobxTim/iGEM.git
+cd iGEM
+conda activate xbx_env</code></pre></div>
+  <div class="app-grid code-grid"><article class="app-panel app-panel--brain"><span>BRAIN DELIVERY · FROM REPOSITORY ROOT</span><pre><code>cd brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4
+python -m pip install -r requirements.txt
+python run_brain_app.py</code></pre></article><article class="app-panel app-panel--atlas"><span>ATLAS · FROM REPOSITORY ROOT</span><pre><code>cd puf-offtarget-atlas
+python -m pip install -e ".[dev]"
+pufscan web</code></pre></article></div>
+  <p class="note">Before an Atlas scan, supply the licensed/approved GENCODE FASTA and GTF plus any optional expression matrix; record paths, versions and checksums in run metadata. RNA accessibility additionally requires a reviewed RNAplfold installation.</p>
+</section>
 
+<section class="content-section shell" id="guardrails"><p class="section-kicker">Scientific guardrails</p><h2>What software documentation must preserve.</h2><div class="limit-grid"><article><h3>Provenance</h3><p>Every figure and claim points back to a run, configuration or source.</p></article><article><h3>Privacy</h3><p>No credentials, personal data or confidential third-party material enters the repository.</p></article><article><h3>Honest labels</h3><p>Simulation, heuristic prioritization and experiment remain visually distinct.</p></article><article><h3>Human review</h3><p>The team must understand and approve every published claim and citation.</p></article></div></section>
 {% endblock %}

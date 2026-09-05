@@ -1,39 +1,21 @@
 {% extends "layout.html" %}
-  
+{% from "macros.html" import evidence, figure_slot, section_nav %}
+
 {% block title %}Model{% endblock %}
-{% block lead %}Explain your model's assumptions, data, parameters, and results in a way that anyone could understand.{% endblock %}
+{% block eyebrow %}Dry Lab · Integrated Model{% endblock %}
+{% block page_title %}A transparent chain,<br>not a black box.{% endblock %}
+{% block lead %}Our modeling workflow connects sequence-aware safety screening with a mechanistic delivery-and-editing simulation while preserving every assumption at the interface.{% endblock %}
 
 {% block page_content %}
-
-<div class="row mt-4">
-  <div class="col">
-    <div class="bd-callout bd-callout-info">
-      <h4>Best Model</h4>
-      <p>Models help us understand, predict, and design biological systems. Mechanistic modeling, machine learning, and other computational approaches can guide project design and deepen understanding of the system being studied, especially when grounded in data from the team's own experiments or from existing sources. This award is for teams who build or apply a model and use it to inform design, predict behavior, or interpret results, before or alongside their experimental work.</p>
-      <hr />
-      <p>Visit the <a href="https://competition.igem.org/judging/awards/special">Special Awards page</a> for more information.</p>
-    </div>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>Overview</h2>
-    <hr />
-    <p>Mathematical models and computer simulations provide a great way to describe the function and operation of Parts and Devices. Synthetic Biology is an engineering discipline, and part of engineering is simulation and modeling to determine the behavior of your design before you build it. Designing and simulating can be iterated many times in a computer before moving to the lab.</p>
-  </div>
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
-    <hr />
-    <ul>
-      <li><a href="https://2025.igem.wiki/heidelberg/model">2025 Heidelberg</a></li>
-      <li><a href="https://2025.igem.wiki/peking/model">2025 Peking</a></li>
-      <li><a href="https://2025.igem.wiki/greatbay-scie/model">2025 GreatBay-SCIE</a></li>
-      <li><a href="https://2025.igem.wiki/dtu-denmark/model">2025 DTU-Denmark</a></li>
-      <li><a href="https://2025.igem.wiki/munich/model">2025 Munich</a></li>
-      <li><a href="https://2025.igem.wiki/toronto/model">2025 Toronto</a></li>
-    </ul>
-  </div>
-</div>
-
+{{ section_nav([('architecture', 'Architecture'), ('contract', 'Data contract'), ('dbtl', 'DBTL'), ('limits', 'Boundaries'), ('references', 'References')]) }}
+<section class="content-section shell" id="architecture">
+  <div class="editorial-split reveal"><div><p class="section-kicker">Architecture</p><h2>Two models remain independently testable.</h2></div><div><p class="lead-copy">The PUF-OffTarget Atlas ranks possible transcriptome sites. The Brain Delivery Digital Twin simulates delivery, expression and editing. A downloadable candidate panel is the only bridge between them.</p></div></div>
+  <div class="system-map reveal" aria-label="Integrated model workflow"><div><small>SEQUENCE</small><strong>PUF motif</strong></div><i aria-hidden="true"></i><div><small>ATLAS</small><strong>Candidate loci</strong></div><i aria-hidden="true"></i><div><small>CONTRACT</small><strong>CSV panel</strong></div><i aria-hidden="true"></i><div><small>DIGITAL TWIN</small><strong>Editing trajectories</strong></div><i aria-hidden="true"></i><div><small>DECISION</small><strong>Next experiment</strong></div></div>
+  {{ figure_slot('integrated-model-workflow', 'Integrated sequence-to-system workflow', 'Upload the final team-reviewed workflow artwork to static.igem.wiki and replace this slot.') }}
+  {{ evidence('Model-derived evidence', 'This page describes implemented computation and checked-in outputs. Predictions remain literature-informed and await team wet-lab calibration.', 'model') }}
+</section>
+<section class="ink-section" id="contract"><div class="shell"><p class="section-kicker section-kicker--light">Data contract</p><h2>Every transferred value has a named interpretation.</h2><div class="table-shell reveal"><table><thead><tr><th>Digital-twin field</th><th>Atlas evidence</th><th>Interpretation</th></tr></thead><tbody><tr><td><code>initial_pool</code></td><td>Expression score</td><td>Relative available RNA abundance</td></tr><tr><td><code>binding_score</code></td><td>Sequence score</td><td>Relative PUF recognition prior</td></tr><tr><td><code>accessibility</code></td><td>RNAplfold score</td><td>Relative motif exposure</td></tr><tr><td><code>context_score</code></td><td>Consequence evidence</td><td>Relative editing-context prior</td></tr><tr><td><code>validation_priority</code></td><td>Risk priority</td><td>Human-readable triage label</td></tr></tbody></table></div><p class="note note--dark">Missing expression or accessibility evidence is recorded in metadata. It must never be mistaken for a measured zero.</p></div></section>
+<section class="content-section shell" id="dbtl"><div class="editorial-split"><div><p class="section-kicker">Model-guided engineering</p><h2>Ask, simulate, measure, revise.</h2></div><div><ol class="number-list"><li><b>01</b><span>Expose an uncertain parameter or competing design.</span></li><li><b>02</b><span>Compare predictions under explicit assumptions.</span></li><li><b>03</b><span>Select the measurement with the greatest decision value.</span></li><li><b>04</b><span>Use new evidence to update—not decorate—the model.</span></li></ol></div></div></section>
+<section class="content-section shell" id="limits"><p class="section-kicker">Interpretation boundaries</p><h2>What the integrated model does not claim.</h2><div class="limit-grid"><article><h3>No binding proof</h3><p>Sequence similarity does not demonstrate that a PUF binds in a living cell.</p></article><article><h3>No calibrated probability</h3><p>The Atlas score is a prioritization heuristic, not an off-target probability.</p></article><article><h3>No clinical dose</h3><p>Normalized delivery parameters support comparison, not patient dosing.</p></article><article><h3>No substitute for controls</h3><p>Mock, inactive-editor and targeted validation experiments remain essential.</p></article></div></section>
+<section class="references shell" id="references"><p class="section-kicker">Selected foundations</p><h2>References</h2><ol><li>Han W, et al. Programmable RNA base editing with a single gRNA-free enzyme. <i>Nucleic Acids Research</i>. 2022. <a href="https://doi.org/10.1093/nar/gkac713">doi:10.1093/nar/gkac713</a></li><li>Zhao Y-Y, et al. Expanding RNA binding specificity and affinity of engineered PUF domains. <i>Nucleic Acids Research</i>. 2018. <a href="https://doi.org/10.1093/nar/gky134">doi:10.1093/nar/gky134</a></li><li>Raue A, et al. Structural and practical identifiability analysis of partially observed dynamical models. <i>Bioinformatics</i>. 2009. <a href="https://doi.org/10.1093/bioinformatics/btp358">doi:10.1093/bioinformatics/btp358</a></li></ol></section>
 {% endblock %}

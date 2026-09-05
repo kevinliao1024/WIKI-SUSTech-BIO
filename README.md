@@ -1,5 +1,10 @@
 # Team SUSTech 2026 Wiki
 
+The SUSTech ORCA site uses a custom ocean-current editorial design and a structured
+content workflow. Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md) before editing or
+publishing any page. Local development and verification use the existing
+`xbx_env` Conda environment.
+
 This repository **MUST** contain all coding assets to generate your team's wiki (HTML, CSS, JavaScript, TypeScript, Python, etc).
 
 Images, photos, icons and fonts **MUST** be stored on `static.igem.wiki` using [the uploads tool](https://teams.igem.org/go/deliverables/wiki/uploads), and Videos **must** be embedded from [iGEM Video Universe](https://video.igem.org); see [the Video & Audio page](https://teams.igem.org/go/deliverables/wiki/videos-and-audios) for guidance on adding video and audio.
@@ -62,13 +67,11 @@ Ensure you are using Python `>=3.8` (Python 3.12 recommended) to avoid compatibi
 ```bash
 git clone https://gitlab.igem.org/2026/sustech.git
 cd sustech
-python3 -m venv venv
-. venv/bin/activate # on Linux, MacOS; or
-. venv\Scripts\activate # on Windows
-pip install -r dependencies.txt
+conda activate xbx_env
+python -m pip install -r dependencies.txt
 ```
 
 #### Execute
 ```bash
-python app.py
+conda run -n xbx_env python app.py
 ```

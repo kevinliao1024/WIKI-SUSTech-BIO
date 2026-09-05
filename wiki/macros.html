@@ -1,0 +1,38 @@
+{% macro evidence(label, detail, tone='model') -%}
+<aside class="evidence-note evidence-note--{{ tone }} reveal" data-evidence="{{ tone }}">
+  <span>Evidence status</span>
+  <strong>{{ label }}</strong>
+  <p>{{ detail }}</p>
+</aside>
+{%- endmacro %}
+
+{% macro art_slot(key, title, note, ratio='landscape') -%}
+<figure class="art-slot art-slot--{{ ratio }} reveal" data-asset-key="{{ key }}">
+  <div class="art-slot__surface" role="img" aria-label="Artwork placeholder: {{ title }}">
+    <span>ART DIRECTION · {{ key }}</span>
+    <strong>{{ title }}</strong>
+    <i aria-hidden="true"></i>
+  </div>
+  <figcaption>{{ note }}</figcaption>
+</figure>
+{%- endmacro %}
+
+{% macro section_nav(items) -%}
+<nav class="on-this-page shell reveal" aria-label="On this page">
+  <span>On this page</span>
+  <ol>
+    {% for item in items %}
+    <li><a href="#{{ item[0] }}">{{ item[1] }}</a></li>
+    {% endfor %}
+  </ol>
+</nav>
+{%- endmacro %}
+
+{% macro figure_slot(key, title, caption) -%}
+<figure class="figure-slot reveal" data-asset-key="{{ key }}">
+  <div class="figure-slot__preview" role="img" aria-label="Scientific figure placeholder: {{ title }}">
+    <span>FIGURE ASSET</span><strong>{{ title }}</strong>
+  </div>
+  <figcaption>{{ caption }}</figcaption>
+</figure>
+{%- endmacro %}

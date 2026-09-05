@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% from "macros.html" import evidence, section_nav %}
+
+{% block title %}Dry Lab{% endblock %}
+{% block eyebrow %}Dry Lab · Overview{% endblock %}
+{% block page_title %}From sequence space<br>to system behavior.{% endblock %}
+{% block lead %}Two independent models create an inspectable route from a PUF recognition sequence to delivery, editing and the next experiment worth running.{% endblock %}
+
+{% block page_content %}
+{{ section_nav([('question', 'The question'), ('handoff', 'Model handoff'), ('principles', 'Principles'), ('routes', 'Explore')]) }}
+<section class="content-section shell" id="question">
+  <div class="editorial-split reveal"><div><p class="section-kicker">Why two models?</p><h2>Different scales need different abstractions.</h2></div><div><p class="lead-copy">The Atlas asks where a PUF might bind. The digital twin asks how delivery, expression and editing change over time. Keeping them independent makes assumptions easier to inspect and revise.</p></div></div>
+  {{ evidence('Model-derived evidence', 'The workflow integrates software outputs and literature-informed priors. It is not clinical prediction and is not yet calibrated with team wet-lab measurements.', 'model') }}
+</section>
+<section class="ink-section" id="handoff">
+  <div class="shell"><p class="section-kicker section-kicker--light">Inspectable handoff</p><h2>One small bridge across biological scales.</h2>
+    <ol class="workflow-chain reveal">
+      <li><b>01</b><span>PUF sequence</span></li><li><b>02</b><span>Transcriptome scan</span></li><li><b>03</b><span>Candidate panel</span></li><li><b>04</b><span>Delivery simulation</span></li><li><b>05</b><span>Wet-lab choice</span></li>
+    </ol>
+    <div class="contract-cards">
+      <article class="reveal"><span>ATLAS OUTPUT</span><code>brain_candidate_panel.csv</code><p>Unique genomic loci with sequence and biological context.</p></article>
+      <article class="reveal"><span>MODEL INPUT</span><code>effective off-target pool</code><p>An explicit aggregate used for comparative simulation.</p></article>
+      <article class="reveal"><span>DECISION OUTPUT</span><code>benefit × risk × exposure</code><p>A vector of outcomes, never one opaque score.</p></article>
+    </div>
+  </div>
+</section>
+<section class="content-section shell" id="principles">
+  <p class="section-kicker">Our modeling stance</p><h2>Useful because uncertainty stays visible.</h2>
+  <div class="principle-grid"><article><b>01</b><h3>Mechanistic</h3><p>States and fluxes correspond to explicit biological hypotheses.</p></article><article><b>02</b><h3>Traceable</h3><p>Parameters and transformations retain a named source.</p></article><article><b>03</b><h3>Falsifiable</h3><p>Each model points to a measurement that can revise it.</p></article><article><b>04</b><h3>Bounded</h3><p>Outputs prioritize experiments; they do not claim clinical efficacy.</p></article></div>
+</section>
+<section class="route-cards shell" id="routes"><a class="route-card route-card--brain reveal" href="{{ url_for('pages', page='brain-delivery') }}"><span>MODEL 01</span><h2>Brain Delivery<br>Digital Twin</h2><p>Administration → expression → APOE editing</p><b>Explore →</b></a><a class="route-card route-card--atlas reveal" href="{{ url_for('pages', page='offtarget-atlas') }}"><span>MODEL 02</span><h2>PUF-OffTarget<br>Atlas</h2><p>Motif → candidate loci → validation priority</p><b>Explore →</b></a></section>
+{% endblock %}

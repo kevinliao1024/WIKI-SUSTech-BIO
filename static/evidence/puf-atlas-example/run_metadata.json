@@ -1,0 +1,39 @@
+{
+  "software": "puf-offtarget-atlas",
+  "software_version": "0.1.0",
+  "status": "complete",
+  "generated_at": "2026-07-21T05:35:09.012966Z",
+  "reference": {
+    "species": "Homo sapiens",
+    "assembly": "GRCh38",
+    "gencode_release": 50
+  },
+  "parameters": {
+    "query_dna_normalized": "AACGTCTATA",
+    "query_rna_display": "AACGUCUAUA",
+    "maximum_mismatches": 2,
+    "target_tissues": ["Liver"],
+    "mode": "editor_fusion",
+    "editor": "APOBEC_C2U",
+    "editing_window": [-15, 10],
+    "structure_enabled": true,
+    "threads": 1,
+    "weights": {
+      "sequence": 0.5,
+      "accessibility": 0.2,
+      "expression": 0.2,
+      "consequence": 0.1
+    }
+  },
+  "benchmark": {
+    "transcripts_scanned": 670670,
+    "nucleotides_scanned": 1480179158,
+    "candidate_sites": 318200,
+    "search_seconds": 16.504974625,
+    "structure_seconds": 104.2495074169,
+    "total_runtime_seconds": 240.79940504202386
+  },
+  "warnings": [],
+  "error": null,
+  "provenance_note": "Publication archive copied from the completed local run. U in the displayed RNA motif is normalized to T for the DNA-encoded search query. Large reference inputs and row-level outputs are not bundled with this wiki."
+}

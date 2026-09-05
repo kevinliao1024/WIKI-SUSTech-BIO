@@ -1,0 +1,3 @@
+{% extends "layout.html" %}
+{% block title %}Page not found{% endblock %}
+{% block main %}<main id="main-content" class="not-found"><div class="shell"><p class="chapter-index chapter-index--light">404 · OFF COURSE</p><h1>Lost in the current.</h1><p>The page you followed is not part of this year’s route.</p><a class="button button--pale" href="{{ url_for('home') }}">Return to the pod <span>→</span></a></div></main>{% endblock %}

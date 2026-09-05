@@ -1,35 +1,28 @@
-<footer class="pt-5 pb-5 footer py-5 mt-5 bg-dark text-white">
-  <div class="container">
-    <div class="row mb-4">
-      <div class="col-lg-6 col-xs-12">
-        <h4 class="mb-3">Heading</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis</p>
-      </div>
-      <div class="col-lg-3 col-xs-12">
-        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
-          <ul class="m-2 p-2">
-            <li><a href="#">Lorem ipsum</a></li>
-            <li><a href="#">Nam mauris velit</a></li>
-            <li><a href="#">Etiam vitae mauris</a></li>
-            <li><a href="#">Fusce scelerisque</a></li>
-            <li><a href="#">Sed faucibus</a></li>
-            <li><a href="#">Mauris efficitur nulla</a></li>
-          </ul>
-      </div>
-      <div class="col-lg-3 col-xs-12">
-        <h4 class="mt-lg-0 mt-sm-4 mb-3">Contact</h4>
-        <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
-        <p class="mb-0">(541) 754-3010</p>
-        <p>info@hsdf.com</p>
-      </div>
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-intro">
+      <a class="site-brand footer-brand" href="{{ url_for('home') }}">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>ORCA</strong><small>SUSTech · 2026</small></span>
+      </a>
+      <p>On-target RNA Correction for Alzheimer’s Disease.</p>
     </div>
-    <hr />
-    <!-- The following MUST be on every page: license information and link to the repository on gitlab.igem.org -->
-    <div class="row mt-4">
-      <div class="col">
-        <p class="mb-0"><small>© 2026 - Content on this site is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.</small></p>
-	      <p><small>The repository used to create this website is available at <a href="https://gitlab.igem.org/2026/sustech">gitlab.igem.org/templates/wiki-frozen-flask</a>.</small></p>
-      </div>
+    <div>
+      <p class="footer-label">Explore</p>
+      <a href="{{ url_for('pages', page='description') }}">Project</a>
+      <a href="{{ url_for('pages', page='dry-lab') }}">Dry Lab</a>
+      <a href="{{ url_for('pages', page='human-practices') }}">Engagement</a>
+    </div>
+    <div>
+      <p class="footer-label">Dry Lab</p>
+      <a href="{{ url_for('pages', page='brain-delivery') }}">Brain Delivery</a>
+      <a href="{{ url_for('pages', page='offtarget-atlas') }}">Off-Target Atlas</a>
+      <a href="{{ url_for('pages', page='software') }}">Software</a>
+    </div>
+    <div class="footer-legal">
+      <p class="footer-label">Open science</p>
+      <p>© 2026 SUSTech. Content is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.</p>
+      <p>The repository used to create this website is available at <a href="https://gitlab.igem.org/2026/sustech">gitlab.igem.org/2026/sustech</a>.</p>
     </div>
   </div>
 </footer>
