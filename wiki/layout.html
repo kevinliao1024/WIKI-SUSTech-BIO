@@ -9,11 +9,12 @@
     <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    {% block page_styles %}{% endblock %}
     <title>{% block title %}{% endblock %} | ORCA · SUSTech iGEM 2026</title>
   </head>
   <body class="{% block body_class %}inner-page{% endblock %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
-    {% include 'menu.html' %}
+    {% block navigation %}{% include 'menu.html' %}{% endblock %}
 
     {% block main %}
     <main id="main-content">
@@ -33,5 +34,6 @@
     <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>↑</button>
     <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='wiki.js') }}" defer></script>
+    {% block page_scripts %}{% endblock %}
   </body>
 </html>

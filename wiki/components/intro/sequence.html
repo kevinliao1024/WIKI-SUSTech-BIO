@@ -1,0 +1,28 @@
+{% from 'components/intro/fish.html' import fish %}
+<section class="intro-sequence" aria-label="ORCA: a journey through the neural ocean" data-intro>
+  <div class="intro-stage">
+    <div class="intro-camera" data-camera>
+      {% include 'components/intro/neural.html' %}
+      <div class="arrival-school" aria-hidden="true">
+        {{ fish('reference-leader', 146, 0, 'leader', 1, 0, 4) }}
+        {{ fish('fish-small-01', 77, 0, 'escort', 1.02, 0.025, 5) }}
+        {{ fish('fish-medium-01', 105, 1, 'escort', 0.95, 0.045, 3) }}
+        {{ fish('fish-small-02', 58, 2, 'escort', 1.1, 0.015, 6) }}
+        {{ fish('fish-large-02', 86, 3, 'escort', 1, 0.06, 4) }}
+      </div>
+      <div class="project-reveal reference-copy" data-project>
+        <p class="story-eyebrow">SUSTech · iGEM 2026</p>
+        <h1>ORCA</h1>
+        <p class="project-subtitle" data-subtitle>On-target RNA Correction<br>for Alzheimer’s Disease</p>
+        <p class="project-caption">A small correction.<br>A different course.</p>
+      </div>
+      <div class="route-school" aria-hidden="true">
+        {% set assets = ['fish-medium-01','fish-small-01','fish-small-02','fish-dark-01','fish-large-02','fish-small-03','fish-medium-02','fish-small-02','fish-dark-01','fish-small-01','fish-medium-01','fish-small-03'] %}
+        {% for asset in assets %}{{ fish(asset, [100,62,45,72,105,38,82,55,30,65,85,42][loop.index0], loop.index0, 'route', [0.97,1.03,1.08,0.94,1,0.98,1.05,0.95,1.02,1.06,0.96,1][loop.index0], loop.index0 * 0.009, 3 + loop.index0 % 4) }}{% endfor %}
+      </div>
+      <p class="path-caption" data-path-caption>FOLLOW THE CONNECTION<br><span>From possibility to a testable question.</span></p>
+    </div>
+    <div class="intro-guide"><span data-chapter>01 / A new direction</span><a href="#research" data-skip>Skip to research ↓</a></div>
+    <div class="intro-scroll" aria-hidden="true"><span>Scroll to follow</span><i></i></div>
+  </div>
+</section>

@@ -54,6 +54,10 @@ class AssetParser(HTMLParser):
                 self.assets.append(source)
         if tag == "img" and "alt" not in attributes:
             self.images_without_alt.append(attributes.get("src", "<unknown>"))
+        if tag in {"image", "use"}:
+            for attribute in ("href", "xlink:href"):
+                if attributes.get(attribute):
+                    self.assets.append(attributes[attribute])
         if tag == "link" and attributes.get("rel") not in {"license", None}:
             href = attributes.get("href")
             if href:
@@ -72,7 +76,7 @@ def audit_document(name: str, document: str) -> list[str]:
 
     for asset in parser.assets:
         parsed = urlparse(asset)
-        if parsed.scheme in {"http", "https"} and parsed.netloc not in ALLOWED_ASSET_HOSTS:
+        if parsed.netloc and parsed.hostname not in ALLOWED_ASSET_HOSTS:
             issues.append(f"{name}: third-party runtime asset: {asset}")
 
     if "creativecommons.org/licenses/by/4.0" not in document:
@@ -110,6 +114,13 @@ def audit_internal_links(name: str, document: str, public_dir: Path) -> list[str
         target = parsed.path.lstrip("/")
         if not (public_dir / target).is_file():
             issues.append(f"{name}: broken internal link: {link}")
+    for asset in parser.assets:
+        parsed = urlparse(asset)
+        if parsed.scheme or parsed.netloc or not parsed.path:
+            continue
+        target = public_dir / parsed.path.lstrip("/") if parsed.path.startswith("/") else public_dir / Path(name).parent / parsed.path
+        if not target.is_file():
+            issues.append(f"{name}: missing local asset: {asset}")
     return issues
 
 
@@ -137,7 +148,7 @@ def main() -> int:
         for issue in issues:
             print(f"- {issue}")
         return 1
-    print(f"Build audit passed: {len(EXPECTED_OUTPUTS)} routes, iGEM-only runtime assets.")
+    print(f"Build audit passed: {len(EXPECTED_OUTPUTS)} routes; checked local/iGEM asset references.")
     return 0
 
 

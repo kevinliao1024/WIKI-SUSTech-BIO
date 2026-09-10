@@ -1,0 +1,21 @@
+{% macro fish(asset, size=80, index=0, kind='route', speed=1, delay=0, wobble=4, initial_x=none, initial_y=none, path='#neural-route', rotation=0, opacity=1) -%}
+<span class="story-fish story-fish--{{ kind }}" data-fish data-kind="{{ kind }}" data-index="{{ index }}" data-speed="{{ speed }}" data-delay="{{ delay }}" data-wobble="{{ wobble }}" data-initial-x="{{ initial_x if initial_x is not none else '' }}" data-initial-y="{{ initial_y if initial_y is not none else '' }}" data-path="{{ path }}" data-rotation="{{ rotation }}" data-opacity="{{ opacity }}" style="--fish-size:{{ size }}px">
+  {% if asset == 'reference-leader' %}
+  <span class="reference-whale-crop">
+    <img class="reference-whale-source" src="{{ url_for('static', filename='assets/intro/visual-system-reference.jpg') }}" alt="" width="1241" height="1080" decoding="async" draggable="false">
+    <svg viewBox="28 82 146 116" aria-hidden="true">
+      <defs><filter id="reference-whale-alpha" color-interpolation-filters="sRGB">
+        <!-- Preserve RGB; remove only the dark backdrop from the entrance layer. -->
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 8 0 -1.12" result="matte"/>
+        <feMorphology in="matte" operator="erode" radius="1" result="inset"/>
+        <feMorphology in="inset" operator="dilate" radius="1" result="clean-matte"/>
+        <feComposite in="SourceGraphic" in2="clean-matte" operator="in"/>
+      </filter></defs>
+      <image href="{{ url_for('static', filename='assets/intro/visual-system-reference.jpg') }}" width="1241" height="1080" filter="url(#reference-whale-alpha)"/>
+    </svg>
+  </span>
+  {% else %}
+  <img src="{{ url_for('static', filename='assets/intro/' ~ asset ~ '.png') }}" alt="" width="200" height="150" decoding="async" draggable="false">
+  {% endif %}
+</span>
+{%- endmacro %}

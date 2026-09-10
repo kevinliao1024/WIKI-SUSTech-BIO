@@ -1,0 +1,154 @@
+[
+  {
+    "source": "visual-system-reference.jpg",
+    "output": "visual-system-reference.jpg",
+    "sha256": "f5f7304aeb8f351a603af06fb673a34c9e133f73153e3ddecba6de7364e9173c",
+    "usage": "Original bytes; website viewport shows left 712 of 1241 pixels. Leader viewport: [28,82,174,198]."
+  },
+  {
+    "source": "fish-dark-01.jpg",
+    "sha256": "262804e906211828c985656fd124988a90f255cc65f2414db9a78f5295090028",
+    "crop": [
+      770,
+      229,
+      884,
+      329
+    ],
+    "size": [
+      114,
+      100
+    ]
+  },
+  {
+    "source": "fish-large-01.jpg",
+    "sha256": "4fee839d290ded9f0da8171af65185694f2b32bc4956cdeee534ba1afe913d57",
+    "crop": [
+      797,
+      121,
+      971,
+      249
+    ],
+    "size": [
+      174,
+      128
+    ]
+  },
+  {
+    "source": "fish-large-02.jpg",
+    "sha256": "f845910f5cd82ba420af874b14c1866a0194201f0987c12cc39162c39564bd25",
+    "crop": [
+      512,
+      295,
+      688,
+      434
+    ],
+    "size": [
+      176,
+      139
+    ]
+  },
+  {
+    "source": "fish-medium-01.jpg",
+    "sha256": "459574a2a7badd7a96ae8403a4cece55b0f04c13c63590709c30f882ef4d84b6",
+    "crop": [
+      713,
+      160,
+      846,
+      287
+    ],
+    "size": [
+      133,
+      127
+    ]
+  },
+  {
+    "source": "fish-medium-02.jpg",
+    "sha256": "8eadbf2324ad0cc97f86ddd09379eaab1fb4e847b2bcaa4bd51061faa6dc264d",
+    "crop": [
+      665,
+      251,
+      811,
+      382
+    ],
+    "size": [
+      146,
+      131
+    ]
+  },
+  {
+    "source": "fish-school-full.jpg",
+    "sha256": "2d0e23af998acfa0fde5ae053c69f11fcb397c85faf66c80b6ba516b2e802e6d",
+    "crop": [
+      0,
+      121,
+      1094,
+      881
+    ],
+    "size": [
+      1094,
+      760
+    ]
+  },
+  {
+    "source": "fish-small-01.jpg",
+    "sha256": "d943909bc75500f827ce64296c8e521845e176f8becef7df4af1971de1ae8a61",
+    "crop": [
+      808,
+      207,
+      982,
+      335
+    ],
+    "size": [
+      174,
+      128
+    ]
+  },
+  {
+    "source": "fish-small-02.jpg",
+    "sha256": "e31f65c807cb253bc420555638d0de5454990cef82e9c32b1893d15580fe005f",
+    "crop": [
+      919,
+      173,
+      1094,
+      256
+    ],
+    "size": [
+      175,
+      83
+    ]
+  },
+  {
+    "source": "fish-small-03.jpg",
+    "sha256": "fa5bad34ae525779839fcd3380cdc61a488557dbc0f82de728fcdb1f1724ef13",
+    "crop": [
+      641,
+      217,
+      740,
+      287
+    ],
+    "size": [
+      99,
+      70
+    ]
+  },
+  {
+    "source": "visual-system-reference.jpg",
+    "sha256": "f5f7304aeb8f351a603af06fb673a34c9e133f73153e3ddecba6de7364e9173c",
+    "crop": [
+      0,
+      0,
+      712,
+      1080
+    ]
+  },
+  {
+    "source": "visual-system-reference.jpg",
+    "output": "brain-folds.png",
+    "crop": [
+      420,
+      0,
+      710,
+      390
+    ]
+  }
+]

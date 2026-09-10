@@ -6,6 +6,14 @@ structured shells and must be completed by the responsible team members.
 
 ## ORCA visual identity
 
+The new scroll-story homepage is documented in [ORCA_HOMEPAGE.md](docs/ORCA_HOMEPAGE.md).
+Its settled hero directly displays the complete left panel of the original
+`visual-system-reference.jpg`, proportionally scaled. The entrance whale comes
+from beside the title in that same reference, not a separate fish design.
+The original brain, title, whale and neural tail are not redrawn or rearranged.
+The descriptions below of the original two crops and eight swatches remain relevant
+to the earlier shared visual system, not the new homepage timeline.
+
 The visible project name is **ORCA**, expanded as **On-target RNA Correction
 for Alzheimer’s Disease**. The homepage translates the team reference artwork
 into a responsive web composition. The two whale images are deterministic crops
@@ -35,7 +43,7 @@ python -m pip install -r dependencies.txt
 python -m unittest discover -s tests -v
 python -m flask --app app.py freeze
 python scripts/audit_build.py
-python app.py
+python -m flask --app app run --host 127.0.0.1 --port 8080
 ```
 
 The development server runs at `http://127.0.0.1:8080`.
@@ -43,6 +51,8 @@ The development server runs at `http://127.0.0.1:8080`.
 ## Editing map
 
 - Navigation: `wiki/menu.html`
+- Homepage navigation, scene, and six content sections: `wiki/components/`
+- Homepage-only visuals and scroll timeline: `static/intro.css`, `static/intro.js`
 - Shared page shell: `wiki/layout.html`
 - Footer and mandatory license/repository links: `wiki/footer.html`
 - Dry-lab and home content: `wiki/pages/`

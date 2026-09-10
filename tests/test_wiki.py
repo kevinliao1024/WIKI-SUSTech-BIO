@@ -75,12 +75,12 @@ class WikiRoutesTest(unittest.TestCase):
         page = self.get_text("/404.html")
         self.assertIn("Lost in the current", page)
 
-    def test_home_contains_memory_story_and_art_slots(self):
+    def test_home_contains_intro_and_six_research_sections(self):
         page = self.get_text("/")
-        self.assertIn("Memory should not fade alone", page)
-        self.assertIn('data-asset-key="orca-forgotten"', page)
-        self.assertIn('data-asset-key="orca-remembered"', page)
-        self.assertIn('data-story-progress', page)
+        for section in ['background','rna-correction','approach','results','team','about']:
+            self.assertIn(f'id="{section}"', page)
+        self.assertIn('data-intro', page)
+        self.assertIn('href="#research"', page)
 
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")
@@ -92,7 +92,7 @@ class WikiRoutesTest(unittest.TestCase):
 
     def test_home_uses_orca_ocean_composition_hooks(self):
         page = self.get_text("/")
-        for hook in ["data-orca-pod", "data-ocean-current", "data-coral-garden", "data-white-current"]:
+        for hook in ['data-camera', 'data-project', 'data-kind="leader"', 'id="neural-route"']:
             self.assertIn(hook, page)
 
     def test_stylesheet_uses_approved_orca_palette(self):
@@ -102,16 +102,16 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertIn('--serif: Georgia,', stylesheet)
         self.assertIn('--sans: Futura,', stylesheet)
 
-    def test_development_server_uses_documented_port(self):
+    def test_development_server_is_loopback_only(self):
         app_source = Path("app.py").read_text(encoding="utf-8")
-        self.assertIn('app.run(host="127.0.0.1", port=8080)', app_source)
+        self.assertIn('app.run(host="127.0.0.1",', app_source)
 
     def test_home_uses_original_raster_whales_instead_of_drawn_whales(self):
         page = self.get_text("/")
-        for asset in ["static/assets/wiki1-main-orca.png", "static/assets/wiki1-orca-pod.png"]:
+        for asset in ['static/assets/intro/visual-system-reference.jpg','static/assets/intro/fish-small-01.png','static/assets/intro/fish-medium-02.png']:
             self.assertIn(asset, page)
             self.assertTrue(Path(asset).is_file(), asset)
-        self.assertIn('data-source-art="wiki1"', page)
+        self.assertEqual(page.count('data-kind="route"'), 12)
         self.assertNotIn('class="orca-pod', page)
         self.assertNotIn("medallion-orca", page)
 

@@ -1,0 +1,8 @@
+{% macro ribbons(path) -%}
+<g class="route-ribbons" fill="none" stroke-linecap="round">
+  <use href="{{ path }}" stroke="#191b62" stroke-width="70"/>
+  <use href="{{ path }}" stroke="#777be4" stroke-width="43" transform="translate(-8 0)"/>
+  <use href="{{ path }}" stroke="#fcfcfa" stroke-width="25" transform="translate(4 0)"/>
+  <use href="{{ path }}" stroke="#303d9f" stroke-width="7" transform="translate(27 0)"/>
+</g>
+{%- endmacro %}

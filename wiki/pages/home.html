@@ -1,115 +1,12 @@
-{% extends "layout.html" %}
-{% from "macros.html" import art_slot %}
-
+{% extends 'layout.html' %}
 {% block title %}Home{% endblock %}
-{% block body_class %}home-page{% endblock %}
-
+{% block body_class %}home-page orca-story{% endblock %}
+{% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='intro.css') }}">{% endblock %}
+{% block page_scripts %}<script src="{{ url_for('static', filename='intro.js') }}" defer></script>{% endblock %}
+{% block navigation %}{% include 'components/home_nav.html' %}{% endblock %}
 {% block main %}
 <main id="main-content">
-  <div class="story-progress" data-story-progress aria-hidden="true"><i></i></div>
-  <section class="home-hero story-scene story-scene--deep">
-    <div class="orca-world" aria-hidden="true">
-      <div class="ocean-current ocean-current--top" data-ocean-current><i></i><i></i><i></i></div>
-      <img class="pod-art-image" data-orca-pod data-source-art="wiki1"
-           src="{{ url_for('static', filename='assets/wiki1-orca-pod.png') }}"
-           alt="A pod of stylized orcas from the ORCA team artwork">
-      <svg class="coral-garden" data-coral-garden viewBox="0 0 240 300" focusable="false"><path d="M116 297v-91m0 17-47-43m48 8 41-46m-88 39-2-52m1 28-39-28m128 15 5-55m-3 28 39-31M116 237l-28-67m29 26 34-16"/><path d="M31 300v-48m0 20-24-21m25 2 20-30M205 300v-61m0 31-28-26m29 8 25-38"/></svg>
-      <div class="bubble-field"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="white-current" data-white-current><i></i><i></i></div>
-    </div>
-    <div class="shell home-hero__grid">
-      <div class="home-hero__copy reveal">
-        <p class="eyebrow eyebrow--light">SUSTech · iGEM 2026</p>
-        <h1 class="orca-wordmark">ORCA</h1>
-        <p class="orca-expansion">On-target RNA Correction for Alzheimer’s Disease</p>
-        <h2 class="type-title">Memory should not fade alone.</h2>
-        <p class="hero-intro">A precise, testable RNA-editing strategy asking whether an APOE4 transcript can be redirected toward an APOE3-like state.</p>
-        <div class="button-row">
-          <a class="button button--coral" href="{{ url_for('pages', page='description') }}">Follow the project story <span>→</span></a>
-          <a class="text-link text-link--light" href="{{ url_for('pages', page='dry-lab') }}">Explore the dry lab</a>
-        </div>
-      </div>
-      <img class="hero-orca-art" data-asset-key="orca-forgotten" data-source-art="wiki1"
-           src="{{ url_for('static', filename='assets/wiki1-main-orca.png') }}"
-           alt="A stylized orca swimming through coral-pink currents from the ORCA team artwork">
-    </div>
-    <a class="scroll-cue" href="#the-distance"><span>Scroll into the story</span><i aria-hidden="true"></i></a>
-  </section>
-
-  <section class="story-scene story-scene--paper" id="the-distance">
-    <div class="shell editorial-split reveal">
-      <div>
-        <p class="chapter-index">01 · THE DISTANCE</p>
-        <h2>When recognition begins to drift.</h2>
-      </div>
-      <div class="prose-large">
-        <p>Alzheimer’s disease is not only a molecular problem. It is the slow widening of distance between a person, a family and the memories they built together.</p>
-        <p class="annotation">This opening is intentionally human. Verified epidemiological figures and a team-approved individual story will be added after source review.</p>
-      </div>
-    </div>
-    <div class="shell memory-lines reveal" aria-label="From memory to molecular question">
-      <span>person</span><i></i><span>memory</span><i></i><span>cell</span><i></i><span>RNA</span>
-    </div>
-  </section>
-
-  <section class="story-scene story-scene--ink">
-    <div class="shell mechanism-grid">
-      <div class="reveal">
-        <p class="chapter-index chapter-index--light">02 · THE MOLECULAR CLUE</p>
-        <h2>APOE4 changes the context in which the brain maintains itself.</h2>
-        <p>Our project focuses on two defining APOE codons. The intended direction is specific: edit codon 112 while keeping codon 158 distinct, so desired and unintended products are never collapsed into one number.</p>
-        <a class="text-link text-link--light" href="{{ url_for('pages', page='brain-delivery') }}">See the state logic →</a>
-      </div>
-      <div class="codon-map reveal" aria-label="APOE isoform-like editing logic">
-        <article><small>START</small><strong>Arg<sup>112</sup> / Arg<sup>158</sup></strong><span>APOE4-like</span></article>
-        <article class="desired"><small>DESIRED DIRECTION</small><strong>Cys<sup>112</sup> / Arg<sup>158</sup></strong><span>APOE3-like</span></article>
-        <article class="risk"><small>TRACKED RISK</small><strong>Cys<sup>112</sup> / Cys<sup>158</sup></strong><span>APOE2-like proxy</span></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="story-scene story-scene--current">
-    <div class="shell reveal">
-      <p class="chapter-index">03 · OUR ROUTE</p>
-      <h2 class="display-wide">Two models. One experimental decision.</h2>
-    </div>
-    <div class="shell twin-tracks">
-      <article class="track-card track-card--brain reveal">
-        <span>MODEL 01</span><h3>Brain Delivery<br>Digital Twin</h3>
-        <p>Connect administration, distribution, brain entry, intracellular expression and APOE editing in a transparent mechanistic chain.</p>
-        <a class="text-link" href="{{ url_for('pages', page='brain-delivery') }}">Enter the digital twin →</a>
-      </article>
-      <div class="track-bridge reveal" aria-label="Inspectible candidate panel handoff"><i></i><span>candidate panel</span><i></i></div>
-      <article class="track-card track-card--atlas reveal">
-        <span>MODEL 02</span><h3>PUF-OffTarget<br>Atlas</h3>
-        <p>Search transcriptomes for similar PUF recognition sites and rank which candidates are most useful to validate next.</p>
-        <a class="text-link" href="{{ url_for('pages', page='offtarget-atlas') }}">Open the atlas →</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="story-scene story-scene--paper">
-    <div class="shell lab-bridge reveal">
-      <div><p class="chapter-index">04 · THE ENGINEERING LOOP</p><h2>Prediction becomes useful when it changes the next experiment.</h2></div>
-      <ol>
-        <li><b>01</b><span>Design</span><small>Choose constructs and measurable questions.</small></li>
-        <li><b>02</b><span>Build</span><small>Prepare variants and controls.</small></li>
-        <li><b>03</b><span>Test</span><small>Collect editing and expression evidence.</small></li>
-        <li><b>04</b><span>Learn</span><small>Revise parameters and priorities.</small></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="story-scene story-scene--arrival">
-    <div class="shell arrival-grid">
-      {{ art_slot('orca-remembered', 'The pod returns in full clarity', 'Future artwork: the complete pod in focus, filling the final viewport. This is a symbol of hope—not a claim of cure.', 'cinematic') }}
-      <div class="arrival-copy reveal">
-        <p class="chapter-index chapter-index--light">05 · REMEMBER FORWARD</p>
-        <h2>Make every assumption visible. Make every next step testable.</h2>
-        <p>ORCA is our attempt to turn a difficult molecular question into an honest engineering process—one that can learn from evidence.</p>
-        <a class="button button--pale" href="{{ url_for('pages', page='model') }}">Read the modeling story <span>→</span></a>
-      </div>
-    </div>
-  </section>
+  {% include 'components/intro/sequence.html' %}
+  {% include 'components/home_content.html' %}
 </main>
 {% endblock %}

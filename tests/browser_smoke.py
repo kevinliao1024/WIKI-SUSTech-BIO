@@ -1,9 +1,10 @@
 from pathlib import Path
+import os
 
 from playwright.sync_api import sync_playwright
 
 
-BASE_URL = "http://127.0.0.1:8080"
+BASE_URL = os.environ.get('WIKI_BASE_URL', 'http://127.0.0.1:8080')
 SCREENSHOT_DIR = Path("/private/tmp/sustech-wiki-browser")
 
 
@@ -43,28 +44,20 @@ def main() -> None:
             else None,
         )
         desktop.goto(BASE_URL, wait_until="networkidle")
-        assert desktop.get_by_role("heading", name="ORCA", exact=True).is_visible()
+        assert desktop.get_by_role("heading", name="ORCA", exact=True).count() == 2
         assert desktop.get_by_text(
             "On-target RNA Correction for Alzheimer’s Disease", exact=True
         ).is_visible()
         assert desktop.get_by_role("heading", name="Memory should not fade alone.").is_visible()
-        assert desktop.locator("[data-orca-pod]").is_visible()
-        assert desktop.locator("[data-ocean-current]").is_visible()
-        assert desktop.locator("[data-coral-garden]").is_visible()
-        assert desktop.locator("[data-white-current]").is_visible()
-        assert desktop.locator('[data-asset-key="orca-forgotten"]').is_visible()
-        source_art = desktop.locator('img[data-source-art="wiki1"]')
-        assert source_art.count() == 2
+        source_art = desktop.locator('[data-fish] img')
+        assert source_art.count() == 17
         for index in range(source_art.count()):
             assert source_art.nth(index).evaluate("image => image.complete && image.naturalWidth > 0")
         assert_no_horizontal_overflow(desktop, "desktop home")
         reveal_entire_page(desktop)
         desktop.screenshot(path=SCREENSHOT_DIR / "home-desktop.png", full_page=True)
 
-        desktop.get_by_role("button", name="Dry Lab", exact=True).click()
-        desktop.get_by_role("navigation", name="Primary navigation").get_by_role(
-            "link", name="Off-Target Atlas"
-        ).click()
+        desktop.locator('.research-rows a').filter(has_text='PUF-OffTarget Atlas').click()
         desktop.wait_for_load_state("networkidle")
         assert desktop.get_by_role("heading", name="PUF-OffTarget Atlas").is_visible()
         assert desktop.get_by_text("318,200", exact=True).is_visible()
@@ -87,10 +80,8 @@ def main() -> None:
             else None,
         )
         mobile.goto(BASE_URL, wait_until="networkidle")
-        assert mobile.get_by_role("heading", name="ORCA", exact=True).is_visible()
-        assert mobile.locator("[data-orca-pod]").is_visible()
-        assert mobile.locator('img[data-source-art="wiki1"]').count() == 2
-        mobile.get_by_role("button", name="Toggle navigation").click()
+        assert mobile.get_by_role("heading", name="ORCA", exact=True).count() == 2
+        mobile.get_by_role("button", name="Menu", exact=False).click()
         assert mobile.get_by_role("link", name="Team", exact=True).is_visible()
         assert_no_horizontal_overflow(mobile, "mobile menu")
         mobile.screenshot(path=SCREENSHOT_DIR / "home-mobile.png")

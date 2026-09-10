@@ -50,6 +50,25 @@ class BuildAuditTest(unittest.TestCase):
         issues = audit_document("index.html", document)
         self.assertTrue(any("missing alt text" in issue for issue in issues))
 
+    def test_rejects_external_svg_assets(self):
+        for tag in ('image', 'use'):
+            for attribute in ('href', 'xlink:href'):
+                for url in ('https://external.example/art.svg', '//external.example/art.svg'):
+                    with self.subTest(tag=tag, attribute=attribute, url=url):
+                        document = VALID_DOCUMENT.replace('</body>', f'<svg><{tag} {attribute}="{url}"/></svg></body>')
+                        self.assertTrue(any('third-party runtime asset' in issue for issue in audit_document('index.html', document)))
+
+    def test_svg_fragment_is_not_a_missing_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            document = '<svg><use href="#neural-route"/></svg>'
+            self.assertEqual(audit_internal_links('index.html', document, Path(directory)), [])
+
+    def test_missing_local_svg_image_is_reported(self):
+        with tempfile.TemporaryDirectory() as directory:
+            document = '<svg><image href="/static/missing-brain.png"/></svg>'
+            issues = audit_internal_links('index.html', document, Path(directory))
+            self.assertTrue(any('missing local asset' in issue for issue in issues))
+
     def test_rejects_broken_internal_link(self):
         with tempfile.TemporaryDirectory() as directory:
             document = VALID_DOCUMENT.replace("</body>", '<a href="missing-page">Missing</a></body>')
