@@ -68,7 +68,8 @@
   };
   const measure = () => {
     width=root.clientWidth; height=root.querySelector('.intro-stage').clientHeight;
-    referenceTop=document.querySelector('.story-nav').offsetHeight;
+    const navigation=document.querySelector('.story-nav, .site-nav');
+    referenceTop=navigation ? navigation.offsetHeight : 0;
     // Fit the complete brain (source y=0..455) below navigation. Never stretch
     // the source or zoom into one fold; the original tail extends below it.
     referenceScale=Math.min(width/712,Math.max(1,Math.min(height,innerHeight)-referenceTop-24)/455);

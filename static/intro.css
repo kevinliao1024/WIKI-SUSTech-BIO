@@ -1,5 +1,5 @@
 /* Homepage only. Static composition is the no-JS/reduced-motion fallback. */
-.orca-story { --story-paper:#fff; --story-navy:#191b62; --story-coral:#ff8194; --reference-top:103px; --reference-scale:1; --reference-width:min(100vw,calc((100svh - 127px) * 712 / 455)); --reference-height:calc(var(--reference-width) * 1080 / 712); --sans:Futura,"Futura PT","Avenir Next",Montserrat,sans-serif; padding-top:0; background:var(--story-paper); color:var(--story-navy); font-weight:500; }
+.orca-story { --story-paper:#fff; --story-navy:#191b62; --story-coral:#ff8194; --reference-top:103px; --reference-scale:1; --reference-width:min(100vw,calc((100svh - 127px) * 712 / 455)); --reference-height:calc(var(--reference-width) * 1080 / 712); --sans:Futura,"Futura PT","Avenir Next",Montserrat,sans-serif; padding-top:var(--nav-h); background:var(--story-paper); color:var(--story-navy); font-weight:500; }
 .orca-story::before { display:none; }
 .story-nav { position:absolute; top:0; left:0; width:100%; z-index:30; display:flex; justify-content:space-between; align-items:center; padding:28px 5vw; gap:30px; background:var(--story-paper); }
 .story-brand { font:700 28px Georgia,serif; letter-spacing:.08em; text-decoration:none; }
@@ -72,6 +72,20 @@ body:not(.intro-ready) .arrival-school { display:none; }
 .research-rows b { margin-left:auto; color:var(--story-coral); }
 .closing-school { width:min(400px,85%); display:block; margin:0 0 55px auto; }
 .chapter-about { padding-bottom:140px; }
+.globe-section { position:relative; overflow:hidden; padding:120px 0 135px; color:#fff; background:var(--story-navy); }
+.globe-section::before { content:""; position:absolute; inset:0; opacity:.2; background:radial-gradient(circle at 72% 45%,#9d9cf4 0,transparent 27%),linear-gradient(120deg,rgba(245,143,156,.14),transparent 42%); pointer-events:none; }
+.globe-section__inner { position:relative; z-index:1; display:grid; grid-template-columns:minmax(260px,.85fr) minmax(380px,1.15fr); align-items:center; gap:5vw; }
+.globe-section__copy { position:relative; z-index:2; }
+.globe-section .chapter-label { color:#9d9cf4; }
+.globe-section h2 { margin:0 0 25px; color:#fff; font:700 clamp(42px,5.3vw,78px)/1.04 Georgia,serif; letter-spacing:-.035em; }
+.globe-section__copy > p:not(.chapter-label):not(.globe-source) { max-width:470px; color:rgba(255,255,255,.72); font-size:16px; line-height:1.8; }
+.globe-source { margin-top:32px; color:#9d9cf4; font:10px var(--sans); letter-spacing:.08em; text-transform:uppercase; }
+.globe-section__visual { position:relative; min-height:560px; display:grid; place-items:center; }
+.globe-counter { position:absolute; z-index:0; top:50%; left:50%; width:min(100%,620px); transform:translate(-50%,-50%); color:rgba(255,255,255,.1); text-align:center; pointer-events:none; }
+.globe-counter__number { font:700 clamp(88px,14vw,190px)/.85 Georgia,serif; letter-spacing:-.08em; }
+.globe-counter__plus { font:700 clamp(42px,6vw,80px)/1 Georgia,serif; color:rgba(245,143,156,.35); vertical-align:top; }
+.globe-counter__label { display:block; margin-top:18px; color:rgba(255,255,255,.32); font:10px var(--sans); letter-spacing:.14em; text-transform:uppercase; }
+.globe-canvas { position:relative; z-index:1; width:min(100%,560px); height:auto; aspect-ratio:1; filter:drop-shadow(0 20px 45px rgba(0,0,0,.25)); }
 .orca-story a:focus-visible,.orca-story button:focus-visible { outline:3px solid var(--story-coral); outline-offset:5px; }
 @media(max-width:1000px) {
   .story-fish { width:calc(var(--fish-size) * .8); }
@@ -92,6 +106,10 @@ body:not(.intro-ready) .arrival-school { display:none; }
   .story-eyebrow { font-size:8px; margin-bottom:18px; }
   .project-subtitle { font-size:15px; }
   .project-caption { font-size:11px; margin-top:20px; }
+  .globe-section { padding:85px 0 100px; }
+  .globe-section__inner { grid-template-columns:1fr; gap:10px; }
+  .globe-section__visual { min-height:400px; margin-top:-15px; }
+  .globe-counter__number { font-size:78px; }
   .story-fish--leader { width:190px; top:9%; left:17%; }
   .story-fish--escort { width:calc(var(--fish-size) * .55); }
   .story-fish--escort:nth-child(n+4) { display:none; }

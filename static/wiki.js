@@ -16,12 +16,14 @@
   }
 
   const progress = document.querySelector('[data-story-progress] i');
+  const progressBar = document.querySelector('[data-story-progress]');
   const backToTop = document.querySelector('[data-back-to-top]');
 
   const updateScrollUI = () => {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = scrollable > 0 ? Math.min(1, window.scrollY / scrollable) : 0;
     if (progress) progress.style.width = `${ratio * 100}%`;
+    if (progressBar) progressBar.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
     if (backToTop) backToTop.classList.toggle('is-visible', window.scrollY > 700);
   };
 
