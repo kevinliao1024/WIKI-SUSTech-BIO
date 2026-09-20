@@ -20,7 +20,12 @@
     {% block main %}
     <main id="main-content">
       <header class="page-hero">
-        <div class="page-hero__wash" aria-hidden="true"></div>
+        <div class="page-hero__wash" aria-hidden="true">
+          <div class="light-dot light-dot--coral"></div>
+          <div class="light-dot light-dot--teal"></div>
+          <div class="light-dot light-dot--yellow"></div>
+          <div class="light-dot light-dot--purple"></div>
+        </div>
         <div class="shell page-hero__inner reveal">
           <p class="eyebrow">{% block eyebrow %}SUSTech · iGEM 2026{% endblock %}</p>
           <h1>{% block page_title %}{{ self.title() }}{% endblock %}</h1>

@@ -28,6 +28,7 @@
           <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Wet Lab</button>
           <ul class="dropdown-menu">
             {{ item('experiments', 'Experiments') }}
+            {{ item('results', 'Results') }}
             {{ item('notebook', 'Notebook') }}
             {{ item('measurement', 'Measurement') }}
             {{ item('alternative-platform', 'Alternative Platform') }}
@@ -45,17 +46,6 @@
             {{ item('hardware', 'Hardware') }}
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Experiments</button>
-          <ul class="dropdown-menu">
-            {{ item('experiments', 'Experiments') }}
-            {{ item('notebook', 'Notebook') }}
-            {{ item('measurement', 'Measurement') }}
-            {{ item('alternative-platform', 'Alternative Platform') }}
-            {{ item('safety-and-security', 'Safety & Security') }}
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link{% if request.path == '/results' %} active{% endif %}" href="{{ url_for('pages', page='results') }}"{% if request.path == '/results' %} aria-current="page"{% endif %}>Results</a></li>
         <li class="nav-item dropdown">
           <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Human Practices</button>
           <ul class="dropdown-menu dropdown-menu-end">
