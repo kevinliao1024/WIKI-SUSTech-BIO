@@ -1,0 +1,344 @@
+/* ==========================================================================
+   ORCA mRNA Minimal Scroll Scene (1440 x 900 Reference Canvas)
+   ========================================================================== */
+
+.mrna-hero {
+  width: 100%;
+  min-height: calc(100svh - var(--nav-h));
+  overflow: hidden;
+  background: #ffffff;
+  position: relative;
+}
+
+.mrna-hero__pin {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.mrna-hero.is-motion-ready {
+  height: 300svh;
+  min-height: 2000px;
+}
+
+.mrna-hero.is-motion-ready .mrna-hero__pin {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100svh - var(--nav-h));
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 1440 x 900 严格比例视口 */
+.mrna-hero__canvas {
+  position: relative;
+  width: min(100%, calc((100svh - var(--nav-h)) * 1440 / 900), 1600px);
+  aspect-ratio: 1440 / 900;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #ffffff;
+}
+
+.mrna-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 元素绝对定位层 */
+.mrna-hero__asset {
+  position: absolute;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   1. mrnaWave: 居中在 x=720, y=560
+   -------------------------------------------------------------------------- */
+.mrna-hero__asset--wave {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mrna-hero__crop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mrna-hero__wave-static img,
+.mrna-hero__wave-segment img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.mrna-hero__wave-static {
+  opacity: 1;
+  transition: opacity 0.1s linear;
+}
+
+.mrna-hero__wave-deform {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.mrna-hero__wave-segment {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.mrna-hero__wave-segment--1 {
+  left: 0;
+  width: 53.5%;
+  transform-origin: 95% 62%;
+}
+
+.mrna-hero__wave-segment--1 img {
+  width: 186.915888%;
+}
+
+.mrna-hero__wave-segment--2 {
+  left: 51.5%;
+  width: 48.5%;
+  transform-origin: 5% 62%;
+}
+
+.mrna-hero__wave-segment--2 img {
+  left: -106.185567%;
+  width: 206.185567%;
+}
+
+/* --------------------------------------------------------------------------
+   2. Markers: mainC (1.0), sideU (0.5), sideC (0.5)
+   -------------------------------------------------------------------------- */
+.mrna-hero__asset--marker {
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+
+.mrna-hero__asset--marker [data-marker-crop] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(.2);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.mrna-hero__asset--marker img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 字母文字叠加 */
+.mrna-marker-letter {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  font-family: Futura, "Avenir Next", "Century Gothic", Montserrat, sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  text-anchor: middle;
+  user-select: none;
+}
+
+/* mainC: center 720, 560 -> scale 1.0 (约 160px 宽度在 1440 宽下约 11.11%) */
+.mrna-hero__asset--center {
+  left: calc((720 - 80) / 1440 * 100%);
+  top: calc((560 - 80) / 900 * 100%);
+  width: calc(160 / 1440 * 100%);
+  height: calc(160 / 900 * 100%);
+}
+.mrna-hero__asset--center .mrna-marker-letter {
+  font-size: clamp(24px, 3.8vw, 54px);
+}
+
+/* sideU: center 610, 535 -> scale 0.5 (约 80px 宽度在 1440 宽下约 5.55%) */
+.mrna-hero__asset--left {
+  left: calc((610 - 40) / 1440 * 100%);
+  top: calc((535 - 40) / 900 * 100%);
+  width: calc(80 / 1440 * 100%);
+  height: calc(80 / 900 * 100%);
+}
+.mrna-hero__asset--left .mrna-marker-letter {
+  font-size: clamp(14px, 2vw, 28px);
+}
+
+/* sideC: center 850, 570 -> scale 0.5 (约 80px 宽度在 1440 宽下约 5.55%) */
+.mrna-hero__asset--right {
+  left: calc((850 - 40) / 1440 * 100%);
+  top: calc((570 - 40) / 900 * 100%);
+  width: calc(80 / 1440 * 100%);
+  height: calc(80 / 900 * 100%);
+}
+.mrna-hero__asset--right .mrna-marker-letter {
+  font-size: clamp(14px, 2vw, 28px);
+}
+
+/* --------------------------------------------------------------------------
+   Debug 模式 (?debugScene=1 或 ?debugHero=1)
+   -------------------------------------------------------------------------- */
+.mrna-debug-frame {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mrna-hero__debug-label,
+.mrna-hero__debug-canvas {
+  display: none;
+}
+
+.mrna-hero.is-debug .mrna-hero__canvas {
+  outline: 2px solid #2e267c;
+  background-image:
+    linear-gradient(rgba(46, 38, 124, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 38, 124, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.mrna-hero.is-debug .mrna-debug-frame {
+  display: block;
+}
+
+.mrna-debug-anchor {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4757;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px #fff, 0 0 6px rgba(255, 71, 87, 0.8);
+}
+
+.mrna-debug-anchor::after {
+  content: attr(title);
+  position: absolute;
+  left: 12px;
+  top: -6px;
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-family: monospace;
+}
+
+.mrna-hero.is-debug .mrna-hero__asset {
+  outline: 1px dashed rgba(46, 38, 124, 0.5);
+}
+
+.mrna-hero.is-debug .mrna-hero__debug-label,
+.mrna-hero.is-debug .mrna-hero__debug-canvas {
+  display: grid;
+}
+
+.mrna-hero__debug-label {
+  position: absolute;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  padding: 4px 6px;
+  color: #fff;
+  background: #2e267c;
+  font: 10px/1.3 Menlo, monospace;
+  pointer-events: none;
+}
+
+.mrna-hero__debug-label b,
+.mrna-hero__debug-label span {
+  display: block;
+}
+
+.mrna-hero__debug-label--right {
+  right: 0;
+  left: auto;
+}
+
+.mrna-hero__debug-canvas {
+  position: absolute;
+  z-index: 20;
+  right: 12px;
+  bottom: 12px;
+  gap: 3px;
+  margin: 0;
+  padding: 10px 14px;
+  color: #fff;
+  background: #19143d;
+  font: 11px/1.3 Menlo, monospace;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mrna-hero__debug-canvas b {
+  color: #8affd8;
+  font-size: 11px;
+}
+
+.mrna-hero__debug-canvas output {
+  color: #ffd1d5;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   无障碍：prefers-reduced-motion
+   -------------------------------------------------------------------------- */
+.mrna-hero.is-reduced-motion {
+  height: auto;
+  min-height: calc(100svh - var(--nav-h));
+}
+
+.mrna-hero.is-reduced-motion .mrna-hero__pin {
+  position: relative;
+  top: auto;
+}
+
+.mrna-hero.is-reduced-motion .mrna-hero__asset--marker [data-marker-crop] {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.mrna-hero.is-reduced-motion .mrna-hero__wave-static {
+  opacity: 0 !important;
+}
+
+.mrna-hero.is-reduced-motion .mrna-hero__wave-deform {
+  opacity: 1 !important;
+}
+
+@media (max-width: 650px) {
+  .mrna-hero.is-motion-ready:not(.is-reduced-motion) {
+    height: 250svh;
+    min-height: 1600px;
+  }
+}

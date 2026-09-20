@@ -1,4 +1,4 @@
-"""The original, complete brain composition is the source of truth."""
+"""The prepared mRNA layers are the source of truth for the RNA hero."""
 import unittest
 import hashlib
 import json
@@ -13,19 +13,27 @@ class ReferenceArtTest(unittest.TestCase):
         original=next(r for r in records if r.get('output')=='visual-system-reference.jpg')
         self.assertEqual(hashlib.sha256((directory/'visual-system-reference.jpg').read_bytes()).hexdigest(),original['sha256'])
 
-    def test_home_uses_complete_reference_not_a_stretched_detail(self):
+    def test_home_uses_prepared_mrna_layers(self):
         page=app.test_client().get('/').get_data(as_text=True)
-        self.assertIn('class="reference-plate"', page)
-        self.assertIn('assets/intro/visual-system-reference.jpg', page)
-        self.assertNotIn('brain-folds.png', page)
-        self.assertNotIn('class="neural-corals"', page)
+        for asset in ('wave_1.png', 'blue_spot_1.png', 'pink_spot_1.png', 'pink_spot_2.png'):
+            self.assertIn(f'data-asset="{asset}"', page)
+        self.assertIn('class="mrna-hero__canvas"', page)
 
-    def test_leader_comes_from_the_title_adjacent_reference_whale(self):
-        page=app.test_client().get('/').get_data(as_text=True)
-        self.assertIn('class="reference-whale-crop"', page)
-        self.assertNotIn('assets/intro/fish-large-01.png', page)
+    def test_markers_begin_hidden_and_debug_mode_is_preserved(self):
+        stylesheet=Path('static/hero.css').read_text()
+        script=Path('static/hero.js').read_text()
+        self.assertIn('.mrna-hero__asset--marker {', stylesheet)
+        self.assertIn('opacity: 0;', stylesheet)
+        self.assertIn('transform: scale(.2);', stylesheet)
+        self.assertIn("get('debugHero') === '1'", script)
+        self.assertIn("data-hero-progress", app.test_client().get('/').get_data(as_text=True))
 
-    def test_no_second_drawn_route_is_added_to_original_composition(self):
+    def test_hero_has_no_animation_dependencies(self):
         page=app.test_client().get('/').get_data(as_text=True)
-        self.assertNotIn('id="research-route"', page)
-        self.assertNotIn('class="route-ribbons"', page)
+        script=Path('static/hero.js').read_text()
+        self.assertNotIn('intro.js', page)
+        self.assertNotIn('gsap', page.lower())
+        self.assertNotIn('scrolltrigger', page.lower())
+        self.assertNotIn('scaleY', script)
+        self.assertEqual(script.count("addEventListener('scroll'"), 1)
+        self.assertIn('requestAnimationFrame', script)

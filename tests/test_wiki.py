@@ -75,12 +75,11 @@ class WikiRoutesTest(unittest.TestCase):
         page = self.get_text("/404.html")
         self.assertIn("Lost in the current", page)
 
-    def test_home_contains_intro_and_six_research_sections(self):
+    def test_home_contains_rna_hero_and_six_research_sections(self):
         page = self.get_text("/")
         for section in ['background','rna-correction','approach','results','team','about']:
             self.assertIn(f'id="{section}"', page)
-        self.assertIn('data-intro', page)
-        self.assertIn('href="#research"', page)
+        self.assertIn('data-hero-scene', page)
 
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")
@@ -90,10 +89,20 @@ class WikiRoutesTest(unittest.TestCase):
             self.assertNotIn("REWIRE", page)
         self.assertIn("On-target RNA Correction for Alzheimer’s Disease", home)
 
-    def test_home_uses_orca_ocean_composition_hooks(self):
+    def test_home_uses_scroll_driven_mrna_composition_hooks(self):
         page = self.get_text("/")
-        for hook in ['data-camera', 'data-project', 'data-kind="leader"', 'id="neural-route"']:
+        for hook in ['data-asset="wave_1.png"', 'data-asset="blue_spot_1.png"', 'data-asset="pink_spot_1.png"', 'data-asset="pink_spot_2.png"']:
             self.assertIn(hook, page)
+        for hook in ['data-hero-pin', 'data-wave-segment', 'data-hero-progress', 'data-hero-phase']:
+            self.assertIn(hook, page)
+
+    def test_hero_assets_are_served_from_requested_path(self):
+        for asset in ["wave_1.png", "blue_spot_1.png", "pink_spot_1.png", "pink_spot_2.png"]:
+            with self.subTest(asset=asset):
+                response = self.client.get(f"/assets/hero/mrna/{asset}")
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.mimetype, "image/png")
+                response.close()
 
     def test_stylesheet_uses_approved_orca_palette(self):
         stylesheet = Path("static/style.css").read_text(encoding="utf-8")
@@ -106,14 +115,14 @@ class WikiRoutesTest(unittest.TestCase):
         app_source = Path("app.py").read_text(encoding="utf-8")
         self.assertIn('app.run(host="127.0.0.1",', app_source)
 
-    def test_home_uses_original_raster_whales_instead_of_drawn_whales(self):
+    def test_home_uses_only_prepared_mrna_raster_assets_in_hero(self):
         page = self.get_text("/")
-        for asset in ['static/assets/intro/visual-system-reference.jpg','static/assets/intro/fish-small-01.png','static/assets/intro/fish-medium-02.png']:
-            self.assertIn(asset, page)
-            self.assertTrue(Path(asset).is_file(), asset)
-        self.assertEqual(page.count('data-kind="route"'), 12)
-        self.assertNotIn('class="orca-pod', page)
-        self.assertNotIn("medallion-orca", page)
+        for asset in ["wave_1.png", "blue_spot_1.png", "pink_spot_1.png", "pink_spot_2.png"]:
+            source = Path("assets/hero/mrna") / asset
+            self.assertIn(f"assets/hero/mrna/{asset}", page)
+            self.assertTrue(source.is_file(), source)
+        self.assertNotIn("gsap", page.lower())
+        self.assertNotIn("scrolltrigger", page.lower())
 
     def test_dry_lab_pages_show_evidence_status(self):
         for route in ["/dry-lab", "/model", "/brain-delivery", "/offtarget-atlas", "/software"]:

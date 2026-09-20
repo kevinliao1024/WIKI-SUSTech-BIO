@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 {% block title %}Home{% endblock %}
 {% block body_class %}home-page orca-story{% endblock %}
-{% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='intro.css') }}">{% endblock %}
-{% block page_scripts %}<script src="{{ url_for('static', filename='intro.js') }}" defer></script><script type="module" src="{{ url_for('static', filename='globe.js') }}"></script>{% endblock %}
+{% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='intro.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='hero.css') }}">{% endblock %}
+{% block page_scripts %}<script src="{{ url_for('static', filename='hero.js') }}" defer></script><script type="module" src="{{ url_for('static', filename='globe.js') }}"></script>{% endblock %}
 {% block navigation %}{% include 'menu.html' %}{% endblock %}
 {% block main %}
 <main id="main-content">
-  {% include 'components/intro/sequence.html' %}
+  {% include 'components/hero_scene.html' %}
   {% include 'components/home_content.html' %}
 </main>
 {% endblock %}

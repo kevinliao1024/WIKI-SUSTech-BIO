@@ -1,7 +1,7 @@
 from os import path
 from pathlib import Path
 
-from flask import Flask, abort, render_template
+from flask import Flask, abort, render_template, send_from_directory
 from flask_frozen import Freezer
 
 
@@ -141,6 +141,11 @@ def serve():
 @app.route("/")
 def home():
     return render_template("pages/home.html")
+
+
+@app.route("/assets/<path:filename>")
+def assets(filename):
+    return send_from_directory(path.join(app.root_path, "assets"), filename)
 
 
 @app.route("/<page>")
