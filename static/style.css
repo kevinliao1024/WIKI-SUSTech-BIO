@@ -1,5 +1,15 @@
 :root {
-  /* Munich-style Flat Scientific Palette */
+  /* Approved ORCA Core Palette (Retained for system compatibility) */
+  --slate: #2e3065;
+  --coral: #f2989f;
+  --periwinkle: #9b9ef7;
+  --current-blue: #5f62cd;
+  --indigo: #3d409b;
+  --abyss: #191a59;
+  --lavender: #d6d8ff;
+  --violet: #6f71c1;
+
+  /* Munich-style Flat Scientific Editorial Palette */
   --paper: #FFF8F0;
   --dark-ink: #1C2340;
   --orca-indigo: #293B8F;
@@ -9,14 +19,6 @@
   --accent-purple: #8E72D6;
 
   /* Semantic mappings */
-  --slate: var(--orca-indigo);
-  --coral: var(--coral-pink);
-  --periwinkle: var(--accent-purple);
-  --current-blue: var(--ocean-teal);
-  --indigo: var(--orca-indigo);
-  --abyss: var(--dark-ink);
-  --lavender: #EAE6FF;
-  --violet: var(--accent-purple);
   --white: #ffffff;
   --ink: var(--dark-ink);
   --ink-2: var(--dark-ink);

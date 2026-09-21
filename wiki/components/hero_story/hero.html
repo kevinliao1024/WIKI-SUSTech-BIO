@@ -1,0 +1,35 @@
+<section class="hero-story-section" id="hero" aria-label="ORCA RNA storyboard hero scene" data-hero-story>
+  <div class="hero-container">
+    <div class="hero-stage">
+      <!-- 极简手绘风格背景粒子 -->
+      <div class="hero-particles" aria-hidden="true">
+        <span class="particle particle--1"></span>
+        <span class="particle particle--2"></span>
+        <span class="particle particle--3"></span>
+        <span class="particle particle--4"></span>
+        <span class="particle particle--5"></span>
+        <span class="particle particle--6"></span>
+      </div>
+
+      <!-- 核心故事关键帧（严格按照需求 3.png - 8.png） -->
+      <div class="hero-canvas-frame">
+        <img class="hero-frame hero-frame--3" src="{{ url_for('assets', filename='hero/3.png') }}" alt="Damaged wavy mRNA strand" data-frame="3">
+        <img class="hero-frame hero-frame--4" src="{{ url_for('assets', filename='hero/4.png') }}" alt="Sequence recognition in progress" data-frame="4">
+        <img class="hero-frame hero-frame--5" src="{{ url_for('assets', filename='hero/5.png') }}" alt="C/U/C nucleotide site identified" data-frame="5">
+        <img class="hero-frame hero-frame--6" src="{{ url_for('assets', filename='hero/6.png') }}" alt="Targeted RNA correction underway" data-frame="6">
+        <img class="hero-frame hero-frame--7" src="{{ url_for('assets', filename='hero/7.png') }}" alt="RNA straightening and stabilizing" data-frame="7">
+        <img class="hero-frame hero-frame--8" src="{{ url_for('assets', filename='hero/8.png') }}" alt="Corrected RNA ready for ORCA project introduction" data-frame="8">
+
+        <!-- 增强光晕层 (C marker 聚焦 & 修复光晕) -->
+        <div class="hero-glow hero-glow--c" id="heroGlowC" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow--correct" id="heroGlowCorrect" aria-hidden="true"></div>
+      </div>
+
+      <!-- 滚动引导线 -->
+      <div class="hero-scroll-cue" aria-hidden="true">
+        <span>Scroll to explore the story</span>
+        <i></i>
+      </div>
+    </div>
+  </div>
+</section>

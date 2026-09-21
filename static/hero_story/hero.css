@@ -1,0 +1,160 @@
+/* ==========================================================================
+   ORCA Hero Storyboard (Scrolling Scientific Picture Book)
+   ========================================================================== */
+
+.hero-story-section {
+  position: relative;
+  width: 100%;
+  background: var(--paper, #FFF8F0);
+  overflow: hidden;
+}
+
+.hero-container {
+  width: 100%;
+  min-height: calc(100svh - var(--nav-h, 76px));
+}
+
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: calc(100svh - var(--nav-h, 76px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 16:9 严格画幅容器（绝不拉伸/裁切失真） */
+.hero-canvas-frame {
+  position: relative;
+  width: min(100%, calc((100svh - var(--nav-h, 76px)) * 16 / 9), 1600px);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+  animation: heroFloat 8s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* 连续关键帧叠加图片 */
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(1);
+  will-change: opacity, transform;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 首帧默认可见 */
+.hero-frame--3 {
+  opacity: 1;
+}
+
+/* 增强光晕效果 (Subtle Glow) */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(28px);
+  transition: opacity 0.4s ease;
+}
+
+.hero-glow--c {
+  left: 45%;
+  top: 48%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(244, 124, 134, 0.45) 0%, rgba(69, 183, 178, 0.2) 60%, transparent 80%);
+}
+
+.hero-glow--correct {
+  left: 20%;
+  top: 35%;
+  width: 60%;
+  height: 35%;
+  background: radial-gradient(ellipse, rgba(69, 183, 178, 0.35) 0%, rgba(246, 196, 83, 0.15) 50%, transparent 75%);
+}
+
+/* 极简背景漂浮粒子 */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.16;
+  filter: blur(12px);
+  animation: particleDrift 16s ease-in-out infinite;
+}
+
+.particle--1 { width: 120px; height: 120px; left: 10%; top: 20%; background: #F47C86; animation-duration: 14s; }
+.particle--2 { width: 160px; height: 160px; right: 15%; top: 30%; background: #45B7B2; animation-duration: 18s; animation-delay: -3s; }
+.particle--3 { width: 90px; height: 90px; left: 35%; bottom: 25%; background: #F6C453; animation-duration: 12s; animation-delay: -6s; }
+.particle--4 { width: 140px; height: 140px; right: 35%; top: 15%; background: #8E72D6; animation-duration: 20s; animation-delay: -9s; }
+.particle--5 { width: 80px; height: 80px; left: 60%; bottom: 15%; background: #F47C86; animation-duration: 15s; animation-delay: -4s; }
+.particle--6 { width: 110px; height: 110px; left: 20%; bottom: 10%; background: #45B7B2; animation-duration: 17s; animation-delay: -8s; }
+
+@keyframes particleDrift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15px, -24px) scale(1.12);
+  }
+}
+
+/* 滚动引导 */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--orca-indigo, #293B8F);
+  font: 700 9px var(--mono, monospace);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.hero-scroll-cue i {
+  width: 1.5px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--coral-pink, #F47C86), transparent);
+  animation: cueBounce 2s ease-in-out infinite;
+}
+
+@keyframes cueBounce {
+  0%, 100% { transform: scaleY(1); opacity: 0.9; }
+  50% { transform: scaleY(0.4); opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-canvas-frame,
+  .particle,
+  .hero-scroll-cue i {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,28 @@
+<section id="hero-story" class="hero-story" aria-label="ORCA hero storyboard scroll storytelling" data-hero-storyboard>
+  <div class="hero-story__viewport">
+    <div class="hero-story__track" id="heroStoryTrack">
+      <img
+        src="{{ url_for('assets', filename='hero/storyboard-full.png') }}"
+        alt="ORCA hero storyboard narrative from APOE mutation to global impact"
+        class="hero-story__image"
+        id="heroStoryImage"
+        draggable="false"
+      />
+    </div>
+
+    <!-- 柔和氛围与微弱暗角层 (Vignette & Light Grain) -->
+    <div class="hero-story__overlay" aria-hidden="true"></div>
+
+    <!-- 顶部极简章节进度指示 -->
+    <div class="hero-story__indicator" aria-hidden="true">
+      <span class="indicator-scene" id="indicatorScene">Scene 01</span>
+      <div class="indicator-bar"><i id="indicatorBar"></i></div>
+    </div>
+
+    <!-- 底部滚动提示 -->
+    <div class="hero-story__cue" id="heroStoryCue" aria-hidden="true">
+      <span>Scroll to advance story</span>
+      <i></i>
+    </div>
+  </div>
+</section>
