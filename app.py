@@ -128,6 +128,13 @@ CONTENT_PAGES = {
 }
 
 
+@freezer.register_generator
+def pages():
+    # Preserve direct links even when a page is omitted from the main menu.
+    for page in sorted(set(PAGE_META) | CONTENT_PAGES):
+        yield {"page": page}
+
+
 @app.cli.command()
 def freeze():
     freezer.freeze()

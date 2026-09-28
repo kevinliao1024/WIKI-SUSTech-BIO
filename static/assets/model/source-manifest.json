@@ -1,0 +1,103 @@
+{
+  "source": "Team-supplied archive, 2026-09-28",
+  "documents": [
+    "igem_module1/01_Module1_Wiki_EN.md",
+    "igem_module1/02_Module1_DBTL_EN.md",
+    "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
+    "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md"
+  ],
+  "assets": [
+    {
+      "source": "igem_module1/assets/01_module1_workflow_illustrated.png",
+      "sha256": "fa2cbd98dbb17f150affebd5f7ffa4c9629a0f03731ece2d91d8800430774fe4"
+    },
+    {
+      "source": "igem_module1/assets/02_candidate_counts.png",
+      "sha256": "59e3eaa6362aa939072d6f218344d35d4461d1c17d40feb9fb28f34b2ed40585"
+    },
+    {
+      "source": "igem_module1/assets/03_site_rate_summary.png",
+      "sha256": "113d60430e7087b6d1161c53a8e8b6759f01faa52c385806abcbcc1e3e9a9451"
+    },
+    {
+      "source": "igem_module1/assets/03_editing_distribution.png",
+      "sha256": "ae1e0b99b7cb4ca4c5649f7073aede599fa9f3807bd542e407ffc0ababc6fa05"
+    },
+    {
+      "source": "igem_module1/assets/04_target_comparison.png",
+      "sha256": "367e07cf642e0872dee3f7b1836115805a369f5f9294b67221265286d92c0ea2"
+    },
+    {
+      "source": "igem_module1/assets/05_motif_logos.png",
+      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8"
+    },
+    {
+      "source": "igem_module1/assets/06_chromosome_distribution.png",
+      "sha256": "8884410fdf7ad38012c9a150a39ccd57b8f47c8924759453b4f53662c0994803"
+    },
+    {
+      "source": "igem_module1/assets/data/displayed_summary.tsv",
+      "sha256": "5e2bbac879874de4529f7de5aebc52469e863f94b3347c447c3677eaa9d126c6"
+    },
+    {
+      "source": "igem_module1/assets/data/chromosome_reference_normalized.tsv",
+      "sha256": "530b630cae242878b864439ca5ea5929fa6aeb1193fb9c4e1b69d93e240ec6c9"
+    },
+    {
+      "source": "igem_module1/assets/data/sample_scope_audit.tsv",
+      "sha256": "f9570f241a5551f6bf76026642baf8624cec8cfc0186a384cba450f5c5e0d90b"
+    },
+    {
+      "source": "igem_module1/assets/data/six_group_summary.tsv",
+      "sha256": "b67beb7eb5552e4ee249203b9ad978dce25df20e4ea7c89e8ca9297416cecf4b"
+    },
+    {
+      "source": "igem_module2/wiki/figures/architecture/figure@2x.png",
+      "sha256": "0d4498257a651b54416bab2fe48fed22683a1084b2659370a42842c899864102"
+    },
+    {
+      "source": "igem_module2/wiki/figures/topk_random/figure@2x.png",
+      "sha256": "6af2fc0c7494e7d3f68021fd6464a6dda57ae434840d6ee784d6a01afc83de8d"
+    },
+    {
+      "source": "igem_module2/wiki/figures/oof_scatter/figure@2x.png",
+      "sha256": "1e878647cd9a3311f6f46e705aaa7631242bf5baf14a8b084d6e35352c875e56"
+    },
+    {
+      "source": "igem_module2/wiki/figures/ablation_spearman/figure@2x.png",
+      "sha256": "58fad9d0c5540ee364c3de0f90938d89a2b3349b272b84f97c4367932076d8d9"
+    },
+    {
+      "source": "igem_module2/wiki/figures/ablation_top30/figure@2x.png",
+      "sha256": "159782e97ef2af1e351e0ad9996f4757838ea983627eb733ca50d23d1ad68345"
+    },
+    {
+      "source": "igem_module2/wiki/figures/five_targets/figure@2x.png",
+      "sha256": "61a803bcf551624a02519a793b50a0318d75111c8fc0a306aa0b6b3db828c96e"
+    },
+    {
+      "source": "igem_module2/wiki/figures/selected_cases/figure@2x.png",
+      "sha256": "2150ccded216dfbe55d1192eaff38b646e7854e601b434246f35769578006f2a"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "sha256": "926b8e5b7db2138fd6e42c5fab25c421ad838f7a18de0c34c9683d37f1260316"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/nontrm_screen/figure@2x.png",
+      "sha256": "78ec179a7098adb19098df28d497aeaa374f7f38c9ebebfa20818dc1903cc1bb"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png",
+      "sha256": "9ca0958f67e27a28e6e8cf871d8377cea914b1876bf8d67dee3b9443e4854bc6"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/assay_comparison/figure@2x.png",
+      "sha256": "2641b7d8ba6b41a085e41bbc212e48b355438e680f54cbb7196249c571ace2c6"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/single_scores/figure@2x.png",
+      "sha256": "094716e3eea3975560efd0279a5fbd66f7fcca0e9fc68bc18b71f80a2b84810b"
+    }
+  ]
+}
