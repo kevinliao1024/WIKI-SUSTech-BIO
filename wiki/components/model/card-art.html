@@ -1,0 +1,5 @@
+{% if loop.index <= 2 %}
+<canvas class="model-card-visual model-canvas" data-model-canvas="{{ 'sequence' if loop.index == 1 else 'puf' }}" width="960" height="560" role="img" aria-label="{{ 'Illustrative RNA sequencing cycles in a flow cell; hover to start sequencing' if loop.index == 1 else 'PUF structural model from team coordinates; hover to reveal RNA binding' }}">{{ 'RNA sequencing flow cell' if loop.index == 1 else 'PUF–RNA structural model' }}</canvas>
+{% else %}
+<svg class="model-card-visual pending-visual" viewBox="0 0 400 200" aria-hidden="true"><path d="M30 30h25m-25 0v25M370 30h-25m25 0v25M30 155h25m-25 0v-25M370 155h-25m25 0v-25"/><path class="pending-guide" d="M50 94h300"/><text x="200" y="121" text-anchor="middle">0{{ loop.index }}</text></svg>
+{% endif %}
