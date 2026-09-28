@@ -1,5 +1,5 @@
 <section
-  class="rna-opening"
+  class="rna-opening brain-journey"
   data-rna-opening
 >
   <div class="rna-opening__viewport" data-rna-viewport>
@@ -7,11 +7,28 @@
       <i></i><i></i><i></i>
     </div>
 
-    <header class="rna-opening__copy">
-      <span>ORCA · RNA editing</span>
+    <div class="journey-atmosphere" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path d="M-150 760 C240 940 250 300 710 370 S1320 820 1540 160"/><path d="M-100 720 C250 900 310 280 710 350 S1300 740 1530 120"/></svg>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <header class="journey-intro" data-journey-intro>
+      <h1 class="visually-hidden">ORCA</h1>
+      <p class="visually-hidden">On-target RNA Correction for Alzheimer’s Disease</p>
+      {% include 'components/crayon_title.html' %}
     </header>
+    <div class="journey-brain" data-journey-brain>
+      {% include 'components/crayon_brain.html' %}
+    </div>
+    <div class="journey-astrocyte" data-journey-astrocyte>
+      <img src="{{ url_for('static', filename='assets/brain-journey/astrocyte.svg') }}" alt="A star-shaped astrocyte with branching processes and a central nucleus" width="1000" height="900">
+    </div>
+    <div class="journey-scale" aria-hidden="true">
+      <span data-journey-label="brain">The brain</span>
+      <span data-journey-label="astrocyte">An astrocyte</span>
+      <span data-journey-label="rna">Inside, a single sequence.</span>
+    </div>
 
-    <figure class="rna-opening__stage" aria-label="A highlighted cytosine settles into an RNA sequence containing G, C and G as the strand stabilizes.">
+    <figure class="rna-opening__stage" data-journey-rna aria-label="A highlighted cytosine settles into an RNA sequence containing G, C and G as the strand stabilizes.">
       <div class="rna-opening__source" data-rna-source aria-hidden="true">
         <span>C</span>
         <i></i><i></i><i></i>
@@ -23,7 +40,7 @@
 
       <div class="rna-opening__strand" data-rna-strand aria-hidden="true">
         <img
-          src="{{ url_for('assets', filename='hero/mrna/rna-wave.png') }}"
+          src="{{ url_for('static', filename='assets/brain-journey/rna.svg') }}"
           alt=""
           draggable="false"
         >
@@ -35,10 +52,6 @@
         <span class="rna-base rna-base--c" data-rna-base="c">G</span>
       </div>
 
-      <figcaption class="rna-opening__caption" data-rna-caption>
-        <b>G · C · G</b>
-
-      </figcaption>
 
       <div class="rna-opening__cell-particles" data-rna-cell-particles aria-hidden="true">
         <img src="{{ url_for('assets', filename='hero/cell/coral-particles.png') }}" alt="" draggable="false">
@@ -83,8 +96,5 @@
       <span>01</span><i><b data-rna-progress></b></i><span>03</span>
     </div>
 
-    <div class="rna-opening__cue" data-rna-cue aria-hidden="true">
-      <span>Scroll to explore</span><i></i>
-    </div>
   </div>
 </section>

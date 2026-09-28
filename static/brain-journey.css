@@ -1,0 +1,96 @@
+/* One continuous illustrated camera move, from organ to sequence. */
+.brain-journey { --journey-progress:0; }
+.brain-journey .rna-opening__viewport { background:radial-gradient(ellipse at 70% 45%,#eeebff 0%,#f9f4fa 36%,#fffefc 72%); }
+.journey-atmosphere { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.journey-atmosphere > svg { position:absolute; width:100%; height:100%; opacity:.38; }
+.journey-atmosphere path { fill:none; stroke:#d6d8ff; stroke-width:70; }
+.journey-atmosphere path+path { stroke:#f2989f; stroke-width:2; opacity:.6; }
+.journey-atmosphere i { position:absolute; width:9px; height:9px; border-radius:50%; background:#9b9ef7; opacity:.45; left:15%; top:22%; }
+.journey-atmosphere i:nth-of-type(2) { left:43%; top:14%; width:5px; height:5px; }
+.journey-atmosphere i:nth-of-type(3) { left:88%; top:35%; background:#f2989f; }
+.journey-atmosphere i:nth-of-type(4) { left:35%; top:76%; width:6px; height:6px; }
+.journey-atmosphere i:nth-of-type(5) { left:80%; top:85%; width:16px; height:16px; background:#f2989f; }
+.journey-atmosphere i:nth-of-type(6) { left:8%; top:63%; width:4px; height:4px; }
+.journey-intro { position:absolute; z-index:7; left:7%; top:18%; width:38%; pointer-events:none; }
+.journey-intro > p { color:#6f71a0; font:600 10px var(--sans); text-transform:uppercase; letter-spacing:.24em; margin:0 0 24px; }
+.journey-intro h1 { font:700 clamp(74px,9.4vw,150px)/.88 var(--serif); letter-spacing:-.065em; color:#2e3065; margin:0; }
+.journey-intro h1 span { display:block; font:italic 400 clamp(30px,4vw,62px)/1.04 var(--serif); letter-spacing:-.04em; margin-top:25px; }
+.journey-intro > div { margin-top:26px; font:13px/1.65 var(--sans); color:#6f71a0; letter-spacing:.01em; }
+.journey-brain { position:absolute; z-index:3; width:min(64vw,960px); left:65%; top:49%; transform:translate(-50%,-50%) rotate(-3deg); transform-origin:69.4% 60%; will-change:transform,opacity; pointer-events:none; }
+.journey-brain img { display:block; width:100%; height:auto; }
+.journey-astrocyte { position:absolute; z-index:4; width:min(77vw,860px); left:50%; top:52%; transform:translate(-50%,-50%) scale(.38); transform-origin:50% 50%; opacity:0; will-change:transform,opacity; pointer-events:none; }
+.journey-astrocyte img { width:100%; height:auto; display:block; }
+.journey-scale { position:absolute; top:8%; left:50%; z-index:7; transform:translateX(-50%); width:80%; text-align:center; pointer-events:none; }
+.journey-scale > span { position:absolute; left:0; right:0; opacity:0; color:#6f71a0; font:italic 24px/1.2 var(--serif); }
+.journey-scale > span:first-child { display:none; }
+.journey-wayfinder { position:absolute; z-index:8; left:7%; bottom:32px; display:flex; align-items:center; gap:14px; color:#6f71a0; font:10px var(--sans); letter-spacing:.08em; }
+.journey-wayfinder i { height:1px; width:24px; background:#d6d8ff; }
+.journey-wayfinder span { opacity:.45; transition:opacity .3s,color .3s; }
+.journey-wayfinder span.is-active { opacity:1; color:#3d409b; }
+.journey-skip { position:absolute; z-index:8; right:8%; bottom:28px; color:#6f71a0; font:11px var(--sans); text-decoration:none; padding:8px; }
+.journey-skip:hover { color:#3d409b; }
+.journey-skip:focus-visible { outline:2px solid #6f71c1; outline-offset:3px; }
+.brain-journey .rna-opening__stage { z-index:5; opacity:0; transform:scale(.68); transform-origin:center; }
+.brain-journey .rna-opening__source,.brain-journey .rna-opening__guide { display:none; }
+.brain-journey .rna-opening__strand { width:120vw; }
+.brain-journey .rna-opening__strand img { filter:drop-shadow(0 22px 20px #3d409b15); }
+.brain-journey .rna-base { border:3px solid #fffefc; }
+.brain-journey .rna-opening__cue { bottom:29px; }
+@media (prefers-reduced-motion:no-preference) {
+  .brain-journey { height:850svh; min-height:0; }
+  .brain-journey[data-journey="brain"] .journey-brain img { animation:brain-tide 6s ease-in-out infinite; }
+  .brain-journey[data-journey="astrocyte"] .journey-astrocyte img { animation:astro-breathe 4s ease-in-out infinite; }
+  @keyframes brain-tide { 0%,100% { transform:translateY(-4px); } 50% { transform:translateY(5px); } }
+  @keyframes astro-breathe { 0%,100% { scale:1; } 50% { scale:1.025; } }
+}
+@media (max-width:800px) {
+  .journey-intro { top:8%; left:7%; width:65%; }
+  .journey-intro > p { font-size:8px; margin-bottom:16px; }
+  .journey-intro h1 { font-size:clamp(62px,13vw,100px); }
+  .journey-intro h1 span { margin-top:12px; font-size:clamp(26px,5.5vw,42px); }
+  .journey-intro h1 br { display:none; }
+  .journey-intro > div { font-size:10px; margin-top:14px; }
+  .journey-brain { width:min(112vw,68svh); left:53%; top:62%; }
+  .journey-astrocyte { width:110vw; top:53%; }
+  .journey-scale { top:8%; }
+  .journey-wayfinder { left:6%; bottom:24px; gap:8px; font-size:8px; }
+  .journey-wayfinder i { width:12px; }
+  .journey-skip { right:6%; bottom:19px; font-size:9px; }
+  .brain-journey .rna-opening__cue { display:none; }
+  .brain-journey .rna-opening__strand { width:160vw; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .brain-journey { height:auto; min-height:0; }
+  .brain-journey .rna-opening__viewport { height:auto; min-height:0; padding:34px 20px 45px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+  .journey-intro { position:relative; inset:auto; width:100%; opacity:1!important; transform:none!important; text-align:center; }
+  .journey-intro h1 { font-size:72px; }
+  .journey-intro h1 span { display:none; }
+  .journey-brain,.journey-astrocyte { position:relative; inset:auto; width:min(100%,560px); opacity:1!important; transform:none!important; }
+  .brain-journey .rna-opening__stage { position:relative; inset:auto; width:100%; height:220px; transform:none!important; opacity:1!important; }
+  .brain-journey .rna-opening__strand { display:block; width:100%; top:50%; opacity:1!important; transform:translate(-50%,-50%)!important; }
+  .brain-journey .rna-opening__bases { display:block; }
+  .brain-journey .rna-base { opacity:1!important; top:50%!important; transform:translate(-50%,-50%)!important; }
+  .brain-journey .rna-base--focus { width:75px; font-size:36px; }
+  .brain-journey .rna-opening__cell-particles,.brain-journey .rna-opening__cell-halo,.brain-journey .rna-opening__cell-character,.brain-journey .rna-opening__cell-tissue,.brain-journey .rna-opening__cell-copy,.brain-journey .rna-opening__cleaners,.brain-journey .rna-opening__clearance-copy { display:none; }
+  .journey-scale,.journey-wayfinder,.journey-skip,.journey-atmosphere,.brain-journey .rna-opening__cue { display:none; }
+}
+
+.brain-journey[data-frozen] .journey-brain img,.brain-journey[data-frozen] .journey-astrocyte img { animation:none; }
+
+/* Without scripts the opening is a single complete illustration, not an empty scroll track. */
+html:not(.js) .brain-journey { height:calc(100svh - var(--nav-h)); min-height:0; }
+html:not(.js) .brain-journey .rna-opening__viewport { position:relative; top:0; min-height:0; }
+/* The opening title is bespoke stroke lettering, textured like wax on paper. */
+.journey-intro { top:24%; width:32%; }
+.crayon-title { display:block; width:100%; height:auto; overflow:visible; }
+.crayon-brain-art { display:block; width:100%; height:auto; overflow:visible; }
+.crayon-tip { opacity:0; pointer-events:none; }
+.brain-journey .journey-intro .visually-hidden { margin:0; }
+.brain-journey.is-crayon-drawing .journey-brain { will-change:transform,opacity; }
+@media (max-width:800px) {
+  .journey-intro { top:7%; left:7%; width:min(84%,360px); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .journey-intro { position:relative; inset:auto; width:min(100%,490px); }
+  .crayon-tip { display:none; }
+}

@@ -1,0 +1,82 @@
+<svg class="crayon-brain-art" data-crayon-brain xmlns="http://www.w3.org/2000/svg" width="1000" height="850" viewBox="0 0 1000 850" fill="none" role="img" aria-labelledby="brain-title brain-desc">
+  <title id="brain-title">A little universe inside the brain</title>
+  <desc id="brain-desc">An original cartoon brain with softly rounded coral and lavender folds, surrounded by tiny neural sparks. A highlighted star-shaped glial cell on the lower right is the next stop in the journey.</desc>
+  <metadata>Original code-native artwork created with AI assistance for the SUSTech 2026 ORCA design preview. No third-party artwork or external resources. Intended page: homepage. Decorative conceptual illustration, not an anatomical measurement. Team review required before publication.</metadata>
+  <defs><filter id="BRAIN-grain" x="-4%" y="-5%" width="108%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="3" seed="8" result="noise"/><feColorMatrix in="noise" type="luminanceToAlpha"/><feComponentTransfer><feFuncA type="linear" slope="1.45" intercept=".05"/></feComponentTransfer><feComposite in="SourceGraphic" operator="in"/><feDisplacementMap in2="noise" scale=".8" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <linearGradient id="brain-left" x1="255" y1="220" x2="552" y2="675" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD0CB"/><stop offset=".45" stop-color="#F2989F"/><stop offset="1" stop-color="#D88AAD"/></linearGradient>
+    <linearGradient id="brain-right" x1="561" y1="155" x2="787" y2="701" gradientUnits="userSpaceOnUse"><stop stop-color="#E1D9FF"/><stop offset=".5" stop-color="#B6ADF3"/><stop offset="1" stop-color="#9290D6"/></linearGradient>
+    <linearGradient id="brain-stem" x1="487" y1="581" x2="518" y2="746" gradientUnits="userSpaceOnUse"><stop stop-color="#9B9EF7"/><stop offset="1" stop-color="#5F62CD"/></linearGradient>
+    <radialGradient id="brain-shine" cx="0" cy="0" r="1" gradientTransform="translate(358 273) rotate(65) scale(296 217)" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF9EF" stop-opacity=".48"/><stop offset="1" stop-color="#FFF9EF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="brain-focus" cx="0" cy="0" r="1" gradientTransform="translate(694 510) scale(104)" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF6EC" stop-opacity=".94"/><stop offset=".6" stop-color="#FFE6DD" stop-opacity=".38"/><stop offset="1" stop-color="#F2989F" stop-opacity="0"/></radialGradient>
+    <filter id="brain-depth" x="-15%" y="-15%" width="130%" height="145%"><feDropShadow dx="0" dy="18" stdDeviation="12" flood-color="#2E3065" flood-opacity=".12"/></filter>
+    <g id="brain-spark" stroke="#6F71C1" stroke-width="5" stroke-linecap="round"><path d="M0-12V12M-12 0H12"/><path d="M-7-7 7 7M7-7-7 7" opacity=".3"/></g>
+    <g id="brain-star"><path d="M0-15C3-4 4-3 15 0 4 3 3 4 0 15-3 4-4 3-15 0-4-3-3-4 0-15Z" fill="#F2989F"/></g>
+  </defs><g class="crayon-brain-ink" filter="url(#BRAIN-grain)">
+  <!-- A quiet orbital frame keeps the silhouette legible at any scale. -->
+  <ellipse cx="508" cy="447" rx="414" ry="303" transform="rotate(-15 508 447)" stroke="#9B9EF7" stroke-opacity=".25" stroke-width="2" stroke-dasharray="4 13"/>
+  <path d="M115 461C76 354 132 253 214 215M804 677C889 627 926 552 911 466" stroke="#D6D8FF" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="508" cy="759" rx="239" ry="22" fill="#3D409B" opacity=".065"/>
+  <g filter="url(#brain-depth)">
+    <path d="M449 575C452 616 457 654 471 688L477 731C478 748 490 756 505 756H524C540 756 548 743 543 729L529 683C548 651 552 617 548 578Z" fill="url(#brain-stem)" stroke="#3E3B78" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M487 670 506 731" stroke="#D6D8FF" stroke-width="9" stroke-linecap="round" opacity=".65"/>
+    <!-- Hemispheres have their own irregular silhouettes, rather than a mirrored icon. -->
+    <path d="M501 208C484 160 438 136 394 145 359 122 310 137 289 166 244 162 212 187 202 226 160 241 143 271 150 311 120 337 118 381 138 411 114 450 128 495 158 514 154 557 181 591 222 602 238 646 275 663 316 655 347 690 394 690 427 667 468 671 495 646 501 611L509 547 501 208Z" fill="url(#brain-left)" stroke="#3E3B78" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M501 208C518 167 553 146 592 154 633 129 677 144 700 174 747 170 782 197 790 236 831 248 854 284 843 320 872 344 880 385 861 416 885 450 875 493 846 516 848 557 822 592 783 600 767 640 728 658 690 649 660 682 615 682 584 660 544 668 513 646 503 612L493 544 501 208Z" fill="url(#brain-right)" stroke="#3E3B78" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M501 208C484 160 438 136 394 145 359 122 310 137 289 166 244 162 212 187 202 226 160 241 143 271 150 311 120 337 118 381 138 411 114 450 128 495 158 514 154 557 181 591 222 602 238 646 275 663 316 655 347 690 394 690 427 667 468 671 495 646 501 611L509 547 501 208Z" fill="url(#brain-shine)"/>
+    <!-- Rounded folding grooves. A warmer edge gives the left hemisphere a soft sculpted look. -->
+    <g stroke="#975A8E" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+      <path d="M288 171C322 184 325 216 305 239 286 261 254 251 237 268 219 286 225 309 241 326"/>
+      <path d="M394 149C381 175 387 204 409 218 432 231 463 222 469 250 477 284 441 297 420 283"/>
+      <path d="M355 217C338 246 342 271 363 286 385 303 380 330 357 341 328 355 299 337 282 353 261 372 276 395 295 406"/>
+      <path d="M157 312C180 303 204 314 207 338 211 364 193 377 170 378"/>
+      <path d="M142 413C175 396 205 415 211 443 217 470 247 474 263 459 281 442 277 421 296 407 319 390 344 399 351 421"/>
+      <path d="M434 334C418 350 421 376 444 387 465 397 471 421 455 439 438 460 406 447 397 469 384 497 413 516 438 505"/>
+      <path d="M169 518C198 498 223 509 232 533 243 560 274 568 297 550 318 532 309 510 334 501 356 493 374 509 371 527"/>
+      <path d="M316 652C302 626 310 600 333 591 358 582 381 597 399 582 420 565 414 539 394 531"/>
+      <path d="M452 574C472 591 466 623 445 637"/>
+    </g>
+    <g stroke="#FFE0D7" stroke-width="6" stroke-linecap="round" opacity=".74">
+      <path d="M235 223C245 201 266 193 283 198M338 171C352 164 365 165 373 171"/>
+      <path d="M269 296C283 279 308 278 320 291M398 248C408 257 422 258 434 252"/>
+      <path d="M167 350C173 342 182 341 188 347M317 370C329 379 346 376 355 369"/>
+      <path d="M162 456C162 474 177 485 193 483M228 393C237 398 242 408 240 419"/>
+      <path d="M301 481C319 466 344 469 353 481M368 439C371 451 367 461 361 468"/>
+      <path d="M250 587C262 601 278 603 292 596M348 634C363 642 382 638 389 627M454 529C463 539 465 550 460 559"/>
+    </g>
+    <g stroke="#6B60AA" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".83">
+      <path d="M593 158C613 182 607 209 585 222 562 235 535 224 530 252 525 279 545 293 565 286"/>
+      <path d="M700 178C676 192 674 221 694 241 713 260 743 251 759 272 773 290 765 313 750 324"/>
+      <path d="M644 224C656 247 649 272 630 285 607 300 613 326 635 339 659 353 692 337 707 358 722 379 708 398 691 407"/>
+      <path d="M839 321C816 307 792 320 790 344 787 370 807 382 829 376"/>
+      <path d="M857 419C825 402 795 417 790 446 785 474 758 483 737 464"/>
+      <path d="M565 331C584 348 580 372 558 383 534 395 531 420 548 439 565 457 590 448 601 470 614 496 590 515 566 507"/>
+      <path d="M841 519C816 502 791 513 785 535 778 559 752 570 731 558"/>
+      <path d="M689 647C703 623 695 598 673 590 648 581 625 597 607 581 588 564 592 540 611 533"/>
+      <path d="M551 574C531 591 537 620 557 634"/>
+    </g>
+    <g stroke="#F6EDFF" stroke-width="6" stroke-linecap="round" opacity=".79">
+      <path d="M632 170C645 165 660 169 667 178M716 199C738 200 750 212 754 227"/>
+      <path d="M567 253C578 258 589 255 595 247M684 295C700 281 718 284 727 297"/>
+      <path d="M811 344C817 340 824 343 827 350M638 374C650 381 667 375 672 367"/>
+      <path d="M757 398C747 403 744 414 747 424M821 463C818 478 807 487 798 485"/>
+      <path d="M637 441C630 450 630 461 635 470M723 589C735 596 750 591 756 582"/>
+      <path d="M618 622C630 635 647 637 660 630M545 532C538 542 537 551 542 559"/>
+    </g>
+    <path d="M501 200C479 259 518 306 497 366 479 421 515 458 498 509 488 543 491 579 504 611" stroke="#3E3B78" stroke-width="10" stroke-linecap="round"/>
+    <path d="M489 216C480 234 481 258 486 269M510 306C512 329 507 344 501 352M486 394C485 412 490 426 494 436" stroke="#FFF2E8" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <!-- Zoom focal point: 694, 510 (69.4%, 60% of the SVG). -->
+    <circle cx="694" cy="510" r="102" fill="url(#brain-focus)"/>
+    <circle cx="694" cy="510" r="59" stroke="#FFF5E9" stroke-width="2.5" stroke-dasharray="3 7" opacity=".86"/>
+    <g stroke="#624776" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M694 512 679 486 676 470M681 489 663 488M698 502 711 478 724 471M710 480 708 465M707 514 736 507 749 497M735 508 745 517M702 524 718 548 733 554M718 547 715 560M688 526 676 548 664 555M677 545 680 561M680 514 652 520 641 510M654 519 644 530" stroke-width="7"/>
+      <path d="M694 512 679 486 676 470M681 489 663 488M698 502 711 478 724 471M710 480 708 465M707 514 736 507 749 497M735 508 745 517M702 524 718 548 733 554M718 547 715 560M688 526 676 548 664 555M677 545 680 561M680 514 652 520 641 510M654 519 644 530" stroke="#F2989F" stroke-width="4"/>
+      <path d="M688 493C695 489 700 497 709 498 718 500 709 510 714 517 718 528 705 528 700 534 694 541 689 530 681 531 670 531 679 519 675 512 671 503 682 503 688 493Z" fill="#F2989F" stroke-width="3"/>
+      <ellipse cx="695" cy="513" rx="10" ry="9" transform="rotate(-18 695 513)" fill="#D6D8FF" stroke-width="2.5"/>
+      <circle cx="697" cy="512" r="3" fill="#6F71C1" stroke="none"/>
+    </g>
+  </g>
+  <use href="#brain-star" x="181" y="175"/><use href="#brain-star" x="856" y="626"/><use href="#brain-star" transform="translate(802 123) scale(.65)"/>
+  <use href="#brain-spark" x="126" y="568"/><use href="#brain-spark" transform="translate(897 310) scale(.8)"/><use href="#brain-spark" transform="translate(402 94) scale(.6)"/>
+  <g fill="#D6D8FF" stroke="#9694D8" stroke-width="2"><circle cx="117" cy="272" r="8"/><circle cx="838" cy="709" r="7"/><circle cx="733" cy="102" r="5"/></g>
+  <g fill="#F2989F"><circle cx="227" cy="712" r="5"/><circle cx="903" cy="412" r="4"/><circle cx="326" cy="103" r="4"/></g>
+</g><g class="crayon-tip" data-crayon-tip aria-hidden="true"><g transform="rotate(32)"><path d="M0 0 L-9-19 L-9-70 Q0-78 9-70 L9-19Z" fill="#f2989f" stroke="#3d409b" stroke-width="1.5"/><path d="M-9-19 L0 0 L9-19Z" fill="#3d409b"/><path d="M-9-30 H9 M-9-60 H9" stroke="#fffefc" stroke-width="4"/><path d="M-4-34 V-55" stroke="#fffefc" stroke-width="2" opacity=".5"/></g></g></svg>
