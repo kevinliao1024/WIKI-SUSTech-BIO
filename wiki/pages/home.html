@@ -3,16 +3,29 @@
 {% block body_class %}home-page orca-story{% endblock %}
 {% block page_styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='intro.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='hero-story.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='hero.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='protein-scene.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='global-scene.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='reversal-scene.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='restoration-scene.css') }}">
 {% endblock %}
 {% block page_scripts %}
-<script src="{{ url_for('static', filename='hero-story.js') }}" defer></script>
+<script src="{{ url_for('static', filename='hero.js') }}" defer></script>
+<script src="{{ url_for('static', filename='hero-scrub.js') }}" defer></script>
+<script src="{{ url_for('static', filename='protein-scene.js') }}" defer></script>
+<script src="{{ url_for('static', filename='global-scene.js') }}" defer></script>
+<script src="{{ url_for('static', filename='reversal-scene.js') }}" defer></script>
+<script src="{{ url_for('static', filename='restoration-scene.js') }}" defer></script>
 <script type="module" src="{{ url_for('static', filename='globe.js') }}"></script>
 {% endblock %}
 {% block navigation %}{% include 'menu.html' %}{% endblock %}
 {% block main %}
 <main id="main-content">
-  {% include 'components/hero_story.html' %}
-  {% include 'components/home_content.html' %}
+  {% include 'components/hero_scene.html' %}
+  {% include 'components/protein_scene.html' %}
+  {% include 'components/global_scene.html' %}
+  {% include 'components/reversal_scene.html' %}
+  {% include 'components/restoration_scene.html' %}
 </main>
 {% endblock %}
+{% block footer %}{% endblock %}

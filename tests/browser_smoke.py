@@ -44,22 +44,19 @@ def main() -> None:
             else None,
         )
         desktop.goto(BASE_URL, wait_until="networkidle")
-        assert desktop.get_by_role("heading", name="ORCA", exact=True).count() == 2
-        assert desktop.get_by_text(
-            "On-target RNA Correction for Alzheimer’s Disease", exact=True
-        ).is_visible()
-        assert desktop.get_by_role("heading", name="Memory should not fade alone.").is_visible()
-        source_art = desktop.locator('[data-fish] img')
-        assert source_art.count() == 17
-        for index in range(source_art.count()):
-            assert source_art.nth(index).evaluate("image => image.complete && image.naturalWidth > 0")
+        assert desktop.locator('[data-rna-opening]').count() == 1
+        assert desktop.locator('[data-protein-scene]').count() == 1
+        assert desktop.locator('[data-global-scene]').count() == 1
+        assert desktop.locator('[data-solution-reveal]').count() == 0
+        assert desktop.locator('.protein-drop').count() == 16
         assert_no_horizontal_overflow(desktop, "desktop home")
         reveal_entire_page(desktop)
         desktop.screenshot(path=SCREENSHOT_DIR / "home-desktop.png", full_page=True)
 
-        desktop.locator('.research-rows a').filter(has_text='PUF-OffTarget Atlas').click()
-        desktop.wait_for_load_state("networkidle")
-        assert desktop.get_by_role("heading", name="PUF-OffTarget Atlas").is_visible()
+        desktop.goto(f"{BASE_URL}/offtarget-atlas", wait_until="networkidle")
+        assert desktop.locator(".page-hero h1").count() == 0
+        assert desktop.locator(".page-hero__inner").inner_text().strip() == ""
+        assert desktop.locator(".page-hero__guide").is_visible()
         assert desktop.get_by_text("318,200", exact=True).is_visible()
         assert_no_horizontal_overflow(desktop, "desktop atlas")
         reveal_entire_page(desktop)
@@ -80,7 +77,7 @@ def main() -> None:
             else None,
         )
         mobile.goto(BASE_URL, wait_until="networkidle")
-        assert mobile.get_by_role("heading", name="ORCA", exact=True).count() == 2
+        assert mobile.locator('[data-rna-opening]').count() == 1
         mobile.get_by_role("button", name="Menu", exact=False).click()
         assert mobile.get_by_role("link", name="Team", exact=True).is_visible()
         assert_no_horizontal_overflow(mobile, "mobile menu")

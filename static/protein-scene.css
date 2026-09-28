@@ -1,0 +1,271 @@
+.protein-scene {
+  --protein-progress: 0;
+  --ink: #19143d;
+  --indigo: #2e267c;
+  --coral: #f58f9c;
+  --paper: #fffefc;
+  position: relative;
+  width: 100%;
+  height: 300svh;
+  min-height: 2200px;
+  overflow: clip;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.protein-scene__viewport {
+  position: sticky;
+  top: var(--nav-h, 76px);
+  width: 100%;
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(233, 232, 255, .5), transparent 38%),
+    linear-gradient(180deg, #fffefc 0%, #fffefc 74%, #fff7f6 100%);
+}
+
+.protein-scene__wash,
+.protein-scene__wash i { position: absolute; inset: 0; pointer-events: none; }
+.protein-scene__wash { z-index: 0; }
+.protein-scene__wash i:first-child {
+  background: radial-gradient(circle at 50% 60%, rgba(255, 209, 213, .26), transparent 34%);
+}
+.protein-scene__wash i:last-child {
+  background-image: radial-gradient(rgba(46, 38, 124, .12) .7px, transparent .7px);
+  background-size: 20px 20px;
+  opacity: .07;
+}
+
+/* The last tissue wave from Scene 03 continues across the cut. It retreats
+   upward while individual protein deposits fall out of it into Scene 04. */
+.protein-scene__bridge {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: -2px;
+  width: max(114vw, 1500px);
+  transform: translate3d(-50%, 0, 0) rotate(180deg);
+  transform-origin: 50% 50%;
+  opacity: .96;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.protein-scene__bridge img { display: block; width: 100%; height: auto; }
+
+.protein-scene__rain {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.protein-drop {
+  position: absolute;
+  left: var(--x);
+  top: 0;
+  width: clamp(46px, var(--size), 104px);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 12px 16px rgba(25, 20, 61, .09));
+  will-change: transform, opacity;
+}
+
+.protein-scene__wave {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -2px;
+  width: max(114vw, 1500px);
+  transform: translate3d(-50%, 0, 0);
+  opacity: .92;
+}
+.protein-scene__wave img { display: block; width: 100%; height: auto; }
+
+.protein-scene__spine {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 24%;
+  width: min(104vw, 1500px);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+}
+.protein-scene__spine img { display: block; width: 100%; height: auto; opacity: .5; }
+
+/* The neuron holds the centre. Three expression states share one box so the
+   change reads as the same cell reacting, never as a new character. */
+.protein-scene__neuron {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(30px, 4vh, 58px);
+  width: clamp(240px, 27vw, 420px);
+  transform: translate3d(-50%, 0, 0);
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.protein-neuron {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  will-change: opacity, transform;
+  filter: drop-shadow(0 26px 38px rgba(25, 20, 61, .16));
+}
+.protein-neuron--calm { position: relative; }
+
+.protein-scene__load {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 48%;
+  width: min(78vw, 1120px);
+  transform: translate3d(-50%, -50%, 0) scale(.9);
+  will-change: transform, opacity;
+}
+.protein-load__faces { display: block; width: 100%; height: auto; }
+
+.protein-scene__drift {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 40%;
+  width: min(70vw, 980px);
+  transform: translate3d(-50%, -50%, 0) scale(.84);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.protein-scene__drift img { display: block; width: 100%; height: auto; }
+
+.protein-scene__title {
+  position: absolute;
+  z-index: 6;
+  right: clamp(28px, 5vw, 84px);
+  top: clamp(72px, 12vh, 132px);
+  width: clamp(210px, 24vw, 380px);
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  will-change: opacity, clip-path, transform;
+}
+.protein-scene__title img { display: block; width: 100%; height: auto; }
+
+.protein-scene__copy {
+  position: absolute;
+  z-index: 8;
+  top: clamp(32px, 5vh, 62px);
+  left: clamp(30px, 6vw, 96px);
+  width: min(450px, 37vw);
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  will-change: transform, opacity;
+}
+
+.protein-scene__copy p,
+.protein-scene__copy > span,
+.protein-scene__status,
+.protein-scene__progress {
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+}
+
+.protein-scene__copy p {
+  margin: 0 0 14px;
+  color: #6b6880;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.protein-scene__copy h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(40px, 4.7vw, 72px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.protein-scene__copy > span {
+  display: block;
+  margin-top: 20px;
+  color: var(--indigo);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.protein-scene__status {
+  position: absolute;
+  z-index: 8;
+  top: clamp(132px, 17vh, 168px);
+  right: clamp(78px, 7vw, 112px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+}
+.protein-scene__status i { width: 42px; height: 1px; background: linear-gradient(90deg, #d9d7e5, var(--coral)); }
+.protein-scene__status b { color: var(--indigo); }
+
+.protein-scene__progress {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  right: clamp(22px, 3vw, 50px);
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  transform: translateY(-50%);
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+}
+.protein-scene__progress > i {
+  position: relative;
+  width: 2px;
+  height: 100px;
+  background: #dddbea;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.protein-scene__progress b {
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+}
+
+@media (max-width: 760px) {
+  .protein-scene { height: 260svh; min-height: 1800px; }
+  .protein-scene__viewport { min-height: 560px; }
+  .protein-scene__copy { left: 24px; width: calc(100% - 72px); }
+  .protein-scene__copy h2 { font-size: clamp(36px, 11vw, 52px); }
+  .protein-scene__neuron { width: min(66vw, 300px); }
+  .protein-scene__load { width: 126vw; }
+  .protein-scene__title { width: 44vw; right: 18px; top: 84px; }
+  .protein-scene__status { top: auto; right: auto; left: 24px; bottom: 26px; }
+  .protein-scene__bridge { width: 180vw; }
+  .protein-drop { width: clamp(42px, calc(var(--size) * 1.7), 82px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .protein-scene { height: auto; min-height: calc(100svh - var(--nav-h, 76px)); }
+  .protein-scene__viewport { position: relative; top: auto; }
+  .protein-scene__copy,
+  .protein-scene__title,
+  .protein-scene__drift { opacity: 1; transform: none; clip-path: none; }
+  .protein-scene__bridge { opacity: .18; transform: translate3d(-50%, -80px, 0) rotate(180deg); }
+  .protein-drop { opacity: .34; transform: translate3d(-50%, 46vh, 0) scale(.75); }
+  .protein-scene__spine { opacity: .4; }
+  .protein-scene__load { transform: translate3d(-50%, -50%, 0) scale(1); }
+  .protein-neuron--burdened { opacity: 1; }
+  .protein-scene__progress b { transform: scaleY(1); }
+}

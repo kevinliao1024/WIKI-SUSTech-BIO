@@ -7,6 +7,7 @@
     <script>document.documentElement.classList.add('js')</script>
     <link rel="shortcut icon" href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg">
     <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+    <meta name="source-code" content="https://gitlab.igem.org/2026/sustech">
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     {% block page_styles %}{% endblock %}
@@ -19,7 +20,7 @@
 
     {% block main %}
     <main id="main-content">
-      <header class="page-hero">
+      <header class="page-hero" aria-hidden="true">
         <div class="page-hero__wash" aria-hidden="true">
           <div class="light-dot light-dot--coral"></div>
           <div class="light-dot light-dot--teal"></div>
@@ -27,16 +28,14 @@
           <div class="light-dot light-dot--purple"></div>
         </div>
         <div class="shell page-hero__inner reveal">
-          <p class="eyebrow">{% block eyebrow %}SUSTech · iGEM 2026{% endblock %}</p>
-          <h1>{% block page_title %}{{ self.title() }}{% endblock %}</h1>
-          <p class="page-hero__lead">{% block lead %}{% endblock %}</p>
+          <span class="page-hero__guide"></span>
         </div>
       </header>
       {% block page_content %}{% endblock %}
     </main>
     {% endblock %}
 
-    {% include 'footer.html' %}
+    {% block footer %}{% include 'footer.html' %}{% endblock %}
     <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>↑</button>
     <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='wiki.js') }}" defer></script>

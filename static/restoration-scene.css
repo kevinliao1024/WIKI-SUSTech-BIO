@@ -1,0 +1,229 @@
+.restoration-scene {
+  --restoration-progress: 0;
+  --ink: #19143d;
+  --indigo: #2e267c;
+  --coral: #f58f9c;
+  --paper: #fffefc;
+  position: relative;
+  width: 100%;
+  height: 300svh;
+  min-height: 2200px;
+  overflow: clip;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.restoration-scene__viewport {
+  position: sticky;
+  top: var(--nav-h, 76px);
+  width: 100%;
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 54%, rgba(233, 232, 255, .55), transparent 40%),
+    linear-gradient(180deg, #fffefc 0%, #fffefc 72%, #fff5f4 100%);
+}
+
+.restoration-scene__wash,
+.restoration-scene__wash i { position: absolute; inset: 0; pointer-events: none; }
+.restoration-scene__wash { z-index: 0; }
+.restoration-scene__wash i:first-child {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 209, 213, .26), transparent 38%);
+}
+.restoration-scene__wash i:last-child {
+  background-image: radial-gradient(rgba(46, 38, 124, .12) .7px, transparent .7px);
+  background-size: 20px 20px;
+  opacity: .07;
+}
+
+.restoration-scene__spine {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 46%;
+  width: min(104vw, 1500px);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+}
+.restoration-scene__spine img { display: block; width: 100%; height: auto; opacity: .4; }
+
+/* The burdened and recovered groups share one composition, so they sit in the
+   same box and crossfade: the same cells, in a better state. The box takes the
+   recovered artwork's ratio and both layers are contained, so neither state
+   drifts as the other dissolves. The copy stays left, the visual right, which
+   is the grammar the preceding scenes already established. */
+.restoration-scene__tissue {
+  position: absolute;
+  z-index: 3;
+  left: 65%;
+  top: 55%;
+  width: min(56vw, 800px);
+  aspect-ratio: 2800 / 2023;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform, opacity;
+}
+/* The wave in this artwork runs off the top and right of its own canvas, so
+   the asset carries genuinely flat edges there. Feathering the layer lets the
+   canvas boundary dissolve into the paper instead of drawing a straight seam
+   across the composition. Only the outermost band is touched, so the drawn
+   characters keep their full weight. */
+.restoration-tissue {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  will-change: opacity, transform, filter;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 15%, #000 86%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 17%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.restoration-scene__stream {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 34%;
+  width: min(96vw, 1360px);
+  transform: translate3d(-50%, -50%, 0) scale(.9);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.restoration-scene__stream img { display: block; width: 100%; height: auto; }
+
+.restoration-scene__cleaners {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: -3%;
+  width: min(48vw, 690px);
+  transform: translate3d(-50%, 62%, 0) scale(.94);
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 22px 34px rgba(25, 20, 61, .16));
+}
+.restoration-scene__cleaners img { display: block; width: 100%; height: auto; }
+
+.restoration-scene__copy {
+  position: absolute;
+  z-index: 8;
+  top: clamp(32px, 5vh, 62px);
+  left: clamp(30px, 6vw, 96px);
+  width: min(560px, 46vw);
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  will-change: transform, opacity;
+}
+
+.restoration-scene__copy p,
+.restoration-scene__copy > span,
+.restoration-scene__status,
+.restoration-scene__progress {
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+}
+
+.restoration-scene__copy p {
+  margin: 0 0 14px;
+  color: #6b6880;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.restoration-scene__copy h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 5.4vw, 84px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.restoration-scene__copy > span {
+  display: block;
+  margin-top: 20px;
+  color: var(--indigo);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.restoration-scene__status {
+  position: absolute;
+  z-index: 8;
+  right: clamp(28px, 5vw, 84px);
+  bottom: clamp(40px, 8vh, 84px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+  opacity: 0;
+}
+.restoration-scene__status i { width: 42px; height: 1px; background: linear-gradient(90deg, #d9d7e5, var(--coral)); }
+.restoration-scene__status b { color: var(--indigo); }
+
+.restoration-scene__progress {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  right: clamp(22px, 3vw, 50px);
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  transform: translateY(-50%);
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+}
+.restoration-scene__progress > i {
+  position: relative;
+  width: 2px;
+  height: 100px;
+  overflow: hidden;
+  background: #dddbea;
+  border-radius: 2px;
+}
+.restoration-scene__progress b {
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+}
+
+@media (max-width: 760px) {
+  .restoration-scene { height: 260svh; min-height: 1800px; }
+  .restoration-scene__viewport { min-height: 560px; }
+  .restoration-scene__copy { left: 24px; width: calc(100% - 72px); }
+  .restoration-scene__copy h2 { font-size: clamp(38px, 12vw, 56px); }
+  .restoration-scene__tissue { left: 50%; top: 60%; width: 92vw; }
+  .restoration-scene__cleaners { width: 62vw; left: 62%; bottom: 2%; }
+  .restoration-scene__stream { top: 30%; width: 130vw; }
+  .restoration-scene__status { right: auto; left: 24px; bottom: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .restoration-scene { height: auto; min-height: calc(100svh - var(--nav-h, 76px)); }
+  .restoration-scene__viewport { position: relative; top: auto; }
+  /* The recovered state is the one that stands: the burden never lingers. */
+  .restoration-tissue--burdened { display: none; }
+  .restoration-scene__copy,
+  .restoration-scene__cleaners,
+  .restoration-scene__stream { opacity: 1; transform: translate3d(-50%, 0, 0); }
+  .restoration-scene__copy { transform: none; }
+  .restoration-scene__stream { transform: translate3d(-50%, -50%, 0); }
+  .restoration-scene__spine { opacity: .4; }
+  .restoration-scene__status { opacity: 1; }
+  .restoration-scene__progress b { transform: scaleY(1); }
+}

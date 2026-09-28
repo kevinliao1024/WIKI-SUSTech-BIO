@@ -1,119 +1,93 @@
-<section class="mrna-hero" data-hero-scene data-phase="unstable" aria-label="ORCA mRNA minimal scroll scene">
-  <div class="mrna-hero__pin" data-hero-pin>
-    <figure
-      class="mrna-hero__canvas"
-      aria-label="A single mRNA wave resolving into U-C-C nucleotide markers and straightening upon scroll."
-    >
-      <!-- 1440x900 虚拟舞台容器 -->
-      <div class="mrna-stage" id="mrna-stage">
+<section
+  class="rna-opening"
+  data-rna-opening
+>
+  <div class="rna-opening__viewport" data-rna-viewport>
+    <div class="rna-opening__wash" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </div>
 
-        <!-- 1. mrnaWave: 波浪状 mRNA (双层结构：静态 + 变形拉直) -->
-        <div
-          id="hero-wave"
-          class="mrna-hero__asset mrna-hero__asset--wave"
-          data-asset="wave_1.png"
-        >
-          <div class="mrna-hero__crop mrna-hero__wave-static" data-wave-static>
-            <img src="{{ url_for('assets', filename='hero/mrna/wave_1.png') }}" alt="" draggable="false">
-          </div>
-          <!-- 变形层：由两个分段在拉直阶段执行反向旋转与位移 -->
-          <div class="mrna-hero__wave-deform" data-wave-deform aria-hidden="true">
-            <span
-              id="hero-wave-seg-1"
-              class="mrna-hero__wave-segment mrna-hero__wave-segment--1"
-              data-wave-segment
-              data-shift="-18"
-              data-rotation="-7.2"
-            >
-              <img src="{{ url_for('assets', filename='hero/mrna/wave_1.png') }}" alt="" draggable="false">
-            </span>
-            <span
-              id="hero-wave-seg-2"
-              class="mrna-hero__wave-segment mrna-hero__wave-segment--2"
-              data-wave-segment
-              data-shift="-18"
-              data-rotation="4.5"
-            >
-              <img src="{{ url_for('assets', filename='hero/mrna/wave_1.png') }}" alt="" draggable="false">
-            </span>
-          </div>
-          <span class="mrna-hero__debug-label" aria-hidden="true">
-            <b>#hero-wave · wave_1.png</b>
-            <span>Center (720, 560)</span>
-          </span>
-        </div>
+    <header class="rna-opening__copy">
+      <p>RNA target · Scene 01</p>
+      <span>Follow the sequence</span>
+    </header>
 
-        <!-- 2. sideU: 左边小的粉色 U (target center: 610, 535) -->
-        <div
-          id="hero-marker-u-left"
-          class="mrna-hero__asset mrna-hero__asset--marker mrna-hero__asset--left"
-          data-asset="pink_spot_1.png"
-          data-char="U"
-          aria-hidden="true"
-        >
-          <div class="mrna-hero__crop" data-marker-crop>
-            <img src="{{ url_for('assets', filename='hero/mrna/pink_spot_1.png') }}" alt="" draggable="false">
-            <span class="mrna-marker-letter">U</span>
-          </div>
-          <span class="mrna-hero__debug-label" aria-hidden="true">
-            <b>#hero-marker-u-left · U</b>
-            <span>Target (610, 535) · scale 0.5</span>
-          </span>
-        </div>
-
-        <!-- 3. mainC: 中间大的深蓝色 C (target center: 720, 560) -->
-        <div
-          id="hero-marker-c-target"
-          class="mrna-hero__asset mrna-hero__asset--marker mrna-hero__asset--center"
-          data-asset="blue_spot_1.png"
-          data-char="C"
-          aria-hidden="true"
-        >
-          <div class="mrna-hero__crop" data-marker-crop>
-            <img src="{{ url_for('assets', filename='hero/mrna/blue_spot_1.png') }}" alt="" draggable="false">
-            <span class="mrna-marker-letter">C</span>
-          </div>
-          <span class="mrna-hero__debug-label" aria-hidden="true">
-            <b>#hero-marker-c-target · C</b>
-            <span>Target (720, 560) · scale 1.0</span>
-          </span>
-        </div>
-
-        <!-- 4. sideC: 右边小的粉色 C (target center: 850, 570) -->
-        <div
-          id="hero-marker-c-right"
-          class="mrna-hero__asset mrna-hero__asset--marker mrna-hero__asset--right"
-          data-asset="pink_spot_2.png"
-          data-char="C"
-          aria-hidden="true"
-        >
-          <div class="mrna-hero__crop" data-marker-crop>
-            <img src="{{ url_for('assets', filename='hero/mrna/pink_spot_2.png') }}" alt="" draggable="false">
-            <span class="mrna-marker-letter">C</span>
-          </div>
-          <span class="mrna-hero__debug-label mrna-hero__debug-label--right" aria-hidden="true">
-            <b>#hero-marker-c-right · C</b>
-            <span>Target (850, 570) · scale 0.5</span>
-          </span>
-        </div>
-
-        <!-- 调试辅助网格与边界框 (只在 ?debugScene=1 / ?debugHero=1 时显现) -->
-        <div class="mrna-debug-frame" aria-hidden="true">
-          <div class="mrna-debug-center-guide"></div>
-          <div class="mrna-debug-anchor" style="left: calc(610 / 1440 * 100%); top: calc(535 / 900 * 100%);" title="sideU (610, 535)"></div>
-          <div class="mrna-debug-anchor" style="left: calc(720 / 1440 * 100%); top: calc(560 / 900 * 100%);" title="mainC (720, 560)"></div>
-          <div class="mrna-debug-anchor" style="left: calc(850 / 1440 * 100%); top: calc(570 / 900 * 100%);" title="sideC (850, 570)"></div>
-        </div>
-
+    <figure class="rna-opening__stage" aria-label="A highlighted cytosine settles into an RNA sequence containing U, C and C as the strand stabilizes.">
+      <div class="rna-opening__source" data-rna-source aria-hidden="true">
+        <span>C</span>
+        <i></i><i></i><i></i>
       </div>
 
-      <!-- 调试信息面板 -->
-      <figcaption class="mrna-hero__debug-canvas" aria-hidden="true">
-        <b>mRNA Minimal Scene (?debugScene=1)</b>
-        <span>progress: <output data-hero-progress>0.000</output></span>
-        <span>phase: <output data-hero-phase>Beat 1 (Wavy mRNA)</output></span>
-        <span>viewport: 1440 × 900 guide</span>
+      <div class="rna-opening__guide" data-rna-guide aria-hidden="true">
+        <i></i><i></i><i></i>
+      </div>
+
+      <div class="rna-opening__strand" data-rna-strand aria-hidden="true">
+        <img
+          src="{{ url_for('assets', filename='hero/mrna/rna-wave.png') }}"
+          alt=""
+          draggable="false"
+        >
+      </div>
+
+      <div class="rna-opening__bases" aria-hidden="true">
+        <span class="rna-base rna-base--u" data-rna-base="u">U</span>
+        <span class="rna-base rna-base--focus" data-rna-base="focus">C</span>
+        <span class="rna-base rna-base--c" data-rna-base="c">C</span>
+      </div>
+
+      <figcaption class="rna-opening__caption" data-rna-caption>
+        <b>U · C · C</b>
+        <span>Sequence context comes into focus</span>
       </figcaption>
+
+      <div class="rna-opening__cell-particles" data-rna-cell-particles aria-hidden="true">
+        <img src="{{ url_for('assets', filename='hero/cell/coral-particles.png') }}" alt="" draggable="false">
+      </div>
+
+      <div class="rna-opening__cell-halo" data-rna-cell-halo aria-hidden="true"><i></i><i></i></div>
+
+      <div class="rna-opening__cell-character" data-rna-cell-character aria-hidden="true">
+        <img src="{{ url_for('assets', filename='hero/cell/red-cell-main.png') }}" alt="" draggable="false">
+      </div>
+
+      <div class="rna-opening__cell-tissue" data-rna-cell-tissue aria-hidden="true">
+        <img src="{{ url_for('assets', filename='hero/cell/tissue-wave.png') }}" alt="" draggable="false">
+      </div>
+
+      <div class="rna-opening__cell-copy" data-rna-cell-copy>
+        <p>Cellular context · Scene 02</p>
+        <h2>The strain<br>becomes visible.</h2>
+        <span>From sequence to cellular response</span>
+      </div>
+
+      <div class="rna-opening__cell-caption" data-rna-cell-caption>
+        <b>Molecular change</b><i></i><b>Cellular response</b>
+      </div>
+
+      <div class="rna-opening__cleaners" aria-hidden="true">
+        <img class="rna-cleaners rna-cleaners--ready" data-rna-clearance-state="ready" src="{{ url_for('assets', filename='hero/clearance/cleaners-ready.png') }}" alt="" draggable="false">
+        <img class="rna-cleaners rna-cleaners--strained" data-rna-clearance-state="strained" src="{{ url_for('assets', filename='hero/clearance/cleaners-strained.png') }}" alt="" draggable="false">
+        <img class="rna-cleaners rna-cleaners--exhausted" data-rna-clearance-state="exhausted" src="{{ url_for('assets', filename='hero/clearance/cleaners-exhausted.png') }}" alt="" draggable="false">
+      </div>
+
+      <div class="rna-opening__clearance-copy" data-rna-clearance-copy>
+        <p>Clearance response · Scene 03</p>
+        <h2>The clean-up<br>cannot keep up.</h2>
+        <span>Protective cells respond — then become overwhelmed</span>
+      </div>
+
+      <div class="rna-opening__clearance-status" data-rna-clearance-status aria-live="polite">
+        <span>Response</span><i></i><b>Recruiting</b>
+      </div>
     </figure>
+
+    <div class="rna-opening__progress" aria-hidden="true">
+      <span>01</span><i><b data-rna-progress></b></i><span>03</span>
+    </div>
+
+    <div class="rna-opening__cue" data-rna-cue aria-hidden="true">
+      <span>Scroll to trace the sequence</span><i></i>
+    </div>
   </div>
 </section>

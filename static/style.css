@@ -292,24 +292,17 @@ code, pre { font-family: var(--mono); }
 .page-hero__inner {
   position: relative;
   z-index: 1;
-  padding-block: 100px 70px;
+  align-self: stretch;
+  padding: 0;
 }
 
-.page-hero h1 {
-  max-width: 950px;
-  margin: 0;
-  color: var(--orca-indigo);
-  font: 700 clamp(52px, 6.8vw, 88px)/.96 var(--serif);
-  letter-spacing: -.03em;
-}
-
-.page-hero__lead {
-  max-width: 740px;
-  margin: 26px 0 0;
-  color: var(--dark-ink);
-  font-size: 18px;
-  line-height: 1.65;
-  opacity: 0.88;
+.page-hero__guide {
+  position: absolute;
+  top: 52%;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--coral-pink);
 }
 
 /* 杂志结构排版 */
@@ -498,8 +491,6 @@ code, pre { font-family: var(--mono); }
   .shell { width: min(100% - 30px, 1180px); }
   .site-nav, .nav-shell { min-height: var(--nav-h); }
   .page-hero { min-height: 400px; }
-  .page-hero h1 { font-size: 46px; }
-  .page-hero__inner { padding-block: 60px 40px; }
   .page-layout { padding-block: 40px 80px; }
   .framework-card { grid-template-columns: 50px 1fr; padding: 40px 0; }
   .content-status { grid-template-columns: 1fr; gap: 8px; }

@@ -1,0 +1,73 @@
+<section
+  id="protein-burden"
+  class="protein-scene"
+  data-protein-scene
+  aria-label="APOE4 protein accumulates on a neuron: the cell's expression changes from calm to strained as the protein load rises."
+>
+  <div class="protein-scene__viewport" data-protein-viewport>
+    <div class="protein-scene__wash" aria-hidden="true"><i></i><i></i></div>
+
+    <div class="protein-scene__bridge" data-protein-bridge aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/backgrounds/pink_wave_base.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__rain" data-protein-rain aria-hidden="true">
+      <img class="protein-drop" style="--x:8%;--size:5.6vw" data-start="0" data-end=".42" data-drift="34" data-spin="18" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_a.webp') }}" alt="">
+      <img class="protein-drop" style="--x:17%;--size:4.2vw" data-start=".07" data-end=".48" data-drift="-28" data-spin="-24" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_plain.webp') }}" alt="">
+      <img class="protein-drop" style="--x:25%;--size:6.4vw" data-start=".02" data-end=".52" data-drift="42" data-spin="29" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_b.webp') }}" alt="">
+      <img class="protein-drop" style="--x:34%;--size:4.8vw" data-start=".14" data-end=".57" data-drift="-38" data-spin="-20" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_cluster_two.webp') }}" alt="">
+      <img class="protein-drop" style="--x:42%;--size:5.1vw" data-start=".04" data-end=".46" data-drift="26" data-spin="22" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_a.webp') }}" alt="">
+      <img class="protein-drop" style="--x:50%;--size:7vw" data-start=".1" data-end=".61" data-drift="-18" data-spin="-15" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_cluster_three.webp') }}" alt="">
+      <img class="protein-drop" style="--x:58%;--size:4.4vw" data-start=".01" data-end=".4" data-drift="36" data-spin="28" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_plain.webp') }}" alt="">
+      <img class="protein-drop" style="--x:66%;--size:5.9vw" data-start=".17" data-end=".63" data-drift="-44" data-spin="-31" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_b.webp') }}" alt="">
+      <img class="protein-drop" style="--x:74%;--size:4.6vw" data-start=".05" data-end=".5" data-drift="30" data-spin="19" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_a.webp') }}" alt="">
+      <img class="protein-drop" style="--x:83%;--size:6.6vw" data-start=".11" data-end=".59" data-drift="-34" data-spin="-27" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_cluster_two.webp') }}" alt="">
+      <img class="protein-drop" style="--x:92%;--size:4.9vw" data-start=".03" data-end=".44" data-drift="-25" data-spin="25" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_b.webp') }}" alt="">
+      <img class="protein-drop" style="--x:13%;--size:3.8vw" data-start=".22" data-end=".67" data-drift="45" data-spin="-33" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_plain.webp') }}" alt="">
+      <img class="protein-drop" style="--x:30%;--size:4.1vw" data-start=".25" data-end=".7" data-drift="-30" data-spin="24" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_a.webp') }}" alt="">
+      <img class="protein-drop" style="--x:47%;--size:5.3vw" data-start=".2" data-end=".66" data-drift="38" data-spin="-18" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_cluster_two.webp') }}" alt="">
+      <img class="protein-drop" style="--x:70%;--size:3.9vw" data-start=".28" data-end=".73" data-drift="-40" data-spin="31" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_plain.webp') }}" alt="">
+      <img class="protein-drop" style="--x:88%;--size:4.7vw" data-start=".24" data-end=".69" data-drift="32" data-spin="-26" src="{{ url_for('assets', filename='hero_lib/protein_states/protein_blob_face_b.webp') }}" alt="">
+    </div>
+
+    <div class="protein-scene__wave" data-protein-wave aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/backgrounds/pink_wave_base.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__spine" data-protein-spine aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/backgrounds/molecular_wave_light.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__neuron" data-protein-neuron aria-hidden="true">
+      <img class="protein-neuron protein-neuron--calm" data-protein-state="calm" src="{{ url_for('assets', filename='hero_lib/characters/axolotl_closeup_state_a.webp') }}" alt="" draggable="false">
+      <img class="protein-neuron protein-neuron--strained" data-protein-state="strained" src="{{ url_for('assets', filename='hero_lib/characters/axolotl_closeup_state_b.webp') }}" alt="" draggable="false">
+      <img class="protein-neuron protein-neuron--burdened" data-protein-state="burdened" src="{{ url_for('assets', filename='hero_lib/characters/axolotl_closeup_state_c.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__load" data-protein-load aria-hidden="true">
+      <img class="protein-load__faces" src="{{ url_for('assets', filename='hero_lib/particles/protein_faces_floating.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__drift" data-protein-drift aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/particles/protein_particles.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="protein-scene__title" data-protein-title aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/protein_states/apoe4_title.webp') }}" alt="" draggable="false">
+    </div>
+
+    <header class="protein-scene__copy" data-protein-copy>
+      <p>Protein burden · Scene 04</p>
+      <h2>The signal<br>never clears.</h2>
+      <span>APOE4 protein accumulates faster than it is removed</span>
+    </header>
+
+    <div class="protein-scene__status" data-protein-status>
+      <span>Load</span><i></i><b>Rising</b>
+    </div>
+
+    <div class="protein-scene__progress" aria-hidden="true">
+      <span>03</span><i><b data-protein-bar></b></i><span>04</span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,172 @@
+.solution-reveal {
+  position: relative;
+  height: 190svh;
+  min-height: 1400px;
+  background: #2e267c;
+}
+
+.solution-reveal__viewport {
+  position: sticky;
+  top: var(--nav-h, 76px);
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(157, 156, 244, .34), transparent 34%),
+    linear-gradient(145deg, #252067, #352b88 58%, #29236f);
+}
+
+.solution-reveal__viewport::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: .13;
+  background-image: radial-gradient(rgba(255, 255, 255, .8) .7px, transparent .7px);
+  background-size: 19px 19px;
+}
+
+.solution-reveal__carry,
+.solution-reveal__scan,
+.solution-reveal__base,
+.solution-reveal__copy,
+.solution-reveal__enter,
+.solution-reveal__paper {
+  position: absolute;
+  will-change: transform, opacity, clip-path;
+}
+
+.solution-reveal__carry {
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: min(72vw, 980px);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: .78;
+  filter: brightness(0) invert(1);
+}
+.solution-reveal__carry img { display: block; width: 100%; height: auto; }
+
+.solution-reveal__scan {
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 14%;
+  width: 1px;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent, #f58f9c 18%, #f58f9c 82%, transparent);
+  box-shadow: 0 0 30px rgba(245, 143, 156, .75);
+}
+.solution-reveal__scan i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.solution-reveal__base {
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  width: clamp(110px, 12vw, 170px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transform: translate3d(-50%, -50%, 0) scale(.6);
+  opacity: 0;
+  color: #2e267c;
+  background: #f58f9c;
+  box-shadow: 0 0 0 18px rgba(255, 255, 255, .09), 0 24px 60px rgba(10, 7, 45, .28);
+  font: 700 clamp(58px, 6vw, 92px)/1 Futura, "Avenir Next", sans-serif;
+}
+
+.solution-reveal__copy {
+  z-index: 5;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+}
+.solution-reveal__copy p,
+.solution-reveal__copy h3,
+.solution-reveal__copy span,
+.solution-reveal__enter {
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+}
+.solution-reveal__copy p { margin: 0 0 14px; color: #f7b4bd; font-size: 10px; font-weight: 700; }
+.solution-reveal__copy h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(92px, 14vw, 210px);
+  line-height: .82;
+  letter-spacing: -.075em;
+}
+.solution-reveal__copy h3 { margin: 28px 0 0; font-size: clamp(15px, 1.55vw, 23px); line-height: 1.35; font-weight: 700; }
+.solution-reveal__copy span { margin-top: 20px; color: #d9d8ff; font-size: 9px; font-weight: 700; }
+
+.solution-reveal__enter {
+  z-index: 6;
+  left: 50%;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform: translate3d(-50%, 18px, 0);
+  opacity: 0;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.solution-reveal__enter i { color: #f7b4bd; font-style: normal; font-size: 16px; }
+
+.solution-reveal__paper {
+  z-index: 10;
+  inset: 0;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  background: #fff8f0;
+  pointer-events: none;
+}
+.solution-reveal__paper::before {
+  content: "";
+  position: absolute;
+  top: -56px;
+  left: -5%;
+  width: 110%;
+  height: 90px;
+  border-radius: 50% 50% 0 0;
+  background: #fff8f0;
+}
+
+@media (max-width: 760px) {
+  .solution-reveal { height: 165svh; min-height: 1180px; }
+  .solution-reveal__viewport { min-height: 560px; }
+  .solution-reveal__carry { width: 90vw; }
+  .solution-reveal__copy { padding: 0 26px; }
+  .solution-reveal__copy h2 { font-size: clamp(84px, 28vw, 128px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-reveal { height: auto; min-height: 0; }
+  .solution-reveal__viewport { position: relative; top: auto; }
+  .solution-reveal__carry,
+  .solution-reveal__scan,
+  .solution-reveal__base,
+  .solution-reveal__paper { display: none; }
+  .solution-reveal__copy,
+  .solution-reveal__enter { opacity: 1; transform: translate3d(-50%, 0, 0); }
+  .solution-reveal__copy { transform: none; }
+}

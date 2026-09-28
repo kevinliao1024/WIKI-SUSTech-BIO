@@ -1,0 +1,265 @@
+.reversal-scene {
+  --reversal-progress: 0;
+  --ink: #19143d;
+  --indigo: #2e267c;
+  --coral: #f58f9c;
+  --paper: #fffefc;
+  position: relative;
+  width: 100%;
+  height: 320svh;
+  min-height: 2400px;
+  overflow: clip;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.reversal-scene__viewport {
+  position: sticky;
+  top: var(--nav-h, 76px);
+  width: 100%;
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 54%, rgba(233, 232, 255, .6), transparent 40%),
+    linear-gradient(180deg, #fffefc 0%, #fffefc 76%, #fff6f5 100%);
+}
+
+.reversal-scene__wash,
+.reversal-scene__wash i { position: absolute; inset: 0; pointer-events: none; }
+.reversal-scene__wash { z-index: 0; }
+.reversal-scene__wash i:first-child {
+  background: radial-gradient(circle at 50% 56%, rgba(255, 209, 213, .3), transparent 36%);
+}
+.reversal-scene__wash i:last-child {
+  background-image: radial-gradient(rgba(46, 38, 124, .12) .7px, transparent .7px);
+  background-size: 20px 20px;
+  opacity: .07;
+}
+
+/* The three-lobed protein from the opening returns here: it is the physical
+   anchor the base sits on, so the C-to-U change has something to change on. */
+.reversal-scene__lobes {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 54%;
+  width: clamp(230px, 26vw, 400px);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reversal-scene__lobes img { display: block; width: 100%; height: auto; }
+
+.reversal-scene__spot {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 54%;
+  width: clamp(150px, 17vw, 250px);
+  transform: translate3d(-50%, -50%, 0) scale(.7);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reversal-scene__spot img { display: block; width: 100%; height: auto; }
+
+.reversal-scene__bases {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.reversal-base {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  will-change: transform, opacity, box-shadow;
+}
+
+.reversal-base--u {
+  left: 39%;
+  top: 68%;
+  width: clamp(58px, 5.8vw, 88px);
+  aspect-ratio: 1;
+  background: var(--coral);
+  box-shadow: 0 16px 40px rgba(25, 20, 61, .14);
+}
+
+.reversal-base--focus {
+  left: 50%;
+  top: 56%;
+  width: clamp(100px, 9.4vw, 146px);
+  aspect-ratio: 1;
+  background: var(--indigo);
+  font-size: clamp(40px, 4.4vw, 64px);
+  box-shadow: 0 0 0 12px rgba(233, 232, 255, .74), 0 18px 48px rgba(25, 20, 61, .2);
+}
+
+/* The letter itself is the only thing that changes. Two states, one box. */
+.reversal-base--focus b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  transition: none;
+}
+
+.reversal-base--c {
+  left: 61%;
+  top: 68%;
+  width: clamp(58px, 5.8vw, 88px);
+  aspect-ratio: 1;
+  background: var(--coral);
+  box-shadow: 0 16px 40px rgba(25, 20, 61, .14);
+}
+
+.reversal-scene__copy {
+  position: absolute;
+  z-index: 8;
+  top: clamp(32px, 5vh, 62px);
+  left: clamp(30px, 6vw, 96px);
+  width: min(560px, 46vw);
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  will-change: transform, opacity;
+}
+
+.reversal-scene__copy p,
+.reversal-scene__copy > span,
+.reversal-scene__rewind,
+.reversal-scene__progress {
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+}
+
+.reversal-scene__copy p {
+  margin: 0 0 14px;
+  color: #6b6880;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.reversal-scene__copy h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 5.4vw, 84px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.reversal-scene__copy > span {
+  display: block;
+  margin-top: 20px;
+  color: var(--indigo);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.reversal-scene__rewind {
+  position: absolute;
+  z-index: 8;
+  left: clamp(30px, 6vw, 96px);
+  bottom: clamp(50px, 9vh, 96px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.reversal-scene__rewind i {
+  position: relative;
+  display: block;
+  width: 120px;
+  height: 2px;
+  overflow: hidden;
+  background: #dddbea;
+  border-radius: 2px;
+}
+
+.reversal-scene__rewind i::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  transform: scaleX(var(--reversal-drain, 0));
+  transform-origin: 100% 50%;
+}
+
+/* A single soft pulse marks the moment the page returns to the top. */
+.reversal-scene__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 52%, rgba(233, 232, 255, .9), rgba(233, 232, 255, 0) 62%);
+  opacity: 0;
+}
+
+.reversal-scene__progress {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  right: clamp(22px, 3vw, 50px);
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  transform: translateY(-50%);
+  color: #6b6880;
+  font-size: 9px;
+  font-weight: 700;
+}
+.reversal-scene__progress > i {
+  position: relative;
+  width: 2px;
+  height: 100px;
+  overflow: hidden;
+  background: #dddbea;
+  border-radius: 2px;
+}
+.reversal-scene__progress b {
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+}
+
+@media (max-width: 760px) {
+  .reversal-scene { height: 280svh; min-height: 1900px; }
+  .reversal-scene__viewport { min-height: 560px; }
+  .reversal-scene__copy { left: 24px; width: calc(100% - 72px); }
+  .reversal-scene__copy h2 { font-size: clamp(38px, 12vw, 56px); }
+  .reversal-base--u { left: 26%; top: 70%; }
+  .reversal-base--focus { top: 58%; }
+  .reversal-base--c { left: 74%; top: 70%; }
+  .reversal-scene__lobes { width: 62vw; }
+  .reversal-scene__rewind { left: 24px; bottom: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reversal-scene { height: auto; min-height: calc(100svh - var(--nav-h, 76px)); }
+  .reversal-scene__viewport { position: relative; top: auto; }
+  .reversal-scene__copy,
+  .reversal-scene__lobes,
+  .reversal-scene__spot { opacity: 1; transform: translate3d(-50%, -50%, 0); transform: none; }
+  .reversal-scene__copy { transform: none; }
+  .reversal-base { opacity: 1; }
+  .reversal-scene__progress b { transform: scaleY(1); }
+  .reversal-scene__rewind { display: none; }
+}

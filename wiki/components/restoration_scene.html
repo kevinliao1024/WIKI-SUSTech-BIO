@@ -1,0 +1,45 @@
+<section
+  id="restoration"
+  class="restoration-scene"
+  data-restoration-scene
+  aria-label="The tissue recovers: the burdened cell group returns to a calm state and the upright astrocytes resume clearance."
+>
+  <div class="restoration-scene__viewport" data-restoration-viewport>
+    <div class="restoration-scene__wash" aria-hidden="true"><i></i><i></i></div>
+
+    <div class="restoration-scene__spine" data-restoration-spine aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/backgrounds/molecular_wave_light.webp') }}" alt="" draggable="false">
+    </div>
+
+    <!-- Two states of the same composition. Identical silhouettes, so the
+         burdened group can recover in place instead of being replaced. -->
+    <div class="restoration-scene__tissue" data-restoration-tissue aria-hidden="true">
+      <img class="restoration-tissue restoration-tissue--burdened" data-restoration-state="burdened"
+           src="{{ url_for('assets', filename='hero_lib/characters/axolotl_group_v2.webp') }}" alt="" draggable="false">
+      <img class="restoration-tissue restoration-tissue--healthy" data-restoration-state="healthy"
+           src="{{ url_for('assets', filename='hero_lib/scenes/final_group_scene_v3.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="restoration-scene__stream" data-restoration-stream aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/particles/pink_particle_stream_sparse.webp') }}" alt="" draggable="false">
+    </div>
+
+    <div class="restoration-scene__cleaners" data-restoration-cleaners aria-hidden="true">
+      <img src="{{ url_for('assets', filename='hero_lib/characters/spider_standing_pair.webp') }}" alt="" draggable="false">
+    </div>
+
+    <header class="restoration-scene__copy" data-restoration-copy>
+      <p>Resolution · Scene 07</p>
+      <h2>The signal<br>clears.</h2>
+      <span>Healthy neurons and upright astrocytes · clearance restored</span>
+    </header>
+
+    <div class="restoration-scene__status" data-restoration-status>
+      <span>Tissue</span><i></i><b data-restoration-label>Recovering</b>
+    </div>
+
+    <div class="restoration-scene__progress" aria-hidden="true">
+      <span>06</span><i><b data-restoration-bar></b></i><span>07</span>
+    </div>
+  </div>
+</section>

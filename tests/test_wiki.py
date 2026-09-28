@@ -75,11 +75,12 @@ class WikiRoutesTest(unittest.TestCase):
         page = self.get_text("/404.html")
         self.assertIn("Lost in the current", page)
 
-    def test_home_contains_storyboard_hero_and_six_research_sections(self):
+    def test_home_contains_layered_hero_and_stops_after_global_scene(self):
         page = self.get_text("/")
-        for section in ['background','rna-correction','approach','results','team','about']:
-            self.assertIn(f'id="{section}"', page)
-        self.assertIn('data-hero-storyboard', page)
+        self.assertIn('data-rna-clearance-state="ready"', page)
+        self.assertIn('data-global-scene', page)
+        self.assertNotIn('data-solution-reveal', page)
+        self.assertNotIn('class="site-footer"', page)
 
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")
@@ -89,14 +90,15 @@ class WikiRoutesTest(unittest.TestCase):
             self.assertNotIn("REWIRE", page)
         self.assertIn("On-target RNA Correction for Alzheimer’s Disease", home)
 
-    def test_home_uses_storyboard_full_hero_asset(self):
+    def test_home_uses_layered_clearance_assets(self):
         page = self.get_text("/")
-        self.assertIn('hero/storyboard-full.png', page)
-        self.assertIn('class="hero-story"', page)
-        self.assertIn('class="hero-story__viewport"', page)
+        self.assertIn('hero/clearance/cleaners-ready.png', page)
+        self.assertIn('hero/clearance/cleaners-exhausted.png', page)
+        self.assertIn('class="rna-opening__cleaners"', page)
+        self.assertIn('class="rna-opening__clearance-copy"', page)
 
     def test_hero_assets_are_served_from_requested_path(self):
-        response = self.client.get("/assets/hero/storyboard-full.png")
+        response = self.client.get("/assets/hero/clearance/cleaners-ready.png")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.mimetype, "image/png")
         response.close()

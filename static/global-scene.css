@@ -1,0 +1,298 @@
+.global-burden {
+  --global-progress: 0;
+  --global-coral: #f58f9c;
+  --global-lavender: #9d9cf4;
+  position: relative;
+  height: 470svh;
+  min-height: 3500px;
+  overflow: clip;
+  background: #020308;
+}
+
+.global-burden__viewport {
+  position: sticky;
+  top: var(--nav-h, 76px);
+  width: 100%;
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(46, 38, 124, .18), transparent 30%),
+    radial-gradient(circle at 84% 86%, rgba(22, 45, 92, .2), transparent 34%),
+    #020308;
+}
+
+.global-burden__viewport::after {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  inset: -2px;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(2,3,8,.7), transparent 16%, transparent 76%, rgba(2,3,8,.58)),
+    radial-gradient(circle at 50% 45%, transparent 38%, rgba(0,0,0,.58) 112%);
+}
+
+.global-burden__stars,
+.global-burden__stars i,
+.global-burden__copy,
+.global-burden__count,
+.global-burden__alzheimer,
+.global-burden__annual,
+.global-burden__globe,
+.global-burden__atmosphere,
+.global-burden__source,
+.global-burden__progress { position: absolute; }
+
+.global-burden__stars {
+  z-index: 0;
+  inset: 0;
+  opacity: calc(.18 + var(--global-progress) * .32);
+  pointer-events: none;
+}
+.global-burden__stars i { inset: -20%; }
+.global-burden__stars i:nth-child(1) {
+  background-image: radial-gradient(circle, rgba(255,255,255,.86) 0 1px, transparent 1.4px);
+  background-size: 83px 79px;
+  background-position: 17px 11px;
+  opacity: .42;
+}
+.global-burden__stars i:nth-child(2) {
+  background-image: radial-gradient(circle, rgba(157,156,244,.72) 0 .7px, transparent 1.1px);
+  background-size: 137px 119px;
+  background-position: 61px 38px;
+  opacity: .34;
+}
+.global-burden__stars i:nth-child(3) {
+  background-image: radial-gradient(circle, rgba(245,143,156,.62) 0 .6px, transparent 1px);
+  background-size: 191px 173px;
+  background-position: 104px 29px;
+  opacity: .24;
+}
+
+/* A large square canvas lets the sphere move from a complete globe into the
+   off-axis, close-orbit crescent used by the WWDC 2020 opening language. */
+.global-burden__globe {
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 176vmax;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) translate3d(18vw, 4vh, 0) rotate(-8deg);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  filter: drop-shadow(0 0 90px rgba(63, 91, 180, .22));
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.global-burden__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.global-burden__atmosphere {
+  z-index: 3;
+  left: -16vw;
+  top: -28vh;
+  width: 118vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(.72);
+  background: radial-gradient(circle at 52% 53%, transparent 52%, rgba(82,118,218,.18) 55%, transparent 59%);
+  filter: blur(10px);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.global-burden__copy,
+.global-burden__count,
+.global-burden__alzheimer,
+.global-burden__annual,
+.global-burden__source { z-index: 12; }
+
+.global-burden__copy {
+  top: clamp(40px, 7vh, 82px);
+  right: clamp(62px, 7vw, 118px);
+  width: min(520px, 40vw);
+  text-align: right;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  will-change: transform, opacity;
+}
+.global-burden__copy p,
+.global-burden__count span,
+.global-burden__alzheimer span,
+.global-burden__annual span,
+.global-burden__source,
+.global-burden__progress {
+  font-family: Futura, "Avenir Next", "Century Gothic", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+}
+.global-burden__copy p {
+  margin: 0 0 14px;
+  color: rgba(220,221,255,.72);
+  font-size: 10px;
+  font-weight: 700;
+}
+.global-burden__copy h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 4.8vw, 76px);
+  line-height: .96;
+  letter-spacing: -.05em;
+  text-shadow: 0 12px 42px rgba(0,0,0,.45);
+}
+
+.global-burden__count {
+  right: clamp(62px, 7vw, 118px);
+  top: 49%;
+  width: min(800px, 56vw);
+  text-align: right;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+.global-burden__count strong {
+  display: inline-block;
+  font: 700 clamp(66px, 8vw, 122px)/.84 Georgia, "Times New Roman", serif;
+  letter-spacing: -.075em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 14px 46px rgba(0,0,0,.55);
+}
+.global-burden__count > b {
+  margin-left: 8px;
+  color: var(--global-coral);
+  font: 700 clamp(34px, 4vw, 62px)/1 Georgia, serif;
+  vertical-align: top;
+}
+.global-burden__count span {
+  display: block;
+  margin-top: 22px;
+  color: rgba(235,235,255,.78);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.65;
+  white-space: normal;
+}
+
+.global-burden__alzheimer {
+  right: clamp(62px, 7vw, 118px);
+  bottom: clamp(78px, 11vh, 112px);
+  width: min(430px, 35vw);
+  text-align: right;
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+.global-burden__alzheimer strong {
+  color: #ffd1d5;
+  font: 700 clamp(28px, 2.8vw, 44px)/1 Georgia, serif;
+}
+.global-burden__alzheimer span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255,255,255,.62);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+.global-burden__alzheimer > i {
+  position: relative;
+  display: block;
+  width: min(100%, 390px);
+  height: 2px;
+  margin: 18px 0 0 auto;
+  overflow: hidden;
+  background: rgba(255,255,255,.12);
+}
+.global-burden__alzheimer > i b {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  background: linear-gradient(90deg, transparent 30%, var(--global-lavender) 30% 40%, var(--global-coral) 40%);
+}
+
+.global-burden__annual {
+  left: clamp(30px, 5vw, 82px);
+  bottom: clamp(58px, 8vh, 84px);
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+}
+.global-burden__annual strong {
+  display: block;
+  color: #fff;
+  font: 700 clamp(22px, 2vw, 34px)/1 Georgia, serif;
+}
+.global-burden__annual span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(184,182,248,.78);
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.global-burden__source {
+  left: clamp(30px, 5vw, 82px);
+  bottom: 24px;
+  color: rgba(255,255,255,.34);
+  font-size: 7px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.global-burden__source:hover { color: #fff; }
+
+.global-burden__progress {
+  z-index: 14;
+  top: 50%;
+  right: 24px;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,.48);
+  font-size: 9px;
+  font-weight: 700;
+}
+.global-burden__progress > i {
+  position: relative;
+  width: 2px;
+  height: 100px;
+  overflow: hidden;
+  background: rgba(255,255,255,.14);
+}
+.global-burden__progress b {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  background: var(--global-coral);
+}
+
+@media (max-width: 760px) {
+  .global-burden { height: 360svh; min-height: 2500px; }
+  .global-burden__viewport { min-height: 560px; }
+  .global-burden__globe { width: 168vmax; }
+  .global-burden__copy { top: 32px; right: 24px; width: calc(100% - 48px); }
+  .global-burden__copy h2 { font-size: clamp(38px, 11vw, 54px); }
+  .global-burden__count { top: 48%; right: 24px; width: calc(100% - 48px); }
+  .global-burden__count strong { font-size: clamp(54px, 16vw, 76px); }
+  .global-burden__alzheimer { right: 24px; bottom: 74px; width: calc(100% - 48px); }
+  .global-burden__annual { display: none; }
+  .global-burden__source { left: 24px; bottom: 20px; max-width: 72vw; line-height: 1.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-burden { height: auto; min-height: 0; }
+  .global-burden__viewport { position: relative; top: auto; }
+  .global-burden__globe { opacity: .9; transform: translate(-50%, -50%) translate3d(-30vw, -18vh, 0) rotate(-8deg); }
+  .global-burden__atmosphere { opacity: .55; transform: scale(1); }
+  .global-burden__copy,
+  .global-burden__count,
+  .global-burden__alzheimer,
+  .global-burden__annual { opacity: 1; transform: none; }
+}
