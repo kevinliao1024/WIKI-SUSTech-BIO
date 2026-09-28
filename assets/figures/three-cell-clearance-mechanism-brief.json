@@ -1,0 +1,34 @@
+{
+  "figure_goal": "Explain the distinct roles of neuron, astrocyte, and microglia in brain waste clearance.",
+  "paper_claim": "Microglia perform phagocytic clearance, while astrocytes support extracellular homeostasis, signaling, and soluble/perivascular clearance around neurons.",
+  "figure_type": "graphical-abstract",
+  "mode": "image",
+  "panels": [
+    {
+      "name": "Three-cell clearance mechanism",
+      "content": "Astrocyte support and soluble route; neuron context; microglial engulfment and lysosomal degradation."
+    }
+  ],
+  "must_keep_labels": [],
+  "data": {
+    "not_applicable": true
+  },
+  "style_constraints": [
+    "ORCA paper-white, indigo, lavender, and coral palette",
+    "match existing hand-drawn neuron and astrocyte characters",
+    "16:9 landscape",
+    "no embedded text",
+    "no waste handoff from microglia to astrocyte"
+  ],
+  "output_formats": [
+    "png",
+    "webp"
+  ],
+  "verification_checklist": [
+    "Exactly three cell types are visible",
+    "Microglia is the active phagocytic cell",
+    "Astrocyte is shown as support and signaling coordinator",
+    "Neuron and existing character style remain recognizable",
+    "Arrows do not imply microglia-to-astrocyte waste transfer"
+  ]
+}
