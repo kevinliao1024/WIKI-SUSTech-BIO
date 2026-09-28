@@ -1,0 +1,50 @@
+/* A quieter stage: the artwork and core headings carry each scene. */
+.home-page { background: #fffefc; }
+.home-page::before { display: none; }
+.rna-opening__viewport, .protein-scene__viewport, .restoration-scene__viewport {
+  background: radial-gradient(ellipse at 50% 48%, #d6d8ff40, transparent 52%), linear-gradient(180deg,#fffefc,#fffafc);
+}
+.rna-opening__copy > span { color: #6f71a0; font-size: 10px; letter-spacing: .2em; }
+.rna-opening__cell-caption, .rna-opening__clearance-status,
+.protein-scene__status, .restoration-scene__status,
+.rna-opening__progress, .protein-scene__progress, .global-burden__progress,
+.reversal-scene__progress, .restoration-scene__progress { display: none; }
+.rna-opening__cue span { font-size: 9px; letter-spacing: .2em; color: #6f71a0; }
+.rna-opening__cue i { animation: ocean-scroll-cue 2s ease-in-out infinite; }
+@keyframes ocean-scroll-cue { 0%,100% { transform: scaleY(.65); opacity: .35; } 50% { transform: scaleY(1); opacity: .85; } }
+.global-burden, .global-burden__viewport { background-color: #191a59; }
+.global-burden__viewport { background: radial-gradient(ellipse at 50% 45%,#3d409b55,transparent 70%),#191a59; }
+@media (prefers-reduced-motion:no-preference) {
+  .rna-opening { height: 510svh; min-height: 0; }
+  .protein-scene, .restoration-scene { height: 240svh; min-height: 0; }
+  .global-burden { height: 340svh; min-height: 0; }
+  .reversal-scene { height: 250svh; min-height: 0; }
+  .rna-opening__viewport, .protein-scene__viewport, .global-burden__viewport,
+  .reversal-scene__viewport, .restoration-scene__viewport { min-height: 0; }
+}
+@media (max-width:650px) {
+  .rna-opening__copy { top: 24px; left: 24px; width: auto; }
+  .rna-opening__cue { bottom: 24px; }
+}
+/* Scroll companion: one small neuron travels down the right-hand current. */
+.home-page .back-to-top { display:none; }
+.neuron-current { position:fixed; z-index:1020; right:19px; top:calc(var(--nav-h) + 28px); bottom:38px; width:52px; pointer-events:none; opacity:.28; }
+.neuron-current svg { width:100%; height:100%; }
+.neuron-current path { fill:none; stroke:#9b9ef7; stroke-width:1; stroke-dasharray:3 9; }
+.neuron-nav { position:fixed; z-index:1021; top:0; right:12px; width:68px; height:76px; padding:0; border:0; background:transparent; color:#3d409b; cursor:pointer; touch-action:manipulation; will-change:transform; filter:drop-shadow(0 3px 5px #191a5925); }
+.neuron-nav > svg { width:100%; height:100%; overflow:visible; transition:scale .25s; }
+.neuron-nav__tentacles { stroke:#6f71c1; stroke-width:3; }
+.neuron-nav__body { fill:#d6d8ff; stroke:#6f71c1; stroke-width:2; }
+.neuron-nav__nucleus { fill:#f2989f; }
+.neuron-nav__shine { fill:none; stroke:#fff; stroke-width:3; stroke-linecap:round; }
+.neuron-arm { transform-box:fill-box; transform-origin:center; }
+.neuron-nav.is-swimming .neuron-arm,.neuron-nav:hover .neuron-arm { animation:neuron-reach .8s ease-in-out infinite alternate; }
+.neuron-arm--right { animation-delay:-.4s !important; }
+.neuron-arm--tail { animation-delay:-.2s !important; }
+@keyframes neuron-reach { from { transform:rotate(-8deg) scaleY(.94); } to { transform:rotate(9deg) scaleY(1.06); } }
+.neuron-nav:hover > svg { scale:1.1; }
+.neuron-nav:focus-visible { outline:2px solid #6f71c1; outline-offset:4px; border-radius:50%; }
+.neuron-nav__hint { position:absolute; right:calc(100% + 4px); top:30px; white-space:nowrap; background:#fffefc; border:1px solid #d6d8ff; border-radius:16px; padding:7px 11px; font:11px var(--sans); opacity:0; transform:translateX(5px); transition:opacity .2s,transform .2s; pointer-events:none; }
+.neuron-nav:is(:hover,:focus-visible) .neuron-nav__hint { opacity:1; transform:none; }
+@media (max-width:650px) { .neuron-nav { width:48px; height:58px; right:6px; } .neuron-current { width:32px; right:14px; opacity:.2; } }
+@media (prefers-reduced-motion:reduce) { .neuron-nav .neuron-arm { animation:none !important; } }

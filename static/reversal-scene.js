@@ -91,7 +91,7 @@
       }
       if (refs.sub) {
         const text = flip > .5
-          ? 'One letter corrected — the edited transcript reads U · U · C'
+          ? 'One letter corrected — the edited transcript reads G · U · G'
           : 'One letter decides which protein is made';
         if (refs.sub.textContent !== text) refs.sub.textContent = text;
       }

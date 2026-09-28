@@ -34,10 +34,67 @@
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
   }
 
-  document.querySelectorAll('.navbar-collapse a').forEach((link) => {
-    link.addEventListener('click', () => {
-      const menu = document.querySelector('.navbar-collapse.show');
-      if (menu && window.bootstrap) window.bootstrap.Collapse.getOrCreateInstance(menu).hide();
+  const navigation = document.querySelector('.whale-navigation');
+  const groups = [...document.querySelectorAll('[data-rna-nav]')];
+  let closeTimer;
+  function closeAll(except) {
+    groups.forEach((group) => {
+      if (group === except) return;
+      group.classList.remove('is-open');
+      group.querySelector('.rna-toggle').setAttribute('aria-expanded', 'false');
+      group.querySelector('.rna-menu').hidden = true;
     });
+  }
+  function open(group) {
+    clearTimeout(closeTimer);
+    closeAll(group);
+    group.classList.add('is-open');
+    group.querySelector('.rna-toggle').setAttribute('aria-expanded', 'true');
+    const panel = group.querySelector('.rna-menu');
+    panel.hidden = false;
+    const box = panel.getBoundingClientRect();
+    const whale = group.querySelector('.rna-toggle').getBoundingClientRect();
+    const origin = Math.max(16, Math.min(box.width - 16, whale.left + whale.width / 2 - box.left));
+    panel.querySelector('.rna-menu__lead path').setAttribute('d', `M${origin} 0 C${origin} 14 46 0 46 18`);
+  }
+  groups.forEach((group) => {
+    const toggle = group.querySelector('.rna-toggle');
+    const panel = group.querySelector('.rna-menu');
+    group.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'touch') open(group);
+    });
+    group.addEventListener('pointerleave', () => {
+      closeTimer = setTimeout(() => {
+        if (group.classList.contains('is-open') && !group.matches(':hover') && !group.contains(document.activeElement)) closeAll();
+      }, 240);
+    });
+    panel.addEventListener('pointerenter', () => clearTimeout(closeTimer));
+    toggle.addEventListener('click', (event) => {
+      if (event.pointerType === 'touch' && group.classList.contains('is-open')) closeAll();
+      else open(group);
+    });
+    group.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeAll();
+        toggle.focus();
+      } else if (event.target === toggle && event.key === 'ArrowDown') {
+        event.preventDefault();
+        open(group);
+        panel.querySelector('a').focus();
+      }
+    });
+    group.addEventListener('focusout', () => {
+      setTimeout(() => {
+        if (!group.contains(document.activeElement) && !group.matches(':hover')) {
+          group.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.hidden = true;
+        }
+      }, 0);
+    });
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (navigation && !navigation.contains(event.target)) closeAll();
   });
 })();

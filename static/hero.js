@@ -213,9 +213,18 @@
     render(fixedProgress ?? (reducedMotion.matches ? 1 : (window.scrollY - startY) / range), true);
   }
 
-  function update() {
+  let previousFrame = 0;
+  function update(time) {
     raf = 0;
-    if (fixedProgress === null && !reducedMotion.matches) render((window.scrollY - startY) / range);
+    if (fixedProgress !== null || reducedMotion.matches) return;
+    const target = clamp((window.scrollY - startY) / range);
+    const elapsed = previousFrame ? Math.min(64, time - previousFrame) : 16;
+    previousFrame = time;
+    const current = Math.max(0, last);
+    const next = current + (target - current) * (1 - Math.exp(-elapsed / 70));
+    render(Math.abs(target - next) < .0005 ? target : next);
+    if (Math.abs(target - next) >= .0005) raf = requestAnimationFrame(update);
+    else previousFrame = 0;
   }
 
   function schedule() {
