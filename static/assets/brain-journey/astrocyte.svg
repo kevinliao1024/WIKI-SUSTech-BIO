@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="900" viewBox="0 0 1000 900" fill="none" role="img" aria-labelledby="astro-title astro-desc">
+  <title id="astro-title">A star-shaped glial cell</title>
+  <desc id="astro-desc">An original cartoon astrocyte with seven organic branching arms, a lavender membrane, coral cytoplasm, and a luminous lavender nucleus. Small rounded vesicles and mitochondria suggest the living world inside.</desc>
+  <metadata>Original code-native artwork created with AI assistance for the SUSTech 2026 ORCA design preview. No third-party artwork or external resources. Intended page: homepage. Decorative conceptual illustration, not an anatomical measurement. Team review required before publication.</metadata>
+  <defs>
+    <linearGradient id="astro-membrane" x1="237" y1="171" x2="740" y2="741" gradientUnits="userSpaceOnUse"><stop stop-color="#D6D8FF"/><stop offset=".52" stop-color="#9B9EF7"/><stop offset="1" stop-color="#8581CD"/></linearGradient>
+    <linearGradient id="astro-plasma" x1="393" y1="307" x2="615" y2="624" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD3CD"/><stop offset=".5" stop-color="#F2989F"/><stop offset="1" stop-color="#DC91B5"/></linearGradient>
+    <linearGradient id="astro-nucleus" x1="462" y1="389" x2="579" y2="537" gradientUnits="userSpaceOnUse"><stop stop-color="#F1EDFF"/><stop offset=".5" stop-color="#CAC7FF"/><stop offset="1" stop-color="#9292E7"/></linearGradient>
+    <radialGradient id="astro-glow" cx="0" cy="0" r="1" gradientTransform="translate(511 447) scale(327)" gradientUnits="userSpaceOnUse"><stop stop-color="#F2989F" stop-opacity=".2"/><stop offset="1" stop-color="#D6D8FF" stop-opacity="0"/></radialGradient>
+    <filter id="astro-depth" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="13" stdDeviation="10" flood-color="#2E3065" flood-opacity=".11"/></filter>
+    <g id="astro-large-arms" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M495 412C480 359 454 327 457 267S479 191 465 150"/>
+      <path d="M562 400C609 366 650 362 681 324S724 253 776 236"/>
+      <path d="M583 463C644 470 675 453 724 464S811 491 849 467"/>
+      <path d="M552 520C579 570 626 584 647 632S660 712 704 739"/>
+      <path d="M486 537C466 589 480 628 459 667S429 725 449 772"/>
+      <path d="M438 501C399 530 363 531 334 568S280 633 233 642"/>
+      <path d="M435 423C388 401 377 357 333 347S253 357 221 320"/>
+    </g>
+    <g id="astro-small-arms" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M465 167C440 145 410 154 394 123L378 94M447 148 436 101M466 154C490 128 521 119 517 81M508 115 548 100"/>
+      <path d="M461 269C425 248 400 252 386 223M463 232C485 215 501 218 514 204"/>
+      <path d="M765 240C767 208 795 190 792 164M778 221 814 215M780 237C811 243 824 274 855 271M822 255 848 239"/>
+      <path d="M678 329C676 301 661 283 674 259M698 302C721 305 735 290 748 292"/>
+      <path d="M842 472C863 455 858 425 882 416L910 403M863 438 843 415M847 477C867 494 877 518 904 519M882 511 880 539"/>
+      <path d="M727 465C744 447 744 426 764 423M762 476C767 505 788 515 786 539"/>
+      <path d="M702 738C733 736 745 714 770 720M739 730 750 696M706 743C701 773 725 789 727 815M713 785 689 810M716 759 751 773"/>
+      <path d="M642 620C671 615 683 633 705 628M659 679C635 697 640 718 624 730"/>
+      <path d="M448 764C474 779 488 798 480 825M472 789 507 781M444 769C417 779 388 769 376 798M407 780 404 819"/>
+      <path d="M463 660C439 641 419 650 408 631M470 622C494 620 505 603 523 606"/>
+      <path d="M237 642C211 628 183 629 166 610M196 630 190 600M234 648C219 675 225 698 201 714M220 685 184 682"/>
+      <path d="M332 572C314 550 291 559 278 538M296 613C304 635 291 651 300 667"/>
+      <path d="M225 320C198 313 174 326 152 304M179 316 173 286M226 318C231 285 213 266 194 254M222 285 247 263"/>
+      <path d="M333 347C343 320 329 301 338 284M302 347C287 370 267 369 259 389"/>
+    </g>
+    <g id="astro-mito">
+      <path d="M-19-7C-14-18 3-17 17-6S29 18 15 19C3 20-1 8-13 8-20 8-23 0-19-7Z" fill="#D6D8FF" stroke="#705C9F" stroke-width="3"/>
+      <path d="M-12-6C-5-8-8 6 0 2S4 14 12 10 18 14 20 11" stroke="#8D7BC0" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <circle cx="511" cy="447" r="327" fill="url(#astro-glow)"/>
+  <g opacity=".45" stroke="#BDBAF1" stroke-width="2" stroke-dasharray="3 12"><circle cx="509" cy="455" r="298"/><circle cx="509" cy="455" r="382"/></g>
+  <g filter="url(#astro-depth)">
+    <!-- All dark outlines are drawn first so each branch joins into one soft membrane. -->
+    <use href="#astro-small-arms" stroke="#514781" stroke-width="25"/>
+    <use href="#astro-large-arms" stroke="#514781" stroke-width="67"/>
+    <use href="#astro-small-arms" stroke="url(#astro-membrane)" stroke-width="17"/>
+    <use href="#astro-large-arms" stroke="url(#astro-membrane)" stroke-width="58"/>
+    <use href="#astro-small-arms" stroke="#F5B3B9" stroke-width="6" opacity=".84"/>
+    <use href="#astro-large-arms" stroke="#F1AFBB" stroke-width="33"/>
+    <!-- Uneven soma: each arm emerges from the cell's body, not from a geometric star. -->
+    <path d="M441 342C466 325 488 353 518 348 548 342 566 329 585 352 598 369 597 393 616 413 637 436 626 456 626 480 628 506 607 515 591 533 577 550 578 578 548 579 524 581 509 567 485 573 460 580 437 573 430 550 423 529 396 520 394 496 391 473 409 459 405 438 400 414 392 395 410 378 425 365 425 354 441 342Z" fill="url(#astro-membrane)" stroke="#514781" stroke-width="5"/>
+    <path d="M449 356C470 344 490 370 518 363 546 357 560 346 574 365 588 383 580 401 600 423 618 443 606 460 609 481 612 500 590 508 579 523 564 541 566 562 545 562 525 563 508 550 483 557 463 563 451 555 445 535 438 513 413 510 411 493 409 473 425 459 421 436 416 414 410 400 425 388 438 377 435 365 449 356Z" fill="url(#astro-plasma)"/>
+    <!-- Cytoskeletal filaments flow out into the extensions. -->
+    <g stroke="#FFE1D6" stroke-width="4" stroke-linecap="round" opacity=".76">
+      <path d="M476 391C485 359 465 323 466 287M562 399C608 375 639 369 670 335M593 454C640 460 671 445 707 461M563 527C591 565 628 585 640 614M478 548C463 593 479 622 462 648M433 511C395 535 370 537 343 570M437 416C390 397 378 363 344 358"/>
+    </g>
+    <g stroke="#7865AB" stroke-width="2.5" stroke-linecap="round" opacity=".58">
+      <path d="M452 277C446 240 462 212 461 194M674 333C692 318 703 286 730 270M724 470C760 476 802 495 834 480M650 635C664 667 661 701 686 724M453 675C439 704 428 729 442 749M325 579C300 607 278 629 251 635M323 340C285 334 259 347 237 329"/>
+    </g>
+    <!-- Cell contents are deliberately schematic, without scientific labels. -->
+    <use href="#astro-mito" transform="translate(459 392) rotate(-32) scale(.73)"/>
+    <use href="#astro-mito" transform="translate(581 502) rotate(81) scale(.76)"/>
+    <use href="#astro-mito" transform="translate(467 533) rotate(12) scale(.68)"/>
+    <g fill="#FFE4D8" stroke="#B97B9D" stroke-width="2.5"><circle cx="571" cy="395" r="8"/><circle cx="435" cy="471" r="7"/><circle cx="545" cy="545" r="6"/><circle cx="592" cy="453" r="5"/><circle cx="452" cy="430" r="4"/></g>
+    <g fill="#A274AF"><circle cx="488" cy="374" r="3"/><circle cx="562" cy="524" r="3"/><circle cx="432" cy="508" r="3"/><circle cx="573" cy="428" r="3"/><circle cx="502" cy="546" r="3"/></g>
+    <!-- RNA destination: nucleus center 512, 458 (51.2%, 50.9% of the SVG). -->
+    <ellipse cx="512" cy="458" rx="69" ry="78" transform="rotate(-24 512 458)" fill="#D47FA5" opacity=".28"/>
+    <path d="M451 433C455 397 486 381 518 389 552 395 576 423 576 455 577 486 557 516 526 522 492 530 459 509 450 480 445 464 447 450 451 433Z" fill="url(#astro-nucleus)" stroke="#635296" stroke-width="5"/>
+    <path d="M463 431C470 405 490 398 508 401" stroke="#FFF5EC" stroke-width="6" stroke-linecap="round" opacity=".82"/>
+    <path d="M461 476C470 506 503 514 526 507" stroke="#9B91D4" stroke-width="4" stroke-linecap="round"/>
+    <g stroke="#9081C8" stroke-width="2.5" stroke-linecap="round" opacity=".72"><path d="M483 420C473 431 491 444 482 456S472 477 488 484M541 414C526 424 548 440 536 453S526 477 540 488M502 492C514 480 505 466 515 455"/></g>
+    <ellipse cx="518" cy="448" rx="22" ry="25" transform="rotate(-25 518 448)" fill="#F2989F" stroke="#8870AA" stroke-width="3.5"/>
+    <path d="M507 440C508 433 514 429 520 432" stroke="#FFD6C8" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#FFF4E9" stroke="#8D80B9" stroke-width="2"><circle cx="495" cy="439" r="4"/><circle cx="541" cy="470" r="3.5"/><circle cx="512" cy="495" r="3"/></g>
+  </g>
+  <!-- A few little extracellular motes make the cellular world feel alive. -->
+  <g fill="#D6D8FF" stroke="#9B96D6" stroke-width="2.5"><circle cx="304" cy="183" r="10"/><circle cx="799" cy="594" r="8"/><circle cx="160" cy="464" r="7"/><circle cx="595" cy="746" r="6"/></g>
+  <g fill="#F2989F"><circle cx="623" cy="155" r="6"/><circle cx="853" cy="345" r="4"/><circle cx="311" cy="747" r="5"/><circle cx="127" cy="548" r="4"/></g>
+  <g fill="#9B9EF7"><path d="M307 440C310 449 312 451 321 454 312 457 310 459 307 468 304 459 302 457 293 454 302 451 304 449 307 440Z"/><path d="M632 204C635 213 637 215 646 218 637 221 635 223 632 232 629 223 627 221 618 218 627 215 629 213 632 204Z"/></g>
+</svg>

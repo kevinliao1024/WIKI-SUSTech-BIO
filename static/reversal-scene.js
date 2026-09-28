@@ -105,7 +105,7 @@
       }
 
       /* One real rewind per page load, live only. */
-      if (p > .9 && !rewound && !frozen) {
+      if (p > .9 && !rewound && !frozen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         rewound = true;
         document.documentElement.dataset.reversed = 'true';
         window.dispatchEvent(new CustomEvent('orca:reversed'));

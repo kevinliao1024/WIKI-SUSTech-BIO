@@ -28,6 +28,7 @@
     // "instant" intentionally overrides the document's smooth-scroll style.
     window.scrollTo({ top:0, left:0, behavior:'instant' });
     neuron.classList.remove('is-swimming');
+    window.dispatchEvent(new CustomEvent('orca:return-top'));
     draw();
   });
   draw();
