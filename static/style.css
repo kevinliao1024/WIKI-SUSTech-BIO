@@ -152,8 +152,6 @@ code, pre { font-family: var(--mono); }
   border-left-color: var(--coral-pink);
 }
 @media (min-width: 1200px) {
-  .site-nav .nav-item.dropdown:hover > .dropdown-menu,
-  .site-nav .nav-item.dropdown:focus-within > .dropdown-menu { display: block; }
   .site-nav .nav-item.dropdown:hover > .dropdown-toggle { color: var(--orca-indigo); }
 }
 .menu-toggle { color: var(--orca-indigo); border: 1.5px solid var(--orca-indigo); border-radius: 4px; padding: 8px 12px; font: 10px var(--mono); text-transform: uppercase; letter-spacing: .12em; }

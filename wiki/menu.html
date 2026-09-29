@@ -1,29 +1,35 @@
-{% macro item(page, label) -%}
-  <li><a class="dropdown-item{% if request.path == '/' ~ page %} active{% endif %}" href="{{ url_for('pages', page=page) }}"{% if request.path == '/' ~ page %} aria-current="page"{% endif %}>{{ label }}</a></li>
+{% macro whale(label) -%}
+  <span class="nav-whale" aria-hidden="true"><img src="{{ url_for('static', filename='assets/intro/fish-large-01.png') }}" alt="" width="174" height="128"><i></i><i></i><i></i></span><span class="nav-label">{{ label }}</span>
 {%- endmacro %}
 
-<nav class="site-nav navbar navbar-expand-xl fixed-top" aria-label="Primary navigation">
+<nav class="site-nav whale-navigation fixed-top" aria-label="Primary navigation">
   <div class="shell nav-shell">
     <a class="site-brand" href="{{ url_for('home') }}" aria-label="SUSTech ORCA home">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
       <span><strong>ORCA</strong><small>SUSTech · 2026</small></span>
     </a>
-    <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span>Menu</span><i aria-hidden="true"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="primaryMenu">
-      <ul class="navbar-nav ms-auto nav-list">
-        <li class="nav-item"><a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{{ url_for('home') }}"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a></li>
-        {% for group in navigation_groups %}
-        {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle{% if group_active %} active{% endif %}" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ group.label }}</button>
-          <ul class="dropdown-menu{% if group.get('menu_class') %} {{ group.menu_class }}{% endif %}{% if group.get('align_end') %} dropdown-menu-end{% endif %}">
-            {% for page, label in group['items'] %}{{ item(page, label) }}{% endfor %}
+    <ul class="nav-list whale-pod">
+      <li class="nav-item"><a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{{ url_for('home') }}"{% if request.path == '/' %} aria-current="page"{% endif %}>{{ whale('Home') }}</a></li>
+      {% for group in navigation_groups %}
+      {% set key = 'nav-' ~ loop.index %}
+      {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
+      <li class="nav-item rna-nav" data-rna-nav>
+        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-expanded="false" aria-controls="rna-{{ key }}">{{ whale(group.label) }}</button>
+        <div class="rna-menu" id="rna-{{ key }}" aria-labelledby="whale-{{ key }}" hidden>
+          <svg class="rna-menu__lead" aria-hidden="true"><path d="M160 0 C160 10 46 4 46 18"/></svg>
+          <svg class="rna-menu__backbone" viewBox="0 0 90 {{ group['items']|length * 58 + 26 }}" aria-hidden="true" preserveAspectRatio="none">
+            <path pathLength="1" d="M 46 0 {% for page, title in group['items'] %} Q {{ 6 if loop.index is odd else 86 }} {{ loop.index0 * 58 + 14 }} 46 {{ loop.index0 * 58 + 42 }} Q {{ 86 if loop.index is odd else 6 }} {{ loop.index0 * 58 + 56 }} 46 {{ loop.index * 58 }} {% endfor %} L46 {{ group['items']|length * 58 + 26 }}"/>
+          </svg>
+          <ul class="rna-branches">
+          {% for page, title in group['items'] %}
+            <li style="--branch:{{ loop.index0 }}"><a class="rna-branch{% if request.path == '/' ~ page %} active{% endif %}" href="{{ url_for('pages', page=page) }}"{% if request.path == '/' ~ page %} aria-current="page"{% endif %}>
+              <span class="rna-branch__base" aria-hidden="true">{{ ['A','U','G','C'][loop.index0 % 4] }}</span><span class="rna-branch__bond" aria-hidden="true"></span><span class="rna-branch__label">{{ title }}<span aria-hidden="true">↗</span></span>
+            </a></li>
+          {% endfor %}
           </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 </nav>

@@ -15,6 +15,10 @@ app.config["FREEZER_IGNORE_MIMETYPE_WARNINGS"] = True
 freezer = Freezer(app)
 
 
+@freezer.register_generator
+def pages():
+    for page in sorted(CONTENT_PAGES):
+        yield {"page": page}
 @app.cli.command()
 def freeze():
     freezer.freeze()

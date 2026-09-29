@@ -1,0 +1,2 @@
+{% set neuron_names = ['multipolar','bipolar','pseudounipolar','pyramidal'] %}
+<img class="neuron-frame" src="{{ url_for('static', filename='assets/model/illustrations/neuron-frame-' ~ neuron_names[loop.index0] ~ '.png') }}" alt="" aria-hidden="true" width="1122" height="1402" decoding="async">

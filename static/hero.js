@@ -5,6 +5,12 @@
   if (!scene) return;
 
   const viewport = scene.querySelector('[data-rna-viewport]');
+  const brain = scene.querySelector('[data-journey-brain]');
+  const astrocyte = scene.querySelector('[data-journey-astrocyte]');
+  const intro = scene.querySelector('[data-journey-intro]');
+  const rnaStage = scene.querySelector('[data-journey-rna]');
+  const journeySteps = [...scene.querySelectorAll('[data-journey-step]')];
+  const journeyLabels = [...scene.querySelectorAll('[data-journey-label]')];
   const source = scene.querySelector('[data-rna-source]');
   const guide = scene.querySelector('[data-rna-guide]');
   const strand = scene.querySelector('[data-rna-strand]');
@@ -32,6 +38,7 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const requested = Number.parseFloat(new URLSearchParams(window.location.search).get('rnaProgress'));
   const fixedProgress = Number.isFinite(requested) ? Math.max(0, Math.min(1, requested)) : null;
+  scene.toggleAttribute('data-frozen', fixedProgress !== null);
 
   const clamp = (value) => Math.max(0, Math.min(1, value));
   const between = (value, start, end) => clamp((value - start) / (end - start));
@@ -53,9 +60,48 @@
   }
 
   function render(progressValue, force = false) {
-    const overall = clamp(progressValue);
-    if (!force && Math.abs(overall - last) < .0005) return;
-    last = overall;
+    const total = clamp(progressValue);
+    if (!force && Math.abs(total - last) < .0005) return;
+    last = total;
+    // One pinned camera: brain -> astrocyte -> RNA, then the existing C drop.
+    const overall = .32 + .68 * between(total, .52, 1);
+    const brainZoom = smooth(between(total, .045, .23));
+    const brainOut = smooth(between(total, .15, .245));
+    const astroIn = smooth(between(total, .15, .275));
+    const astroZoom = smooth(between(total, .31, .465));
+    const astroOut = smooth(between(total, .405, .505));
+    const rnaIn = smooth(between(total, .405, .51));
+    if (brain) {
+      brain.style.opacity = (1 - brainOut).toFixed(4);
+      const compact = window.innerWidth <= 800;
+      const originX = compact ? 53 : 65;
+      const originY = compact ? 62 : 49;
+      brain.style.left = `${originX + (50 - originX) * brainZoom}%`;
+      brain.style.top = `${originY + (50 - originY) * brainZoom}%`;
+      brain.style.transform = `translate3d(${-50 - 19.4 * brainZoom}%, ${-50 - 10 * brainZoom}%, 0) scale(${(1 + brainZoom * 5.5).toFixed(4)}) rotate(${(-3 + brainZoom * 8).toFixed(3)}deg)`;
+    }
+    if (astrocyte) {
+      astrocyte.style.opacity = (astroIn * (1 - astroOut)).toFixed(4);
+      astrocyte.style.transform = `translate3d(-50%, -50%, 0) scale(${(.38 + astroIn * .62 + astroZoom * 5).toFixed(4)}) rotate(${(10 * (1 - astroIn) - astroZoom * 8).toFixed(3)}deg)`;
+    }
+    if (intro) {
+      const exit = smooth(between(total, .025, .12));
+      intro.style.opacity = (1 - exit).toFixed(4);
+      intro.style.transform = `translate3d(0, ${-exit * 35}px, 0)`;
+    }
+    if (rnaStage) {
+      rnaStage.style.opacity = rnaIn.toFixed(4);
+      rnaStage.style.transform = `scale(${(.68 + .32 * rnaIn).toFixed(4)})`;
+    }
+    const chapter = total < .19 ? 'brain' : total < .44 ? 'astrocyte' : 'rna';
+    journeySteps.forEach(node => node.classList.toggle('is-active', node.dataset.journeyStep === chapter));
+    journeyLabels.forEach(node => {
+      const label = node.dataset.journeyLabel;
+      const alpha = label === 'brain' ? 1 - smooth(between(total,.04,.12)) : label === 'astrocyte' ? astroIn * (1 - smooth(between(total,.32,.4))) : rnaIn * (1 - smooth(between(total,.54,.62)));
+      node.style.opacity = alpha.toFixed(4);
+    });
+    scene.style.setProperty('--journey-progress', total.toFixed(4));
+    scene.dataset.journey = chapter;
     scene.style.setProperty('--rna-progress', overall.toFixed(4));
 
     // The original RNA-to-cell sequence occupies the first 68% of this one
@@ -192,6 +238,7 @@
       if (target && target.textContent !== label) target.textContent = label;
     }
 
+    if (character && overall < .68) character.style.filter = '';
     if (character && overall >= .68) {
       character.style.transform = `translate3d(-50%, 0, 0) scale(${(1 - burden * .06).toFixed(4)})`;
       character.style.filter = `saturate(${(1 - burden * .08).toFixed(4)})`;
@@ -202,7 +249,7 @@
     }
     if (halo && overall >= .68) halo.style.opacity = (.86 - burden * .32).toFixed(4);
 
-    if (cue) cue.style.opacity = (1 - smooth(between(overall, .02, .08))).toFixed(4);
+    if (cue) cue.style.opacity = (1 - smooth(between(total, .025, .1))).toFixed(4);
     scene.dataset.phase = overall < .14 ? 'focus' : overall < .39 ? 'rna' : overall < .54 ? 'handoff' : overall < .7 ? 'cell' : overall < .9 ? 'clearance' : 'overwhelmed';
   }
 
@@ -213,9 +260,18 @@
     render(fixedProgress ?? (reducedMotion.matches ? 1 : (window.scrollY - startY) / range), true);
   }
 
-  function update() {
+  let previousFrame = 0;
+  function update(time) {
     raf = 0;
-    if (fixedProgress === null && !reducedMotion.matches) render((window.scrollY - startY) / range);
+    if (fixedProgress !== null || reducedMotion.matches) return;
+    const target = clamp((window.scrollY - startY) / range);
+    const elapsed = previousFrame ? Math.min(64, time - previousFrame) : 16;
+    previousFrame = time;
+    const current = Math.max(0, last);
+    const next = current + (target - current) * (1 - Math.exp(-elapsed / 70));
+    render(Math.abs(target - next) < .0005 ? target : next);
+    if (Math.abs(target - next) >= .0005) raf = requestAnimationFrame(update);
+    else previousFrame = 0;
   }
 
   function schedule() {
@@ -226,6 +282,14 @@
   window.addEventListener('resize', () => requestAnimationFrame(measure), { passive: true });
   if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', measure);
   else reducedMotion.addListener(measure);
+
+  window.addEventListener('orca:return-top', () => {
+    if (fixedProgress !== null) return;
+    cancelAnimationFrame(raf);
+    raf = 0;
+    previousFrame = 0;
+    render(reducedMotion.matches ? 1 : 0, true);
+  });
 
   measure();
 })();

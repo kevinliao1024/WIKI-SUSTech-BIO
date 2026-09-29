@@ -8,8 +8,12 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='global-scene.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='reversal-scene.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='restoration-scene.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='home-polish.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='brain-journey.css') }}">
 {% endblock %}
 {% block page_scripts %}
+<script src="{{ url_for('static', filename='neuron-nav.js') }}" defer></script>
+<script src="{{ url_for('static', filename='crayon-intro.js') }}" defer></script>
 <script src="{{ url_for('static', filename='hero.js') }}" defer></script>
 <script src="{{ url_for('static', filename='hero-scrub.js') }}" defer></script>
 <script src="{{ url_for('static', filename='protein-scene.js') }}" defer></script>
@@ -27,5 +31,6 @@
   {% include 'components/reversal_scene.html' %}
   {% include 'components/restoration_scene.html' %}
 </main>
+{% include 'components/neuron_nav.html' %}
 {% endblock %}
 {% block footer %}{% endblock %}
