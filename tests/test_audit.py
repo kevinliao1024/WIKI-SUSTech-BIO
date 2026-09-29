@@ -3,7 +3,13 @@ import unittest
 from pathlib import Path
 import tempfile
 
-from scripts.audit_build import audit_document, audit_internal_links, audit_stylesheet
+from scripts.audit_build import (
+    audit_document,
+    audit_importmap,
+    audit_internal_links,
+    audit_script,
+    audit_stylesheet,
+)
 
 
 VALID_DOCUMENT = """
@@ -74,6 +80,46 @@ class BuildAuditTest(unittest.TestCase):
             document = VALID_DOCUMENT.replace("</body>", '<a href="missing-page">Missing</a></body>')
             issues = audit_internal_links("index.html", document, Path(directory))
         self.assertTrue(any("broken internal link" in issue for issue in issues))
+
+    def test_accepts_local_esm_imports(self):
+        source = "import * as THREE from './vendor/three/three.module.js';\nimport { OrbitControls } from 'three/addons/controls/OrbitControls.js';\n"
+        self.assertEqual(audit_script("scene.js", source), [])
+
+    def test_rejects_remote_esm_import(self):
+        samples = [
+            "import * as THREE from 'https://cdn.jsdelivr.net/npm/three/build/three.module.js';",
+            'import "https://unpkg.com/three@0.186.1/build/three.module.js";',
+            "const m = await import('https://esm.sh/three@0.186.1');",
+            "export { Scene } from 'https://cdn.example.com/three.js';",
+        ]
+        for source in samples:
+            with self.subTest(source=source):
+                issues = audit_script("scene.js", source)
+                self.assertTrue(any("remote ESM import" in issue for issue in issues))
+
+    def test_accepts_igem_hosted_esm_import(self):
+        source = "import { Scene } from 'https://static.igem.wiki/sustech/three.module.js';"
+        self.assertEqual(audit_script("scene.js", source), [])
+
+    def test_import_map_resolves_to_local_vendor_files(self):
+        importmap = (
+            '{"imports": {"three": "./static/vendor/three/three.module.js", '
+            '"three/addons/": "./static/vendor/three/addons/"}}'
+        )
+        self.assertEqual(audit_importmap("three-importmap.json", importmap), [])
+
+    def test_rejects_remote_import_map_specifier(self):
+        importmap = '{"imports": {"three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js"}}'
+        issues = audit_importmap("three-importmap.json", importmap)
+        self.assertTrue(any("remote import map specifier" in issue for issue in issues))
+
+    def test_rejects_remote_import_map_scope(self):
+        importmap = '{"scopes": {"/app/": {"three": "https://esm.sh/three@0.186.1"}}}'
+        issues = audit_importmap("three-importmap.json", importmap)
+        self.assertTrue(any("remote import map specifier" in issue for issue in issues))
+
+    def test_ignores_unparseable_import_map(self):
+        self.assertEqual(audit_importmap("broken.json", "{not json"), [])
 
 
 if __name__ == "__main__":

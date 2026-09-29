@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero Shader Preview — ORCA SUSTech 2026</title>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #0b0e1f; }
+canvas { display: block; width: 100% !important; height: 100% !important; }
+
+/* ORCA palette preview overlay */
+.overlay {
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 64px 80px;
+  pointer-events: none;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  color: #F47C86;
+  font: 700 11px/1 "Courier New", monospace;
+  letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 1.5px; background: currentColor;
+}
+h1 {
+  color: #ffffff;
+  font: 700 clamp(52px, 7vw, 92px)/.96 Georgia, serif;
+  letter-spacing: -.045em;
+  max-width: 820px;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 40px rgba(0,0,0,.5);
+}
+h1 em {
+  font-style: normal;
+  color: #9b9ef7;
+}
+.lead {
+  max-width: 600px;
+  color: rgba(255,255,255,.72);
+  font: 400 clamp(16px, 2vw, 20px)/1.6 "Courier New", monospace;
+  letter-spacing: .01em;
+}
+
+/* shader variant selector */
+.variants {
+  position: fixed; top: 24px; right: 24px;
+  display: flex; gap: 8px;
+  pointer-events: all;
+  font: 700 10px "Courier New", monospace;
+}
+.variants button {
+  padding: 8px 14px;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: .08em; text-transform: uppercase; font-size: 10px;
+  transition: all .2s;
+}
+.variants button:hover, .variants button.active {
+  background: rgba(244,124,134,.18);
+  color: #F47C86;
+  border-color: rgba(244,124,134,.4);
+}
+.label {
+  position: fixed; top: 24px; left: 24px;
+  color: rgba(255,255,255,.35);
+  font: 700 9px "Courier New", monospace;
+  letter-spacing: .2em; text-transform: uppercase;
+}
+.status {
+  position: fixed; bottom: 16px; left: 24px; z-index: 999;
+  padding: 8px 12px; border-radius: 4px;
+  font: 700 10px "Courier New", monospace;
+  letter-spacing: .08em;
+  background: rgba(69,183,178,.15); color: #45B7B2;
+  border: 1px solid rgba(69,183,178,.4);
+}
+.status.error { background: rgba(244,124,134,.2); color: #F47C86; border-color: rgba(244,124,134,.5); }
+</style>
+</head>
+<body>
+<div class="label">HERO SHADER PREVIEW · ORCA 2026</div>
+<div class="status" id="status">booting… module never ran</div>
+<div class="variants">
+  <button class="active" data-variant="neural">A — Neural Field</button>
+  <button data-variant="membrane">B — Membrane Wave</button>
+  <button data-variant="helix">C — RNA Helix</button>
+</div>
+<div class="overlay">
+  <p class="eyebrow">ORCA · SUSTech iGEM 2026</p>
+  <h1>Correcting the <em>sentence</em><br>that causes Alzheimer's.</h1>
+  <p class="lead">A single RNA base swap — C to U — is all it takes to silence the toxic protein at its source.</p>
+</div>
+<script>
+window.addEventListener('error', (e) => {
+  const el = document.getElementById('status');
+  if (el) { el.textContent = 'ERROR: ' + (e.message || e.type); el.classList.add('error'); }
+});
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+/* ─── Shader Variants ──────────────────────────────────────────────────── */
+
+const SHADERS = {
+
+/* ── A: Neural Synapse Field ─────────────────────────────────────────────
+   Soft glowing nodes connected by faint axon filaments.
+   Nodes pulse with a slow heartbeat; colour drifts coral ↔ teal.
+   This is the recommended hero background.                               */
+neural: {
+  vert: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.); }`,
+  frag: `
+    precision highp float;
+    uniform float uTime;
+    uniform vec2  uMouse;
+    uniform vec2  uRes;
+    varying vec2  vUv;
+
+    /* ── utils ── */
+    float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }
+    float noise(vec2 p){
+      vec2 i=floor(p), f=fract(p), u=f*f*(3.-2.*f);
+      return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),
+                 mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);
+    }
+    float fbm(vec2 p){
+      float v=0., a=.5;
+      for(int i=0;i<4;i++){ v+=a*noise(p); p*=2.1; a*=.5; }
+      return v;
+    }
+
+    /* ── Voronoi — returns dist to nearest point ── */
+    float voronoi(vec2 p, out vec2 nearest){
+      vec2 n=floor(p); float md=8.;
+      for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++){
+        vec2 g=n+vec2(x,y);
+        vec2 o=vec2(hash(g),hash(g+vec2(3.7,1.3)));
+        /* slow drift */
+        o+=.4*sin(uTime*.18+6.28*o);
+        vec2 r=g+o-p; float d=dot(r,r);
+        if(d<md){ md=d; nearest=g+o; }
+      }
+      return sqrt(md);
+    }
+
+    /* ── ORCA palette ── */
+    vec3 CORAL   = vec3(.957,.486,.525);   /* #F47C86 */
+    vec3 TEAL    = vec3(.271,.718,.698);   /* #45B7B2 */
+    vec3 INDIGO  = vec3(.161,.231,.561);   /* #293B8F */
+    vec3 PERI    = vec3(.608,.620,.969);   /* #9b9ef7 */
+    vec3 DARK    = vec3(.043,.055,.122);   /* #0b0e1f */
+
+    void main(){
+      vec2 uv = vUv;
+      vec2 asp= vec2(uRes.x/uRes.y, 1.);
+      vec2 p  = uv * asp;
+
+      /* subtle mouse parallax */
+      vec2 m = (uMouse-.5)*.06;
+      p += m;
+
+      /* ── background gradient ── */
+      vec3 col = mix(DARK, DARK+INDIGO*.08, 1.-uv.y);
+
+      /* ── slow fbm warp ── */
+      vec2 warp = vec2(
+        fbm(p*1.6 + vec2(uTime*.07, 0.)),
+        fbm(p*1.6 + vec2(0., uTime*.05))
+      );
+      vec2 wp = p + warp*.18;
+
+      /* ── neural cells via Voronoi ── */
+      vec2 nearest;
+      float vd = voronoi(wp*3.2, nearest);
+
+      /* cell edge filaments */
+      float edge = 1.-smoothstep(.0,.028,vd-.18);
+      col += edge * INDIGO*.55 * (.4+.6*fbm(p*8.+uTime*.1));
+
+      /* ── synapse nodes at Voronoi centres ── */
+      /* find dist to nearest node in screen space */
+      vec2 nodeScrn = nearest/3.2/asp;
+      float nd = length(uv - nodeScrn);
+
+      /* pulse: each node has its own phase */
+      float phase = hash(nearest)*6.28;
+      float pulse = .5+.5*sin(uTime*1.1+phase);
+
+      /* tight inner glow */
+      float core = exp(-nd*nd*3200.) * (1.2+pulse*.6);
+      /* soft outer halo */
+      float halo = exp(-nd*nd* 480.) * (.4+pulse*.3);
+
+      /* node colour: position-dependent blend */
+      float blend = hash(nearest+vec2(1.3,0.7));
+      vec3 nodeCol = mix(CORAL, TEAL, blend);
+      /* accent a few nodes periwinkle */
+      nodeCol = mix(nodeCol, PERI, step(.8, blend));
+
+      col += core * nodeCol * .9;
+      col += halo * nodeCol * .3;
+
+      /* ── faint flowing connection strands ── */
+      float strand = abs(sin((p.x-p.y+fbm(p*4.+uTime*.12)*.5)*22.+uTime*.25));
+      strand = smoothstep(.985,1.,strand) * .09;
+      col += strand * mix(TEAL, INDIGO, .5);
+
+      /* ── vignette ── */
+      float vig = length((uv-.5)*asp*vec2(.8,1.));
+      col *= 1.-smoothstep(.5,1.4,vig)*.85;
+
+      /* ── bottom fade so text reads cleanly ── */
+      col *= mix(.85, 1., uv.y*.6+.4);
+      col *= 1.-pow(1.-uv.y, 3.)*.8;
+
+      gl_FragColor = vec4(col, 1.);
+    }
+  `
+},
+
+/* ── B: Lipid Membrane Wave ──────────────────────────────────────────────
+   Horizontal standing wave that mimics a cell membrane cross-section.
+   Layers at different depths create a parallax depth illusion.          */
+membrane: {
+  vert: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.); }`,
+  frag: `
+    precision highp float;
+    uniform float uTime; uniform vec2 uMouse; uniform vec2 uRes;
+    varying vec2 vUv;
+
+    vec3 CORAL  = vec3(.957,.486,.525);
+    vec3 TEAL   = vec3(.271,.718,.698);
+    vec3 INDIGO = vec3(.161,.231,.561);
+    vec3 DARK   = vec3(.043,.055,.122);
+
+    float wave(vec2 uv, float speed, float freq, float amp, float y0){
+      float w = amp*sin(uv.x*freq - uTime*speed) + amp*.4*sin(uv.x*freq*2.3 - uTime*speed*1.7);
+      float d = abs(uv.y - y0 - w);
+      return exp(-d*d*2200.);
+    }
+
+    void main(){
+      vec2 uv = vUv + (uMouse-.5)*vec2(.04,.02);
+      vec3 col = mix(DARK, DARK+INDIGO*.1, 1.-vUv.y);
+
+      /* five membrane layers: inner+outer leaflets of 2 bilayers */
+      col += wave(uv,.42,9.5,.028,.42) * mix(CORAL,TEAL,.1) * .8;
+      col += wave(uv,.42,9.5,.028,.48) * mix(CORAL,TEAL,.1) * .8;
+      col += wave(uv,.31,7.2,.038,.58) * TEAL * .5;
+      col += wave(uv,.31,7.2,.038,.65) * TEAL * .5;
+      col += wave(uv,.55,13.,.020,.35) * INDIGO * .7;
+
+      /* particle trail along top wave */
+      float px = fract(vUv.x*40.-uTime*.18);
+      float py = .028*sin(vUv.x*9.5-uTime*.42);
+      float pdist = length(vec2(px-.5,vUv.y-.42-py)*vec2(.4,1.));
+      col += exp(-pdist*pdist*600.)*CORAL*.9;
+
+      float vig = length((vUv-.5)*1.4);
+      col *= 1.-smoothstep(.4,1.2,vig)*.8;
+      col *= 1.-pow(1.-vUv.y,3.)*.8;
+      gl_FragColor = vec4(col,1.);
+    }
+  `
+},
+
+/* ── C: RNA Helix Strand ─────────────────────────────────────────────────
+   A double helix rendered as two interleaved sine waves with base-pair
+   rungs, viewed at a slight angle. Strongly on-theme for RNA correction. */
+helix: {
+  vert: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.); }`,
+  frag: `
+    precision highp float;
+    uniform float uTime; uniform vec2 uMouse; uniform vec2 uRes;
+    varying vec2 vUv;
+
+    vec3 CORAL  = vec3(.957,.486,.525);
+    vec3 TEAL   = vec3(.271,.718,.698);
+    vec3 INDIGO = vec3(.161,.231,.561);
+    vec3 DARK   = vec3(.043,.055,.122);
+    vec3 YELLOW = vec3(.965,.769,.325);
+
+    float hash(float n){ return fract(sin(n)*43758.5); }
+
+    void main(){
+      vec2 uv = vUv + (uMouse-.5)*vec2(.03,.015);
+      vec3 col = mix(DARK, DARK+INDIGO*.12, 1.-vUv.y);
+
+      float asp = uRes.x/uRes.y;
+      float t = uTime*.22;
+
+      /* helix is drawn in the right 55% of screen */
+      float cx = .70; /* centre x */
+      float x = (uv.x - cx)*asp*2.2;
+      float y = uv.y*7. - 3.5;
+
+      /* strand A */
+      float aY = sin(y*1.05 + t)*0.25;
+      float distA = abs(x - aY) / .9;
+      float sA = exp(-distA*distA*120.)*(.6+.4*sin(y*1.05+t));
+
+      /* strand B (offset by π) */
+      float bY = sin(y*1.05 + t + 3.14159)*0.25;
+      float distB = abs(x - bY) / .9;
+      float sB = exp(-distB*distB*120.)*(.6+.4*sin(y*1.05+t+3.14159));
+
+      col += sA * CORAL * .9;
+      col += sB * TEAL  * .9;
+
+      /* base-pair rungs */
+      float rungSpacing = 3.14159/1.8;
+      for(int i=0;i<8;i++){
+        float ry = float(i)*rungSpacing + mod(t*1.05, rungSpacing);
+        float ryN = mod(ry, 7.)-3.5;
+        float raY = sin(ryN*1.05+t)*0.25;
+        float rbY = sin(ryN*1.05+t+3.14159)*0.25;
+        float rungDist = abs(x - mix(raY,rbY,clamp((x-raY)/(rbY-raY+.001),0.,1.)));
+        /* thickness */
+        float rungY = abs(y - ryN);
+        float rung = exp(-rungDist*rungDist*800.-rungY*rungY*80.);
+        vec3 rungCol = hash(float(i))>.5 ? YELLOW : mix(CORAL,TEAL,.5);
+        col += rung * rungCol * .55;
+      }
+
+      /* background glow along helix path */
+      float glow = exp(-min(distA,distB)*min(distA,distB)*12.)*0.08;
+      col += glow * mix(CORAL,TEAL,.5);
+
+      float vig = length((uv-.5)*vec2(1., 1.3));
+      col *= 1.-smoothstep(.35,1.2,vig)*.9;
+      col *= 1.-pow(1.-vUv.y,3.)*.8;
+      gl_FragColor = vec4(col,1.);
+    }
+  `
+}
+
+}; /* end SHADERS */
+
+/* ─── Three.js setup ───────────────────────────────────────────────────── */
+
+const statusEl = document.getElementById('status');
+const say = (msg, isErr) => {
+  if (!statusEl) return;
+  statusEl.textContent = msg;
+  statusEl.classList.toggle('error', !!isErr);
+};
+window.__say = say;
+say('three.js r' + THREE.REVISION + ' imported');
+
+const W = window.innerWidth, H = window.innerHeight;
+
+const renderer = new THREE.WebGLRenderer({ antialias: false });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+renderer.setSize(W, H);
+document.body.prepend(renderer.domElement);
+say('WebGL OK · ' + renderer.getContext().getParameter(renderer.getContext().VERSION));
+
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const scene  = new THREE.Scene();
+const geo    = new THREE.PlaneGeometry(2, 2);
+
+let mat, mesh, currentVariant = 'neural';
+
+function buildMaterial(variant) {
+  if (mesh) scene.remove(mesh);
+  const s = SHADERS[variant];
+  mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:  { value: 0 },
+      uMouse: { value: new THREE.Vector2(.5, .5) },
+      uRes:   { value: new THREE.Vector2(W, H) },
+    },
+    vertexShader:   s.vert,
+    fragmentShader: s.frag,
+  });
+  mesh = new THREE.Mesh(geo, mat);
+  scene.add(mesh);
+}
+buildMaterial(currentVariant);
+
+/* mouse */
+const mouse = new THREE.Vector2(.5, .5);
+const mouseLerp = new THREE.Vector2(.5, .5);
+window.addEventListener('mousemove', e => {
+  mouse.set(e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight);
+});
+
+/* variant buttons */
+document.querySelectorAll('[data-variant]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-variant]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentVariant = btn.dataset.variant;
+    buildMaterial(currentVariant);
+  });
+});
+
+/* resize */
+window.addEventListener('resize', () => {
+  const w = window.innerWidth, h = window.innerHeight;
+  renderer.setSize(w, h);
+  if (mat) mat.uniforms.uRes.value.set(w, h);
+});
+
+/* animate */
+const clock = new THREE.Clock();
+(function loop() {
+  requestAnimationFrame(loop);
+  mouseLerp.lerp(mouse, .04);
+  if (mat) {
+    mat.uniforms.uTime.value  = clock.getElapsedTime();
+    mat.uniforms.uMouse.value.copy(mouseLerp);
+  }
+  renderer.render(scene, camera);
+})();
+</script>
+</body>
+</html>

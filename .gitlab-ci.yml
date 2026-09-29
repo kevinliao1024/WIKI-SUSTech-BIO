@@ -4,7 +4,9 @@ pages:
   stage: build
   script:
     - pip install --no-cache-dir -r dependencies.txt
+    - python -m unittest discover -s tests -v
     - FLASK_APP=app.py flask freeze
+    - python scripts/audit_build.py
   artifacts:
     paths:
       - public

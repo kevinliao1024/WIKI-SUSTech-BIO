@@ -1,4 +1,5 @@
 from html.parser import HTMLParser
+import json
 from pathlib import Path
 import re
 from urllib.parse import urlparse
@@ -9,6 +10,7 @@ EXCLUDED_TERMS = ("physicell", "paraview")
 EXPECTED_OUTPUTS = {
     "index.html",
     "team",
+    "attributions",
     "description",
     "engineering",
     "results",
@@ -103,6 +105,38 @@ def audit_stylesheet(name: str, stylesheet: str) -> list[str]:
     return issues
 
 
+def audit_script(name: str, source: str) -> list[str]:
+    issues: list[str] = []
+    # Catches: from '...', import '...', import('...')
+    candidates = re.findall(r"""(?:from|import)\s*\(?\s*['"](https?://[^'"]+)['"]""", source)
+    for url in candidates:
+        parsed = urlparse(url)
+        if parsed.hostname not in ALLOWED_ASSET_HOSTS:
+            issues.append(f"{name}: remote ESM import: {url}")
+    return issues
+
+
+def audit_importmap(name: str, source: str) -> list[str]:
+    issues: list[str] = []
+    try:
+        data = json.loads(source)
+    except json.JSONDecodeError:
+        return issues
+    if not isinstance(data, dict):
+        return issues
+    specifiers: list[str] = list((data.get("imports") or {}).values())
+    for scope in (data.get("scopes") or {}).values():
+        if isinstance(scope, dict):
+            specifiers.extend(scope.values())
+    for specifier in specifiers:
+        if not isinstance(specifier, str):
+            continue
+        parsed = urlparse(specifier)
+        if parsed.scheme in {"http", "https"} and parsed.hostname not in ALLOWED_ASSET_HOSTS:
+            issues.append(f"{name}: remote import map specifier: {specifier}")
+    return issues
+
+
 def audit_internal_links(name: str, document: str, public_dir: Path) -> list[str]:
     parser = AssetParser()
     parser.feed(document)
@@ -138,6 +172,10 @@ def audit_build(public_dir: Path = Path("public")) -> list[str]:
             issues.extend(audit_internal_links(path.name, document, public_dir))
     for path in sorted(public_dir.rglob("*.css")):
         issues.extend(audit_stylesheet(str(path), path.read_text(encoding="utf-8")))
+    for path in sorted(public_dir.rglob("*.js")):
+        issues.extend(audit_script(str(path), path.read_text(encoding="utf-8")))
+    for path in sorted(public_dir.rglob("*.json")):
+        issues.extend(audit_importmap(str(path), path.read_text(encoding="utf-8")))
     return issues
 
 

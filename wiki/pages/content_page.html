@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ content.title }}{% endblock %}
+{% block eyebrow %}{{ content.metadata.get('eyebrow', 'ORCA · SUSTech 2026') }}{% endblock %}
+{% block page_title %}{{ content.title }}{% endblock %}
+{% block lead %}{{ content.metadata.get('subtitle', '') }}{% endblock %}
+
+{% macro toc_links() -%}
+  {% for item in content.toc %}
+  <li class="toc-level-{{ item.level }}"><a href="#{{ item.id }}">{{ item.name }}</a></li>
+  {% endfor %}
+{%- endmacro %}
+
+{% block page_content %}
+{% if content.metadata.get('status') %}
+<div class="content-status shell" data-content-status="{{ content.metadata.status }}">
+  <span>{{ content.metadata.get('status_label', 'Content status') }}</span>
+  <p>{{ content.metadata.get('status_message', '') }}</p>
+</div>
+{% endif %}
+
+{% if content.toc %}
+<details class="mobile-toc shell">
+  <summary>On this page</summary>
+  <ol>{{ toc_links() }}</ol>
+</details>
+{% endif %}
+
+<div class="shell markdown-page{% if not content.toc %} markdown-page--without-toc{% endif %}" data-content-source="{{ content.source_label }}">
+  {% if content.toc %}
+  <aside class="side-index markdown-toc" aria-label="On this page">
+    <span>On this page</span>
+    <ol>{{ toc_links() }}</ol>
+  </aside>
+  {% endif %}
+  <article class="markdown-content">
+    {{ rendered_markdown }}
+  </article>
+</div>
+{% endblock %}

@@ -36,3 +36,13 @@
   <figcaption>{{ caption }}</figcaption>
 </figure>
 {%- endmacro %}
+
+{% macro markdown_panel(content, rendered_markdown) -%}
+{% if content.html %}
+<section class="content-section shell custom-markdown-panel" data-content-source="{{ content.source_label }}">
+  <article class="markdown-content markdown-content--custom">
+    {{ rendered_markdown }}
+  </article>
+</section>
+{% endif %}
+{%- endmacro %}

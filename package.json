@@ -1,5 +1,6 @@
 {
 	"dependencies": {
-		"cobe": "^2.0.1"
+		"cobe": "^2.0.1",
+		"three": "0.186.1"
 	}
 }

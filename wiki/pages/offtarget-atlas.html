@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
-{% from "macros.html" import evidence, figure_slot, section_nav %}
+{% from "macros.html" import evidence, figure_slot, markdown_panel, section_nav %}
 
-{% block title %}PUF-OffTarget Atlas{% endblock %}
-{% block eyebrow %}Dry Lab · Model 02{% endblock %}
-{% block page_title %}PUF-OffTarget<br>Atlas{% endblock %}
-{% block lead %}A transcriptome-scale prioritization engine that turns a short PUF recognition sequence into an auditable queue of possible off-target loci.{% endblock %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
+{% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
+{% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
 {% block page_content %}
 {{ section_nav([('question', 'Question'), ('pipeline', 'Pipeline'), ('ranking', 'Ranking'), ('example', 'Example run'), ('limits', 'Boundaries'), ('references', 'References')]) }}
-<section class="content-section shell" id="question"><div class="editorial-split reveal"><div><p class="section-kicker">The question</p><h2>Where else could this PUF recognize RNA?</h2></div><div><p class="lead-copy">The Atlas searches 8–12 nt motifs with configurable substitutions, then adds transcript annotation, optional tissue expression, optional RNA accessibility and cautious consequence evidence.</p></div></div>{{ evidence('Heuristic prioritization', 'A candidate is a sequence-and-context lead for validation. It is not proof of binding, editing or biological harm.', 'heuristic') }}</section>
+{{ markdown_panel(content, rendered_markdown) }}
+<section class="content-section shell">{{ evidence('Heuristic prioritization', 'A candidate is a sequence-and-context lead for validation. It is not proof of binding, editing or biological harm.', 'heuristic') }}</section>
 
 <section class="atlas-section" id="pipeline"><div class="shell"><p class="section-kicker section-kicker--light">Auditable pipeline</p><h2>Every transformation leaves a record.</h2><ol class="atlas-pipeline reveal"><li><b>01</b><span>Normalize motif</span><small>RNA 5′→3′ · U/T handling</small></li><li><b>02</b><span>Scan transcripts</span><small>GENCODE FASTA · 0–3 substitutions</small></li><li><b>03</b><span>Map loci</span><small>Transcript and genomic coordinates</small></li><li><b>04</b><span>Add context</span><small>Expression · accessibility · region</small></li><li><b>05</b><span>Rank evidence</span><small>Transparent weighted score</small></li><li><b>06</b><span>Export</span><small>Tables · BED · report · metadata</small></li></ol>{{ figure_slot('puf-atlas-interface', 'PUF-OffTarget Atlas interface', 'Replace with an approved screenshot uploaded through the iGEM uploads tool. Do not include private paths or unpublished data.') }}</div></section>
 

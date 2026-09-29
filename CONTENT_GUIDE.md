@@ -50,21 +50,22 @@ The development server runs at `http://127.0.0.1:8080`.
 
 ## Editing map
 
-- Navigation: `wiki/menu.html`
+- Team content editing: `docs/README.md`
+- Page copy: the route mapping in `wiki_content.py` points to one file under `docs/`
+- Page images: `assets/images/`, referenced as `/assets/images/file-name.webp`
+- Navigation and route-to-content mapping: `wiki_content.py`
 - Homepage navigation, scene, and six content sections: `wiki/components/`
 - Homepage-only visuals and scroll timeline: `static/intro.css`, `static/intro.js`
 - Shared page shell: `wiki/layout.html`
 - Footer and mandatory license/repository links: `wiki/footer.html`
-- Dry-lab and home content: `wiki/pages/`
-- Placeholder-page titles and section lists: `PAGE_META` in `app.py`
-- Each placeholder route renders its matching `wiki/pages/<route>.html`; these
-  small files extend `pages/framework.html` and can be replaced or extended
-  when the team writes the final page.
+- Ordinary content-page template: `wiki/pages/content_page.html`
+- Custom Dry Lab presentation templates: `wiki/pages/dry-lab.html`, `model.html`,
+  `brain-delivery.html`, `offtarget-atlas.html` and `software.html`
 - Visual system and responsive rules: `static/style.css`
 - Scroll reveals and story progress: `static/wiki.js`
 
-Do not modify `.gitlab-ci.yml`, `LICENSE`, or remove the license and repository
-links from the footer.
+Normal content editors should not modify `wiki/`, `static/`, `app.py`, CI or CSS/JS.
+Do not modify `LICENSE` or remove the license and repository links from the footer.
 
 ## Evidence labels
 

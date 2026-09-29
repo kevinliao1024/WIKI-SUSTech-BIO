@@ -1,9 +1,10 @@
 # Team SUSTech 2026 Wiki
 
-The SUSTech ORCA site uses a custom ocean-current editorial design and a structured
-content workflow. Read [CONTENT_GUIDE.md](CONTENT_GUIDE.md) before editing or
-publishing any page. Local development and verification use the existing
-`xbx_env` Conda environment.
+The SUSTech ORCA site uses a custom ocean-current editorial design and a Markdown-first
+content workflow. Team members maintain page text in [`docs/`](docs/README.md);
+the `wiki/` and `static/` directories are the presentation layer. Read
+[CONTENT_GUIDE.md](CONTENT_GUIDE.md) before publishing any page. Local development
+and verification use the existing `xbx_env` Conda environment.
 
 This repository **MUST** contain all coding assets to generate your team's wiki (HTML, CSS, JavaScript, TypeScript, Python, etc).
 
@@ -17,29 +18,28 @@ For up-to-date requirements, resources, help and guidance, visit [teams.igem.org
 
 ## Getting started
 
-You should probably only edit the files inside folders `static`, `wiki` and `wiki > pages`.
+For normal content work, edit only the matching Markdown file under `docs/` and add page images under `assets/images/`.
 1. Open the Web IDE
-2. Make the changes on the files you wish:
-    * For the menu, change the file [menu.html](wiki/menu.html)
-    * For the layout, change the file [layout.html](wiki/layout.html)
-    * For the pages, change the corresponding file in the foler [pages](wiki/pages)
-3. Review the changes you made
-4. Once you are done, save the changes by **committing** them to the *main branch* of the repository 
-5. An automated script will build, test and deploy your wiki, which should take less than 30 seconds.
+2. Follow the simple [content editing guide](docs/README.md)
+3. Preview the page or ask a Wiki developer to review it
+4. Review the changes you made
+5. Save the changes through the team's normal commit and Pull Request workflow
+6. After merge, the automated pipeline builds, tests and deploys the Wiki
 
 ## About this Template
 
 ### Files
 
-The static assets are in the `static` directory. The layout and templates are in the `wiki` directory, and the pages live in the `wiki > pages` directory. Unless you are an experienced and/or adventurous human, you probably shouldn't change other files.
+Page copy lives in `docs/`. The visual assets are in `assets/` and `static/`, while layout and presentation templates live in `wiki/`. Unless you are maintaining the Wiki system, edit only the documented content files.
 
-    |__ static/             -> static assets (CSS and JavaScript files only)
+    |__ docs/               -> Markdown page content and the editing guide
+    |__ assets/images/      -> images referenced by Markdown content
+    |__ static/             -> presentation assets, CSS and JavaScript
     |__ wiki/               -> Main directory for the pages and layouts
         |__ footer.html     -> Footer that will appear in all the pages
         |__ layout.html     -> Main layout of your wiki. All the pages will follow its structure
         |__ menu.html       -> Menu that will appear in all the pages
-        |__ pages/          -> Directory for all the pages
-            |__ *.html      -> Actual pages of your wiki
+        |__ pages/          -> Shared and custom presentation templates
     |__ .gitignore          -> Tells GitLab which files/directories should not be uploaded to the repository
     |__ .gitlab-ci.yml      -> Automated flow for building, testing and deploying your website.
     |__ LICENSE             -> License CC-by-4.0, all wikis are required to have this license - DO NOT MODIFY
@@ -61,7 +61,7 @@ To work locally with this project, follow the steps below:
 
 #### Important
 
-Ensure you are using Python `>=3.8` (Python 3.12 recommended) to avoid compatibility issues. You can check your Python version by running `python3 --version` in your terminal.
+Ensure you are using Python `>=3.10` (Python 3.12 recommended) to avoid compatibility issues. You can check your Python version by running `python3 --version` in your terminal.
 
 #### Install
 ```bash

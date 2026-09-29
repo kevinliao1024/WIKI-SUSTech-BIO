@@ -14,48 +14,15 @@
     <div class="collapse navbar-collapse" id="primaryMenu">
       <ul class="navbar-nav ms-auto nav-list">
         <li class="nav-item"><a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{{ url_for('home') }}"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a></li>
-        <li class="nav-item"><a class="nav-link{% if request.path == '/team' %} active{% endif %}" href="{{ url_for('pages', page='team') }}"{% if request.path == '/team' %} aria-current="page"{% endif %}>Team</a></li>
+        {% for group in navigation_groups %}
+        {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
         <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Project</button>
-          <ul class="dropdown-menu">
-            {{ item('description', 'Description') }}
-            {{ item('engineering', 'Engineering') }}
-            {{ item('contribution', 'Contribution') }}
-            {{ item('parts', 'Parts') }}
+          <button class="nav-link dropdown-toggle{% if group_active %} active{% endif %}" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ group.label }}</button>
+          <ul class="dropdown-menu{% if group.get('menu_class') %} {{ group.menu_class }}{% endif %}{% if group.get('align_end') %} dropdown-menu-end{% endif %}">
+            {% for page, label in group['items'] %}{{ item(page, label) }}{% endfor %}
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Wet Lab</button>
-          <ul class="dropdown-menu">
-            {{ item('experiments', 'Experiments') }}
-            {{ item('results', 'Results') }}
-            {{ item('notebook', 'Notebook') }}
-            {{ item('measurement', 'Measurement') }}
-            {{ item('alternative-platform', 'Alternative Platform') }}
-            {{ item('safety-and-security', 'Safety & Security') }}
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dry Lab</button>
-          <ul class="dropdown-menu dry-menu">
-            {{ item('dry-lab', 'Dry Lab Overview') }}
-            {{ item('model', 'Model') }}
-            {{ item('brain-delivery', 'Brain Delivery') }}
-            {{ item('offtarget-atlas', 'Off-Target Atlas') }}
-            {{ item('software', 'Software') }}
-            {{ item('hardware', 'Hardware') }}
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Human Practices</button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            {{ item('human-practices', 'Human Practices') }}
-            {{ item('education', 'Education') }}
-            {{ item('entrepreneurship', 'Entrepreneurship') }}
-            {{ item('inclusivity', 'Inclusivity') }}
-            {{ item('sustainability', 'Sustainability') }}
-          </ul>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import re
 import unittest
 from pathlib import Path
 
@@ -7,6 +8,7 @@ from app import app
 PUBLIC_ROUTES = [
     "/",
     "/team",
+    "/attributions",
     "/description",
     "/engineering",
     "/results",
@@ -32,6 +34,7 @@ PUBLIC_ROUTES = [
 
 PLACEHOLDER_ROUTES = [
     "/team",
+    "/attributions",
     "/description",
     "/engineering",
     "/results",
@@ -135,6 +138,52 @@ class WikiRoutesTest(unittest.TestCase):
                 self.assertIn('data-content-status="pending"', page)
                 self.assertIn("Content pending team review", page)
                 self.assertNotIn("Lorem ipsum", page)
+
+    def test_markdown_pages_expose_their_docs_source(self):
+        expected = {
+            "/description": "docs/project/description.md",
+            "/engineering": "docs/project/engineering.md",
+            "/experiments": "docs/wet-lab/experiments.md",
+            "/human-practices": "docs/human-practices/human-practices.md",
+            "/inclusivity": "docs/human-practices/inclusivity.md",
+            "/measurement": "docs/wet-lab/measurement.md",
+            "/attributions": "docs/team/attributions.md",
+        }
+        for route, source in expected.items():
+            with self.subTest(route=route):
+                page = self.get_text(route)
+                self.assertIn(f'data-content-source="{source}"', page)
+                self.assertIn('class="markdown-content"', page)
+
+    def test_markdown_image_is_resolved_through_assets_route(self):
+        page = self.get_text("/description")
+        self.assertIn("/assets/figures/three-cell-clearance-mechanism.webp", page)
+        response = self.client.get("/assets/figures/three-cell-clearance-mechanism.webp")
+        self.assertEqual(response.status_code, 200)
+        response.close()
+
+    def test_custom_pages_render_their_markdown_editable_section(self):
+        expected = {
+            "/dry-lab": "docs/dry-lab/dry-lab.md",
+            "/model": "docs/dry-lab/model.md",
+            "/brain-delivery": "docs/dry-lab/brain-delivery.md",
+            "/offtarget-atlas": "docs/dry-lab/offtarget-atlas.md",
+            "/software": "docs/dry-lab/software.md",
+        }
+        for route, source in expected.items():
+            with self.subTest(route=route):
+                page = self.get_text(route)
+                self.assertIn(f'data-content-source="{source}"', page)
+                self.assertIn("markdown-content--custom", page)
+
+    def test_custom_page_section_navigation_has_valid_targets(self):
+        for route in ["/dry-lab", "/model", "/brain-delivery", "/offtarget-atlas", "/software"]:
+            with self.subTest(route=route):
+                page = self.get_text(route)
+                targets = re.findall(r'<a href="#([^"]+)">', page)
+                self.assertTrue(targets)
+                for target in targets:
+                    self.assertIn(f'id="{target}"', page)
 
     def test_every_page_keeps_required_license_and_repository_link(self):
         for route in PUBLIC_ROUTES:

@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
-{% from "macros.html" import evidence, figure_slot, section_nav %}
+{% from "macros.html" import evidence, figure_slot, markdown_panel, section_nav %}
 
-{% block title %}Brain Delivery{% endblock %}
-{% block eyebrow %}Dry Lab · Model 01{% endblock %}
-{% block page_title %}Brain Delivery<br>Digital Twin{% endblock %}
-{% block lead %}A literature-grounded ODE model links administration, systemic distribution, brain entry, intracellular expression and codon-specific APOE RNA editing.{% endblock %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
+{% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
+{% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
 {% block page_content %}
-{{ section_nav([('need', 'Why model'), ('modules', 'Architecture'), ('states', 'States'), ('equations', 'Equations'), ('parameters', 'Parameters'), ('results', 'Screen'), ('sensitivity', 'Sensitivity'), ('outputs', 'Outputs'), ('limitations', 'Limitations'), ('references', 'References')]) }}
+{{ section_nav([('why-model', 'Why model'), ('modules', 'Architecture'), ('states', 'States'), ('equations', 'Equations'), ('parameters', 'Parameters'), ('results', 'Screen'), ('sensitivity', 'Sensitivity'), ('outputs', 'Outputs'), ('limitations', 'Limitations'), ('references', 'References')]) }}
 
-<section class="content-section shell" id="need">
-  <div class="editorial-split reveal"><div><p class="section-kicker">The design problem</p><h2>Too many choices for one experimental matrix.</h2></div><div><p class="lead-copy">PUF sequence, deaminase identity, expression level, dose and sampling time all affect the outcome. The model converts these choices into explicit hypotheses that can be compared before scarce experiments are committed.</p></div></div>
+{{ markdown_panel(content, rendered_markdown) }}
+<section class="content-section shell">
   {{ evidence('Literature-informed simulation', 'Every numerical result on this page is a model output from normalized effective parameters. It is neither a measured therapeutic effect nor a clinically calibrated prediction.', 'simulation') }}
 </section>
 

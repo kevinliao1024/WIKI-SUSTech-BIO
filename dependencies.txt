@@ -5,6 +5,8 @@
 # Direct dependencies
 Flask==3.1.3
 Frozen-Flask==1.0.2
+Markdown==3.11
+PyYAML==6.0.3
 
 # Transitive dependencies (pinned for reproducibility; installed automatically
 # by the packages above — listed here to lock their exact versions too)

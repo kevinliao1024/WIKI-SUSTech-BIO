@@ -1,15 +1,15 @@
 {% extends "layout.html" %}
-{% from "macros.html" import evidence, figure_slot, section_nav %}
+{% from "macros.html" import evidence, figure_slot, markdown_panel, section_nav %}
 
-{% block title %}Model{% endblock %}
-{% block eyebrow %}Dry Lab · Integrated Model{% endblock %}
-{% block page_title %}A transparent chain,<br>not a black box.{% endblock %}
-{% block lead %}Our modeling workflow connects sequence-aware safety screening with a mechanistic delivery-and-editing simulation while preserving every assumption at the interface.{% endblock %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
+{% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
+{% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
 {% block page_content %}
 {{ section_nav([('architecture', 'Architecture'), ('contract', 'Data contract'), ('dbtl', 'DBTL'), ('limits', 'Boundaries'), ('references', 'References')]) }}
-<section class="content-section shell" id="architecture">
-  <div class="editorial-split reveal"><div><p class="section-kicker">Architecture</p><h2>Two models remain independently testable.</h2></div><div><p class="lead-copy">The PUF-OffTarget Atlas ranks possible transcriptome sites. The Brain Delivery Digital Twin simulates delivery, expression and editing. A downloadable candidate panel is the only bridge between them.</p></div></div>
+{{ markdown_panel(content, rendered_markdown) }}
+<section class="content-section shell">
   <div class="system-map reveal" aria-label="Integrated model workflow"><div><small>SEQUENCE</small><strong>PUF motif</strong></div><i aria-hidden="true"></i><div><small>ATLAS</small><strong>Candidate loci</strong></div><i aria-hidden="true"></i><div><small>CONTRACT</small><strong>CSV panel</strong></div><i aria-hidden="true"></i><div><small>DIGITAL TWIN</small><strong>Editing trajectories</strong></div><i aria-hidden="true"></i><div><small>DECISION</small><strong>Next experiment</strong></div></div>
   {{ figure_slot('integrated-model-workflow', 'Integrated sequence-to-system workflow', 'Upload the final team-reviewed workflow artwork to static.igem.wiki and replace this slot.') }}
   {{ evidence('Model-derived evidence', 'This page describes implemented computation and checked-in outputs. Predictions remain literature-informed and await team wet-lab calibration.', 'model') }}

@@ -20,7 +20,7 @@
 
     {% block main %}
     <main id="main-content">
-      <header class="page-hero" aria-hidden="true">
+      <header class="page-hero">
         <div class="page-hero__wash" aria-hidden="true">
           <div class="light-dot light-dot--coral"></div>
           <div class="light-dot light-dot--teal"></div>
@@ -29,6 +29,11 @@
         </div>
         <div class="shell page-hero__inner reveal">
           <span class="page-hero__guide"></span>
+          <div class="page-hero__copy">
+            <p class="eyebrow">{% block eyebrow %}ORCA · SUSTech 2026{% endblock %}</p>
+            <h1>{% block page_title %}{% block title_heading %}{% endblock %}{% endblock %}</h1>
+            <p class="page-hero__lead">{% block lead %}{% endblock %}</p>
+          </div>
         </div>
       </header>
       {% block page_content %}{% endblock %}
