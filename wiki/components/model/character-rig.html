@@ -1,0 +1,120 @@
+{% set rig_id = 'model-character-' ~ loop.index %}
+{% set descriptions = [
+  'The Home character magnifies a schematic RNA base, revealing C, then moves away.',
+  'The Home character taps one schematic protein module to change its color, then taps again to restore it.',
+  'The Home character raises and examines a blank planning card.',
+  'The Home character draws a schematic neural network, clears the board, and draws again.'
+] %}
+<svg class="character-rig character-rig--{{ loop.index }}" viewBox="0 0 600 400" role="img" aria-labelledby="{{ rig_id }}-title">
+  <title id="{{ rig_id }}-title">{{ descriptions[loop.index0] }}</title>
+  <defs>
+    <!-- Preserve the original Home face and cap; only clip its surrounding scene. -->
+    <clipPath id="{{ rig_id }}-head"><path d="M0 0H400V216L350 398Q295 369 263 389L211 439L174 394Q121 377 42 383L0 350Z"/></clipPath>
+  </defs>
+  <g class="rig-props rig-line">
+    {% if loop.index == 1 %}
+    <path fill="#d6d8ff" d="M48 284L289 280L328 313L88 320Z"/>
+    <path fill="#9b9ef7" d="M48 284L88 320V368L48 342Z"/>
+    <path fill="#d6d8ff" d="M88 320L328 313V360L88 368Z"/>
+    <path fill="#9b9ef7" d="M72 120Q70 112 80 112H282Q291 112 292 122L310 278H89Z"/>
+    <path fill="#fffefc" d="M88 130H276L291 258H102Z"/>
+    <g stroke="none">
+      {% for row in range(3) %}{% for col in range(6) %}
+      <rect x="{{ 109 + col * 26 + row * 3 }}" y="{{ 159 + row * 31 }}" width="20" height="13" rx="3" fill="{{ '#f2989f' if (row + col) % 3 == 0 else '#9b9ef7' }}"/>
+      {% endfor %}{% endfor %}
+    </g>
+    <g class="rig-base-reveal" stroke="none" aria-hidden="true">
+      <circle cx="260" cy="196" r="23" fill="#fffefc"/>
+      <text x="260" y="197" dominant-baseline="middle" text-anchor="middle" fill="#3d409b" font-family="Georgia,serif" font-size="34" font-weight="bold">C</text>
+    </g>
+    <path fill="#d6d8ff" d="M89 278H310L337 299L77 302Z"/>
+    <path d="M122 285H281M179 294H223" fill="none"/>
+    {% elif loop.index == 2 %}
+    <path fill="#9b9ef7" d="M310 284L297 367H311L326 284M543 284L558 367H572L559 284"/>
+    <path fill="#f2989f" d="M267 271H576V287H267Z"/>
+    <path fill="#2e3065" d="M415 231H443V260H464V271H394V260H415Z"/>
+    <rect x="280" y="62" width="285" height="181" rx="13" fill="#2e3065"/>
+    <rect x="292" y="74" width="261" height="156" rx="6" fill="#ededff" stroke="none"/>
+    <g fill="#9b9ef7" stroke-width="3">
+      <ellipse cx="398" cy="104" rx="20" ry="13" transform="rotate(-35 398 104)"/>
+      <ellipse cx="377" cy="118" rx="20" ry="13" transform="rotate(-40 377 118)"/>
+      <ellipse cx="363" cy="140" rx="20" ry="13" transform="rotate(-20 363 140)"/>
+      <ellipse class="rig-protein-target" cx="365" cy="164" rx="20" ry="13"/>
+      <ellipse cx="380" cy="184" rx="20" ry="13" transform="rotate(25 380 184)"/>
+      <ellipse cx="403" cy="194" rx="20" ry="13" transform="rotate(30 403 194)"/>
+    </g>
+    <path d="M490 96L479 110L489 122L478 137L490 152L480 167L492 182L482 198" stroke="#f2989f" stroke-width="9" fill="none"/>
+    {% elif loop.index == 3 %}
+    <path fill="#d6d8ff" d="M389 324L500 308L560 330L447 350Z"/>
+    <path fill="#fffefc" d="M447 350L560 330V350L447 371Z"/>
+    <path fill="#9b9ef7" d="M389 324V345L447 371V350Z"/>
+    <path fill="#f2989f" d="M401 299L510 285L555 303L446 324Z"/>
+    <path fill="#fffefc" d="M446 324L555 303V322L446 342Z"/>
+    <path fill="#f2989f" d="M401 299V318L446 342V324Z"/>
+    <path fill="#d6d8ff" d="M392 276L498 261L548 282L440 302Z"/>
+    <path fill="#fffefc" d="M440 302L548 282V299L440 320Z"/>
+    <path fill="#9b9ef7" d="M392 276V294L440 320V302Z"/>
+    {% else %}
+    <path fill="#9b9ef7" d="M155 155L98 364H113L171 154M255 171L316 364H331L271 164M186 297L182 375H197L202 298"/>
+    <path fill="#fffefc" d="M109 94H280L312 290H139Z"/>
+    <g class="rig-network" aria-hidden="true" fill="none" stroke="#6f71c1" stroke-width="2.5">
+      {% for start in [(200,160),(200,225)] %}{% for end in [(235,145),(235,193),(235,240)] %}
+      <path class="rig-network-edge" d="M{{ start[0] }} {{ start[1] }}L{{ end[0] }} {{ end[1] }}" pathLength="1" data-start="{{ start[0] }},{{ start[1] }}" data-end="{{ end[0] }},{{ end[1] }}"/>
+      {% endfor %}{% endfor %}
+      {% for start in [(235,145),(235,193),(235,240)] %}{% for end in [(270,160),(270,225)] %}
+      <path class="rig-network-edge" d="M{{ start[0] }} {{ start[1] }}L{{ end[0] }} {{ end[1] }}" pathLength="1" data-start="{{ start[0] }},{{ start[1] }}" data-end="{{ end[0] }},{{ end[1] }}"/>
+      {% endfor %}{% endfor %}
+      {% for x,y in [(200,160),(200,225),(235,145),(235,193),(235,240),(270,160),(270,225)] %}
+      <circle class="rig-network-node" data-point="{{ x }},{{ y }}" cx="{{ x }}" cy="{{ y }}" r="5" fill="{{ '#f2989f' if x == 235 else '#d6d8ff' }}"/>
+      {% endfor %}
+    </g>
+    <path fill="#9b9ef7" d="M158 80H218V106H158Z"/>
+    <path fill="#d6d8ff" d="M128 290H321V306H128Z"/>
+    {% endif %}
+  </g>
+  <g transform="{{ 'translate(569 20) scale(-.92 .92)' if loop.index == 1 else 'translate(525 20) scale(-.92 .92)' if loop.index == 4 else 'translate(55 20)' if loop.index == 2 else 'translate(99 20)' }}">
+    <g class="rig-line">
+      <!-- Two planted legs and feet remain outside every animated group. -->
+      <g class="rig-legs" fill="#fffefc"><path d="M83 281L80 329H102L105 282Z"/><path d="M130 283L133 330H155L151 281Z"/></g>
+      <g class="rig-feet" fill="#2e3065"><path d="M80 322Q52 322 52 344Q75 351 107 343L102 322Z"/><path d="M133 323L129 345Q163 352 182 344Q181 322 155 322Z"/></g>
+      <path class="rig-torso" fill="#2e3065" d="M82 183Q108 173 138 190L156 292Q115 308 68 291Z"/>
+      <path fill="#fffefc" d="M80 233Q113 245 145 232L161 291Q115 309 65 291Z"/>
+      <!-- Back arm has one elbow and one glove. -->
+      <g transform="translate(80 209)"><g class="rig-back-arm">
+        <path d="M0 0Q-29 15 -28 51" fill="none" stroke-width="10"/>
+        <path fill="#fffefc" d="M-41 49Q-30 40 -21 48Q-14 45 -10 51Q-6 59 -13 67Q-12 76 -22 79Q-36 79 -43 68Q-49 56 -41 49Z"/>
+      </g></g>
+    </g>
+    <g class="rig-arm-space" transform="translate(125 208)">
+      <path class="rig-curved-arm rig-line" d="M0 0Q70 65 160 11" fill="none" stroke-width="10"/>
+      <g class="rig-upper-arm rig-line">
+      {% set elbow = (39,22) if loop.index == 3 else (70,30) %}
+      {% set reach = 90 if loop.index == 1 else 100 if loop.index == 2 else 105 if loop.index == 4 else 69 %}
+      <path class="rig-bone" d="M0 0Q18 10 {{ elbow[0] }} {{ elbow[1] }}" fill="none" stroke-width="10"/>
+      <g transform="translate({{ elbow[0] }} {{ elbow[1] }})"><g class="rig-forearm">
+        <path class="rig-bone" d="M0 0Q36 0 {{ reach }} -19" fill="none" stroke-width="10"/>
+        <g transform="translate({{ reach }} -19)"><g class="rig-wrist">
+          {% if loop.index == 1 %}
+          <g class="rig-tool"><path d="M5 0L25 -47" stroke-width="10"/><circle class="rig-contact" cx="37" cy="-71" r="30" fill="#fffefc" fill-opacity=".12" stroke-width="7"/><path d="M23 -83Q30 -92 40 -91" stroke="#d6d8ff" fill="none" stroke-width="4"/></g>
+          {% elif loop.index == 3 %}
+          <g class="rig-tool"><path fill="#fffefc" d="M-6 -70L84 -77L91 -10L0 -2Z"/></g>
+          {% elif loop.index == 4 %}
+          <g class="rig-tool"><path fill="#f2989f" d="M0 11L37 -54L49 -47L12 18Z"/><path fill="#fffefc" d="M37 -54L51 -67L49 -47Z"/><path fill="#2e3065" d="M46 -62L51 -67L50 -59Z"/><circle class="rig-contact" cx="51" cy="-67" r=".1" opacity="0" stroke="none"/></g>
+          {% endif %}
+          {% if loop.index == 2 %}
+          <path class="rig-hand" fill="#fffefc" d="M-7 -11Q4 -24 15 -19L38 -24Q46 -22 41 -16L20 -9Q29 -6 23 2Q30 10 19 14Q17 23 6 19Q-9 21 -16 9Q-20 -3 -7 -11Z"/>
+          <circle class="rig-contact" cx="42" cy="-20" r=".1" opacity="0" stroke="none"/>
+          {% else %}
+          <path class="rig-hand" fill="#fffefc" d="M-13 -11Q-10 -23 1 -19L9 -9Q18 -17 24 -9Q31 3 21 15Q9 27 -7 18Q-19 11 -20 1Q-21 -9 -13 -11Z"/>
+          {% endif %}
+        </g></g>
+      </g></g>
+    </g></g>
+    <!-- The bitmap face itself is unchanged; this group pivots at the neck. -->
+    <g class="rig-head">
+      <svg x="4" y="-5" width="205" height="225.5" viewBox="0 0 400 440" overflow="visible">
+        <g clip-path="url(#{{ rig_id }}-head)"><image href="{{ url_for('assets', filename='hero/clearance/cleaners-ready.png') }}" width="1895" height="960"/></g>
+      </svg>
+    </g>
+  </g>
+</svg>

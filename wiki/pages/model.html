@@ -9,38 +9,49 @@
 ] %}
 {% block main %}
 <main id="main-content" class="model-page">
+      <header class="model-overview" id="model-overview">
+        <div class="model-introduction">
+          <div class="model-introduction-copy">
+            <h1 class="model-typed-title" aria-label="Model.">{% for letter in 'Model.' %}<span class="typed-glyph" aria-hidden="true" style="--letter:{{ loop.index0 }}">{{ letter }}</span>{% endfor %}<i class="typing-caret" aria-hidden="true">|</i></h1>
+          </div>
+          <figure class="model-character">
+            {% include 'components/model/typing-hero.html' %}
+          </figure>
+        </div>
+        <div class="module-grid">
+          {% for number, title, subtitle in modules %}
+          <a class="module-card module-card--{{ loop.index }}" href="#module{{ loop.index }}">
+            {% include 'components/model/neuron-frame.html' %}
+            <div class="neuron-card-content">
+            <div class="module-card-top"><span>MODULE {{ number }}</span></div>
+            {% include 'components/model/character-card.html' %}
+            <h2>{{ title }}</h2><p>{{ subtitle }}</p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </header>
   <div class="model-layout">
     <aside class="model-sidebar">
-      <a class="model-index-title" href="#model-overview">MODEL <span>↑</span></a>
       <nav aria-label="Model modules">
         {% for number, title, subtitle in modules %}
         <div class="module-nav-group">
         {% set module_index = loop.index %}
-        <a href="#module{{ loop.index }}" data-module-link{% if chapters[loop.index0] %} aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}"{% endif %}><span class="module-dot">{{ number }}</span><span>Module {{ loop.index }}<small>{{ title if loop.index < 3 else 'Coming soon' }}</small></span></a>
-        {% if chapters[loop.index0] %}<div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
-          {% for heading, short in chapters[loop.index0] %}<a href="#module{{ module_index }}-{{ loop.index }}" data-chapter-link><span>{{ module_index }}.{{ loop.index }}</span>{{ short }}</a>{% endfor %}
-        </div>{% endif %}
+        <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}">Module {{ loop.index }}</button>
+        <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
+          <a href="#module{{ module_index }}">Overview</a>
+          {% for heading, short in chapters[loop.index0] %}{% if 'DBTL' not in short and short != 'Overview' %}<a href="#module{{ module_index }}-{{ loop.index }}" data-chapter-link>{{ short }}</a>{% endif %}{% endfor %}
+        </div>
         </div>
         {% endfor %}
       </nav>
 
     </aside>
     <div class="model-reading">
-      <header class="model-overview" id="model-overview">
-        <h1>Model<span>.</span></h1>
-        <div class="module-grid">
-          {% for number, title, subtitle in modules %}
-          <a class="module-card module-card--{{ loop.index }}" href="#module{{ loop.index }}">
-            <div class="module-card-top"><span>MODULE {{ number }}</span><span class="module-arrow" aria-hidden="true">↗</span></div>
-            {% include 'components/model/card-art.html' %}
-            <h2>{{ title }}</h2><p>{{ subtitle }}</p>
-          </a>
-          {% endfor %}
-        </div>
-      </header>
       {% for number, title, subtitle in modules %}
       <section class="model-module{% if loop.index > 2 %} model-module--pending{% endif %}" id="module{{ loop.index }}" data-model-module{% if loop.index > 2 %} data-content-status="pending"{% endif %}>
-        <header class="module-heading"><span class="module-number">{{ number }}</span><div><p class="model-eyebrow">MODULE {{ number }}</p><h2>{{ title }}</h2><p>{{ subtitle }}</p></div></header>
+        <header class="module-heading"><span class="module-number">{{ number }}</span><div><p class="model-eyebrow">MODULE {{ number }}</p><h2>{{ title }}</h2><p>{{ subtitle }}</p>
+            </div></header>
         {% if loop.index == 1 %}
           {{ evidence('Computational analysis of RNA-seq data', 'Candidate sites and descriptive editing profiles from the supplied team analysis. Independent validation and construct-aware confirmation remain necessary.', 'model') }}
           <article class="model-prose">{% include 'components/model/module1.html' %}</article>
@@ -59,4 +70,4 @@
   </div>
 </main>
 {% endblock %}
-{% block page_scripts %}<script src="{{ url_for('static', filename='model-structure.js') }}" defer></script><script src="{{ url_for('static', filename='model-canvas.js') }}" defer></script><script src="{{ url_for('static', filename='model.js') }}" defer></script>{% endblock %}
+{% block page_scripts %}<script src="{{ url_for('static', filename='model.js') }}" defer></script><script src="{{ url_for('static', filename='model-character.js') }}" defer></script>{% endblock %}

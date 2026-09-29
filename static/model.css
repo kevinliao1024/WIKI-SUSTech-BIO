@@ -35,3 +35,142 @@ html:has(.model-page){scroll-behavior:auto}
 .module-card--1,.module-card--2{background:#faf9fd}
 .module-card--2{background:#fcf8f8}
 @media(max-width:480px){.module-grid{grid-template-columns:1fr}.module-card .model-canvas{max-height:240px}.module-card h2{font-size:20px}}
+
+/* Home character introduces the two documented workflows without replacing evidence. */
+.model-introduction{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:center;margin-bottom:40px}
+.model-introduction-copy{min-width:0;max-width:46ch}
+.model-introduction h1{margin-bottom:22px}
+.model-character{min-width:0;width:100%;max-width:520px;margin:0;justify-self:center}
+.model-character img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:20px}
+@media(min-width:761px) and (max-width:1100px){.model-introduction{grid-template-columns:1fr}.model-introduction-copy{max-width:60ch}.model-character{max-width:420px}}
+@media(max-width:760px){.model-introduction{grid-template-columns:1fr;gap:22px;margin-bottom:30px}.model-introduction-copy{max-width:60ch}.model-introduction h1{margin-bottom:18px}.model-character{max-width:360px}}
+
+/* Articulated character: the browser interpolates each joint independently. */
+.module-character-art{position:relative;aspect-ratio:3/2;margin:12px 0 10px;overflow:hidden;border-radius:16px;background:#fffefc}
+.module-card:focus-visible{outline:3px solid #5f62cd;outline-offset:4px}
+.module-card:hover,.module-card:focus-visible{transform:none}
+.character-rig{display:block;width:100%;height:100%;--upper-rest:4deg;--upper-active:-6deg;--fore-rest:-18deg;--fore-active:15deg;--wrist-rest:0deg;--wrist-active:-8deg;--head-active:3deg;--back-active:4deg}
+.rig-line{stroke:#334071;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.rig-upper-arm,.rig-forearm,.rig-wrist,.rig-back-arm{transform-box:view-box;transform-origin:0 0}
+.rig-upper-arm{transform:rotate(var(--upper-rest));transition:transform 1.25s cubic-bezier(.45,0,.25,1)}
+.rig-forearm{transform:rotate(var(--fore-rest));transition:transform 1.3s cubic-bezier(.45,0,.25,1)}
+.rig-wrist{transform:rotate(var(--wrist-rest));transition:transform 1.15s cubic-bezier(.45,0,.25,1)}
+.rig-back-arm{transform:rotate(0deg);transition:transform 1.35s ease-in-out}
+.rig-head{transform-box:view-box;transform-origin:110px 203px;transform:rotate(0deg);transition:transform 1.35s cubic-bezier(.45,0,.25,1)}
+.character-rig--2{--upper-rest:22deg;--upper-active:-17deg;--fore-rest:-85deg;--fore-active:-8deg;--wrist-rest:20deg;--wrist-active:0deg;--head-active:4deg;--back-active:-3deg}
+.character-rig--3{--upper-rest:10deg;--upper-active:-5deg;--fore-rest:5deg;--fore-active:-15deg;--wrist-rest:-3deg;--wrist-active:5deg;--head-active:5deg;--back-active:8deg}
+.character-rig--4{--upper-rest:5deg;--upper-active:-12deg;--fore-rest:-10deg;--fore-active:15deg;--wrist-rest:-15deg;--wrist-active:10deg;--head-active:3deg;--back-active:-6deg}
+.is-performing .rig-upper-arm{transform:rotate(var(--upper-active))}
+.is-performing .rig-forearm{transform:rotate(var(--fore-active))}
+.is-performing .rig-wrist{transform:rotate(var(--wrist-active))}
+.is-performing .rig-back-arm{transform:rotate(var(--back-active))}
+.is-performing .rig-head{transform:rotate(var(--head-active))}
+.rig-upper-arm,.rig-forearm,.rig-wrist,.rig-back-arm,.rig-head{transition-duration:var(--rig-duration,1.3s);transition-timing-function:var(--rig-easing,cubic-bezier(.45,0,.25,1))}
+.is-tracing .rig-upper-arm,.is-tracing .rig-forearm{transition:none}
+.rig-base-reveal{opacity:0;transition:opacity .15s ease}
+.is-inspecting .rig-base-reveal{opacity:1}
+.rig-protein-target{fill:#9b9ef7;transition:fill .2s ease}
+.is-protein-changed .rig-protein-target{fill:#f2989f}
+.rig-network{opacity:1;transition:opacity .6s ease}
+.rig-network-edge{stroke-dasharray:1;stroke-dashoffset:1}
+.rig-network-node{opacity:0;transition:opacity .15s ease}
+.rig-network-node.is-visible{opacity:1}
+.is-erasing .rig-network{opacity:0}
+@media(prefers-reduced-motion:reduce){.character-rig g{transition:none!important}.is-performing .rig-upper-arm{transform:rotate(var(--upper-rest))}.is-performing .rig-forearm{transform:rotate(var(--fore-rest))}.is-performing .rig-wrist{transform:rotate(var(--wrist-rest))}.is-performing .rig-head,.is-performing .rig-back-arm{transform:rotate(0deg)}}
+
+/* Center the overview independently of the reading navigation. */
+.model-overview{max-width:1120px;margin:0 auto;padding-bottom:72px}
+.model-sidebar{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.model-sidebar.is-visible{visibility:visible;opacity:1;pointer-events:auto}
+.module-grid{gap:10px 28px}
+.module-card{isolation:isolate;border:0;border-radius:0;background:transparent;padding:100px 78px 92px;overflow:visible;box-shadow:none}
+.module-card:hover,.module-card:focus-visible{box-shadow:none}
+.neuron-frame{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;object-fit:contain}
+.module-character-art{background:transparent;border-radius:26px}
+.module-card-top{justify-content:center;gap:16px}
+.module-card h2,.module-card p{text-align:center}
+.module-card h2{font-size:21px}
+.module-card--1 h2{max-width:none}
+@media(max-width:1000px){.module-card{padding:88px 65px 82px}.module-grid{gap:8px}.module-card h2{font-size:18px}}
+@media(max-width:760px){.model-sidebar{position:fixed;top:var(--nav-h,112px);left:18px;right:18px;margin:0;z-index:20}.model-overview{padding-bottom:50px}.module-card{padding:80px 58px 76px}.module-card h2{font-size:17px}}
+@media(max-width:600px){.module-grid{grid-template-columns:1fr;max-width:450px;margin:auto;gap:8px}.module-card{padding:88px 64px 82px}.module-card h2{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.model-sidebar{transition:none}}
+/* Keep long labels inside the cell body at every card width. */
+.module-card{padding-bottom:120px}
+.module-card h2{max-width:90%;margin:10px auto}
+.module-card--4{padding-top:120px}
+@media(max-width:1000px){.module-card{padding-bottom:110px}.module-card--4{padding-top:108px}}
+@media(max-width:600px){.module-card{padding-bottom:112px}.module-card--4{padding-top:108px}}
+
+/* Generated transparent PNG neuron frames; content follows each soma. */
+.module-grid{gap:32px;align-items:start}
+.module-card{padding:0!important;aspect-ratio:4/5}
+.neuron-card-content{position:absolute;top:30%;left:22%;right:16%;text-align:center}
+.module-card--2 .neuron-card-content{top:34%;left:18%;right:18%}
+.module-card--3 .neuron-card-content{top:47%;left:18%;right:18%}
+.module-card--4 .neuron-card-content{top:43%;left:24%;right:24%}
+.module-character-art{width:90%;margin:6px auto}
+.module-card h2{font-size:18px;line-height:1.25;max-width:100%;margin:6px auto}
+.module-card p{font-size:11px;line-height:1.35}
+.module-card-top{font-size:9px;line-height:1.2}
+.module-arrow{font-size:18px}
+@media(min-width:601px) and (max-width:900px){.module-card h2{font-size:14px}.module-card p{font-size:9px}.module-card-top{font-size:8px}.module-grid{gap:14px}}
+@media(max-width:600px){.module-grid{gap:28px}.module-card h2{font-size:16px}.module-card p{font-size:10px}.module-character-art{width:82%}}
+@media(max-width:360px){.module-card h2{font-size:14px}.module-card p{font-size:9px}.module-character-art{width:75%}.module-card-top{font-size:8px}}
+.neuron-frame{transition:filter .35s ease}
+.module-card:hover .neuron-frame,.module-card:focus-visible .neuron-frame{filter:drop-shadow(0 8px 9px #55558b22)}
+@media(prefers-reduced-motion:reduce){.neuron-frame{transition:none}}
+.module-card--1 .neuron-card-content{top:26%}
+.module-card--1 .module-character-art,.module-card--4 .module-character-art{width:78%}
+.module-card--1 h2{max-width:90%}
+.module-card--4 .neuron-card-content{top:39%}
+@media(max-width:600px){.module-card--1 .module-character-art,.module-card--4 .module-character-art{width:68%}.module-card--1 h2{font-size:14px}.module-card--1 .neuron-card-content{top:25%}}
+@media(max-width:360px){.module-card--1 h2{font-size:12px}.module-card--1 .module-character-art,.module-card--4 .module-character-art{width:60%}}
+@media(max-width:600px){.module-card--2 .neuron-card-content{top:30%}.module-card--4 .neuron-card-content{top:37%}}
+
+/* Persistent, compact directory; module buttons only expand their chapters. */
+.model-page{padding-left:250px}
+.model-layout{display:block;max-width:1120px}
+.model-sidebar{position:fixed;left:24px;top:calc(var(--nav-h,100px) + 40px);width:190px;max-height:calc(100vh - var(--nav-h,100px) - 65px);overflow-y:auto;visibility:visible;opacity:1;pointer-events:auto;z-index:20}
+.model-sidebar nav{padding:0;gap:8px}
+.model-sidebar button{display:flex;align-items:center;gap:10px;width:100%;padding:14px 12px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:15px;text-align:left;color:#3d409b;cursor:pointer}
+.model-sidebar button:hover,.model-sidebar button[aria-expanded="true"]{background:#ededff}
+.model-sidebar button:focus-visible{outline:2px solid #5f62cd;outline-offset:2px}
+.model-sidebar .module-subnav{margin:4px 0 12px 10px;padding-left:8px;border-left:1px solid #d6d8ff}
+.model-sidebar .module-subnav a{font-size:12px;padding:8px;line-height:1.4}
+.typing-hero{display:block;width:100%;height:auto;overflow:hidden}
+.typing-arm{transform-box:view-box;transform-origin:0 0;animation:keyboard-tap .56s ease-in-out infinite}
+.typing-arm--front{animation-delay:.28s}
+.typing-head{transform-origin:410px 204px;animation:typing-nod 2.24s ease-in-out infinite}
+.model-typed-title{display:flex;white-space:nowrap}
+.model-typed-title span{color:inherit!important;animation:typed-letter .01s steps(1,end) both;animation-delay:calc(.3s + var(--letter)*.28s)}
+.model-typed-title span:last-child{color:#f2989f!important}
+@keyframes keyboard-tap{0%,100%{transform:rotate(3deg)}45%,60%{transform:rotate(-3deg)}}
+@keyframes typing-nod{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(1deg)}}
+@keyframes typed-letter{from{opacity:0}to{opacity:1}}
+@media(min-width:761px){.model-introduction{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+@media(max-width:1000px) and (min-width:761px){.model-page{padding-left:195px}.model-sidebar{left:15px;width:160px}}
+@media(max-width:760px){.model-page{padding-left:18px;padding-top:calc(var(--nav-h,112px) + 85px)}.model-sidebar{left:18px;right:18px;top:var(--nav-h,112px);width:auto;max-height:none;overflow:visible;padding:8px 0}.model-sidebar nav{display:flex;gap:3px}.model-sidebar button{font-size:12px;white-space:nowrap;padding:10px 6px}.model-sidebar .module-subnav:not([hidden]){position:absolute;width:210px;margin:6px 0 0;padding:10px;max-height:55vh;overflow:auto}.module-nav-group:nth-child(n+3) .module-subnav{left:auto;right:0}.model-introduction{grid-template-columns:1fr 1.3fr;gap:8px}.model-introduction h1{font-size:clamp(42px,9vw,68px)}}
+@media(prefers-reduced-motion:reduce){.typing-arm,.typing-head,.model-typed-title span{animation:none;opacity:1}}
+
+/* Original seated artwork, with only its existing glove pixels animated. */
+.typing-hero--original{border-radius:20px}
+.model-typed-title{position:relative;align-items:baseline;width:max-content;max-width:100%}
+.model-typed-title .typed-glyph{display:inline-block;overflow:hidden;max-width:0;opacity:0;animation:typed-glyph .01s steps(1,end) both;animation-delay:calc(.3s + var(--letter)*.28s)}
+.model-typed-title .typed-glyph:nth-child(6){color:#f2989f!important}
+.typing-caret{display:block;margin-left:.04em;font-family:Arial,sans-serif;font-style:normal;font-weight:300;font-size:.82em;color:#6f71c1;opacity:0;animation:caret-blink .56s steps(1,end) 4}
+@keyframes typed-glyph{from{max-width:0;opacity:0}to{max-width:1.5em;opacity:1}}
+@keyframes caret-blink{0%,70%{opacity:1}71%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.original-typing-scene{filter:none}.model-typed-title .typed-glyph{animation:none;max-width:1.5em;opacity:1}.typing-caret{animation:none;display:none}}
+
+.rig-bone{visibility:hidden}
+@keyframes caret-finish{to{opacity:0;visibility:hidden}}
+
+.typing-caret[hidden]{display:none!important}
+/* Crisp, independently moving original gloves over a stationary clean plate. */
+.rig-back-arm>path:first-child,.rig-curved-arm{stroke-width:10}
+.typing-glove{transform-box:view-box;animation:clear-keyboard-tap .56s cubic-bezier(.35,0,.2,1) infinite;will-change:transform}
+.typing-glove--back{transform-origin:640px 638px}
+.typing-glove--front{transform-origin:518px 659px;animation-delay:-.28s}
+@keyframes clear-keyboard-tap{0%,100%{transform:translateY(0) rotate(0deg)}34%{transform:translateY(-26px) rotate(-3deg)}56%,70%{transform:translateY(2px) rotate(0deg)}}
+@media(prefers-reduced-motion:reduce){.typing-glove{animation:none;transform:none}}

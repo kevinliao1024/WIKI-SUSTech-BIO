@@ -1,0 +1,10 @@
+<svg class="typing-hero typing-hero--original" viewBox="0 0 1536 1024" role="img" aria-labelledby="typing-hero-title">
+  <title id="typing-hero-title">The original seated character lifts and taps alternating hands on the keyboard.</title>
+  <defs>
+    <clipPath id="typing-front-glove"><path d="M492 674Q490 645 514 642Q520 613 550 607Q590 589 621 617Q653 647 637 677Q628 704 607 694L588 684Q579 713 550 719Q500 730 492 684Z"/></clipPath>
+    <clipPath id="typing-back-glove"><path d="M589 610Q614 585 638 602Q676 555 723 581Q756 603 766 633Q770 652 748 655Q731 656 717 638Q710 665 686 666Q667 685 642 669Q646 640 628 621Q609 605 589 622Z"/></clipPath>
+  </defs>
+  <image class="typing-background" href="{{ url_for('static', filename='assets/model/illustrations/orca-model-typing-background.png') }}" width="1536" height="1024"/>
+  <g class="typing-glove typing-glove--back"><g clip-path="url(#typing-back-glove)"><image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-computing.png') }}" width="1536" height="1024"/></g></g>
+  <g class="typing-glove typing-glove--front"><g clip-path="url(#typing-front-glove)"><image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-computing.png') }}" width="1536" height="1024"/></g></g>
+</svg>
