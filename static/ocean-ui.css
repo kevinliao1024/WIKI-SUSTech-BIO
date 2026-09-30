@@ -1,4 +1,11 @@
 /* Shared ocean identity and interactive whale navigation. */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Onest-SemiBold.ttf') format('truetype');
+}
 :root {
   --paper: #fffefc; --paper-2: #f5f4ff; --dark-ink: #2e3065;
   --orca-indigo: #3d409b; --coral-pink: #f2989f;
@@ -7,8 +14,10 @@
 }
 .site-nav { background: rgba(255,254,252,.94); border-color: #3d409b12; backdrop-filter: blur(18px); }
 .site-brand small { color: #6f71a0; }
+/* Spread the pod across the full bar: each nav item takes an equal share of
+   the space between the brand and the right edge. */
 .nav-list { gap: 12px; }
-.nav-list .nav-link { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 84px; height: var(--nav-h); padding: 8px 10px 13px; opacity: 1; font-size: 10px; letter-spacing: .08em; }
+.nav-list .nav-link { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 84px; height: var(--nav-h); padding: 8px 10px 13px; opacity: 1; font-size: 14px; line-height: 1.15; letter-spacing: .06em; font-family: 'Onest', Futura, 'Avenir Next', 'Century Gothic', -apple-system, sans-serif; font-weight: 600; font-synthesis: none; }
 .nav-whale { position: relative; display: block; width: 70px; height: 48px; pointer-events: none; }
 .nav-whale img { display: block; width: 66px; height: 48px; object-fit: contain; transform: rotate(32deg); transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .4s; filter: drop-shadow(0 3px 1px #3d409b12); }
 .nav-whale::after { content: ''; position: absolute; bottom: -1px; left: 8px; width: 45px; height: 5px; border-radius: 50%; background: #9b9ef724; transition: transform .5s, opacity .5s; }
@@ -25,8 +34,16 @@
 @keyframes whale-bubbles { 0% { opacity: 0; transform: translateY(0) scale(.5); } 25% { opacity: .8; } 100% { opacity: 0; transform: translate(-5px,-25px) scale(1.2); } }
 
 /* The pod remains visible at every width; each whale releases one RNA strand. */
-.whale-pod { display:flex; flex-direction:row; list-style:none; padding:0; margin:0 0 0 auto; }
-.whale-navigation .nav-shell { justify-content:space-between; }
+.whale-pod { display:flex; flex-direction:row; list-style:none; padding:0; margin:0 0 0 auto; flex:1 1 auto; }
+/* Equal share per item, so the pod fills the space right of the brand. */
+.whale-pod > .nav-item { flex:1 1 0; min-width:0; display:flex; }
+.whale-pod .nav-link { flex:1 1 auto; min-width:0; }
+/* Desktop only: opt the bar out of the 1180px centred .shell cap so the pod
+   can spread across the whole viewport. Below 1200px the mobile rules keep
+   the centred, wrapped layout. */
+@media (min-width:1200px) {
+  .whale-navigation .nav-shell { width:100%; max-width:none; margin-inline:0; padding-inline:clamp(20px,4vw,56px); }
+}
 .rna-nav { position:relative; }
 .rna-toggle { cursor:pointer; }
 .rna-menu[hidden] { display:none; }
@@ -71,14 +88,14 @@
   .site-brand small { margin:0; font-size:8px; }
   .whale-pod { width:100%; justify-content:space-evenly; gap:0; margin:0; }
   .whale-pod > li { flex:1; min-width:0; }
-  .whale-pod .nav-link { min-width:0; width:100%; height:78px; padding:3px 0 9px; gap:0; font-size:9px; letter-spacing:.02em; }
+  .whale-pod .nav-link { min-width:0; width:100%; height:78px; padding:3px 0 9px; gap:0; font-size:11px; letter-spacing:.02em; }
   .nav-whale { width:56px; height:43px; }
   .nav-whale img { width:56px; height:41px; }
   .nav-label { white-space:normal; text-align:center; line-height:1.15; }
   .rna-menu,.rna-nav:last-child .rna-menu { position:fixed; top:var(--nav-h); left:50%; right:auto; transform:translateX(-50%); width:min(360px,calc(100vw - 24px)); }
 }
 @media (max-width:420px) {
-  .whale-pod .nav-link { font-size:8px; }
+  .whale-pod .nav-link { font-size:10px; }
   .nav-whale { width:48px; height:39px; }
   .nav-whale img { width:48px; height:36px; }
   .nav-whale::after { width:32px; }

@@ -14,7 +14,7 @@
       {% set key = 'nav-' ~ loop.index %}
       {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
       <li class="nav-item rna-nav" data-rna-nav>
-        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-expanded="false" aria-controls="rna-{{ key }}">{{ whale(group.label) }}</button>
+        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-expanded="false" aria-controls="rna-{{ key }}"><span class="nav-label">{{ group.label }}</span></button>
         <div class="rna-menu" id="rna-{{ key }}" aria-labelledby="whale-{{ key }}" hidden>
           <svg class="rna-menu__lead" aria-hidden="true"><path d="M160 0 C160 10 46 4 46 18"/></svg>
           <svg class="rna-menu__backbone" viewBox="0 0 90 {{ group['items']|length * 58 + 26 }}" aria-hidden="true" preserveAspectRatio="none">
