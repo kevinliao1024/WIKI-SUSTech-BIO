@@ -167,6 +167,7 @@ html:has(.model-page){scroll-behavior:auto}
 @keyframes caret-finish{to{opacity:0;visibility:hidden}}
 
 .typing-caret[hidden]{display:none!important}
+.module-source-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:28px;font-size:13px}.module-source-links a{color:#3d409b;text-underline-offset:4px}
 /* Crisp, independently moving original gloves over a stationary clean plate. */
 .rig-back-arm>path:first-child,.rig-curved-arm{stroke-width:10}
 .typing-glove{transform-box:view-box;animation:clear-keyboard-tap .56s cubic-bezier(.35,0,.2,1) infinite;will-change:transform}

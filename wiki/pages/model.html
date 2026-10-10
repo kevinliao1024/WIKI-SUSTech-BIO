@@ -2,10 +2,12 @@
 {% from "macros.html" import evidence %}
 {% block title %}{{ content.title }}{% endblock %}
  {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}">{% endblock %}
-{% set modules = [('01','Transcriptome-wide Off-target Prediction','RNA-seq · Off-target prediction'),('02','PUF Mutagenesis','PUF mutation · Structural model'),('03','Module 3','Coming soon'),('04','Module 4','Coming soon')] %}
+{% set modules = [('01','RNA-seq Off-target Analysis','Candidate sites · Editing profiles'),('02','PUF Specificity Design','Assay-informed ranking · Sequence design'),('03','APOBEC Engineering','Substrate preference · Activity retention'),('04','LAMAR Prioritization','Candidate regions · Cytidine ranking')] %}
 {% set chapters = [
  [('Overview','Overview'),('Experimental design','Experimental design'),('Workflow','Workflow'),('Results and interpretation','Results'),('Engineering implications','Engineering implications'),('Reproducibility and availability','Reproducibility'),('References','References')],
- [('Background and engineering objective','Background'),('Part I. Assay-informed specificity ranking','Specificity ranking'),('Part II. Structure-conditioned PUF design and experimental comparison','Structure-guided design'),('Next Design–Build–Test–Learn cycle','Next DBTL cycle'),('Data, figures and reproducibility','Data & reproducibility'),('References','References')], [], []
+ [('Background and engineering objective','Background'),('Part I. Assay-informed specificity ranking','Specificity ranking'),('Part II. Structure-conditioned PUF design and experimental comparison','Structure-guided design'),('Next Design–Build–Test–Learn cycle','Next DBTL cycle'),('Data, figures and reproducibility','Data & reproducibility'),('References','References')],
+ [('Background','Background'),('Model overview','Model overview'),('Results','Results'),('Conclusion','Conclusion'),('Data and code availability','Data & code'),('References','References')],
+ [('Background','Background'),('Model overview','Model overview'),('Results','Results'),('Interpretation and limitations','Limitations'),('Conclusion','Conclusion'),('Data and code availability','Data & code'),('References','References')]
 ] %}
 {% block main %}
 <main id="main-content" class="model-page">
@@ -39,8 +41,9 @@
         {% set module_index = loop.index %}
         <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}">Module {{ loop.index }}</button>
         <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
-          <a href="#module{{ module_index }}">Overview</a>
-          {% for heading, short in chapters[loop.index0] %}{% if 'DBTL' not in short and short != 'Overview' %}<a href="#module{{ module_index }}-{{ loop.index }}" data-chapter-link>{{ short }}</a>{% endif %}{% endfor %}
+          <a href="#module{{ module_index }}">Module overview</a>
+          {% for heading, short in chapters[loop.index0] %}{% if 'DBTL' not in short %}<a href="#module{{ module_index }}-{{ loop.index }}" data-chapter-link>{{ short }}</a>{% endif %}{% endfor %}
+          <a href="#module{{ module_index }}-dbtl">DBTL record</a>
         </div>
         </div>
         {% endfor %}
@@ -55,7 +58,7 @@
        </section>
        {% endif %}
        {% for number, title, subtitle in modules %}
-      <section class="model-module{% if loop.index > 2 %} model-module--pending{% endif %}" id="module{{ loop.index }}" data-model-module{% if loop.index > 2 %} data-content-status="pending"{% endif %}>
+      <section class="model-module" id="module{{ loop.index }}" data-model-module>
         <header class="module-heading"><span class="module-number">{{ number }}</span><div><p class="model-eyebrow">MODULE {{ number }}</p><h2>{{ title }}</h2><p>{{ subtitle }}</p>
             </div></header>
         {% if loop.index == 1 %}
@@ -66,9 +69,19 @@
           {{ evidence('Development-stage modeling', 'Grouped cross-validation and retrospective comparisons are distinct from prospective validation. Inverse-folding sampling preference is not measured RNA affinity.', 'model') }}
           <article class="model-prose">{% include 'components/model/module2.html' %}</article>
           <details class="model-dbtl" id="module2-dbtl"><summary>Module 2 · Design–Build–Test–Learn <span>＋</span></summary><article class="model-prose">{% include 'components/model/module2-dbtl.html' %}</article></details>
+        {% elif loop.index == 3 %}
+          {{ evidence('Structural hypotheses and experimental editing readouts', 'Structural comparisons guide candidate selection. Preference and retained activity are interpreted within each experimental batch; these measurements do not establish therapeutic efficacy.', 'model') }}
+          <article class="model-prose">{% include 'components/model/module3.html' %}</article>
+          <details class="model-dbtl" id="module3-dbtl"><summary>Module 3 · Design–Build–Test–Learn <span>＋</span></summary><article class="model-prose">{% include 'components/model/module3-dbtl.html' %}</article></details>
         {% else %}
-          <div class="module-pending"><span aria-hidden="true">✳</span><h3>Content pending team review</h3><p>This module will be added as the project develops.</p></div>
+          {{ evidence('Reported modeling results · source reconciliation pending', 'This text-only release preserves metrics from the supplied drafts. Original predictions, training records and prospective experimental validation are not included in this module package.', 'model') }}
+          <article class="model-prose">{% include 'components/model/module4.html' %}</article>
+          <details class="model-dbtl" id="module4-dbtl"><summary>Module 4 · Design–Build–Test–Learn <span>＋</span></summary><article class="model-prose">{% include 'components/model/module4-dbtl.html' %}</article></details>
         {% endif %}
+        <nav class="module-source-links" aria-label="Module {{ loop.index }} source documents">
+          <a href="{{ url_for('static', filename='assets/model/module' ~ loop.index ~ '.md') }}" download>Source manuscript ↓</a>
+          <a href="{{ url_for('static', filename='assets/model/module' ~ loop.index ~ '-dbtl.md') }}" download>DBTL source ↓</a>
+        </nav>
         {% if loop.index < 4 %}<a class="module-next" href="#module{{ loop.index + 1 }}">Next · Module {{ loop.index + 1 }} <span aria-hidden="true">↓</span></a>{% endif %}
       </section>
       {% endfor %}

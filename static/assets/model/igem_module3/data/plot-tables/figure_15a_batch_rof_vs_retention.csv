@@ -1,0 +1,38 @@
+﻿construct,candidate_id,design_group,design_group_label_en,on_target_GCG_over_offtarget_GCA_ratio,ratio_defined,ROF_ratio_over_same_batch_parent,activity_retention_fraction,is_reference_parent,excluded_failed_well
+27D-30H-58M,C27,C,C new combinations,1.5624,TRUE,1.4602,0.6577,FALSE,FALSE
+26N-58M,C36,C,C new combinations,1.1655,TRUE,1.0893,0.7744,FALSE,FALSE
+27Q-130G,E01,E,E relaxed / anomalous,1.8164,TRUE,1.6976,0.1579,FALSE,FALSE
+27I-25F,E09,E,E relaxed / anomalous,1.4295,TRUE,1.336,0.6009,FALSE,FALSE
+26N-131R,E07,E,E relaxed / anomalous,1.563,TRUE,1.4607,0.1273,FALSE,FALSE
+26N-130G,E02,E,E relaxed / anomalous,1.9541,TRUE,1.8263,0.1886,FALSE,FALSE
+27T-30H-58M,C13,A,A replication,,FALSE,,0.0789,FALSE,TRUE
+27T-30H-58M-132E,D03,D,D control variants,2.0825,TRUE,1.9463,0.6727,FALSE,FALSE
+27T-26N-32F,E17,E,E relaxed / anomalous,1.6305,TRUE,1.5238,0.6753,FALSE,FALSE
+25F-27T-58M,E19,E,E relaxed / anomalous,1.2613,TRUE,1.1788,0.75,FALSE,FALSE
+25F-27V,E08,E,E relaxed / anomalous,1.2903,TRUE,1.2059,0.6665,FALSE,FALSE
+26N-27T-58M,E18,E,E relaxed / anomalous,1.3566,TRUE,1.2679,0.7656,FALSE,FALSE
+26N-31G,E05,E,E relaxed / anomalous,,FALSE,,,FALSE,FALSE
+25E-30H-58M-132E,D05,D,D control variants,1.6603,TRUE,1.5517,0.7517,FALSE,FALSE
+25E-30H-58M-132D,D04,D,D control variants,2.5791,TRUE,2.4104,0.3398,FALSE,FALSE
+25E-58M-32F,E16,E,E relaxed / anomalous,1.6548,TRUE,1.5465,0.7298,FALSE,FALSE
+26N-30H,C25,C,C new combinations,1.2024,TRUE,1.1237,0.4042,FALSE,FALSE
+25E-58M-132E,E14,E,E relaxed / anomalous,1.2777,TRUE,1.1941,0.7727,FALSE,FALSE
+28A-30H-58M,C34,C,C new combinations,1.0544,TRUE,0.9854,0.6274,FALSE,FALSE
+27T-32F-58M,E13,E,E relaxed / anomalous,1.5143,TRUE,1.4152,0.7687,FALSE,FALSE
+27T-58I,E06,E,E relaxed / anomalous,1.2197,TRUE,1.1399,0.8413,FALSE,FALSE
+27T-58M-132E,E15,E,E relaxed / anomalous,1.4709,TRUE,1.3747,0.7325,FALSE,FALSE
+28N-27Q,E10,E,E relaxed / anomalous,1.058,TRUE,0.9888,0.3551,FALSE,FALSE
+31V,C21,B,B new single substitutions,1.7248,TRUE,1.612,0.2824,FALSE,FALSE
+130G-32F,E20,E,E relaxed / anomalous,2.5693,TRUE,2.4012,0.4774,FALSE,FALSE
+60M,,new,not in candidate list,1.1749,TRUE,1.098,0.7542,FALSE,FALSE
+30H-31A,C30,C,C new combinations,1.1272,TRUE,1.0535,0.8212,FALSE,FALSE
+32F-132E-58M,C35,C,C new combinations,1.2617,TRUE,1.1792,0.9454,FALSE,FALSE
+27T-130G,E03,E,E relaxed / anomalous,1.7247,TRUE,1.6119,0.2369,FALSE,FALSE
+132D,C07,A,A replication,1.1469,TRUE,1.0719,0.8114,FALSE,FALSE
+58H,,new,not in candidate list,1.1428,TRUE,1.068,0.8758,FALSE,FALSE
+28A-30H,C29,C,C new combinations,0.943,TRUE,0.8813,0.6435,FALSE,FALSE
+27V,,new,not in candidate list,1.2756,TRUE,1.1921,0.6525,FALSE,FALSE
+26N,C10,A,A replication,1.1173,TRUE,1.0442,0.8618,FALSE,FALSE
+60I,,new,not in candidate list,1.2338,TRUE,1.1531,0.78,FALSE,FALSE
+60T,,new,not in candidate list,1.1869,TRUE,1.1093,0.736,FALSE,FALSE
+58k,,new,not in candidate list,1.1445,TRUE,1.0696,0.9366,FALSE,FALSE

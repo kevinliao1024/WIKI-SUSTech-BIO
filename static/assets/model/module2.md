@@ -90,13 +90,39 @@ The zero-shot control ranks the fixed ESM-2 mutation score directly, without usi
 
 These are descriptive differences from development-stage cross-validation, not evidence of statistically established improvement or independent experimental validation. Sequence-group holdout can retain examples at the same mutation positions in training; it does not test generalization to entirely unseen positions. Independent experiments remain necessary.
 
+#### Sensitivity to ESM-2 readout depth
+
+We tested whether using the final ESM-2 layer was an important modeling choice. This analysis retained the main model's **reference-masked mutation score + reference-centred one-hot encoding + Ridge** pipeline. Only the ESM-2 readout depth varied across blocks 1–12. The same 81-construct pool of observed C labels, 66 sequence-group outer test folds, inner partitions, Ridge penalties, score weights and A selection rule were retained. Missing measurements were never filled with zero; preprocessing and parameter selection used training records only.
+
+At each substituted position, the reference sequence was masked and the mutant-minus-reference log probability was read from the selected layer, then summed across substitutions. For blocks 1–11, we applied the frozen final encoder normalization and the same pretrained vocabulary prediction head to the intermediate state. Block 12 used its native normalized output. This shared-head readout is a **logit-lens diagnostic**: the vocabulary head was trained for the final layer, so the intermediate probabilities are not independently trained or calibrated. The block-12 control reproduced the original main-model predictions within the recorded numerical tolerance. No local-embedding pooling or LoRA fitting was introduced.
+
+![Main-model Spearman and pairwise ranking accuracy across ESM-2 readout layers](main_model_layer_sensitivity/figures/ranking/figure@2x.png)
+
+*Figure 6. Main-model sensitivity to readout depth. The upper panel shows grouped outer-OOF Spearman correlation; the lower panel shows all-pair and within-batch pair accuracy. Pairs with observed |ΔS| ≤ 0.01 are excluded, and predicted ties contribute 0.5. The dashed reference in the upper panel is a separate pipeline that selects the layer only within each outer fold's inner validation. All twelve fixed-layer results are shown without smoothing or uncertainty intervals.*
+
+![Spearman correlation labelled separately for all twelve main-model ESM-2 readout layers](main_model_layer_sensitivity/figures/spearman/figure@2x.png)
+
+*Figure 7. Individual-layer Spearman correlations for the main-model pipeline, with values labelled to three decimals. Layers remain in numerical order. The dashed line marks the inner-selected-layer pipeline (ρ = 0.323). All values use the same 66-construct grouped outer evaluation; no uncertainty interval or statistical significance is implied.*
+
+The highest fixed-layer Spearman estimate was **0.515 at layer 4**, compared with **0.405 at layer 12**. These maxima describe the tested representations; they do not constitute an outer-test-based deployment selection.
+
+![Main-model Top15 and Top30 recovery across all twelve ESM-2 readout layers](main_model_layer_sensitivity/figures/topk/figure@2x.png)
+
+*Figure 8. Top15 and Top30 overlap for the same 66 complete-S constructs. Random expected overlap is K²/66: 3.41 for Top15 and 13.64 for Top30. Dashed lines show the inner-selected-layer pipeline. Top30 was added retrospectively for reporting and did not change the historical inner selection objective.*
+
+The largest observed Top15 overlap was **6/15**, attained at layer(s) 3, 4, 6, 7, 10, 11, 12. The largest Top30 overlap was **20/30**, attained at layer(s) 1, 2, 3, 4, 9, 12; its random-selection enrichment was **1.47×**. Layer 12 recovered 6/15 and 20/30, respectively.
+
+To separate sensitivity description from layer selection, we also selected the layer and Ridge configuration using only the inner validation of each outer fold. This pipeline reached **Spearman 0.323, Top15 4/15 and Top30 20/30**. It provides the relevant development-CV estimate for the layer-selection procedure. Selecting the best fixed layer after inspecting all outer scores would be optimistic. No statistical significance or independent experimental improvement is inferred, and the deployed model weights were not replaced by this analysis.
+
+The [complete layer metrics](main_model_layer_sensitivity/data/metrics.csv), [per-construct OOF ranks](main_model_layer_sensitivity/data/oof_rankings.csv), [locked protocol](main_model_layer_sensitivity/data/protocol.json), [validation record](main_model_layer_sensitivity/data/VALIDATED.json) and [ORCA plotting script](main_model_layer_sensitivity/scripts/plot.py) accompany the figures.
+
 #### Original five constructs with high measured specificity
 
 We retain the original five highlighted constructs alongside the rank-agreement examples below. All five belong to both the predicted and measured Top30 sets. They were highlighted for their measured specificity, rather than selected for the smallest rank errors; their prediction ranks differ from measured ranks by 7–20 places.
 
 ![Predicted and measured ranks of the original five high-specificity constructs](figures/five_targets/figure@2x.png)
 
-*Figure 6. Predicted and measured ranks of five previously highlighted constructs among 66 candidates. All five fall within the predicted Top30.*
+*Figure 9. Predicted and measured ranks of five previously highlighted constructs among 66 candidates. All five fall within the predicted Top30.*
 
 | Construct | Predicted S | Measured S | Predicted rank / 66 | Measured rank / 66 | Predicted Top30 |
 |---|---:|---:|---:|---:|:---:|
@@ -114,7 +140,7 @@ Within each eligible group, we chose the five smallest absolute differences betw
 
 ![Five concordant higher-ranked examples followed by five concordant lower-ranked examples](figures/selected_cases/figure@2x.png)
 
-*Figure 7. Five higher-ranked and five lower-ranked examples selected retrospectively for close predicted–measured ranks. These illustrative cases do not represent full-cohort accuracy.*
+*Figure 10. Five higher-ranked and five lower-ranked examples selected retrospectively for close predicted–measured ranks. These illustrative cases do not represent full-cohort accuracy.*
 
 ##### Five higher-ranked examples
 
@@ -162,7 +188,7 @@ Both analyses used the same 493-residue PUF reference and the 17-nucleotide RNA 
 
 ![Two inverse-folding design spaces and their comparison with measured constructs](inverse_folding_20260928/figures/workflow/figure@2x.png)
 
-*Figure 8. All-position and TRM-only design with ProteinMPNN and LigandMPNN, using 10,000 sequences per model and design space, followed by screening and experimental comparison.*
+*Figure 11. All-position and TRM-only design with ProteinMPNN and LigandMPNN, using 10,000 sequences per model and design space, followed by screening and experimental comparison.*
 
 | Analysis | Mutable protein positions | Fixed protein positions | Sampling source | Reported screen |
 |---|---:|---:|---|---|
@@ -179,7 +205,7 @@ Completing the structural screen yielded **128 non-TRM substitutions at 125 posi
 
 ![Non-TRM nomination counts before and after structural screening](inverse_folding_20260928/figures/nontrm_screen/figure@2x.png)
 
-*Figure 9. Non-TRM nominations before and after completing structural screening. Exact consensus requires both models to support the same substitution.*
+*Figure 12. Non-TRM nominations before and after completing structural screening. Exact consensus requires both models to support the same substitution.*
 
 The earlier script tested PyDSSP loop assignments against `C`, although the installed three-state representation uses `-`, `H` and `E`. The corrected annotation identified 129 loop, 360 helical and four strand residues. A loop assignment is a structural proxy, not an experimental measurement of flexibility. Positions 177, 249 and 285 retained different model-supported substitutions and were excluded from exact consensus.
 
@@ -193,7 +219,7 @@ All 36 TRM residues were assigned helix, so the 0.5 loop route did not apply. Li
 
 ![Sampling frequencies for all ten nominated TRM substitutions](inverse_folding_20260928/figures/trm_frequencies/figure@2x.png)
 
-*Figure 10. Frequencies of ten nominated substitutions in 10,000 TRM-only samples per model. The dashed line marks the 80% threshold; frequencies do not measure affinity.*
+*Figure 13. Frequencies of ten nominated substitutions in 10,000 TRM-only samples per model. The dashed line marks the 80% threshold; frequencies do not measure affinity.*
 
 | Substitution | LigandMPNN frequency | ProteinMPNN frequency |
 |---|---:|---:|
@@ -220,7 +246,7 @@ These three substitutions represent 3/10 nominated substitutions and 3/121 measu
 
 ![Editing changes for nominated single mutants and selected experimental examples](inverse_folding_20260928/figures/assay_comparison/figure@2x.png)
 
-*Figure 11. Selected editing changes from same-batch controls; each mean uses two records of unspecified replicate type. Y37R is compared separately with both batch-2 controls. No significance testing.*
+*Figure 14. Selected editing changes from same-batch controls; each mean uses two records of unspecified replicate type. Y37R is compared separately with both batch-2 controls. No significance testing.*
 
 
 Across all 81 measured constructs, at least one TRM-only sample contained every specified substitution for 23 constructs with LigandMPNN and 35 with ProteinMPNN. Requiring the complete affected TRM triplets reduced coverage to 13 and 20 constructs, respectively. Neither model generated an exact full-length match to any measured construct. These coverage counts use any observed occurrence, not the 80% nomination threshold, and do not quantify editing accuracy.
@@ -245,7 +271,7 @@ We additionally scored each nominated TRM substitution individually on the WT ba
 
 ![Single-mutant scores relative to WT under both inverse-folding models](inverse_folding_20260928/figures/single_scores/figure@2x.png)
 
-*Figure 12. Change in mean TRM log probability versus WT, averaged over eight decoding orders. Positive values indicate model preference, not measured binding improvement.*
+*Figure 15. Change in mean TRM log probability versus WT, averaged over eight decoding orders. Positive values indicate model preference, not measured binding improvement.*
 
 For E292Q, the changes were −0.0756 for LigandMPNN and −0.0200 for ProteinMPNN. This mismatch shows why a marginal frequency from multi-mutant samples cannot be assigned directly to a WT single mutant. The other nine candidates increased both scores, but these model-based checks remain distinct from experimental validation.
 

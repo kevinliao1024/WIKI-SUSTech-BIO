@@ -1,0 +1,6 @@
+﻿group,P0,P0 (control),P0 (gold standard),P0 (top pick),P1,P1 (control),P1 (mechanism),P2,P2 (mechanism),P2 (reference),Required
+A,3,0,1,0,8,0,0,5,0,0,1
+B,0,0,0,1,2,0,0,2,1,0,0
+C,0,0,0,2,7,0,1,1,0,1,0
+D,0,3,0,0,0,2,0,0,0,0,0
+E,2,0,0,0,10,0,0,8,0,0,0

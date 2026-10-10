@@ -1,0 +1,42 @@
+{
+  "recorded_date": "2026-10-10",
+  "source_paths_omitted": true,
+  "inputs": [
+    {
+      "input_name": "igem_module1.zip",
+      "bytes": 7057500,
+      "sha256": "23efae9ab334e5553cf9b5aa5c9c0f0a489eb521c978becf09921794342e50fb",
+      "role": "structure/style reference"
+    },
+    {
+      "input_name": "igem_module2.zip",
+      "bytes": 10190464,
+      "sha256": "180d5e58fd2a67a389013f548f960793522b4befdb4da3b7e9216781220aeb5d",
+      "role": "structure/style reference"
+    },
+    {
+      "input_name": "igem_module3.zip",
+      "bytes": 27912799,
+      "sha256": "03bea3d5e369ea54fe439aefd2a5640c43b3cb81c5ff2fd80eca5dfebb92c9b2",
+      "role": "structure/style reference"
+    },
+    {
+      "input_name": "WIKI.md",
+      "bytes": 20708,
+      "sha256": "af3ba86e9a3245c6b9206c719a267891fe8eb0ea4b26e1f76be0f0a32dc85007",
+      "role": "content draft"
+    },
+    {
+      "input_name": "DBTL.md",
+      "bytes": 17615,
+      "sha256": "6d2a7279847a2ba79a5fbea039ae0c437140cc87b45b4dcfcd2906bb3cc21b12",
+      "role": "content draft"
+    },
+    {
+      "input_name": "ORCA-scientific-illustrator-latest-20260918(2).zip",
+      "bytes": 40574,
+      "sha256": "7ff8da0b545cd12fd060737a9b080f0d3b650010dd94a490b910d0d0d9dc7338",
+      "role": "drawing skill"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿bar_order,comparison,construct,candidate_id,batch,position_132_residue,on_target_GCG_over_offtarget_GCA_ratio,ROF_ratio_over_same_batch_parent,activity_retention_fraction,excluded_failed_well
+1,"same scaffold, two batches",27T-30H-58M,C13,combinatorial batch,absent,2.156,1.809,0.772,FALSE
+2,"same scaffold, two batches",27T-30H-58M-132E,D03,this batch,E,2.0825,1.9463,0.6727,FALSE
+3,"Group D pair, same scaffold",25E-30H-58M-132D,D04,this batch,D,2.5791,2.4104,0.3398,FALSE
+4,"Group D pair, same scaffold",25E-30H-58M-132E,D05,this batch,E,1.6603,1.5517,0.7517,FALSE
+5,"failed well, excluded (not a result)",27T-30H-58M,C13,this batch,absent,,,0.0789,TRUE

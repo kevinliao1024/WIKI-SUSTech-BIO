@@ -1,0 +1,76 @@
+{
+  "scope": "Independent numerical audit of supplied summaries; not experimental validation",
+  "versions": {
+    "python": "3.9.6",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.13.1",
+    "sklearn": "1.5.2"
+  },
+  "checks": {
+    "single_mutants": {
+      "total": 102,
+      "defined": 101,
+      "best_at_retention_0_70": "K30H",
+      "ratio": 1.71,
+      "retention": 0.84
+    },
+    "ddcp": {
+      "all_residues": 199,
+      "displayed_residues": 22,
+      "constructs": 21,
+      "symmetric_limit": 0.395
+    },
+    "targeting_ratio": {
+      "defined_mutants": 41,
+      "pearson": -0.39012755143467026,
+      "spearman": -0.5570171638873112,
+      "interpretation": "descriptive; ratio and denominator are mathematically coupled"
+    },
+    "candidate_entries": 61,
+    "combinatorial": {
+      "records": 48,
+      "defined": 36,
+      "pareto": 6,
+      "threshold_hit": [
+        {
+          "construct": "27T-30H-58M",
+          "on_target_GCG_over_offtarget_GCA_ratio": 2.156,
+          "activity_retention_fraction": 0.773
+        }
+      ]
+    },
+    "designed_batch": {
+      "records": 37,
+      "usable": 35,
+      "failed_well_policy": "inherited from source; lab-level failure has not been independently established"
+    },
+    "cp_clustering": {
+      "constructs": 11,
+      "seeds": 56,
+      "features": 19110,
+      "variable_features": 766,
+      "audited_baselines": 32,
+      "audited_stored_bootstrap_partitions": 6400,
+      "max_common_silhouette_error": 7.557288128623441e-13,
+      "spectral_baseline_refit_ARI": 1.0,
+      "selected_k": 3,
+      "T31A_T31D_same_cluster": true,
+      "not_rerun": "AF3 inference, 6400 bootstrap fits and UMAP embeddings; stored records audited instead"
+    }
+  },
+  "input_hashes": {
+    "data/plot-tables/figure_08_single_site.csv": "bc7a10de5ffcd5979728e0a0973ed9262197eebcd557927b5937c1c9c78be589",
+    "data/plot-tables/figure_03_ddcp_matrix.csv": "cf0cece09886f9147521a0182683b6a804300d703fdf41061e6e023c9c4faab1",
+    "data/plot-tables/figure_03_all_residues_ddcp.csv": "f4fe729a608f0c972a2879ec57c07d067836edddcfbf28ddc7e8c8010d8da91a",
+    "data/plot-tables/figure_09_targeting_ratio.csv": "7588a9de5730a8aa4933676b97fbf239dec9034cbceb4a4be5cbe07740e3261d",
+    "data/plot-tables/figure_10a_candidate_groups_raw.csv": "e1ffaa5a086968508720b0ff0eb9b7f2c10ead309f1da22cd7fea97288dc2413",
+    "figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv": "5cdfe51f34acd4978a57ec46dbe912feebe8e06db69432556d4e144dd63b6d28",
+    "figure-sources/orca-n1-n4/input/data/designed_batch_groups.csv": "d64e7aa46a9123bf18679c7cd47cb1bc2b5906f2ca2df42d6a08e94db740ce3f",
+    "analysis/cp-clustering/variance_cp/results/variance_features.npz": "d1f838109d3f042aa6a13c93fb9a70257e661dca15e498cfbe98245387b4459a",
+    "analysis/cp-clustering/skill_clustering/results/pipeline_summary.csv": "f3c0090c94ac978996367e13f8aac99996b4db3582dee00a4079e14a4dd0635b",
+    "analysis/cp-clustering/skill_clustering/results/pipeline_labels.csv": "8ea10d1e9b77d873f2fa4f04a38c2fb2f8d91d1a035a4812b4b81f8e9fcab958",
+    "analysis/cp-clustering/skill_clustering/results/pipeline_seed_bootstrap.csv": "798aa893afa5f214ac213ecbfc714c86e100a044d746ad55d88324c286fa1146"
+  },
+  "status": "passed"
+}

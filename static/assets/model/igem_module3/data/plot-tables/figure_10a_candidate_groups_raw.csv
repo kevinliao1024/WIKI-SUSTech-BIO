@@ -1,0 +1,62 @@
+﻿candidate_id,group,group_label,mutant,priority_en
+C01,A,A 复验·对照,WT (PUF12-9),Required
+C02,A,A 复验·单点,K30H,P0
+C03,A,A 复验·单点,G25E,P1
+C04,A,A 复验·单点,G27D,P0
+C05,A,A 复验·单点,G27T,P1
+C06,A,A 复验·单点,Q58M,P0
+C07,A,A 复验·单点,M132D,P1
+C08,A,A 复验·单点,M132E,P1
+C09,A,A 复验·单点,Y32F,P1
+C10,A,A 复验·单点,I26N,P2
+C11,A,A 复验·单点,A59S,P2
+C12,A,A 复验·单点,W129Y→129W,P2
+C13,A,A 复验·组合,G27T+K30H+Q58M,P0 (gold standard)
+C14,A,A 复验·组合,G27D+K30H,P1
+C15,A,A 复验·组合,K30H+Q58M,P1
+C16,A,A 复验·组合,G27T+Q58M,P2
+C17,A,A 复验·组合,G27D+Q58M,P2
+C18,A,A 复验·组合,G25E+K30H,P1
+C19,B,B 新·单点,R28A,P0 (top pick)
+C20,B,B 新·单点,R28S,P1
+C21,B,B 新·单点,T31V,P1
+C22,B,B 新·单点,A59P,P2
+C23,B,B 新·单点,K60R,P2
+C24,B,B 新·单点,H29N,P2 (mechanism)
+C25,C,C 新·组合,I26N+K30H,P0 (top pick)
+C26,C,C 新·组合,K30H+A59S,P1
+C27,C,C 新·组合,G27D+K30H+Q58M,P0 (top pick)
+C28,C,C 新·组合,G25E+K30H+Q58M,P1
+C29,C,C 新·组合,R28A+K30H,P1
+C30,C,C 新·组合,T31A+K30H,P1 (mechanism)
+C31,C,C 新·组合,G27D+K30H+Y32F+Q58M,P1
+C32,C,C 新·组合,I26N+K30H+Q58M,P1
+C33,C,C 新·组合,R28A+Q58M,P2
+C34,C,C 新·组合,R28A+K30H+Q58M,P1
+C35,C,C 新·组合,Y32F+M132E+Q58M,P1
+C36,C,C 新·组合,I26N+Q58M,P2 (reference)
+D01,D,D 控制·58 保护,G27T+K30H,P0 (control)
+D02,D,D 控制·132 破坏,G27T+K30H+Q58M+M132D,P0 (control)
+D03,D,D 控制·132 安全,G27T+K30H+Q58M+M132E,P0 (control)
+D04,D,D 控制·132 破坏（第二背景）,G25E+K30H+Q58M+M132D,P1 (control)
+D05,D,D 控制·132 安全（第二背景）,G25E+K30H+Q58M+M132E,P1 (control)
+E01,E,E 异常配对,130G+27Q,P1
+E02,E,E 异常配对,130G+26N,P1
+E03,E,E 异常配对,130G+27T,P1
+E04,E,E 异常配对,60Q+27Q,P1
+E05,E,E 异常配对,31G+26N,P1
+E06,E,E 异常配对,58I+27T,P1
+E07,E,E 异常配对,131R+26N,P2
+E08,E,E 异常配对,27V+25F,P2
+E09,E,E 异常配对,27I+25F,P2
+E10,E,E 异常配对,28N+27Q,P2
+E11,E,E 放宽口径,32F+132E+25E,P0
+E12,E,E 放宽口径,32F+132E+26N,P0
+E13,E,E 放宽口径,27T+32F+58M,P1
+E14,E,E 放宽口径,25E+132E+58M,P1
+E15,E,E 放宽口径,27T+132E+58M,P1
+E16,E,E 放宽口径,25E+32F+58M,P1
+E17,E,E 放宽口径,27T+32F+26N,P2
+E18,E,E 放宽口径,26N+27T+58M,P2
+E19,E,E 放宽口径,25F+27T+58M,P2
+E20,E,E 异常配对,130G+32F,P2

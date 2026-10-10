@@ -1,0 +1,4 @@
+﻿feature_set,classification_accuracy,chance_level
+Internal CP (all),0.75,0.5
+Internal CP (long-range),0.75,0.5
+Pocket CP,0.875,0.5

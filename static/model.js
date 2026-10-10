@@ -18,6 +18,15 @@
       }
     });
   }
+  // Return the reading space after selecting a chapter on a narrow screen.
+  document.querySelector('.model-sidebar')?.addEventListener('click', event => {
+    if (!matchMedia('(max-width: 760px)').matches || !event.target.closest('a[href^="#"]')) return;
+    for (const link of links) {
+      link.setAttribute('aria-expanded', 'false');
+      const panel = document.getElementById(link.getAttribute('aria-controls'));
+      if (panel) panel.hidden = true;
+    }
+  });
   // Reveal the generated artwork once without moving the interactive contents.
   const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
   const revealAnimations = new Set();
