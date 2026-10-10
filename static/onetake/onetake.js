@@ -259,9 +259,9 @@ function astrocyteShape(n) {
   return { pos, meta };
 }
 
-const STRAND = { half: 22, radius: 1.05, pitch: 6.2, baseStep: 0.62 };
+const STRAND = { centerX: -22, half: 22, radius: 1.05, pitch: 6.2, baseStep: 0.62 };
 function strandShape(n) {
-  const { half, radius, pitch, baseStep } = STRAND;
+  const { centerX, half, radius, pitch, baseStep } = STRAND;
   const pos = new Float32Array(n * 3);
   const kind = new Float32Array(n);        // 0 backbone · 1 base · 2 target base
   const theta = (x) => (x / pitch) * Math.PI * 2;
@@ -291,10 +291,10 @@ function strandShape(n) {
       x = bx + j[0] * w; y = Math.cos(th) * rr + j[1] * w; z = Math.sin(th) * rr + j[2] * w;
       kind[i] = 1;
     }
-    pos.set([x, y, z], i * 3);
+    pos.set([x + centerX, y, z], i * 3);
   }
   const tx = targetIndex * baseStep - half;
-  const target = new THREE.Vector3(tx, Math.cos(theta(tx)) * radius * 0.58, Math.sin(theta(tx)) * radius * 0.58);
+  const target = new THREE.Vector3(tx + centerX, Math.cos(theta(tx)) * radius * 0.58, Math.sin(theta(tx)) * radius * 0.58);
   return { pos, meta: kind, target };
 }
 
@@ -483,9 +483,6 @@ const GradeShader = {
 /* The take: camera keyframes over the scroll track.                   */
 /* ------------------------------------------------------------------ */
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
-// The maze prelude runs at negative take time; scroll 0..1 maps to take -0.19..1.
-const T0 = 0.19 / 1.19;
-const takeOf = (p) => (p - T0) / (1 - T0);
 const KEYS = [
   { p: -0.19, stage: -1, cam: V(0, 0.1, 17.5), look: V(0, 0.2, 0) },
   { p: -0.075, stage: -1, cam: V(-2.2, -1.2, 13.8), look: V(-0.4, 0, 0) },
@@ -494,16 +491,35 @@ const KEYS = [
   { p: 0.19, stage: 0, cam: V(-2.6, 1.4, 13), look: V(0, 0.2, 0) },
   { p: 0.26, stage: 1, cam: V(1.4, 0.6, 9.6), look: V(0, 0, 0) },
   { p: 0.33, stage: 1, cam: V(-1.8, 1.4, 8.4), look: V(0, 0, 0) },
-  { p: 0.43, stage: 2, cam: V(-16, 2.6, 9.5), look: V(-11, 0, 0) },
-  { p: 0.51, stage: 2, cam: V(-4.5, 1.6, 6.8), look: V(-1, 0.3, 0) },
-  { p: 0.58, stage: 2, cam: V(-0.6, 0.9, 4.4), look: V(0, 0.6, 0) },
-  { p: 0.68, stage: 3, cam: V(0.5, 2.2, 14), look: V(0, 0, 0) },
-  { p: 0.77, stage: 3, cam: V(-1.5, 3.2, 17), look: V(0, -0.5, 0) },
-  { p: 0.84, stage: 4, cam: V(0.3, 1.0, 5.0), look: V(0, 0.6, 0) },
-  { p: 0.885, stage: 4, cam: V(4.5, 1.8, 10), look: V(0, 0.3, 0) },
+  // Follow the RNA continuously left; its target base stays ahead of us.
+  { p: 0.43, stage: 2, cam: V(-9, 2.6, 9.5), look: V(-10, 0, 0) },
+  { p: 0.51, stage: 2, cam: V(-16.5, 1.6, 6.8), look: V(-20, 0.3, 0) },
+  { p: 0.58, stage: 2, cam: V(-20.5, 0.9, 4.4), look: V(-21, 0.6, 0) },
+  { p: 0.68, stage: 3, cam: V(-21.3, 2.2, 14), look: V(-22, 0, 0) },
+  { p: 0.77, stage: 3, cam: V(-22.8, 3.2, 17), look: V(-22, -0.5, 0) },
+  { p: 0.84, stage: 4, cam: V(-23.1, 1.0, 5.0), look: V(-22, 0.6, 0) },
+  { p: 0.885, stage: 4, cam: V(-24.5, 1.8, 10), look: V(-22, 0.3, 0) },
   { p: 0.94, stage: 5, cam: V(0.6, 0.6, 15), look: V(0, 0.3, 0) },
   { p: 1.00, stage: 5, cam: V(-0.8, 0.5, 16.5), look: V(0, 0.3, 0) },
 ];
+// Let the leftward RNA journey run longer, with lighter pacing elsewhere.
+// The longer CSS track keeps morphs at their original scroll speed.
+// Text, camera and effects all use this same reversible timeline mapping.
+const HOLD_WEIGHT = 1.6;
+const RNA_HOLD_WEIGHT = 3.6;
+let trackLength = 0;
+const TRACK = KEYS.slice(1).map((key, i) => {
+  const previous = KEYS[i];
+  const start = trackLength;
+  const weight = key.stage === previous.stage ? (key.stage === 2 ? RNA_HOLD_WEIGHT : HOLD_WEIGHT) : 1;
+  trackLength += (key.p - previous.p) * weight;
+  return { start, end: trackLength, from: previous.p, to: key.p };
+});
+function takeOf(p) {
+  const distance = p * trackLength;
+  const segment = TRACK.find((part) => distance <= part.end) || TRACK[TRACK.length - 1];
+  return lerp(segment.from, segment.to, (distance - segment.start) / (segment.end - segment.start));
+}
 const camCurve = new THREE.CatmullRomCurve3(KEYS.map((k) => k.cam), false, 'centripetal');
 const lookCurve = new THREE.CatmullRomCurve3(KEYS.map((k) => k.look), false, 'centripetal');
 
@@ -519,53 +535,19 @@ function sample(p) {
 /* ------------------------------------------------------------------ */
 /* DOM choreography                                                    */
 /* ------------------------------------------------------------------ */
-function splitWords(el) {
-  let i = 0;
-  const walk = (node) => {
-    [...node.childNodes].forEach((child) => {
-      if (child.nodeType === 3) {
-        const frag = document.createDocumentFragment();
-        child.textContent.split(/(\s+)/).forEach((part) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) { frag.append(' '); return; }
-          const w = document.createElement('span'); w.className = 'w';
-          const inner = document.createElement('span'); inner.className = 'wi';
-          inner.style.setProperty('--i', i++); inner.textContent = part;
-          w.append(inner); frag.append(w);
-        });
-        child.replaceWith(frag);
-      } else if (child.nodeType === 1) walk(child);
-    });
-  };
-  walk(el);
-}
-
-const CHAPTERS = [
-  [-1, '00', 'Lost'], [-0.07, '01', 'Brain'], [0.2, '02', 'Astrocyte'], [0.38, '03', 'Sequence'],
-  [0.62, '04', 'Burden'], [0.8, '05', 'Correction'], [0.93, '06', 'Restoration'],
-];
-
 function setupDom() {
-  document.querySelectorAll('[data-split]').forEach(splitWords);
   const chapters = [...document.querySelectorAll('[data-ot-chapter]')].map((el) => ({
     el, a: parseFloat(el.dataset.in), b: parseFloat(el.dataset.out),
   }));
   const counters = [...document.querySelectorAll('[data-ot-count]')];
-  const hudNum = document.querySelector('[data-ot-hud-num]');
-  const hudName = document.querySelector('[data-ot-hud-name]');
-  const hudBar = document.querySelector('[data-ot-hud-bar]');
-  const hud = document.querySelector('.ot-hud');
-  let last = '';
+  const bar = document.querySelector('.ot-bar');
   return (p, live) => {
+    bar.classList.toggle('is-story-ended', p >= 1);
     for (const c of chapters) c.el.classList.toggle('is-on', p >= c.a && p < c.b);
     for (const el of counters) {
       const k = smooth(ramp(p, +el.dataset.from, +el.dataset.to));
       el.textContent = `${Math.round(+el.dataset.target * (live ? k : 1)).toLocaleString('en-US')}+`;
     }
-    const ch = CHAPTERS.filter((c) => p >= c[0]).pop();
-    if (ch[1] !== last) { last = ch[1]; hudNum.textContent = ch[1]; hudName.textContent = ch[2]; }
-    hudBar.style.transform = `scaleX(${clamp(p)})`;
-    hud.classList.toggle('is-hidden', p > 1.02 || p < -0.12);
   };
 }
 
@@ -573,14 +555,24 @@ function setupMenu() {
   const btn = document.querySelector('[data-ot-menu-btn]');
   const menu = document.querySelector('[data-ot-menu]');
   if (!btn || !menu) return;
+  btn.hidden = false;
+  document.querySelector('[data-ot-menu-fallback]').hidden = true;
   const set = (open) => {
     btn.setAttribute('aria-expanded', String(open));
     document.body.classList.toggle('ot-menu-open', open);
+    for (const el of document.querySelectorAll('main, .site-footer, [data-back-to-top]')) el.inert = open;
     if (open) { menu.hidden = false; requestAnimationFrame(() => menu.classList.add('is-open')); menu.querySelector('a')?.focus(); }
-    else { menu.classList.remove('is-open'); setTimeout(() => { if (!menu.classList.contains('is-open')) menu.hidden = true; }, 500); }
+    else { menu.classList.remove('is-open'); menu.hidden = true; }
   };
   btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); } });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || btn.getAttribute('aria-expanded') !== 'true') return;
+    const links = [...menu.querySelectorAll('a[href]')];
+    const last = links[links.length - 1];
+    if (e.shiftKey && document.activeElement === btn) { e.preventDefault(); last?.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); btn.focus(); }
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -588,6 +580,13 @@ function setupMenu() {
 /* ------------------------------------------------------------------ */
 function webglAvailable() {
   try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; }
+}
+
+function showStatic() {
+  root?.classList.add('ot--static', 'is-ready');
+  for (const el of document.querySelectorAll('[data-ot-count]')) {
+    el.textContent = `${Number(el.dataset.target).toLocaleString('en-US')}+`;
+  }
 }
 
 function boot() {
@@ -604,12 +603,11 @@ function boot() {
     return clamp(-r.top / Math.max(1, r.height - innerHeight), 0, 1.2);
   };
 
-  if (!webglAvailable()) {
-    root.classList.add('ot--static');
-    const tick = () => updateDom(takeOf(progressOf()), false);
-    addEventListener('scroll', tick, { passive: true }); tick();
+  if (reduceQuery.matches || !webglAvailable()) {
+    showStatic();
     return;
   }
+  root.classList.remove('ot--static');
 
   const N = small ? 26000 : 64000;
   const DUST = Math.floor(N * 0.07);
@@ -622,7 +620,7 @@ function boot() {
 
   // Burden: ~40% of particles leave the strand and gather into aggregates.
   const clumps = Array.from({ length: 34 }, () => {
-    const x = (rnd() * 2 - 1) * 15 * Math.sqrt(rnd());
+    const x = STRAND.centerX + (rnd() * 2 - 1) * 15 * Math.sqrt(rnd());
     const a = rnd() * Math.PI * 2, d = 1.7 + rnd() * 2.8;
     return { c: [x, Math.cos(a) * d, Math.sin(a) * d], r: 0.35 + rnd() * 0.75 };
   });
@@ -651,7 +649,7 @@ function boot() {
       } else {
         clumpPos.set(strand.pos.subarray(i * 3, i * 3 + 3), i * 3);
       }
-      info.set([brain.meta[i], kind, clumpy, strand.pos[i * 3] / STRAND.half], i * 4);
+      info.set([brain.meta[i], kind, clumpy, (strand.pos[i * 3] - STRAND.centerX) / STRAND.half], i * 4);
     }
     rand4.set([rnd(), rnd(), rnd(), rnd()], i * 4);
   }
@@ -737,6 +735,7 @@ function boot() {
     if (Math.abs(target - p) < 1e-5) p = target;
     const q = takeOf(p);
     const P = clamp(q, -1, 1);
+    updateDom(q, !reduce && Number.isNaN(pinned));
     const motion = reduce ? 0 : 1;
     time += dt * motion;
     intro = reduce || !Number.isNaN(pinned) ? 1 : Math.min(1, intro + dt / 3.2);
@@ -752,6 +751,8 @@ function boot() {
     // Intro dolly: the take opens slightly further out.
     camPos.z += (1 - smooth(intro)) * 6;
     camera.position.copy(camPos); camera.lookAt(camLook);
+    // Keep the C/U overlay aligned with this frame's camera before projection.
+    camera.updateMatrixWorld();
 
     uniforms.uTime.value = time;
     uniforms.uStage.value = stage;
@@ -785,17 +786,27 @@ function boot() {
     letter.style.opacity = letterOn.toFixed(3);
     letter.style.setProperty('--fix', uniforms.uFix.value.toFixed(3));
 
-    updateDom(q, !reduce);
     root.style.setProperty('--ot-p', P.toFixed(4));
     composer.render();
     if (!started) { started = true; root.classList.add('is-ready'); }
     raf = requestAnimationFrame(frame);
   }
   let raf = requestAnimationFrame(frame);
+  let contextLost = false;
+  canvas.addEventListener('webglcontextlost', () => {
+    contextLost = true;
+    cancelAnimationFrame(raf);
+    showStatic();
+  });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
-    else { clock.getDelta(); raf = requestAnimationFrame(frame); }
+    else if (!contextLost) { clock.getDelta(); raf = requestAnimationFrame(frame); }
   });
 }
 
-boot();
+try {
+  boot();
+} catch (error) {
+  showStatic();
+  console.warn('Particle scene unavailable; showing the readable home page.', error);
+}

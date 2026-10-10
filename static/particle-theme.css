@@ -1,0 +1,276 @@
+/* Light reading theme. The particle home owns its existing dark body.ot theme. */
+body:not(.ot) {
+  --particle-bg: #f5f7fb;
+  --particle-panel: #eef3fb;
+  --particle-raised: #e2eaf8;
+  --particle-ink: #25314c;
+  --particle-muted: #53617a;
+  --particle-ice: #485b99;
+  --particle-coral: #aa4e58;
+  --particle-mint: #326f6d;
+  --particle-line: #d2dcec;
+  --paper: var(--particle-bg);
+  --paper-2: var(--particle-panel);
+  --dark-ink: var(--particle-ink);
+  --ink: var(--particle-ink);
+  --ink-2: var(--particle-muted);
+  --orca-indigo: var(--particle-ice);
+  --ocean: var(--particle-ice);
+  --coral-pink: var(--particle-coral);
+  --ocean-teal: var(--particle-mint);
+  --teal: var(--particle-mint);
+  --teal-pale: var(--particle-raised);
+  --warm-yellow: var(--particle-ice);
+  --accent-purple: var(--particle-ice);
+  --line: var(--particle-line);
+  --shadow: 0 20px 50px #25314c0d;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+  color: var(--particle-ink);
+  background: var(--particle-bg);
+}
+
+body:not(.ot)::before { background-image: none; }
+body:not(.ot) ::selection { color: #25314c; background: #dce5f5; }
+body:not(.ot) :focus-visible { outline: 2px solid var(--particle-ice); outline-offset: 4px; }
+body:not(.ot) :is(.page-hero, .model-page, .not-found) {
+  color: var(--particle-ink);
+  background: var(--particle-bg);
+}
+
+/* Navigation keeps its current layout and interactions. */
+body:not(.ot) .site-nav {
+  background: #f8fafdf5;
+  border-color: var(--particle-line);
+}
+body:not(.ot) :is(.site-brand, .site-brand strong) { color: var(--particle-ink); }
+body:not(.ot) .site-brand small { color: var(--particle-muted); }
+body:not(.ot) .brand-mark { background: var(--particle-panel); border-color: var(--particle-ice); }
+body:not(.ot) .nav-list .nav-link { color: var(--particle-muted); }
+body:not(.ot) .nav-list .nav-link:is(:hover, :focus, .active) { color: var(--particle-ink); }
+body:not(.ot) :is(.dropdown-menu, .rna-menu, .navbar-collapse) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+  border-color: var(--particle-line);
+  box-shadow: 0 18px 44px #25314c14;
+}
+body:not(.ot) :is(.dropdown-item, .rna-branch) { color: var(--particle-ink); }
+body:not(.ot) .dropdown-item:is(:hover, :focus, .active),
+body:not(.ot) .rna-branch:is(:hover, :focus-visible, .active) .rna-branch__label {
+  color: var(--particle-ice);
+  background: var(--particle-raised);
+  border-color: var(--particle-coral);
+}
+body:not(.ot) .rna-branch__base {
+  color: var(--particle-bg);
+  background: var(--particle-ice);
+  box-shadow: 0 0 0 5px var(--particle-panel);
+}
+body:not(.ot) .rna-branches li:nth-child(even) .rna-branch__base {
+  color: var(--particle-bg);
+  background: var(--particle-coral);
+}
+body:not(.ot) .rna-branches li:nth-child(3n) .rna-branch__base {
+  color: var(--particle-bg);
+  background: var(--particle-mint);
+}
+body:not(.ot) .rna-branch__bond { background: #7888b766; }
+body:not(.ot) .rna-branch__label > span { color: var(--particle-ice); }
+body:not(.ot) :is(.rna-menu__lead, .rna-menu__backbone) path { stroke: var(--particle-ice); }
+body:not(.ot) .nav-whale::after { background: #7888b724; }
+body:not(.ot) .nav-whale i { border-color: var(--particle-ice); }
+body:not(.ot) .story-progress { background: var(--particle-line); }
+
+/* One short particle arrival replaces the old panel/branch slide animations. */
+body:not(.ot) .rna-menu,
+body:not(.ot) .rna-branches > li,
+body:not(.ot) .rna-menu__backbone path { animation: none; stroke-dashoffset: 0; }
+body:not(.ot) .rna-menu__particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  /* Only decorative menu particles are toned for the light surface. */
+  filter: brightness(.65) saturate(.7);
+}
+body:not(.ot) .rna-menu.is-gathering {
+  background: rgba(238, 243, 251, var(--rna-reveal, 0));
+  border-color: rgba(210, 220, 236, var(--rna-reveal, 0));
+  box-shadow: none;
+  backdrop-filter: none;
+}
+body:not(.ot) .rna-menu.is-gathering > :not(.rna-menu__particles) {
+  opacity: var(--rna-reveal, 0);
+}
+
+/* Shared logo retains its 1498 × 1050 aspect ratio, including the home footer. */
+body:not(.ot) .site-nav .site-logo,
+.site-footer .site-logo { display: block; flex: 0 0 auto; width: 80px; height: auto; }
+.site-footer .footer-brand { width: auto; height: auto; min-height: 56px; justify-content: flex-start; }
+@media (max-width: 1199px) {
+  body:not(.ot) .site-nav .site-logo { width: 42px; }
+}
+
+/* Soft surfaces keep long scientific pages light without changing their layout. */
+body:not(.ot) .page-hero::after { border-color: #485b9914; }
+body:not(.ot) .light-dot { opacity: .07; }
+body:not(.ot) .page-hero__copy h1 { color: var(--particle-ink); font-weight: 400; }
+body:not(.ot) :is(.page-hero__lead, .model-intro,
+  .module-heading p:last-child, .module-pending p, .model-sidebar-note) {
+  color: var(--particle-muted);
+}
+body:not(.ot) :is(.markdown-content h2, .markdown-content h3,
+  .module-heading h2, .model-overview h1, .model-prose h3,
+  .model-prose h4, .model-prose h5, .model-prose h6) { color: var(--particle-ink); }
+body:not(.ot) :is(.markdown-content p, .markdown-content li,
+  .content-status p, .model-prose, .references) { color: var(--particle-ink); }
+body:not(.ot) :is(.markdown-content a, .model-prose a,
+  .references a, .evidence-links a, .text-link, .module-next) {
+  color: var(--particle-ice);
+  text-decoration-color: #7888b788;
+}
+body:not(.ot) :is(.markdown-content a, .model-prose a,
+  .references a, .evidence-links a, .text-link, .module-next):hover {
+  color: var(--particle-mint);
+}
+body:not(.ot) :is(.side-index, .on-this-page, .model-module,
+  .model-dbtl, .model-index-title, .module-next) { border-color: var(--particle-line); }
+body:not(.ot) :is(.side-index a, .on-this-page a, .mobile-toc a) {
+  color: var(--particle-muted);
+  opacity: 1;
+}
+body:not(.ot) :is(.side-index a, .on-this-page a, .mobile-toc a):hover { color: var(--particle-ice); }
+body:not(.ot) :is(.content-status, .mobile-toc, .markdown-content blockquote,
+  .module-pending, .model-equation, .model-dbtl) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+  box-shadow: none;
+}
+body:not(.ot) :is(.content-status, .markdown-content blockquote) { border-left-color: var(--particle-coral); }
+body:not(.ot) :is(.ink-section, .atlas-section, .results-section) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+}
+body:not(.ot) :is(.route-card, .app-panel, .result-spotlight,
+  .atlas-run, .equation-panel, .contract-cards article, .limit-grid article,
+  .principle-grid article, .experiment-grid article, .score-layers article,
+  .evidence-ladder article, .module-chain article, .handoff-steps article) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+  border-color: var(--particle-line);
+}
+body:not(.ot) :is(.route-card, .app-panel) .text-link,
+body:not(.ot) .route-card > b { color: var(--particle-ice); }
+body:not(.ot) :is(.note, .evidence-note) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+  border-left: 3px solid var(--particle-ice);
+  padding: 18px 22px;
+}
+body:not(.ot) .evidence-note > span { color: var(--particle-ice); }
+body:not(.ot) .evidence-note > strong { color: var(--particle-ink); }
+body:not(.ot) .evidence-note > p { color: var(--particle-muted); }
+body:not(.ot) :is(.note--coral, .evidence-note--heuristic) { border-left-color: var(--particle-coral); }
+body:not(.ot) .evidence-note--heuristic > span { color: var(--particle-coral); }
+body:not(.ot) .evidence-note--software { border-left-color: var(--particle-mint); }
+body:not(.ot) .evidence-note--software > span { color: var(--particle-mint); }
+
+/* Tables and code remain readable without changing values or chart colors. */
+body:not(.ot) :is(.markdown-content table, .table-shell table, .model-table table) {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+}
+body:not(.ot) :is(.markdown-content, .table-shell, .model-table) :is(th, td) {
+  color: var(--particle-ink);
+  border-color: var(--particle-line);
+}
+body:not(.ot) :is(.markdown-content, .table-shell, .model-table) th {
+  color: var(--particle-ice);
+  background: var(--particle-raised);
+}
+body:not(.ot) .model-table { border-color: var(--particle-line); }
+body:not(.ot) :is(code, .formula) { color: var(--particle-ice); }
+body:not(.ot) :is(.markdown-content code, .model-prose :not(pre) > code) {
+  color: var(--particle-ice);
+  background: var(--particle-raised);
+}
+body:not(.ot) :is(.markdown-content pre, .model-prose pre, .code-panel,
+  .app-panel pre, .code-panel pre) {
+  color: var(--particle-ink);
+  background: #e8eef8;
+  border-color: var(--particle-line);
+}
+body:not(.ot) :is(.markdown-content, .model-prose, .app-panel, .code-panel) pre code {
+  color: inherit;
+  background: transparent;
+}
+
+/* Model reading navigation, including its mobile chapter dropdown. */
+body:not(.ot) .model-sidebar {
+  background: #f5f7fbf5;
+  border-color: var(--particle-line);
+  scrollbar-color: #a4b1ca transparent;
+}
+body:not(.ot) .model-sidebar :is(button, nav a) { color: var(--particle-muted); }
+body:not(.ot) .model-sidebar button:is(:hover, [aria-expanded="true"]),
+body:not(.ot) .model-sidebar nav a:is(:hover, [aria-current]) {
+  color: var(--particle-ice);
+  background: var(--particle-raised);
+}
+body:not(.ot) .model-sidebar .module-subnav {
+  color: var(--particle-ink);
+  background: var(--particle-panel);
+  border-color: var(--particle-line);
+  box-shadow: none;
+}
+body:not(.ot) .model-sidebar .module-subnav a > span { color: var(--particle-muted); }
+body:not(.ot) .model-sidebar [aria-expanded]::after { color: var(--particle-ice); }
+body:not(.ot) :is(.model-eyebrow, .chapter-number, .module-number,
+  .module-pending > span, .typing-caret) { color: var(--particle-ice); }
+body:not(.ot) .module-dot { border-color: var(--particle-line); }
+body:not(.ot) .model-sidebar nav a[aria-current] .module-dot {
+  color: var(--particle-bg);
+  background: var(--particle-ice);
+  border-color: var(--particle-ice);
+}
+body:not(.ot) .model-typed-title .typed-glyph:nth-child(6) { color: var(--particle-coral) !important; }
+
+/* Original neuron artwork has pale cell bodies; keep its overlaid text dark. */
+body:not(.ot) .module-card { background: transparent; }
+body:not(.ot) .module-card .neuron-card-content,
+body:not(.ot) .module-card .neuron-card-content h2 { color: #1c2340; }
+body:not(.ot) .module-card .neuron-card-content p { color: #414c65; }
+
+/* Scientific image canvases stay white. No filters alter evidence images. */
+body:not(.ot) :is(.model-prose figure, .markdown-content figure,
+  .figure-slot__preview, .art-slot__surface) {
+  color-scheme: light;
+  color: #1c2340;
+  background: #fff;
+  border-color: #c6cfdd;
+}
+body:not(.ot) :is(.model-prose img, .markdown-content img) { background: #fff; }
+body:not(.ot) :is(.model-prose figure, .markdown-content figure) figcaption {
+  color: #414c65;
+}
+body:not(.ot) :is(.model-prose figure, .markdown-content figure) figcaption :is(p, strong) { color: inherit; }
+body:not(.ot) :is(.model-prose figure, .markdown-content figure) a { color: #234879; }
+body:not(.ot) :is(.model-prose figure, .markdown-content figure) a:hover { color: #12315b; }
+body:not(.ot) :is(.figure-slot__preview, .art-slot__surface) :is(span, strong) { color: #234879; }
+body:not(.ot) :is(.figure-slot, .art-slot) figcaption { color: var(--particle-muted); }
+
+/* Utility controls; the shared footer is styled independently. */
+body:not(.ot) :is(.button--coral, .back-to-top) {
+  color: var(--particle-bg);
+  background: var(--particle-ice);
+  border-color: var(--particle-ice);
+}
+body:not(.ot) :is(.button--coral, .back-to-top):hover { background: var(--particle-mint); border-color: var(--particle-mint); }
+body:not(.ot) .button--pale {
+  color: var(--particle-ink);
+  background: var(--particle-raised);
+  border-color: var(--particle-ice);
+}

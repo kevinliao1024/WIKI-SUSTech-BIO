@@ -70,8 +70,8 @@ CONTENT_PAGES: dict[str, PageConfig] = {
 }
 
 
-# Navigation consumes the same route keys as CONTENT_PAGES, so a renamed or
-# missing page is caught immediately instead of drifting out of sync.
+# Navigation is a curated subset of CONTENT_PAGES. Unlisted pages remain
+# available by their direct routes and through contextual links.
 NAVIGATION = (
     {"label": "Team", "items": (("team", "Team"), ("attributions", "Attributions"))},
     {
@@ -98,12 +98,8 @@ NAVIGATION = (
         "label": "Dry Lab",
         "menu_class": "dry-menu",
         "items": (
-            ("dry-lab", "Dry Lab Overview"),
             ("model", "Model"),
-            ("brain-delivery", "Brain Delivery"),
-            ("offtarget-atlas", "Off-Target Atlas"),
             ("software", "Software"),
-            ("hardware", "Hardware"),
         ),
     },
     {
@@ -212,8 +208,6 @@ def validate_registry() -> list[str]:
     issues: list[str] = []
     navigation_routes = {route for group in NAVIGATION for route, _label in group["items"]}
     configured_routes = set(CONTENT_PAGES)
-    for route in sorted(configured_routes - navigation_routes):
-        issues.append(f"Configured page is missing from navigation: {route}")
     for route in sorted(navigation_routes - configured_routes):
         issues.append(f"Navigation route has no content mapping: {route}")
     for route, config in CONTENT_PAGES.items():

@@ -1,0 +1,53 @@
+/* Navigation details shared by the inner-page RNA menus. */
+.whale-navigation .nav-label::after { content: none; display: none; }
+
+/* The link remains the only control and accessible name. Both base faces are
+   decorative; hover and keyboard focus expose the small C-to-U editing cue. */
+.rna-base-flip { perspective: 180px; }
+.rna-base-flip__turn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.22,.7,.2,1);
+}
+.rna-base-flip__front,
+.rna-base-flip__back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rna-base-flip__back { transform: rotateY(180deg); color: #c0fae1; }
+.rna-branch:is(:hover, :focus-visible) .rna-base-flip__turn { transform: rotateY(180deg); }
+
+/* A much smaller version is tucked into literal c/C characters in the main
+   navigation. The parent button has its unchanged accessible label. */
+.nav-letter-flip {
+  display: inline-block;
+  vertical-align: baseline;
+  perspective: 100px;
+}
+.nav-letter-flip__turn {
+  display: inline-grid;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.22,.7,.2,1);
+}
+.nav-letter-flip__front,
+.nav-letter-flip__back {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.nav-letter-flip__back { transform: rotateY(180deg); color: #326f6d; }
+.nav-letter-flip:hover .nav-letter-flip__turn,
+.rna-toggle:focus-visible .nav-letter-flip__turn { transform: rotateY(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rna-base-flip__turn, .nav-letter-flip__turn { transition: none; }
+}

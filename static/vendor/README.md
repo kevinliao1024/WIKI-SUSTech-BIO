@@ -11,6 +11,8 @@
 | `three/three.module.js` | Public entry point. Re-exports everything and imports from `./three.core.js`. |
 | `three/three.core.js` | Sibling module required by `three.module.js`. Self-contained, no remote imports. |
 | `three/addons/controls/OrbitControls.js` | Addon, copied only when a scene needs it. |
+| `three/addons/postprocessing/*.js` | Particle home page's composer, render, bloom, grading and output passes, plus their pass dependencies. |
+| `three/addons/shaders/*.js` | Copy, luminosity high-pass and output shaders used by those passes. |
 | `three/three-importmap.json` | Import map mapping bare specifiers to the local files above. |
 
 The files are copied **byte-identical** to upstream. Never hand-edit them to rewrite a `from 'three'` specifier into a relative path — that is what the import map is for, and edits here are lost the next time the version is bumped. Verify a copy with `shasum -a 256` against `node_modules/three/`.

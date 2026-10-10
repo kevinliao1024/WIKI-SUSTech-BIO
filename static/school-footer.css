@@ -1,0 +1,57 @@
+/* University/team identity layout inspired by the 2025 SUSTech-BIO footer. */
+.site-footer--school {
+  position: relative;
+  z-index: 12;
+  padding: 76px 0 28px;
+  color: #fff;
+  background: linear-gradient(155deg, #7563ab 0%, #62549a 50%, #494274 100%);
+  border: 0;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+.school-footer__identities {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 48px;
+}
+.school-footer__university, .school-footer__team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.school-footer__university img { flex: 0 0 auto; width: 86px; height: 86px; object-fit: contain; }
+.school-footer__university p { margin: 0; font-size: clamp(20px, 2vw, 29px); font-weight: 600; line-height: 1.3; letter-spacing: -.03em; }
+.school-footer__team { color: #fff; text-decoration: none; }
+.school-footer__team img { width: 138px; height: auto; flex: 0 0 auto; }
+.school-footer__team strong { display: block; font-size: clamp(26px, 2.8vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -.035em; }
+.school-footer__team small { display: block; margin-top: 12px; font-size: 11px; letter-spacing: .17em; color: #e2def3; }
+.school-footer__team:hover { color: #fff; }
+.school-footer__team:hover strong { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.school-footer__team:focus-visible { outline: 2px solid #fff; outline-offset: 10px; border-radius: 4px; }
+.school-footer__purpose {
+  margin: 48px auto 56px;
+  text-align: center;
+  color: #f1eefb;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(20px, 2vw, 26px);
+  font-style: italic;
+  line-height: 1.45;
+}
+.school-footer__legal { padding-top: 23px; border-top: 1px solid #ffffff24; text-align: center; }
+.school-footer__legal p { margin: 7px 0; color: #e4e0f2; font-size: 11px; line-height: 1.7; }
+.school-footer__legal a { color: #fff; text-decoration-color: #ffffff70; text-underline-offset: 3px; }
+.school-footer__legal a:hover { text-decoration-color: #fff; }
+@media (max-width: 760px) {
+  .site-footer--school { padding: 48px 0 76px; }
+  .school-footer__identities { grid-template-columns: 1fr; gap: 38px; }
+  .school-footer__university { flex-direction: column; gap: 20px; text-align: center; }
+  .school-footer__university img { width: 72px; height: 72px; }
+  .school-footer__university p { font-size: 22px; }
+  .school-footer__team { gap: 16px; }
+  .school-footer__team img { width: 104px; }
+  .school-footer__team strong { font-size: 28px; }
+  .school-footer__team small { font-size: 9px; }
+  .school-footer__purpose { margin-block: 34px 38px; }
+  .school-footer__legal p { font-size: 10px; }
+}

@@ -9,6 +9,7 @@ ALLOWED_ASSET_HOSTS = {"static.igem.wiki", "video.igem.org"}
 EXCLUDED_TERMS = ("physicell", "paraview")
 EXPECTED_OUTPUTS = {
     "index.html",
+    "next",
     "team",
     "attributions",
     "description",

@@ -2,10 +2,14 @@
   <span class="nav-whale" aria-hidden="true"><img src="{{ url_for('static', filename='assets/intro/fish-large-01.png') }}" alt="" width="174" height="128"><i></i><i></i><i></i></span><span class="nav-label">{{ label }}</span>
 {%- endmacro %}
 
+{% macro editable_label(label) -%}
+  <span class="nav-label" aria-hidden="true">{%- for letter in label -%}{% if letter in ['C', 'c'] %}<span class="nav-letter-flip"><span class="nav-letter-flip__turn"><span class="nav-letter-flip__front">{{ letter }}</span><span class="nav-letter-flip__back">{{ 'U' if letter == 'C' else 'u' }}</span></span></span>{% else %}{{ letter }}{% endif %}{%- endfor -%}</span>
+{%- endmacro %}
+
 <nav class="site-nav whale-navigation fixed-top" aria-label="Primary navigation">
   <div class="shell nav-shell">
     <a class="site-brand" href="{{ url_for('home') }}" aria-label="SUSTech ORCA home">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img class="site-logo" src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO" width="1498" height="1050">
       <span><strong>ORCA</strong><small>SUSTech · 2026</small></span>
     </a>
     <ul class="nav-list whale-pod">
@@ -14,7 +18,7 @@
       {% set key = 'nav-' ~ loop.index %}
       {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
       <li class="nav-item rna-nav" data-rna-nav>
-        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-expanded="false" aria-controls="rna-{{ key }}"><span class="nav-label">{{ group.label }}</span></button>
+        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-label="{{ group.label }}" aria-expanded="false" aria-controls="rna-{{ key }}">{{ editable_label(group.label) }}</button>
         <div class="rna-menu" id="rna-{{ key }}" aria-labelledby="whale-{{ key }}" hidden>
           <svg class="rna-menu__lead" aria-hidden="true"><path d="M160 0 C160 10 46 4 46 18"/></svg>
           <svg class="rna-menu__backbone" viewBox="0 0 90 {{ group['items']|length * 58 + 26 }}" aria-hidden="true" preserveAspectRatio="none">
@@ -22,8 +26,9 @@
           </svg>
           <ul class="rna-branches">
           {% for page, title in group['items'] %}
+            {% set base = ['C','A','U','G'][loop.index0 % 4] %}
             <li style="--branch:{{ loop.index0 }}"><a class="rna-branch{% if request.path == '/' ~ page %} active{% endif %}" href="{{ url_for('pages', page=page) }}"{% if request.path == '/' ~ page %} aria-current="page"{% endif %}>
-              <span class="rna-branch__base" aria-hidden="true">{{ ['A','U','G','C'][loop.index0 % 4] }}</span><span class="rna-branch__bond" aria-hidden="true"></span><span class="rna-branch__label">{{ title }}<span aria-hidden="true">↗</span></span>
+              <span class="rna-branch__base{% if base == 'C' %} rna-base-flip{% endif %}" aria-hidden="true">{% if base == 'C' %}<span class="rna-base-flip__turn"><span class="rna-base-flip__front" data-rna-glyph>C</span><span class="rna-base-flip__back">U</span></span>{% else %}<span data-rna-glyph>{{ base }}</span>{% endif %}</span><span class="rna-branch__bond" aria-hidden="true"></span><span class="rna-branch__label">{{ title }}</span>
             </a></li>
           {% endfor %}
           </ul>

@@ -18,6 +18,11 @@ For up-to-date requirements, resources, help and guidance, visit [teams.igem.org
 
 ## Getting started
 
+The default home page now uses the particle animation from `wiki_particle_version.zip`.
+Both `/` and `/next` open that page; the project navigation still links to the existing Wiki pages.
+Its template is `wiki/pages/home.html`, with styles and animation in `static/onetake/`.
+When WebGL is unavailable or reduced motion is requested, the page presents the same content in a static reading layout.
+
 For normal content work, edit only the matching Markdown file under `docs/` and add page images under `assets/images/`.
 1. Open the Web IDE
 2. Follow the simple [content editing guide](docs/README.md)

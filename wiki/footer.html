@@ -1,26 +1,17 @@
-<footer class="site-footer">
-  <div class="shell footer-grid">
-    <div class="footer-intro">
-      <a class="site-brand footer-brand" href="{{ url_for('home') }}">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span><strong>ORCA</strong><small>SUSTech · 2026</small></span>
+<footer class="site-footer site-footer--school">
+  <div class="shell">
+    <div class="school-footer__identities">
+      <div class="school-footer__university">
+        <img src="{{ url_for('static', filename='assets/brand/sustech-seal.webp') }}" alt="SUSTech university seal" width="90" height="90" loading="lazy">
+        <p>Southern University<br>of Science and Technology</p>
+      </div>
+      <a class="school-footer__team" href="{{ url_for('pages', page='team') }}" aria-label="Meet the SUSTech-BIO team">
+        <img src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="" width="1498" height="1050" loading="lazy">
+        <span><strong>SUSTech-BIO</strong><small>ORCA · iGEM 2026</small></span>
       </a>
-      <p>On-target RNA Correction for Alzheimer’s Disease.</p>
     </div>
-    <div>
-      <p class="footer-label">Explore</p>
-      <a href="{{ url_for('pages', page='description') }}">Project</a>
-      <a href="{{ url_for('pages', page='attributions') }}">Attributions</a>
-      <a href="{{ url_for('pages', page='dry-lab') }}">Dry Lab</a>
-      <a href="{{ url_for('pages', page='human-practices') }}">Engagement</a>
-    </div>
-    <div>
-      <p class="footer-label">Dry Lab</p>
-      <a href="{{ url_for('pages', page='model') }}">Model</a>
-      <a href="{{ url_for('pages', page='software') }}">Software</a>
-    </div>
-    <div class="footer-legal">
-      <p class="footer-label">Open science</p>
+    <p class="school-footer__purpose">On-target RNA Correction<br>for Alzheimer’s Disease.</p>
+    <div class="school-footer__legal">
       <p>© 2026 SUSTech. Content is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.</p>
       <p>The repository used to create this website is available at <a href="https://gitlab.igem.org/2026/sustech">gitlab.igem.org/2026/sustech</a>.</p>
     </div>

@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="SUSTech 2026 iGEM — ORCA: On-target RNA Correction for Alzheimer’s Disease.">
     <script>document.documentElement.classList.add('js')</script>
-    <link rel="shortcut icon" href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="{{ url_for('static', filename='assets/brand/sustech-bio-favicon.svg', v='2') }}">
     <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
     <meta name="source-code" content="https://gitlab.igem.org/2026/sustech">
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='ocean-ui.css') }}" rel="stylesheet">
     {% block page_styles %}{% endblock %}
+    <link href="{{ url_for('static', filename='particle-theme.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='menu-refinements.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='school-footer.css') }}" rel="stylesheet">
     <title>{% block title %}{% endblock %} | ORCA · SUSTech iGEM 2026</title>
   </head>
   <body class="{% block body_class %}inner-page{% endblock %}">

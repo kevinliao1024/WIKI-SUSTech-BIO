@@ -36,13 +36,13 @@ def home():
 
 @app.route("/next")
 def home_next():
-    # Prototype of the redesigned home page, previewed beside the current one.
-    return render_template("pages/home_next.html")
+    """Keep the particle prototype's original preview URL available."""
+    return render_template("pages/home.html")
 
 
 @app.route("/next-crayon")
 def home_next_crayon():
-    # Crayon layer over the same particle take, added one element at a time.
+    """Crayon layer over the same particle take, added one element at a time."""
     return render_template("pages/home_next_crayon.html")
 
 

@@ -1,36 +1,131 @@
 {% extends 'layout.html' %}
 {% block title %}Home{% endblock %}
-{% block body_class %}home-page orca-story{% endblock %}
+{% block body_class %}ot{% endblock %}
 {% block page_styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='intro.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='hero.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='protein-scene.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='global-scene.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='reversal-scene.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='restoration-scene.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='home-polish.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='brain-journey.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/onetake.css') }}">
 {% endblock %}
 {% block page_scripts %}
-<script src="{{ url_for('static', filename='neuron-nav.js') }}" defer></script>
-<script src="{{ url_for('static', filename='crayon-intro.js') }}" defer></script>
-<script src="{{ url_for('static', filename='hero.js') }}" defer></script>
-<script src="{{ url_for('static', filename='hero-scrub.js') }}" defer></script>
-<script src="{{ url_for('static', filename='protein-scene.js') }}" defer></script>
-<script src="{{ url_for('static', filename='global-scene.js') }}" defer></script>
-<script src="{{ url_for('static', filename='reversal-scene.js') }}" defer></script>
-<script src="{{ url_for('static', filename='restoration-scene.js') }}" defer></script>
-<script type="module" src="{{ url_for('static', filename='globe.js') }}"></script>
+{% set three_url = url_for('static', filename='vendor/three/three.module.js') %}
+{% if not three_url.startswith('/') %}{% set three_url = './' ~ three_url %}{% endif %}
+<script type="importmap">{"imports": {"three": "{{ three_url }}", "three/addons/": "{{ three_url | replace('three.module.js', 'addons/') }}"}}</script>
+<script type="module" src="{{ url_for('static', filename='onetake/onetake.js') }}"></script>
 {% endblock %}
-{% block navigation %}{% include 'menu.html' %}{% endblock %}
+
+{% block navigation %}
+<header class="ot-bar">
+  <a class="ot-brand" href="{{ url_for('home') }}" aria-label="ORCA home">
+    <img class="ot-brand__logo" src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO" width="1498" height="1050">
+  </a>
+  <a class="ot-menu-btn" href="#ot-index-title" data-ot-menu-fallback>Explore</a>
+  <button class="ot-menu-btn" type="button" aria-expanded="false" aria-controls="ot-menu" data-ot-menu-btn hidden>
+    <span>Menu</span><i aria-hidden="true"></i>
+  </button>
+</header>
+<nav class="ot-menu" id="ot-menu" aria-label="Primary navigation" data-ot-menu hidden>
+  <div class="ot-menu__grid">
+    {% for group in navigation_groups %}
+    <div class="ot-menu__group" style="--g:{{ loop.index0 }}">
+      <p class="ot-kicker">{{ group.label }}</p>
+      <ul>
+        {% for page, title in group['items'] %}
+        <li><a href="{{ url_for('pages', page=page) }}">{{ title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</nav>
+{% endblock %}
+
 {% block main %}
-<main id="main-content">
-  {% include 'components/hero_scene.html' %}
-  {% include 'components/protein_scene.html' %}
-  {% include 'components/global_scene.html' %}
-  {% include 'components/reversal_scene.html' %}
-  {% include 'components/restoration_scene.html' %}
+<main id="main-content" class="ot-root ot--static" data-ot>
+  <div class="ot-stage" aria-hidden="true">
+    <canvas class="ot-canvas" data-ot-canvas></canvas>
+    <div class="ot-vignette"></div>
+    <div class="ot-letter" data-ot-letter><span class="ot-letter__c">C</span><span class="ot-letter__u">U</span></div>
+  </div>
+
+  <!-- One continuous scroll track. Every chapter is pinned over the same
+       WebGL take; data-in / data-out are fractions of the track. -->
+  <section class="ot-story" data-ot-story aria-label="ORCA — the project in one take">
+    <div class="ot-chapters">
+      <header class="ot-ch ot-ch--hero is-on" data-ot-chapter data-in="-1" data-out="-0.13">
+        <h1 class="ot-hero-title">ORCA</h1>
+        <p class="ot-hero-sub">On-target RNA Correction for Alzheimer’s Disease</p>
+        <p class="ot-scroll-hint"><i></i>Scroll to enter</p>
+      </header>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="-0.1" data-out="0.0">
+        <h2 class="ot-h ot-h--sm">Familiar places. <em>A fading sense of home.</em></h2>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.11" data-out="0.2">
+        <h2 class="ot-h">Inside the brain.</h2>
+        <p class="ot-sub">We follow an astrocyte, then move inside the cell to a single strand of RNA.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--right" data-ot-chapter data-in="0.235" data-out="0.335">
+        <h2 class="ot-h">Meet the astrocyte.</h2>
+        <p class="ot-sub">Astrocytes support neurons and help manage proteins and lipids in the brain.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.395" data-out="0.485">
+        <h2 class="ot-h">The APOE message.</h2>
+        <p class="ot-sub">APOE RNA encodes apolipoprotein E, a protein involved in transporting lipids through the brain.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.52" data-out="0.605">
+        <h2 class="ot-h ot-h--sm">One letter changes the protein.</h2>
+        <p class="ot-sub">At this site, APOE4 RNA carries C and APOE3 carries U. That single-letter difference changes one amino acid in the protein.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.62" data-out="0.672">
+        <h2 class="ot-h">Amyloid can build up.</h2>
+        <p class="ot-sub">In human cell models, APOE4 astrocytes take up less amyloid-β than APOE3 astrocytes.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.689" data-out="0.731">
+        <h2 class="ot-h ot-h--sm">A higher risk of Alzheimer’s.</h2>
+        <p class="ot-sub">APOE4 increases disease risk. Carrying it does not mean someone will develop dementia.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--stats" data-ot-chapter data-in="0.747" data-out="0.808">
+        <h2 class="ot-h ot-h--sm">Dementia affects millions.</h2>
+        <dl class="ot-stats">
+          <div><dt data-ot-count data-target="57000000" data-from="0.747" data-to="0.775">57,000,000+</dt><dd>people were living with dementia worldwide in 2021</dd></div>
+          <div><dt>60–70%</dt><dd>of dementia cases are estimated to be attributable to Alzheimer disease</dd></div>
+          <div><dt>≈10 million</dt><dd>new dementia cases each year</dd></div>
+        </dl>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.825" data-out="0.905">
+        <h2 class="ot-h ot-h--sm">Targeting one letter in RNA.</h2>
+        <p class="ot-sub">ORCA explores targeted C-to-U editing to shift APOE4 RNA toward an APOE3-like sequence.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.935" data-out="2">
+        <h2 class="ot-h">From editing to evidence.</h2>
+        <p class="ot-sub">ORCA investigates whether targeted RNA editing can improve cellular function. Editing specificity, delivery and any cellular benefit remain to be tested.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ot-index" aria-labelledby="ot-index-title">
+    <div class="ot-index__head">
+      <h2 id="ot-index-title" class="ot-h">Explore the project</h2>
+    </div>
+    <div class="ot-index__grid">
+      {% for group in navigation_groups %}
+      <article class="ot-card">
+        <h3>{{ group.label }}</h3>
+        <ul>
+          {% for page, title in group['items'] %}
+          <li><a href="{{ url_for('pages', page=page) }}"><span>{{ title }}</span><i aria-hidden="true">→</i></a></li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
 </main>
-{% include 'components/neuron_nav.html' %}
 {% endblock %}
-{% block footer %}{% endblock %}
