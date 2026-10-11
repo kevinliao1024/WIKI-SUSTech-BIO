@@ -1,0 +1,64 @@
+{
+  "alignment": {
+    "method": "Kabsch, observed shared C-alpha atoms, chain A, residues 42–160",
+    "count": 117,
+    "rmsd_angstrom": 0.3313
+  },
+  "representation": "Smooth C-alpha ribbon; deposited heavy-atom sidechain; missing loops omitted",
+  "display_residue_range": "23–162 (observed only)",
+  "images": {
+    "1b68-domain": {
+      "residue112_anchor_percent": [
+        57.144,
+        39.969
+      ]
+    },
+    "1b68-sidechain": {
+      "residue112_anchor_percent": [
+        44.118,
+        50.0
+      ]
+    },
+    "1lpe-domain": {
+      "residue112_anchor_percent": [
+        57.263,
+        39.595
+      ]
+    },
+    "1lpe-sidechain": {
+      "residue112_anchor_percent": [
+        44.53,
+        47.694
+      ]
+    }
+  },
+  "retrieved": "2026-10-11",
+  "renderer": "Blender 5.2.1 LTS, Cycles, orthographic camera",
+  "composition": "Domain 600×800 at (0,25), sidechain 600×450 at (600,200); identical for both entries",
+  "entries": [
+    {
+      "pdb": "1B68",
+      "source": "https://files.rcsb.org/download/1B68.pdb",
+      "entry": "https://www.rcsb.org/structure/1B68",
+      "resolution_angstrom": 2.0,
+      "method": "X-ray diffraction",
+      "chain": "A",
+      "residue112": "ARG",
+      "residue158": "ARG",
+      "sha256": "fdbe0280c18473a65be2435388c2d9fc876c4e498c00d349838a72d9370ce942"
+    },
+    {
+      "pdb": "1LPE",
+      "source": "https://files.rcsb.org/download/1LPE.pdb",
+      "entry": "https://www.rcsb.org/structure/1LPE",
+      "resolution_angstrom": 2.25,
+      "method": "X-ray diffraction",
+      "chain": "A",
+      "residue112": "CYS",
+      "residue158": "ARG",
+      "sha256": "89cf97e51b31665f96cbbb5204e7eb1bb85058310e613fa75a0151c599b50407"
+    }
+  ],
+  "evidence_status": "Public reference structures, not team editing measurements",
+  "hosting_status": "Local review assets; upload production images to static.igem.wiki before public deployment"
+}

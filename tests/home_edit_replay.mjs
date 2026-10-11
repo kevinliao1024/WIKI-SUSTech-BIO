@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import { createEditReplay, replayFrame, REPLAY_TIMING } from '../static/onetake/edit-replay.mjs';
+import { editState } from '../static/onetake/biology-scene.mjs';
+
+const editStart = REPLAY_TIMING.question + REPLAY_TIMING.rewind + REPLAY_TIMING.target;
+assert.equal(replayFrame(0).phase, 'question');
+assert.ok(replayFrame(4).take < replayFrame(3).take);
+assert.equal(replayFrame(editStart + .2).take, .55);
+assert.equal(replayFrame(editStart + 8).phase, 'edit');
+assert.equal(editState(.5).pod, 1);
+assert.equal(editState(.5).cetus, 1);
+assert.equal(editState(.5).fix, 0);
+assert.ok(editState(.65).fix > 0 && editState(.65).fix < 1);
+assert.equal(editState(.85).fix, 1);
+
+const events = new Map(), scrolls = [];
+globalThis.innerHeight = 800;
+globalThis.window = { addEventListener(type, fn) { events.set(type, fn); }, scrollTo(options) { scrolls.push(options.top); } };
+const button = { hidden: true, addEventListener(type, fn) { this.click = fn; } };
+const root = { dataset: {}, querySelector() { return button; } };
+const story = { getBoundingClientRect() { return { height: 10800 }; } };
+const replay = createEditReplay({ root, story, toProgress: x => x, enabled: true });
+assert.equal(replay.update(.75, .05), null);
+assert.equal(replay.update(.8, .05).phase, 'question');
+assert.equal(button.hidden, false);
+for (let i = 0; i < 250; i++) replay.update(.8, .05);
+assert.equal(root.dataset.editReplay,'placement');
+assert.equal(replay.update(.8,.05).take,.55);
+replay.setReady(true);
+assert.equal(replay.update(.8,.05).phase,'placement','placing both modules does not start editing before the gesture');
+let prevented = false;
+events.get('wheel')({deltaY:100,preventDefault(){prevented=true;}});
+assert.equal(prevented,true);
+assert.equal(replay.update(.8,.05).phase,'edit');
+for (let i = 0; i < 600; i++) replay.update(.8, .05);
+assert.equal(button.hidden, true);
+assert.ok(Math.min(...scrolls) <= 5500.01);
+assert.equal(scrolls.at(-1), 9550);
+assert.equal(replay.update(.8, .05), null, 'replay only runs once');
+
+const interrupted = createEditReplay({ root, story, toProgress: x => x, enabled: true });
+interrupted.update(.8, .05);
+events.get('wheel')({deltaY:-100,preventDefault(){}});
+assert.equal(interrupted.update(.8, .05), null);
+assert.equal(button.hidden, true);
+const reduced = createEditReplay({ root, story, toProgress: x => x, enabled: false });
+assert.equal(reduced.update(.8, .05), null);
+console.log('Passed edit order, readable hold, real rewind, placement pause, one-gesture playback, once-only replay, interruption and reduced-motion checks.');

@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+{% block title %}Home · Structure preview{% endblock %}
+{% block body_class %}ot ot-crt-home{% endblock %}
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/apoe112.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/onetake.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/crt-opening.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/dementia-burden.css') }}">
+{% endblock %}
+{% block page_scripts %}
+<script defer src="{{ url_for('static', filename='onetake/apoe112.js') }}"></script>
+{% set three_url = url_for('static', filename='vendor/three/three.module.js') %}
+{% if not three_url.startswith('/') %}{% set three_url = './' ~ three_url %}{% endif %}
+<script type="importmap">{"imports": {"three": "{{ three_url }}", "three/addons/": "{{ three_url | replace('three.module.js', 'addons/') }}"}}</script>
+<script type="module" src="{{ url_for('static', filename='onetake/onetake.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='onetake/dementia-burden.mjs') }}"></script>
+{% endblock %}
+
+{% block navigation %}{% include 'menu.html' %}{% endblock %}
+
+{% block main %}
+<main id="main-content" class="ot-root ot--static" data-ot data-structure-preview>
+  {% include 'components/crt_opening.html' %}
+  <div class="ot-bio-labels" aria-hidden="true">
+    <div class="ot-bio-label ot-codon" data-bio-label="codon">
+      <span class="ot-codon__name"><span class="ot-before">APOE4 RNA</span><span class="ot-after">APOE3-like RNA</span></span>
+      <span class="ot-codon__sequence"><span class="ot-codon__target"><span class="ot-before">C</span><span class="ot-after">U</span></span><span>G</span><span>C</span></span>
+      <span class="ot-codon__protein"><span class="ot-before">Arg112</span><span class="ot-after">Cys112</span></span>
+    </div>
+    <span class="ot-bio-label ot-bio-label--pod" data-bio-label="pod">POD</span>
+    <span class="ot-bio-label ot-bio-label--cetus" data-bio-label="cetus">CETUS</span>
+    <span class="ot-bio-label ot-bio-label--amyloid" data-bio-label="amyloid">Aβ</span>
+    <span class="ot-bio-label ot-bio-label--nucleus" data-bio-label="nucleus">Nucleus</span>
+  </div>
+  <div class="ot-bio-interaction" data-bio-interaction hidden>
+    <svg class="ot-bio-guides" aria-hidden="true"><path data-bio-guide="pod"></path><path data-bio-guide="cetus"></path><path class="ot-bio-hit" data-bio-hit="pod"></path><path class="ot-bio-hit" data-bio-hit="cetus"></path></svg>
+    <span class="ot-drop-site" data-drop-site="pod" aria-hidden="true"></span>
+    <span class="ot-drop-site" data-drop-site="cetus" aria-hidden="true"></span>
+    <button class="ot-bio-handle" data-bio-handle="pod" aria-label="Place POD at the RNA recognition site" aria-pressed="false"><span>POD</span><small>Drag to RNA</small></button>
+    <button class="ot-bio-handle" data-bio-handle="cetus" aria-label="Place CETUS beside the target C" aria-pressed="false"><span>CETUS</span><small>Drag to RNA</small></button>
+    <p class="ot-placement-instruction" data-placement-instruction aria-live="polite">Drag POD and CETUS to the RNA.</p>
+  </div>
+  <button class="ot-edit-skip" data-edit-skip hidden>Skip animation</button>
+
+  <!-- One continuous scroll track. Every chapter is pinned over the same
+       WebGL take; data-in / data-out are fractions of the track. -->
+  <section class="ot-story" data-ot-story aria-label="ORCA — the project in one take">
+    <div class="ot-chapters">
+      <header class="ot-ch ot-ch--hero is-on" data-ot-chapter data-in="-1" data-out="-0.105">
+        <h1 class="ot-hero-title">ORCA</h1>
+        <p class="ot-hero-sub">On-target RNA Correction of APOE4 for Alzheimer’s Disease</p>
+        <p class="ot-scroll-hint"><i></i>Scroll to enter</p>
+      </header>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.11" data-out="0.2">
+        <span class="ot-object">Brain</span>
+        <p class="ot-static-explanation">We follow an astrocyte and move inside the cell to its RNA.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--right" data-ot-chapter data-in="0.235" data-out="0.335">
+        <span class="ot-object">Astrocyte</span>
+        <p class="ot-static-explanation">Astrocytes help manage proteins and lipids in the brain.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.395" data-out="0.485">
+        <span class="ot-object">APOE RNA</span>
+        <p class="ot-static-explanation">APOE RNA encodes apolipoprotein E.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.52" data-out="0.605">
+        <p class="ot-static-explanation">The target is the first C in CGC. Changing it to U produces UGC, corresponding to Arg112→Cys112 in mature APOE.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.62" data-out="0.672">
+        <span class="ot-object">Astrocyte · Aβ</span>
+        <p class="ot-static-explanation">In human cell models, APOE4 astrocytes take up less amyloid-β than APOE3 astrocytes.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.689" data-out="0.731">
+        <p class="ot-narrative">Alzheimer’s disease involves multiple interacting pathways. APOE4 influences several of them, including lipid metabolism, amyloid-β handling and inflammation.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--stats" data-ot-chapter data-in="0.747" data-out="0.784">
+        {% include 'components/dementia_burden.html' %}
+      </div>
+
+      <div class="ot-ch ot-ch--question" data-ot-chapter data-in="0.784" data-out="0.814">
+        <h2 class="ot-question">What if we can<br><em>reverse it?</em></h2>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.825" data-out="0.913">
+        <p class="ot-narrative">We aim to change APOE4 RNA to an APOE3-like sequence without altering genomic DNA.</p>
+        <p class="ot-source">Conceptual editing mechanism</p>
+        <p class="ot-static-explanation">POD recognises the RNA. CETUS edits the target C to U.</p>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.935" data-out="2">
+        <p class="ot-narrative">We want to know whether this RNA edit changes how astrocytes take up amyloid-β.</p>
+        <a class="ot-project-link" href="#apoe112">Explore ORCA <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  {% include 'components/apoe112.html' %}
+
+  <section class="ot-index" aria-labelledby="ot-index-title">
+    <div class="ot-index__head">
+      <h2 id="ot-index-title" class="ot-h">Explore the project</h2>
+    </div>
+    <div class="ot-index__grid">
+      {% for group in navigation_groups %}
+      <article class="ot-card">
+        <h3>{{ group.label }}</h3>
+        <ul>
+          {% for page, title in group['items'] %}
+          <li><a href="{{ url_for('pages', page=page) }}"><span>{{ title }}</span><i aria-hidden="true">→</i></a></li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

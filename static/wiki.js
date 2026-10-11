@@ -154,12 +154,49 @@
     effect.frame = requestAnimationFrame(frame);
   }
 
+  // Measure rows rather than assuming their height: wrapped labels and fonts
+  // remain aligned with the SVG, including in scrollable mobile menus.
+  function drawStrand(panel) {
+    const strand = panel.querySelector('.rna-strand');
+    const svg = strand.querySelector('svg');
+    const bases = [...strand.querySelectorAll('.rna-branch__base')];
+    const origin = strand.getBoundingClientRect();
+    if (!origin.height) return;
+    const points = bases.map(base => {
+      const box = base.getBoundingClientRect();
+      return { x:box.left - origin.left + box.width / 2, y:box.top - origin.top + box.height / 2 };
+    });
+    const vertices = [{ x:points[0].x, y:0 }, ...points,
+      { x:points.at(-1).x, y:origin.height }];
+    // Share the same tangent on both sides of each vertex, even when a
+    // wrapped label changes a row's height. The resulting path is C1 smooth.
+    const tangents = vertices.map((point, i) => Math.min(
+      i ? point.y - vertices[i - 1].y : Infinity,
+      i < vertices.length - 1 ? vertices[i + 1].y - point.y : Infinity
+    ) / 4);
+    let d = `M ${vertices[0].x} 0`;
+    for (let i = 1; i < vertices.length; i++) {
+      const previous = vertices[i - 1], point = vertices[i];
+      const dy = (point.y - previous.y) / 4;
+      const midY = (point.y + previous.y) / 2;
+      const midX = point.x + (i > 1 && i < vertices.length - 1 ? (i % 2 ? 8 : -8) : 0);
+      d += ` C ${previous.x} ${previous.y + tangents[i - 1]} ${midX} ${midY - dy} ${midX} ${midY}`;
+      d += ` C ${midX} ${midY + dy} ${point.x} ${point.y - tangents[i]} ${point.x} ${point.y}`;
+    }
+    svg.setAttribute('viewBox', `0 0 ${parseFloat(getComputedStyle(svg).width)} ${origin.height}`);
+    svg.querySelectorAll('path').forEach(path => path.setAttribute('d', d));
+  }
+  const strandObserver = new ResizeObserver(entries => {
+    entries.forEach(({ target }) => drawStrand(target.closest('.rna-menu')));
+  });
+
   function closeGroup(group) {
     const panel = group.querySelector('.rna-menu');
     stopMenuParticles(panel);
     group.classList.remove('is-open');
     group.querySelector('.rna-toggle').setAttribute('aria-expanded', 'false');
     panel.hidden = true;
+    panel.querySelectorAll(".is-editing").forEach(link => link.classList.remove("is-editing"));
   }
   function closeAll(except) {
     groups.forEach((group) => {
@@ -175,15 +212,20 @@
     group.querySelector('.rna-toggle').setAttribute('aria-expanded', 'true');
     const panel = group.querySelector('.rna-menu');
     panel.hidden = false;
-    const box = panel.getBoundingClientRect();
-    const whale = group.querySelector('.rna-toggle').getBoundingClientRect();
-    const origin = Math.max(16, Math.min(box.width - 16, whale.left + whale.width / 2 - box.left));
-    panel.querySelector('.rna-menu__lead path').setAttribute('d', `M${origin} 0 C${origin} 14 46 0 46 18`);
+    drawStrand(panel);
     try { gatherMenu(panel); } catch { stopMenuParticles(panel); }
   }
   groups.forEach((group) => {
     const toggle = group.querySelector('.rna-toggle');
     const panel = group.querySelector('.rna-menu');
+    strandObserver.observe(panel.querySelector('.rna-strand'));
+    panel.addEventListener('click', event => {
+      const base = event.target.closest('.rna-base-flip');
+      // A touch on the decorative C previews editing; the text still navigates.
+      if (!base || (event.pointerType !== 'touch' && !matchMedia('(hover:none)').matches)) return;
+      event.preventDefault();
+      base.closest('a').classList.toggle('is-editing');
+    });
     group.addEventListener('pointerenter', (event) => {
       if (event.pointerType !== 'touch') open(group);
     });

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-wh-preview>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ORCA · White Hole Studio</title><link rel="icon" href="data:,">
+  <link rel="stylesheet" href="whitehole.css"><link rel="stylesheet" href="preview.css">
+  <script src="whitehole-boot.js" data-home="../../"></script>
+  <script src="whitehole.js" defer></script><script type="module" src="preview.js"></script>
+</head>
+<body>
+  <main class="studio">
+    <p class="eyebrow">ORCA / MOTION STUDY 01</p>
+    <h1>White Hole</h1><p class="subtitle">A passage between two worlds.</p>
+    <div class="studio-controls" data-wh-exclude>
+      <button id="play-light">Space → Light</button><button id="play-home">Light → Space</button>
+      <button id="play-short">Page → Page</button>
+    </div>
+    <div class="study" data-wh-exclude>
+      <label for="direction">Study direction</label>
+      <select id="direction"><option value="to-light">Home → Internal</option><option value="to-home">Internal → Home</option></select>
+      <label for="time">Timeline · <output id="time-label">0.00s</output></label>
+      <input id="time" type="range" min="0" max="2000" step="10" value="0">
+      <div class="samples"><button id="core">Core · 0.65s</button><button id="warp">Warp · 1.10s</button><button id="cover">Cover · 1.50s</button></div>
+      <label><input type="checkbox" id="fallback"> CSS fallback</label>
+      <button id="reset">Reset</button>
+      <output id="status" aria-live="polite">Ready</output>
+    </div>
+    <p class="note">Real-time GPU scene. Scrub to inspect light, lensing and depth.<br>Escape cancels playback. Motion preferences are respected.</p>
+    <div class="routes"><a href="../../">Open Wiki Home</a><a href="../../description">Project</a><a href="../../experiments">Wet Lab</a></div>
+  </main>
+</body></html>

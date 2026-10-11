@@ -7,7 +7,7 @@ body.ot {
   --ot-ice: #9fd0ff;
   --ot-coral: #ff6a55;
   --ot-mint: #5cffb8;
-  --ot-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --ot-sans: Futura, "Avenir Next", "Century Gothic", -apple-system, sans-serif;
   --ot-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --ot-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
   --ot-ease: cubic-bezier(.16, .84, .24, 1);
@@ -112,10 +112,69 @@ body.ot-menu-open { overflow: hidden; }
 
 /* The one letter, projected onto the particle knot. */
 .ot-letter {
+  display: none;
   position: absolute; left: 0; top: 0; opacity: 0;
   font: italic 400 clamp(84px, 11vw, 176px)/1 var(--ot-serif);
   will-change: transform, opacity;
 }
+
+/* Object labels follow their own particle objects, rather than heading stacks. */
+.ot-bio-labels { position: fixed; inset: 0; z-index: 8; pointer-events: none; }
+.ot-bio-label { position: absolute; top: 0; left: 0; opacity: 0; visibility: hidden;
+  color: #e9e8ff; font: 500 clamp(13px,1.2vw,17px)/1.3 var(--ot-sans);
+  letter-spacing: .03em; white-space: nowrap; will-change: transform, opacity;
+  text-shadow: 0 2px 12px #03050b; }
+.ot-bio-label:not(.ot-codon)::after { content: ''; display: block; width: 1px; height: 18px; margin: 6px auto 0; background: currentColor; opacity: .42; }
+.ot-bio-label--pod { color: #9d9cf4; }
+.ot-bio-label--cetus { color: #9fd0ff; }
+.ot-bio-label--amyloid { color: #f58f9c; }
+.ot-bio-label--nucleus { color: #aaa7d1; font-size: 12px; }
+.ot-codon { text-align: center; }
+.ot-codon__name, .ot-codon__protein { display: grid; font-size: 11px; letter-spacing: .09em; }
+.ot-codon__sequence { display: flex; align-items: center; gap: clamp(14px,2vw,27px); margin: 9px 0 8px;
+  font: 400 clamp(42px,5.5vw,78px)/1 Georgia,serif; color: #e9e8ff; }
+.ot-codon__target { display: grid; color: #f58f9c; }
+.ot-before, .ot-after { grid-area: 1 / 1; }
+.ot-before { opacity: calc(1 - var(--fix,0)); }
+.ot-after { opacity: var(--fix,0); }
+.ot-codon__target .ot-after { color: var(--ot-mint); }
+.ot-codon__protein { color: #a4abc4; letter-spacing: .04em; }
+.ot-object { display: inline-block; font-size: clamp(20px,2vw,30px); color: #d0d0eb; letter-spacing: .02em; }
+.ot-narrative { margin: 0; max-width: 31ch; font-size: clamp(23px,2.5vw,36px); font-weight: 400; line-height: 1.35; text-wrap: pretty; }
+.ot-ch--low .ot-narrative { margin-inline: auto; max-width: 38ch; }
+.ot-source { margin: 16px 0 0; color: #8994ae; font-size: 11px; letter-spacing: .035em; }
+.ot-static-explanation { display: none; }
+.ot-ch--question { left: 50%; bottom: 24vh; transform: translateX(-50%); width: min(850px,88vw); text-align: center; }
+.ot-question { margin: 0; font-size: clamp(42px,6.5vw,96px); line-height: 1.08; font-weight: 400; letter-spacing: -.035em; }
+.ot-question em { color: #f58f9c; font-family: Georgia,serif; font-weight: 400; }
+.ot-edit-skip { position: fixed; z-index: 39; right: 24px; bottom: 24px; padding: 10px 15px;
+  border: 1px solid #9d9cf433; border-radius: 3px; color: #c1c5d9; background: #03050bd9;
+  font: 400 12px/1.4 var(--ot-sans); cursor: pointer; }
+.ot-edit-skip[hidden] { display: none; }
+.ot-edit-skip:focus-visible { outline: 2px solid var(--ot-ice); outline-offset: 3px; }
+.ot-project-link { display: inline-flex; gap: 22px; margin-top: 24px; color: #c7c5f4; font-size: 15px; text-decoration: none; border-bottom: 1px solid #9d9cf44d; padding-bottom: 8px; }
+.ot-bio-interaction { position: fixed; inset: 0; z-index: 11; pointer-events: none; }
+.ot-bio-interaction[hidden] { display: none; }
+.ot-bio-guides { width: 100%; height: 100%; overflow: visible; }
+.ot-bio-guides path { fill: none; stroke: #c9c6fa; stroke-width: 1; stroke-dasharray: 3 7; animation: ot-guide 3s linear infinite; }
+.ot-bio-guides .ot-bio-hit { fill: transparent; stroke: none; animation: none;
+  pointer-events: all; touch-action: none; cursor: grab; }
+.ot-bio-guides .ot-bio-hit.is-dragging { cursor: grabbing; }
+@keyframes ot-guide { to { stroke-dashoffset: -40; } }
+.ot-bio-handle { position: absolute; top: 0; left: 0; min-width: 94px; min-height: 84px; padding: 14px 8px;
+  color: #e9e8ff; border: 1px solid transparent; background: radial-gradient(ellipse,#9d9cf426,transparent 70%);
+  border-radius: 50%; cursor: grab; pointer-events: auto; touch-action: none; user-select: none;
+  font: 500 14px/1.4 var(--ot-sans); text-shadow: 0 2px 12px #03050b; }
+.ot-bio-handle small { display: block; margin-top: 4px; font-size: 10px; color: #b2aecb; font-weight: 400; }
+.ot-bio-handle.is-dragging { cursor: grabbing; border-color: #e2ce9544; background: radial-gradient(ellipse,#e2ce9525,transparent 70%); }
+.ot-bio-handle.is-placed { color: #a4e5cf; cursor: default; background: none; }
+.ot-bio-handle.is-placed small { visibility: hidden; }
+.ot-bio-handle:focus-visible { outline: 1px solid #e2ce95; outline-offset: 3px; }
+.ot-drop-site { position: absolute; top: 0; left: 0; width: 90px; height: 70px; pointer-events: none; }
+.ot-placement-instruction { position: absolute; left: 20px; right: 20px; bottom: 15vh; margin: 0;
+  text-align: center; color: #c9c5dd; font-size: clamp(15px,1.6vw,21px); letter-spacing: .01em; }
+body.ot:has(.ot-root[data-edit-replay]) .back-to-top { display: none; }
+.ot-root[data-edit-replay="placement"] .ot-bio-labels { z-index: 9; }
 .ot-letter span { position: absolute; left: 50%; top: 0; transform: translateX(-50%); }
 .ot-letter__c {
   color: var(--ot-coral);
@@ -132,7 +191,7 @@ body.ot-menu-open { overflow: hidden; }
 
 /* ---------- Story track ---------- */
 .ot-root { position: relative; }
-.ot-story { position: relative; z-index: 10; height: 2340vh; pointer-events: none; }
+.ot-story { position: relative; z-index: 10; height: calc(100vh + 2240vh * var(--ot-track-scale, 1)); pointer-events: none; }
 .ot-chapters { position: sticky; top: 0; height: 100vh; height: 100svh; }
 .ot-ch {
   position: absolute; max-width: min(780px, 88vw);
@@ -174,7 +233,7 @@ body.ot-menu-open { overflow: hidden; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .ot-hero-sub {
-  margin: 28px 0 0; max-width: none; white-space: nowrap;
+  margin: 28px 0 0; max-width: 52ch; white-space: normal;
   font: italic 400 clamp(11px, 3.6vw, 30px)/1.25 var(--ot-serif); color: var(--ot-ink);
 }
 .ot-scroll-hint {
@@ -216,9 +275,13 @@ body.ot-menu-open { overflow: hidden; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
+  .ot-ch--question { transform: none; width: auto; text-align: center; bottom: 24vh; }
+  .ot-narrative { font-size: clamp(21px,4.5vw,27px); max-width: 30ch; }
+  .ot-ch--low .ot-narrative { max-width: 30ch; }
+  .ot-edit-skip { right: 16px; bottom: 16px; }
   .ot-brand__logo { width: 78px; }
   .ot-hero-title { font-size: clamp(80px, 28vw, 180px); }
-  .ot-story { height: 2100vh; }
+  .ot-story { height: calc(100vh + 2000vh * var(--ot-track-scale, 1)); }
   .ot-ch, .ot-ch--right { left: 20px; right: 20px; text-align: left; bottom: 96px; }
   .ot-ch--low { transform: none; }
   .ot-sub, .ot-ch--right .ot-sub, .ot-ch--low .ot-sub { margin-left: 0; margin-right: 0; }
@@ -251,6 +314,9 @@ body.ot-menu-open { overflow: hidden; }
 /* Readable baseline when JavaScript/WebGL is unavailable or motion is reduced. */
 .ot--static .ot-canvas, .ot--static .ot-letter,
 .ot--static .ot-scroll-hint { display: none; }
+.ot--static .ot-bio-labels, .ot--static .ot-edit-skip { display: none; }
+.ot--static .ot-bio-interaction { display: none; }
+.ot--static .ot-static-explanation { display: block; max-width: 54ch; color: #b7c1d1; line-height: 1.6; }
 .ot--static .ot-story { height: auto; padding-top: 100px; pointer-events: auto; }
 .ot--static .ot-chapters { position: relative; height: auto; }
 .ot--static .ot-ch {
@@ -259,3 +325,94 @@ body.ot-menu-open { overflow: hidden; }
 }
 .ot--static .ot-ch--hero { padding-top: 100px; padding-bottom: 100px; }
 .ot--static .ot-index { padding-top: 80px; }
+
+/* ---------- Dark home navigation ---------- */
+/* Transparent bar with white text for the whale navigation on body.ot. */
+body.ot .site-nav {
+  background: rgba(3, 5, 11, .28);
+  border-color: rgba(200, 220, 255, .08);
+  backdrop-filter: blur(18px);
+}
+body.ot :is(.site-brand, .site-brand strong) { color: var(--ot-ink); }
+body.ot .site-brand small { color: var(--ot-mute); }
+body.ot .site-logo {
+  display: block;
+  width: 80px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: .92;
+}
+@media (max-width: 1199px) {
+  body.ot .site-logo { width: 42px; }
+}
+body.ot .nav-list .nav-link { color: rgba(233, 238, 247, .78); }
+body.ot .nav-list .nav-link:is(:hover, :focus, .active) { color: var(--ot-ink); }
+body.ot .nav-whale::after { background: rgba(159, 208, 255, .18); }
+body.ot .nav-whale i { border-color: var(--ot-ice); }
+
+/* The orca artwork is deep navy with pale markings, so on the dark bar it
+   reads as a near-black blob. Invert its luminance and rotate the hue back:
+   the body turns pale ice-blue and the markings go dark, so the whale keeps
+   its markings instead of flattening into a plain white silhouette.
+   The hover/open variants are repeated here because ocean-ui.css restates
+   the drop-shadow at a specificity that would otherwise win. */
+body.ot .nav-whale img {
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 3px 1px rgba(3, 5, 11, .45));
+}
+body.ot .nav-item:is(:hover, :focus-within) .nav-whale img,
+body.ot .rna-nav.is-open .nav-whale img {
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 7px 5px rgba(3, 5, 11, .5));
+}
+body.ot .nav-label::after { background: var(--ot-mint); }
+
+/* RNA menu: semi-transparent dark panel with white text. */
+body.ot :is(.rna-menu, .dropdown-menu, .navbar-collapse) {
+  color: var(--ot-ink);
+  background: rgba(3, 5, 11, .92);
+  border-color: rgba(200, 220, 255, .14);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .6);
+  backdrop-filter: blur(22px);
+}
+body.ot :is(.dropdown-item, .rna-branch) { color: var(--ot-ink); }
+body.ot .dropdown-item:is(:hover, :focus, .active),
+body.ot .rna-branch:is(:hover, :focus-visible, .active) .rna-branch__label {
+  color: var(--ot-bg);
+  background: var(--ot-mint);
+}
+body.ot .rna-branch__base {
+  color: var(--ot-bg);
+  background: var(--ot-ice);
+  box-shadow: 0 0 0 5px rgba(3, 5, 11, .6);
+}
+body.ot .rna-branches li:nth-child(even) .rna-branch__base {
+  color: var(--ot-bg);
+  background: var(--ot-coral);
+}
+body.ot .rna-branches li:nth-child(3n) .rna-branch__base {
+  color: var(--ot-bg);
+  background: var(--ot-mint);
+}
+body.ot .rna-branch__bond { background: rgba(159, 208, 255, .32); }
+body.ot .rna-branch__label > span { color: var(--ot-ice); }
+body.ot :is(.rna-menu__lead, .rna-menu__backbone) path { stroke: var(--ot-ice); }
+
+/* The gathering canvas is appended by wiki.js at the panel's measured size.
+   Without these it is an in-flow element and stretches the panel — and with it
+   the preserveAspectRatio="none" backbone — to twice its height. */
+body.ot .rna-menu__particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+body.ot .rna-menu.is-gathering {
+  background: rgba(3, 5, 11, var(--rna-reveal, 0));
+  border-color: rgba(200, 220, 255, calc(.14 * var(--rna-reveal, 0)));
+  box-shadow: none;
+  backdrop-filter: none;
+}
+body.ot .rna-menu.is-gathering > :not(.rna-menu__particles) {
+  opacity: var(--rna-reveal, 0);
+}
