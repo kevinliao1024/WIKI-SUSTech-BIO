@@ -1,5 +1,5 @@
 {
-  "source": "Team-supplied Module 1–4 archives, imported 2026-10-10",
+  "source": "Team-supplied Module 1–4 archives; Module 2 and Module 4 revised 2026-10-11",
   "documents": [
     "igem_module1/01_Module1_Wiki_EN.md",
     "igem_module1/02_Module1_DBTL_EN.md",
@@ -7,8 +7,8 @@
     "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
     "igem_module3/wiki/module3.md",
     "igem_module3/wiki/DBTL.md",
-    "igem_module4/wiki/module4.md",
-    "igem_module4/wiki/DBTL.md"
+    "ORCA_EditPredict/01_WIKI.md",
+    "ORCA_EditPredict/02_DBTL.md"
   ],
   "document_records": [
     {
@@ -23,13 +23,15 @@
     },
     {
       "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
-      "destination": "static/assets/model/module2.md",
-      "sha256": "bfeb44de66eb8f5c4cde3820b9015a424617abfeec7eca6df036fa151808c55c"
+      "destination": "static/assets/model/revisions/20261011/module2.md",
+      "sha256": "6a5b64801bc5197457999cfa8ba21df6039d6f0038bdb61bcec61c08ab64591e",
+      "archive": "igem_module2_five_cycles_final.zip"
     },
     {
       "source": "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
-      "destination": "static/assets/model/module2-dbtl.md",
-      "sha256": "51caf546e081f0a6550fce439ff879158878ac2e19af42bf8e48d1d98fceade9"
+      "destination": "static/assets/model/revisions/20261011/module2-dbtl.md",
+      "sha256": "2f76de73383afc8332c6c9f9593430ac360276f272e2e11133796594c9091049",
+      "archive": "igem_module2_five_cycles_final.zip"
     },
     {
       "source": "igem_module3/wiki/module3.md",
@@ -42,14 +44,16 @@
       "sha256": "c3e07e22f71e1476981246cd809e63795b3ce5a6138fb89b9b5b576cdb1e0edd"
     },
     {
-      "source": "igem_module4/wiki/module4.md",
-      "destination": "static/assets/model/module4.md",
-      "sha256": "190e1895dfe536ba7751a760db87383d421b00d4f4cf37fbe79cd4d64523ca29"
+      "source": "ORCA_EditPredict/01_WIKI.md",
+      "destination": "static/assets/model/revisions/20261011/module4.md",
+      "sha256": "3e92bc7ea72e30b4efda0bcf2b6496433a7525d22df77fcff74d79d374d7c4c4",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
     },
     {
-      "source": "igem_module4/wiki/DBTL.md",
-      "destination": "static/assets/model/module4-dbtl.md",
-      "sha256": "d72f1109b713584bac95a611a564f167b47678674fbdb704c1386ae3f8909cea"
+      "source": "ORCA_EditPredict/02_DBTL.md",
+      "destination": "static/assets/model/revisions/20261011/module4-dbtl.md",
+      "sha256": "b953931d46312bf9c83601daa47397146e4592ba2c749ea5ca363c028110382f",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
     }
   ],
   "assets": [
@@ -425,8 +429,70 @@
       "source": "igem_module4/provenance/sources.md",
       "destination": "static/assets/model/igem_module4/provenance/sources.md",
       "sha256": "6d032b32ca441cd7fc294a08ec2920f29f23cefd4d2410c9b9b2fbbdf6da59ff"
+    },
+    {
+      "source": "ORCA_EditPredict/assets/Figure 1.png",
+      "destination": "static/assets/model/revisions/20261011/module4-figures/figure-1.png",
+      "sha256": "5d0cb4b8bfa7c1bd93f6835d17b83801a926bfd5ecb1c1463bd8459f3e4f7b63",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
+    },
+    {
+      "source": "ORCA_EditPredict/assets/Figure 2.png",
+      "destination": "static/assets/model/revisions/20261011/module4-figures/figure-2.png",
+      "sha256": "3cd3cb6bf3ad8b8cfb8e74a9ef6e3010aed3b8c983920a71629b12526dbaf626",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
+    },
+    {
+      "source": "ORCA_EditPredict/assets/Figure 3_a.png",
+      "destination": "static/assets/model/revisions/20261011/module4-figures/figure-3_a.png",
+      "sha256": "6a6b4bafa0c041cebe0be30932e2b1bc51955f79cde5299b44ffd52d21418f03",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
+    },
+    {
+      "source": "ORCA_EditPredict/assets/Figure 3_b.png",
+      "destination": "static/assets/model/revisions/20261011/module4-figures/figure-3_b.png",
+      "sha256": "a708c1e5f4ef92001b3941fe6e6a4edd0dd33040c88f6dc9bb0e2b9ef59f3129",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
+    },
+    {
+      "source": "ORCA_EditPredict/assets/Figure 4.png",
+      "destination": "static/assets/model/revisions/20261011/module4-figures/figure-4.png",
+      "sha256": "5ce3a1f5a48298bddf7ebfcd5242b930052ce4642d950a12f323c7e72d65a063",
+      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
     }
   ],
   "scope": "Presentation import only; no model training, assay reanalysis or claim verification.",
-  "module4_evidence_status": "Text-only release. Project-specific numbers come from the supplied drafts and await reconciliation with original results. No synthetic figures, training curves, checkpoints or inference program were added."
+  "module4_evidence_status": "Supplied 2026-10-11 Wiki and five PNGs. The source archive includes code, data and model records; this website import does not run or reproduce them. Some training settings differ between the manuscript and packaged logs; source text and figures are preserved.",
+  "archived_document_records": [
+    {
+      "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
+      "destination": "static/assets/model/module2.md",
+      "sha256": "bfeb44de66eb8f5c4cde3820b9015a424617abfeec7eca6df036fa151808c55c"
+    },
+    {
+      "source": "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
+      "destination": "static/assets/model/module2-dbtl.md",
+      "sha256": "51caf546e081f0a6550fce439ff879158878ac2e19af42bf8e48d1d98fceade9"
+    },
+    {
+      "source": "igem_module4/wiki/module4.md",
+      "destination": "static/assets/model/module4.md",
+      "sha256": "190e1895dfe536ba7751a760db87383d421b00d4f4cf37fbe79cd4d64523ca29"
+    },
+    {
+      "source": "igem_module4/wiki/DBTL.md",
+      "destination": "static/assets/model/module4-dbtl.md",
+      "sha256": "d72f1109b713584bac95a611a564f167b47678674fbdb704c1386ae3f8909cea"
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-10-11",
+      "modules": [
+        2,
+        4
+      ],
+      "scope": "Replace Wiki text and supplied figure assets; preserve old inputs and keep DBTL off the Model page."
+    }
+  ]
 }

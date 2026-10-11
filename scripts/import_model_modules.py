@@ -111,6 +111,12 @@ class Importer:
 
     def render(self, source: str, number: int, document: Path,
                dbtl: bool = False, chapters: bool = True) -> str:
+        if number == 4 and not dbtl:
+            # The Model page omits the DBTL account; retain the archived source.
+            source = source.replace(
+                "This text-only release contains the Wiki, DBTL record and their",
+                "This text-only release contains the Wiki and its",
+            )
         source = re.sub(r"\A# [^\n]+\n+", "", source, count=1)
         rendered = markdown.markdown(source, extensions=["tables", "fenced_code", "sane_lists"])
         rendered = re.sub(r"<img\b[^>]*>", lambda m: self.png_image(number, document, m), rendered)

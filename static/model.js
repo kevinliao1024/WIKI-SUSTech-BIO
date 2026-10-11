@@ -5,27 +5,53 @@
   const links = [...document.querySelectorAll('[data-module-link]')];
   const chapters = [...document.querySelectorAll('[data-model-chapter]')];
   const chapterLinks = [...document.querySelectorAll('[data-chapter-link]')];
+  const sidebar = document.querySelector('.model-sidebar');
+  const reading = document.querySelector('.model-reading');
+  const footer = document.querySelector('.site-footer');
   if (!modules.length) return;
+  const hoverNavigation = matchMedia('(hover: hover) and (pointer: fine)');
+  function expand(link) {
+    for (const other of links) {
+      const panel = document.getElementById(other.getAttribute('aria-controls'));
+      if (!panel) continue;
+      const expanded = other === link;
+      other.setAttribute('aria-expanded', String(expanded));
+      panel.hidden = !expanded;
+    }
+  }
   for (const link of links) {
-    link.addEventListener('click', () => {
-      const wasOpen = link.getAttribute('aria-expanded') === 'true';
-      for (const other of links) {
-        const panel = document.getElementById(other.getAttribute('aria-controls'));
-        if (!panel) continue;
-        const expanded = other === link && !wasOpen;
-        other.setAttribute('aria-expanded', String(expanded));
-        panel.hidden = !expanded;
-      }
+    const group = link.closest('.module-nav-group');
+    group.addEventListener('pointerenter', event => {
+      if (hoverNavigation.matches && event.pointerType !== 'touch') expand(link);
+    });
+    group.addEventListener('pointerleave', event => {
+      if (!hoverNavigation.matches || event.pointerType === 'touch') return;
+      if (group.contains(document.activeElement) && document.activeElement.matches(':focus-visible')) return;
+      if (link.getAttribute('aria-expanded') === 'true') expand(null);
+    });
+    group.addEventListener('focusin', event => {
+      if (event.target.matches(':focus-visible')) expand(link);
+    });
+    group.addEventListener('focusout', event => {
+      if (!group.contains(event.relatedTarget)) expand(null);
+    });
+    link.addEventListener('click', event => {
+      // Hover and keyboard focus already open the panel; touch toggles it.
+      const close = !hoverNavigation.matches && event.detail !== 0 && link.getAttribute('aria-expanded') === 'true';
+      expand(close ? null : link);
+    });
+    group.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      link.focus();
+      expand(null);
     });
   }
-  // Return the reading space after selecting a chapter on a narrow screen.
-  document.querySelector('.model-sidebar')?.addEventListener('click', event => {
-    if (!matchMedia('(max-width: 760px)').matches || !event.target.closest('a[href^="#"]')) return;
-    for (const link of links) {
-      link.setAttribute('aria-expanded', 'false');
-      const panel = document.getElementById(link.getAttribute('aria-controls'));
-      if (panel) panel.hidden = true;
-    }
+  sidebar?.addEventListener('click', event => {
+    if (event.target.closest('a[href^="#"]')) expand(null);
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!sidebar?.contains(event.target)) expand(null);
   });
   // Reveal the generated artwork once without moving the interactive contents.
   const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -49,7 +75,16 @@
   });
   let queued = false;
   function update() {
-    const offset = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 112) + (innerWidth <= 760 ? 100 : 55);
+    const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 112;
+    const offset = navHeight + (innerWidth <= 760 ? 100 : 55);
+    if (sidebar && reading) {
+      const bounds = reading.getBoundingClientRect();
+      const beforeFooter = !footer || footer.getBoundingClientRect().top >= innerHeight;
+      const visible = bounds.top <= navHeight + 40 && bounds.bottom > offset && beforeFooter;
+      sidebar.classList.toggle('is-visible', visible);
+      sidebar.inert = !visible;
+      if (!visible) expand(null);
+    }
     let current = null;
     for (const section of modules) if (section.getBoundingClientRect().top <= offset) current = section.id;
     for (const link of links) {
@@ -69,11 +104,9 @@
   function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, {passive: true});
   addEventListener('resize', schedule);
-  function openDetail() {
-    const target = document.getElementById(location.hash.slice(1));
-    if (target?.matches('details')) target.open = true;
-    schedule();
-  }
-  addEventListener('hashchange', openDetail);
-  openDetail();
+  addEventListener('load', schedule);
+  addEventListener('hashchange', schedule);
+  const layoutObserver = new ResizeObserver(schedule);
+  document.querySelectorAll('.model-overview, .model-reading').forEach(element => layoutObserver.observe(element));
+  schedule();
 })();

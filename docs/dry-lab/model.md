@@ -9,4 +9,4 @@ eyebrow: Dry Lab · Four Modules
 
 ## Our modeling workflow
 
-Our four modules connect measured editing profiles with recognition-domain design, catalytic-domain engineering and off-target candidate prioritization. Each module retains its methods, results, limitations and Design–Build–Test–Learn record. Experimental observations, development-stage model evaluations and proposed follow-up experiments are identified within their respective modules.
+Our four modules connect measured editing profiles with recognition-domain design, catalytic-domain engineering and off-target candidate prioritization. Each module retains its methods, results and limitations. Experimental observations, development-stage model evaluations and proposed follow-up experiments are identified within their respective modules.
