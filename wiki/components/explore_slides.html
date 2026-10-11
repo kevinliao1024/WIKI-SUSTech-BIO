@@ -1,0 +1,82 @@
+{# Decorative specimens, not experimental micrographs. Labels and links remain HTML. #}
+{% macro specimen(number) %}
+{% set arrangements = [
+  [(51, 81, 0.83, -24), (106, 91, 0.78, 28), (79, 140, 0.67, -8), (63, 37, 0.46, 38)],
+  [(51, 84, 0.84, 13), (106, 99, 0.76, -24), (69, 145, 0.63, 35), (88, 40, 0.44, -9)],
+  [(75, 58, 0.72, 51), (49, 116, 0.78, -38), (110, 128, 0.71, 14), (113, 66, 0.40, -12)],
+  [(49, 93, 0.70, -17), (99, 67, 0.81, 26), (100, 135, 0.64, 45), (40, 44, 0.42, 5)],
+  [(58, 60, 0.79, 24), (108, 109, 0.78, -19), (53, 130, 0.70, 40), (113, 161, 0.39, -25)]
+] %}
+<svg class="explore-slide__specimen" viewBox="0 0 160 200" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="explore-membrane-{{ number }}" cx="39%" cy="32%" r="68%">
+      <stop offset="0" stop-color="#c4d6f5" stop-opacity=".05"/>
+      <stop offset=".67" stop-color="#809fce" stop-opacity=".17"/>
+      <stop offset=".86" stop-color="#b3caef" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#8aabe0" stop-opacity=".10"/>
+    </radialGradient>
+    <radialGradient id="explore-nucleus-{{ number }}">
+      <stop offset="0" stop-color="#e7f1ff" stop-opacity=".9"/>
+      <stop offset=".4" stop-color="#c3d5f1" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#a1bce8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse class="explore-slide__field" cx="80" cy="99" rx="62" ry="76" transform="rotate(19 80 99)"/>
+  <ellipse class="explore-slide__field explore-slide__field--inner" cx="81" cy="99" rx="55" ry="68" transform="rotate(-12 81 99)"/>
+  {% for x, y, scale, rotation in arrangements[number - 1] %}
+  <g transform="translate({{ x }} {{ y }}) rotate({{ rotation }}) scale({{ scale }})">
+    <path class="explore-slide__membrane" fill="url(#explore-membrane-{{ number }})" d="M-32-16C-24-37 1-41 20-31C39-22 40 2 30 23C21 42-2 43-22 31C-41 20-42 5-32-16Z"/>
+    <path class="explore-slide__inner-membrane" d="M-25-13C-19-30 1-34 17-25C31-18 32 1 25 19C17 34-1 35-18 25C-33 17-34 4-25-13Z"/>
+    <ellipse cx="-4" cy="-3" rx="11" ry="13" fill="url(#explore-nucleus-{{ number }})"/>
+    <ellipse class="explore-slide__nucleolus" cx="-5" cy="-5" rx="2" ry="2.8"/>
+    <path class="explore-slide__shine" d="M-26-13Q-21-26-8-28"/>
+    <g class="explore-slide__granules">
+      <circle cx="-18" cy="8" r="1.1"/><circle cx="13" cy="-12" r=".8"/>
+      <circle cx="17" cy="15" r="1.2"/><circle cx="-8" cy="22" r=".8"/>
+      <circle cx="23" cy="2" r=".7"/><circle cx="-16" cy="-18" r=".9"/>
+    </g>
+  </g>
+  {% endfor %}
+</svg>
+{% endmacro %}
+
+<section class="ot-index explore-slides" aria-labelledby="ot-index-title" data-explore-slides>
+  <div class="explore-slides__shell">
+    <header class="explore-slides__head">
+      <p class="explore-slides__eyebrow">ORCA / PROJECT INDEX</p>
+      <h2 id="ot-index-title" class="explore-slides__title">Explore the <em>project.</em></h2>
+    </header>
+
+    {# Reveal controls only after enhancement; without JS all 19 links stay visible. #}
+    <div class="explore-slides__deck" role="group" aria-label="Choose a project chapter" data-explore-deck hidden>
+      {% for group in navigation_groups %}
+      <button type="button" class="explore-slide" id="explore-selector-{{ loop.index }}"
+        data-explore-select="explore-panel-{{ loop.index }}"{% if group.label == 'Project' %} data-explore-default{% endif %}
+        aria-pressed="false" aria-controls="explore-panel-{{ loop.index }}"
+        aria-label="{{ group.label }}, {{ group['items']|length }} pages">
+        <span class="explore-slide__serial" aria-hidden="true">OR—{{ '%02d'|format(loop.index) }}<span class="explore-slide__mark">↗</span></span>
+        {{ specimen(loop.index) }}
+        <span class="explore-slide__label">
+          <span class="explore-slide__name">{{ group.label }}</span>
+          <span class="explore-slide__count">{{ '%02d'|format(group['items']|length) }} PAGES</span>
+        </span>
+      </button>
+      {% endfor %}
+    </div>
+
+    <div class="explore-slides__directory" data-explore-directory>
+      {% for group in navigation_groups %}
+      <article class="explore-slides__panel" id="explore-panel-{{ loop.index }}" data-explore-panel
+        aria-labelledby="explore-heading-{{ loop.index }}">
+        <h3 id="explore-heading-{{ loop.index }}">{{ group.label }}<span aria-hidden="true">↗</span></h3>
+        <ul>
+          {% for page, title in group['items'] %}
+          <li><a href="{{ url_for('pages', page=page) }}"><span>{{ title }}</span><span class="explore-slides__arrow" aria-hidden="true">↗</span></a></li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="explore-slides__status" role="status" aria-live="polite" aria-atomic="true" data-explore-status></p>
+  </div>
+</section>
