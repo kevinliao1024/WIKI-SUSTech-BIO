@@ -174,12 +174,16 @@ class WikiRoutesTest(unittest.TestCase):
         app_source = Path("app.py").read_text(encoding="utf-8")
         self.assertIn('app.run(host="127.0.0.1",', app_source)
 
-    def test_dry_lab_pages_show_evidence_status(self):
+    def test_evidence_callouts_are_omitted_only_from_model(self):
         for route in ["/dry-lab", "/model", "/brain-delivery", "/offtarget-atlas", "/software"]:
             with self.subTest(route=route):
                 page = self.get_text(route)
-                self.assertIn("Evidence status", page)
-                self.assertIn('data-evidence=', page)
+                if route == "/model":
+                    self.assertNotIn("Evidence status", page)
+                    self.assertNotIn('data-evidence=', page)
+                else:
+                    self.assertIn("Evidence status", page)
+                    self.assertIn('data-evidence=', page)
 
     def test_spatial_model_is_not_publicly_mentioned(self):
         for route in PUBLIC_ROUTES:

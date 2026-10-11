@@ -1,10 +1,24 @@
-<svg class="typing-hero typing-hero--original" viewBox="0 0 1536 1024" role="img" aria-labelledby="typing-hero-title">
-  <title id="typing-hero-title">The original seated character lifts and taps alternating hands on the keyboard.</title>
+<svg class="typing-hero typing-hero--original" data-typing-scene viewBox="0 0 1536 1024" role="img" aria-labelledby="typing-hero-title">
+  <title id="typing-hero-title">The seated character types on the keyboard with alternating hands.</title>
   <defs>
-    <clipPath id="typing-front-glove"><path d="M492 674Q490 645 514 642Q520 613 550 607Q590 589 621 617Q653 647 637 677Q628 704 607 694L588 684Q579 713 550 719Q500 730 492 684Z"/></clipPath>
-    <clipPath id="typing-back-glove"><path d="M589 610Q614 585 638 602Q676 555 723 581Q756 603 766 633Q770 652 748 655Q731 656 717 638Q710 665 686 666Q667 685 642 669Q646 640 628 621Q609 605 589 622Z"/></clipPath>
+    <linearGradient id="typing-glove-shade" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eeeefe"/>
+    </linearGradient>
   </defs>
-  <image class="typing-background" href="{{ url_for('static', filename='assets/model/illustrations/orca-model-typing-background.png') }}" width="1536" height="1024"/>
-  <g class="typing-glove typing-glove--back"><g clip-path="url(#typing-back-glove)"><image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-computing.png') }}" width="1536" height="1024"/></g></g>
-  <g class="typing-glove typing-glove--front"><g clip-path="url(#typing-front-glove)"><image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-computing.png') }}" width="1536" height="1024"/></g></g>
+  <image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-typing-plate-v3.png') }}" width="1536" height="1024"/>
+  <g class="typing-limb" data-typing-arm data-shoulder="532,567" data-elbow="560,612" data-wrist="623,623" data-phase="0">
+    <path class="typing-forearm" data-typing-forearm d="M532 567Q560 612 623 623"/>
+    <g data-typing-hand transform="translate(623 623)">
+      <path class="typing-paw" d="M-9 7Q-24-8-11-21Q3-35 23-19Q50-49 83-39Q113-31 126-5Q137 17 121 26Q106 33 91 10Q91 36 69 36Q57 51 38 40Q14 44 5 25Z"/>
+      <path class="typing-finger" d="M91 10Q90-1 83-6"/>
+    </g>
+  </g>
+  <g class="typing-limb" data-typing-arm data-shoulder="419,548" data-elbow="439,618" data-wrist="521,658" data-phase="3.141592653589793">
+    <path class="typing-forearm" data-typing-forearm d="M419 548Q439 618 521 658"/>
+    <g data-typing-hand transform="translate(521 658)">
+      <path class="typing-paw" d="M-7 4Q-5-25 20-38Q52-60 81-37Q108-15 113 8Q117 30 99 35Q84 40 74 19Q66 51 38 55Q7 63-11 43Q-29 22-14 7Z"/>
+      <path class="typing-finger" d="M74 19Q76 9 78 6"/>
+    </g>
+  </g>
 </svg>

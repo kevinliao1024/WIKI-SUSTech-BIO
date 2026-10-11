@@ -1,0 +1,4 @@
+/* The entire arm follows its glove; the shoulder stays attached to the body. */
+.typing-forearm{fill:none;stroke:#344077;stroke-width:12;stroke-linecap:round}
+.typing-paw{fill:url(#typing-glove-shade);stroke:#292f69;stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.typing-finger{fill:none;stroke:#292f69;stroke-width:10;stroke-linecap:round}
