@@ -1,0 +1,5 @@
+﻿substitution,sampling_frequency,applicable_threshold_gamma,secondary_structure,exceeds_threshold
+H29P,0.771,0.5,C,TRUE
+K30T,0.562,0.5,C,TRUE
+N57D,0.875,0.5,C,TRUE
+A59P,0.896,0.5,C,TRUE

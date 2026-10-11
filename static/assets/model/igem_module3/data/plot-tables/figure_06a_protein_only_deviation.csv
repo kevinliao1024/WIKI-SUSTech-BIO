@@ -1,0 +1,11 @@
+﻿construct,D_M_internal_cp_all,D_M_internal_cp_longrange,D_M_pocket_cp,activity_retention_fraction,functional_class
+N57W,6.395,7.616,10.14,0.0,Inactive
+N57A,3.606,3.953,7.173,,New inactive control (not measured)
+G27T-K30H-Q58M,2.237,2.325,5.063,0.772,Active
+G27D-M130G,2.003,2.473,6.101,0.0,Inactive
+E72A,1.656,1.99,5.038,,New inactive control (not measured)
+T31D,1.202,1.312,8.564,0.0,Inactive
+M132D,0.957,0.863,0.589,0.89,Active
+T31A,0.875,0.742,4.339,0.97,★同位点活性对照
+K30H,0.612,0.745,1.94,0.84,Active
+M132E,0.473,0.725,0.789,0.83,Active

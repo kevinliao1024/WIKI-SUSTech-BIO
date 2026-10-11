@@ -1,12 +1,12 @@
 ---
 title: Model
-heading: A transparent chain, not a black box.
-subtitle: Our modeling workflow connects sequence-aware safety screening with a mechanistic delivery-and-editing simulation while preserving every assumption at the interface.
-eyebrow: Dry Lab · Integrated Model
+heading: Four modules for RNA editing.
+subtitle: RNA-seq analysis, PUF specificity modeling, APOBEC engineering and LAMAR prioritization address complementary questions in our APOE4 editing project.
+eyebrow: Dry Lab · Four Modules
 ---
 
 # Model
 
-## Architecture
+## Our modeling workflow
 
-Two models remain independently testable. The PUF-OffTarget Atlas ranks possible transcriptome sites. The Brain Delivery Digital Twin simulates delivery, expression and editing. A downloadable candidate panel is the only bridge between them.
+Our four modules connect measured editing profiles with recognition-domain design, catalytic-domain engineering and off-target candidate prioritization. Each module retains its methods, results, limitations and Design–Build–Test–Learn record. Experimental observations, development-stage model evaluations and proposed follow-up experiments are identified within their respective modules.

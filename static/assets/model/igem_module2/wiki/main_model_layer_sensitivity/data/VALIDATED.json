@@ -1,0 +1,12 @@
+{
+  "folds": 66,
+  "layers": 12,
+  "oof_rows": 858,
+  "last_layer_score_max_difference": 9.5367431640625e-06,
+  "last_layer_OOF_max_difference": 8.326672684688674e-17,
+  "group_leakage_checked": true,
+  "main_model_pipeline_preserved": true,
+  "intermediate_readout": "shared frozen final-layer normalization and LM head; diagnostic logit lens",
+  "scope": "development-stage CV; no independent validation",
+  "elapsed_cv_seconds": 336.66910791397095
+}

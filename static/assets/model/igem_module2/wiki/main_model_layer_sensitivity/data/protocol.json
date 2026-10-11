@@ -1,0 +1,66 @@
+{
+  "models": [
+    "Hsu_ESM2_OneHot_Ridge_A"
+  ],
+  "position": "493 binary mutation-position indicators, irrespective of amino acid identity",
+  "onehot": "existing reference-centred 493x20 amino-acid difference encoding",
+  "alphas": [
+    0.1,
+    1,
+    10,
+    100,
+    1000
+  ],
+  "score_weights": [
+    1,
+    10
+  ],
+  "selection": "A: mean inner Spearman; ties by historical proportional top mean S; then negative per-target MSE",
+  "inner_top_fraction": "15/66, historical training rule unchanged; reporting cutoff 30",
+  "outer": "exact existing 66 sequence-group folds",
+  "training": "81 observed C labels, masked per target, never zero-imputed",
+  "metrics": "Spearman, Kendall, Top30 overlap / mean S / random expectation; subgroup Top30 NA if n<30",
+  "zero_shot": "unchanged additive reference masked log odds; higher score ranked higher; no assay fitting or sign tuning",
+  "ties": "descending score then construct_id, fixed for every method",
+  "scope": "development-stage retrospective ablation; not independent validation",
+  "resources": "one physical GPU1, CPU2, batch8, no dependency installation",
+  "inputs": {
+    "construct_targets.csv": "62507cd8edacbfda4edc5ad8cd948e09b3adca12f19b5f4fbc4f749bc6d126c8",
+    "reference_masked_logp.npy": "85a9200e170e5e5e2de4ca36f9a0d2d4a3eebbe8cb1f5210531e4f24a28607ec",
+    "splits.json": "199d859caec310632fa4da45c06c8a07edb750376262db43477fc12cf3279f12",
+    "construct_manifest.csv": "aca65119cbddfb77d271283d5d00e01b71b003b273a10656fb967c099df2f16a",
+    "oof_all_models.csv": "7ec70ffa203b3dc3668d4aec2d67415c9af4ce01c6e8d3def169905649f63831",
+    "reference.json": "b031af50424b865243acb65e984038500e785698b44a5ab47d75609e9d57dcd9"
+  },
+  "layers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "layer_readout": "For blocks 1-11: frozen final encoder layer norm then unchanged pretrained LM head. Block12: native normalized output then same LM head. Mask reference at one position; log probability mutant minus reference, sum over substitutions.",
+  "interpretation": "Intermediate layers use a shared final-trained vocabulary head (logit-lens diagnostic); intermediate probabilities are not independently calibrated.",
+  "selection_layer": "Also evaluate layer+Ridge chosen strictly by inner A objective; lower layer breaks ties after original grid order.",
+  "checkpoint_sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+  "pair_threshold": 0.01,
+  "topk": [
+    5,
+    10,
+    15,
+    30
+  ],
+  "budget": {
+    "masked_reference_positions": 493,
+    "outer_layer_fits": 792,
+    "inner_ridge_target_fits": 47520,
+    "outer_refit_targets": 2376
+  }
+}

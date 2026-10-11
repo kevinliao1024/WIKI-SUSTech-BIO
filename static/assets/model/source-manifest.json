@@ -1,103 +1,432 @@
 {
-  "source": "Team-supplied archive, 2026-09-28",
+  "source": "Team-supplied Module 1–4 archives, imported 2026-10-10",
   "documents": [
     "igem_module1/01_Module1_Wiki_EN.md",
     "igem_module1/02_Module1_DBTL_EN.md",
     "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
-    "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md"
+    "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
+    "igem_module3/wiki/module3.md",
+    "igem_module3/wiki/DBTL.md",
+    "igem_module4/wiki/module4.md",
+    "igem_module4/wiki/DBTL.md"
+  ],
+  "document_records": [
+    {
+      "source": "igem_module1/01_Module1_Wiki_EN.md",
+      "destination": "static/assets/model/module1.md",
+      "sha256": "cfb22a2e78738b4aa31b75effa0b56f42c5200dcde4eceb75b1dfdf6d7cfe3e3"
+    },
+    {
+      "source": "igem_module1/02_Module1_DBTL_EN.md",
+      "destination": "static/assets/model/module1-dbtl.md",
+      "sha256": "9eaab73538e37513b2634241e49b51c5b438fe2a47b1248225fd976228048b8c"
+    },
+    {
+      "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
+      "destination": "static/assets/model/module2.md",
+      "sha256": "bfeb44de66eb8f5c4cde3820b9015a424617abfeec7eca6df036fa151808c55c"
+    },
+    {
+      "source": "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
+      "destination": "static/assets/model/module2-dbtl.md",
+      "sha256": "51caf546e081f0a6550fce439ff879158878ac2e19af42bf8e48d1d98fceade9"
+    },
+    {
+      "source": "igem_module3/wiki/module3.md",
+      "destination": "static/assets/model/module3.md",
+      "sha256": "c48553de05aa7816791182b054aff3919ebc17d81960684c61580fc48f4afb5b"
+    },
+    {
+      "source": "igem_module3/wiki/DBTL.md",
+      "destination": "static/assets/model/module3-dbtl.md",
+      "sha256": "c3e07e22f71e1476981246cd809e63795b3ce5a6138fb89b9b5b576cdb1e0edd"
+    },
+    {
+      "source": "igem_module4/wiki/module4.md",
+      "destination": "static/assets/model/module4.md",
+      "sha256": "190e1895dfe536ba7751a760db87383d421b00d4f4cf37fbe79cd4d64523ca29"
+    },
+    {
+      "source": "igem_module4/wiki/DBTL.md",
+      "destination": "static/assets/model/module4-dbtl.md",
+      "sha256": "d72f1109b713584bac95a611a564f167b47678674fbdb704c1386ae3f8909cea"
+    }
   ],
   "assets": [
     {
       "source": "igem_module1/assets/01_module1_workflow_illustrated.png",
-      "sha256": "fa2cbd98dbb17f150affebd5f7ffa4c9629a0f03731ece2d91d8800430774fe4"
+      "sha256": "fa2cbd98dbb17f150affebd5f7ffa4c9629a0f03731ece2d91d8800430774fe4",
+      "destination": "static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png"
     },
     {
       "source": "igem_module1/assets/02_candidate_counts.png",
-      "sha256": "59e3eaa6362aa939072d6f218344d35d4461d1c17d40feb9fb28f34b2ed40585"
-    },
-    {
-      "source": "igem_module1/assets/03_site_rate_summary.png",
-      "sha256": "113d60430e7087b6d1161c53a8e8b6759f01faa52c385806abcbcc1e3e9a9451"
+      "sha256": "59e3eaa6362aa939072d6f218344d35d4461d1c17d40feb9fb28f34b2ed40585",
+      "destination": "static/assets/model/igem_module1/assets/02_candidate_counts.png"
     },
     {
       "source": "igem_module1/assets/03_editing_distribution.png",
-      "sha256": "ae1e0b99b7cb4ca4c5649f7073aede599fa9f3807bd542e407ffc0ababc6fa05"
+      "sha256": "ae1e0b99b7cb4ca4c5649f7073aede599fa9f3807bd542e407ffc0ababc6fa05",
+      "destination": "static/assets/model/igem_module1/assets/03_editing_distribution.png"
+    },
+    {
+      "source": "igem_module1/assets/03_site_rate_summary.png",
+      "sha256": "113d60430e7087b6d1161c53a8e8b6759f01faa52c385806abcbcc1e3e9a9451",
+      "destination": "static/assets/model/igem_module1/assets/03_site_rate_summary.png"
     },
     {
       "source": "igem_module1/assets/04_target_comparison.png",
-      "sha256": "367e07cf642e0872dee3f7b1836115805a369f5f9294b67221265286d92c0ea2"
+      "sha256": "367e07cf642e0872dee3f7b1836115805a369f5f9294b67221265286d92c0ea2",
+      "destination": "static/assets/model/igem_module1/assets/04_target_comparison.png"
     },
     {
       "source": "igem_module1/assets/05_motif_logos.png",
-      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8"
+      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8",
+      "destination": "static/assets/model/igem_module1/assets/05_motif_logos.png"
     },
     {
       "source": "igem_module1/assets/06_chromosome_distribution.png",
-      "sha256": "8884410fdf7ad38012c9a150a39ccd57b8f47c8924759453b4f53662c0994803"
-    },
-    {
-      "source": "igem_module1/assets/data/displayed_summary.tsv",
-      "sha256": "5e2bbac879874de4529f7de5aebc52469e863f94b3347c447c3677eaa9d126c6"
+      "sha256": "8884410fdf7ad38012c9a150a39ccd57b8f47c8924759453b4f53662c0994803",
+      "destination": "static/assets/model/igem_module1/assets/06_chromosome_distribution.png"
     },
     {
       "source": "igem_module1/assets/data/chromosome_reference_normalized.tsv",
-      "sha256": "530b630cae242878b864439ca5ea5929fa6aeb1193fb9c4e1b69d93e240ec6c9"
+      "sha256": "530b630cae242878b864439ca5ea5929fa6aeb1193fb9c4e1b69d93e240ec6c9",
+      "destination": "static/assets/model/igem_module1/assets/data/chromosome_reference_normalized.tsv"
+    },
+    {
+      "source": "igem_module1/assets/data/displayed_summary.tsv",
+      "sha256": "7b451c2a635c57104c2dbf38ce6a57d71749edf547925aef6d7fa271222395c6",
+      "destination": "static/assets/model/igem_module1/assets/data/displayed_summary.tsv",
+      "source_sha256": "5e2bbac879874de4529f7de5aebc52469e863f94b3347c447c3677eaa9d126c6",
+      "note": "Existing import normalized line endings; content is unchanged."
     },
     {
       "source": "igem_module1/assets/data/sample_scope_audit.tsv",
-      "sha256": "f9570f241a5551f6bf76026642baf8624cec8cfc0186a384cba450f5c5e0d90b"
+      "sha256": "f9570f241a5551f6bf76026642baf8624cec8cfc0186a384cba450f5c5e0d90b",
+      "destination": "static/assets/model/igem_module1/assets/data/sample_scope_audit.tsv"
     },
     {
       "source": "igem_module1/assets/data/six_group_summary.tsv",
-      "sha256": "b67beb7eb5552e4ee249203b9ad978dce25df20e4ea7c89e8ca9297416cecf4b"
-    },
-    {
-      "source": "igem_module2/wiki/figures/architecture/figure@2x.png",
-      "sha256": "0d4498257a651b54416bab2fe48fed22683a1084b2659370a42842c899864102"
-    },
-    {
-      "source": "igem_module2/wiki/figures/topk_random/figure@2x.png",
-      "sha256": "6af2fc0c7494e7d3f68021fd6464a6dda57ae434840d6ee784d6a01afc83de8d"
-    },
-    {
-      "source": "igem_module2/wiki/figures/oof_scatter/figure@2x.png",
-      "sha256": "1e878647cd9a3311f6f46e705aaa7631242bf5baf14a8b084d6e35352c875e56"
+      "sha256": "b67beb7eb5552e4ee249203b9ad978dce25df20e4ea7c89e8ca9297416cecf4b",
+      "destination": "static/assets/model/igem_module1/assets/data/six_group_summary.tsv"
     },
     {
       "source": "igem_module2/wiki/figures/ablation_spearman/figure@2x.png",
-      "sha256": "58fad9d0c5540ee364c3de0f90938d89a2b3349b272b84f97c4367932076d8d9"
+      "sha256": "58fad9d0c5540ee364c3de0f90938d89a2b3349b272b84f97c4367932076d8d9",
+      "destination": "static/assets/model/igem_module2/wiki/figures/ablation_spearman/figure@2x.png"
     },
     {
       "source": "igem_module2/wiki/figures/ablation_top30/figure@2x.png",
-      "sha256": "159782e97ef2af1e351e0ad9996f4757838ea983627eb733ca50d23d1ad68345"
+      "sha256": "159782e97ef2af1e351e0ad9996f4757838ea983627eb733ca50d23d1ad68345",
+      "destination": "static/assets/model/igem_module2/wiki/figures/ablation_top30/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/figures/architecture/figure@2x.png",
+      "sha256": "0d4498257a651b54416bab2fe48fed22683a1084b2659370a42842c899864102",
+      "destination": "static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png"
     },
     {
       "source": "igem_module2/wiki/figures/five_targets/figure@2x.png",
-      "sha256": "61a803bcf551624a02519a793b50a0318d75111c8fc0a306aa0b6b3db828c96e"
+      "sha256": "61a803bcf551624a02519a793b50a0318d75111c8fc0a306aa0b6b3db828c96e",
+      "destination": "static/assets/model/igem_module2/wiki/figures/five_targets/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/figures/oof_scatter/figure@2x.png",
+      "sha256": "1e878647cd9a3311f6f46e705aaa7631242bf5baf14a8b084d6e35352c875e56",
+      "destination": "static/assets/model/igem_module2/wiki/figures/oof_scatter/figure@2x.png"
     },
     {
       "source": "igem_module2/wiki/figures/selected_cases/figure@2x.png",
-      "sha256": "2150ccded216dfbe55d1192eaff38b646e7854e601b434246f35769578006f2a"
+      "sha256": "2150ccded216dfbe55d1192eaff38b646e7854e601b434246f35769578006f2a",
+      "destination": "static/assets/model/igem_module2/wiki/figures/selected_cases/figure@2x.png"
     },
     {
-      "source": "igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
-      "sha256": "926b8e5b7db2138fd6e42c5fab25c421ad838f7a18de0c34c9683d37f1260316"
-    },
-    {
-      "source": "igem_module2/wiki/inverse_folding_20260928/figures/nontrm_screen/figure@2x.png",
-      "sha256": "78ec179a7098adb19098df28d497aeaa374f7f38c9ebebfa20818dc1903cc1bb"
-    },
-    {
-      "source": "igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png",
-      "sha256": "9ca0958f67e27a28e6e8cf871d8377cea914b1876bf8d67dee3b9443e4854bc6"
+      "source": "igem_module2/wiki/figures/topk_random/figure@2x.png",
+      "sha256": "6af2fc0c7494e7d3f68021fd6464a6dda57ae434840d6ee784d6a01afc83de8d",
+      "destination": "static/assets/model/igem_module2/wiki/figures/topk_random/figure@2x.png"
     },
     {
       "source": "igem_module2/wiki/inverse_folding_20260928/figures/assay_comparison/figure@2x.png",
-      "sha256": "2641b7d8ba6b41a085e41bbc212e48b355438e680f54cbb7196249c571ace2c6"
+      "sha256": "2641b7d8ba6b41a085e41bbc212e48b355438e680f54cbb7196249c571ace2c6",
+      "destination": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/assay_comparison/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/nontrm_screen/figure@2x.png",
+      "sha256": "78ec179a7098adb19098df28d497aeaa374f7f38c9ebebfa20818dc1903cc1bb",
+      "destination": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/nontrm_screen/figure@2x.png"
     },
     {
       "source": "igem_module2/wiki/inverse_folding_20260928/figures/single_scores/figure@2x.png",
-      "sha256": "094716e3eea3975560efd0279a5fbd66f7fcca0e9fc68bc18b71f80a2b84810b"
+      "sha256": "094716e3eea3975560efd0279a5fbd66f7fcca0e9fc68bc18b71f80a2b84810b",
+      "destination": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/single_scores/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png",
+      "sha256": "9ca0958f67e27a28e6e8cf871d8377cea914b1876bf8d67dee3b9443e4854bc6",
+      "destination": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "sha256": "926b8e5b7db2138fd6e42c5fab25c421ad838f7a18de0c34c9683d37f1260316",
+      "destination": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/data/VALIDATED.json",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/VALIDATED.json",
+      "sha256": "68577400acde1b73acc9d5d36fd6ad418f5800a4fae10f72116823374497803d"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/data/metrics.csv",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/metrics.csv",
+      "sha256": "6513938796e4dd4d08fcbbed5def0483f3bbeb934773fd2fe6c5b4b5a6a2dfe6"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/data/oof_rankings.csv",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/oof_rankings.csv",
+      "sha256": "68316ead086a2f0e5fb15db76d5432894daa33883800eacebe3005e84cd9991f"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/data/protocol.json",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/protocol.json",
+      "sha256": "f6a2f1afcd940003cf292c85f7461054d0630cac6885cc5933c476a29b3e91de"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/figures/ranking/figure@2x.png",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/ranking/figure@2x.png",
+      "sha256": "aff84c8af5adfbf20a170d754a0b9a01c30ddf6262221d40ffb327a93ea2e59e"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/figures/spearman/figure@2x.png",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/spearman/figure@2x.png",
+      "sha256": "361cb7ee391a8f9552d3f0b42f7b90401aeb99d1c225f993736e09119f1fa204"
+    },
+    {
+      "source": "igem_module2/wiki/main_model_layer_sensitivity/figures/topk/figure@2x.png",
+      "destination": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/topk/figure@2x.png",
+      "sha256": "9b3ab3a72fd6bda651c02f4e3890ccfb1e0095bf203586c4d479a1dd881d8202"
+    },
+    {
+      "source": "igem_module3/analysis/esm2/PLAN.md",
+      "destination": "static/assets/model/igem_module3/analysis/esm2/PLAN.md",
+      "sha256": "cceaaf79371b93008046a8a8c22bc1073f4704cdd7a21dd310679087628700bf"
+    },
+    {
+      "source": "igem_module3/analysis/esm2/REPORT.md",
+      "destination": "static/assets/model/igem_module3/analysis/esm2/REPORT.md",
+      "sha256": "81e8df62a80ab7c61d971596efc63db78691af15fd9f0e88708497201f519269"
+    },
+    {
+      "source": "igem_module3/code/README.md",
+      "destination": "static/assets/model/igem_module3/code/README.md",
+      "sha256": "3052034ac9d27ba747829e1b357fb41f06ba0acb03b3194cfb1045ed09317ea0"
+    },
+    {
+      "source": "igem_module3/data/README.md",
+      "destination": "static/assets/model/igem_module3/data/README.md",
+      "sha256": "be368713d64ad2ac083df3535d489c2c90c8f773352b3992f1ab021a8fe4bd38"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_02_cp_deviation.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_02_cp_deviation.csv",
+      "sha256": "227c452d55f7b2de0f3287aa6b8bf07ba30fde0660402cb0b5a52e6fc011e5cb"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_03_all_residues_ddcp.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_03_all_residues_ddcp.csv",
+      "sha256": "f4fe729a608f0c972a2879ec57c07d067836edddcfbf28ddc7e8c8010d8da91a"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_03_ddcp_matrix.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_03_ddcp_matrix.csv",
+      "sha256": "cf0cece09886f9147521a0182683b6a804300d703fdf41061e6e023c9c4faab1"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_04_negctrl_diagnosis.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_04_negctrl_diagnosis.csv",
+      "sha256": "9745edaac9f762d546a48b93ae4a64d58ffbdd44397e06104681ba0bc362671a"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_05_negctrl_pca.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_05_negctrl_pca.csv",
+      "sha256": "c85f486429c45c4d2283640ca67adf922d8ee8f0374b0c8335471f82595cf1dd"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_06a_protein_only_deviation.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_06a_protein_only_deviation.csv",
+      "sha256": "456867fe8f41d5756ff30c16cfaa7979af5c53e4128ec582885cd97d009888c2"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_06b_protein_only_classification.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_06b_protein_only_classification.csv",
+      "sha256": "8ca20ae9b52fcecc52e4c6e8277b1ee2ae23671ea214277d5bfe9109c51dedd5"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_07_protein_only_vs_complex.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_07_protein_only_vs_complex.csv",
+      "sha256": "20f58586b1778522367eaf3337c085a8855d3290078892030602e8186399bc94"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_08_single_site.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_08_single_site.csv",
+      "sha256": "bc7a10de5ffcd5979728e0a0973ed9262197eebcd557927b5937c1c9c78be589"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_09_targeting_ratio.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_09_targeting_ratio.csv",
+      "sha256": "7588a9de5730a8aa4933676b97fbf239dec9034cbceb4a4be5cbe07740e3261d"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_10a_candidate_groups_raw.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_10a_candidate_groups_raw.csv",
+      "sha256": "e1ffaa5a086968508720b0ff0eb9b7f2c10ead309f1da22cd7fea97288dc2413"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_10b_candidate_group_sizes.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_10b_candidate_group_sizes.csv",
+      "sha256": "1b1e0290b3899906c7ffcb8a4260c118500c409d19678984938e404b828bbd0c"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_10c_candidate_priority_matrix.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_10c_candidate_priority_matrix.csv",
+      "sha256": "f042069fca889bd9d889489b35f213db187a66743b70d485bb4b16e5c2cf2a08"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_11a_sampling_frequency_by_position.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_11a_sampling_frequency_by_position.csv",
+      "sha256": "af4db1932a6c4fbe9a6bf2363a3e3fbb1e28757015e85d0f32090259ea2f87ce"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_11b_positions_passing_threshold.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_11b_positions_passing_threshold.csv",
+      "sha256": "4773d3eaedd96d6ebd8749becf4ae7b9d2a8a46b1d5f16d1e52d620592ed5d6c"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_11c_contested_substitutions.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_11c_contested_substitutions.csv",
+      "sha256": "062638b9832bbcb0d7a39eb624707865ba30d4704dd578e84f3a7576c0c391c2"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_15a_batch_rof_vs_retention.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_15a_batch_rof_vs_retention.csv",
+      "sha256": "d64e7aa46a9123bf18679c7cd47cb1bc2b5906f2ca2df42d6a08e94db740ce3f"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_15b_group_d_pairing.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_15b_group_d_pairing.csv",
+      "sha256": "37c0578d2231e1ab36741ed8e0de3190d629cbccac09d64b7576ea1352466e0d"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_16a_cross_batch_replication.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_16a_cross_batch_replication.csv",
+      "sha256": "bd28847bb329d3e35342a050db0fb6461d5ae5e413d84bb09f4293892d0b4d21"
+    },
+    {
+      "source": "igem_module3/data/plot-tables/figure_16b_batch3_groups.csv",
+      "destination": "static/assets/model/igem_module3/data/plot-tables/figure_16b_batch3_groups.csv",
+      "sha256": "e934ab2fe37293202453b95d4d2d7bc180d0121992ce03fd598548a4961b573e"
+    },
+    {
+      "source": "igem_module3/figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv",
+      "destination": "static/assets/model/igem_module3/figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv",
+      "sha256": "5cdfe51f34acd4978a57ec46dbe912feebe8e06db69432556d4e144dd63b6d28"
+    },
+    {
+      "source": "igem_module3/figure-sources/orca-n1-n4/input/data/designed_batch_groups.csv",
+      "destination": "static/assets/model/igem_module3/figure-sources/orca-n1-n4/input/data/designed_batch_groups.csv",
+      "sha256": "d64e7aa46a9123bf18679c7cd47cb1bc2b5906f2ca2df42d6a08e94db740ce3f"
+    },
+    {
+      "source": "igem_module3/provenance/science-audit.json",
+      "destination": "static/assets/model/igem_module3/provenance/science-audit.json",
+      "sha256": "5daa96068e71086a02599ab9723484a9f19db4bb0a2696d7ee0247cbae8cbf3f"
+    },
+    {
+      "source": "igem_module3/wiki/figures/N1_combinatorial_pareto/N1_combinatorial_pareto.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/N1_combinatorial_pareto/N1_combinatorial_pareto.png",
+      "sha256": "76ed60ecdcef4460aa1065240fa882a4465dd13a5e1b6ed97eb50c27e6caa732"
+    },
+    {
+      "source": "igem_module3/wiki/figures/N3_designed_batch/N3_designed_batch.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/N3_designed_batch/N3_designed_batch.png",
+      "sha256": "53a87c081d188cada26a2012e68473ff27e1e868abdba9f006df533c5bbfdfb6"
+    },
+    {
+      "source": "igem_module3/wiki/figures/N4_third_batch/N4_third_batch.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/N4_third_batch/N4_third_batch.png",
+      "sha256": "27137f3b88fb226247c5cba2cb1e6e3358dadb21a8304f6c5fb81c11947a2c51"
+    },
+    {
+      "source": "igem_module3/wiki/figures/figure_03_ddcp_heatmap/figure_03_ddcp_heatmap.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/figure_03_ddcp_heatmap/figure_03_ddcp_heatmap.png",
+      "sha256": "2ddbc86a5c48f6fc3ba0cfdcdfc6fc311fe6057117b4cdae3e373007fc98e068"
+    },
+    {
+      "source": "igem_module3/wiki/figures/figure_04_negctrl_diagnosis/figure_04_negctrl_diagnosis.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/figure_04_negctrl_diagnosis/figure_04_negctrl_diagnosis.png",
+      "sha256": "29763efdb2aa140536728b5a3c3fa96edc1a16dd83a34e6060890d1b92d546a3"
+    },
+    {
+      "source": "igem_module3/wiki/figures/figure_08_single_site/figure_08_single_site.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/figure_08_single_site/figure_08_single_site.png",
+      "sha256": "77bbb3611509da93a3120a069b923760b6f7186d48f97451ee8ed3dabd7c7d92"
+    },
+    {
+      "source": "igem_module3/wiki/figures/figure_09_targeting_ratio/figure_09_targeting_ratio.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/figure_09_targeting_ratio/figure_09_targeting_ratio.png",
+      "sha256": "e9f9e1502ba7368a1e26e80be55e48d70e926aac560cb3b8dcd408964ef687c2"
+    },
+    {
+      "source": "igem_module3/wiki/figures/figure_10_candidates/figure_10_candidates.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/figure_10_candidates/figure_10_candidates.png",
+      "sha256": "05f5e9c703f484a4f63524ea06820f3e54f808c2cb8b4a8b661aaf42795971b3"
+    },
+    {
+      "source": "igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "destination": "static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "sha256": "08c40469f2988715e3c3fa1561ccee4175fb6fc7672803f0171198f8b9ed3c68"
+    },
+    {
+      "source": "igem_module4/README.md",
+      "destination": "static/assets/model/igem_module4/README.md",
+      "sha256": "618d7173e006cabfe4cb632946d4c603a32a846a5acfb2be489e1f8664d6629c"
+    },
+    {
+      "source": "igem_module4/provenance/REVISION_NOTES.md",
+      "destination": "static/assets/model/igem_module4/provenance/REVISION_NOTES.md",
+      "sha256": "0c01279408af922b737560880a8e3d92c4158391a25e4d95259649461a8faf39"
+    },
+    {
+      "source": "igem_module4/provenance/TERMINOLOGY.md",
+      "destination": "static/assets/model/igem_module4/provenance/TERMINOLOGY.md",
+      "sha256": "2564172d291b9d64d9fd459b7399601f1193b3a808ab8748f061450aeaad49f6"
+    },
+    {
+      "source": "igem_module4/provenance/input-drafts/{WIKI.md,DBTL.md}",
+      "destination": "static/assets/model/igem_module4/provenance/input-drafts.zip",
+      "sha256": "2d3552b9899edcfd9df525216f27de2e0b0a3aa4ba940bca7069f75248c9c466",
+      "note": "Deterministic download archive; individual drafts are preserved byte-for-byte."
+    },
+    {
+      "source": "igem_module4/provenance/input-drafts/DBTL.md",
+      "destination": "static/assets/model/igem_module4/provenance/input-drafts/DBTL.md",
+      "sha256": "6d2a7279847a2ba79a5fbea039ae0c437140cc87b45b4dcfcd2906bb3cc21b12"
+    },
+    {
+      "source": "igem_module4/provenance/input-drafts/WIKI.md",
+      "destination": "static/assets/model/igem_module4/provenance/input-drafts/WIKI.md",
+      "sha256": "af3ba86e9a3245c6b9206c719a267891fe8eb0ea4b26e1f76be0f0a32dc85007"
+    },
+    {
+      "source": "igem_module4/provenance/input-manifest.json",
+      "destination": "static/assets/model/igem_module4/provenance/input-manifest.json",
+      "sha256": "923c09dbcfeedff06f0943f3ecb943e39785b9528d8ea8d12d8f532cd2c27398"
+    },
+    {
+      "source": "igem_module4/provenance/sources.md",
+      "destination": "static/assets/model/igem_module4/provenance/sources.md",
+      "sha256": "6d032b32ca441cd7fc294a08ec2920f29f23cefd4d2410c9b9b2fbbdf6da59ff"
     }
-  ]
+  ],
+  "scope": "Presentation import only; no model training, assay reanalysis or claim verification.",
+  "module4_evidence_status": "Text-only release. Project-specific numbers come from the supplied drafts and await reconciliation with original results. No synthetic figures, training curves, checkpoints or inference program were added."
 }

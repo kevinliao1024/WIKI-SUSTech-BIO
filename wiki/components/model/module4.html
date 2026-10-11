@@ -1,0 +1,367 @@
+{% raw %}
+<h3 id="module4-1" data-model-chapter><span class="chapter-number">4.1</span>Background</h3>
+<p>Programmable RNA editing must balance desired activity with control over unintended changes elsewhere in the transcriptome. RNA sequencing (RNA-seq) identifies observed editing events, but testing every transcriptomic cytidine experimentally is impractical. A useful computational workflow should therefore prioritize candidates while preserving experimental confirmation as the standard for assessing off-target editing.</p>
+<p>Our PUF-LIKER-APOBEC editing system performs C-to-U conversion, and we sought to prioritize cytidines for targeted follow-up. Two features of the available RNA-seq labels complicate this prediction task. Supported editing sites are sparse relative to all transcriptomic cytidines, creating substantial class imbalance. Moreover, unobserved cytidines may reflect limited coverage, low expression or condition-dependent editing rather than biological resistance to editing.</p>
+<p>We organized the task into two stages using the LAMAR RNA foundation model. Stage I scores transcript windows for association with supported editing sites. Stage II ranks cytidines within candidate regions, providing a short list for experimental evaluation. This approach focuses the experimental search while keeping biological confirmation central to candidate assessment.</p>
+<h3 id="module4-2" data-model-chapter><span class="chapter-number">4.2</span>Model overview</h3>
+<h4>Foundation model and human-transcriptome adaptation</h4>
+<p>LAMAR uses a bidirectional Transformer encoder with 12 layers, 12 attention heads, a hidden dimension of 768 and rotary positional embeddings. Its nucleotide vocabulary is <code>{A, T, C, G, N}</code>, with special tokens including <code>&lt;cls&gt;</code>, <code>&lt;eos&gt;</code>, <code>&lt;mask&gt;</code> and <code>&lt;pad&gt;</code>. The LAMAR-2k configuration supports sequence contexts of up to 2,048 nucleotides.</p>
+<p>The published model was pretrained on approximately 15 million RNA sequences from 225 mammalian species and 1,569 mammal-infecting viral species. Its corpus included mRNAs, non-coding RNAs and annotated genes from RefSeq and RNAcentral. Clustering at 80% sequence identity yielded approximately 267 billion nucleotide tokens. Published applications include splice-site prediction, translation efficiency, RNA stability and internal ribosome entry site activity. <a href="https://doi.org/10.1186/s13059-025-03752-x">Zhou et al., 2025</a>.</p>
+<p>We continued masked language modelling on human transcript sequences before downstream fine-tuning. This objective reconstructs masked nucleotides from their sequence context without using editing-site labels. Transcript sequences were generated with <code>gffread</code> using the following reference inputs. <a href="https://doi.org/10.12688/f1000research.23297.2">Pertea and Pertea, 2020</a>.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gene annotation</td>
+<td><code>gencode.v50.chr_patch_hapl_scaff.annotation.gtf</code></td>
+</tr>
+<tr>
+<td>Genome sequence</td>
+<td><code>GRCh38.primary_assembly.genome.fa</code></td>
+</tr>
+<tr>
+<td>Transcriptome output</td>
+<td><code>gencode.v50.transcripts.fa</code></td>
+</tr>
+<tr>
+<td>Transcript sequences</td>
+<td>644,292</td>
+</tr>
+<tr>
+<td>Total nucleotides</td>
+<td>1,443,754,799</td>
+</tr>
+</tbody>
+</table></div>
+<p>We retained GENCODE v50 and the GRCh38 reference inputs used for transcript extraction. GENCODE human release 50 was released in June 2026, as recorded in its official release history. <a href="https://www.gencodegenes.org/human/release_50.html">GENCODE v50</a>; <a href="https://www.gencodegenes.org/human/releases.html">release history</a>.</p>
+<h4>RNA-seq-supported editing labels</h4>
+<p>A candidate site entered the positive-label set only when both supplied read-support criteria were met.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align: right;">Retained threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Editing-supporting reads</td>
+<td style="text-align: right;">≥20</td>
+</tr>
+<tr>
+<td>Total sequencing depth</td>
+<td style="text-align: right;">≥100</td>
+</tr>
+</tbody>
+</table></div>
+<p>These thresholds define the project's supported positive labels and remain unchanged. Cytidines outside that set represent unobserved sites under the measured conditions. They are nominal negatives during classification, rather than experimentally confirmed non-editable sites. All sequences were represented in transcript orientation, with cytidines serving as candidates for site-level prediction.</p>
+<h4>Two-stage candidate prioritization</h4>
+<p>Stage I uses transcript windows to identify regions associated with editing evidence. Transcripts containing supported sites were divided into 1,024-nt windows with 128-nt overlap. A window was labelled positive when it contained at least one supported editing site. Windows without detected sites received nominal negative labels, retaining the uncertainty described above.</p>
+<p>The dataset was partitioned by transcript, with approximately 90%, 5% and 5% allocated to training, validation and testing. Windows were then generated within each partition for the downstream models. This design reduces overlap between windows from the same transcript across partitions. Leakage through related isoforms, shared genes or homologous sequences was not assessed.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Split</th>
+<th style="text-align: right;">Total windows</th>
+<th style="text-align: right;">Positive windows</th>
+<th style="text-align: right;">Nominal negative windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training</td>
+<td style="text-align: right;">3,835</td>
+<td style="text-align: right;">2,643</td>
+<td style="text-align: right;">1,192</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr>
+<td>Test</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">72</td>
+</tr>
+</tbody>
+</table></div>
+<p>Stage II extracts a 101-nt sequence centred on each cytidine in the corresponding Stage I sequences. Its binary-classification head assigns an editing-associated score to the central cytidine. At inference, the proposed workflow applies Stage II within regions prioritized by Stage I. Cytidines are sorted by score to guide subsequent experimental testing.</p>
+<p>The two-stage design focuses scoring on candidate regions rather than treating every transcriptomic cytidine as equally relevant. It does not resolve uncertain negative labels or establish a calibrated probability of biological editability. Candidate selection therefore requires further evaluation alongside the experimental screening budget.</p>
+<h4>Training configuration</h4>
+<p>Both stages used the LAMAR encoder with a linear binary-classification head. Hyperparameters were optimized with Optuna, using the shared architecture described below. The fixed random seed defines a computational setting rather than biological replication.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hidden size</td>
+<td>768</td>
+</tr>
+<tr>
+<td>Intermediate size</td>
+<td>3,072</td>
+</tr>
+<tr>
+<td>Attention heads</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Transformer layers</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Positional embedding</td>
+<td>Rotary</td>
+</tr>
+<tr>
+<td>Output labels</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Classification head</td>
+<td>Linear</td>
+</tr>
+<tr>
+<td>Stage I maximum sequence length</td>
+<td>1,026 tokens, including special tokens</td>
+</tr>
+<tr>
+<td>Random seed</td>
+<td>42</td>
+</tr>
+</tbody>
+</table></div>
+<p>Stage I used validation PR-AUC, the area under the precision–recall curve, for model selection. Training allowed up to 15 epochs, with early-stopping patience set to 10 epochs. Stage II was optimized separately, using the selected settings listed alongside Stage I.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Hyperparameter</th>
+<th>Stage I</th>
+<th>Stage II</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch size per device</td>
+<td>4</td>
+<td>Not separately stated</td>
+</tr>
+<tr>
+<td>Gradient accumulation steps</td>
+<td>2</td>
+<td>Not separately stated</td>
+</tr>
+<tr>
+<td>Batch configuration</td>
+<td><code>batch4_accum2</code></td>
+<td><code>batch4_accum2</code></td>
+</tr>
+<tr>
+<td>Learning rate</td>
+<td><code>5e-4</code></td>
+<td><code>1.0139e-5</code></td>
+</tr>
+<tr>
+<td>Weight decay</td>
+<td><code>7.9194e-6</code></td>
+<td><code>6.6122e-5</code></td>
+</tr>
+<tr>
+<td>Token dropout</td>
+<td><code>0.0</code></td>
+<td><code>8.9809e-4</code></td>
+</tr>
+<tr>
+<td>Warmup ratio</td>
+<td><code>0.05338</code></td>
+<td><code>0.09762</code></td>
+</tr>
+<tr>
+<td>Maximum epochs</td>
+<td>15</td>
+<td>Not stated</td>
+</tr>
+<tr>
+<td>Early-stopping patience</td>
+<td>10</td>
+<td>Not stated</td>
+</tr>
+<tr>
+<td>Selected Optuna trial</td>
+<td>Not stated</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="module4-3" data-model-chapter><span class="chapter-number">4.3</span>Results</h3>
+<h4>Continued pretraining improved masked nucleotide prediction accuracy</h4>
+<p>Masked nucleotide prediction accuracy increased after continued pretraining on human transcript sequences. The original and human-adapted checkpoints reached accuracies of 0.505 and 0.575, respectively.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Masked nucleotide prediction accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original LAMAR</td>
+<td style="text-align: right;">0.505</td>
+</tr>
+<tr>
+<td>Human-adapted LAMAR</td>
+<td style="text-align: right;">0.575</td>
+</tr>
+</tbody>
+</table></div>
+<p>This improvement reflects better masked reconstruction within the evaluated human transcript sequences. The independence of that evaluation from continued-pretraining sequences remains to be confirmed. Better sequence reconstruction does not, by itself, establish improved downstream editing prediction.</p>
+<h4>Direct classification motivated a change in task formulation</h4>
+<p>The initial design classified 101-nt cytidine-centred sequences as edited or unedited. It treated supported editing sites as positives and other transcriptomic cytidines as nominal negatives. The initial classifier performed poorly under this original label definition.</p>
+<p>Class imbalance and uncertain negatives were considered plausible contributors to the poor performance. Their individual effects were not isolated by the available model comparisons. The engineering response was to prioritize candidate regions and rank their cytidines for experimental follow-up.</p>
+<h4>Stage I distinguished windows associated with observed editing</h4>
+<p>Stage I reached a best validation PR-AUC of 0.813 and a test PR-AUC of 0.722. Validation performance was used for model selection, while the test partition provided a separate evaluation.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Evaluation partition</th>
+<th style="text-align: right;">Stage I PR-AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validation, best value</td>
+<td style="text-align: right;">0.813</td>
+</tr>
+<tr>
+<td>Test</td>
+<td style="text-align: right;">0.722</td>
+</tr>
+</tbody>
+</table></div>
+<p>The dataset was constructed from transcripts containing supported sites, rather than a representative sample of the full transcriptome. Positive windows accounted for 140 of 212 test windows, approximately 66.0%. This enriched composition limits extrapolation of PR-AUC to a transcriptome-wide screen. The result does not quantify the candidate reduction or sensitivity of a specified Stage I selection threshold.</p>
+<p>Comparisons included original LAMAR, encoder-frozen variants and randomly initialized models. Fine-tuned pretrained models showed lower training losses, while differences in validation PR-AUC were more limited. Human-adapted LAMAR showed a modest validation PR-AUC advantage in these qualitative comparisons. This pattern distinguishes improved fitting from downstream performance without establishing a quantified gain from continued pretraining.</p>
+<h4>Stage II supported ranking-oriented evaluation</h4>
+<p>Stage II cytidine-level PR-AUC was approximately 0.2, indicating limited classification performance in the evaluated setting. This result did not support confident absolute discrimination of individual editing sites. We therefore evaluated ranking performance to match the intended experimental use of a limited candidate list.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hit@K</td>
+<td>Fraction of evaluated units containing at least one supported site among their top K cytidines</td>
+</tr>
+<tr>
+<td>Recall@K</td>
+<td>Fraction of supported sites recovered among the top K cytidines within an evaluated unit</td>
+</tr>
+<tr>
+<td>Mean reciprocal rank (MRR)</td>
+<td>Mean reciprocal rank of the highest-ranked supported site across evaluated units</td>
+</tr>
+<tr>
+<td>Best rank</td>
+<td>Rank of the highest-ranked supported site within an evaluated unit</td>
+</tr>
+</tbody>
+</table></div>
+<p>The validation and test ranking denominators were 150 and 140, respectively. These units are labelled transcripts in the source, although the numbers also match Stage I positive-window counts. Their mapping to windows requires confirmation before transcript-level interpretation or complete-pipeline evaluation.</p>
+<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Validation</th>
+<th style="text-align: right;">Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hit@1</td>
+<td style="text-align: right;">0.247</td>
+<td style="text-align: right;">0.243</td>
+</tr>
+<tr>
+<td>Hit@5</td>
+<td style="text-align: right;">0.607</td>
+<td style="text-align: right;">0.607</td>
+</tr>
+<tr>
+<td>Hit@10</td>
+<td style="text-align: right;">0.847</td>
+<td style="text-align: right;">0.779</td>
+</tr>
+<tr>
+<td>Hit@20</td>
+<td style="text-align: right;">0.953</td>
+<td style="text-align: right;">0.921</td>
+</tr>
+<tr>
+<td>Recall@5</td>
+<td style="text-align: right;">0.381</td>
+<td style="text-align: right;">0.373</td>
+</tr>
+<tr>
+<td>Recall@10</td>
+<td style="text-align: right;">0.635</td>
+<td style="text-align: right;">0.573</td>
+</tr>
+<tr>
+<td>Recall@20</td>
+<td style="text-align: right;">0.841</td>
+<td style="text-align: right;">0.792</td>
+</tr>
+<tr>
+<td>MRR</td>
+<td style="text-align: right;">0.409</td>
+<td style="text-align: right;">0.406</td>
+</tr>
+<tr>
+<td>Mean best rank</td>
+<td style="text-align: right;">6.527</td>
+<td style="text-align: right;">7.429</td>
+</tr>
+<tr>
+<td>Median best rank</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Reported evaluated units, labelled transcripts</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">140</td>
+</tr>
+</tbody>
+</table></div>
+<p>Within the test ranking set, Hit@10 and Hit@20 were 0.779 and 0.921, respectively. Thus, approximately 77.9% and 92.1% of evaluated units contained a supported site within those candidate budgets. The median best rank was 4 across the evaluated test units. These results describe recovery within the evaluated ranking set, rather than sensitivity of the complete two-stage workflow.</p>
+<h3 id="module4-4" data-model-chapter><span class="chapter-number">4.4</span>Interpretation and limitations</h3>
+<p>Candidate ranking is the present engineering use supported by this module. Stage I associates sequence windows with observed editing labels, while Stage II orders cytidines for experimental follow-up. Neither stage establishes whether an unobserved site is biologically non-editable under another condition.</p>
+<p>Interpretation remains constrained by label uncertainty, an enriched evaluation dataset and unresolved ranking units. Transcript-level partitioning addresses overlap from individual transcripts, but does not establish independence across isoforms or related sequences. The complete workflow still requires evaluation of candidate reduction and supported-site recovery at an explicit Stage I threshold.</p>
+<p>Generalization across editor variants, biological replicates or cell contexts remains an open question. Ranking calibration and experimental confirmation of newly proposed off-target sites also require further study. These boundaries define the next iteration of computational and experimental evaluation.</p>
+<h3 id="module4-5" data-model-chapter><span class="chapter-number">4.5</span>Conclusion</h3>
+<p>This module reframes off-target prediction as candidate prioritization using a human-adapted RNA foundation model. Stage I test PR-AUC was 0.722, and Stage II test Hit@10 was 0.779 within their respective evaluation sets. These results motivate targeted follow-up while requiring clarification of ranking units before complete-pipeline interpretation.</p>
+<p>The next iteration should test selected high-ranked and low-ranked candidates with matched assays and documented biological replication. Newly measured editing outcomes can strengthen the evidence used for future model development. Complete-pipeline performance and transfer across experimental contexts require separate evaluation before broader specificity claims are justified.</p>
+<h3 id="module4-6" data-model-chapter><span class="chapter-number">4.6</span>Data and code availability</h3>
+<p>This text-only release contains the Wiki, DBTL record and their <a href="/static/assets/model/igem_module4/provenance/input-drafts.zip">original text inputs</a>. Project-specific numbers are preserved from those inputs and await reconciliation with the original results. The <a href="/static/assets/model/igem_module4/provenance/REVISION_NOTES.md">revision notes</a> record outstanding evidence and the required reproducibility details. Raw RNA-seq calls, split assignments, project checkpoints, training logs and per-site predictions are not included in this package.</p>
+<p>The external LAMAR implementation is available from the <a href="https://github.com/rnasys/LAMAR">official code repository</a>, with pretrained weights hosted on <a href="https://huggingface.co/zhw-e8/LAMAR">Hugging Face</a>. Project-specific training code is not included in the current documentation package.</p>
+<h3 id="module4-7" data-model-chapter><span class="chapter-number">4.7</span>References</h3>
+<ol>
+<li>Zhou, H. et al. A foundation language model to decipher diverse regulation of RNAs. <em>Genome Biology</em> <strong>26</strong>, 301 (2025). <a href="https://doi.org/10.1186/s13059-025-03752-x">doi:10.1186/s13059-025-03752-x</a>.</li>
+<li>GENCODE. Human release 50 (2026). <a href="https://www.gencodegenes.org/human/release_50.html">Release information</a>; <a href="https://www.gencodegenes.org/human/releases.html">release history</a>.</li>
+<li>Pertea, G. and Pertea, M. GFF utilities: GffRead and GffCompare. <em>F1000Research</em> <strong>9</strong>, 304 (2020). <a href="https://doi.org/10.12688/f1000research.23297.2">doi:10.12688/f1000research.23297.2</a>.</li>
+</ol>
+{% endraw %}
