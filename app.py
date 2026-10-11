@@ -36,8 +36,14 @@ def home():
 
 @app.route("/next")
 def home_next():
-    """Keep the particle prototype's original preview URL available."""
-    return render_template("pages/home.html")
+    """Isolated homepage clone for the residue-112 structure review."""
+    return render_template("pages/home_next_structure.html")
+
+
+@app.route("/next-crayon")
+def home_next_crayon():
+    """Crayon layer over the same particle take, added one element at a time."""
+    return render_template("pages/home_next_crayon.html")
 
 
 @app.route("/assets/<path:filename>")

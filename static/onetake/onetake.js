@@ -14,6 +14,12 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { createMazeNavigator } from './maze-navigation.mjs';
+import { createCrtOpening } from './crt-opening.mjs';
+import { matchBrainToMaze } from './brain-correspondence.mjs';
+import { createBiologyScene } from './biology-scene.mjs';
+import { createEditReplay } from './edit-replay.mjs';
+import { buildScrollTrack } from './burden-pacing.mjs';
 
 const root = document.querySelector('[data-ot]');
 const canvas = root?.querySelector('[data-ot-canvas]');
@@ -130,7 +136,8 @@ function mazeShape(n) {
     }
     pos.set([x, y + 0.2, bowl(x, y) + j[2] * 0.04], i * 3);
   }
-  return { pos, meta };
+  const point = (cell) => [cx(cell % W), cy(Math.floor(cell / W))];
+  return { pos, meta, navigation: { adj, path, point, spacing: S, bowl } };
 }
 
 /* An anatomical brain: lobes as blended ellipsoids per hemisphere, sampled
@@ -162,6 +169,18 @@ function brainShape(n) {
 
   const pos = new Float32Array(n * 3);
   const shade = new Float32Array(n);
+  // A shared folded surface aligns the neural points and fine fold contours.
+  const fold = (q, c, d, t) => {
+    const w = 1.6 * vnoise(q[0] * 0.5 + 5, q[1] * 0.5, q[2] * 0.5 + 2);
+    const nv = 0.75 * vnoise(q[0] * 0.95 + w, q[1] * 0.95 - w * 0.6, q[2] * 0.95 + 9) + 0.25 * vnoise(q[0] * 2.1, q[1] * 2.1 + 4, q[2] * 2.1);
+    const groove = smooth(clamp(Math.abs(2 * nv - 1) / 0.22));
+    const { upper, tem } = cortex(q);
+    const fiss = smooth(clamp(Math.abs(upper - tem) / 0.3));
+    const cs = q[1] > 0.2 ? smooth(clamp(Math.abs((q[0] + 0.25) - (3.1 - q[1]) * 0.4) / 0.19)) : 1;
+    const k = t - 0.42 * (1 - groove) - 0.26 * (1 - fiss) - 0.2 * (1 - cs);
+    return { point: [c[0] + d[0] * k, c[1] + d[1] * k, Math.max(0.09, c[2] + d[2] * k)],
+      shade: groove * (0.16 + 0.84 * fiss) * (0.18 + 0.82 * cs) * lit(d), groove, field: 2 * nv - 1 };
+  };
   let i = 0;
   while (i < n) {
     const r = rnd();
@@ -171,20 +190,9 @@ function brainShape(n) {
       const c = [-0.2, 0.3, 1.5], d = sphereDir();
       const t = surface(c, d, (q) => cortex(q).d);
       let q = [c[0] + d[0] * t, c[1] + d[1] * t, c[2] + d[2] * t];
-      // Gyri: a domain-warped ridge field; sulci are its zero lines.
-      const f = 0.95;
-      const w = 1.6 * vnoise(q[0] * 0.5 + 5, q[1] * 0.5, q[2] * 0.5 + 2);
-      const nv = 0.75 * vnoise(q[0] * f + w, q[1] * f - w * 0.6, q[2] * f + 9) + 0.25 * vnoise(q[0] * 2.1, q[1] * 2.1 + 4, q[2] * 2.1);
-      const groove = smooth(clamp(Math.abs(2 * nv - 1) / 0.17));
-      if (groove < 0.5 && rnd() < 0.6) continue;
-      const { upper, tem } = cortex(q);
-      const fiss = smooth(clamp(Math.abs(upper - tem) / 0.28));             // lateral (Sylvian) fissure
-      const cs = smooth(clamp(Math.abs((q[0] + 0.25) - (3.1 - q[1]) * 0.4) / 0.14)); // central sulcus
-      const csOn = q[1] > 0.2 ? cs : 1;
-      const k = t - 0.13 * (1 - groove);
-      q = [c[0] + d[0] * k, c[1] + d[1] * k, Math.max(0.09, c[2] + d[2] * k)];
-      [x, y, z] = q;
-      s = groove * (0.3 + 0.7 * fiss) * (0.35 + 0.65 * csOn) * lit([d[0], d[1], q[2] <= 0.09 ? 0 : d[2]]);
+      const folded = fold(q, c, d, t);
+      if (folded.groove < 0.4 && rnd() < 0.8) continue;
+      [x, y, z] = folded.point; s = folded.shade;
     } else if (r < 0.9) {
       const c = CEREB[0], d = sphereDir();
       const t = surface(c, d, (q) => ell(q, ...CEREB));
@@ -203,11 +211,51 @@ function brainShape(n) {
       x = -0.4 + d[0] * 3.4 * q; y = 0.3 + d[1] * 2.1 * q; z = 1.5 + d[2] * 1.2 * q;
       s = 0.1;
     }
-    pos.set([x, y + 0.4, z * h], i * 3);
+    pos.set([x * 1.33, (y + 0.4) * 1.25, z * h * 1.2], i * 3);
     shade[i] = s;
     i++;
   }
-  return { pos, meta: shade };
+  const surfacePos = [], surfaceIndex = [], surfaceField = [], rows = small ? 52 : 76, cols = small ? 88 : 124;
+  for (const h of [-1, 1]) {
+    const offset = surfacePos.length / 3;
+    for (let j = 0; j <= rows; j++) for (let i = 0; i <= cols; i++) {
+      const theta = Math.PI * j / rows, phi = 2 * Math.PI * i / cols;
+      const d = [Math.sin(theta) * Math.cos(phi), Math.cos(theta), Math.sin(theta) * Math.sin(phi)];
+      const c = [-0.2, 0.3, 1.5], t = surface(c, d, q => cortex(q).d);
+      const q = [c[0] + d[0] * t, c[1] + d[1] * t, c[2] + d[2] * t];
+      const folded = fold(q, c, d, t);
+      const [x, y, z] = folded.point;
+      surfacePos.push(x * 1.33, (y + 0.4) * 1.25, z * h * 1.2);
+      surfaceField.push(folded.field);
+      if (i < cols && j < rows) {
+        const a = offset + j * (cols + 1) + i, b = a + cols + 1;
+        // Mirroring a hemisphere reverses its winding.
+        if (h > 0) surfaceIndex.push(a, a + 1, b, a + 1, b + 1, b);
+        else surfaceIndex.push(a, b, a + 1, a + 1, b, b + 1);
+      }
+    }
+  }
+  // Trace organic fold edges instead of displaying the underlying triangle
+  // mesh. A single fine contour follows each fold beside the neural points.
+  const foldLines = [];
+  for (let i = 0; i < surfaceIndex.length; i += 3) {
+    const triangle = surfaceIndex.slice(i, i + 3);
+    for (const level of [0.16]) {
+      const crossing = [];
+      for (let k = 0; k < 3; k++) {
+        const a = triangle[k], b = triangle[(k + 1) % 3];
+        const fa = surfaceField[a] - level, fb = surfaceField[b] - level;
+        if ((fa < 0) === (fb < 0)) continue;
+        const t = fa / (fa - fb);
+        crossing.push([0, 1, 2].map(axis => lerp(surfacePos[a * 3 + axis], surfacePos[b * 3 + axis], t)));
+      }
+      if (crossing.length === 2) for (const p of crossing) {
+        // Keep the contour just outside the neural points.
+        foldLines.push(p[0] * 1.004, p[1] * 1.004, p[2] * 1.012);
+      }
+    }
+  }
+  return { pos, meta: shade, foldLines };
 }
 
 function astrocyteShape(n) {
@@ -239,20 +287,29 @@ function astrocyteShape(n) {
   const meta = new Float32Array(n);
   for (let i = 0; i < n; i++) {
     let p;
-    if (rnd() < 0.24) {
+    const region = rnd();
+    if (region < 0.19) {
       const d = sphereDir();
-      const r = 1.05 * (0.88 + 0.12 * rnd()) * (1 + 0.18 * (vnoise(d[0] * 2, d[1] * 2, d[2] * 2) - 0.5));
-      p = mul(d, rnd() < 0.8 ? r : r * Math.cbrt(rnd()));
-      meta[i] = 1;
+      const r = 1.08 * (0.97 + 0.03 * rnd()) * (1 + 0.12 * (vnoise(d[0] * 2, d[1] * 2, d[2] * 2) - 0.5));
+      p = [d[0] * r, d[1] * r * .92, d[2] * r * .87];
+      meta[i] = 0; // Thin soma boundary.
+    } else if (region < .24) {
+      const d = sphereDir(), r = .97 + .03*rnd();
+      p = [.12+d[0]*.5*r, -.05+d[1]*.57*r, d[2]*.47*r];
+      meta[i] = 2; // Separate, darker nuclear boundary.
+    } else if (region < .28) {
+      const d = sphereDir(), r = .62 + .3*rnd();
+      p = [d[0]*r,d[1]*r*.9,d[2]*r*.84];
+      meta[i] = 3; // Sparse internal particles.
     } else {
       const u = rnd();
       let j = 0; while (cdf[j] < u && j < cdf.length - 1) j++;
       const g = segs[j];
       const t = rnd(), it = 1 - t;
       const c = [0, 1, 2].map((k) => it * it * g.a[k] + 2 * it * t * g.c[k] + t * t * g.b[k]);
-      const rr = lerp(g.r0, g.r1, t) * Math.sqrt(rnd());
+      const rr = lerp(g.r0, g.r1, t) * (.84 + .16*rnd());
       p = add(c, mul(sphereDir(), rr));
-      meta[i] = g.bulb ? 0.9 : 0.55 + 0.3 * (1 - t);
+      meta[i] = 1; // Tapered process surface, distinct from soma and nucleus.
     }
     pos.set(mul(p, 1.12), i * 3);
   }
@@ -341,10 +398,11 @@ float snoise(vec3 v){
 }`;
 
 const particleVertex = /* glsl */`
-uniform float uTime, uStage, uIntro, uBurden, uFix, uWave, uTurb, uPR, uSize, uRot, uMotion, uAspect, uMouseOn;
+uniform float uTime, uStage, uIntro, uBurden, uFix, uWave, uTurb, uPR, uSize, uRot, uMotion, uAspect, uMouseOn, uMazeFollow, uSignal, uSceneAlpha;
 uniform vec2 uMouse;
 attribute vec3 aMaze, aBrain, aCell, aStrand, aClump;
 attribute float aMazeK;  // -1 maze wall · 0..1 along the wandering path
+attribute float aCellK;  // 0 soma · 1 processes · 2 nuclear boundary · 3 interior
 attribute vec4 aInfo;   // brain shade · strand kind · clumpy · strand x (-1..1)
 attribute vec4 aRnd;    // delay · size · phase · spare
 varying vec3 vColor;
@@ -358,22 +416,27 @@ void main(){
   float c = cos(uRot), s = sin(uRot);
   vec3 brain = vec3(c * aBrain.x + s * aBrain.z, aBrain.y, -s * aBrain.x + c * aBrain.z);
 
-  float e0 = morph(uStage + 1., d);
+  // One shared deformation preserves the opening's connected curves.
+  float e0 = smoothstep(0., 1., clamp(uStage + 1., 0., 1.));
+  float onPath = step(-.5, aMazeK);
   float e1 = morph(uStage, d), e2 = morph(uStage - 1., d), e3 = morph(uStage - 2., d);
   float e4 = morph(uStage - 3., d), e5 = morph(uStage - 4., d);
-  vec3 p = mix(aMaze, brain, e0);
+  vec2 uv = vec2(aMaze.x / 7.1, (aMaze.y - .2) / 4.5);
+  float dome = sqrt(max(0., 1. - dot(uv, uv)));
+  vec3 foldedMaze = vec3(aMaze.xy, 2.7 * dome - .5);
+  vec3 p = mix(mix(aMaze, foldedMaze, smoothstep(0., .7, e0)), brain, smoothstep(.25, 1., e0));
   p = mix(p, aCell, e1);
   p = mix(p, aStrand, e2);
-  p = mix(p, aClump, e3);
+  p = mix(p, aCell, e3);
   p = mix(p, aStrand, e4);
   p = mix(p, brain, e5);
 
   // Particles travel on curling currents while between shapes.
-  float energy = 4. * (e0*(1.-e0) + e1*(1.-e1) + e2*(1.-e2) + e3*(1.-e3) + e4*(1.-e4) + e5*(1.-e5));
+  float energy = 4. * (e1*(1.-e1) + e2*(1.-e2) + e3*(1.-e3) + e4*(1.-e4) + e5*(1.-e5));
   vec3 q = p * .16 + vec3(aRnd.z * .2, 0., uTime * .04);
   vec3 flow = vec3(snoise(q), snoise(q + vec3(31.4, 0., 0.)), snoise(q + vec3(0., 17.2, 0.)));
   float onStrand = e2 * (1. - e5);
-  p += flow * (energy * 2.4 + uMotion * (mix(.012, .045, e0) + uTurb * .5 * onStrand + .16 * uBurden * aInfo.z * e3 * (1. - e4)));
+  p += flow * (energy * 2.4 + uMotion * (mix(.012, .045, e0) + uTurb * .5 * onStrand + .16 * uBurden * aInfo.z * e3 * (1. - e4))) * (1. - onPath * (1. - e0));
 
   // Intro: gather from a wide scatter into the brain.
   vec3 scatter = normalize(vec3(aRnd.y - .5, aRnd.z - .5, aRnd.w - .5) + 1e-3) * (16. + aRnd.w * 18.);
@@ -386,8 +449,11 @@ void main(){
   vec3 mint = vec3(.36, 1., .72), violet = vec3(.52, .40, 1.);
   float shade = aInfo.x;
   vec3 col = mix(deep, ice, shade);
-  vec3 cellCol = mix(violet, ice, aRnd.w * .6 + .2);
-  col = mix(col, cellCol, e1 * (1. - e2));
+  float nuclear = step(1.5,aCellK) * (1. - step(2.5,aCellK));
+  vec3 cellCol = mix(vec3(.38,.36,.74),vec3(.62,.65,.95),aRnd.w*.65);
+  cellCol = mix(cellCol,vec3(.18,.14,.43),nuclear);
+  float cellOn = max(e1 * (1. - e2),e3*(1.-e4));
+  col = mix(col, cellCol, cellOn);
   float isBase = step(.5, kind) * (1. - step(1.5, kind));
   float isTarget = step(1.5, kind) * (1. - dust);
   vec3 strandCol = mix(ice, deep * 1.6, isBase * .6);
@@ -398,11 +464,9 @@ void main(){
   float front = abs(abs(aInfo.w) - uWave * 1.05);
   float wave = exp(-front * front * 90.) * step(.001, uWave) * (1. - smoothstep(.9, 1., uWave)) * onStrand;
   col = mix(col, mint * 1.8, wave);
-  col = mix(col, mix(col, mint, .22 * shade), e5);
   // The maze: cold dim walls, one amber path with a travelling head.
-  float onPath = step(-.5, aMazeK);
-  float head = fract(uTime * .045);
-  float lag = fract(head - aMazeK);
+  float head = mix(fract(uTime * .045), 1., uMazeFollow);
+  float lag = mix(fract(head - aMazeK), max(0., head - aMazeK), uMazeFollow);
   float glow = onPath * (exp(-lag * 22.) + .25 * exp(-lag * 3.));
   vec3 mazeCol = mix(vec3(.30, .45, .95), vec3(1., .62, .32) * (.5 + 1.6 * glow), onPath);
   col = mix(mazeCol, col, e0);
@@ -413,23 +477,34 @@ void main(){
   alpha = mix(alpha, .85, isTarget * onStrand);
   alpha *= mix(1., smoothstep(1., .55, abs(aInfo.w)), onStrand * (1. - clumped));
   alpha = mix(mix(.42, .18 + .8 * glow, onPath), alpha, e0);
-  alpha = mix(alpha, .35, dust);
+  alpha = mix(alpha, mix(.35, .16, e0 * (1. - e1) + e5), dust);
   alpha *= mix(.08, 1., intro);
+  alpha *= mix(1., mix(.57,.38,nuclear),cellOn);
+  alpha *= uSceneAlpha;
 
   vec4 mv = modelViewMatrix * vec4(p, 1.);
   gl_Position = projectionMatrix * mv;
 
+  // Stable particle identities: CRT snow settles into these exact maze points.
+  vec2 snow = vec2(aRnd.y, aRnd.z) * 2. - 1.;
+  float tick = floor(uTime * 22.);
+  float flicker = fract(sin(aRnd.w * 971. + tick * 13.7) * 43758.5453);
+  snow.x += .004 * sin(tick * 1.7 + floor(snow.y * 40.));
+  gl_Position.xy = mix(snow * gl_Position.w, gl_Position.xy, uSignal);
+  col = mix(vec3(.82, .84, .86) * (.6 + flicker * .7), col, uSignal);
+  alpha = mix(.2 + flicker * .6, alpha, uSignal);
+
   // Pointer parts the particles in screen space.
   vec2 ndc = gl_Position.xy / gl_Position.w;
   vec2 dm = (ndc - uMouse) * vec2(uAspect, 1.);
-  float push = exp(-dot(dm, dm) * 14.) * .07 * uMouseOn * (1. - dust);
+  float push = exp(-dot(dm, dm) * 14.) * .07 * uMouseOn * uSignal * (1. - dust) * (1. - onPath * (1. - e0));
   gl_Position.xy += normalize(dm + 1e-5) * push * gl_Position.w;
 
   float size = uSize * (.55 + aRnd.y * .9);
   size *= 1. + isTarget * onStrand * 1.6 + wave * 1.4 + clumped * .5;
   size *= 1. + glow * 1.4 * (1. - e0);
   size *= mix(1., .7, dust);
-  gl_PointSize = max(1., size * uPR * (14. / -mv.z));
+  gl_PointSize = mix((1.4 + aRnd.x * 1.8) * uPR, max(1., size * uPR * (14. / -mv.z)), uSignal);
   alpha *= smoothstep(.6, 2.2, -mv.z);
   vColor = col;
   vAlpha = alpha;
@@ -485,40 +560,41 @@ const GradeShader = {
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const KEYS = [
   { p: -0.19, stage: -1, cam: V(0, 0.1, 17.5), look: V(0, 0.2, 0) },
-  { p: -0.075, stage: -1, cam: V(-2.2, -1.2, 13.8), look: V(-0.4, 0, 0) },
-  { p: 0.03, stage: 0, cam: V(1.2, 0.5, 15.5), look: V(0, 0.2, 0) },
+  { p: -0.075, stage: -1, cam: V(0, 0.1, 17.5), look: V(0, 0.2, 0) },
+  { p: 0.03, stage: 0, cam: V(0, 0.1, 17.5), look: V(0, 0.2, 0) },
   { p: 0.10, stage: 0, cam: V(3.2, 1.0, 14.5), look: V(0, 0.2, 0) },
   { p: 0.19, stage: 0, cam: V(-2.6, 1.4, 13), look: V(0, 0.2, 0) },
   { p: 0.26, stage: 1, cam: V(1.4, 0.6, 9.6), look: V(0, 0, 0) },
   { p: 0.33, stage: 1, cam: V(-1.8, 1.4, 8.4), look: V(0, 0, 0) },
   // Follow the RNA continuously left; its target base stays ahead of us.
   { p: 0.43, stage: 2, cam: V(-9, 2.6, 9.5), look: V(-10, 0, 0) },
-  { p: 0.51, stage: 2, cam: V(-16.5, 1.6, 6.8), look: V(-20, 0.3, 0) },
-  { p: 0.58, stage: 2, cam: V(-20.5, 0.9, 4.4), look: V(-21, 0.6, 0) },
-  { p: 0.68, stage: 3, cam: V(-21.3, 2.2, 14), look: V(-22, 0, 0) },
-  { p: 0.77, stage: 3, cam: V(-22.8, 3.2, 17), look: V(-22, -0.5, 0) },
-  { p: 0.84, stage: 4, cam: V(-23.1, 1.0, 5.0), look: V(-22, 0.6, 0) },
-  { p: 0.885, stage: 4, cam: V(-24.5, 1.8, 10), look: V(-22, 0.3, 0) },
+  { p: 0.51, stage: 2, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
+  { p: 0.58, stage: 2, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
+  { p: 0.68, stage: 3, cam: V(1.2, 1.2, 15), look: V(0, 0, 0) },
+  { p: 0.77, stage: 3, cam: V(-1.2, 1.6, 15), look: V(0, 0, 0) },
+  { p: 0.81, stage: 4, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
+  { p: 0.84, stage: 4, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
+  { p: 0.87, stage: 4, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
+  { p: 0.905, stage: 4, cam: V(-21.3, 2.0, 8.0), look: V(-21.8, 0.5, 0) },
   { p: 0.94, stage: 5, cam: V(0.6, 0.6, 15), look: V(0, 0.3, 0) },
   { p: 1.00, stage: 5, cam: V(-0.8, 0.5, 16.5), look: V(0, 0.3, 0) },
 ];
 // Let the leftward RNA journey run longer, with lighter pacing elsewhere.
 // The longer CSS track keeps morphs at their original scroll speed.
 // Text, camera and effects all use this same reversible timeline mapping.
-const HOLD_WEIGHT = 1.6;
-const RNA_HOLD_WEIGHT = 3.6;
-let trackLength = 0;
-const TRACK = KEYS.slice(1).map((key, i) => {
-  const previous = KEYS[i];
-  const start = trackLength;
-  const weight = key.stage === previous.stage ? (key.stage === 2 ? RNA_HOLD_WEIGHT : HOLD_WEIGHT) : 1;
-  trackLength += (key.p - previous.p) * weight;
-  return { start, end: trackLength, from: previous.p, to: key.p };
+const { track: TRACK, length: trackLength, scale: trackScale } = buildScrollTrack(KEYS, {
+  burden: !!root?.querySelector('[data-burden]'),
 });
+// Add the comparison's reading distance without speeding up other chapters.
+story?.style.setProperty('--ot-track-scale', trackScale);
 function takeOf(p) {
   const distance = p * trackLength;
   const segment = TRACK.find((part) => distance <= part.end) || TRACK[TRACK.length - 1];
   return lerp(segment.from, segment.to, (distance - segment.start) / (segment.end - segment.start));
+}
+function progressOfTake(take) {
+  const part = TRACK.find(s => take >= s.from && take <= s.to) || TRACK.at(-1);
+  return (part.start + (take-part.from)/(part.to-part.from)*(part.end-part.start))/trackLength;
 }
 const camCurve = new THREE.CatmullRomCurve3(KEYS.map((k) => k.cam), false, 'centripetal');
 const lookCurve = new THREE.CatmullRomCurve3(KEYS.map((k) => k.look), false, 'centripetal');
@@ -542,7 +618,7 @@ function setupDom() {
   const counters = [...document.querySelectorAll('[data-ot-count]')];
   const bar = document.querySelector('.ot-bar');
   return (p, live) => {
-    bar.classList.toggle('is-story-ended', p >= 1);
+    if (bar) bar.classList.toggle('is-story-ended', p >= 1);
     for (const c of chapters) c.el.classList.toggle('is-on', p >= c.a && p < c.b);
     for (const el of counters) {
       const k = smooth(ramp(p, +el.dataset.from, +el.dataset.to));
@@ -556,7 +632,11 @@ function setupMenu() {
   const menu = document.querySelector('[data-ot-menu]');
   if (!btn || !menu) return;
   btn.hidden = false;
-  document.querySelector('[data-ot-menu-fallback]').hidden = true;
+  // The fallback nav link only exists on templates that ship one; on the
+  // one-take routes the bespoke .ot-bar is the only navigation, so this is
+  // optional. Dereferencing it unguarded used to throw here, which boot()'s
+  // try/catch turned into showStatic() — killing the whole particle take.
+  document.querySelector('[data-ot-menu-fallback]')?.setAttribute('hidden', '');
   const set = (open) => {
     btn.setAttribute('aria-expanded', String(open));
     document.body.classList.toggle('ot-menu-open', open);
@@ -593,7 +673,6 @@ function boot() {
   if (!root || !canvas || !story) return;
   setupMenu();
   const updateDom = setupDom();
-  const letter = document.querySelector('[data-ot-letter]');
 
   // ?p=0.55 pins the take to one frame (review screenshots).
   const pinned = parseFloat(new URLSearchParams(location.search).get('p'));
@@ -608,22 +687,18 @@ function boot() {
     return;
   }
   root.classList.remove('ot--static');
+  const crt = createCrtOpening(root);
 
   const N = small ? 26000 : 64000;
   const DUST = Math.floor(N * 0.07);
   const M = N - DUST;
 
   const maze = sortShape(mazeShape(M), M);
-  const brain = sortShape(brainShape(M), M);
+  const brain = matchBrainToMaze(maze, brainShape(M));
   const cell = sortShape(astrocyteShape(M), M);
   const strand = sortShape(strandShape(M), M);
 
-  // Burden: ~40% of particles leave the strand and gather into aggregates.
-  const clumps = Array.from({ length: 34 }, () => {
-    const x = STRAND.centerX + (rnd() * 2 - 1) * 15 * Math.sqrt(rnd());
-    const a = rnd() * Math.PI * 2, d = 1.7 + rnd() * 2.8;
-    return { c: [x, Math.cos(a) * d, Math.sin(a) * d], r: 0.35 + rnd() * 0.75 };
-  });
+  // Amyloid is rendered by the independent biology layer, never from RNA.
   const clumpPos = new Float32Array(N * 3);
   const info = new Float32Array(N * 4);
   const rand4 = new Float32Array(N * 4);
@@ -641,15 +716,8 @@ function boot() {
       info.set([0.3, 3, 0, 0], i * 4);
     } else {
       const kind = strand.meta[i];
-      const clumpy = kind < 1.5 && rnd() < 0.4 ? 1 : 0;
-      if (clumpy) {
-        const k = clumps[Math.floor(rnd() * clumps.length)];
-        const d = sphereDir(), q = k.r * Math.pow(rnd(), 0.6);
-        clumpPos.set([k.c[0] + d[0] * q, k.c[1] + d[1] * q, k.c[2] + d[2] * q], i * 3);
-      } else {
-        clumpPos.set(strand.pos.subarray(i * 3, i * 3 + 3), i * 3);
-      }
-      info.set([brain.meta[i], kind, clumpy, (strand.pos[i * 3] - STRAND.centerX) / STRAND.half], i * 4);
+      clumpPos.set(cell.pos.subarray(i * 3, i * 3 + 3), i * 3);
+      info.set([brain.meta[i], kind, 0, (strand.pos[i * 3] - STRAND.centerX) / STRAND.half], i * 4);
     }
     rand4.set([rnd(), rnd(), rnd(), rnd()], i * 4);
   }
@@ -658,8 +726,12 @@ function boot() {
   geometry.setAttribute('position', new THREE.BufferAttribute(brainPos, 3));
   geometry.setAttribute('aMaze', new THREE.BufferAttribute(mazePos, 3));
   geometry.setAttribute('aMazeK', new THREE.BufferAttribute(mazeK, 1));
+  geometry.attributes.aMaze.setUsage(THREE.DynamicDrawUsage);
+  geometry.attributes.aMazeK.setUsage(THREE.DynamicDrawUsage);
   geometry.setAttribute('aBrain', new THREE.BufferAttribute(brainPos, 3));
   geometry.setAttribute('aCell', new THREE.BufferAttribute(cellPos, 3));
+  const cellKinds = new Float32Array(N); cellKinds.set(cell.meta);
+  geometry.setAttribute('aCellK', new THREE.BufferAttribute(cellKinds, 1));
   geometry.setAttribute('aStrand', new THREE.BufferAttribute(strandPos, 3));
   geometry.setAttribute('aClump', new THREE.BufferAttribute(clumpPos, 3));
   geometry.setAttribute('aInfo', new THREE.BufferAttribute(info, 4));
@@ -671,6 +743,9 @@ function boot() {
     uFix: { value: 0 }, uWave: { value: 0 }, uTurb: { value: 0 }, uPR: { value: 1 },
     uSize: { value: small ? 2.6 : 2.2 }, uRot: { value: 0 }, uMotion: { value: 1 },
     uAspect: { value: 1 }, uMouse: { value: new THREE.Vector2(9, 9) }, uMouseOn: { value: 0 },
+    uMazeFollow: { value: 0 },
+    uSignal: { value: crt ? 0 : 1 },
+    uSceneAlpha: { value: 1 },
   };
   const material = new THREE.ShaderMaterial({
     uniforms, vertexShader: particleVertex, fragmentShader: particleFragment,
@@ -685,7 +760,32 @@ function boot() {
   );
 
   const scene = new THREE.Scene();
-  scene.add(points, ring);
+  ring.visible = false;
+  scene.add(points);
+  const replay = createEditReplay({ root, story, toProgress: progressOfTake,
+    enabled: Number.isNaN(pinned) && !reduceQuery.matches &&
+      !(root.hasAttribute('data-structure-preview') && location.hash === '#apoe112') });
+  const biology = createBiologyScene(THREE, scene, { root, cell, strand, small,
+    onReady: ready => replay.setReady(ready) });
+  const foldGeometry = new THREE.BufferGeometry();
+  foldGeometry.setAttribute('position', new THREE.Float32BufferAttribute(brain.foldLines, 3));
+  const foldMaterial = new THREE.LineBasicMaterial({ color: 0xb1caff, transparent: true,
+    opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
+  // Fade the far-side contours directly, without any surface that masks points.
+  foldMaterial.onBeforeCompile = shader => {
+    shader.vertexShader = 'varying float vFoldFacing;\n' + shader.vertexShader;
+    shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', `
+      #include <begin_vertex>
+      vec3 outward = normalize(vec3((position.x + .266) / 1.33,
+        (position.y - .875) / 1.25, (abs(position.z) - 1.8) * sign(position.z) / 1.2));
+      vFoldFacing = smoothstep(.05, .45, (normalMatrix * outward).z);
+    `);
+    shader.fragmentShader = 'varying float vFoldFacing;\n' + shader.fragmentShader;
+    shader.fragmentShader = shader.fragmentShader.replace('#include <opaque_fragment>',
+      'diffuseColor.a *= vFoldFacing;\n#include <opaque_fragment>');
+  };
+  const foldContours = new THREE.LineSegments(foldGeometry, foldMaterial);
+  scene.add(foldContours);
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
@@ -714,12 +814,74 @@ function boot() {
   addEventListener('resize', resize);
 
   const mouse = new THREE.Vector2(9, 9), mouseSmooth = new THREE.Vector2(0, 0);
-  let mouseOn = 0;
+  let mouseOn = 0, pointerMouse = false, pointerX = 0, pointerY = 0;
+  const updatePointer = () => {
+    if (!pointerMouse) { mouseOn = 0; return; }
+    const pointer = crt?.pointer(pointerX, pointerY);
+    mouse.set(pointer?.x ?? (pointerX / innerWidth) * 2 - 1, pointer?.y ?? 1 - (pointerY / innerHeight) * 2);
+    mouseOn = pointer?.inside === false ? 0 : 1;
+  };
   addEventListener('pointermove', (e) => {
-    mouse.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
-    mouseOn = e.pointerType === 'mouse' ? 1 : 0;
+    pointerX = e.clientX; pointerY = e.clientY; pointerMouse = e.pointerType === 'mouse';
+    updatePointer();
   }, { passive: true });
-  document.addEventListener('pointerleave', () => { mouseOn = 0; });
+  document.addEventListener('pointerleave', () => { mouseOn = 0; pointerMouse = false; });
+  addEventListener('blur', () => { mouseOn = 0; pointerMouse = false; });
+
+  const pathParticles = [];
+  for (let i = 0; i < M; i++) if (mazeK[i] >= 0) pathParticles.push(i);
+  pathParticles.sort((a, b) => mazeK[a] - mazeK[b]);
+  const mazeNav = maze.navigation, projected = new THREE.Vector3();
+  let navigator = null;
+  const updateMaze = (dt, stage, intro, time, motion) => {
+    // Only the opening labyrinth accepts targets. Other chapters keep their
+    // existing morphs, and touch scrolling does not steer the light.
+    if (stage > -0.98 || intro < 0.98 || uniforms.uSignal.value < 0.995) return;
+    let goal = null, best = Infinity, cellPixels = 0;
+    if (mouseOn && motion && !document.querySelector('.rna-nav.is-open')) {
+      for (const cell of mazeNav.adj.keys()) {
+        const [x, y] = mazeNav.point(cell);
+        projected.set(x, y + 0.2, mazeNav.bowl(x, y)).project(camera);
+        const dx = (projected.x - mouse.x) * innerWidth / 2;
+        const dy = (projected.y - mouse.y) * innerHeight / 2;
+        const distance = dx * dx + dy * dy;
+        if (distance < best) {
+          best = distance; goal = cell;
+          // The capture radius scales with the actual perspective and viewport.
+          cellPixels = mazeNav.spacing * innerHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.distanceTo(projected.set(x, y + 0.2, mazeNav.bowl(x, y))));
+        }
+      }
+      if (best > (cellPixels * 1.15) ** 2) goal = null;
+    }
+    if (!navigator && goal !== null) {
+      navigator = createMazeNavigator(mazeNav, (time * 0.045) % 1);
+      uniforms.uMazeFollow.value = 1;
+      // Evenly sample the travelled tail; stable per-particle offsets keep
+      // the same soft particulate appearance as the original wandering line.
+      pathParticles.forEach((i, k) => { mazeK[i] = k / Math.max(1, pathParticles.length - 1); });
+      geometry.attributes.aMazeK.needsUpdate = true;
+    }
+    if (!navigator) return;
+    navigator.setTarget(goal);
+    const idleSpeed = 4.95;
+    const pursuitSpeed = clamp(navigator.remaining() / mazeNav.spacing * 1.8, 9, 28);
+    const speed = goal === null ? idleSpeed : lerp(idleSpeed, pursuitSpeed, 0.5);
+    navigator.advance(dt * motion * mazeNav.spacing * speed);
+    const trail = navigator.trail(), cumulative = [0];
+    for (let i = 1; i < trail.length; i++) cumulative.push(cumulative[i - 1] + Math.hypot(trail[i][0] - trail[i - 1][0], trail[i][1] - trail[i - 1][1]));
+    const total = cumulative[cumulative.length - 1];
+    let segment = 1;
+    for (const i of pathParticles) {
+      const distance = mazeK[i] * total;
+      while (segment < trail.length - 1 && cumulative[segment] < distance) segment++;
+      const a = trail[Math.max(0, segment - 1)], b = trail[Math.min(segment, trail.length - 1)];
+      const fraction = total > 0 ? (distance - cumulative[segment - 1]) / Math.max(1e-8, cumulative[segment] - cumulative[segment - 1]) : 0;
+      const x = lerp(a[0], b[0], fraction) + (rand4[i * 4 + 1] - 0.5) * 0.04;
+      const y = lerp(a[1], b[1], fraction) + (rand4[i * 4 + 2] - 0.5) * 0.04;
+      mazePos.set([x, y + 0.2, mazeNav.bowl(x, y) + (rand4[i * 4 + 3] - 0.5) * 0.04], i * 3);
+    }
+    geometry.attributes.aMaze.needsUpdate = true;
+  };
 
   let reduce = reduceQuery.matches;
   reduceQuery.addEventListener?.('change', (e) => { reduce = e.matches; });
@@ -733,21 +895,37 @@ function boot() {
     const target = progressOf();
     p = reduce ? target : p + (target - p) * (1 - Math.exp(-dt * 5.5));
     if (Math.abs(target - p) < 1e-5) p = target;
-    const q = takeOf(p);
+    let q = takeOf(p);
+    const replayState = replay.update(q, dt);
+    if (replayState) { q = replayState.take; p = progressOf(); }
     const P = clamp(q, -1, 1);
-    updateDom(q, !reduce && Number.isNaN(pinned));
+    uniforms.uSignal.value = crt?.update(P) ?? 1;
+    updatePointer();
+    updateDom(replayState?.phase === 'edit' ? .856 : q, !reduce && Number.isNaN(pinned));
     const motion = reduce ? 0 : 1;
     time += dt * motion;
-    intro = reduce || !Number.isNaN(pinned) ? 1 : Math.min(1, intro + dt / 3.2);
+    intro = crt || reduce || !Number.isNaN(pinned) ? 1 : Math.min(1, intro + dt / 3.2);
 
     const { t, stage } = sample(P);
     camCurve.getPoint(t, camPos); lookCurve.getPoint(t, camLook);
+    if (replayState && ['target','placement','edit','return'].includes(replayState.phase)) {
+      const targetCamera = sample(.84).t;
+      camCurve.getPoint(targetCamera,camPos); lookCurve.getPoint(targetCamera,camLook);
+      if (replayState.phase === 'return') {
+        camPos.lerp(camCurve.getPoint(sample(.955).t),replayState.cameraBlend);
+        camLook.lerp(lookCurve.getPoint(sample(.955).t),replayState.cameraBlend);
+      }
+    }
     // Narrow screens: pull the camera back along its own axis.
     const aspect = innerWidth / innerHeight;
     const pull = Math.max(1, 1.15 / aspect);
     camPos.sub(camLook).multiplyScalar(pull).add(camLook);
     mouseSmooth.lerp(mouseOn ? mouse : tmp.set(0, 0, 0), 1 - Math.exp(-dt * 3));
-    camPos.x += mouseSmooth.x * 0.5 * motion; camPos.y += mouseSmooth.y * 0.3 * motion;
+    // Dragging needs stable destinations: pointer parallax resumes on the pullback.
+    const pointerMotion = replayState && ['target','placement','edit','return'].includes(replayState.phase)
+      ? (replayState.phase === 'return' ? replayState.cameraBlend : 0) : 1;
+    camPos.x += mouseSmooth.x * 0.5 * motion * pointerMotion;
+    camPos.y += mouseSmooth.y * 0.3 * motion * pointerMotion;
     // Intro dolly: the take opens slightly further out.
     camPos.z += (1 - smooth(intro)) * 6;
     camera.position.copy(camPos); camera.lookAt(camLook);
@@ -757,34 +935,33 @@ function boot() {
     uniforms.uTime.value = time;
     uniforms.uStage.value = stage;
     uniforms.uIntro.value = intro;
-    uniforms.uRot.value = reduce ? 0.3 : 0.3 + Math.sin(time * 0.12) * 0.4;
+    uniforms.uRot.value = (reduce ? 0.3 : 0.3 + Math.sin(time * 0.12) * 0.4) * smooth(ramp(P, 0.03, 0.1));
     uniforms.uBurden.value = ramp(P, 0.6, 0.7) * (1 - ramp(P, 0.8, 0.86));
     uniforms.uTurb.value = ramp(P, 0.6, 0.72) * (1 - ramp(P, 0.79, 0.85));
-    uniforms.uFix.value = smooth(ramp(P, 0.815, 0.845));
-    uniforms.uWave.value = ramp(P, 0.835, 0.885);
+    uniforms.uFix.value = 0;
+    uniforms.uWave.value = 0;
     uniforms.uMotion.value = motion;
+    uniforms.uSceneAlpha.value = (1-smooth(ramp(P,.335,.387)))
+      + smooth(ramp(P,.634,.674))*(1-smooth(ramp(P,.778,.803)))
+      + smooth(ramp(P,.914,.95));
     uniforms.uMouse.value.copy(mouseSmooth);
-    uniforms.uMouseOn.value = mouseOn * motion;
+    const openingPointer = stage < 0 ? 1 - smooth(ramp(stage, -0.98, -0.65)) : 1;
+    uniforms.uMouseOn.value = mouseOn * motion * openingPointer;
+    updateMaze(dt, stage, intro, time, motion);
+    const brainIn = smooth(ramp(stage + 1, 0.7, 1));
+    const brainOut = 1 - smooth(ramp(stage, 0, 0.65));
+    const brainReturn = smooth(ramp(stage, 4.65, 5));
+    const brainAmount = Math.max(brainIn * brainOut, brainReturn);
+    foldContours.rotation.y = uniforms.uRot.value;
+    foldMaterial.opacity = brainAmount * 0.22;
+    foldContours.visible = brainAmount > 0.001;
 
-    // The editor ring: arrives along the strand, closes on the letter, leaves.
-    const ringIn = smooth(ramp(P, 0.79, 0.825)), ringOut = smooth(ramp(P, 0.87, 0.9));
-    ring.position.copy(strand.target);
-    ring.position.x += (1 - ringIn) * -9 + ringOut * 9;
-    ring.rotation.set(0, Math.PI / 2, 0);
-    ring.scale.setScalar(lerp(1.8, 1, ringIn) * lerp(1, 0.6, ringOut));
-    ringUniforms.uOpacity.value = ringIn * (1 - ringOut);
+    biology.update(P,time,camera,motion,replayState);
 
     grade.uniforms.uTime.value = time;
-    bloom.strength = 0.75 + 0.12 * uniforms.uFix.value * (1 - ramp(P, 0.9, 1)) + 0.25 * ramp(P, 0.52, 0.58) * (1 - ramp(P, 0.6, 0.66));
-
-    // Project the letter onto the page so the type sits on the particle knot.
-    const letterOn = ramp(P, 0.515, 0.54) * (1 - ramp(P, 0.6, 0.625)) + ramp(P, 0.81, 0.83) * (1 - ramp(P, 0.885, 0.905));
-    if (letterOn > 0.001) {
-      tmp.copy(strand.target).project(camera);
-      letter.style.transform = `translate3d(${(tmp.x * 0.5 + 0.5) * innerWidth}px, ${(-tmp.y * 0.5 + 0.5) * innerHeight}px, 0) translate(-50%, -115%)`;
-    }
-    letter.style.opacity = letterOn.toFixed(3);
-    letter.style.setProperty('--fix', uniforms.uFix.value.toFixed(3));
+    grade.uniforms.uAberration.value = P > .22 && P < .94 ? .00015 : .0007;
+    grade.uniforms.uGrain.value = lerp(0.025, 0.008, uniforms.uSignal.value);
+    bloom.strength = (0.48 - .1*smooth(ramp(P,.22,.3))) * uniforms.uSignal.value;
 
     root.style.setProperty('--ot-p', P.toFixed(4));
     composer.render();

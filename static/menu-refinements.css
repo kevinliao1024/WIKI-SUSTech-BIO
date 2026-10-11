@@ -1,5 +1,19 @@
-/* Navigation details shared by the inner-page RNA menus. */
+/* Navigation details shared by Home and inner-page RNA menus. */
 .whale-navigation .nav-label::after { content: none; display: none; }
+.whale-navigation {
+  --nav-label-size:16px;
+  --submenu-label-size:14px;
+  --base-label-size:14px;
+}
+.whale-navigation .nav-list .nav-link { font-size:var(--nav-label-size); }
+.whale-navigation .nav-label { white-space:normal; overflow-wrap:anywhere; }
+/* Keep the longest desktop title on one line within its own column. */
+@media (min-width:1200px) {
+  .whale-navigation .rna-toggle[aria-label="Human Practices"] .nav-label { white-space:nowrap; overflow-wrap:normal; }
+  .whale-navigation .whale-pod > .rna-nav:last-child { min-width:max-content; }
+}
+@media (max-width:1199px) { .whale-navigation { --nav-label-size:13px; } }
+@media (max-width:420px) { .whale-navigation { --nav-label-size:12px; } }
 
 /* The link remains the only control and accessible name. Both base faces are
    decorative; hover and keyboard focus expose the small C-to-U editing cue. */
@@ -10,7 +24,7 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform .55s cubic-bezier(.22,.7,.2,1);
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
 }
 .rna-base-flip__front,
 .rna-base-flip__back {
@@ -22,8 +36,8 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-.rna-base-flip__back { transform: rotateY(180deg); color: #c0fae1; }
-.rna-branch:is(:hover, :focus-visible) .rna-base-flip__turn { transform: rotateY(180deg); }
+.rna-base-flip__back { transform: rotateY(180deg); color: #ebd4a0; }
+.rna-branch:is(:focus-visible, .is-editing) .rna-base-flip__turn { transform: rotateY(180deg); }
 
 /* A much smaller version is tucked into literal c/C characters in the main
    navigation. The parent button has its unchanged accessible label. */
@@ -50,4 +64,101 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rna-base-flip__turn, .nav-letter-flip__turn { transition: none; }
+}
+
+/* Shared geometry: the SVG is measured in the same CSS-pixel space as rows. */
+.whale-navigation .rna-menu { --base-size:28px; --rna-lane:72px; padding-block:16px; }
+.rna-strand { position:relative; }
+.whale-navigation .rna-menu__backbone { left:0; top:0; width:var(--rna-lane); height:100%; overflow:hidden; }
+body .whale-navigation .rna-menu__backbone path {
+  fill:none; stroke:#91c7ff; stroke-width:1.7; stroke-linecap:round;
+  stroke-dasharray:none; animation:none; vector-effect:non-scaling-stroke;
+}
+body .whale-navigation .rna-menu__backbone .rna-chain-halo { stroke-width:5; opacity:.09; }
+body .whale-navigation .rna-menu__backbone .rna-chain-line { opacity:.8; }
+.whale-navigation .rna-branches > li { animation:none; }
+.whale-navigation .rna-branch { min-height:56px; padding:6px 0 6px 26px; }
+body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] {
+  position:relative; z-index:1; box-sizing:border-box;
+  flex:0 0 var(--base-size); width:var(--base-size); height:var(--base-size);
+  border:1px solid var(--base-accent); background:#10243c; color:#e9f3ff;
+  font-size:var(--base-label-size); font-weight:600; box-shadow:none; transform:none;
+  transition:border-color .38s ease, box-shadow .38s ease;
+}
+.rna-branch__base[data-base="C"] { --base-accent:#91c7ff; }
+.rna-branch__base[data-base="A"] { --base-accent:#e9a1ac; }
+.rna-branch__base[data-base="T"] { --base-accent:#ddc99c; }
+.rna-branch__base[data-base="G"] { --base-accent:#9ed5be; }
+body .whale-navigation .rna-branch__bond { flex:0 0 14px; height:1px; background:#91c7ff66; }
+.whale-navigation .rna-branch__label { min-width:0; padding:10px 12px; border-radius:3px; font-size:var(--submenu-label-size); line-height:1.4; }
+body .whale-navigation .rna-menu .rna-branch:is(:hover,:focus-visible,.active) .rna-branch__label {
+  background:rgba(145,199,255,.12); color:inherit;
+}
+body .whale-navigation .rna-menu .rna-branch:is(:focus-visible,.is-editing) .rna-base-flip {
+  --base-accent:#ebd4a0; animation:rna-edit-glint .42s ease-out;
+}
+@keyframes rna-edit-glint {
+  45% { box-shadow:0 0 0 3px #ebd4a020, 0 0 10px #ebd4a016; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] { animation:none; transition:none; }
+}
+
+/* Desktop dropdowns belong to their own primary-navigation column. */
+@media (min-width:900px) {
+  .whale-navigation .rna-nav .rna-menu {
+    --rna-lane:56px;
+    position:absolute; top:100%; left:0; right:auto; width:100%; transform:none;
+    padding-inline-end:8px; border-radius:0 0 12px 12px;
+  }
+  .whale-navigation .rna-menu .rna-branch { padding-left:14px; }
+  body .whale-navigation .rna-menu .rna-branch__bond { flex-basis:10px; }
+  .whale-navigation .rna-menu .rna-branch__label { padding-inline:8px; overflow-wrap:anywhere; }
+}
+
+/* Frosted surface and a quiet ambient breath; content never moves. */
+body .whale-navigation .rna-menu,
+body .whale-navigation .rna-menu.is-gathering {
+  background:rgba(8,20,37,.82);
+  border-color:rgba(173,207,245,.2);
+  box-shadow:inset 0 1px 0 rgba(214,233,255,.08), 0 16px 36px rgba(0,8,22,.24);
+  backdrop-filter:blur(24px) saturate(110%);
+  -webkit-backdrop-filter:blur(24px) saturate(110%);
+  isolation:isolate;
+}
+body:not(.ot) .whale-navigation .rna-menu,
+body:not(.ot) .whale-navigation .rna-menu.is-gathering {
+  background:rgba(240,246,253,.84);
+  border-color:rgba(145,177,214,.32);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8), 0 16px 36px rgba(37,49,76,.1);
+}
+.whale-navigation .rna-menu::before,
+.whale-navigation .rna-menu::after {
+  content:""; position:absolute; inset:0; z-index:0;
+  border-radius:inherit; pointer-events:none;
+}
+.whale-navigation .rna-menu::before {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23grain)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+  opacity:.045;
+}
+.whale-navigation .rna-menu::after {
+  background:radial-gradient(ellipse at 15% 12%,rgba(145,199,255,.4),transparent 70%);
+  opacity:.18;
+}
+.whale-navigation .rna-nav.is-open .rna-menu::after { animation:rna-surface-breathe 5.6s ease-in-out infinite; }
+.whale-navigation .rna-strand { z-index:1; }
+@keyframes rna-surface-breathe { 0%,100% { opacity:.18; } 50% { opacity:.34; } }
+@media (prefers-reduced-motion:reduce) {
+  .whale-navigation .rna-nav.is-open .rna-menu::after { animation:none; }
+}
+
+/* Touch previews use .is-editing, avoiding a sticky emulated hover. */
+@media (hover:hover) {
+  .rna-branch:hover .rna-base-flip__turn { transform:rotateY(180deg); }
+  body .whale-navigation .rna-menu .rna-branch:hover .rna-base-flip {
+    --base-accent:#ebd4a0; animation:rna-edit-glint .42s ease-out;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] { animation:none; }
 }

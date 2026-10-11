@@ -1,0 +1,71 @@
+/* A complete cabinet in a dark room; its aperture contains the live take. */
+.ot-crt-home { --crt-shell: 1; --crt-glass: 1; --crt-title: 0; }
+.ot-crt-room { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 45% 55%, #19143d44, transparent 59%), #03050b; }
+.ot-crt-mount { position: fixed; z-index: 3; left: 50%; top: 48%;
+  width: min(58vw, 82vh, 880px); aspect-ratio: 1.56; transform: translate(-50%, -50%);
+  pointer-events: none; container-type: inline-size; }
+.ot-crt-mount::before { content: ''; position: absolute; left: -18%; right: -22%; top: 76%; height: 44%;
+  background: radial-gradient(ellipse, #000c 4%, #9d9cf40a 34%, transparent 68%); opacity: var(--crt-shell); }
+.ot-crt-screen-anchor { position: absolute; left: 5.8%; top: 8%; width: 68.4%; height: 80%; }
+.ot-crt-set { position: absolute; inset: 0; transform-origin: 0 0; opacity: var(--crt-shell); will-change: transform; }
+.ot-crt-cabinet { position: absolute; width: 100%; height: 100%; inset: 0; overflow: visible; }
+.ot-crt-side { position: absolute; left: 97%; top: 1.2%; width: 6.3%; height: 98%;
+  transform: skewY(-17deg); transform-origin: left top; border-radius: 0 12% 12% 0;
+  background: linear-gradient(90deg, #443321, #1d1814 75%); box-shadow: inset -2px 0 2px #0009; }
+.ot-crt-foot { position: absolute; top: 98%; width: 11%; height: 4.8%; border-radius: 0 0 20% 20%;
+  background: linear-gradient(#100f0d, #393126 45%, #0a0b0b); }
+.ot-crt-foot--left { left: 14%; } .ot-crt-foot--right { right: 12%; }
+.ot-crt-controls { position: absolute; left: 79%; top: 6%; width: 17%; height: 88%;
+  border: 1px solid #93856b33; border-radius: 3px;
+  background: linear-gradient(100deg, #75674d, #4c4435 40%, #312e26);
+  box-shadow: inset 1px 1px 1px #b4a78066, inset -2px -2px 3px #121512; }
+.ot-crt-tuning { position: absolute; inset: 4% 8% 42%; display: flex; flex-direction: column; align-items: center; gap: 4%; }
+.ot-crt-tuning > span, .ot-crt-power span { color: #ded5bc99; font: 500 max(6px, .78cqw)/1 Futura, 'Century Gothic', sans-serif; letter-spacing: .14em; }
+.ot-crt-dial { display: block; position: relative; flex-shrink: 0; width: 76%; aspect-ratio: 1;
+  border-radius: 50%; border: 2px solid #141612;
+  background: repeating-conic-gradient(#504d40 0deg 5deg, #24261f 5deg 9deg);
+  box-shadow: 1px 4px 6px #0009, -1px -1px 1px #c8c2a555; }
+.ot-crt-dial::before { content: ''; position: absolute; inset: 9%; border-radius: 50%;
+  background: radial-gradient(circle at 35% 24%, #7a7766, #393b31 60%, #1b1d18);
+  box-shadow: inset 1px 1px 1px #ccc6ae55, inset -1px -2px 2px #0009; }
+.ot-crt-dial::after { content: ''; position: absolute; inset: 18% 44%; transform: rotate(32deg);
+  border-radius: 3px; background: linear-gradient(90deg, #1b1d17, #787563 45%, #303229);
+  box-shadow: 2px 1px 3px #000a; }
+.ot-crt-dial--volume { width: 54%; margin-top: 1%; }
+.ot-crt-dial--volume::after { transform: rotate(-23deg); }
+.ot-crt-speaker { position: absolute; inset: 61% 11% 11%; border-radius: 3px; border: 1px solid #131712;
+  background: repeating-linear-gradient(0deg, #060a09 0 2px, #625e4c 2px 3px, #1f251e 3px 6px);
+  box-shadow: inset 2px 2px 4px #000a, 0 1px 1px #ddd5af22; }
+.ot-crt-power { position: absolute; inset: auto 13% 4%; display: flex; align-items: center; gap: 12%; }
+.ot-crt-power i { width: .65cqw; height: .65cqw; min-width: 4px; min-height: 4px; border-radius: 50%;
+  background: #f58f9c; box-shadow: 0 0 8px #f58f9c77; opacity: .8; }
+.ot-crt-nameplate { position: absolute; left: 6%; bottom: 3.4%; width: 68%; color: #d1c6ab;
+  font: 700 2cqw/1 Georgia, serif; letter-spacing: .16em; text-shadow: 0 1px 1px #000;
+  display: flex; align-items: center; justify-content: space-between; }
+.ot-crt-nameplate small { color: #d1c6ab77; font: 500 .9cqw/1 Futura, 'Century Gothic', sans-serif; letter-spacing: .18em; }
+.ot-crt-hint { position: absolute; top: 119%; width: 100%; margin: 0; display: flex; gap: 14px;
+  align-items: center; justify-content: center; opacity: var(--crt-shell); color: #b6b2ce;
+  font: 500 10px/1 Futura, 'Century Gothic', sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+.ot-crt-hint i { width: 1px; height: 24px; background: linear-gradient(#9d9cf4, transparent); }
+.ot-crt-picture { position: fixed; z-index: 1; overflow: hidden; pointer-events: none;
+  background: #080c10; will-change: width, height, transform; }
+.ot-crt-picture .ot-stage { position: absolute; inset: 0 auto auto 0; width: 100vw; height: 100vh;
+  transform-origin: 0 0; }
+.ot-crt-picture .ot-vignette { opacity: calc(1 - var(--crt-glass) * .85); }
+.ot-crt-raster, .ot-crt-glass { position: absolute; inset: 0; pointer-events: none; opacity: var(--crt-glass); }
+.ot-crt-raster { background: repeating-linear-gradient(0deg, #0005 0 1px, transparent 1px 3px);
+  animation: crt-raster 7s steps(1) infinite; }
+.ot-crt-glass { border-radius: inherit; box-shadow: inset 0 0 22px 10px #0008, inset 0 -1px 2px #dae8ff33;
+  background: radial-gradient(ellipse at 50% 50%, transparent 45%, #01040977 100%),
+    linear-gradient(138deg, #d7e4f516 0%, #c8d5e40d 18%, transparent 36%, transparent 72%, #93a8ba08 100%); }
+@keyframes crt-raster { 0%, 94%, 100% { transform: translateY(0); } 95% { transform: translateY(2px); } 97% { transform: translateY(-1px); } }
+.ot-crt-home .ot-root:not(.ot--static) .ot-ch--hero.is-on { opacity: var(--crt-title); }
+.ot-crt-home .ot-root:not(.ot--static) .ot-ch--hero .ot-scroll-hint { opacity: var(--crt-title); }
+.ot-crt-home .ot--static :is(.ot-crt-mount, .ot-crt-picture, .ot-crt-room) { display: none; }
+.ot-crt-home .ot--static .ot-ch--hero { opacity: 1; }
+@media (max-width: 760px) { .ot-crt-mount { width: min(88vw, 100vh, 680px); top: 46%; }
+  .ot-crt-hint { top: 129%; font-size: 9px; }
+  .ot-crt-nameplate small { font-size: 1.3cqw; } }
+@media (max-height: 500px) { .ot-crt-mount { width: min(58vw, 85vh); top: 52%; } .ot-crt-hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ot-crt-raster { animation: none; } }

@@ -1,0 +1,194 @@
+/* ORCA — white-hole portal transition.
+   One global overlay, mounted once in layout.html. Everything here is scoped to
+   #wh / html.wh-* so no existing page rule is touched. */
+
+:root {
+  --wh-navy: #06142e;
+  --wh-indigo: #101d42;
+  --wh-ice: #91c7ff;
+  --wh-peri: #929fff;
+  --wh-gold: #f4d69a;
+  --wh-pink: #f4a7be;
+  --wh-mint: #98e7ca;
+  --wh-warm: #f8f7f4;
+}
+
+/* ---------------------------------------------------------------- overlay -- */
+#wh {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  contain: strict;
+  transition: opacity .34s linear;
+}
+#wh.is-active { visibility: visible; }
+#wh.is-shown { opacity: 1; }
+#wh.is-instant,
+#wh.is-instant * { transition: none !important; }
+
+#wh .wh__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* The CSS veil carries three jobs: the WebGL-less fallback, the quick
+   inner-page-to-inner-page wipe, and the arrival cover. */
+#wh .wh__veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: var(--wh-veil-color, var(--wh-navy));
+  transition: opacity .3s linear;
+}
+#wh.is-veil-on .wh__veil { opacity: 1; }
+
+/* ------------------------------------------------- quick inner -> inner -- */
+#wh.is-quick { transition-duration: .16s; }
+#wh.is-quick .wh__veil { transition: none; }
+#wh.is-quick .wh__filament {
+  opacity: 1;
+  animation: wh-sweep .34s cubic-bezier(.4, 0, .2, 1) forwards;
+}
+#wh .wh__filament {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(145, 199, 255, .45), rgba(248, 247, 244, .9), transparent);
+  transform: translateX(-110%);
+}
+@keyframes wh-sweep {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(260%); }
+}
+
+/* ------------------------------------------------ CSS fallback (no WebGL) -- */
+/* A radial iris stands in for the shader: a white core with an ice halo on
+   the way out of the dark world, a navy entrance on the way back in. */
+#wh .wh__iris {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60vmax;
+  height: 60vmax;
+  margin: -30vmax 0 0 -30vmax;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+}
+#wh.is-fallback.is-out .wh__iris {
+  background: radial-gradient(circle, var(--wh-warm) 0 34%, rgba(145, 199, 255, .75) 46%, rgba(146, 159, 255, .25) 58%, transparent 70%);
+  animation: wh-iris 1s cubic-bezier(.55, 0, .3, 1) .18s forwards;
+}
+#wh.is-fallback.is-in .wh__iris {
+  background: radial-gradient(circle, var(--wh-navy) 0 52%, var(--wh-indigo) 58%, rgba(145, 199, 255, .55) 62%, transparent 68%);
+  animation: wh-iris .9s cubic-bezier(.55, 0, .3, 1) forwards;
+}
+@keyframes wh-iris {
+  0% { opacity: 0; transform: scale(0) rotate(0); }
+  20% { opacity: 1; transform: scale(.16) rotate(20deg); }
+  55% { opacity: 1; transform: scale(.42) rotate(60deg); }
+  100% { opacity: 1; transform: scale(4.2) rotate(120deg); }
+}
+
+/* -------------------------------------------- arrival: back in deep space -- */
+/* Entering Home through the dark entrance ends on a bright exit: a cool flare
+   blooms from the centre and the starfield page surfaces behind it. */
+#wh .wh__exit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vmax;
+  height: 70vmax;
+  margin: -35vmax 0 0 -35vmax;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    radial-gradient(circle, rgba(248, 247, 244, .95) 0 6%, rgba(145, 199, 255, .55) 16%, rgba(146, 159, 255, .16) 34%, transparent 60%);
+  mix-blend-mode: screen;
+}
+#wh.is-exit .wh__exit { animation: wh-exit .95s cubic-bezier(.2, .7, .2, 1) forwards; }
+@keyframes wh-exit {
+  0% { opacity: 0; transform: scale(.08); }
+  22% { opacity: 1; transform: scale(.32); }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+/* --------------------------------------- arrival: the flat light world -- */
+/* White light dissipates into a handful of flat vector strokes — RNA lines,
+   a ring, a few accent dots — which drift and fade as the page settles in. */
+#wh .wh__world {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: visible;
+}
+#wh.is-world .wh__world { opacity: 1; transition: opacity .5s ease; }
+#wh.is-world.is-world-out .wh__world { opacity: 0; }
+
+#wh .wh__world :is(.wh-strand, .wh-ring) {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+#wh .wh__world .wh-strand { stroke-width: 2.4; }
+#wh .wh__world .wh-strand--a { stroke: var(--wh-peri); }
+#wh .wh__world .wh-strand--b { stroke: var(--wh-ice); }
+#wh .wh__world .wh-ring { stroke: var(--wh-ice); stroke-width: 1.4; opacity: .55; }
+#wh .wh__world .wh-rung { stroke: var(--wh-peri); stroke-width: 1.4; opacity: 0; }
+#wh .wh__world .wh-dot,
+#wh .wh__world .wh-spark {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(.2);
+}
+
+#wh.is-world-play .wh__world .wh-strand { animation: wh-draw .7s cubic-bezier(.3, .7, .2, 1) forwards; }
+#wh.is-world-play .wh__world .wh-strand--b { animation-delay: .06s; }
+#wh.is-world-play .wh__world .wh-ring { animation: wh-draw .9s cubic-bezier(.3, .7, .2, 1) .05s forwards; }
+#wh.is-world-play .wh__world .wh-rung { animation: wh-fade-in .4s ease .25s forwards; }
+#wh.is-world-play .wh__world :is(.wh-dot, .wh-spark) {
+  animation: wh-pop .55s cubic-bezier(.3, 1.4, .5, 1) forwards;
+  animation-delay: calc(.12s + var(--i, 0) * .045s);
+}
+#wh.is-world-play .wh__world .wh-drift { animation: wh-drift 1.2s cubic-bezier(.3, .7, .3, 1) forwards; }
+
+@keyframes wh-draw { to { stroke-dashoffset: 0; } }
+@keyframes wh-fade-in { to { opacity: .45; } }
+@keyframes wh-pop { to { opacity: 1; transform: scale(1); } }
+@keyframes wh-drift { to { transform: translateY(-18px); } }
+
+/* ------------------------------------------------- arrival mask, in <head> -- */
+/* The inline head script decides the colour before first paint, so the target
+   page never flashes the wrong background. The controller clears it — and the
+   head script arms a hard timeout, so a failure can never strand the user. */
+html.wh-pending { background: var(--wh-mask, #06142e) !important; }
+html.wh-pending body { opacity: 0 !important; }
+
+/* Arrival after a quick hop: a soft fade instead of a cut. Opacity only — a
+   transform on <body> would re-anchor the fixed navigation mid-animation. */
+html.wh-quick-in body { animation: wh-lift .28s cubic-bezier(.33, 1, .68, 1) both; }
+@keyframes wh-lift { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------------------------------------------------------- reduced motion -- */
+@media (prefers-reduced-motion: reduce) {
+  #wh { display: none !important; }
+  html.wh-pending { background: none !important; }
+  html.wh-pending body { opacity: 1 !important; }
+  html.wh-quick-in body { animation: none; }
+}
+
+@media print { #wh { display: none !important; } }

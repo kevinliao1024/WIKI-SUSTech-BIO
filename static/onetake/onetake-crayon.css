@@ -1,0 +1,97 @@
+/* ORCA home — crayon layer over the "One Letter" particle take.
+ *
+ * Scoped to body.ot-crayon so /next and every inner page are untouched.
+ * Nothing here reads or writes the base page's own rules: the figures and the
+ * grain are new layers that sit inside the same stacking context, and the
+ * paper texture is a data-URI SVG so there is still no remote request.
+ */
+
+body.ot-crayon {
+  --cr-ink: #2b2a4a;
+  --cr-coral: #f2989f;
+  --cr-lilac: #9b9ef7;
+  --cr-cream: #fffefc;
+  --cr-paper: rgba(255, 254, 252, .05);
+}
+
+/* ---------- Figures: hand-drawn sprites between particles and type ---------- */
+.ot-figs {
+  position: fixed; inset: 0; z-index: 5;
+  pointer-events: none; overflow: hidden;
+  /* --ot-crayon-ink is written by onetake-crayon.js from the base's --ot-p. */
+  opacity: calc(.35 + .65 * var(--ot-crayon-ink, 0));
+  transition: opacity .6s linear;
+}
+.ot-fig {
+  position: absolute; margin: 0;
+  left: var(--x, 50%); top: var(--y, 50%);
+  width: clamp(180px, 26vw, 420px);
+  transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(var(--s, 1));
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity .8s cubic-bezier(.16, .84, .24, 1);
+}
+.ot-fig img { display: block; width: 100%; height: auto; }
+/* is-on is toggled from the base's chapter window, so a figure breathes in and
+   out with the same take progress its chapter uses. */
+.ot-fig.is-on { opacity: 1; }
+.ot-fig--astrocyte { filter: drop-shadow(0 18px 60px rgba(155, 158, 247, .35)); }
+.ot-fig--brain { filter: drop-shadow(0 18px 60px rgba(242, 152, 159, .3)); }
+.ot-fig--rna { width: clamp(320px, 68vw, 1100px); filter: drop-shadow(0 14px 50px rgba(155, 158, 247, .3)); }
+
+/* ---------- Paper grain, sitting above the type like a print pass ---------- */
+.ot-paper {
+  position: fixed; inset: 0; z-index: 30;
+  pointer-events: none; mix-blend-mode: soft-light;
+  opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+/* A torn-deckle edge, drawn only at the very top and bottom of the viewport. */
+.ot-paper::before, .ot-paper::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 90px;
+  background: linear-gradient(180deg, rgba(3, 5, 11, .55), transparent);
+}
+.ot-paper::before { top: 0; }
+.ot-paper::after { bottom: 0; transform: scaleY(-1); }
+
+/* ---------- Drifting flecks ---------- */
+.ot-flecks { position: fixed; inset: 0; z-index: 6; pointer-events: none; overflow: hidden; }
+.ot-fleck {
+  position: absolute; display: block;
+  width: var(--w, 12px); height: var(--w, 12px);
+  left: var(--x, 50%); top: var(--y, 50%);
+  border-radius: 46% 54% 58% 42% / 52% 48% 55% 45%;
+  background: var(--c, var(--cr-coral));
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: ot-fleck-fall var(--dur, 14s) linear var(--delay, 0s) infinite;
+}
+@keyframes ot-fleck-fall {
+  0% { transform: translate3d(0, -14vh, 0) rotate(0deg); opacity: 0; }
+  12% { opacity: var(--o, .5); }
+  85% { opacity: var(--o, .5); }
+  100% { transform: translate3d(var(--drift, 6vw), 106vh, 0) rotate(320deg); opacity: 0; }
+}
+
+/* ---------- Hand-drawn flourishes on the type ---------- */
+/* The uneven radii are what make a box read as drawn rather than typed. */
+.ot-kicker--sketch {
+  display: inline-block; padding: 4px 10px;
+  border: 1.5px solid var(--cr-coral);
+  border-radius: 255px 12px 225px 12px / 12px 225px 12px 255px;
+  color: var(--cr-coral);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .ot-fig { width: clamp(150px, 46vw, 260px); }
+  .ot-fig--rna { width: 120vw; }
+  .ot-paper { opacity: .38; }
+  .ot-flecks { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ot-fig { transition: none; }
+  .ot-flecks { display: none; }
+}

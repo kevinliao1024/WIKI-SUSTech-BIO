@@ -1,0 +1,4 @@
+{# The only shared integration point. Local URLs also work with Frozen-Flask. #}
+<link rel="stylesheet" href="{{ url_for('static', filename='transition/whitehole.css') }}">
+<script src="{{ url_for('static', filename='transition/whitehole-boot.js') }}" data-home="{{ url_for('home') }}"></script>
+<script src="{{ url_for('static', filename='transition/whitehole.js') }}" defer></script>

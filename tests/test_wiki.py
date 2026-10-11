@@ -86,7 +86,7 @@ class WikiRoutesTest(unittest.TestCase):
         page = self.get_text("/")
         for marker in ['data-ot>', 'data-ot-canvas', 'data-ot-story']:
             self.assertIn(marker, page)
-        menu = re.search(r'<nav\b[^>]*data-ot-menu\b[^>]*>(.*?)</nav>', page, re.S)
+        menu = re.search(r'<nav\b[^>]*aria-label="Primary navigation"[^>]*>(.*?)</nav>', page, re.S)
         index = re.search(r'<section\b[^>]*aria-labelledby="ot-index-title"[^>]*>(.*?)</section>', page, re.S)
         self.assertIsNotNone(menu)
         self.assertIsNotNone(index)
@@ -97,8 +97,15 @@ class WikiRoutesTest(unittest.TestCase):
                 self.assertIn(f'href="{route}"', index.group(1))
         self.assertRegex(page, r'<footer\b[^>]*\bsite-footer\b')
 
-    def test_particle_preview_alias_matches_default_home(self):
-        self.assertEqual(self.get_text("/next"), self.get_text("/"))
+    def test_particle_structure_preview_keeps_home_story(self):
+        # /next now adds the separately reviewed residue-112 structure section.
+        home, preview = self.get_text("/"), self.get_text("/next")
+        for page in [home, preview]:
+            for marker in ['data-ot-canvas', 'data-ot-story', 'data-bio-handle="pod"',
+                           'data-bio-handle="cetus"', 'What if we can']:
+                self.assertIn(marker, page)
+        self.assertIn('href="#ot-index-title"', home)
+        self.assertIn('href="#apoe112"', preview)
 
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")
@@ -106,7 +113,7 @@ class WikiRoutesTest(unittest.TestCase):
         for page in [home, team]:
             self.assertIn("ORCA", page)
             self.assertNotIn("REWIRE", page)
-        self.assertIn("On-target RNA Correction for Alzheimer’s Disease", home)
+        self.assertIn("On-target RNA Correction of APOE4 for Alzheimer’s Disease", home)
 
     def test_particle_assets_and_transitive_module_imports_are_served_locally(self):
         page = self.get_text("/")
@@ -130,7 +137,7 @@ class WikiRoutesTest(unittest.TestCase):
                 self.assertTrue(source, asset_url)
             finally:
                 response.close()
-            if not asset_url.endswith(".js"):
+            if not asset_url.endswith((".js", ".mjs")):
                 continue
             for specifier in re.findall(r'(?:from\s*|import\s*)[\'"]([^\'"]+)[\'"]', source):
                 if specifier in imports:

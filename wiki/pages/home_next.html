@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block body_class %}ot{% endblock %}
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/onetake.css') }}">
+{% endblock %}
+{% block page_scripts %}
+{% set three_url = url_for('static', filename='vendor/three/three.module.js') %}
+<script type="importmap">{"imports": {"three": "{{ three_url }}", "three/addons/": "{{ three_url | replace('three.module.js', 'addons/') }}"}}</script>
+<script type="module" src="{{ url_for('static', filename='onetake/onetake.js') }}"></script>
+{% endblock %}
+
+{% block navigation %}
+<header class="ot-bar">
+  <a class="ot-brand" href="{{ url_for('home') }}" aria-label="ORCA home">
+    <span class="ot-brand__mark" aria-hidden="true"></span>ORCA
+  </a>
+  <p class="ot-bar__meta">SUSTech · iGEM 2026</p>
+  <button class="ot-menu-btn" type="button" aria-expanded="false" aria-controls="ot-menu" data-ot-menu-btn>
+    <span>Menu</span><i aria-hidden="true"></i>
+  </button>
+</header>
+<nav class="ot-menu" id="ot-menu" aria-label="Primary navigation" data-ot-menu hidden>
+  <div class="ot-menu__grid">
+    {% for group in navigation_groups %}
+    <div class="ot-menu__group" style="--g:{{ loop.index0 }}">
+      <p class="ot-kicker">{{ '%02d' % loop.index }} — {{ group.label }}</p>
+      <ul>
+        {% for page, title in group['items'] %}
+        <li><a href="{{ url_for('pages', page=page) }}">{{ title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</nav>
+{% endblock %}
+
+{% block main %}
+<main id="main-content" class="ot-root" data-ot>
+  <div class="ot-stage" aria-hidden="true">
+    <canvas class="ot-canvas" data-ot-canvas></canvas>
+    <div class="ot-vignette"></div>
+    <div class="ot-letter" data-ot-letter><span class="ot-letter__c">C</span><span class="ot-letter__u">U</span></div>
+  </div>
+
+  <div class="ot-hud" aria-hidden="true">
+    <span class="ot-hud__num" data-ot-hud-num>01</span>
+    <span class="ot-hud__track"><i data-ot-hud-bar></i></span>
+    <span class="ot-hud__name" data-ot-hud-name>Brain</span>
+  </div>
+
+  <!-- One continuous scroll track. Every chapter is pinned over the same
+       WebGL take; data-in / data-out are fractions of the track. -->
+  <section class="ot-story" data-ot-story aria-label="ORCA — the project in one take">
+    <div class="ot-chapters">
+      <header class="ot-ch ot-ch--hero is-on" data-ot-chapter data-in="-1" data-out="-0.13">
+        <h1 class="ot-hero-title" data-split>ORCA</h1>
+        <p class="ot-hero-sub" data-split>On-target RNA Correction for Alzheimer’s Disease</p>
+        <p class="ot-scroll-hint"><i></i>Scroll to enter</p>
+      </header>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="-0.1" data-out="0.0">
+        <p class="ot-kicker">00 — Lost</p>
+        <h2 class="ot-h ot-h--sm" data-split>Every turn looks familiar. <em>None lead home.</em></h2>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.11" data-out="0.2">
+        <p class="ot-kicker">01 — Brain</p>
+        <h2 class="ot-h" data-split>The brain.</h2>
+      </div>
+
+      <div class="ot-ch ot-ch--right" data-ot-chapter data-in="0.235" data-out="0.335">
+        <p class="ot-kicker">02 — Astrocyte</p>
+        <h2 class="ot-h" data-split>An astrocyte.</h2>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.395" data-out="0.485">
+        <p class="ot-kicker">03 — Sequence</p>
+        <h2 class="ot-h" data-split>Inside, a single <em>sequence.</em></h2>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.525" data-out="0.605">
+        <h2 class="ot-h ot-h--sm" data-split>One letter decides which protein is made.</h2>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.645" data-out="0.715">
+        <p class="ot-kicker ot-kicker--coral">04 — Burden</p>
+        <h2 class="ot-h" data-split>The signal never <em class="coral">clears.</em></h2>
+        <p class="ot-sub" data-split>APOE4 protein accumulates faster than it is removed</p>
+      </div>
+
+      <div class="ot-ch ot-ch--stats" data-ot-chapter data-in="0.73" data-out="0.8">
+        <h2 class="ot-h ot-h--sm" data-split>One condition. A world of lives.</h2>
+        <dl class="ot-stats">
+          <div><dt data-ot-count data-target="57000000" data-from="0.73" data-to="0.775">57,000,000+</dt><dd>people were living with dementia worldwide in 2021</dd></div>
+          <div><dt>60–70%</dt><dd>of dementia cases are estimated to be attributable to Alzheimer disease</dd></div>
+          <div><dt>≈10 million</dt><dd>new dementia cases each year</dd></div>
+        </dl>
+        <a class="ot-source" href="https://www.who.int/news-room/fact-sheets/detail/dementia" target="_blank" rel="noopener noreferrer">WHO Dementia fact sheet · 2021 estimate · updated 2026 ↗</a>
+      </div>
+
+      <div class="ot-ch ot-ch--low" data-ot-chapter data-in="0.815" data-out="0.895">
+        <p class="ot-kicker ot-kicker--mint">05 — Correction</p>
+        <h2 class="ot-h" data-split>What if we can <em class="mint">reverse it?</em></h2>
+      </div>
+
+      <div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.935" data-out="2">
+        <p class="ot-kicker ot-kicker--mint">06 — Restoration</p>
+        <h2 class="ot-h" data-split>The signal <em class="mint">clears.</em></h2>
+        <p class="ot-sub" data-split>Healthy neurons and upright astrocytes · clearance restored</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ot-index" aria-labelledby="ot-index-title">
+    <div class="ot-index__head">
+      <p class="ot-kicker">Explore</p>
+      <h2 id="ot-index-title" class="ot-h">The whole project,<br><em>one letter at a time.</em></h2>
+    </div>
+    <div class="ot-index__grid">
+      {% for group in navigation_groups %}
+      <article class="ot-card">
+        <p class="ot-card__num">{{ '%02d' % loop.index }}</p>
+        <h3>{{ group.label }}</h3>
+        <ul>
+          {% for page, title in group['items'] %}
+          <li><a href="{{ url_for('pages', page=page) }}"><span>{{ title }}</span><i aria-hidden="true">→</i></a></li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

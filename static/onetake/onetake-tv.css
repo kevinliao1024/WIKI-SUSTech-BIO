@@ -1,0 +1,206 @@
+/* ORCA home — the opening television.
+ *
+ * The set is real geometry, not a picture of a screen: the four bezel panels
+ * mask a hole in the middle, and the take's own canvas shows through it. The
+ * opening shot of the take is already a labyrinth (mazeShape() in onetake.js),
+ * so this layer only supplies the frame and then gets out of the way — as you
+ * scroll, the picture grows to fill the viewport and the set breaks apart.
+ *
+ * Scoped to body.ot-crayon: /next and every inner page are untouched. Nothing
+ * here is written by onetake.js; --ot-p is read, never set.
+ */
+
+body.ot-crayon {
+  --tv-p: 0;      /* 0 = framed · 1 = fullscreen, synced from the take */
+  --tv-a: 0;      /* idle flutter, so the set reads as live glass */
+  /* The two sizing knobs. The hole is always centred, so everything else is
+     derived from --tv-hw below in pure viewport units — the whole set re-lays
+     itself out on resize without any JavaScript. */
+  --tv-cw: 49%;   /* hole width */
+  --tv-hw: 49vw;
+  --tv-hh: 27.44vw;   /* hole height = 0.56 · width, so the screen is 16:9 */
+}
+
+/* ---------- The picture ---------- */
+/* A transform on this wrapper (not on the canvas) is what zooms the shot, so
+   the renderer never resizes and the particle count, bloom and camera are the
+   same ones /next runs. */
+/* No filter here: anything on this layer is paid for every frame of WebGL. The
+   recess comes from the lip's inset shadows instead. */
+.ot-pic {
+  position: fixed; inset: 0; z-index: 2;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Horizontal scanlines. These live inside the picture so they scale with it,
+   exactly as a raster would. */
+.ot-tv__scan {
+  position: absolute; inset: 0; z-index: 3;
+  pointer-events: none; opacity: calc(.14 + .14 * var(--tv-a, 0));
+  background: repeating-linear-gradient(180deg,
+    rgba(0, 0, 0, .55) 0 1px,
+    rgba(0, 0, 0, 0) 1px 3px);
+  transition: opacity .5s linear;
+}
+.ot-pic[data-fullscreen="1"] .ot-tv__scan { opacity: 0; }
+
+/* The glass itself: an off-axis sheen across the screen, plus the halo the
+   picture throws onto its surroundings. Sized off --tv-hw so it lines up with
+   the hole; the huge spread term is what turns the rectangle into a halo. */
+.ot-tv__glass {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--tv-hw); height: calc(var(--tv-hw) * .56);
+  transform: translate(-50%, -50%);
+  z-index: 4; pointer-events: none; opacity: .55;
+  background:
+    radial-gradient(120% 140% at 22% 12%, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0) 34%),
+    radial-gradient(closest-side, rgba(120, 150, 255, .10), rgba(120, 150, 255, 0) 62%),
+    0 0 120px 46px rgba(96, 132, 255, .07);
+}
+
+/* ---------- The casing ---------- */
+/* onetake-tv.js scales the whole set about the viewport centre in step with
+   the picture, so the hole stays glued to the shot while the camera pushes in. */
+.ot-tv {
+  position: fixed; inset: 0; z-index: 14; pointer-events: none;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+.ot-tv[data-phase="off"] { visibility: hidden; }
+
+.ot-tv__face { position: absolute; display: block; }
+.ot-tv__face {
+  left: 0; right: 0;
+  /* Wood grain: a banded gradient, with a sheen and a contact shadow at the
+     outer lip so the casing has a profile. */
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .04) 0 7%, rgba(0, 0, 0, .10) 22%, rgba(255, 255, 255, .03) 41%, rgba(0, 0, 0, .08) 63%, rgba(255, 255, 255, .04) 86%, rgba(0, 0, 0, .12) 100%),
+    linear-gradient(#463325, #2c1f16);
+}
+.ot-tv__face--top {
+  top: 0; height: calc((100% - var(--tv-hh)) / 2);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .07), inset 0 2px 0 rgba(0, 0, 0, .38);
+}
+.ot-tv__face--bottom {
+  bottom: 0; height: calc((100% - var(--tv-hh)) / 2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), inset 0 -2px 0 rgba(0, 0, 0, .42);
+}
+.ot-tv__face--left,
+.ot-tv__face--right {
+  top: calc((100% - var(--tv-hh)) / 2); height: var(--tv-hh);
+  background: linear-gradient(#3b2b1f, #2a1e15);
+}
+.ot-tv__face--left {
+  left: 0; width: calc(50% - var(--tv-cw) / 2);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .18), 3px 0 16px rgba(0, 0, 0, .45);
+}
+.ot-tv__face--right {
+  left: calc(50% + var(--tv-cw) / 2); right: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .18), -3px 0 16px rgba(0, 0, 0, .45);
+}
+
+/* The lip around the screen: the last bright edge before the hole. */
+.ot-tv__lip {
+  position: absolute;
+  left: calc(50% - var(--tv-hw) / 2 - 1.4vw);
+  top: calc(50% - var(--tv-hh) / 2 - 1.4vw);
+  width: calc(var(--tv-hw) + 2.8vw);
+  height: calc(var(--tv-hh) + 2.8vw);
+  border-radius: 1.1vw;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 226, 196, .13),
+    inset 0 10px 20px rgba(0, 0, 0, .62),
+    inset 0 -8px 16px rgba(0, 0, 0, .5);
+}
+
+.ot-tv__brand,
+.ot-tv__knobs,
+.ot-tv__led, .ot-tv__led-on { position: absolute; }
+/* The control strip on the right bezel: LED, then knobs, then the badge,
+   stacked on one left edge so they can never overlap. */
+.ot-tv__brand {
+  left: calc(50% + var(--tv-hw) / 2 + 3.4vw);
+  bottom: calc((100% - var(--tv-hh)) / 2 + 2.6vh);
+  font: 600 .56rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255, 232, 205, .5);
+}
+.ot-tv__knobs {
+  left: calc(50% + var(--tv-hw) / 2 + 3.4vw);
+  bottom: calc((100% - var(--tv-hh)) / 2 + 5.2vh);
+  display: flex; gap: .7vw;
+}
+.ot-tv__knobs i {
+  display: block; width: 2.4vh; height: 2.4vh; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6b5340, #20160f 70%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 1px 3px rgba(0, 0, 0, .6);
+}
+.ot-tv__led {
+  left: calc(50% + var(--tv-hw) / 2 + 3.4vw);
+  bottom: calc((100% - var(--tv-hh)) / 2 + 10vh);
+  width: .62vh; height: .62vh; border-radius: 50%;
+  background: #ff6a4a; box-shadow: 0 0 10px rgba(255, 106, 74, .85);
+}
+/* Pulsing dot — the set is on. */
+.ot-tv__led-on {
+  left: calc(50% + var(--tv-hw) / 2 + 3.4vw + 1.4vh);
+  bottom: calc((100% - var(--tv-hh)) / 2 + 10vh);
+  width: .62vh; height: .62vh; border-radius: 50%;
+  background: #7dffc0; box-shadow: 0 0 12px rgba(125, 255, 192, .9);
+  animation: ot-tv-blink 2.6s ease-in-out infinite;
+}
+@keyframes ot-tv-blink {
+  0%, 100% { opacity: .25; }
+  50% { opacity: .85; }
+}
+
+/* ---------- Type over the set ---------- */
+/* The story track sits above the casing (base: 10, under the set's 14), so
+   the hero can be the set's nameplate and "Lost" can play over it. */
+body.ot-crayon .ot-story { z-index: 15; }
+/* The nameplate scales well past the viewport on its way out; clip, not
+   hidden, so the sticky chapters don't become a scroll container. */
+body.ot-crayon .ot-chapters { overflow: clip; }
+
+/* The hero becomes the nameplate on the bottom bezel. Its box is the whole
+   viewport so it scales about the same centre as the set (--tv-k, from
+   onetake-tv.js) and rides off with it; the padding drops the type into the
+   middle of the bezel below the glass. */
+body.ot-crayon .ot-ch--hero {
+  inset: 0; max-width: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: calc(50vh + var(--tv-hh) / 2 + 1.4vw) 0 0;
+  text-align: center;
+  transform: scale(var(--tv-k, 1)); transform-origin: 50% 50%;
+  opacity: var(--tv-o, 1);
+  /* The base's dark text-shadow is clipped to a box by the word masks; it was
+     invisible on black, but shows as a slab on the wood. */
+  text-shadow: none;
+}
+body.ot-crayon .ot-hero-title { font-size: min(7.4vw, 11vh); letter-spacing: -.045em; }
+body.ot-crayon .ot-hero-sub { margin: 1.4vh auto 0; font-size: clamp(15px, 1.5vw, 22px); }
+body.ot-crayon .ot-ch--hero .ot-scroll-hint { position: static; margin-top: 1.8vh; }
+body.ot-crayon .ot-ch--hero .ot-scroll-hint i { height: 20px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  body.ot-crayon { --tv-cw: 86%; --tv-hw: 86vw; --tv-hh: 48.16vw; }
+  .ot-tv__brand, .ot-tv__knobs { display: none; }
+  /* No side bezel worth the name at this width: the lights go under the glass. */
+  .ot-tv__led, .ot-tv__led-on { bottom: calc((100% - var(--tv-hh)) / 2 - 3.2vh); }
+  .ot-tv__led { left: auto; right: 7vw; }
+  .ot-tv__led-on { left: auto; right: calc(7vw + 1.4vh); }
+  body.ot-crayon .ot-hero-title { font-size: min(18vw, 9vh); }
+}
+/* Short, wide windows leave little bezel under the glass; drop the hint. */
+@media (max-height: 640px) and (min-width: 761px) {
+  body.ot-crayon .ot-ch--hero .ot-scroll-hint { display: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ot-tv__scan { transition: none; opacity: .2; }
+  .ot-tv__led-on { animation: none; opacity: .6; }
+}

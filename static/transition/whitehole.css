@@ -1,0 +1,45 @@
+/* Isolated transition surface. No navigation or Home selectors. */
+:root { --wh-white: #f8f7f4; --wh-navy: #06142e; }
+html[data-wh-cover]::before {
+  content: ''; position: fixed; inset: 0; z-index: 2147483646;
+  background: var(--wh-white); pointer-events: all;
+}
+html[data-wh-cover="home"]::before { background: var(--wh-navy); }
+.wh-overlay {
+  position: fixed; inset: 0; z-index: 2147483645; overflow: hidden;
+  isolation: isolate; opacity: 0; pointer-events: none;
+  contain: strict; --wh-opacity: 0; --wh-cover: 0; --wh-scale: 0.2;
+}
+.wh-overlay[data-active] { opacity: 1; pointer-events: all; touch-action: none; }
+.wh-overlay canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.wh-backdrop, .wh-fallback, .wh-seal { position: absolute; inset: 0; }
+.wh-backdrop { background: var(--wh-navy); opacity: var(--wh-opacity); }
+.wh-overlay[data-direction="to-home"] .wh-backdrop { background: var(--wh-white); }
+.wh-fallback { opacity: var(--wh-opacity); z-index: 1; }
+.wh-fallback::before {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 52vmin; height: 52vmin;
+  transform: translate(-50%, -50%) scale(var(--wh-scale)); border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 14%, #d9edff 19%, #91c7ff99 25%, transparent 58%);
+  box-shadow: 0 0 7vmin #91c7ff88, 0 0 18vmin #929fff44;
+}
+.wh-fallback::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 86vmin; height: 25vmin;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(var(--wh-scale));
+  border-radius: 50%; border: 2px solid #c5e4ff;
+  box-shadow: 0 0 2vmin #91c7ff, inset 0 0 2vmin #929fff, 0 0 0 2vmin #91c7ff22, 0 0 0 5vmin #929fff22;
+}
+.wh-overlay[data-direction="to-home"] .wh-fallback::before {
+  background: radial-gradient(circle, #06142e 0 30%, #101d42 42%, #929fff88 46%, transparent 60%);
+}
+.wh-overlay[data-renderer="webgl"] .wh-fallback { display: none; }
+.wh-seal { background: var(--wh-white); opacity: var(--wh-cover); z-index: 2; }
+.wh-overlay[data-direction="to-home"] .wh-seal { background: var(--wh-navy); }
+.wh-notice {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 2147483647; max-width: calc(100vw - 32px); padding: 12px 20px;
+  background: #f8f7f4; color: #101d42; border: 1px solid #929fff;
+  border-radius: 8px; font: 15px/1.5 Futura, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wh-fallback { display: none; }
+}

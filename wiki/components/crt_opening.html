@@ -1,0 +1,59 @@
+{# The aperture and cabinet share one measured screen rectangle. The live
+   particle canvas is the screen, so the snow becomes the maze in one take. #}
+<div class="ot-crt-room" aria-hidden="true"></div>
+<div class="ot-crt-picture" data-crt-picture aria-hidden="true">
+  <div class="ot-stage">
+    <canvas class="ot-canvas" data-ot-canvas></canvas>
+    <div class="ot-vignette"></div>
+    <div class="ot-letter" data-ot-letter><span class="ot-letter__c">C</span><span class="ot-letter__u">U</span></div>
+  </div>
+  <div class="ot-crt-raster"></div>
+  <div class="ot-crt-glass"></div>
+</div>
+<div class="ot-crt-mount" data-crt-mount aria-hidden="true">
+  <span class="ot-crt-screen-anchor" data-crt-anchor></span>
+  <div class="ot-crt-set" data-crt-set>
+    <div class="ot-crt-side"></div>
+    <div class="ot-crt-foot ot-crt-foot--left"></div>
+    <div class="ot-crt-foot ot-crt-foot--right"></div>
+    <svg class="ot-crt-cabinet" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="crt-wood" x1="0" y1="0" x2=".2" y2="1" gradientUnits="objectBoundingBox">
+          <stop stop-color="#71543a"/><stop offset=".16" stop-color="#4d3828"/>
+          <stop offset=".74" stop-color="#35271d"/><stop offset="1" stop-color="#1e1713"/>
+        </linearGradient>
+        <linearGradient id="crt-trim" x2=".4" y2="1">
+          <stop stop-color="#a59d8c"/><stop offset=".22" stop-color="#4c4942"/>
+          <stop offset=".72" stop-color="#252723"/><stop offset="1" stop-color="#726c5c"/>
+        </linearGradient>
+        <linearGradient id="crt-lip" x2="0" y2="1">
+          <stop stop-color="#090c0d"/><stop offset=".6" stop-color="#171c1e"/><stop offset="1" stop-color="#494c45"/>
+        </linearGradient>
+        <pattern id="crt-grain" width="21" height="190" patternUnits="userSpaceOnUse">
+          <path d="M3 0Q12 48 6 95T5 190M14 0Q8 40 16 87T13 190" fill="none" stroke="#bba17b" stroke-width="1" opacity=".1"/>
+          <path d="M20 0Q13 55 19 112T18 190" fill="none" stroke="#08090b" stroke-width="2" opacity=".15"/>
+        </pattern>
+        <mask id="crt-hole">
+          <rect width="1000" height="1000" fill="white"/>
+          <rect x="58" y="80" width="684" height="800" rx="43" ry="62" fill="black"/>
+        </mask>
+      </defs>
+      <g mask="url(#crt-hole)">
+        <rect x="2" y="2" width="996" height="996" rx="25" ry="35" fill="url(#crt-wood)" stroke="#0c0d0c" stroke-width="5"/>
+        <rect x="6" y="6" width="988" height="986" rx="23" ry="33" fill="url(#crt-grain)"/>
+        <path d="M28 12H970Q987 12 988 35" stroke="#c0a57a" opacity=".3" fill="none" stroke-width="3"/>
+        <rect x="34" y="42" width="735" height="874" rx="58" ry="80" fill="url(#crt-trim)" stroke="#171714" stroke-width="6"/>
+        <rect x="49" y="66" width="702" height="827" rx="49" ry="70" fill="url(#crt-lip)"/>
+        <rect x="53" y="73" width="694" height="813" rx="46" ry="66" fill="none" stroke="#080b0d" stroke-width="12"/>
+        <path d="M86 907H710" stroke="#b5ad96" stroke-width="2" opacity=".3"/>
+      </g>
+    </svg>
+    <div class="ot-crt-controls">
+      <div class="ot-crt-tuning"><span>CHANNEL</span><i class="ot-crt-dial ot-crt-dial--channel"></i><span>VOLUME</span><i class="ot-crt-dial ot-crt-dial--volume"></i></div>
+      <div class="ot-crt-speaker"></div>
+      <div class="ot-crt-power"><i></i><span>POWER</span></div>
+    </div>
+    <span class="ot-crt-nameplate">ORCA <small>SUSTech · 2026</small></span>
+  </div>
+  <p class="ot-crt-hint"><i></i>Scroll to enter</p>
+</div>

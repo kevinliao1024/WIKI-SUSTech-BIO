@@ -1,0 +1,39 @@
+{#- White-hole portal transition overlay. Mounted once, from layout.html.
+    data-dark lists the dark-world (particle home) URLs so the controller can tell
+    which way a link crosses; data-scene is the lazily imported WebGL stage. -#}
+<div id="wh" aria-hidden="true"
+     data-dark="{{ url_for('home') }}|{{ url_for('home_next') }}|{{ url_for('home_next_crayon') }}"
+     data-scene="{{ url_for('static', filename='wh/wh-scene.js') }}">
+  <canvas class="wh__canvas"></canvas>
+  <div class="wh__veil"></div>
+  <div class="wh__iris"></div>
+  <div class="wh__exit"></div>
+  <svg class="wh__world" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <g class="wh-drift">
+      <ellipse class="wh-ring" cx="800" cy="450" rx="330" ry="118" transform="rotate(-12 800 450)" pathLength="1"/>
+      <path class="wh-strand wh-strand--a" pathLength="1"
+            d="M-60 560 C 180 420, 380 700, 640 520 S 1060 330, 1280 470 S 1560 560, 1680 430"/>
+      <path class="wh-strand wh-strand--b" pathLength="1"
+            d="M-60 470 C 180 640, 380 380, 640 560 S 1060 700, 1280 500 S 1560 380, 1680 520"/>
+      <g class="wh-rungs">
+        <line class="wh-rung" x1="252" y1="520" x2="252" y2="545"/>
+        <line class="wh-rung" x1="520" y1="575" x2="520" y2="500"/>
+        <line class="wh-rung" x1="900" y1="430" x2="900" y2="620"/>
+        <line class="wh-rung" x1="1170" y1="438" x2="1170" y2="585"/>
+        <line class="wh-rung" x1="1430" y1="520" x2="1430" y2="455"/>
+      </g>
+      <circle class="wh-dot" style="--i:0" cx="252" cy="520" r="9" fill="#f4a7be"/>
+      <circle class="wh-dot" style="--i:1" cx="520" cy="500" r="7" fill="#91c7ff"/>
+      <circle class="wh-dot" style="--i:2" cx="900" cy="620" r="9" fill="#98e7ca"/>
+      <circle class="wh-dot" style="--i:3" cx="1170" cy="438" r="7" fill="#929fff"/>
+      <circle class="wh-dot" style="--i:4" cx="1430" cy="455" r="8" fill="#f4a7be"/>
+      <circle class="wh-dot" style="--i:5" cx="360" cy="250" r="5" fill="#98e7ca"/>
+      <circle class="wh-dot" style="--i:6" cx="1240" cy="230" r="5" fill="#91c7ff"/>
+      <circle class="wh-dot" style="--i:7" cx="700" cy="760" r="4" fill="#f4d69a"/>
+      <path class="wh-spark" style="--i:2" fill="#91c7ff" d="M1080 200 q4 22 26 26 q-22 4 -26 26 q-4 -22 -26 -26 q22 -4 26 -26z"/>
+      <path class="wh-spark" style="--i:5" fill="#929fff" d="M220 690 q3 16 19 19 q-16 3 -19 19 q-3 -16 -19 -19 q16 -3 19 -19z"/>
+      <path class="wh-spark" style="--i:7" fill="#f4d69a" d="M1460 720 q3 14 17 17 q-14 3 -17 17 q-3 -14 -17 -17 q14 -3 17 -17z"/>
+    </g>
+  </svg>
+  <div class="wh__filament"></div>
+</div>

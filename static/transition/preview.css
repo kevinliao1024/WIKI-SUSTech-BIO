@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #06142e; color: #f8f7f4; font: 16px/1.6 Futura, sans-serif; }
+.studio { min-height: 100svh; padding: clamp(24px, 6vw, 80px); background: radial-gradient(ellipse at 75% 40%, #26325c77, transparent 60%); }
+.eyebrow { color: #91c7ff; font-size: 12px; letter-spacing: .24em; }
+h1 { font: bold clamp(48px, 8vw, 100px)/1 Georgia, serif; margin: 30px 0 16px; }
+.subtitle { color: #b9c9e8; font-size: 22px; }
+button, select { font: inherit; color: #e2edff; background: #101d42; border: 1px solid #91c7ff55; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+button:hover { border-color: #91c7ff; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #98e7ca; outline-offset: 4px; }
+.studio-controls, .samples, .routes { display: flex; flex-wrap: wrap; gap: 10px; }
+.study { position: fixed; bottom: 24px; right: 24px; width: min(380px, calc(100vw - 48px)); z-index: 2147483647; background: #06142ef2; border: 1px solid #91c7ff44; border-radius: 10px; padding: 20px; display: grid; gap: 12px; }
+.study label, .study output { font-size: 12px; color: #b9c9e8; }
+.study select { width: 100%; }.samples button { font-size: 12px; padding: 8px; }
+input[type="range"] { width: 100%; accent-color: #91c7ff; }
+.note { color: #91a6c9; max-width: 470px; margin: 32px 0; font-size: 14px; }
+a { color: #91c7ff; padding-right: 20px; }
+@media (max-width: 600px) { .studio { padding-bottom: 360px; }.study { bottom: 16px; right: 16px; width: calc(100vw - 32px); }.subtitle { font-size: 18px; } }

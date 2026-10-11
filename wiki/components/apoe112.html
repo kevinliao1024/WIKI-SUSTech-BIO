@@ -1,0 +1,70 @@
+<section class="apoe112" id="apoe112" data-apoe112 aria-labelledby="apoe112-title">
+  <div class="apoe112__shell">
+    <header class="apoe112__head">
+      <div>
+        <p class="apoe112__eyebrow">ORCA · The molecular target</p>
+        <h2 id="apoe112-title">One residue. <em>112.</em></h2>
+      </div>
+      <p class="apoe112__intro">CGC → UGC in APOE RNA.<br>Arginine → cysteine in mature APOE.</p>
+    </header>
+
+    <div class="apoe112__toolbar">
+      <span class="apoe112__legend"><i></i>Residue 112 <span>·</span> <b></b>Reference backbone</span>
+      <div class="apoe112__modes" role="group" aria-label="Structure comparison view">
+        <button type="button" data-apoe-view="pair" aria-pressed="true">Side by side</button>
+        <button type="button" data-apoe-view="slider" aria-pressed="false">Slider</button>
+      </div>
+    </div>
+
+    <div class="apoe112__pair" data-apoe-pair>
+      <figure class="apoe112__figure">
+        <figcaption><span>APOE4</span><strong>Arg112</strong><small>CGC</small></figcaption>
+        <button class="apoe112__plate" type="button" data-apoe-enlarge="e4" aria-label="Enlarge APOE4 Arg112 structure">
+          <img src="{{ url_for('assets', filename='figures/apoe112/1b68-plate.webp') }}" width="1200" height="900" alt="Aligned APOE4 N-terminal backbone in muted blue grey, with Arg112 highlighted in coral and its deposited sidechain enlarged alongside." loading="lazy">
+          <svg class="apoe112__annotation" viewBox="0 0 1200 900" aria-hidden="true"><circle cx="343" cy="345" r="25"/><path d="M368 345 H515 L645 425 H765"/></svg>
+          <span class="apoe112__detail">112 · Sidechain detail</span>
+          <span class="apoe112__magnify">↗ <span>Enlarge</span></span>
+        </button>
+        <p class="apoe112__metadata"><a href="https://www.rcsb.org/structure/1B68" target="_blank" rel="noopener">PDB 1B68 ↗</a><span>2.00 Å</span><span>Chain A · ARG 112</span></p>
+      </figure>
+      <figure class="apoe112__figure">
+        <figcaption><span>APOE3 reference</span><strong>Cys112</strong><small>UGC</small></figcaption>
+        <button class="apoe112__plate" type="button" data-apoe-enlarge="e3" aria-label="Enlarge APOE3 Cys112 reference structure">
+          <img src="{{ url_for('assets', filename='figures/apoe112/1lpe-plate.webp') }}" width="1200" height="900" alt="Aligned APOE3 N-terminal backbone in muted blue grey, with Cys112 highlighted in coral and its deposited sidechain enlarged alongside." loading="lazy">
+          <svg class="apoe112__annotation" viewBox="0 0 1200 900" aria-hidden="true"><circle cx="344" cy="342" r="25"/><path d="M369 342 H515 L645 425 H765"/></svg>
+          <span class="apoe112__detail">112 · Sidechain detail</span>
+          <span class="apoe112__magnify">↗ <span>Enlarge</span></span>
+        </button>
+        <p class="apoe112__metadata"><a href="https://www.rcsb.org/structure/1LPE" target="_blank" rel="noopener">PDB 1LPE ↗</a><span>2.25 Å</span><span>Chain A · CYS 112</span></p>
+      </figure>
+    </div>
+
+    <div class="apoe112__slider" data-apoe-slider-view hidden>
+      <div class="apoe112__compare" data-apoe-compare style="--reveal: 50%">
+        <div class="apoe112__layer apoe112__layer--e3">
+          <img src="{{ url_for('assets', filename='figures/apoe112/1lpe-plate.webp') }}" width="1200" height="900" alt="APOE3 reference, Cys112, PDB 1LPE, 2.25 angstrom resolution." loading="lazy">
+        </div>
+        <div class="apoe112__layer apoe112__layer--e4">
+          <img src="{{ url_for('assets', filename='figures/apoe112/1b68-plate.webp') }}" width="1200" height="900" alt="APOE4, Arg112, PDB 1B68, 2.00 angstrom resolution." loading="lazy">
+        </div>
+        <div class="apoe112__divider" aria-hidden="true"><span>↔</span></div>
+        <input class="apoe112__wipe" type="range" min="0" max="100" value="50" data-apoe-range aria-label="Reveal APOE4 Arg112 versus APOE3 Cys112 reference" aria-valuetext="Both reference structures, comparison divider at 50 percent">
+      </div>
+      <div class="apoe112__endpoints">
+        <button type="button" data-apoe-endpoint="100"><strong>APOE4 · Arg112</strong><span>1B68 · 2.00 Å</span></button>
+        <p>Drag to compare <span>← →</span></p>
+        <button type="button" data-apoe-endpoint="0"><strong>APOE3 reference · Cys112</strong><span>1LPE · 2.25 Å</span></button>
+      </div>
+    </div>
+
+    <footer class="apoe112__note">
+      <p>Public N-terminal reference structures, aligned at the same scale. Coral marks residue 112; the adjacent inset enlarges its sidechain.</p>
+      <p>Our design targets an APOE3-like RNA product. These structures illustrate the target, rather than a measured ORCA editing result.</p>
+    </footer>
+  </div>
+  <dialog class="apoe112__dialog" data-apoe-dialog aria-labelledby="apoe112-dialog-title">
+    <header><h3 id="apoe112-dialog-title" data-apoe-dialog-title>Residue 112</h3><button type="button" data-apoe-close aria-label="Close enlarged structure">Close ×</button></header>
+    <img data-apoe-dialog-image alt="" width="1200" height="900">
+    <p data-apoe-dialog-caption></p>
+  </dialog>
+</section>
