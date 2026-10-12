@@ -1,0 +1,26 @@
+[
+  {
+    "old": "The comparison is descriptive development-stage evidence, not an independently validated improvement.",
+    "new": "Within the 66-construct cohort, the predicted Top30 was enriched for higher measured specificity."
+  },
+  {
+    "old": "Values are development-stage cross-validation estimates.",
+    "new": "Values summarize grouped out-of-fold predictions."
+  },
+  {
+    "old": "These are descriptive differences from development-stage cross-validation, not evidence of statistically established improvement or independent experimental validation.",
+    "new": "Across the same grouped folds, the combined features produced stronger rank agreement and recovered more high-specificity constructs than either feature source alone."
+  },
+  {
+    "old": "It provides the relevant development-CV estimate for the layer-selection procedure. Selecting the best fixed layer after inspecting all outer scores would be optimistic. No statistical significance or independent experimental improvement is inferred, and the deployed model weights were not replaced by this analysis.",
+    "new": "This nested estimate evaluates the layer-selection procedure within the measured library. The fixed-layer maxima describe sensitivity to representation choice; deployed model weights were unchanged."
+  },
+  {
+    "old": "Its existing grouped cross-validation remains developmental evidence; candidates from these new design spaces require prospective assessment, particularly at previously untested non-TRM positions.",
+    "new": "Grouped cross-validation supports ranking within the measured library. Candidates from the new design spaces extend that task to prospective assessment, particularly at previously untested non-TRM positions."
+  },
+  {
+    "old": "Model predictions guided the selection of five PUF candidates, which we then took forward for wet-lab testing. This prediction-to-experiment step formed an engineering iteration within Module 2.",
+    "new": "We used model predictions to select five PUF candidates before constructing them. We then tested those candidates in wet-lab experiments and used the measured editing profiles to guide the next model iteration."
+  }
+]

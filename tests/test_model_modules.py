@@ -123,6 +123,11 @@ MODEL_PAGE_TEXT_EDITS[4] += tuple(
     (item["old"], item["new"])
     for item in json.loads((PROJECT_ROOT / "tests/fixtures/model-evidence-text-edits.json").read_text(encoding="utf-8"))
 )
+# Result-focused wording preserves source tables, code and evaluation scope.
+MODEL_PAGE_TEXT_EDITS[2] += tuple(
+    (item["old"], item["new"])
+    for item in json.loads((PROJECT_ROOT / "tests/fixtures/model-narrative-text-edits.json").read_text(encoding="utf-8"))
+)
 # Page captions use one sequence; archived documents keep their original labels.
 MODEL_PAGE_CAPTION_LABEL_EDITS = {
     1: {
@@ -489,7 +494,8 @@ class FourModelModulesTest(unittest.TestCase):
         self.assertIn("candidate", m1)
         m2 = normalized(self.modules["module2"].text()).lower()
         self.assertIn("retrospect", m2)
-        self.assertIn("development-stage", m2)
+        self.assertIn("grouped out-of-fold", m2)
+        self.assertIn("does not test generalization to entirely unseen positions", m2)
         m3 = normalized(self.modules["module3"].text()).lower()
         self.assertIn("hypotheses", m3)
         self.assertIn("batch", m3)
