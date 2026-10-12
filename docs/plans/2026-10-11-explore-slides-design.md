@@ -1,6 +1,6 @@
 # Explore the project — rectangular specimen slides
 
-Date: 2026-10-11. Status: style board prepared; production integration awaits the user's style choice, as requested before implementation.
+Date: 2026-10-11. Status: the user approved **暗场微光**; implemented in the local homepage and the shared index on `/next`. Not published.
 
 ## Confirmed brief
 
@@ -44,9 +44,9 @@ The board is a working material and navigation study, not an experiment image an
 
 ### File boundaries and integration
 
-After approval, create dedicated `wiki/components/explore_slides.html`, `static/onetake/explore-slides.css`, and `static/onetake/explore-slides.js` modules (proposed paths, not yet created).
+Created dedicated `wiki/components/explore_slides.html`, `static/onetake/explore-slides.css`, and `static/onetake/explore-slides.js` modules. The component renders all five groups and 19 anchors from the existing navigation registry. Each slide has a distinct arrangement of inline SVG cells; no raster image or new dependency is used.
 
-Take the cooperative shared-integration lock before making the minimal include/style/script changes to `wiki/pages/home.html`. Check `home_next_structure.html` and preserve its separate residue-112 review content; synchronize only the common navigation section where appropriate. Re-read live shared-file diffs while holding the lock. Do not replace other agents' page or animation work.
+Acquired the cooperative shared-integration lock, reread the live templates and their diffs, and added only the component/style/script references in `wiki/pages/home.html` and `wiki/pages/home_next_structure.html`. The `/next` residue-112 component and anchor remain separate. Released the lock after the focused diff review and 43 existing checks passed. No shared animation module, navigation bar or footer was edited.
 
 ## Integration checks planned
 
@@ -60,4 +60,36 @@ Take the cooperative shared-integration lock before making the minimal include/s
 
 - `docs/previews/slide-style-board-2026-10-11.html`: copy of the in-chat interactive board.
 - This document: visual rationale, proposed technical approach and integration boundaries.
-- No production page, animation or shared entry point has been changed during this design stage.
+- At the design stage these were previews only. After approval, the production templates were integrated as recorded below.
+
+## Design-stage verification
+
+- Visually inspected all three material directions in a browser.
+- Inspected the portrait darkfield composition and landscape archive rows at 320 px content width, alongside a 736 px desktop preview.
+- Clicked Wet Lab in the narrow darkfield preview and verified all six page entries appeared with the selection state updated.
+- The board's child-page actions remain local previews. The integrated component now uses real anchors.
+
+## Approved implementation and verification
+
+Changed files in this implementation:
+
+- `wiki/components/explore_slides.html` — new semantic slide selectors, decorative SVG specimens, and server-rendered directory.
+- `static/onetake/explore-slides.css` — darkfield glass, labels, desktop layout, centered 3+2 mobile arrangement, focus and reduced-motion rules.
+- `static/onetake/explore-slides.js` — selection and progressive enhancement. Hidden, inert panels reserve layout space so changing chapter does not move the page.
+- `wiki/pages/home.html` — replaces only the old index with the component, plus local CSS/JS references.
+- `wiki/pages/home_next_structure.html` — the same index replacement; preserves the separate structure preview.
+- This document — records the approved direction and actual verification.
+
+Checks completed:
+
+- `.venv/bin/python -m unittest tests.test_wiki tests.test_content tests.test_audit -q`: **43 passed**. Includes both homepage routes, navigation destinations and local asset rules.
+- `node --check static/onetake/explore-slides.js`: passed.
+- `git diff --check`: passed at integration review.
+- Real homepage preview at port 8086: desktop selection, Space/Enter keyboard operation, live status and five-category access.
+- Project → Wet Lab: all six Wet Lab links visible; directory stayed **95 px** high and scroll position stayed **18,817 px** at the measured desktop viewport.
+- 390 px and 320 px viewport checks: centered 3+2 layout, no horizontal overflow; Human Practices label wraps cleanly. At 320 px all label scroll widths match their available widths.
+- Script-free render of the actual homepage: zero scripts, selector deck hidden, **five groups and all 19 links visible**, no horizontal overflow at 320 px.
+- Browser error log for the integrated preview: empty. Temporary viewport override reset after testing.
+- Reduced-motion behavior is implemented through the component's CSS media query; a separate OS/browser reduced-motion preference run was not performed.
+
+The feature is integrated in the local source, not confined to the design board. No shared `public/` build, commit, push or deployment was performed by this task. Pre-existing changes (including the board source and `tests/home_drag_browser.mjs`) were preserved.

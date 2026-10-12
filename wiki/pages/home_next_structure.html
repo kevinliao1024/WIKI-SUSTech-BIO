@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='onetake/onetake.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='onetake/crt-opening.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='onetake/dementia-burden.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/explore-slides.css') }}">
 {% endblock %}
 {% block page_scripts %}
 <script defer src="{{ url_for('static', filename='onetake/apoe112.js') }}"></script>
@@ -14,6 +15,7 @@
 <script type="importmap">{"imports": {"three": "{{ three_url }}", "three/addons/": "{{ three_url | replace('three.module.js', 'addons/') }}"}}</script>
 <script type="module" src="{{ url_for('static', filename='onetake/onetake.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='onetake/dementia-burden.mjs') }}"></script>
+<script defer src="{{ url_for('static', filename='onetake/explore-slides.js') }}"></script>
 {% endblock %}
 
 {% block navigation %}{% include 'menu.html' %}{% endblock %}
@@ -103,22 +105,6 @@
 
   {% include 'components/apoe112.html' %}
 
-  <section class="ot-index" aria-labelledby="ot-index-title">
-    <div class="ot-index__head">
-      <h2 id="ot-index-title" class="ot-h">Explore the project</h2>
-    </div>
-    <div class="ot-index__grid">
-      {% for group in navigation_groups %}
-      <article class="ot-card">
-        <h3>{{ group.label }}</h3>
-        <ul>
-          {% for page, title in group['items'] %}
-          <li><a href="{{ url_for('pages', page=page) }}"><span>{{ title }}</span><i aria-hidden="true">→</i></a></li>
-          {% endfor %}
-        </ul>
-      </article>
-      {% endfor %}
-    </div>
-  </section>
+  {% include 'components/explore_slides.html' %}
 </main>
 {% endblock %}
