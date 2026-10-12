@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}{{ content.title }}{% endblock %}
- {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">{% endblock %}
+ {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-navigation.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-entry.css') }}">{% endblock %}
 {% set modules = [('01','RNA-seq Off-target Analysis'),('02','PUF Specificity Design'),('03','APOBEC Engineering'),('04','LAMAR Prioritization')] %}
 {% set chapters = [
  [(1,'Overview'),(2,'Experimental design'),(3,'Workflow'),(4,'Results'),(5,'Engineering implications'),(6,'Reproducibility'),(7,'References')],
@@ -19,18 +19,6 @@
             {% include 'components/model/typing-hero.html' %}
           </figure>
         </div>
-        <div class="module-grid">
-          {% for number, title in modules %}
-          <a class="module-card module-card--{{ loop.index }}" href="#module{{ loop.index }}">
-            {% include 'components/model/neuron-frame.html' %}
-            <div class="neuron-card-content">
-            <div class="module-card-top"><span>MODULE {{ number }}</span></div>
-            {% include 'components/model/character-card.html' %}
-            <h2>{{ title }}</h2>
-            </div>
-          </a>
-          {% endfor %}
-        </div>
       </header>
   <div class="model-layout">
     <aside class="model-sidebar" inert>
@@ -38,7 +26,7 @@
         {% for number, title in modules %}
         <div class="module-nav-group">
         {% set module_index = loop.index %}
-        <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}">Module {{ loop.index }}</button>
+        <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}"><span class="module-nav-label">Module {{ loop.index }}<span class="module-nav-title">: {{ title }}</span></span></button>
         <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
           {% for chapter, short in chapters[loop.index0] %}<a href="#module{{ module_index }}-{{ chapter }}" data-chapter-link>{{ short }}</a>{% endfor %}
         </div>
@@ -50,13 +38,19 @@
      <div class="model-reading">
        {% if content.html %}
        <section class="model-module" id="model-content" data-content-source="{{ content.source_label }}">
-         <header class="module-heading"><span class="module-number">00</span><div><p class="model-eyebrow">{{ content.metadata.eyebrow }}</p><h2>{{ content.metadata.get('heading', content.title) }}</h2><p>{{ content.metadata.subtitle }}</p></div></header>
-         <article class="model-prose markdown-content markdown-content--custom">{{ rendered_markdown }}</article>
+         <header class="module-heading"><span class="module-number">00</span><div><h2>{{ content.metadata.get('heading', content.title) }}</h2></div></header>
+         <article class="model-prose markdown-content markdown-content--custom">
+           <figure class="model-overview-figure" id="model-figure-1">
+             <img src="{{ url_for('assets', filename='images/orca-model-overview-v16.png') }}" width="2592" height="1622" alt="ORCA model overview connecting RNA-seq editing profiles, PUF recognition design, APOBEC catalytic design and LAMAR site prioritization around APOE4 RNA editing.">
+             <figcaption><strong>Figure 1.</strong> ORCA model overview.</figcaption>
+           </figure>
+           {{ rendered_markdown }}
+         </article>
        </section>
        {% endif %}
        {% for number, title in modules %}
       <section class="model-module" id="module{{ loop.index }}" data-model-module>
-        <header class="module-heading"><span class="module-number">{{ number }}</span><div><h2>{{ title }}</h2>
+        <header class="module-heading"><div><h2>Module {{ loop.index }}: {{ title }}</h2>
             </div></header>
         {% if loop.index == 1 %}
           <article class="model-prose">{% include 'components/model/module1.html' %}</article>

@@ -1,0 +1,20 @@
+{
+  "font": "Source Sans 3",
+  "license": "source-sans-3-OFL.txt",
+  "license_source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/release/LICENSE.md",
+  "reference_page": "https://2026.igem.wiki/peking/model/",
+  "files": [
+    {
+      "file": "source-sans-3-variable.woff2",
+      "bytes": 170188,
+      "sha256": "5f16566f7a40d39b339ad26be151fa5a1ab1f0c2574c7a2e619765584a1acbd8",
+      "source": "https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable.woff2"
+    },
+    {
+      "file": "source-sans-3-variable-italic.woff2",
+      "bytes": 137996,
+      "sha256": "b4959abc0569392f87c6c6ac612f90e3fe0104d283724189b7d8b6f61af347d3",
+      "source": "https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable-italic.woff2"
+    }
+  ]
+}

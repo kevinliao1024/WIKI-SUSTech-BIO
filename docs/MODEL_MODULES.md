@@ -2,7 +2,8 @@
 
 The Model page uses four section anchors, entry cards and a sticky module index.
 On narrow screens the index becomes a horizontal bar below the whale navigation.
-All four modules contain their supplied manuscripts and expandable DBTL records.
+All four modules contain their current rendered manuscripts. DBTL source records
+remain archived; they are not expanded or linked as separate chapters on the Model page.
 Dry Lab navigation remains Model and Software. All four modules are on the Model
 page. The previously published Dry Lab, Brain Delivery and OffTarget Atlas routes
 remain available through the Frozen-Flask page generator.
@@ -16,24 +17,25 @@ uses all four team-supplied archives:
 - `igem_module4/wiki/module4.md` and `DBTL.md`
 
 The Module 2 main manuscript already includes the current inverse-folding Part II.
-DBTL accounts are expandable below their respective modules. Scientific numbers,
-thresholds, limitations, citations and figure captions are retained. No analyses
-were executed and no model was retrained. Source Markdown copies and figure
+DBTL accounts remain in the source archive. Source documents, numerical tables
+and figure assets are retained; rendered prose and captions include evidence
+attribution corrections. No analyses were executed and no model was retrained. Source Markdown copies and figure
 checksums are in `static/assets/model/`; rendered fragments are in
 `wiki/components/model/`. The initial import used Marked. The current import uses
 the repository's existing Python Markdown dependency; no dependency was added. The update
 also includes Module 2's supplied readout-depth sensitivity section and figures.
 Module 3 retains the supplied PNGs and batch-specific interpretations. Module 4
-is a text-only release: its draft-reported metrics have not been reconciled with
-original model outputs, and no result figures have been added. The only
+uses the 2026-10-11 manuscript and five supplied PNGs. Its rendered page distinguishes
+draft-reported settings and ranking summaries from the saved records in the versioned
+Module 4 evidence release. The original source documents and figures remain intact. The only
 mathematical display conversion renders the supplied specificity equation with
 HTML subscripts. Image dimensions reserve space for reliable anchor navigation.
 
-Figures are unchanged team-supplied PNGs. Their original captions describe their
+Figures are unchanged team-supplied PNGs. Rendered captions describe their
 provenance and scope. Media licensing and scientific/reference review remain team
 publication responsibilities; the import is not an independent scientific audit.
 
-The presentation import is reproducible with the existing project environment:
+The historical presentation import uses the existing project environment:
 
 ```sh
 python scripts/import_model_modules.py --source-root /path/to/extracted/modules
@@ -44,6 +46,27 @@ team archives. The importer retains Module 1, updates the supplied Module 2
 section and renders Modules 3/4. It records document and asset SHA-256 hashes in
 `source-manifest.json`; the existing Module 1 summary table's original and
 normalized line-ending hashes are both recorded. It does not run scientific models.
+The historical importer does not replay the subsequent reading-layout and evidence
+reconciliation edits. Preserve the checked-in HTML fragments when maintaining this
+release; re-importing an old archive would revert those presentation corrections.
+
+## Evidence access revision
+
+The Model page links the recovered Module 2 source package under
+`static/assets/model/evidence/`. Its member manifest records source checksums and
+any explicitly documented publication-only transformations. The archive restores
+access to existing layer-sensitivity and inverse-folding records without executing
+model code. The historical fixed-panel record is linked separately from the current
+ESM assessment; the original nomination-time prediction file remains unavailable.
+
+Module 4 evidence is linked to commit
+`17a00c641f0a7ce726d65e16c2cca4b58a841431` of `pdx12320/igem_module4`.
+The evidence audit distinguishes draft settings, saved run metadata, reconstructable
+Stage I results and draft-reported Stage II summaries. It also records split overlap,
+missing transcript identifiers and incomplete historical run-to-result mapping.
+The page describes those limits without changing datasets, labels, scientific
+thresholds, model weights or reported numerical result tables.
+
 
 ## Figma illustration revision
 

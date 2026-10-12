@@ -20,7 +20,7 @@ CHAPTER_IDS = {
     3: (1, 2, 3, 4, 5, 6),
     4: (1, 2, 'strategy', 3, 4, 6, 7),
 }
-# Only these requested presentation edits are allowed; source files stay intact.
+# Only explicit presentation and evidence-attribution edits are allowed; source files stay intact.
 MODEL_PAGE_HEADING_EDITS = {
     1: {"Analysis objectives": None},
     2: {
@@ -32,7 +32,10 @@ MODEL_PAGE_HEADING_EDITS = {
         "Figures and local reuse": None,
     },
     3: {"Background": "Overview", "Model overview": "Modeling approach"},
-    4: {"Engineering objective": None, "Interpretation": "Interpretation and next steps"},
+    4: {
+        "Engineering objective": None, "Interpretation": "Interpretation and next steps",
+        "Stage II: 101-nt cytidine-centered classifier": "Stage II: 101-nt cytidine-centered ranking",
+    },
 }
 MODULE2_REPRODUCIBILITY_BLOCKS = (
     ("p", "The Module 2 repository brings together the models, data and figure sources."),
@@ -46,10 +49,15 @@ MODULE2_REPRODUCIBILITY_BLOCKS = (
      "plotting scripts. Reproduction records retain seeds, masks, model versions, checksums and validation results."),
     ("p", "The assay labels and validation folds remain fixed. Structural results include "
      "archived-sample reanalysis and new TRM-only sampling; this update adds no wet-lab measurements."),
+    ("p", "The source-package manifest records the recovered files and their checksums. "
+     "The package restores access to existing source materials; no model or experiment was rerun "
+     "for this website revision. Original runtime dependencies and pretrained checkpoints remain "
+     "required; raw experimental workbooks are not redistributed."),
 )
 MODEL_PAGE_TEXT_EDITS = {
     1: (("The accompanying DBTL account connects these results to the next experimental cycle. ", ""),),
     2: (
+        ("ORCA plotting script", "ORCA plotting source package"),
         ("The ablation comparison, per-construct predictions, locked ablation protocol and validation "
          "record accompany the new figures. The ablation_experiment/ directory contains inputs, "
          "training code and all 66 fold-level parameter searches.", MODULE2_REPRODUCIBILITY_BLOCKS[1][1]),
@@ -86,6 +94,11 @@ MODEL_PAGE_TEXT_EDITS = {
          "Engineered PUF–APOBEC fusions have enabled targeted C-to-U editing in cells and animals "
          "(Han et al., 2022; Han et al., 2025). These systems provide a starting point for improving "
          "the balance between editing activity and substrate preference."),
+        ("retained Figure 7 assets", "retained source-package Figure 7 assets"),
+        ("The N1 comparison", "The comparison in Figure 27"),
+        ("complete N4 panel", "complete source-package N4 panel"),
+        ("Figure identifiers are retained from the source packages.",
+         "Figures are numbered in page order; original identifiers remain in the source packages."),
     ),
     4: (
         ("Our objective was to answer the following question:",
@@ -104,6 +117,25 @@ MODEL_PAGE_TEXT_EDITS = {
         ("Pertea, G., & Pertea, M. (2020). GFF utilities: GffRead and GffCompare. F1000Research, 9, ISCB Comm J-304. https://doi.org/10.12688/f1000research.23297.2",
          "Pertea, G., & Pertea, M. (2020). GFF Utilities: GffRead and GffCompare. F1000Research, 9, 304. doi:10.12688/f1000research.23297.2."),
     ),
+}
+# Exact source-to-rendered corrections reviewed against the versioned evidence audit.
+MODEL_PAGE_TEXT_EDITS[4] += tuple(
+    (item["old"], item["new"])
+    for item in json.loads((PROJECT_ROOT / "tests/fixtures/model-evidence-text-edits.json").read_text(encoding="utf-8"))
+)
+# Page captions use one sequence; archived documents keep their original labels.
+MODEL_PAGE_CAPTION_LABEL_EDITS = {
+    1: {
+        "Figure 1.": "Figure 2.", "Figure 2A.": "Figure 3.", "Figure 2B.": "Figure 4.",
+        "Figure 3.": "Figure 5.", "Figure 4.": "Figure 6.", "Figure 5.": "Figure 7.",
+    },
+    2: {f"Figure {number}.": f"Figure {number + 7}." for number in range(1, 16)},
+    3: {
+        "Workflow.": "Figure 23. Workflow.", "Figure 3.": "Figure 24.",
+        "Figure 4.": "Figure 25.", "Figure 8.": "Figure 26.", "Figure N1.": "Figure 27.",
+        "Figure 9.": "Figure 28.", "Figure 10.": "Figure 29.", "Figure N3.": "Figure 30.",
+    },
+    4: {f"Figure {number}.": f"Figure {number + 30}." for number in range(1, 5)},
 }
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
@@ -205,17 +237,29 @@ class FourModelModulesTest(unittest.TestCase):
                 self.assertEqual(seen_heading_edits, set(heading_edits))
                 text_edits = MODEL_PAGE_TEXT_EDITS.get(number, ())
                 edited = {old: 0 for old, _ in text_edits}
+                caption_labels = MODEL_PAGE_CAPTION_LABEL_EDITS[number]
+                relabelled = {old: 0 for old in caption_labels}
                 for paragraph in original.root.walk():
                     text = normalized(paragraph.text())
                     if paragraph.tag == "p" and len(text) > 40:
                         for old, new in text_edits:
                             edited[old] += text.count(old)
                             text = text.replace(old, new)
+                        caption_label = re.match(r"^(?:Figure (?:N\d+|\d+[A-Z]?)\.|Workflow\.)(?=\s)", text)
+                        if caption_label:
+                            old = caption_label.group()
+                            self.assertIn(old, caption_labels)
+                            relabelled[old] += 1
+                            text = caption_labels[old] + text[caption_label.end():]
                         self.assertIn(text, visible_text, "All retained source paragraphs must survive the website import")
                 self.assertEqual(edited, {old: 1 for old, _ in text_edits})
-                # Prose edits must not change the supplied result tables or tool calls.
+                self.assertEqual(relabelled, {old: 1 for old in caption_labels})
+                # Prose edits must not change supplied numerical results or tool calls.
+                # The audit corrects one reporting unit, not the underlying counts.
                 for tag in ("table", "pre"):
                     expected = [normalized(node.text()) for node in original.root.walk() if node.tag == tag]
+                    if number == 4 and tag == "table":
+                        expected = [text.replace("Evaluated transcripts", "Evaluated positive regions") for text in expected]
                     actual = [normalized(node.text()) for node in main_article.walk() if node.tag == tag]
                     self.assertEqual(actual, expected, f"Module {number} source {tag} contents changed")
 
@@ -232,7 +276,7 @@ class FourModelModulesTest(unittest.TestCase):
                 break
             elif inside:
                 section.append(node)
-        self.assertEqual([node.tag for node in section], ["p", "ul", "p"])
+        self.assertEqual([node.tag for node in section], ["p", "ul", "p", "p"])
         blocks = [
             (node.tag, normalized(node.text()))
             for parent in section for node in parent.walk() if node.tag in ("p", "li")
@@ -249,10 +293,11 @@ class FourModelModulesTest(unittest.TestCase):
             f"{repository}/tree/main/wiki/data",
             f"{repository}/tree/main/wiki/ablation_experiment",
             f"{repository}/tree/main/puf_reuse",
-            f"{repository}/tree/main/research/inverse_folding_20260928",
-            f"{repository}/tree/main/wiki/inverse_folding_20260928",
+            "/static/assets/model/evidence/module2-reproducibility.zip",
+            "/static/assets/model/evidence/module2-reproducibility.zip",
             "https://github.com/pdx12320/PUF_alphafold",
             "https://github.com/dauparas/LigandMPNN",
+            "/static/assets/model/evidence/module2-reproducibility-manifest.json",
         ])
 
     def test_each_module_has_one_introductory_overview(self):
@@ -357,6 +402,28 @@ class FourModelModulesTest(unittest.TestCase):
                 found[node.attrs["id"]] = (node.tag, current_chapter)
         self.assertEqual(found, expected)
 
+    def test_reading_figures_are_captioned_and_numbered_in_page_order(self):
+        reading = next(
+            node for node in self.document.root.walk()
+            if "model-reading" in node.attrs.get("class", "").split()
+        )
+        figures = [node for node in reading.walk() if node.tag == "figure"]
+        self.assertEqual(len(figures), 34)
+        self.assertEqual(
+            [node.attrs.get("id") for node in figures],
+            [f"model-figure-{number}" for number in range(1, 35)],
+        )
+        numbers = []
+        for figure in figures:
+            captions = [node for node in figure.walk() if node.tag == "figcaption"]
+            self.assertEqual(len(captions), 1)
+            caption = normalized(captions[0].text())
+            label = re.match(r"^Figure (\d+)\.\s+(\S.*)$", caption)
+            self.assertIsNotNone(label, caption)
+            numbers.append(int(label.group(1)))
+        self.assertEqual(numbers, list(range(1, 35)))
+        self.assertNotIn("View full-size", reading.text())
+
     def test_figures_and_local_evidence_links_are_served(self):
         model_ids = {node.attrs["id"] for node in self.document.root.walk() if "id" in node.attrs}
         for number in range(1, 5):
@@ -428,7 +495,8 @@ class FourModelModulesTest(unittest.TestCase):
         self.assertIn("batch", m3)
         m4 = normalized(self.modules["module4"].text()).lower()
         self.assertIn("unobserved cytidine is not necessarily a non-editable cytidine", m4)
-        self.assertIn("low pr-auc", m4)
+        self.assertIn("source-reported classification results", m4)
+        self.assertIn("reported evaluation is not sequence-disjoint", m4)
         self.assertIn("experimental validation remains necessary", m4)
         self.assertIn("not to replace experimental confirmation", m4)
 
