@@ -17,7 +17,12 @@ class MarkdownContentTest(unittest.TestCase):
                 content = load_markdown_content(config.markdown_path)
                 self.assertTrue(content.title)
                 self.assertTrue(content.metadata.get("subtitle"))
-                self.assertIn("<h2", content.html)
+                if route == "model":
+                    # The custom Model template renders its heading from front matter.
+                    self.assertTrue(content.metadata.get("heading"))
+                    self.assertIn("<p>", content.html)
+                else:
+                    self.assertIn("<h2", content.html)
 
     def test_local_markdown_images_exist(self):
         for route, config in CONTENT_PAGES.items():
