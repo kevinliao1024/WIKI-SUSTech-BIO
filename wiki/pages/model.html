@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block title %}{{ content.title }}{% endblock %}
- {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}">{% endblock %}
+ {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">{% endblock %}
 {% set modules = [('01','RNA-seq Off-target Analysis'),('02','PUF Specificity Design'),('03','APOBEC Engineering'),('04','LAMAR Prioritization')] %}
 {% set chapters = [
  [(1,'Overview'),(2,'Experimental design'),(3,'Workflow'),(4,'Results'),(5,'Engineering implications'),(6,'Reproducibility'),(7,'References')],
- [(1,'Background'),('iteration','Experimental iteration'),(2,'Specificity ranking'),(3,'Structure-guided design'),(5,'Data & reproducibility'),(6,'References')],
- [(1,'Background'),(2,'Model overview'),(3,'Results'),(4,'Conclusion'),(5,'Data & code'),(6,'References')],
- [(1,'Overview'),('objective','Engineering objective'),(2,'LAMAR foundation model'),('labels','RNA-seq labels'),('adaptation','Human adaptation'),('strategy','Two-stage strategy'),('training','Model training'),(3,'Stage I results'),('ranking','Stage II ranking'),(4,'Interpretation'),('implications','Engineering implications'),(5,'Future work'),(6,'Reproducibility'),(7,'References')]
+ [(1,'Overview'),('iteration','Experimental iteration'),(2,'Specificity ranking'),(3,'Structure-guided design'),(5,'Data & reproducibility'),(6,'References')],
+ [(1,'Overview'),(2,'Modeling approach'),(3,'Results'),(4,'Conclusion'),(5,'Data & code'),(6,'References')],
+ [(1,'Overview'),(2,'Model & training data'),('strategy','Two-stage prediction'),(3,'Results'),(4,'Interpretation & next steps'),(6,'Reproducibility'),(7,'References')]
 ] %}
 {% block main %}
 <main id="main-content" class="model-page">
@@ -40,7 +40,6 @@
         {% set module_index = loop.index %}
         <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}">Module {{ loop.index }}</button>
         <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
-          <a href="#module{{ module_index }}">Module overview</a>
           {% for chapter, short in chapters[loop.index0] %}<a href="#module{{ module_index }}-{{ chapter }}" data-chapter-link>{{ short }}</a>{% endfor %}
         </div>
         </div>
@@ -72,6 +71,7 @@
       {% endfor %}
     </div>
   </div>
+  {% include 'components/model/back-to-top.html' %}
  </main>
  {% endblock %}
 {% block page_scripts %}<script src="{{ url_for('static', filename='model.js') }}" defer></script><script src="{{ url_for('static', filename='model-character.js') }}" defer></script><script src="{{ url_for('static', filename='model-typing.js') }}" defer></script>{% endblock %}

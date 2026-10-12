@@ -241,7 +241,7 @@ class WikiRoutesTest(unittest.TestCase):
         for route in ["/dry-lab", "/model", "/brain-delivery", "/offtarget-atlas", "/software"]:
             with self.subTest(route=route):
                 page = self.get_text(route)
-                targets = re.findall(r'<a href="#([^"]+)">', page)
+                targets = re.findall(r'<a\b[^>]*\bhref="#([^"]+)"[^>]*>', page)
                 self.assertTrue(targets)
                 for target in targets:
                     self.assertIn(f'id="{target}"', page)

@@ -1,0 +1,39 @@
+<button class="model-back-top" type="button" data-model-back-to-top aria-label="Back to top" aria-hidden="true" inert>
+  <svg class="model-sweeper" viewBox="0 0 280 342" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- The same original face/cap crop used by character-rig.html. -->
+      <clipPath id="model-sweeper-face"><path d="M0 0H400V216L350 398Q295 369 263 389L211 439L174 394Q121 377 42 383L0 350Z"/></clipPath>
+      <path id="model-sweeper-caption-arc" d="M18 310Q140 332 262 310"/>
+    </defs>
+    <ellipse cx="143" cy="284" rx="100" ry="6" fill="#d6d8ef" opacity=".55"/>
+    <g transform="translate(18 14) scale(.76)" stroke="#334071" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Preserve the planted legs, body and gloves from the Model character. -->
+      <g fill="#fffefc"><path d="M83 281L80 329H102L105 282Z"/><path d="M130 283L133 330H155L151 281Z"/></g>
+      <g fill="#2e3065"><path d="M80 322Q52 322 52 344Q75 351 107 343L102 322Z"/><path d="M133 323L129 345Q163 352 182 344Q181 322 155 322Z"/></g>
+      <path fill="#2e3065" d="M82 183Q108 173 138 190L156 292Q115 308 68 291Z"/>
+      <path fill="#fffefc" d="M80 233Q113 245 145 232L161 291Q115 309 65 291Z"/>
+      <path d="M80 209Q51 224 52 260" fill="none" stroke-width="10"/>
+      <path fill="#fffefc" d="M39 258Q50 249 59 257Q66 254 70 260Q74 268 67 276Q68 285 58 288Q44 288 37 277Q31 265 39 258Z"/>
+      <g class="model-sweeper__arm">
+        <path d="M125 208Q171 262 226 246" fill="none" stroke-width="10"/>
+        <path d="M219 176L232 331" fill="none" stroke-width="11"/>
+        <path d="M205 325Q230 315 254 324L264 350Q229 357 194 350Z" fill="#f7c7d2"/>
+        <path d="M205 325Q230 315 254 324L257 333Q230 327 201 333Z" fill="#3d409b"/>
+        <path d="M210 335L207 350M224 333V352M238 333L241 352M251 336L255 349" fill="none" stroke-width="3"/>
+        <g transform="translate(226 246)">
+          <path fill="#fffefc" d="M-13 -11Q-10 -23 1 -19L9 -9Q18 -17 24 -9Q31 3 21 15Q9 27 -7 18Q-19 11 -20 1Q-21 -9 -13 -11Z"/>
+        </g>
+      </g>
+      <g class="model-sweeper__head" stroke="none">
+        <svg x="4" y="-5" width="205" height="225.5" viewBox="0 0 400 440" overflow="visible">
+          <g clip-path="url(#model-sweeper-face)"><image href="{{ url_for('assets', filename='hero/clearance/cleaners-ready.png') }}" width="1895" height="960"/></g>
+        </svg>
+      </g>
+    </g>
+    <g class="model-sweeper__dust" fill="#9b9bc7">
+      <circle cx="224" cy="282" r="2.5"/><circle cx="235" cy="277" r="1.8"/><circle cx="246" cy="280" r="2.2"/>
+    </g>
+    <text class="model-sweeper__caption model-sweeper__caption--full" text-anchor="middle"><textPath href="#model-sweeper-caption-arc" startOffset="50%">Back to top ↑</textPath></text>
+    <text class="model-sweeper__caption model-sweeper__caption--short" text-anchor="middle"><textPath href="#model-sweeper-caption-arc" startOffset="50%">Top ↑</textPath></text>
+  </svg>
+</button>
