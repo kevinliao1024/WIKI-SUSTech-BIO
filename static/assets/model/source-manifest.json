@@ -459,10 +459,22 @@
       "destination": "static/assets/model/revisions/20261011/module4-figures/figure-4.png",
       "sha256": "5ce3a1f5a48298bddf7ebfcd5242b930052ce4642d950a12f323c7e72d65a063",
       "archive": "igem_module4.zip → ORCA_EditPredict.zip"
+    },
+    {
+      "source": "Selected existing Module 2 source members",
+      "destination": "static/assets/model/evidence/module2-reproducibility.zip",
+      "sha256": "6faaebe6f3070ee01623506dddc8b18d90769df90a03fcb864b22dace357dc0b",
+      "archive": "igem_module2_Wiki_DBTL_revised.zip"
+    },
+    {
+      "source": "Module 2 member checksum and derivation record",
+      "destination": "static/assets/model/evidence/module2-reproducibility-manifest.json",
+      "sha256": "cba22a2c3dad4a9bfd7d6daeace4f8c6d7d3d0fa3e759d205cdb0ba6d978dbf2",
+      "archive": "igem_module2_Wiki_DBTL_revised.zip"
     }
   ],
-  "scope": "Presentation import only; no model training, assay reanalysis or claim verification.",
-  "module4_evidence_status": "Supplied 2026-10-11 Wiki and five PNGs. The source archive includes code, data and model records; this website import does not run or reproduce them. Some training settings differ between the manuscript and packaged logs; source text and figures are preserved.",
+  "scope": "Presentation import and evidence-attribution corrections; no model training or assay reanalysis. Original source documents and numerical result tables are preserved.",
+  "module4_evidence_status": "Rendered claims reconciled with the versioned Module 4 evidence audit. Saved Stage I records are distinguished from source-reported settings and Stage II summaries. Split overlap, missing transcript identifiers, context-length discrepancies and incomplete historical run mapping remain explicit. No models were executed or scientific results recomputed for this website revision.",
   "archived_document_records": [
     {
       "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
@@ -493,6 +505,21 @@
         4
       ],
       "scope": "Replace Wiki text and supplied figure assets; preserve old inputs and keep DBTL off the Model page."
+    },
+    {
+      "date": "2026-10-11",
+      "modules": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "scope": "Restore Module 2 evidence access, distinguish retrospective panels, reconcile Module 4 rendered claims with archived evidence, and add brief biological-uncertainty notes. No scientific inputs, result values or figure assets changed."
     }
-  ]
+  ],
+  "evidence_references": {
+    "module2_historical_panel": "https://github.com/pdx12320/PUF_alphafold/blob/b5a7aaa7ef8426d1c98243d1a09c0db9a5db1c1a/research/fixed_test_20260923/README.md",
+    "module2_archive_manifest": "static/assets/model/evidence/module2-reproducibility-manifest.json",
+    "module4_audit": "https://github.com/pdx12320/igem_module4/blob/17a00c641f0a7ce726d65e16c2cca4b58a841431/provenance/evidence-audit.md"
+  }
 }

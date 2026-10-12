@@ -1,0 +1,130 @@
+[
+  {
+    "old": "A candidate editing site was retained as a positive example when it met both of the following criteria:",
+    "new": "The source manuscript reports that a candidate editing site was retained as a positive example when it met both criteria below. The released positive-site table lacks the read-depth columns needed to reconstruct this filtering."
+  },
+  {
+    "old": "The resulting human transcriptome dataset contained:",
+    "new": "The source manuscript reports the following human transcriptome dataset sizes, which were not independently reconstructed in the publication audit:"
+  },
+  {
+    "old": "Human-transcript masked nucleotide prediction accuracy improved after continued pretraining.",
+    "new": "The source manuscript reports the following masked nucleotide prediction accuracies on human transcript sequences."
+  },
+  {
+    "old": "The increase from 0.505 to 0.575 indicates that continued pretraining improved LAMAR's ability to model human transcript sequence context.",
+    "new": "Saved evaluation logs support the final masked prediction accuracy of 0.575. The original-model baseline of 0.505 remains source-reported because its evaluation record is absent."
+  },
+  {
+    "old": "This direct nucleotide-level classification strategy produced poor predictive performance. We identified two likely reasons.",
+    "new": "The source manuscript reports poor performance for direct nucleotide-level classification and identifies two likely reasons."
+  },
+  {
+    "old": "Each transcript containing positive RNA-seq sites was divided into overlapping 1,024-nt windows. Adjacent windows shared a 128-nt overlap.",
+    "new": "The source manuscript describes overlapping 1,024-nt windows with a 128-nt overlap. Released records include shorter regions, and the construction code and transcript identifiers are unavailable."
+  },
+  {
+    "old": "The dataset was split at the transcript level before model training. This prevented highly similar windows from the same transcript from appearing in both training and evaluation sets.",
+    "new": "The source manuscript describes a transcript-level split, but the released records contain only sequences and labels. Transcript-disjoint partitioning cannot therefore be verified."
+  },
+  {
+    "old": "For every cytidine in the Stage I training, validation and test sequences, we extracted a 101-nt sequence centered on that cytidine. The central nucleotide was classified according to whether that cytidine was experimentally identified as an editing site.",
+    "new": "The source manuscript describes a cytidine-centered classifier using 101-nt contexts. The retained Stage II code instead assigns a scalar score to the central cytidine and trains it for ranking."
+  },
+  {
+    "old": "At inference, Stage II is applied to cytidines in 1,024-nt windows prioritized by Stage I. Cytidines are then ranked by their Stage II scores.",
+    "new": "In the intended application, Stage II ranks cytidines within regions prioritized by Stage I. The archived ranking evaluation does not apply this Stage I selection step."
+  },
+  {
+    "old": "This hierarchical strategy has two practical advantages:",
+    "new": "The intended hierarchical strategy has two practical advantages:"
+  },
+  {
+    "old": "Both stages used the LAMAR Transformer encoder with a linear binary-classification head. Hyperparameters were optimized using Optuna.",
+    "new": "Stage I uses a LAMAR encoder with a binary-classification head and an Optuna search. The retained Stage II code uses a scalar ranking head and fixed training settings."
+  },
+  {
+    "old": "The Stage I candidate-region classifier was trained for up to 15 epochs. Early stopping used a patience of 10 epochs, and validation PR-AUC was used as the primary model-selection metric.",
+    "new": "The source manuscript reports training for up to 15 epochs, early stopping with patience 10, and selection using validation PR-AUC. The saved Stage I settings differ from the learning rate and token dropout listed below. Preprocessing and model records also disagree on context length; the effective historical training context remains unresolved."
+  },
+  {
+    "old": "The Stage II cytidine-centered classifier was optimized separately.",
+    "new": "The table preserves the source manuscript’s separate Stage II optimization description. Retained Stage II code and checkpoint metadata instead record fixed settings and selection by validation Hit@10. The correspondence between this table and the retained run has not been established."
+  },
+  {
+    "old": "The Stage I model achieved a best validation PR-AUC of 0.813 and a test PR-AUC of 0.722.",
+    "new": "The best Stage I search result was 0.813, while the saved final validation report records 0.810. Archived test predictions support the reported test value of 0.722. The historical metric named PR-AUC is average precision (AP); the table retains the original reported values."
+  },
+  {
+    "old": "These results indicate that the model captured sequence features associated with transcript windows containing experimentally supported editing sites.",
+    "new": "These results describe performance on the supplied region partitions. Sequence overlap and missing transcript identities limit their interpretation as evidence of generalization."
+  },
+  {
+    "old": "The continued-pretrained and original LAMAR models showed lower training losses than encoder-frozen and randomly initialized conditions. This supports the value of pretrained sequence representations and encoder adaptation for fitting the editing-region dataset.",
+    "new": "The continued-pretrained and original LAMAR models showed lower training losses than encoder-frozen and randomly initialized conditions. Lower training loss alone does not establish improved performance on unseen transcript contexts."
+  },
+  {
+    "old": "However, the PR-AUC differences between conditions were smaller than the training-loss differences. This pattern is consistent with limited generalization under the present dataset size and label uncertainty.",
+    "new": "The saved histories do not establish uniform superiority of continued pretraining. Original LAMAR with a frozen encoder has the highest logged validation AP among these single-run records, as documented in the evidence audit."
+  },
+  {
+    "old": "The Stage II task remained more difficult than region-level classification. Cytidine-level PR-AUC was around 0.2, indicating that the model was not sufficiently reliable for direct transcriptome-wide edited/non-edited classification.",
+    "new": "The source manuscript reports cytidine-level PR-AUC around 0.2. Corresponding prediction and metric files are absent, so this value has not been independently reconstructed."
+  },
+  {
+    "old": "We therefore evaluated whether true editing sites were ranked near the top among all cytidines in each 1,024-nt candidate region.",
+    "new": "The source manuscript reports the ranking summaries below. Retained checkpoint metadata supports validation Hit@10 of 0.8467, but per-candidate scores and complete ranking outputs are absent. The remaining summaries have not been independently reconstructed."
+  },
+  {
+    "old": "The validation set contained 150 evaluated transcripts.",
+    "new": "The validation partition contained 150 evaluated positive regions. The evaluator excludes records without a labelled positive; these are not verified counts of unique transcripts."
+  },
+  {
+    "old": "The independent test set contained 140 evaluated transcripts.",
+    "new": "The test partition contained 140 evaluated positive regions, using the same conditional evaluation rule."
+  },
+  {
+    "old": "On the test set, at least one experimentally supported editing site was ranked within the top 5 cytidines for approximately 60.7% of evaluated transcript regions, within the top 10 for approximately 77.9% and within the top 20 for approximately 92.1%.",
+    "new": "The source-reported test summary places at least one supported site within the top 5 cytidines in 60.7% of evaluated positive regions. The corresponding proportions are 77.9% for the top 10 and 92.1% for the top 20."
+  },
+  {
+    "old": "The median best rank was 4. In a typical evaluated region, the highest-ranked true editing site was therefore among the first four cytidines proposed by the model.",
+    "new": "The source-reported median best rank was 4. This statistic describes the highest-ranked labelled positive within the evaluated positive regions."
+  },
+  {
+    "old": "Stage I identifies 1,024-nt transcript regions associated with observed editing events and achieved a test PR-AUC of 0.722. It functions as a candidate-enrichment layer.",
+    "new": "Stage I addresses candidate-region enrichment, with archived test predictions supporting AP of 0.722 on the supplied partition. The historical input-context discrepancy and split-overlap limitations remain unresolved."
+  },
+  {
+    "old": "Stage II attempts the more difficult task of distinguishing individual editable cytidines from other cytidines within a candidate region. Its low PR-AUC indicates that current sequence-only data are insufficient for high-confidence binary classification at single-nucleotide resolution.",
+    "new": "Stage II ranks individual cytidines within a candidate region. The source-reported classification results do not establish high-confidence binary classification at single-nucleotide resolution."
+  },
+  {
+    "old": "Nevertheless, ranking evaluation showed that Stage II can support experimental prioritization. On the independent test set, a true editing site was located within the top 10 model-ranked cytidines in approximately 77.9% of evaluated regions and within the top 20 in approximately 92.1%.",
+    "new": "The source-reported ranking results motivate further assessment of candidate prioritization. A supported site occurred within the top 10 candidates in 77.9% of evaluated test positive regions and within the top 20 in 92.1%."
+  },
+  {
+    "old": "This output is operationally useful because wet-lab validation can focus on a limited list of cytidines rather than exhaustively testing every cytidine in a 1,024-nt region.",
+    "new": "A ranked shortlist could focus experimental follow-up on fewer cytidines. Its practical benefit remains prospective because the complete two-stage workflow has not been evaluated on newly measured sites."
+  },
+  {
+    "old": "The LAMAR source code and pretrained checkpoints are available from the LAMAR GitHub repository.",
+    "new": "The versioned Module 4 release provides supplied datasets, historical code, saved Stage I predictions and checkpoint metadata. The upstream LAMAR repository provides the foundation-model source and checkpoints."
+  },
+  {
+    "old": "Our workflow uses GENCODE v50 human transcript annotations, the GRCh38 primary genome assembly and high-confidence RNA-seq candidate sites filtered using editing-supporting reads of at least 20 and total depth of at least 100.",
+    "new": "The source manuscript specifies GENCODE v50, GRCh38 and positive-label thresholds of at least 20 editing-supporting reads and total depth of at least 100. These source specifications are preserved; the release does not contain all inputs needed to reconstruct their application."
+  },
+  {
+    "old": "The final masked prediction accuracy increased from 0.505 for the original model to 0.575 after adaptation.",
+    "new": "The final logged accuracy is 0.575; the original-model baseline of 0.505 is source-reported and lacks a saved evaluation record."
+  },
+  {
+    "old": "The human-adapted model showed a modest PR-AUC advantage, whereas the separation between PR-AUC curves remained limited.",
+    "new": "The source figure is preserved; saved histories do not establish uniform superiority of the human-adapted model."
+  },
+  {
+    "old": "Figure 4. Cytidine-ranking performance on the independent test set.",
+    "new": "Figure 4. Source-reported cytidine-ranking summaries for 140 positive regions in the test partition."
+  }
+]

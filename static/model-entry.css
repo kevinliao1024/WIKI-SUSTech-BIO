@@ -1,0 +1,44 @@
+/* Keep descriptive directory labels; hero sizes come from model.css. */
+.model-page .model-sidebar [data-module-link] {
+  align-items: flex-start;
+  font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 650;
+  color: #464786;
+  line-height: 1.35;
+  padding: 12px 10px;
+}
+
+.model-page .model-sidebar [data-module-link]::after {
+  margin-top: 9px;
+}
+
+.model-page .module-nav-label {
+  min-width: 0;
+  white-space: normal;
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .model-page .model-sidebar [data-module-link] {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .model-page .model-sidebar [data-module-link] {
+    align-items: center;
+    padding: 6px 4px;
+    font-size: clamp(12px, 3.2vw, 16px);
+  }
+
+  /* Full titles remain available in accessible names and section headings. */
+  .model-page .model-sidebar .module-nav-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

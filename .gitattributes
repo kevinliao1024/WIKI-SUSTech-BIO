@@ -1,0 +1,5 @@
+# Preserve source figures as binary assets, including uncompressed PDFs.
+*.pdf binary
+
+# Keep the upstream font license byte-for-byte, including its trailing space.
+static/fonts/source-sans-3-OFL.txt whitespace=-blank-at-eol
