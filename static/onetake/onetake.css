@@ -343,8 +343,8 @@ body.ot .site-logo {
   display: block;
   width: 80px;
   height: auto;
-  filter: brightness(0) invert(1);
-  opacity: .92;
+  filter: none;
+  opacity: 1;
 }
 @media (max-width: 1199px) {
   body.ot .site-logo { width: 42px; }
