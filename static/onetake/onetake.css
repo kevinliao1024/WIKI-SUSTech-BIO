@@ -145,6 +145,10 @@ body.ot-menu-open { overflow: hidden; }
 .ot-source { margin: 16px 0 0; color: #8994ae; font-size: 11px; letter-spacing: .035em; }
 .ot-static-explanation { display: none; }
 .ot-ch--question { left: 50%; bottom: 24vh; transform: translateX(-50%); width: min(850px,88vw); text-align: center; }
+/* Keep the horizontal centering anchor when the general chapter rule follows. */
+@media (min-width:761px) {
+  .ot-root:not(.ot--static) .ot-ch--question { left:50%; }
+}
 .ot-question { margin: 0; font-size: clamp(42px,6.5vw,96px); line-height: 1.08; font-weight: 400; letter-spacing: -.035em; }
 .ot-question em { color: #f58f9c; font-family: Georgia,serif; font-weight: 400; }
 .ot-edit-skip { position: fixed; z-index: 39; right: 24px; bottom: 24px; padding: 10px 15px;
