@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORCA · 分子探针光标</title>
+  <link rel="stylesheet" href="/static/cursor/orca-cursor.css">
+  <style>
+    @font-face{font-family:Futura;src:url('/static/cursor/Futura-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+    *{box-sizing:border-box}body{margin:0;background:#FFFEFC;color:#171536;font:500 15px/1.65 Futura,system-ui,sans-serif}main{max-width:1180px;margin:auto;padding:44px 44px 34px}.eyebrow{color:#6B6880;font-size:11px;letter-spacing:.18em;margin:0 0 18px}.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:30px}h1{font:normal 44px/1.15 Georgia,serif;letter-spacing:-.035em;margin:0 0 12px}h1 span{display:block;font:500 21px/1.5 Futura,system-ui,sans-serif;letter-spacing:.05em;margin-top:12px}.intro{margin:0;color:#6B6880;max-width:590px}.brand{font:normal 36px Georgia,serif;color:#2E267C}.brand small{display:block;text-align:right;font:500 10px Futura,system-ui,sans-serif;letter-spacing:.16em;color:#6B6880;margin-top:8px}.states{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid #D9D7E5;border-radius:16px;overflow:hidden}.sample{height:164px;position:relative;display:grid;place-items:center;background:#E9E8FF55}.dark{background:#19143D;color:#FFFEFC}.sample:before{content:'';width:110px;height:110px;border:1px solid #9D9CF422;border-radius:50%;position:absolute}.visual{position:relative;display:grid;place-items:center;width:64px;height:64px}.visual img{position:absolute;z-index:2}.visual .ring{position:absolute;width:34px;height:34px;border:1px solid #9D9CF4;border-radius:50%;box-shadow:0 0 0 1px #FFFEFC66,0 0 16px #9D9CF422}.visual .wave{position:absolute;width:49px;height:49px;border:1.4px solid #F58F9C88;border-radius:50%}.visual .compressed{width:23px;height:23px;border-color:#F58F9C}.meta{padding:18px 20px 20px}.step{font-size:10px;letter-spacing:.16em;color:#6B6880}.meta h2{font-size:17px;font-weight:500;margin:5px 0 8px}.meta p{font-size:13px;color:#6B6880;margin:0}.playground{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}.play{padding:24px;border:1px solid #D9D7E5;border-radius:16px;min-height:180px}.play.dark{border-color:#19143D}.play h2{font-size:15px;font-weight:500;margin:0 0 18px}.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap}button,.link{font:inherit;color:#2E267C;border:1px solid #9D9CF4;border-radius:30px;background:#E9E8FF;padding:10px 20px;cursor:pointer;text-decoration:none}button:hover,.link:hover{border-color:#F58F9C;background:#FFD1D5}.dark button{background:#E9E8FF;color:#2E267C}.grab{cursor:grab!important;border:1px dashed #9D9CF4;border-radius:10px;padding:10px 16px;user-select:none}.grab:active{cursor:grabbing!important}.play p{font-size:12px;margin:18px 0 0;color:#6B6880}.dark p{color:#9D9CF4}input{max-width:170px;width:100%;font:inherit;border:1px solid #D9D7E5;border-radius:8px;padding:10px;background:#FFFEFC;color:#171536}footer{display:flex;justify-content:space-between;gap:16px;border-top:1px solid #D9D7E5;margin-top:26px;padding-top:18px;font-size:11px;color:#6B6880}.status{min-height:20px}a.site{color:#2E267C;text-underline-offset:4px}@media(max-width:760px){main{padding:28px 20px}.states,.playground{grid-template-columns:1fr}.brand{display:none}h1{font-size:36px}.sample{height:130px}footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">ORCA / INTERACTION STUDY / 01</p>
+  <header class="head"><div><h1>Molecular pointer<span>分子探针 · 光标交互</span></h1><p class="intro">从指向，到识别，再到响应。用一颗珊瑚色圆心和一道轻柔的轨道，连接 ORCA 的阅读与探索。</p></div><div class="brand">ORCA<small>SUSTECH · 2026</small></div></header>
+  <section class="states" aria-label="光标状态设计">
+    <article class="card"><div class="sample"><div class="visual"><img src="/static/cursor/arrow.svg" width="28" height="32" alt="靛蓝箭头，白色描边，珊瑚色内芯"></div></div><div class="meta"><span class="step">01 / MOVE</span><h2>移动 · 清晰指向</h2><p>小尺寸箭头，白色轮廓保护对比度。精确指向，不留下拖尾。</p></div></article>
+    <article class="card"><div class="sample dark"><div class="visual"><span class="ring"></span><img src="/static/cursor/probe.svg" width="24" height="24" alt="珊瑚色圆心和淡紫色悬停光环"></div></div><div class="meta"><span class="step">02 / HOVER</span><h2>悬停 · 识别目标</h2><p>链接和按钮上变为圆形探针，出现 34 px 的淡紫光环。</p></div></article>
+    <article class="card"><div class="sample"><div class="visual"><span class="wave"></span><span class="ring compressed"></span><img src="/static/cursor/probe.svg" width="24" height="24" alt="点击时收紧圆环，向外扩散珊瑚色波纹"></div></div><div class="meta"><span class="step">03 / CLICK</span><h2>点击 · 轻盈回应</h2><p>按下时光环收紧；珊瑚色波纹扩散，在 460 ms 内消隐。</p></div></article>
+  </section>
+  <section class="playground" aria-label="试用光标">
+    <div class="play"><h2>在浅色阅读背景上试一试</h2><div class="controls"><button type="button" data-demo-click>点击探针</button><input aria-label="文字选择试用" value="ORCA · RNA correction"></div><p>悬停按钮、点击，再移入文字框选择文字。</p></div>
+    <div class="play dark"><h2>在深色首页背景上试一试</h2><div class="controls"><button type="button" data-demo-click>点击探针</button><span class="grab" role="img" aria-label="拖拽光标试用区域">抓取手势</span></div><p>悬停抓取区域，保留原生手形光标。</p></div>
+  </section>
+  <footer><span class="status" role="status" aria-live="polite" id="demo-status">手机不跟随光标 · 减少动态时关闭光环与波纹</span><a class="site" href="/description">在项目网站上体验 →</a></footer>
+</main>
+<script src="/static/cursor/orca-cursor.js" defer></script>
+<script>let count=0;document.querySelectorAll('[data-demo-click]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('demo-status').textContent=`已响应 ${++count} 次点击 · 试试连续点击或按住按钮`}));</script>
+</body>
+</html>
