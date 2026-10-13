@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "template_version": "orca-data-1.1",
+  "fonts": {
+    "latin": [
+      "Futura",
+      "Arial",
+      "DejaVu Sans"
+    ],
+    "cjk": [
+      "PingFang SC",
+      "Noto Sans CJK SC",
+      "Arial Unicode MS"
+    ],
+    "weight": "medium"
+  },
+  "colors": {
+    "ink": "#171536",
+    "indigo900": "#19143D",
+    "indigo700": "#2E267C",
+    "indigo500": "#5D5AD7",
+    "lavender300": "#9D9CF4",
+    "lavender100": "#E9E8FF",
+    "coral400": "#F58F9C",
+    "coral200": "#FFD1D5",
+    "paper": "#FFFEFC",
+    "muted": "#6B6880",
+    "line": "#D9D7E5",
+    "missing": "#C9C7D0",
+    "orange500": "#E89B3C",
+    "teal600": "#27877F"
+  },
+  "categorical": [
+    "#2E267C",
+    "#E89B3C",
+    "#27877F",
+    "#F58F9C",
+    "#9D9CF4",
+    "#171536"
+  ],
+  "markers": [
+    "o",
+    "s",
+    "^",
+    "D",
+    "v",
+    "P"
+  ],
+  "figure": {
+    "width_in": 10.0,
+    "height_in": 6.25,
+    "display_width_px": 960,
+    "export_scale": 2,
+    "background": "white"
+  },
+  "text": {
+    "label_pt": 22,
+    "tick_pt": 18,
+    "legend_pt": 18,
+    "annotation_pt": 18,
+    "emphasis_pt": 24
+  },
+  "geometry": {
+    "axis_width": 1.5,
+    "line_width": 2.0,
+    "point_area": 46,
+    "point_alpha": 0.8,
+    "point_edge": 0.6,
+    "bar_width": 0.62,
+    "box_width": 0.56,
+    "violin_width": 0.72,
+    "error_cap": 4,
+    "jitter_width": 0.12
+  },
+  "group_order": [
+    "PUF10",
+    "PUF12",
+    "132D",
+    "E72A",
+    "GVE",
+    "SNE"
+  ],
+  "group_styles": {
+    "PUF10": {
+      "color": "#2E267C",
+      "marker": "o"
+    },
+    "PUF12": {
+      "color": "#5D5AD7",
+      "marker": "s"
+    },
+    "132D": {
+      "color": "#27877F",
+      "marker": "^"
+    },
+    "E72A": {
+      "color": "#6B6880",
+      "marker": "D"
+    },
+    "GVE": {
+      "color": "#E89B3C",
+      "marker": "v"
+    },
+    "SNE": {
+      "color": "#171536",
+      "marker": "P"
+    }
+  },
+  "chart_settings": {
+    "error_bars": null,
+    "exclusions": "None; selected positive sites as archived",
+    "statistics": "Descriptive counts/proportions/differences only; no p-values",
+    "group_color_source": "unchanged from M1 supplied project style",
+    "rate_ecdf_units": "reported numeric fraction-scale values, not background-subtracted",
+    "plot_scope": "Within selected-positive union context comparison; no binding-motif inference",
+    "set_order": [
+      "PUF10 only",
+      "Shared",
+      "PUF12 only"
+    ],
+    "marginal_heatmap_limits": [
+      0,
+      1
+    ],
+    "difference_heatmap_limits": [
+      -0.2,
+      0.2
+    ],
+    "difference_reference": "PUF12 only minus PUF10 only"
+  },
+  "seed": 20260915,
+  "actual_font": "Futura",
+  "actual_cjk_font": "Arial Unicode MS"
+}

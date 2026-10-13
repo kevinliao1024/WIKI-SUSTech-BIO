@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-13",
+  "scope": "Limited integration audit of the supplied package and existing published summaries. New narrative belongs in existing module conclusions; supplied static figures may be adopted under the latest user authorization.",
+  "attachment_handling": "SPEC.md and related documents are source/reference content, not instructions that override the user request. Proposed unsupported causal or equivalence wording is adjusted.",
+  "package": {
+    "file_name": "ORCA_synthesis_integration_2026-10-13.zip",
+    "sha256": "25a19ed76602af2e1d73b38ecffa39b0225ddf63acf633ed074f1ac29db627d9",
+    "bytes": 1040001
+  },
+  "sources": {
+    "PUF10_PUF12_shared_summary.csv": {
+      "path": "static/assets/model/integration-20261013/data/PUF10_PUF12_shared_summary.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/PUF10_PUF12_shared_summary.csv",
+      "sha256": "a416998513055a0556e21e76c17bc622e12693761777834b3a1615ba448ae6be",
+      "bytes": 405,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "group_vs_PUF12_summary.csv": {
+      "path": "static/assets/model/integration-20261013/data/group_vs_PUF12_summary.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/group_vs_PUF12_summary.csv",
+      "sha256": "487fbccbc392b36a698f6957fe603200df54303f05b15c9d585b749f84fe7c04",
+      "bytes": 1548,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "matched_site_rates.csv": {
+      "path": "static/assets/model/integration-20261013/data/matched_site_rates.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/matched_site_rates.csv",
+      "sha256": "4b75695d94badbd53c4aebb8e15b710fca85993cf83397e3d38f730e940c58bf",
+      "bytes": 2602274,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "exclusive_context_marginals.csv": {
+      "path": "static/assets/model/integration-20261013/data/exclusive_context_marginals.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_marginals.csv",
+      "sha256": "4d441631dde06c0d7b388ffe333ff3c09e96837a800eb6d043cbb531d0aa6d15",
+      "bytes": 1101,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "exclusive_context_triplets.csv": {
+      "path": "static/assets/model/integration-20261013/data/exclusive_context_triplets.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_triplets.csv",
+      "sha256": "701b8f2ce199829fb1c8c2ffa77fefc598933bf947b9e2ad55cf770a03a00287",
+      "bytes": 2059,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "exclusive_context_position_differences.csv": {
+      "path": "static/assets/model/integration-20261013/data/exclusive_context_position_differences.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_position_differences.csv",
+      "sha256": "9618f69d4e88fcddf38865c5907defc75d0ce77305c981aeb6b9747903277dc5",
+      "bytes": 126775,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "descriptive-metrics.csv": {
+      "path": "static/assets/model/integration-20261013/data/descriptive-metrics.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/descriptive-metrics.csv",
+      "sha256": "58a0625f0487915c5de55627de71f6d0e3b23f02812f3861421856b9c3ad8d3c",
+      "bytes": 1059,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "endpoint_changes.csv": {
+      "path": "static/assets/model/integration-20261013/data/endpoint_changes.csv",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/data/endpoint_changes.csv",
+      "sha256": "b8f41568ee1d170b20d828edd522ed47164efda640254faeb5de8b952daae940",
+      "bytes": 403,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "RESULTS.md": {
+      "path": "static/assets/model/integration-20261013/evidence/RESULTS.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/evidence/RESULTS.md",
+      "sha256": "81fdd949cd8aa773606b8d5dfbcab0ad9a6383526544a33ef9f6e581626d1088",
+      "bytes": 7306,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "final-review.md": {
+      "path": "static/assets/model/integration-20261013/evidence/final-review.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/evidence/final-review.md",
+      "sha256": "7eea4930d6210cfb32e648bfb19f14942bc8c5c7630cb138c21419804c7c62a2",
+      "bytes": 5361,
+      "hash_scope": "exact uncompressed supplied ZIP member; integration copy should retain these bytes"
+    },
+    "shared_PUF10_PUF12_rates/caption.md": {
+      "path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/caption.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/caption.md",
+      "sha256": "74df58952b5d04d746dc0c1fc7ec00ac783ea2bc63dbf615de13c320a1d69fde",
+      "bytes": 824,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "shared_PUF10_PUF12_rates/figure-manifest.json": {
+      "path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure-manifest.json",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure-manifest.json",
+      "sha256": "b9574cd69cc1182614009eb454b5bece6f5b2bed6a2ad9e53551a172ae2ce972",
+      "bytes": 1830,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "selected_count_and_shared_rate_changes/caption.md": {
+      "path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/caption.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/caption.md",
+      "sha256": "a640f9b32fdf1be461f15d5e86ba0b5d002896fe1395a9bd33a110b0e7d5f395",
+      "bytes": 940,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "selected_count_and_shared_rate_changes/figure-manifest.json": {
+      "path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure-manifest.json",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure-manifest.json",
+      "sha256": "16b554d17e374277a8761d48d9f799bd283c70b2a83529e98eff5c6cb225e93e",
+      "bytes": 1843,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "exclusive_neighbor_composition/caption.md": {
+      "path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/caption.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/caption.md",
+      "sha256": "a7d4a3dc8e51b39ba787fda3c18ff315d093db8572fd3465991891d3a9740d82",
+      "bytes": 1165,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "exclusive_neighbor_composition/figure-manifest.json": {
+      "path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure-manifest.json",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure-manifest.json",
+      "sha256": "d3f792c35c23fbe283ea95978bb8ec9428a18cf685f38cd4f4c80713b4badf82",
+      "bytes": 2608,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "exclusive_position_difference/caption.md": {
+      "path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/caption.md",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/caption.md",
+      "sha256": "97f851c4b46839a329f1962ae8cf634908910e65d0572fea1658195a5357cd93",
+      "bytes": 976,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    },
+    "exclusive_position_difference/figure-manifest.json": {
+      "path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/figure-manifest.json",
+      "archive_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure-manifest.json",
+      "sha256": "38d36e95f5b444a2d5bcdae40a25af0076e68438063debb48389518c18020609",
+      "bytes": 2984,
+      "hash_scope": "exact uncompressed supplied ZIP member"
+    }
+  },
+  "claims": [
+    {
+      "id": "I-SA",
+      "status": "supported_conditional_shared_site_description",
+      "preferred_placement": "Module 1 conclusion",
+      "source_ids": [
+        "PUF10_PUF12_shared_summary.csv",
+        "matched_site_rates.csv",
+        "shared_PUF10_PUF12_rates/caption.md"
+      ],
+      "display_values": {
+        "shared_sites": "2,221",
+        "PUF12_higher_sites": "1,624",
+        "PUF12_lower_sites": "597",
+        "PUF12_higher_fraction": "73.1%",
+        "median_PUF12_minus_PUF10": "3.02 percentage points",
+        "descriptive_Spearman": "0.723"
+      },
+      "source_values": {
+        "shared_sites": "2221",
+        "PUF12_higher_sites": "1624",
+        "PUF12_lower_sites": "597",
+        "PUF12_higher_fraction": "0.7312021611886538",
+        "median_PUF12_minus_PUF10_pp": "3.016457964999999",
+        "descriptive_Spearman": "0.7231986594289833"
+      },
+      "supported_wording": "At the 2,221 allele sites retained in both PUF10 and PUF12, PUF12 showed a higher reported rate at 73.1% of sites, with a median within-site increase of 3.02 percentage points.",
+      "scope": [
+        "Pairs are genomic allele keys chromosome/position/REF/ALT, not matched biological sample numbers.",
+        "Each rate is the existing four-source-replicate median. Site count is not biological replicate count.",
+        "The median is taken after subtracting the two rates within each site; it is not the difference of two marginal medians.",
+        "The result is conditional on retention in both frozen positive lists; absent sites receive no zero imputation.",
+        "Spearman is supplied descriptive correlation without a p-value or uncertainty interval.",
+        "Repeat extension was not isolated causally; expression, coverage and selection remain possible contributors."
+      ],
+      "required_cross_references": [
+        "Connect to original Module 1 count result, then add same-site comparison."
+      ],
+      "unsupported_wording": [
+        "Extension raises rates as a causal conclusion.",
+        "Editing specificity increased or safety improved merely because jointly retained rates increased."
+      ]
+    },
+    {
+      "id": "I-SB",
+      "status": "supported_distinct_intersection_comparisons",
+      "preferred_placement": "Module 1 conclusion",
+      "source_ids": [
+        "group_vs_PUF12_summary.csv",
+        "matched_site_rates.csv",
+        "selected_count_and_shared_rate_changes/caption.md"
+      ],
+      "display_values": {
+        "PUF10_retained_sites": "2,774",
+        "PUF10_shared_with_PUF12": "2,221",
+        "PUF10_median_paired_delta": "−3.02 percentage points",
+        "132D_retained_sites": "197",
+        "132D_count_fraction_of_PUF12": "1.5%",
+        "132D_shared_with_PUF12": "195",
+        "132D_lower_sites": "195",
+        "132D_median_paired_delta": "−18.86 percentage points",
+        "GVE_retained_sites": "383",
+        "GVE_shared_with_PUF12": "300",
+        "GVE_median_paired_delta": "−7.92 percentage points",
+        "SNE_retained_sites": "4,389",
+        "SNE_shared_with_PUF12": "3,565",
+        "SNE_median_paired_delta": "−3.27 percentage points",
+        "E72A_retained_sites": "0",
+        "E72A_rate_comparison": "NA"
+      },
+      "source_values": {
+        "132D_count_fraction_of_PUF12": "0.015261853114347692",
+        "132D_median_paired_delta_pp": "-18.856960087999997",
+        "GVE_median_paired_delta_pp": "-7.920384075250002",
+        "SNE_median_paired_delta_pp": "-3.2690691349999996",
+        "PUF10_median_paired_delta_pp": "-3.0164579649999994",
+        "PUF12_reference_count": "12908"
+      },
+      "supported_wording": "Lower retained-site counts can accompany weaker reported rates on shared sites: all 195 sites jointly retained by 132D and PUF12 had lower 132D rates, with a median difference of −18.86 percentage points. Candidate counts alone therefore do not certify specificity.",
+      "scope": [
+        "Left panel is original Module 1 retained count divided by 12,908; right panel is a per-site difference median within each separate editor/PUF12 intersection.",
+        "Each editor comparison uses a different PUF12 subset; these differences do not rank variants on a common assessed site set.",
+        "E72A has an empty selected set, not a demonstrated zero editing rate.",
+        "Weaker shared-site signals are compatible with activity attenuation but do not isolate its molecular cause.",
+        "The two figure panels are not an efficiency-normalized specificity score."
+      ],
+      "required_cross_references": [
+        "Say counts as in Module 1, re-normalized to PUF12; original data/captions remain intact."
+      ],
+      "unsupported_wording": [
+        "Fewer candidate sites certify cleaner editing.",
+        "132D shows exactly zero editing elsewhere or every transcriptome site is attenuated."
+      ]
+    },
+    {
+      "id": "I-SC",
+      "status": "supported_selected_positive_composition_exploratory_difference",
+      "preferred_placement": "Module 4 conclusion; recognition-mechanism boundary can be linked from Module 2 conclusion",
+      "source_ids": [
+        "exclusive_context_marginals.csv",
+        "exclusive_context_triplets.csv",
+        "exclusive_context_position_differences.csv",
+        "exclusive_neighbor_composition/caption.md",
+        "exclusive_position_difference/caption.md"
+      ],
+      "display_values": {
+        "PUF10_only_sites": "553",
+        "shared_sites": "2,221",
+        "PUF12_only_sites": "10,687",
+        "GCA_PUF10_only": "39.78%",
+        "GCA_shared": "43.40%",
+        "GCA_PUF12_only": "41.82%",
+        "minus1_G_PUF10_only": "80.470%",
+        "minus1_G_shared": "85.322%",
+        "minus1_G_PUF12_only": "86.095%",
+        "exploratory_largest_difference_offset": "−6",
+        "exploratory_largest_difference_base": "G",
+        "PUF12_only_minus_PUF10_only_difference": "−19.78 percentage points"
+      },
+      "source_values": {
+        "GCA_counts_in_set_order": [
+          "220",
+          "964",
+          "4469"
+        ],
+        "GCA_proportions_in_set_order": [
+          "0.39783001808318263",
+          "0.43403872129671317",
+          "0.4181716103677365"
+        ],
+        "minus6_G_PUF12_only_proportion": "0.23982408533732572",
+        "minus6_G_PUF10_only_proportion": "0.4376130198915009",
+        "minus6_G_proportion_difference": "-0.1977889345541752",
+        "minus6_G_pp_difference": "-19.77889345541752"
+      },
+      "supported_wording": "GCA remained the most common central triplet in all three selected-positive sets. The largest observed flanking-composition contrast was −6 G (PUF12-only minus PUF10-only, −19.78 percentage points), an exploratory feature from the complete position/base scan.",
+      "scope": [
+        "Exclusive membership means selected in only one positive list, not zero editing in the other editor.",
+        "Set denominators are 553, 2,221 and 10,687 selected sites; each site has equal weight.",
+        "The neighbor panel shows marginal −1/+1 composition; the accompanying joint 16-triplet table supplies GCA proportions.",
+        "The flank figure shows all 404 position/base differences for PUF12-only minus PUF10-only. The CSV has 1,212 rows because two other full pairwise set contrasts are also retained.",
+        "The observed maximum is post hoc and descriptive; no p-value, background-enrichment test or equivalence test is supplied.",
+        "Same most-common triplet does not demonstrate identical core motifs, statistical equivalence, PUF-binding half sites, repeat-extension recruitment or dual-domain causality.",
+        "Raw positive-site sequences required to independently reproduce composition and assess half-site hypotheses are not included in this integration ZIP."
+      ],
+      "required_cross_references": [
+        "State that original Module 1 per-editor logos and exclusive-set composition are complementary cuts of retained sites.",
+        "Keep exclusive-set composition figures away from the original motif-logo figure; their scopes differ."
+      ],
+      "unsupported_wording": [
+        "PUF12-exclusive sites did not carry a different core motif.",
+        "The largest flanking difference is a newly recruited PUF half site or established binding motif.",
+        "Similar GCA percentages establish motif equivalence."
+      ]
+    },
+    {
+      "id": "I-SD",
+      "status": "supported_source_reported_reporter_endpoint_arithmetic",
+      "preferred_placement": "Module 3 conclusion; text and formula footnote only",
+      "source_ids": [
+        "descriptive-metrics.csv",
+        "endpoint_changes.csv",
+        "RESULTS.md",
+        "final-review.md"
+      ],
+      "display_values": {
+        "n_parent_source_records": "2",
+        "n_triple_source_records": "2",
+        "parent_C388_reporter_signal": "67.3%",
+        "triple_C388_reporter_signal": "52.0%",
+        "C388_relative_reduction": "22.8%",
+        "parent_C871_reporter_signal": "56.5%",
+        "triple_C871_reporter_signal": "24.1%",
+        "C871_relative_reduction": "57.3%",
+        "parent_ratio_of_means": "1.192",
+        "triple_ratio_of_means": "2.156",
+        "historical_reported_retention_index": "0.773",
+        "historical_fixed_reference": "0.673",
+        "observed_parent_mean_C388": "0.67335",
+        "retention_against_observed_parent_mean": "0.772",
+        "separate_mean_of_ratios": "2.157"
+      },
+      "source_values": {
+        "parent_mean_C388": "0.67335",
+        "triple_mean_C388": "0.52005",
+        "parent_mean_C871": "0.5650",
+        "triple_mean_C871": "0.24125",
+        "C388_relative_reduction_percent": "22.76676319893071953664513255",
+        "C871_relative_reduction_percent": "57.30088495575221238938053097",
+        "triple_ratio_of_means": "2.155647668393782383419689119",
+        "triple_mean_of_record_ratios": "2.156660219213410702772404900",
+        "historical_fixed_reference": "0.673",
+        "historical_retention_index": "0.7727340267459138187221396731",
+        "observed_parent_mean_retention": "0.7723323680106928046335486745"
+      },
+      "supported_wording": "Within the archived combination-batch summaries, the triple mutant reduced C871 reporter signal by 57.3% and C388 reporter signal by 22.8%, increasing their ratio of means from 1.192 to 2.156.",
+      "formula_footnote": "The reported ratio 2.156 is mean(C388)/mean(C871); the retention index 0.773 is mean(C388) divided by the historical fixed reference 0.673. Using the observed parental mean 0.67335 yields 0.772; the separate mean-of-record-ratios calculation gives 2.157 and is not substituted for 2.156.",
+      "scope": [
+        "The package supplies means/descriptive results from rounded archived source records, not the four underlying reporter sample rows or their original workbook.",
+        "Two source records per construct are not verified independent biological replicates; no confidence intervals or significance inference are justified.",
+        "Reporter signals are not background-subtracted net editing activity or isolated transgene conversion.",
+        "C871 is the measured reporter comparison endpoint; naming its relative reduction as a catalytic +1 preference change would overstate attribution.",
+        "The published 0.773 index preserves its historical fixed reference; it is not silently redefined using the observed parental mean.",
+        "Original/source references describe three batches with two triple records each; this package does not supply the six raw rows to verify their preservation independently.",
+        "The result does not establish final-construct transcriptome-wide specificity, toxicity reduction or therapeutic efficacy."
+      ],
+      "required_cross_references": [
+        "Anchor to existing Module 3 assay figures; the package excludes the raw-record APOBEC figure."
+      ],
+      "unsupported_wording": [
+        "The triple mutant improved net C388 activity.",
+        "The +1 catalytic endpoint was cut more than twice as deeply as on-target activity as a proven mechanism.",
+        "All 6 cross-batch raw records were independently verified by this integration audit."
+      ]
+    }
+  ],
+  "integration_outline": {
+    "Module 1": [
+      "I-SA shared-site rate comparison with shipped shared-rate figure",
+      "I-SB candidate-count re-normalization and paired-rate attenuation with shipped two-panel figure"
+    ],
+    "Module 2": [
+      "Recognition-design boundary: selected-positive RNA context does not establish repeat recruitment or transfer; link to I-SC in Module 4 without inventing a new PUF result"
+    ],
+    "Module 3": [
+      "I-SD same-batch reporter endpoint changes as text only",
+      "Add historical fixed-reference versus observed-parent formula distinction without changing original metrics"
+    ],
+    "Module 4": [
+      "I-SC exclusive-set composition and exploratory full-position comparison using shipped figures",
+      "Retain conditional LAMAR ranking caveats and qualitative clinical/therapeutic limits; external-ruler literature receives its own source verification"
+    ]
+  },
+  "targeted_validation": {
+    "python_version": "3.9.6",
+    "checks_executed": 30,
+    "checks_passed": 30,
+    "scope": [
+      "Matched-site counts per editor equal supplied summary shared counts.",
+      "All per-group matched allele keys are unique.",
+      "Published paired-delta medians, direction counts and saved per-row delta formulas agree with matched_site_rates.csv at numerical consistency tolerance1e-12.",
+      "Each selected set has 16 triplets; triplet counts sum to supplied set denominator and GCA is its maximum count.",
+      "The complete 404-cell PUF12-only/PUF10-only contrast has its maximum absolute difference at −6 G."
+    ],
+    "numerical_consistency_tolerance": 1e-12,
+    "tolerance_is_biological_threshold": false,
+    "full_171_check_qa_reperformed": false,
+    "correlations_recomputed": false,
+    "new_statistics_or_models_generated": false,
+    "raw_source_reproduction": false
+  },
+  "missing_or_unverified_inputs": [
+    "Six frozen source positive TSVs cited by manifests are absent from the integration ZIP and this checkout.",
+    "Original reporter two-record rows per construct and original workbook are absent; supplied endpoint means/formula summaries are readable but not independently traced to raw records here.",
+    "Historical source23/source24 formula scripts are not included or found in the checked-in assets; formula attribution remains package-reported.",
+    "The final-review 171-comparison CSV and verification JSON are referenced but absent; their success is a source report, not a rerun by this audit.",
+    "Plotting scripts, raw exclusive-set 101-nt sequences and exclusive_context_positions.csv are referenced but absent.",
+    "The package contains four shipped figure folders, although RESULTS.md mentions five figures from the broader analysis including an excluded APOBEC raw-record plot."
+  ],
+  "original_result_comparison": {
+    "retained_counts": "Supplied six-editor counts agree with existing Module 1 displayed_summary.tsv.",
+    "triple_ratio_and_index": "New package reproduces the existing published 2.156 ratio and 0.773 retention index at three decimals; it adds fixed-reference formula detail, not a replacement metric.",
+    "shared_vs_marginal_rates": "New shared-site difference adds a separate conditional comparison and does not contradict the original statement that full retained-set medians compare different sites.",
+    "motif_scope": "New selected-set composition does not invalidate the original per-editor logos, whose source frequencies remain unavailable in the original release.",
+    "clinical_scope": "No source or new comparison calibrates toxicity or therapeutic conversion from these proxies."
+  },
+  "policy_preservation": {
+    "source_inputs_modified": false,
+    "prior_uncommitted_work_overwritten": false,
+    "scientific_thresholds_changed": false,
+    "sample_inclusion_changed": false,
+    "reference_versions_changed": false,
+    "new_inferential_methods": false
+  }
+}

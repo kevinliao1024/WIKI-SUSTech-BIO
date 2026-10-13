@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "operation": "Byte-preserving import of four supplied figure families; no regeneration, scientific analysis or new statistics.",
+  "source_package": {
+    "filename": "ORCA_synthesis_integration_2026-10-13.zip",
+    "sha256": "25a19ed76602af2e1d73b38ecffa39b0225ddf63acf633ed074f1ac29db627d9",
+    "zip_root": "ORCA_synthesis_integration_2026-10-13/",
+    "figure_file_count": 30
+  },
+  "figures": [
+    {
+      "family": "shared_PUF10_PUF12_rates",
+      "module": 1,
+      "page_figure_number": 8,
+      "image": "figures/shared_PUF10_PUF12_rates/figure@2x.png",
+      "png_width_px": 1920,
+      "png_height_px": 1200,
+      "svg": "figures/shared_PUF10_PUF12_rates/figure.svg",
+      "svg_viewBox": "0 0 720 450",
+      "pdf": "figures/shared_PUF10_PUF12_rates/figure.pdf",
+      "pdf_pages": 1,
+      "pdf_page_size": "720 x 450 pts",
+      "caption_file": "figures/shared_PUF10_PUF12_rates/caption.md",
+      "caption_policy": "Original package caption.md preserved byte-for-byte; concise link-free page caption follows user instruction and is recorded in page-captions.json.",
+      "alt_text_file": "figures/shared_PUF10_PUF12_rates/alt-text.txt",
+      "plot_table_integration_path": "data/PUF10_PUF12_shared_summary.csv",
+      "plot_table_in_package": true,
+      "svg_external_resources": [],
+      "svg_embedded_png_images": 1,
+      "svg_text_format": "glyph paths",
+      "manifest_style_sha256": null,
+      "actual_style_sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "style_hash_matches_manifest": null
+    },
+    {
+      "family": "selected_count_and_shared_rate_changes",
+      "module": 1,
+      "page_figure_number": 9,
+      "image": "figures/selected_count_and_shared_rate_changes/figure@2x.png",
+      "png_width_px": 1920,
+      "png_height_px": 1043,
+      "svg": "figures/selected_count_and_shared_rate_changes/figure.svg",
+      "svg_viewBox": "0 0 828 450",
+      "pdf": "figures/selected_count_and_shared_rate_changes/figure.pdf",
+      "pdf_pages": 1,
+      "pdf_page_size": "828 x 450 pts",
+      "caption_file": "figures/selected_count_and_shared_rate_changes/caption.md",
+      "caption_policy": "Original package caption.md preserved byte-for-byte; concise link-free page caption follows user instruction and is recorded in page-captions.json.",
+      "alt_text_file": "figures/selected_count_and_shared_rate_changes/alt-text.txt",
+      "plot_table_integration_path": "data/group_vs_PUF12_summary.csv",
+      "plot_table_in_package": true,
+      "svg_external_resources": [],
+      "svg_embedded_png_images": 0,
+      "svg_text_format": "glyph paths",
+      "manifest_style_sha256": null,
+      "actual_style_sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "style_hash_matches_manifest": null
+    },
+    {
+      "family": "exclusive_neighbor_composition",
+      "module": 4,
+      "page_figure_number": 37,
+      "image": "figures/exclusive_neighbor_composition/figure@2x.png",
+      "png_width_px": 1920,
+      "png_height_px": 960,
+      "svg": "figures/exclusive_neighbor_composition/figure.svg",
+      "svg_viewBox": "0 0 720 360",
+      "pdf": "figures/exclusive_neighbor_composition/figure.pdf",
+      "pdf_pages": 1,
+      "pdf_page_size": "720 x 360 pts",
+      "caption_file": "figures/exclusive_neighbor_composition/caption.md",
+      "caption_policy": "Original package caption.md preserved byte-for-byte; concise link-free page caption follows user instruction and is recorded in page-captions.json.",
+      "alt_text_file": "figures/exclusive_neighbor_composition/alt-text.txt",
+      "plot_table_integration_path": "data/exclusive_context_marginals.csv",
+      "plot_table_in_package": true,
+      "svg_external_resources": [],
+      "svg_embedded_png_images": 3,
+      "svg_text_format": "glyph paths",
+      "manifest_style_sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "actual_style_sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555",
+      "style_hash_matches_manifest": false
+    },
+    {
+      "family": "exclusive_position_difference",
+      "module": 4,
+      "page_figure_number": 38,
+      "image": "figures/exclusive_position_difference/figure@2x.png",
+      "png_width_px": 1920,
+      "png_height_px": 864,
+      "svg": "figures/exclusive_position_difference/figure.svg",
+      "svg_viewBox": "0 0 720 324",
+      "pdf": "figures/exclusive_position_difference/figure.pdf",
+      "pdf_pages": 1,
+      "pdf_page_size": "720 x 324 pts",
+      "caption_file": "figures/exclusive_position_difference/caption.md",
+      "caption_policy": "Original package caption.md preserved byte-for-byte; concise link-free page caption follows user instruction and is recorded in page-captions.json.",
+      "alt_text_file": "figures/exclusive_position_difference/alt-text.txt",
+      "plot_table_integration_path": "data/exclusive_context_position_differences.csv",
+      "plot_table_in_package": true,
+      "svg_external_resources": [],
+      "svg_embedded_png_images": 2,
+      "svg_text_format": "glyph paths",
+      "manifest_style_sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "actual_style_sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555",
+      "style_hash_matches_manifest": false
+    }
+  ],
+  "files": [
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/alt-text.txt",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/alt-text.txt",
+      "bytes": 128,
+      "sha256": "13e31a0f31b683eb0823bb4989521fbb5fa6eef6d8f01e7e8d249936152ad25f"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/caption.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/caption.md",
+      "bytes": 824,
+      "sha256": "74df58952b5d04d746dc0c1fc7ec00ac783ea2bc63dbf615de13c320a1d69fde"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure-manifest.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure-manifest.json",
+      "bytes": 1830,
+      "sha256": "b9574cd69cc1182614009eb454b5bece6f5b2bed6a2ad9e53551a172ae2ce972"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure.pdf",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure.pdf",
+      "bytes": 23157,
+      "sha256": "3e73d1aafd51afe8e41f6f7a9c84e6fc65b8d7a8e9c7c7722cced5d660dbeb3f"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure.svg",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure.svg",
+      "bytes": 70124,
+      "sha256": "6cc1c09f583bb9e853a2fae242917165090eee8461e8cb30d782c3e6b8d376ef"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure@2x.png",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure@2x.png",
+      "bytes": 200702,
+      "sha256": "f4675ac4f089b6c55a90b5fd95639426cfd89efe980211f3622108873aac0c55"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/orca-figure-style.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/orca-figure-style.json",
+      "bytes": 2361,
+      "sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/alt-text.txt",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/alt-text.txt",
+      "bytes": 143,
+      "sha256": "b570316e6cceb1cf3b36b6edf277ae4f09874d7dc6da2345f5ba3d9345df428c"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/caption.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/caption.md",
+      "bytes": 940,
+      "sha256": "a640f9b32fdf1be461f15d5e86ba0b5d002896fe1395a9bd33a110b0e7d5f395"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure-manifest.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure-manifest.json",
+      "bytes": 1843,
+      "sha256": "16b554d17e374277a8761d48d9f799bd283c70b2a83529e98eff5c6cb225e93e"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure.pdf",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure.pdf",
+      "bytes": 9729,
+      "sha256": "ed75bd077c6466ca5ed591a64c75800a51f6d0e18dc4152ebe781942731f33f2"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure.svg",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure.svg",
+      "bytes": 50532,
+      "sha256": "9bac9989799526fab9e2b97836b512bece5b91e81d66944383195167b1e9363a"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure@2x.png",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure@2x.png",
+      "bytes": 115447,
+      "sha256": "3c38bd083bd2829ee98615c1470a5d49facec9ef4f80217fc5cde5729273a583"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/orca-figure-style.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/orca-figure-style.json",
+      "bytes": 2361,
+      "sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/alt-text.txt",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/alt-text.txt",
+      "bytes": 221,
+      "sha256": "da48f9473da8b5a9e57a323fc83ccd68bdfa0e1567b7bd2c36086b701c8bf885"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/caption.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/caption.md",
+      "bytes": 1165,
+      "sha256": "a7d4a3dc8e51b39ba787fda3c18ff315d093db8572fd3465991891d3a9740d82"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure-manifest.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure-manifest.json",
+      "bytes": 2608,
+      "sha256": "d3f792c35c23fbe283ea95978bb8ec9428a18cf685f38cd4f4c80713b4badf82"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure.pdf",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure.pdf",
+      "bytes": 11190,
+      "sha256": "5ed2c8457313de82b64fb8fd9ebcea45e63a7ad7ea8ea5283fb62ec28d8f00c8"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure.svg",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure.svg",
+      "bytes": 51062,
+      "sha256": "2fbc8c729e601fe49940dd80718b09b0f3440c380b43f9fe324fcc92f23acf03"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure@2x.png",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure@2x.png",
+      "bytes": 151083,
+      "sha256": "f63f00f08ab5bf85488ab45cf330d5cd2fed8da38c0ce51eb6669324e735bdab"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/orca-figure-style.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/orca-figure-style.json",
+      "bytes": 2691,
+      "sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/sources.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/sources.md",
+      "bytes": 339,
+      "sha256": "ee68d9b550a8e1be070d19fb86c70f93e1cb2dcfd436ff23fcf73eb8a7bed450"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/alt-text.txt",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/alt-text.txt",
+      "bytes": 246,
+      "sha256": "a4e05474810c14101a1c62eb2958daff7ea9ffa797a4fbe9c39fdf5325e421d5"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/caption.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/caption.md",
+      "bytes": 976,
+      "sha256": "97f851c4b46839a329f1962ae8cf634908910e65d0572fea1658195a5357cd93"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure-manifest.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/figure-manifest.json",
+      "bytes": 2984,
+      "sha256": "38d36e95f5b444a2d5bcdae40a25af0076e68438063debb48389518c18020609"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure.pdf",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/figure.pdf",
+      "bytes": 9907,
+      "sha256": "a270d3a25a9b5ff7b18b336da911b18b33d4e1b7a5af04f8a8eb6073baa9fa04"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure.svg",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/figure.svg",
+      "bytes": 31271,
+      "sha256": "03da0413522144e5b5f81ce75b57f5722361020bd8a6fb691df83c4c934f010f"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure@2x.png",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/figure@2x.png",
+      "bytes": 76267,
+      "sha256": "c8421c041c79e10883552e1aad14b61303773ce87633e8934c6d8ecf1e0fca2e"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/orca-figure-style.json",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/orca-figure-style.json",
+      "bytes": 2691,
+      "sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555"
+    },
+    {
+      "zip_member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/sources.md",
+      "imported_path": "static/assets/model/integration-20261013/figures/exclusive_position_difference/sources.md",
+      "bytes": 339,
+      "sha256": "ee68d9b550a8e1be070d19fb86c70f93e1cb2dcfd436ff23fcf73eb8a7bed450"
+    }
+  ],
+  "numbering": {
+    "total_page_figures": 38,
+    "overview": 1,
+    "module1_existing": [
+      2,
+      7
+    ],
+    "module1_new": [
+      8,
+      9
+    ],
+    "module2_existing_old": [
+      8,
+      22
+    ],
+    "module2_existing_new": [
+      10,
+      24
+    ],
+    "module3_existing_old": [
+      23,
+      30
+    ],
+    "module3_existing_new": [
+      25,
+      32
+    ],
+    "module4_existing_old": [
+      31,
+      34
+    ],
+    "module4_existing_new": [
+      33,
+      36
+    ],
+    "module4_new": [
+      37,
+      38
+    ],
+    "body_reference_edits": [
+      {
+        "module": 3,
+        "old": "The comparison in Figure 27",
+        "new": "The comparison in Figure 29"
+      }
+    ],
+    "preserved_historical_reference": "Module 3 retained source-package Figure 7 remains Figure 7, because it is an archive label rather than the page sequence."
+  },
+  "provenance_notes": [
+    "The supplied technical manifests and sources.md files are copied without modification.",
+    "Their source-data/Current6/source/*.tsv, source-manifest.json, exclusive_context_sites.csv and historical helper/script/archive references are provenance identifiers; those referenced files are not shipped in this integration ZIP.",
+    "The two exclusive-context manifests record style SHA-256 850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843; their shipped orca-figure-style.json hashes ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555. This package-origin mismatch is recorded, not repaired.",
+    "No APOBEC raw-record figure is present; the supplied SPEC explicitly excludes it.",
+    "Captions identify descriptive selected-positive-site comparisons, unmatched set denominators and absent causal/clinical inference."
+  ],
+  "license_metadata": {
+    "package_license_file_present": false,
+    "explicit_figure_license_in_manifest": false,
+    "font_names_declared": [
+      "Futura",
+      "Arial Unicode MS"
+    ],
+    "font_resource_loading": "SVG glyph outlines and embedded PNGs; PDF fonttype42; no external SVG resource or font download.",
+    "license_assertion": "No new license assertion is added beyond the supplied package."
+  },
+  "validation": {
+    "zip_to_extracted_equality": "All30figurefilesverifiedbyteidentical.",
+    "imported_bytes": "All30importedfilesverifiedbyteidenticaltoZIPmember.",
+    "PNG": "Headers and actual pixel dimensions checked; all4PNGsvisuallyinspected.",
+    "SVG": "All4XMLdocumentsparsed; hrefsinternalorembeddeddata; noscriptsorexternalresources.",
+    "PDF": "All4filesacceptedbypdfinfoandsinglepage; originalbytespreserved.",
+    "scope": "Presentation and file-integrity verification only; underlying analyses not rerun."
+  }
+}

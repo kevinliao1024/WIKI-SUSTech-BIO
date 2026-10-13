@@ -1,0 +1,1 @@
+Groups with fewer selected sites than PUF12 also have lower median rates within their shared positive-site subsets; E72A has no rate estimate.

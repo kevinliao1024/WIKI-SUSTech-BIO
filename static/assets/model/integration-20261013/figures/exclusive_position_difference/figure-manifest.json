@@ -1,0 +1,88 @@
+{
+  "template_version": "orca-data-1.1",
+  "font": "Futura",
+  "cjk_font": "Arial Unicode MS",
+  "notes": [],
+  "runtime": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.8",
+    "numpy": "2.5.3"
+  },
+  "export": {
+    "width_in": 10.0,
+    "height_in": 4.5,
+    "dpi": 192.0,
+    "display_width_px": 960,
+    "svg_text": "paths",
+    "pdf_fonttype": 42
+  },
+  "provenance": {
+    "set_key": [
+      "chromosome",
+      "position",
+      "ref",
+      "alt"
+    ],
+    "source_key_normalization": "none",
+    "sequence_orientation": "source 101nt already edited-C oriented; zero-based center50; no reverse complement here",
+    "shared_handling": "assert source sequences identical, then count each shared allele key exactly once",
+    "denominator": "number of selected positive allele sites in each mutually exclusive set",
+    "triplets": "all 16 -1/C/+1 combinations, lexicographic A/C/G/T neighbor order",
+    "position_range_inclusive": [
+      -50,
+      50
+    ],
+    "proportion_difference": "target proportion minus reference proportion",
+    "new_filters": 0,
+    "new_exclusions": 0,
+    "p_values": false,
+    "background_enrichment": false,
+    "interpretation": "Composition differences among selected-positive sets; not PUF binding motifs or half-site recruitment tests",
+    "source_files": [
+      {
+        "file": "source-data/Current6/source/PUF10_positive.tsv",
+        "sha256": "afb882fc0e8f151047a6557880e64aa6fe4e6003d0f8cf597b45cade737966cf",
+        "bytes": 505545,
+        "verified_against_frozen_manifest": true
+      },
+      {
+        "file": "source-data/Current6/source/PUF12_positive.tsv",
+        "sha256": "759efefd9de6ed38e8a7679c4fdbcc20e9735e655be317e7f0b93a990a426314",
+        "bytes": 2345328,
+        "verified_against_frozen_manifest": true
+      }
+    ],
+    "source_manifest_sha256": "9301344788e605dadaa616e56515bacb142e29db0e593d246490fe609573cb62",
+    "archive_sha256": "f966068d1e283c6f28b2b44060bda46a8a4714c363b66e8d7eb19b0433a3fce9",
+    "source_counts": {
+      "PUF10 only": 553,
+      "Shared": 2221,
+      "PUF12 only": 10687
+    },
+    "script_sha256": "9caa1a34acde79cf5cb5ccfaa50b3c40ec167828f89093363dac61448cdfe740",
+    "orca_helper_sha256": "0ac2ec2bc481cf66b1074a14bb4f4155f25547110295197ce3243906d97652ed",
+    "style_sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+    "plotted_data": "exclusive_context_position_differences.csv",
+    "target_set": "PUF12 only",
+    "reference_set": "PUF10 only",
+    "position_range": [
+      -50,
+      50
+    ],
+    "color_limits": [
+      -0.2,
+      0.2
+    ],
+    "center": 0,
+    "largest_absolute_difference": {
+      "target_set": "PUF12 only",
+      "reference_set": "PUF10 only",
+      "offset": -6,
+      "base": "G",
+      "target_proportion": 0.23982408533732572,
+      "reference_proportion": 0.4376130198915009,
+      "proportion_difference": -0.1977889345541752,
+      "percentage_point_difference": -19.77889345541752
+    }
+  }
+}

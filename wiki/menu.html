@@ -10,7 +10,7 @@
   <div class="shell nav-shell">
     <a class="site-brand" href="{{ url_for('home') }}" aria-label="SUSTech ORCA home">
       <img class="site-logo" src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO" width="1498" height="1050">
-      <span><strong>ORCA</strong><small>SUSTech · 2026</small></span>
+      <span><strong>ORCA</strong></span>
     </a>
     <ul class="nav-list whale-pod">
       <li class="nav-item"><a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{{ url_for('home') }}"{% if request.path == '/' %} aria-current="page"{% endif %}>{{ whale('Home') }}</a></li>

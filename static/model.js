@@ -3,8 +3,19 @@
   if (caret) setTimeout(() => { caret.hidden = true; }, 2240);
   const modules = [...document.querySelectorAll('[data-model-module]')];
   const links = [...document.querySelectorAll('[data-module-link]')];
-  const chapters = [...document.querySelectorAll('[data-model-chapter]')];
-  const chapterLinks = [...document.querySelectorAll('[data-chapter-link]')];
+  // Unlisted sibling headings return selection to the nearest listed ancestor.
+  const chapterPositions = modules.flatMap(module => {
+    const ancestors = [];
+    return [...module.querySelectorAll('h3, h4, h5, h6')].map(heading => {
+      const level = Number(heading.tagName.slice(1));
+      while (ancestors.length && ancestors.at(-1).level >= level) ancestors.pop();
+      const chapter = heading.matches('[data-model-chapter], [data-model-subchapter]')
+        ? heading.id : ancestors.at(-1)?.chapter || null;
+      ancestors.push({level, chapter});
+      return {heading, chapter, module: module.id};
+    });
+  });
+  const chapterLinks = [...document.querySelectorAll('[data-chapter-link], [data-subchapter-link]')];
   const sidebar = document.querySelector('.model-sidebar');
   const reading = document.querySelector('.model-reading');
   const page = document.querySelector('.model-page');
@@ -17,6 +28,7 @@
   let navigation = null;
   let expandedModule = null;
   let currentChapter = null;
+  let directoryNeedsReveal = false;
   let queued = false;
   for (const link of links) {
     const panel = document.getElementById(link.getAttribute('aria-controls'));
@@ -111,7 +123,7 @@
   function navigate(target, {record = false, animate = true, focus = false} = {}) {
     cancelNavigation();
     const module = target?.closest('[data-model-module]');
-    const chapter = target?.matches('[data-model-chapter]') ? target : null;
+    const chapter = target?.matches('[data-model-chapter], [data-model-subchapter]') ? target : null;
     if (record) {
       const hash = target ? `#${target.id}` : '';
       if (location.hash !== hash) history.pushState(history.state, '', location.pathname + location.search + hash);
@@ -137,13 +149,13 @@
       return;
     }
     page?.classList.add('is-model-navigating');
-    const duration = Math.min(1100, Math.max(480, 420 + Math.sqrt(distance) * 5));
+    const duration = Math.min(1400, Math.max(650, 500 + Math.sqrt(distance) * 7));
     let started;
     const step = time => {
       if (navigation !== trip) return;
       if (started === undefined) started = time;
       const progress = Math.min(1, (time - started) / duration);
-      const eased = progress < .5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
+      const eased = 1 - (1 - progress) ** 4;
       // Recalculate the endpoint as lazy media or the mobile directory settles.
       scrollTo({top: start + (destination(target) - start) * eased, behavior: 'instant'});
       if (progress < 1) trip.frame = requestAnimationFrame(step);
@@ -219,7 +231,7 @@
   });
   function updateIndicator(panel) {
     const indicator = indicators.get(panel);
-    const active = panel.querySelector('[data-chapter-link][aria-current]');
+    const active = panel.querySelector('[data-chapter-link][aria-current], [data-subchapter-link][aria-current]');
     if (!indicator) return;
     indicator.classList.toggle('is-visible', !!active && !panel.inert);
     if (!active || panel.hidden) return;
@@ -228,23 +240,16 @@
     indicator.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
   }
   function keepCurrentVisible(link) {
-    if (!link || !sidebar) return;
-    const container = compactNavigation.matches ? link.closest('.module-subnav') : sidebar;
+    if (!link || !compactNavigation.matches) return;
+    const container = link.closest('.module-subnav');
     if (!container) return;
     const bounds = container.getBoundingClientRect();
     const item = link.getBoundingClientRect();
-    // Scroll only the directory, never the page, when its active item changes.
-    if (compactNavigation.matches) {
-      let left = container.scrollLeft;
-      if (item.left < bounds.left + 8) left += item.left - bounds.left - 8;
-      else if (item.right > bounds.right - 8) left += item.right - bounds.right + 8;
-      container.scrollTo({left, behavior: motionPreference.matches ? 'auto' : 'smooth'});
-    } else {
-      let top = container.scrollTop;
-      if (item.top < bounds.top + 8) top += item.top - bounds.top - 8;
-      else if (item.bottom > bounds.bottom - 8) top += item.bottom - bounds.bottom + 8;
-      container.scrollTo({top, behavior: motionPreference.matches ? 'auto' : 'smooth'});
-    }
+    // Only the mobile chapter row scrolls independently of the document.
+    let left = container.scrollLeft;
+    if (item.left < bounds.left + 8) left += item.left - bounds.left - 8;
+    else if (item.right > bounds.right - 8) left += item.right - bounds.right + 8;
+    container.scrollTo({left, behavior: motionPreference.matches ? 'auto' : 'smooth'});
   }
   function update() {
     const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 112;
@@ -275,23 +280,27 @@
       else link.removeAttribute('aria-current');
     }
     let chapter = navigation?.chapter || null;
-    if (!navigation) for (const heading of chapters) {
-      if (heading.closest('[data-model-module]')?.id === current && heading.getBoundingClientRect().top <= offset) chapter = heading.id;
+    if (!navigation) for (const position of chapterPositions) {
+      if (position.module === current && position.heading.getBoundingClientRect().top <= offset) chapter = position.chapter;
     }
+    const activeChapterLink = chapterLinks.find(link => link.hash === `#${chapter}`) || null;
+    const parentChapter = activeChapterLink?.dataset.parentChapter || null;
     for (const link of chapterLinks) {
-      if (link.hash === `#${chapter}`) link.setAttribute('aria-current', 'location');
+      if (link === activeChapterLink) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
+      link.toggleAttribute('data-active-parent', !!parentChapter && link.hasAttribute('data-chapter-link') && link.hash === `#${parentChapter}`);
     }
     for (const panel of indicators.keys()) updateIndicator(panel);
-    if (moduleChanged || currentChapter !== chapter) {
-      keepCurrentVisible(chapterLinks.find(link => link.hash === `#${chapter}`) || activeModule);
+    if (moduleChanged || currentChapter !== chapter || directoryNeedsReveal) {
+      keepCurrentVisible(activeChapterLink || activeModule);
       currentChapter = chapter;
     }
+    directoryNeedsReveal = false;
     queued = false;
   }
   function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, {passive: true});
-  addEventListener('resize', schedule);
+  addEventListener('resize', () => { directoryNeedsReveal = true; schedule(); });
   addEventListener('load', schedule);
   const layoutObserver = new ResizeObserver(schedule);
   document.querySelectorAll('.model-overview, .model-reading, .model-sidebar').forEach(element => layoutObserver.observe(element));

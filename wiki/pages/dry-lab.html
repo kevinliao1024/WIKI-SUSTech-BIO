@@ -1,13 +1,14 @@
-{% extends "layout.html" %}
-{% from "macros.html" import evidence, markdown_panel, section_nav %}
+{% extends "pages/editorial_reading.html" %}
+{% from "macros.html" import evidence, markdown_panel %}
+
+{% set reading_sections = [('handoff', 'Model handoff'), ('principles', 'Principles'), ('routes', 'Explore')] %}
 
 {% block title %}{{ content.title }}{% endblock %}
 {% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
 {% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
 {% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
-{% block page_content %}
-{{ section_nav([('question', 'The question'), ('handoff', 'Model handoff'), ('principles', 'Principles'), ('routes', 'Explore')]) }}
+{% block reading_content %}
 {{ markdown_panel(content, rendered_markdown) }}
 <section class="content-section shell">
   {{ evidence('Model-derived evidence', 'The workflow integrates software outputs and literature-informed priors. It is not clinical prediction and is not yet calibrated with team wet-lab measurements.', 'model') }}

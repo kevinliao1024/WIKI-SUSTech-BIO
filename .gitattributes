@@ -3,3 +3,7 @@
 
 # Keep the upstream font license byte-for-byte, including its trailing space.
 static/fonts/source-sans-3-OFL.txt whitespace=-blank-at-eol
+
+# Preserve supplied evidence bytes, including CSV CRLF and generated SVG paths.
+static/assets/model/integration-20261013/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+static/assets/model/integration-20261013/figures/*/figure.svg -text -whitespace

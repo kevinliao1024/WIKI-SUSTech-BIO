@@ -151,3 +151,162 @@
     padding-left: 14px;
   }
 }
+
+/* Project, Wet Lab, Dry Lab and Human Practices use the Model reading surface. */
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('fonts/source-sans-3-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('fonts/source-sans-3-variable-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+body.unified-reading-page:not(.ot) main,
+body.unified-reading-page:not(.ot) .page-hero {
+  background: #edf0f4;
+}
+
+.unified-reading-page .markdown-page > .markdown-content {
+  --reading-surface-feather: 22px;
+  border-color: #e0e3e8;
+  background: linear-gradient(90deg, #f3f4f5, #fff var(--reading-surface-feather),
+    #fff calc(100% - var(--reading-surface-feather)), #f3f4f5);
+  box-shadow: 0 0 28px 2px #5f667526;
+}
+
+.unified-reading-page .markdown-content {
+  font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.unified-reading-page .markdown-content :is(p, li) {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.unified-reading-page .markdown-content :is(h2, h3, h4, h5, h6) {
+  font-family: inherit;
+  line-height: 1.25;
+}
+
+.unified-reading-page .markdown-content h2 { font-size: 32px; }
+.unified-reading-page .markdown-content h3 { font-size: 23px; }
+.unified-reading-page .markdown-content :is(h4, h5, h6) { font-size: 19px; }
+
+.unified-reading-page .markdown-page > .markdown-toc {
+  max-height: none;
+  overflow: visible;
+  font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+}
+
+.unified-reading-page .markdown-page > .markdown-toc.is-long-directory {
+  position: relative;
+  top: auto;
+}
+
+.unified-reading-page .markdown-toc > span {
+  font: 650 12px/1.5 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: .08em;
+}
+
+.unified-reading-page .markdown-toc ol { gap: 4px; margin-top: 14px; }
+.unified-reading-page .markdown-toc a {
+  min-height: 0;
+  padding: 7px 10px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.unified-reading-page .markdown-toc .toc-level-3 { margin-left: 12px; padding-left: 6px; }
+.unified-reading-page .markdown-toc .toc-level-3 a {
+  min-height: 0;
+  padding: 5px 7px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+body.unified-reading-page:not(.ot) :is(.markdown-toc, .mobile-toc) a[aria-current] {
+  color: #383b91;
+  background: #eaeaf8;
+  box-shadow: inset 2px 0 #7d7fc1;
+}
+
+.unified-reading-page .markdown-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 0 24px 4px #8299ba14;
+}
+
+body.unified-reading-page:not(.ot) .markdown-content table {
+  background: linear-gradient(135deg, #fff, #f1f5fb 55%, #fff);
+}
+
+body.unified-reading-page:not(.ot) .markdown-content :is(th, td) {
+  min-width: 8rem;
+  overflow-wrap: normal;
+  border-color: #c6cfdd80;
+}
+
+body.unified-reading-page:not(.ot) .markdown-content th {
+  background: linear-gradient(180deg, #eaf0f8, #f5f8fc);
+  font-weight: 650;
+}
+
+body.unified-reading-page:not(.ot) .markdown-content figure {
+  max-width: 720px;
+  margin: 34px auto 40px;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fff 80%, #f5f8fc);
+  box-shadow: 0 0 26px 5px #8299ba14;
+}
+
+.unified-reading-page .markdown-content figure img { margin: 0 auto; }
+.unified-reading-page .markdown-content img:not(figure img) {
+  border-radius: 12px;
+  box-shadow: 0 6px 24px 4px #8299ba1c;
+}
+.unified-reading-page .markdown-content figcaption { margin-top: 12px; font-size: 17px; line-height: 1.6; }
+.unified-reading-page .markdown-content pre { font-size: 14px; line-height: 1.65; }
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .unified-reading-page .markdown-page > .markdown-content { --reading-surface-feather: 16px; }
+}
+
+@media (max-width: 760px) {
+  .unified-reading-page .markdown-page > .markdown-content { --reading-surface-feather: 10px; }
+  .unified-reading-page .markdown-content { font-size: 18px; }
+  .unified-reading-page .markdown-content h2 { font-size: 28px; }
+  .unified-reading-page .markdown-content h3 { font-size: 21px; }
+  .unified-reading-page .markdown-content :is(h4, h5, h6) { font-size: 18px; }
+  .unified-reading-page .mobile-toc { padding: 14px 18px; }
+  .unified-reading-page .mobile-toc summary { font-size: 17px; font-weight: 650; }
+  .unified-reading-page .mobile-toc ol { list-style: none; padding: 0; margin: 12px 0 0; }
+  .unified-reading-page .mobile-toc a { padding: 8px 10px; border-radius: 7px; font-size: 17px; text-decoration: none; }
+  .unified-reading-page .mobile-toc .toc-level-3 { margin-left: 14px; }
+  .unified-reading-page .mobile-toc .toc-level-3 a { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unified-reading-page .markdown-toc a { transition: none; }
+}

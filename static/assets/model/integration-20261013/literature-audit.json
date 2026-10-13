@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-13",
+  "sources": [
+    {
+      "id": "I-LG",
+      "authors": "Grünewald et al.",
+      "year": 2019,
+      "doi": "10.1038/s41586-019-1161-z",
+      "verified_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/",
+      "verified_location": "Extended Data Table 1 and Results",
+      "reported_values": {
+        "WT_BE3_RNA_C_to_U_site_counts": [
+          "91951",
+          "192088",
+          "90509"
+        ],
+        "BE3_R33A_K34A_site_counts": [
+          "24",
+          "26",
+          "7"
+        ]
+      },
+      "scope": "Within-study RNA off-target reduction while retaining desired DNA editing; not a cross-platform clinical risk scale."
+    },
+    {
+      "id": "I-LZ",
+      "authors": "Zhao et al.",
+      "year": 2018,
+      "doi": "10.1093/nar/gky134",
+      "verified_url": "https://academic.oup.com/nar/article/46/9/4771/4911549",
+      "verified_location": "Abstract and Results",
+      "scope": "Repeat architecture and stacking residues affect binding in engineered PUF assays; not proof of ORCA scaffold transfer or its candidate expansion."
+    },
+    {
+      "id": "I-LR",
+      "authors": "Abudayyeh et al.",
+      "year": 2019,
+      "doi": "10.1126/science.aax7063",
+      "verified_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/",
+      "verified_location": "Figure 4 and associated Results",
+      "reported_values": {
+        "RESCUE_C_to_U_offtargets": "188",
+        "RESCUE_S_C_to_U_offtargets": "103",
+        "RESCUE_Gluc_reporter_percent": "approximately 80",
+        "RESCUE_S_Gluc_reporter_percent": "approximately 76"
+      },
+      "scope": "Separate ADAR-based fusion editor, reporter endpoint and its own transcriptome assay; not an APOBEC comparator or ORCA safety threshold."
+    }
+  ],
+  "editorial_selection": {
+    "included": "Relevant engineering precedents and recognition-assay context are distributed among the existing module conclusions.",
+    "not_promoted": [
+      "Unverified Han epilepsy-risk multiplier",
+      "HTT siRNA discrimination as a PUF or clinical standard",
+      "Endogenous A-to-I catalog counts as an APOBEC safety budget",
+      "AIMer or LEAPER efficiency as an ORCA therapeutic risk calibration"
+    ]
+  },
+  "clinical_window": "Existing qualitative parameter-gap block remains. No clinical curve is inferred."
+}

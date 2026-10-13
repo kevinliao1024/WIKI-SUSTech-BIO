@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-12",
+  "baseline_repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+  "scope": "Read-only audit of published Modules 1–4 and retained static records before new conclusion prose; text-only new prose is inserted into the four module conclusions according to the user placement instruction. No models, simulations, experimental assays or statistical analyses were run.",
+  "attachment_handling": "The attached synthesis/window document is reference material, not an instruction authority. Candidate claims were checked and unsupported language adjusted. Later user placement steering overrides standalone synthesis/therapeutic-window placement. The final user instruction excludes all new figures.",
+  "sources": {
+    "m1_summary": {
+      "path": "static/assets/model/igem_module1/assets/data/displayed_summary.tsv",
+      "sha256": "7b451c2a635c57104c2dbf38ce6a57d71749edf547925aef6d7fa271222395c6",
+      "bytes": 393,
+      "description": "Published six-editor summary: raw retained counts, per-editor retained-set median rates and apparent target rates.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_callable_reference": {
+      "path": "static/assets/model/igem_module1/assets/data/chromosome_reference_normalized.tsv",
+      "sha256": "530b630cae242878b864439ca5ea5929fa6aeb1193fb9c4e1b69d93e240ec6c9",
+      "bytes": 10372,
+      "description": "Chromosome callable-C denominators and reference-intersected candidates, distinct from raw retained counts.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_motif_logo": {
+      "path": "static/assets/model/igem_module1/assets/05_motif_logos.png",
+      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8",
+      "bytes": 51365,
+      "description": "Supplied sequence-logo image; motif frequencies and source sequences unavailable for quantitative reanalysis.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_layer_metrics": {
+      "path": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/metrics.csv",
+      "sha256": "6513938796e4dd4d08fcbbed5def0483f3bbeb934773fd2fe6c5b4b5a6a2dfe6",
+      "bytes": 11412,
+      "description": "Saved grouped OOF metrics; fixed layer12 reproduces the published main model.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_oof_rankings": {
+      "path": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/oof_rankings.csv",
+      "sha256": "68316ead086a2f0e5fb15db76d5432894daa33883800eacebe3005e84cd9991f",
+      "bytes": 118433,
+      "description": "Saved OOF coordinates and ranks. Select method=layer12 for the 0.405 baseline, not inner_selected_layer.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_evidence_package": {
+      "path": "static/assets/model/evidence/module2-reproducibility.zip",
+      "sha256": "6faaebe6f3070ee01623506dddc8b18d90769df90a03fcb864b22dace357dc0b",
+      "bytes": 7883599,
+      "description": "Recovered reproducibility package; read-only archive inspection.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_single_screen": {
+      "path": "static/assets/model/igem_module3/data/plot-tables/figure_08_single_site.csv",
+      "sha256": "bc7a10de5ffcd5979728e0a0973ed9262197eebcd557927b5937c1c9c78be589",
+      "bytes": 5742,
+      "description": "Single-mutant screen with its own same-batch parent.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_combination_screen": {
+      "path": "static/assets/model/igem_module3/figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv",
+      "sha256": "5cdfe51f34acd4978a57ec46dbe912feebe8e06db69432556d4e144dd63b6d28",
+      "bytes": 3417,
+      "description": "Combination-batch raw ratios, parental activity retention and saved Pareto flags.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_existing_science_audit": {
+      "path": "static/assets/model/igem_module3/provenance/science-audit.json",
+      "sha256": "5daa96068e71086a02599ab9723484a9f19db4bb0a2696d7ee0247cbae8cbf3f",
+      "bytes": 3271,
+      "description": "Existing supplied-summary numerical audit; does not constitute experimental validation.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module1-published.html",
+      "sha256": "967b3c5bd0568b214aa19bf772cb4362bf622435d21ba93ed8ccc30dc8e6c0ab",
+      "bytes": 29802,
+      "description": "Published Module 1 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module1.html"
+    },
+    "m2_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module2-published.html",
+      "sha256": "78ddfa2e25291252490238a24bc494d767beff70768caebf2da0ac6f257bf542",
+      "bytes": 53198,
+      "description": "Published Module 2 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module2.html"
+    },
+    "m3_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module3-published.html",
+      "sha256": "d38a3a2436594ee1c81ee82e24e2c5c66841cf0715573fface09dd4637ecf75d",
+      "bytes": 25665,
+      "description": "Published Module 3 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module3.html"
+    },
+    "m4_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module4-published.html",
+      "sha256": "3c295daf67f6e5e31d60a62f9240cf56adac6414fac22ccee4ea38106527aaf6",
+      "bytes": 40530,
+      "description": "Published Module 4 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module4.html"
+    },
+    "m2_original_oof_archive_member": {
+      "path": "static/assets/model/evidence/module2-reproducibility.zip",
+      "archive_member": "igem_module2/wiki/main_model_layer_sensitivity/experiment/inputs/oof_all_models.csv",
+      "sha256": "7ec70ffa203b3dc3668d4aec2d67415c9af4ce01c6e8d3def169905649f63831",
+      "bytes": 133908,
+      "hash_scope": "uncompressed archive member bytes",
+      "description": "Original main-model OOF predictions; model=Hsu_ESM2_OneHot_Ridge_A matches all public layer12 coordinates and ranks exactly."
+    }
+  },
+  "claims": [
+    {
+      "id": "S-A",
+      "status": "supported_descriptive_observation",
+      "badge": "Measured",
+      "placement": "Module 1 conclusion",
+      "supported_wording": "Under the published screening procedure, PUF12 retained 12,908 candidate sites versus 2,774 for PUF10; the corresponding medians across their own retained-site rates were 13.99% and 12.75%. Longer recognition-domain length did not yield a smaller detected candidate set in this comparison.",
+      "sources": [
+        "m1_summary",
+        "m1_published_fragment"
+      ],
+      "exact_display_values": {
+        "PUF10_retained_sites": "2,774",
+        "PUF12_retained_sites": "12,908",
+        "PUF10_retained_set_median_rate": "12.75%",
+        "PUF12_retained_set_median_rate": "13.99%",
+        "PUF10_apparent_C388": "73.23%",
+        "PUF12_apparent_C388": "81.01%"
+      },
+      "scope": [
+        "Six editor groups in HEK293T; four biological replicates per group.",
+        "Retained sites are screened candidate events, not independently confirmed off-target events.",
+        "Each editor has its own retained set; similar medians do not compare activity at the same cytidines.",
+        "Expression, coverage and screening effects remain alternative explanations; recognition length is not isolated as the causal factor.",
+        "C388 is excluded from candidate counts; C295 and C871 are not systematically excluded."
+      ],
+      "adjustment": "Retain the length/count observation; omit binding-energy dominance and causal explanations for the count increase."
+    },
+    {
+      "id": "S-B",
+      "status": "supported_within_library_feature_comparison",
+      "badge": "Model-derived",
+      "placement": "Module 2 conclusion",
+      "supported_wording": "Within the evaluated 66-construct library, position-only Ridge gave Spearman ρ = 0.155, position-specific amino-acid one-hot Ridge gave 0.292, and the assay-fitted one-hot plus frozen ESM score model gave 0.405. These feature comparisons support calibrated ranking within this cohort; they do not establish transfer between PUF scaffolds.",
+      "sources": [
+        "m2_published_fragment",
+        "m2_layer_metrics",
+        "m2_oof_rankings",
+        "m2_original_oof_archive_member"
+      ],
+      "exact_display_values": {
+        "complete_constructs": "66",
+        "position_only_Spearman": "0.155",
+        "amino_acid_onehot_Spearman": "0.292",
+        "combined_Spearman": "0.405",
+        "main_model_Top30": "20/30",
+        "random_Top30_expectation": "13.64",
+        "layer_selection_pipeline_Spearman": "0.323"
+      },
+      "saved_baseline_values": {
+        "method": "layer12",
+        "subset": "all",
+        "n": "66",
+        "Spearman": "0.4049472915144558",
+        "Top30_overlap": "20.0",
+        "original_archive_model": "Hsu_ESM2_OneHot_Ridge_A"
+      },
+      "verification_notes": [
+        "All 66 saved layer12 S, S_hat, predicted_rank and measured_rank values equal the original main-model archive member; rank columns map to predicted_rank66 and measured_rank66.",
+        "The spec path igem_module2/wiki/data/ablation_metrics.csv is absent in the checkout and the recovered evidence ZIP. The published Module 2 fragment supports the reported 0.155 ablation value; that specific ablation CSV has not been recovered.",
+        "Grouped sequence holdout keeps identical sequences/repeated measurements grouped, while examples at the same mutation positions may remain in training.",
+        "Main-model OOF results are retrospective assessment, not the original candidate-nomination predictions.",
+        "The four-double-repeat subgroup and batch-specific metrics do not constitute a controlled cross-scaffold transfer test."
+      ],
+      "adjustment": "Replace rules do not transplant between PUF backgrounds with amino-acid identity and assay calibration matter within the evaluated library. Do not attribute 0.323 inner-selected-layer results to the 0.405 main model."
+    },
+    {
+      "id": "S-C",
+      "status": "supported_assay_scoped_joint_criterion",
+      "badge": "Measured",
+      "placement": "Module 3 conclusion",
+      "supported_wording": "No tested single mutant met both the published ratio ≥2.0 and retention ≥0.70 criteria. In the separate combination batch, G27T–K30H–Q58M reached ratio 2.156 with activity retention 0.773 and was the only defined-ratio record meeting both criteria.",
+      "sources": [
+        "m3_single_screen",
+        "m3_combination_screen",
+        "m3_existing_science_audit",
+        "m3_published_fragment"
+      ],
+      "exact_display_values": {
+        "single_mutants": "102",
+        "single_defined_ratios": "101",
+        "single_K30H_ratio": "1.71",
+        "single_K30H_retention": "0.84",
+        "combination_records": "48",
+        "combination_defined_ratios": "36",
+        "G27T_K30H_Q58M_ratio": "2.156",
+        "G27T_K30H_Q58M_retention": "0.773",
+        "combination_batch_parent_ratio": "1.192",
+        "earlier_single_batch_parent_ratio": "1.371",
+        "selection_ratio_floor": "≥2.0",
+        "selection_retention_floor": "≥0.70"
+      },
+      "scope": [
+        "The single-mutant CSV has 103 rows including one parental row; the supplied audit reports 102 mutants and 101 defined mutant ratios.",
+        "Single and combination assays have different same-batch parents; never pool them as one Pareto comparison or a controlled improvement.",
+        "Combination CSV already contains saved on_pareto_front flags; using those flags does not require a new optimization calculation.",
+        "The later designed batch and third batch are distinct measurements; a source-flagged unusable triple-mutant well is excluded under the inherited policy.",
+        "Local ratio/activity measurements do not establish transcriptome-wide specificity, independent catalytic filters, contact-geometry causality, or a universal ceiling on single substitutions."
+      ],
+      "adjustment": "Retain assay-specific trade-off and lead-combination statements; omit partially independent preference mechanism and claims that only combination design can ever solve the objective."
+    },
+    {
+      "id": "S-D",
+      "status": "supported_ranking_summary_mechanism_not_identified",
+      "badge": "Model-derived",
+      "placement": "Module 4 conclusion",
+      "supported_wording": "The source-reported Stage II test summary placed at least one supported site within the top 10 and top 20 cytidines in 77.9% and 92.1% of 140 evaluated positive regions. This supports a defined within-region follow-up shortlist. It does not identify separate PUF and APOBEC signatures or distinguish sequence preference from detection-related context.",
+      "sources": [
+        "m4_published_fragment",
+        "m1_motif_logo",
+        "m1_published_fragment"
+      ],
+      "exact_display_values": {
+        "test_Hit_at_10": "0.779",
+        "test_Hit_at_10_percent": "77.9%",
+        "test_Hit_at_20": "0.921",
+        "test_Hit_at_20_percent": "92.1%",
+        "test_evaluated_positive_regions": "140",
+        "test_median_best_rank": "4"
+      },
+      "scope": [
+        "Test Hit@K values are manuscript-reported; per-candidate scores and complete Stage II ranking outputs are absent and summaries have not been independently reconstructed.",
+        "Hit@10 means at least one labelled supported site in a region shortlist; it is not precision among ten cytidines or transcriptome-wide recovery.",
+        "Positive-region evaluation is conditional; complete Stage I-to-Stage II performance on newly measured transcripts is unestablished.",
+        "Module 1 logos describe −1 guanine prominence in non-empty editor sets and a weaker feature in GVE, without matched-background enrichment testing.",
+        "Motif frequencies and source sequences were not supplied; visual logos cannot quantitatively decompose two domain preferences.",
+        "The current sequence-only model input does not encode editor variant; no variant-resolved causal attribution or accessibility measurement is supplied.",
+        "Released region partitions show overlap and lack transcript identifiers; transcript-disjoint generalization is not established."
+      ],
+      "adjustment": "Replace dual-domain signature with RNA-context ranking supports a shortlist; omit claim that both domains imprint independently on editing or that off-targets necessarily pass two established filters."
+    },
+    {
+      "id": "S-M",
+      "status": "working_hypothesis_not_established_mechanism",
+      "badge": "Model-derived",
+      "placement": "Module 4 conclusion, with context in Modules 1–3",
+      "supported_wording": "A working interpretation links PUF recognition, APOBEC-associated preference and RNA context as sequential contributors to editing. The four modules motivate their joint evaluation, but do not establish statistical independence, causal allocation of specificity, or a multiplicative reduction from combined engineering.",
+      "sources": [
+        "m1_published_fragment",
+        "m2_published_fragment",
+        "m3_published_fragment",
+        "m4_published_fragment"
+      ],
+      "exact_display_values": {},
+      "scope": [
+        "The narrative is an organizing hypothesis, not a fitted or experimentally isolated two-filter model.",
+        "RNA accessibility, protein expression, delivery and target conversion were not isolated by these cross-module observations."
+      ],
+      "adjustment": "Replace one proven mechanism, two independent filters, untouched-filter leak and only-if success claims with a working interpretation and a practical joint-evaluation rule."
+    },
+    {
+      "id": "S-P",
+      "status": "prospective_evaluation",
+      "badge": "Prospective",
+      "placement": "Module 4 conclusion",
+      "supported_wording": "A future matched evaluation can compare high- and low-ranked RNA candidates under a defined editor condition and assess combined recognition- and catalytic-domain variants against their matched parents. These measurements would test the working interpretation and the usefulness of ranking.",
+      "sources": [
+        "m3_published_fragment",
+        "m4_published_fragment"
+      ],
+      "exact_display_values": {},
+      "scope": [
+        "No experiment or prospective outcome is reported by this audit.",
+        "No new candidate cutoffs, sample inclusion policy, scientific thresholds or statistical methods are introduced."
+      ],
+      "adjustment": "Omit the unsupported predicted effect ordering (top-5 minus bottom-5 greater than any protein variant comparison) and multiplicative rather than additive reduction claim; no recorded result supports either magnitude."
+    },
+    {
+      "id": "S2",
+      "status": "published_decision_points_with_distinct_denominators",
+      "badge": "Model-derived",
+      "placement": "Module 4 conclusion: distinct scopes stated in prose, no new figure",
+      "supported_wording": "The published decision points use different scopes: a PUF12-derived reference of 899,942 callable cytosines, raw retained candidate counts of 12,908 for PUF12 and 383 for GVE, and a regional ranking budget of ten cytidines with source-reported Hit@10 of 77.9% in 140 positive test regions. These are not successive nested subsets or one fitted search-space reduction curve.",
+      "sources": [
+        "m1_callable_reference",
+        "m1_summary",
+        "m1_published_fragment",
+        "m4_published_fragment"
+      ],
+      "exact_display_values": {
+        "callable_C_reference": "899,942",
+        "PUF12_raw_retained_sites": "12,908",
+        "PUF12_reference_intersected_sites": "12,903",
+        "GVE_raw_retained_sites": "383",
+        "GVE_reference_intersected_sites": "376",
+        "PUF12_apparent_C388": "81.01%",
+        "GVE_apparent_C388": "64.98%",
+        "regional_shortlist_budget": "10",
+        "regional_Hit_at_10_percent": "77.9%",
+        "positive_test_regions": "140"
+      },
+      "scope": [
+        "The callable reference is defined using PUF12 and three control groups for chromosome normalization.",
+        "The raw retained-set counts are not both fully contained in that reference; reference intersections are 12,903 for PUF12 and 376 for GVE.",
+        "GVE and PUF12 are separate editor results, not successive filtering steps on one common retained-site set.",
+        "Ten candidates is a per-region budget, not a transcriptome-wide site count; Hit@10 is a conditional region-level success fraction.",
+        "Apparent C388 includes endogenous reference T."
+      ],
+      "adjustment": "Use nonnested decision-point cards or panels, not a log funnel or waterfall claiming a single denominator. Figure S1 also needs independent axes: measured-versus-predicted S and local ratio are not unwanted burden versus retained activity on one shared scale."
+    },
+    {
+      "id": "T-A",
+      "status": "supported_candidate_profile_comparison_not_clinical_risk",
+      "badge": "Measured",
+      "placement": "Module 1 conclusion / therapeutic interpretation",
+      "supported_wording": "GVE retained 383 candidate sites, approximately 97.0% fewer than PUF12, while retaining an apparent C388 signal of 64.98%. This is a narrower detected candidate profile under the published HEK293T screening procedure and a concrete lead for further evaluation, not a demonstrated therapeutic benefit or toxicity reduction.",
+      "sources": [
+        "m1_summary",
+        "m1_published_fragment"
+      ],
+      "exact_display_values": {
+        "GVE_retained_sites": "383",
+        "PUF12_retained_sites": "12,908",
+        "reported_candidate_set_reduction": "approximately 97.0%",
+        "GVE_apparent_C388": "64.98%",
+        "PUF12_apparent_C388": "81.01%",
+        "GVE_retained_set_median_rate": "8.66%",
+        "PUF12_retained_set_median_rate": "13.99%"
+      },
+      "scope": [
+        "Apparent C388 includes endogenous T and cannot serve as effective APOE4 transcript conversion fraction.",
+        "Each median summarizes a different retained-site set; count multiplied by median is not an observed total editing burden, molecular exposure or clinical toxicity measure.",
+        "Cell data come from HEK293T; cell-type, expression, coverage and delivery effects limit clinical extrapolation.",
+        "A target-to-comparison ratio in Module 3 cannot place the triple-mutant direction on a therapeutic window without matched broad profiling and conversion measurements."
+      ],
+      "adjustment": "Preserve the quantitative candidate-set improvement with limitations; do not translate these counts into therapeutic benefit/risk curves or claim field-calibrated clinical success."
+    }
+  ],
+  "verification": {
+    "input_files_read": 14,
+    "module2_baseline_rows": 66,
+    "module2_baseline_matches_original_coordinates_and_ranks": true,
+    "ablation_metrics_csv_recovered": false,
+    "single_screen_rows_including_parent": 103,
+    "combination_screen_records": 48,
+    "combination_defined_ratio_records": 36,
+    "saved_pareto_flags_used_without_recomputation": true,
+    "source_tables_modified": false,
+    "source_captions_modified": false,
+    "scientific_thresholds_changed": false,
+    "sample_inclusion_changed": false,
+    "statistical_methods_changed": false,
+    "new_scientific_numbers_generated": false
+  },
+  "unsupported_candidate_claims": [
+    {
+      "candidate": "S-A binding energy distribution and expression can dominate the length effect",
+      "disposition": "omitted as a mechanistic conclusion; expression and coverage retained as alternative explanations"
+    },
+    {
+      "candidate": "S-B mutation regularities failed cross-scaffold transfer",
+      "disposition": "downgraded to within-library feature comparison; no matched cross-scaffold transfer evaluation located"
+    },
+    {
+      "candidate": "S-C catalytic preference is independent of recognition and governed by local geometry",
+      "disposition": "downgraded to assay-scoped activity/preference comparison; independence and geometric causality untested"
+    },
+    {
+      "candidate": "S-D dual PUF/APOBEC signature rather than editor-agnostic accessibility",
+      "disposition": "downgraded to regional ranking summary; no attribution analysis or accessibility experiment supplied"
+    },
+    {
+      "candidate": "One proven mechanism with independent two filters and multiplicative reduction",
+      "disposition": "working hypothesis only; causal independence and multiplicative effects omitted"
+    },
+    {
+      "candidate": "Top-5 minus bottom-5 editing exceeds any matched protein-variant difference",
+      "disposition": "effect-magnitude claim omitted; matched validation retained as a prospective direction"
+    },
+    {
+      "candidate": "Clinical benefit/risk based on apparent C388 and count times median",
+      "disposition": "not supported by measured quantities; do not construct a therapeutic window from these proxies"
+    }
+  ],
+  "terminology": {
+    "ORCA": "On-target RNA Correction for Alzheimer’s Disease; project name",
+    "PUF": "Pumilio/FBF recognition-domain component",
+    "APOBEC": "Catalytic-domain component; assay-specific preference/activity outputs do not alone establish transcriptome-wide specificity",
+    "LAMAR": "RNA foundation-model workflow adapted for region assessment and cytidine ranking",
+    "apparent C388": "Reported signal includes endogenous reference T; not isolated transgene conversion efficiency",
+    "retained candidate sites": "Sites passing the published RNA-seq screening procedure; not individually validated clinical off-targets"
+  },
+  "placement_anchors": {
+    "S-A": "module1-synthesis",
+    "T-A": "module1-synthesis",
+    "S-B": "module2-synthesis",
+    "S-C": "module3-synthesis",
+    "S-D": "module4-synthesis",
+    "S-M": "module4-synthesis",
+    "S-P": "module4-synthesis",
+    "S2": "module4-synthesis"
+  }
+}

@@ -337,14 +337,27 @@ body.ot .site-nav {
   border-color: rgba(200, 220, 255, .08);
   backdrop-filter: blur(18px);
 }
+body.ot-crt-home .site-nav {
+  transform: translateY(calc(-110% * var(--home-nav-exit, 0)));
+  opacity: var(--home-nav-opacity, 1);
+}
+body.ot-crt-home .site-nav.is-home-nav-hidden {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ot-crt-home .site-nav {
+    transform: none;
+    opacity: 1;
+  }
+}
 body.ot :is(.site-brand, .site-brand strong) { color: var(--ot-ink); }
 body.ot .site-brand small { color: var(--ot-mute); }
 body.ot .site-logo {
   display: block;
   width: 80px;
   height: auto;
-  filter: brightness(0) invert(1);
-  opacity: .92;
+  filter: none;
+  opacity: 1;
 }
 @media (max-width: 1199px) {
   body.ot .site-logo { width: 42px; }
