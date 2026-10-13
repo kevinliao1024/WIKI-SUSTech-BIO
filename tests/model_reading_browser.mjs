@@ -20,7 +20,7 @@ page.on('pageerror', error => errors.push(error.message));
 
 const state = () => page.evaluate(() => ({
   module: document.querySelector('[data-module-link][aria-current]')?.dataset.module,
-  chapter: document.querySelector('[data-chapter-link][aria-current]')?.hash,
+  chapter: document.querySelector('[data-chapter-link][aria-current], [data-subchapter-link][aria-current]')?.hash,
   expanded: [...document.querySelectorAll('[data-module-link][aria-expanded="true"]')].map(link => link.dataset.module),
   panels: [...document.querySelectorAll('.module-subnav:not([hidden])')].map(panel => panel.id),
 }));
@@ -129,6 +129,25 @@ try {
   }
   console.log('All four modules and every primary chapter: correct expansion, active item, and anchor alignment.');
 
+  const subsections = await page.locator('[data-model-subchapter]').evaluateAll(items => items.map(item => item.id));
+  assert.equal(subsections.length, 3);
+  await jump('module2-2');
+  for (const id of subsections) {
+    await page.locator(`[data-subchapter-link][href="#${id}"]`).click();
+    await activeModule('module2');
+    await checkAlignment(id);
+    assert.equal((await state()).chapter, `#${id}`);
+    assert.equal(await page.locator('.module-subnav [aria-current]').count(), 1);
+    assert.equal(await page.locator('[data-chapter-link][data-active-parent]').getAttribute('href'), '#module2-2');
+  }
+  console.log('Three subsection entries navigate correctly, select one current entry, and identify their parent chapter.');
+  await page.getByRole('heading', { name: 'Five highlighted constructs in the current model assessment', exact: true }).evaluate(heading => {
+    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+    scrollTo({ top: heading.getBoundingClientRect().top + scrollY - header - 20, behavior: 'instant' });
+  });
+  await page.waitForFunction(() => document.querySelector('[data-subchapter-link][aria-current]')?.hash === '#module2-ranking-results');
+  console.log('An unlisted sibling subsection restores the Results entry instead of retaining Readout layers.');
+
   await jump('module3');
   await page.locator('.model-sidebar').evaluate(element => { element.scrollTop = 0; });
   const hoverButton = await page.locator('[data-module="module1"]').boundingBox();
@@ -139,14 +158,41 @@ try {
   await activeModule('module2');
   assert.equal(new URL(page.url()).hash, '#module2');
   const chapterToClick = await page.locator('#module-subnav-2 [data-chapter-link]').nth(2).getAttribute('href');
+  await page.evaluate(() => {
+    window.modelChapterTrajectory = new Promise(resolve => {
+      const initial = scrollY, armed = performance.now(), samples = [];
+      let started;
+      const sample = time => {
+        const navigating = Boolean(document.querySelector('.is-model-navigating'));
+        if (started === undefined) {
+          if (!navigating && time - armed < 3000) {
+            requestAnimationFrame(sample);
+            return;
+          }
+          started = time;
+        }
+        samples.push({ elapsed: time - started, top: scrollY });
+        if (navigating && time - armed < 3000) requestAnimationFrame(sample);
+        else resolve({ initial, samples });
+      };
+      requestAnimationFrame(sample);
+    });
+  });
   await page.locator(`#module-subnav-2 [href="${chapterToClick}"]`).click();
   await page.waitForFunction(hash => document.querySelector('[data-chapter-link][aria-current]')?.hash === hash, chapterToClick);
   await checkAlignment(chapterToClick.slice(1));
+  const trajectory = await page.evaluate(() => window.modelChapterTrajectory);
+  const end = trajectory.samples.at(-1), travel = Math.abs(end.top - trajectory.initial);
+  const atFraction = fraction => trajectory.samples.reduce((nearest, sample) =>
+    Math.abs(sample.elapsed - end.elapsed * fraction) < Math.abs(nearest.elapsed - end.elapsed * fraction) ? sample : nearest);
+  assert.ok(travel > 100 && end.elapsed >= 500, JSON.stringify(trajectory));
+  assert.ok(Math.abs(atFraction(.25).top - trajectory.initial) / travel > .45, 'Chapter scrolling should begin promptly.');
+  assert.ok(Math.abs(end.top - atFraction(.75).top) / travel < .1, 'Chapter scrolling should ease gently to its destination.');
   await page.locator('[data-module="module3"]').focus();
   await page.keyboard.press('Enter');
   await activeModule('module3');
   await checkAlignment('module3');
-  console.log('Hover preserves current module; pointer and keyboard module jumps and a real chapter click work.');
+  console.log('Hover preserves current module; pointer and keyboard jumps work, and a chapter click starts promptly and eases to its destination.');
 
   for (const module of ['module4', 'module3', 'module2', 'module1', 'module2']) {
     await page.evaluate(id => {
@@ -164,13 +210,14 @@ try {
     await checkAlignment(id);
   }
   console.log(`${legacy.length} legacy subsection anchors retain usable scroll alignment.`);
-  const citationLink = page.locator('#module4 a[href^="#module4-ref-"]').first();
-  const citationTarget = await citationLink.getAttribute('href');
-  await citationLink.click();
-  await page.waitForFunction(hash => location.hash === hash, citationTarget);
+  assert.equal(await page.locator('[data-model-resource-links]').count(), 4);
+  assert.ok(await page.locator('.model-reading a').evaluateAll(links => links.length > 0 && links.every(link => link.closest('[data-model-resource-links]'))), 'Article hyperlinks are confined to the four resource sections.');
+  assert.equal(await page.locator('.model-reading .ev-badge').count(), 0, 'Evidence badges are removed.');
+  const citationTarget = '#module4-ref-lamar';
+  await jump(citationTarget.slice(1));
   await activeModule('module4');
   await checkAlignment(citationTarget.slice(1));
-  console.log('An in-text Module 4 citation opens its reference below the fixed header.');
+  console.log('Plain-text bibliography retains usable anchors; hyperlinks are confined to resource sections and evidence badges are absent.');
 
   for (const width of [1440, 1280, 1024, 768, 760, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
@@ -187,6 +234,8 @@ try {
         sidebarHeight: sidebar.height, sidebarRight: sidebar.right, readingLeft: reading.left,
         mascotLeft: mascot.left, mascotRight: mascot.right, mascotWidth: mascot.width, mascotBottom: mascot.bottom,
         proseRight: proseBounds.right, proseWidth: proseBounds.width, proseFont: parseFloat(getComputedStyle(prose).fontSize),
+        chapterFont: parseFloat(getComputedStyle(document.querySelector('[data-chapter-link][aria-current] .module-chapter-label')).fontSize),
+        moduleFont: parseFloat(getComputedStyle(document.querySelector('[data-module-link][aria-current] .module-nav-label')).fontSize),
         maxFigure: Math.max(0, ...figures),
         overviewFigure: document.querySelector('.model-overview-figure').getBoundingClientRect().width,
         overviewProse: document.querySelector('#model-content .model-prose').getBoundingClientRect().width };
@@ -198,6 +247,8 @@ try {
     assert.ok(metrics.mascotRight <= width && metrics.mascotBottom <= 900, `${width}px sweeper outside the viewport`);
     assert.ok(metrics.mascotWidth >= 44, `${width}px sweeper touch target too small`);
     assert.ok(metrics.proseFont >= (width > 760 ? 18 : 16), `${width}px larger reading type missing`);
+    assert.equal(metrics.chapterFont, 15, `${width}px chapter labels must retain the requested size`);
+    if (width > 760) assert.equal(metrics.moduleFont, 20, `${width}px module labels must retain the requested size`);
     if (width <= 390) assert.ok(metrics.proseWidth >= width - 90, `${width}px mobile text column too narrow: ${JSON.stringify(metrics)}`);
     layouts.push({ viewport: width, proseWidth: Math.round(metrics.proseWidth * 10) / 10,
       fontSize: metrics.proseFont, controlWidth: metrics.mascotWidth });
@@ -209,15 +260,37 @@ try {
 
   await page.setViewportSize({ width: 1280, height: 500 });
   await jump('module4-7');
-  const activeBounds = await page.locator('[data-chapter-link][aria-current]').evaluate(link => {
-    const item = link.getBoundingClientRect(), nav = link.closest('.model-sidebar').getBoundingClientRect();
-    return { itemTop: item.top, itemBottom: item.bottom, navTop: nav.top, navBottom: nav.bottom };
+  const shortDirectory = await page.locator('.model-sidebar').evaluate(nav => {
+    const style = getComputedStyle(nav);
+    return { position: style.position, overflow: style.overflowY, scroll: nav.scrollTop };
   });
-  assert.ok(activeBounds.itemTop >= activeBounds.navTop && activeBounds.itemBottom <= activeBounds.navBottom + 1, JSON.stringify(activeBounds));
-  console.log('Short desktop viewport keeps the current chapter within the scrollable directory.');
+  assert.equal(shortDirectory.position, 'relative');
+  assert.equal(shortDirectory.overflow, 'visible');
+  assert.equal(shortDirectory.scroll, 0);
+  console.log('Short desktop viewport uses document flow without a separate directory scrollbar.');
+
+  for (const viewport of [{ width: 1440, height: 900 }, { width: 1280, height: 800 }, { width: 1024, height: 768 }]) {
+    await page.setViewportSize(viewport);
+    await jump('module2-feature-ablations');
+    const directory = await page.locator('.model-sidebar').evaluate(nav => ({
+      top: nav.getBoundingClientRect().top, bottom: nav.getBoundingClientRect().bottom,
+      overflow: getComputedStyle(nav).overflowY, scroll: nav.scrollTop,
+    }));
+    assert.equal(directory.overflow, 'visible');
+    assert.equal(directory.scroll, 0);
+    assert.ok(directory.bottom <= viewport.height, JSON.stringify({ viewport, directory }));
+  }
+  console.log('The longest directory fits three desktop viewport sizes without independent scrolling.');
 
   await page.setViewportSize({ width: 390, height: 844 });
   await jump('module4-7');
+  // The directory's native smooth scrolling can outlast the page jump.
+  await page.waitForFunction(() => {
+    const link = document.querySelector('[data-chapter-link][aria-current][href="#module4-7"]');
+    if (!link) return false;
+    const item = link.getBoundingClientRect(), nav = link.parentElement.getBoundingClientRect();
+    return item.left >= nav.left && item.right <= nav.right + 1;
+  });
   const horizontal = await page.locator('[data-chapter-link][aria-current]').evaluate(link => {
     const item = link.getBoundingClientRect(), nav = link.parentElement.getBoundingClientRect();
     return { left: item.left, right: item.right, navLeft: nav.left, navRight: nav.right };

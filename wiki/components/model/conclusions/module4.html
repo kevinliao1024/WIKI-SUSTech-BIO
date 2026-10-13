@@ -1,0 +1,21 @@
+<div class="model-conclusion-addition" id="module4-synthesis" data-model-conclusion-addition>
+  <h4>RNA context connects editing profiles to site prioritization</h4>
+  <p data-claim="S-D">The regional rankings and local sequence profiles provide complementary views of the editing substrate. LAMAR orders cytidines for follow-up, while the RNA-seq comparisons describe the contexts of detected sites.</p>
+  <h4 id="module4-context-composition">Shared central contexts accompany distinct flanking profiles</h4>
+  <p data-claim="I-SC">The PUF10-only, shared and PUF12-only sets contained 553, 2,221 and 10,687 selected sites. GCA was the most common central triplet in all three sets, at 39.78%, 43.40% and 41.82%, respectively. These compositions extend the per-editor logos in Figure 6 by distinguishing shared sites from those selected for one editor.</p>
+  <figure id="model-figure-37" data-model-integrated-figure="exclusive_neighbor_composition" data-claim="I-SC">
+    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure@2x.png') }}" width="1920" height="960" alt="Two heatmaps compare the minus-one and plus-one base proportions of PUF10-only, shared and PUF12-only selected sites. All three sets favor G at minus one and A at plus one, with numeric proportions printed in every cell.">
+    <figcaption><strong>Figure 37.</strong> Base proportions at −1 and +1 around edited C in PUF10-only (553), shared (2,221) and PUF12-only (10,687) retained-site sets.</figcaption>
+  </figure>
+  <p data-claim="I-SC">Across the 101-nt windows, the largest observed base-proportion difference was G at position −6. Its frequency was 19.78 percentage points lower in PUF12-only sites than in PUF10-only sites. The flanking profiles therefore add positional detail to the shared central GCA pattern.</p>
+  <figure id="model-figure-38" data-model-integrated-figure="exclusive_position_difference" data-claim="I-SC">
+    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='assets/model/integration-20261013/figures/exclusive_position_difference/figure@2x.png') }}" width="1920" height="864" alt="A four-row heatmap shows PUF12-only minus PUF10-only A/C/G/T proportions across all 101 sequence positions. Indigo indicates lower and coral higher proportion in PUF12-only. The largest absolute difference is lower G at minus six by about 0.198.">
+    <figcaption><strong>Figure 38.</strong> Base-proportion differences, PUF12-only minus PUF10-only, across 101 positions centred on edited C. Indigo is negative; coral is positive.</figcaption>
+  </figure>
+  <h4>Connecting the four modeling decisions</h4>
+  <p data-claim="S2 S-M">RNA-seq defines the detected editing profile, PUF modeling ranks recognition-domain variants, and APOBEC engineering evaluates catalytic preference and retained activity. LAMAR adds a site-selection step by ranking RNA contexts. Together, these modules connect editor selection with the choice of RNA sites to measure.</p>
+  <p data-claim="S-P">A coordinated follow-up can compare combined PUF–APOBEC variants with their matched parents and measure high- and low-ranked RNA sites. This connects local reporter performance to transcriptome-wide profiles under the same editor conditions.</p>
+  <h4 id="module4-therapeutic-window">Toward RNA editing for Alzheimer's disease</h4>
+  <p data-literature="L-H L-F">Published PUF–APOBEC work demonstrated editing of APOE reporters in HEK293T cells and endogenous APOE3 transcripts in HepG2 cells (Han et al., 2025; correction, 2026). Together with the association between APOE genotype and Alzheimer's disease risk (Farrer et al., 1997), these findings motivate disease-relevant RNA-editing research.</p>
+  <p data-claim="T-A">ORCA's contribution is an integrated route for selecting editors with retained target signal and a narrower detected RNA profile. The next translational questions connect transcript conversion with APOE protein function, brain delivery and cellular responses in disease models.</p>
+</div>

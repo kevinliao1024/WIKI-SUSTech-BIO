@@ -1,0 +1,1 @@
+Source tables: `source-data/Current6/source/PUF10_positive.tsv` and `source-data/Current6/source/PUF12_positive.tsv`. Both hashes were checked against `source-data/Current6/source-manifest.json`. Source rows and membership are in `exclusive_context_sites.csv`; per-file hashes and scientific transformations are in `figure-manifest.json`.

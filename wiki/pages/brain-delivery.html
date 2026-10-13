@@ -1,13 +1,14 @@
-{% extends "layout.html" %}
-{% from "macros.html" import evidence, figure_slot, markdown_panel, section_nav %}
+{% extends "pages/editorial_reading.html" %}
+{% from "macros.html" import evidence, figure_slot, markdown_panel %}
+
+{% set reading_sections = [('modules', 'Architecture'), ('states', 'States'), ('equations', 'Equations'), ('parameters', 'Parameters'), ('results', 'Screen'), ('sensitivity', 'Sensitivity'), ('outputs', 'Outputs'), ('limitations', 'Limitations'), ('wetlab', 'Next measurements'), ('references', 'References')] %}
 
 {% block title %}{{ content.title }}{% endblock %}
 {% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
 {% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
 {% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
-{% block page_content %}
-{{ section_nav([('why-model', 'Why model'), ('modules', 'Architecture'), ('states', 'States'), ('equations', 'Equations'), ('parameters', 'Parameters'), ('results', 'Screen'), ('sensitivity', 'Sensitivity'), ('outputs', 'Outputs'), ('limitations', 'Limitations'), ('references', 'References')]) }}
+{% block reading_content %}
 
 {{ markdown_panel(content, rendered_markdown) }}
 <section class="content-section shell">

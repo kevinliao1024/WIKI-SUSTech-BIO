@@ -95,7 +95,7 @@ MODEL_PAGE_TEXT_EDITS = {
          "(Han et al., 2022; Han et al., 2025). These systems provide a starting point for improving "
          "the balance between editing activity and substrate preference."),
         ("retained Figure 7 assets", "retained source-package Figure 7 assets"),
-        ("The N1 comparison", "The comparison in Figure 27"),
+        ("The N1 comparison", "The comparison in Figure 29"),
         ("complete N4 panel", "complete source-package N4 panel"),
         ("Figure identifiers are retained from the source packages.",
          "Figures are numbered in page order; original identifiers remain in the source packages."),
@@ -134,13 +134,13 @@ MODEL_PAGE_CAPTION_LABEL_EDITS = {
         "Figure 1.": "Figure 2.", "Figure 2A.": "Figure 3.", "Figure 2B.": "Figure 4.",
         "Figure 3.": "Figure 5.", "Figure 4.": "Figure 6.", "Figure 5.": "Figure 7.",
     },
-    2: {f"Figure {number}.": f"Figure {number + 7}." for number in range(1, 16)},
+    2: {f"Figure {number}.": f"Figure {number + 9}." for number in range(1, 16)},
     3: {
-        "Workflow.": "Figure 23. Workflow.", "Figure 3.": "Figure 24.",
-        "Figure 4.": "Figure 25.", "Figure 8.": "Figure 26.", "Figure N1.": "Figure 27.",
-        "Figure 9.": "Figure 28.", "Figure 10.": "Figure 29.", "Figure N3.": "Figure 30.",
+        "Workflow.": "Figure 25. Workflow.", "Figure 3.": "Figure 26.",
+        "Figure 4.": "Figure 27.", "Figure 8.": "Figure 28.", "Figure N1.": "Figure 29.",
+        "Figure 9.": "Figure 30.", "Figure 10.": "Figure 31.", "Figure N3.": "Figure 32.",
     },
-    4: {f"Figure {number}.": f"Figure {number + 30}." for number in range(1, 5)},
+    4: {f"Figure {number}.": f"Figure {number + 32}." for number in range(1, 5)},
 }
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
@@ -204,106 +204,54 @@ class FourModelModulesTest(unittest.TestCase):
             if "data-model-module" in node.attrs
         }
 
-    def test_all_four_modules_preserve_source_content_except_explicit_presentation_edits(self):
+    def test_module_prose_edits_preserve_published_tables_code_and_images(self):
         self.assertEqual(set(self.modules), {f"module{number}" for number in range(1, 5)})
         for number in range(1, 5):
             with self.subTest(module=number):
                 module = self.modules[f"module{number}"]
-                self.assertNotEqual(module.attrs.get("data-content-status"), "pending")
-                self.assertNotIn("Content pending team review", module.text())
-                self.assertNotIn("Coming soon", module.text())
                 self.assertGreater(len(module.text()), 1000)
-                revision = MODEL_ASSETS / "revisions/20261011" / f"module{number}.md"
-                source = (revision if number in (2, 4) else MODEL_ASSETS / f"module{number}.md").read_text(encoding="utf-8")
-                if number == 4:
-                    # The supplied export escapes Markdown and separates table rows.
-                    source = re.sub(r"\\([#*_&\-])", r"\1", source)
-                    source = re.sub(r"\n{3,}", "\n\n", source)
-                    source = re.sub(r"(?m)(\|[^\n]*\|)\n\n(?=\|)", r"\1\n", source)
-                main_article = next(node for node in module.children if isinstance(node, Element) and node.tag == "article")
-                visible_text = normalized(main_article.text())
-                original = Document(markdown.markdown(source, extensions=["tables", "fenced_code"]))
-                visible_headings = [
-                    re.sub(r"^\d+\.\d+\s*", "", normalized(node.text()))
-                    for node in main_article.walk() if node.tag in ("h3", "h4", "h5", "h6")
-                ]
-                heading_edits = MODEL_PAGE_HEADING_EDITS[number]
-                seen_heading_edits = set()
-                for node in original.root.walk():
-                    if node.tag not in ("h2", "h3", "h4", "h5", "h6"):
-                        continue
-                    heading = normalized(node.text())
-                    expected = heading_edits.get(heading, heading)
-                    if heading in heading_edits:
-                        seen_heading_edits.add(heading)
-                        self.assertNotIn(heading, visible_headings)
-                    if expected is not None:
-                        self.assertIn(expected, visible_headings)
-                self.assertEqual(seen_heading_edits, set(heading_edits))
-                text_edits = MODEL_PAGE_TEXT_EDITS.get(number, ())
-                edited = {old: 0 for old, _ in text_edits}
-                caption_labels = MODEL_PAGE_CAPTION_LABEL_EDITS[number]
-                relabelled = {old: 0 for old in caption_labels}
-                for paragraph in original.root.walk():
-                    text = normalized(paragraph.text())
-                    if paragraph.tag == "p" and len(text) > 40:
-                        for old, new in text_edits:
-                            edited[old] += text.count(old)
-                            text = text.replace(old, new)
-                        caption_label = re.match(r"^(?:Figure (?:N\d+|\d+[A-Z]?)\.|Workflow\.)(?=\s)", text)
-                        if caption_label:
-                            old = caption_label.group()
-                            self.assertIn(old, caption_labels)
-                            relabelled[old] += 1
-                            text = caption_labels[old] + text[caption_label.end():]
-                        self.assertIn(text, visible_text, "All retained source paragraphs must survive the website import")
-                self.assertEqual(edited, {old: 1 for old, _ in text_edits})
-                self.assertEqual(relabelled, {old: 1 for old in caption_labels})
-                # Prose edits must not change supplied numerical results or tool calls.
-                # The audit corrects one reporting unit, not the underlying counts.
+                baseline = Document((MODEL_ASSETS / f"synthesis/sources/module{number}-published.html").read_text())
                 for tag in ("table", "pre"):
-                    expected = [normalized(node.text()) for node in original.root.walk() if node.tag == tag]
-                    if number == 4 and tag == "table":
-                        expected = [text.replace("Evaluated transcripts", "Evaluated positive regions") for text in expected]
-                    actual = [normalized(node.text()) for node in main_article.walk() if node.tag == tag]
-                    self.assertEqual(actual, expected, f"Module {number} source {tag} contents changed")
+                    expected = [normalized(node.text()) for node in baseline.root.walk() if node.tag == tag]
+                    actual = [normalized(node.text()) for node in module.walk() if node.tag == tag]
+                    self.assertEqual(actual, expected)
+                original_images = [node.attrs for node in baseline.root.walk() if node.tag == "img"]
+                actual_images = [node.attrs for node in module.walk() if node.tag == "img" and "/integration-20261013/" not in node.attrs.get("src", "")]
+                self.assertEqual(actual_images, original_images)
 
-    def test_module2_reproducibility_is_condensed_and_keeps_evidence_access(self):
-        article = next(node for node in self.modules["module2"].walk() if node.tag == "article")
-        section = []
-        inside = False
-        for node in article.children:
-            if not isinstance(node, Element):
-                continue
-            if node.attrs.get("id") == "module2-5":
-                inside = True
-            elif node.tag == "h3" and inside:
-                break
-            elif inside:
-                section.append(node)
-        self.assertEqual([node.tag for node in section], ["p", "ul", "p", "p"])
-        blocks = [
-            (node.tag, normalized(node.text()))
-            for parent in section for node in parent.walk() if node.tag in ("p", "li")
-        ]
-        self.assertEqual(blocks, list(MODULE2_REPRODUCIBILITY_BLOCKS))
-        links = [
-            node.attrs.get("href") for parent in section for node in parent.walk() if node.tag == "a"
-        ]
-        repository = "https://github.com/pdx12320/igem_module2"
-        self.assertEqual(links, [
-            repository,
-            f"{repository}/blob/main/wiki/data/hsu_A_oof_rankings.csv",
-            f"{repository}/blob/main/wiki/data/protocol.json",
-            f"{repository}/tree/main/wiki/data",
-            f"{repository}/tree/main/wiki/ablation_experiment",
-            f"{repository}/tree/main/puf_reuse",
-            "/static/assets/model/evidence/module2-reproducibility.zip",
-            "/static/assets/model/evidence/module2-reproducibility.zip",
-            "https://github.com/pdx12320/PUF_alphafold",
-            "https://github.com/dauparas/LigandMPNN",
-            "/static/assets/model/evidence/module2-reproducibility-manifest.json",
-        ])
+    def test_module_resource_links_are_confined_to_reproducibility(self):
+        reading = next(node for node in self.document.root.walk() if "model-reading" in node.attrs.get("class", "").split())
+        expected_chapters = {1: "module1-6", 2: "module2-5", 3: "module3-5", 4: "module4-6"}
+        allowed_links = []
+        for number, expected_chapter in expected_chapters.items():
+            module = self.modules[f"module{number}"]
+            article = next(node for node in module.walk() if node.tag == "article")
+            chapter = None
+            resources = []
+            for node in article.children:
+                if not isinstance(node, Element):
+                    continue
+                if "data-model-chapter" in node.attrs:
+                    chapter = node.attrs["id"]
+                    if chapter == expected_chapter:
+                        self.assertIn("Reproducibility and availability", node.text())
+                links = [child for child in node.walk() if child.tag == "a"]
+                if links:
+                    self.assertEqual(chapter, expected_chapter)
+                    self.assertIn("data-model-resource-links", node.attrs)
+                    resources.extend(links)
+            self.assertTrue(resources, f"Module {number} must expose its resources")
+            for link in resources:
+                href = link.attrs["href"]
+                parsed = urlparse(href)
+                if not parsed.netloc:
+                    self.assertTrue((PROJECT_ROOT / unquote(parsed.path).lstrip("/")).is_file(), href)
+            allowed_links.extend(resources)
+        self.assertEqual([node for node in reading.walk() if node.tag == "a"], allowed_links)
+        self.assertFalse(any("ev-badge" in node.attrs.get("class", "").split() for node in reading.walk()))
+        text = normalized(reading.text()).lower()
+        for phrase in ("claim audit", "integration evidence audit", "source checksums", "this update", "this website revision", "this integration", "not supplied", "remain unavailable", "has not been established"):
+            self.assertNotIn(phrase, text)
 
     def test_each_module_has_one_introductory_overview(self):
         for number in range(1, 5):
@@ -323,15 +271,13 @@ class FourModelModulesTest(unittest.TestCase):
         self.assertEqual(sum(node.tag == "h1" for node in main.walk()), 1)
         introduction = next(node for node in main.walk() if node.attrs.get("id") == "model-content")
         self.assertEqual(introduction.attrs.get("data-content-source"), "docs/dry-lab/model.md")
-        self.assertEqual(sum(node.tag == "h2" for node in introduction.walk()), 1)
         roles = next(node for node in introduction.walk() if node.tag == "ol")
         items = [node for node in roles.children if isinstance(node, Element) and node.tag == "li"]
         self.assertEqual(len(items), 4)
         for number, item in enumerate(items, 1):
-            links = [node for node in item.walk() if node.tag == "a"]
-            self.assertEqual([node.attrs.get("href") for node in links], [f"#module{number}"])
-            self.assertTrue(normalized(links[0].text()))
+            self.assertIn(f"Module {number}", item.text())
             self.assertIn(f"module{number}", self.modules)
+            self.assertFalse(any(node.tag == "a" for node in item.walk()))
 
     def test_model_page_has_no_dbtl_content_or_navigation(self):
         main = next(node for node in self.document.root.walk() if node.tag == "main")
@@ -381,11 +327,22 @@ class FourModelModulesTest(unittest.TestCase):
                 button, subnav = children
                 self.assertEqual(button.attrs.get("data-module"), f"module{number}")
                 self.assertEqual(button.attrs.get("aria-controls"), subnav.attrs.get("id"))
-                anchors = [node for node in subnav.walk() if node.tag == "a"]
+                anchors = [node for node in subnav.walk() if node.tag == "a" and "data-chapter-link" in node.attrs]
                 self.assertEqual([node.attrs.get("href") for node in anchors], [f"#module{number}-{chapter}" for chapter in CHAPTER_IDS[number]])
-                self.assertTrue(all("data-chapter-link" in node.attrs for node in anchors))
-                self.assertEqual([node.text() for node in anchors].count("Overview"), 1)
+                labels = []
+                for index, anchor in enumerate(anchors, 1):
+                    number_label = next(node for node in anchor.walk() if node.attrs.get("class") == "module-chapter-number")
+                    title_label = next(node for node in anchor.walk() if node.attrs.get("class") == "module-chapter-label")
+                    self.assertEqual(number_label.text(), f"{number}.{index}")
+                    labels.append(title_label.text())
+                self.assertEqual(labels.count("Overview"), 1)
                 self.assertNotIn("Module overview", subnav.text())
+                subsection_links = [node for node in subnav.walk() if "data-subchapter-link" in node.attrs]
+                expected = ["module2-ranking-results", "module2-feature-ablations", "module2-readout-layers"] if number == 2 else []
+                self.assertEqual([node.attrs.get("href") for node in subsection_links], [f"#{item}" for item in expected])
+                targets = [node for node in self.modules[f"module{number}"].walk() if "data-model-subchapter" in node.attrs]
+                self.assertEqual([node.attrs.get("id") for node in targets], expected)
+                self.assertTrue(all(node.attrs.get("data-parent-chapter") == "module2-2" for node in targets))
 
     def test_module4_grouping_preserves_legacy_deep_links(self):
         expected = {
@@ -413,12 +370,13 @@ class FourModelModulesTest(unittest.TestCase):
             if "model-reading" in node.attrs.get("class", "").split()
         )
         figures = [node for node in reading.walk() if node.tag == "figure"]
-        self.assertEqual(len(figures), 34)
+        self.assertEqual(len(figures), 38)
         self.assertEqual(
             [node.attrs.get("id") for node in figures],
-            [f"model-figure-{number}" for number in range(1, 35)],
+            [f"model-figure-{number}" for number in range(1, 39)],
         )
         numbers = []
+        concise_captions = json.loads((MODEL_ASSETS / "integration-20261013/page-captions.json").read_text())["captions"]
         for figure in figures:
             captions = [node for node in figure.walk() if node.tag == "figcaption"]
             self.assertEqual(len(captions), 1)
@@ -426,7 +384,11 @@ class FourModelModulesTest(unittest.TestCase):
             label = re.match(r"^Figure (\d+)\.\s+(\S.*)$", caption)
             self.assertIsNotNone(label, caption)
             numbers.append(int(label.group(1)))
-        self.assertEqual(numbers, list(range(1, 35)))
+            self.assertEqual(label.group(2), concise_captions[label.group(1)])
+            self.assertFalse(any(node.tag == "a" for node in captions[0].walk()))
+            self.assertNotRegex(caption, r"https?://|www\.")
+            self.assertLessEqual(len(label.group(2).split()), 55)
+        self.assertEqual(numbers, list(range(1, 39)))
         self.assertNotIn("View full-size", reading.text())
 
     def test_figures_and_local_evidence_links_are_served(self):
@@ -436,8 +398,9 @@ class FourModelModulesTest(unittest.TestCase):
             images = [node for node in module.walk() if node.tag == "img"]
             with self.subTest(module=number):
                 if number == 4:
-                    self.assertEqual(len(images), 5, "Module 4 uses exactly the five supplied result images")
-                    self.assertEqual(sum(node.tag == "figure" for node in module.walk()), 4)
+                    original_images = [image for image in images if "/integration-20261013/" not in image.attrs.get("src", "")]
+                    self.assertEqual(len(original_images), 5, "Module 4 preserves all five earlier result images")
+                    self.assertEqual(sum(node.tag == "figure" for node in module.walk()), 6)
                     self.assertEqual(sum(node.tag == "table" for node in module.walk()), 10)
                 else:
                     self.assertTrue(images)
@@ -488,69 +451,41 @@ class FourModelModulesTest(unittest.TestCase):
                 self.assertTrue(destination.is_file(), record["destination"])
                 self.assertEqual(hashlib.sha256(destination.read_bytes()).hexdigest(), record["sha256"])
 
-    def test_scientific_boundaries_remain_visible(self):
+    def test_measurement_and_evaluation_scopes_remain_in_the_prose(self):
         m1 = normalized(self.modules["module1"].text()).lower()
         self.assertIn("endogenous", m1)
-        self.assertIn("candidate", m1)
+        self.assertIn("four biological replicates", m1)
         m2 = normalized(self.modules["module2"].text()).lower()
-        self.assertIn("retrospect", m2)
+        self.assertIn("66", m2)
         self.assertIn("grouped out-of-fold", m2)
-        self.assertIn("does not test generalization to entirely unseen positions", m2)
         m3 = normalized(self.modules["module3"].text()).lower()
-        self.assertIn("hypotheses", m3)
         self.assertIn("batch", m3)
+        self.assertIn("0.673", m3)
         m4 = normalized(self.modules["module4"].text()).lower()
-        self.assertIn("unobserved cytidine is not necessarily a non-editable cytidine", m4)
-        self.assertIn("source-reported classification results", m4)
-        self.assertIn("reported evaluation is not sequence-disjoint", m4)
-        self.assertIn("experimental validation remains necessary", m4)
-        self.assertIn("not to replace experimental confirmation", m4)
+        self.assertIn("140 positive", m4)
+        self.assertIn("one full region sequence was shared", m4)
+        self.assertIn("average precision", m4)
 
-    def test_module4_citations_resolve_to_references_with_primary_sources(self):
+    def test_module4_primary_references_remain_as_plain_citations(self):
         module = self.modules["module4"]
-        required_sources = {
-            "module4-ref-lamar": "https://doi.org/10.1186/s13059-025-03752-x",
-            "module4-ref-gencode": "https://www.gencodegenes.org/human/release_50.html",
-            "module4-ref-gffread": "https://doi.org/10.12688/f1000research.23297.2",
-            "module4-ref-optuna": "https://doi.org/10.1145/3292500.3330701",
-            "module4-ref-pr": "https://doi.org/10.1371/journal.pone.0118432",
+        references = {node.attrs["id"]: node for node in module.walk() if node.tag == "li" and node.attrs.get("id", "").startswith("module4-ref-")}
+        expected_dois = {
+            "module4-ref-lamar": "10.1186/s13059-025-03752-x",
+            "module4-ref-gffread": "10.12688/f1000research.23297.2",
+            "module4-ref-optuna": "10.1145/3292500.3330701",
+            "module4-ref-pr": "10.1371/journal.pone.0118432",
         }
-        references = {
-            node.attrs["id"]: node for node in module.walk()
-            if node.tag == "li" and node.attrs.get("id", "").startswith("module4-ref-")
-        }
-        cited_ids = {
-            node.attrs["href"][1:] for node in module.walk()
-            if node.tag == "a" and node.attrs.get("href", "").startswith("#module4-ref-")
-        }
-        self.assertTrue(set(required_sources).issubset(references))
         self.assertGreaterEqual(len(references), 11)
-        self.assertEqual(cited_ids, set(references), "Each bibliography entry must be used by the article")
-        for reference_id, source in required_sources.items():
-            with self.subTest(reference=reference_id):
-                links = [node for node in references[reference_id].walk() if node.tag == "a"]
-                self.assertIn(source, [node.attrs.get("href") for node in links])
-                self.assertTrue(all(normalized(node.text()) for node in links))
-        gencode = normalized(references["module4-ref-gencode"].text())
-        self.assertIn("GENCODE. (2026).", gencode)
-        self.assertIn("annotation freeze May 2025", gencode)
-        self.assertIn("https://github.com/rnasys/LAMAR", {
-            node.attrs.get("href") for node in module.walk() if node.tag == "a"
-        })
+        for key, doi in expected_dois.items():
+            self.assertIn(doi, references[key].text())
+        self.assertIn("GENCODE. (2026).", references["module4-ref-gencode"].text())
+        self.assertFalse(any(node.tag == "a" for reference in references.values() for node in reference.walk()))
 
-    def test_each_module_has_relevant_linked_references(self):
-        # These five inherited Module 2 citations use author-year text rather than links.
-        plain_citations = {
-            "https://doi.org/10.1073/pnas.0606294103": "Cheong & Hall, 2006",
-            "https://doi.org/10.1126/science.add2187": "Dauparas et al., 2022",
-            "https://doi.org/10.1038/s41592-025-02626-1": "Dauparas et al., 2025",
-            "https://doi.org/10.1016/j.cell.2025.06.014": "Fei et al., 2025",
-            "https://doi.org/10.1016/S0092-8674(02)00873-5": "Wang et al., 2002",
-        }
-        for number, module in self.modules.items():
-            with self.subTest(module=number):
+    def test_each_module_keeps_a_plain_bibliography(self):
+        for name, module in self.modules.items():
+            with self.subTest(module=name):
                 article = next(node for node in module.walk() if node.tag == "article")
-                body, bibliography = [], []
+                bibliography = []
                 in_references = False
                 for node in article.children:
                     if not isinstance(node, Element):
@@ -559,27 +494,22 @@ class FourModelModulesTest(unittest.TestCase):
                         in_references = True
                     elif in_references:
                         bibliography.extend(item for item in node.walk() if item.tag in ("p", "li"))
-                    else:
-                        body.append(node)
-                self.assertGreaterEqual(len(bibliography), 11)
-                body_links = {
-                    link.attrs.get("href") for node in body for link in node.walk() if link.tag == "a"
-                }
-                body_text = normalized(" ".join(node.text() for node in body))
-                primary_sources = []
-                for reference in bibliography:
-                    links = [node for node in reference.walk() if node.tag == "a"]
-                    self.assertTrue(links, normalized(reference.text()))
-                    self.assertTrue(all(normalized(link.text()) for link in links))
-                    self.assertTrue(all(urlparse(link.attrs.get("href", "")).scheme == "https" for link in links))
-                    primary_sources.append(links[0].attrs["href"])
-                    if reference.attrs.get("id"):
-                        self.assertIn(f"#{reference.attrs['id']}", body_links)
-                    elif number == "module2" and links[0].attrs["href"] in plain_citations:
-                        self.assertIn(plain_citations[links[0].attrs["href"]], body_text)
-                    else:
-                        self.assertIn(links[0].attrs["href"], body_links)
-                self.assertEqual(len(primary_sources), len(set(primary_sources)), "Do not inflate a bibliography with duplicate sources")
+                texts = [normalized(node.text()) for node in bibliography]
+                self.assertGreaterEqual(len(texts), 11)
+                self.assertEqual(len(texts), len(set(texts)))
+                for text in texts:
+                    self.assertRegex(text, r"(?:19|20)\d{2}")
+                self.assertFalse(any(node.tag == "a" for reference in bibliography for node in reference.walk()))
+                if name in {"module1", "module2"}:
+                    ordered = [node for node in module.walk() if node.tag == "ol" and "model-references" in node.attrs.get("class", "").split()]
+                    self.assertEqual(len(ordered), 1)
+                    self.assertEqual([node for node in ordered[0].children if isinstance(node, Element)], bibliography)
+                    expected_authors = {
+                        "module1": ["Grünewald", "Zhou", "Chen", "Dobin", "McKenna", "Mudge", "GENCODE", "GATK Team", "Flati", "Picardi", "McLaren", "Benjamini"],
+                        "module2": ["Abramson", "Hu", "Radivojević", "Hsu", "Lin", "Hoerl", "Varma", "Wang", "Cheong", "Zhao", "Fei", "Dauparas", "Dauparas"],
+                    }[name]
+                    self.assertEqual(len(texts), len(expected_authors))
+                    self.assertTrue(all(text.startswith(author) for text, author in zip(texts, expected_authors)))
 
     def test_dry_lab_navigation_excludes_overview_and_preserves_legacy_routes(self):
         toggle = next(node for node in self.document.root.walk() if node.tag == "button" and node.attrs.get("aria-label") == "Dry Lab")

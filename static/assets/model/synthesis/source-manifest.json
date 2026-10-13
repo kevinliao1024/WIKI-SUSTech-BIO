@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "baseline_repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+  "scope": "Supplied descriptive analysis and four unchanged imported figures are integrated in module conclusions. Judge-facing prose has no evidence badges or editorial update passages. Article hyperlinks appear only in each module's Reproducibility and availability resource list. Scientific tables, code, assets and selection criteria are retained; page figures are numbered 1–38 with concise captions.",
+  "sources": {
+    "m1_summary": {
+      "path": "static/assets/model/igem_module1/assets/data/displayed_summary.tsv",
+      "sha256": "7b451c2a635c57104c2dbf38ce6a57d71749edf547925aef6d7fa271222395c6",
+      "bytes": 393,
+      "description": "Published six-editor summary: raw retained counts, per-editor retained-set median rates and apparent target rates.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_callable_reference": {
+      "path": "static/assets/model/igem_module1/assets/data/chromosome_reference_normalized.tsv",
+      "sha256": "530b630cae242878b864439ca5ea5929fa6aeb1193fb9c4e1b69d93e240ec6c9",
+      "bytes": 10372,
+      "description": "Chromosome callable-C denominators and reference-intersected candidates, distinct from raw retained counts.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_motif_logo": {
+      "path": "static/assets/model/igem_module1/assets/05_motif_logos.png",
+      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8",
+      "bytes": 51365,
+      "description": "Supplied sequence-logo image; motif frequencies and source sequences unavailable for quantitative reanalysis.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_layer_metrics": {
+      "path": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/metrics.csv",
+      "sha256": "6513938796e4dd4d08fcbbed5def0483f3bbeb934773fd2fe6c5b4b5a6a2dfe6",
+      "bytes": 11412,
+      "description": "Saved grouped OOF metrics; fixed layer12 reproduces the published main model.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_oof_rankings": {
+      "path": "static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/data/oof_rankings.csv",
+      "sha256": "68316ead086a2f0e5fb15db76d5432894daa33883800eacebe3005e84cd9991f",
+      "bytes": 118433,
+      "description": "Saved OOF coordinates and ranks. Select method=layer12 for the 0.405 baseline, not inner_selected_layer.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m2_evidence_package": {
+      "path": "static/assets/model/evidence/module2-reproducibility.zip",
+      "sha256": "6faaebe6f3070ee01623506dddc8b18d90769df90a03fcb864b22dace357dc0b",
+      "bytes": 7883599,
+      "description": "Recovered reproducibility package; read-only archive inspection.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_single_screen": {
+      "path": "static/assets/model/igem_module3/data/plot-tables/figure_08_single_site.csv",
+      "sha256": "bc7a10de5ffcd5979728e0a0973ed9262197eebcd557927b5937c1c9c78be589",
+      "bytes": 5742,
+      "description": "Single-mutant screen with its own same-batch parent.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_combination_screen": {
+      "path": "static/assets/model/igem_module3/figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv",
+      "sha256": "5cdfe51f34acd4978a57ec46dbe912feebe8e06db69432556d4e144dd63b6d28",
+      "bytes": 3417,
+      "description": "Combination-batch raw ratios, parental activity retention and saved Pareto flags.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m3_existing_science_audit": {
+      "path": "static/assets/model/igem_module3/provenance/science-audit.json",
+      "sha256": "5daa96068e71086a02599ab9723484a9f19db4bb0a2696d7ee0247cbae8cbf3f",
+      "bytes": 3271,
+      "description": "Existing supplied-summary numerical audit; does not constitute experimental validation.",
+      "hash_scope": "unchanged static input file"
+    },
+    "m1_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module1-published.html",
+      "sha256": "967b3c5bd0568b214aa19bf772cb4362bf622435d21ba93ed8ccc30dc8e6c0ab",
+      "bytes": 29802,
+      "description": "Published Module 1 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module1.html"
+    },
+    "m2_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module2-published.html",
+      "sha256": "78ddfa2e25291252490238a24bc494d767beff70768caebf2da0ac6f257bf542",
+      "bytes": 53198,
+      "description": "Published Module 2 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module2.html"
+    },
+    "m3_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module3-published.html",
+      "sha256": "d38a3a2436594ee1c81ee82e24e2c5c66841cf0715573fface09dd4637ecf75d",
+      "bytes": 25665,
+      "description": "Published Module 3 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module3.html"
+    },
+    "m4_published_fragment": {
+      "path": "static/assets/model/synthesis/sources/module4-published.html",
+      "sha256": "3c295daf67f6e5e31d60a62f9240cf56adac6414fac22ccee4ea38106527aaf6",
+      "bytes": 40530,
+      "description": "Published Module 4 statements, caveats, and display precision at the baseline revision.",
+      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
+      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
+      "original_wiki_path": "wiki/components/model/module4.html"
+    },
+    "m2_original_oof_archive_member": {
+      "path": "static/assets/model/evidence/module2-reproducibility.zip",
+      "archive_member": "igem_module2/wiki/main_model_layer_sensitivity/experiment/inputs/oof_all_models.csv",
+      "sha256": "7ec70ffa203b3dc3668d4aec2d67415c9af4ce01c6e8d3def169905649f63831",
+      "bytes": 133908,
+      "hash_scope": "uncompressed archive member bytes",
+      "description": "Original main-model OOF predictions; model=Hsu_ESM2_OneHot_Ridge_A matches all public layer12 coordinates and ranks exactly."
+    }
+  },
+  "outputs": [
+    {
+      "path": "static/assets/model/synthesis/claims-audit.json",
+      "sha256": "c6b35f12d62023aa1c836e666dfaff83fe7b8ee55da939987860bc91f9da8ea1"
+    },
+    {
+      "path": "static/assets/model/therapeutic-window/literature-audit.json",
+      "sha256": "b3c115f903f79f22269b5a7ddbd9d458247549b6077673900ec7bc3b4d35bcd1"
+    },
+    {
+      "path": "static/assets/model/therapeutic-window/parameters.json",
+      "sha256": "3218c413c85cd9aed46aa2c65225450ee5e5aca9d0400e4747d4182e019e33a2"
+    },
+    {
+      "path": "static/model-synthesis.css",
+      "sha256": "bdf5250e33a6c505c0b7a7a6848432ee982ee15423693d21e2829e98ff5db519"
+    },
+    {
+      "path": "wiki/components/model/conclusions/module1.html",
+      "sha256": "f044ed9c0ea1f568c66d16650a9c56047ede812339f4e50b013bead409a7ed96"
+    },
+    {
+      "path": "wiki/components/model/conclusions/module2.html",
+      "sha256": "cf274549c1fb05c979d9a8477442ff38aaa644ae275f765fbd372e3828c1cac7"
+    },
+    {
+      "path": "wiki/components/model/conclusions/module3.html",
+      "sha256": "074e7547229646f1a2bc594c09dd84ba5899753003d018582ade6bbe5d22b323"
+    },
+    {
+      "path": "wiki/components/model/conclusions/module4.html",
+      "sha256": "66c72e24dd0b50725eed21766a0dc850d4fa4fe6eb6fd1198e53aedeb6b77f98"
+    },
+    {
+      "path": "static/model.js",
+      "sha256": "8d0f5d23da699ae5f70344360269dc6b2785616af235d87f1bf49bc3661997ca"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "e07d8be2883fb7b62c4b88174d4ed99af98a56e544f826167400bdd340559b5a"
+    },
+    {
+      "path": "static/assets/model/integration-20261013/page-captions.json",
+      "sha256": "ff7e238d7152b7a2394010c53e0a35326b55824325ca4eb95c088083da757d1a"
+    },
+    {
+      "path": "wiki/components/model/module1.html",
+      "sha256": "c5c5995a888c93dc82bdc86eeff5080db895bb0c04213d925ad4d3e069ae2d36"
+    },
+    {
+      "path": "wiki/components/model/module2.html",
+      "sha256": "dffc48fbbdc44056ec5366ef11723ce9f79ba1bb8e50899f271ed2e63377a35a"
+    },
+    {
+      "path": "wiki/components/model/module3.html",
+      "sha256": "2278d5286faf6a0cd61b8c7e5233102e94394f0fadde618ce62991624055eac6"
+    },
+    {
+      "path": "wiki/components/model/module4.html",
+      "sha256": "269a4a89f0b93ff7d7217e92702dfcb58ae714129570b926ac70f062cef17fe1"
+    },
+    {
+      "path": "docs/dry-lab/model.md",
+      "sha256": "2ab6973a82084af707546d15d0ec6db1022cfe3b5c53fecbcc2c579dcfe59be5"
+    },
+    {
+      "path": "wiki/pages/model.html",
+      "sha256": "2bbeee65662875edc207617f419b129c3a937a4a4bb7f1a27c2db8b8df2c9bf5"
+    },
+    {
+      "path": "static/model-navigation.css",
+      "sha256": "cb4f85c15d5eb8219e27d74195926b3184f2dface6d18d578b293e1bb1d626a0"
+    },
+    {
+      "path": "static/model-reading.css",
+      "sha256": "1a3d36979ec07eeb63dcebfcdd9b45f7953bb7c822cbcbf65b35a2ff1129b4e4"
+    },
+    {
+      "path": "static/model-entry.css",
+      "sha256": "8bec2eff3345c308095b5f455cb5d31092154a45c63019676d7f52fbfa534ab7"
+    }
+  ],
+  "build_software": {
+    "Flask": "3.1.3",
+    "Frozen-Flask": "1.0.2",
+    "Markdown": "3.11",
+    "PyYAML": "6.0.3"
+  },
+  "validation": {
+    "unittest_count": 69,
+    "page_figure_count": 38,
+    "imported_figure_count": 4,
+    "original_figure_count": 34,
+    "scope": "69 source tests passed. Browser checks verify 15px chapter labels and 20px desktop Module titles, the expanded Module 2 directory at 1440px and 1024px widths, nested chapter navigation with active selection, narrow desktop and mobile layouts without page overflow, and shared reading surfaces across Project, Wet Lab, Dry Lab and Human Practices. Scientific images and source data are unchanged; article hyperlinks remain confined to four resource sections; figures remain numbered 1–38.",
+    "reading_surface_refinement": "White reading surface contrasted against a pale gray page, with narrow neutral-gray edge gradients and a soft outer shadow. Verified computed styles on desktop and 390px mobile; no horizontal overflow. Scoped stylesheet audit passed.",
+    "directory_motion": "Chapter navigation uses quartic ease-out over 650–1400ms: fast initial travel with gradual deceleration at the destination. Existing input cancellation, hash navigation, focus and reduced-motion handling are preserved."
+  },
+  "integration_evidence": "static/assets/model/integration-20261013/package-manifest.json",
+  "integration_repository_revision": "16ebbf837b02513f9e67de0532783386a3e3817f"
+}

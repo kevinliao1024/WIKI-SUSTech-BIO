@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
-{% set reading_layout = content.source_label.startswith(('docs/team/', 'docs/project/', 'docs/wet-lab/', 'docs/human-practices/')) %}
-{% block body_class %}inner-page{% if reading_layout %} content-reading-page{% endif %}{% endblock %}
+{% set unified_reading = content.source_label.startswith(('docs/project/', 'docs/wet-lab/', 'docs/dry-lab/', 'docs/human-practices/')) %}
+{% set reading_layout = unified_reading or content.source_label.startswith('docs/team/') %}
+{% block body_class %}inner-page{% if reading_layout %} content-reading-page{% endif %}{% if unified_reading %} unified-reading-page{% endif %}{% endblock %}
 {% block page_styles %}
 {% if reading_layout %}<link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">{% endif %}
 {% endblock %}

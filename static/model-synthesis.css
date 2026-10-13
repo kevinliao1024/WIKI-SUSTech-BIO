@@ -1,0 +1,66 @@
+/* Additions within the four existing module conclusions. No new motion. */
+.model-conclusion-addition {
+  margin-top: 34px;
+  padding-top: 8px;
+  border-top: 1px solid #d6d8ff;
+  scroll-margin-top: 14px;
+}
+
+.model-conclusion-addition .model-metric-note {
+  font-size: .85em;
+  color: #62658a;
+}
+
+.model-page .model-prose .model-resource-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+  margin: 20px 0 30px;
+  padding: 0;
+  list-style: none;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.model-page .model-prose .model-resource-links li {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #e7e7f0;
+}
+
+.model-page .model-prose .model-resource-links a {
+  color: #4a4d83;
+  text-decoration: underline;
+  text-decoration-color: #b5b6cf;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.model-page .model-prose .model-resource-links a:hover {
+  color: #30345d;
+  text-decoration-color: currentColor;
+}
+
+.model-page .model-prose .model-resource-links a:focus-visible {
+  outline: 2px solid #7d7fc1;
+  outline-offset: 4px;
+}
+
+@media (max-width: 1100px) {
+  .model-page .model-prose .model-resource-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.model-page .model-prose figure[id^="model-figure-"] {
+  scroll-margin-top: 14px;
+}
+
+@media (max-width: 760px) {
+  .model-conclusion-addition {
+    scroll-margin-top: calc(var(--model-directory-height, 106px) + 14px);
+  }
+  .model-page .model-prose figure[id^="model-figure-"] {
+    scroll-margin-top: calc(var(--model-directory-height, 106px) + 14px);
+  }
+}
