@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% set reading_layout = content.source_label.startswith(('docs/team/', 'docs/project/', 'docs/wet-lab/', 'docs/human-practices/')) %}
+{% block body_class %}inner-page{% if reading_layout %} content-reading-page{% endif %}{% endblock %}
+{% block page_styles %}
+{% if reading_layout %}<link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">{% endif %}
+{% endblock %}
+
 {% block title %}{{ content.title }}{% endblock %}
 {% block eyebrow %}{{ content.metadata.get('eyebrow', 'ORCA · SUSTech 2026') }}{% endblock %}
 {% block page_title %}{{ content.title }}{% endblock %}
@@ -7,7 +13,7 @@
 
 {% macro toc_links() -%}
   {% for item in content.toc %}
-  <li class="toc-level-{{ item.level }}"><a href="#{{ item.id }}">{{ item.name }}</a></li>
+  <li class="toc-level-{{ item.level }}"><a href="#{{ item.id }}">{{ item.name | safe }}</a></li>
   {% endfor %}
 {%- endmacro %}
 
@@ -37,4 +43,9 @@
     {{ rendered_markdown }}
   </article>
 </div>
+{% if reading_layout %}{% include 'components/model/back-to-top.html' %}{% endif %}
+{% endblock %}
+
+{% block page_scripts %}
+{% if reading_layout %}<script src="{{ url_for('static', filename='content-reading.js') }}" defer></script>{% endif %}
 {% endblock %}

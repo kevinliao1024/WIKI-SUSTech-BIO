@@ -1,0 +1,153 @@
+@import url('reading-back-to-top.css');
+
+/* Team, Project, Wet Lab and Human Practices share Model's reading geometry
+   and the requested return-to-top mascot. Keep their existing page headers. */
+.content-reading-page .markdown-page {
+  width: min(1260px, calc(100% - clamp(48px, 9vw, 176px)));
+  grid-template-columns: 224px minmax(0, 1fr);
+  align-items: start;
+  gap: 56px;
+  padding: 42px 64px 90px 0;
+}
+
+.content-reading-page .markdown-page--without-toc {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+  padding-right: 0;
+}
+
+.content-reading-page .markdown-content {
+  max-width: none;
+  padding: 54px clamp(30px, 4vw, 56px) 40px;
+  border: 1px solid #eeeef6;
+  border-radius: 28px;
+  background: #fffefc;
+}
+
+.content-reading-page .markdown-content :is(h2, h3, h4, h5, h6)[id] {
+  /* The document already reserves the fixed header via scroll-padding. */
+  scroll-margin-top: 14px;
+}
+
+.content-reading-page .markdown-page > .markdown-toc {
+  display: block;
+  position: sticky;
+  top: calc(var(--nav-h, 100px) + 28px);
+  max-height: calc(100dvh - var(--nav-h, 100px) - 56px);
+  margin: 0;
+  padding: 6px 6px 6px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6d8ef transparent;
+  border: 0;
+}
+
+.content-reading-page .markdown-toc > span {
+  display: block;
+  padding: 0 10px;
+}
+
+.content-reading-page .markdown-toc ol {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.content-reading-page .markdown-toc li {
+  min-width: 0;
+  border: 0;
+}
+
+.content-reading-page .markdown-toc a {
+  min-height: 50px;
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 19px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  transition: none;
+}
+
+.content-reading-page .markdown-toc a:hover,
+.content-reading-page .markdown-toc a:focus-visible {
+  background: #eaeaf8;
+}
+
+.content-reading-page .markdown-toc a:focus-visible {
+  outline-offset: -2px;
+}
+
+.content-reading-page .markdown-toc .toc-level-3 {
+  margin-left: 15px;
+  padding-left: 11px;
+  border-left: 1px solid #d7d8e9;
+}
+
+.content-reading-page .markdown-toc .toc-level-3 a {
+  min-height: 36px;
+  padding: 8px 9px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.content-reading-page .mobile-toc {
+  display: none;
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .content-reading-page .markdown-page {
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .content-reading-page .markdown-page--without-toc {
+    grid-template-columns: minmax(0, 820px);
+  }
+
+  .content-reading-page .markdown-content {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .content-reading-page .markdown-toc a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .content-reading-page .markdown-page {
+    display: block;
+    width: calc(100% - 28px);
+    padding: 18px 0 50px;
+  }
+
+  .content-reading-page .markdown-page > .markdown-toc {
+    display: none;
+  }
+
+  .content-reading-page .mobile-toc {
+    display: block;
+    width: calc(100% - 28px);
+    border-radius: 12px;
+  }
+
+  .content-reading-page .mobile-toc a {
+    display: block;
+    padding-block: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .content-reading-page .markdown-content {
+    padding: 32px 34px 40px 20px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .content-reading-page .markdown-content {
+    padding-left: 14px;
+  }
+}

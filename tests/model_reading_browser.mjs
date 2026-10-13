@@ -34,6 +34,8 @@ async function activeModule(id) {
     }), id));
     throw error;
   }
+  // Selection changes before scrolling and directory collapse finish.
+  await page.waitForFunction(() => !document.querySelector('.is-model-navigating, .module-subnav.is-animating'));
   const selected = await state();
   assert.deepEqual(selected.expanded, [id], JSON.stringify(selected));
   assert.equal(selected.panels.length, 1, JSON.stringify(selected));
@@ -57,6 +59,7 @@ async function jump(id) {
 }
 
 async function checkAlignment(id) {
+  await page.waitForFunction(() => !document.querySelector('.is-model-navigating, .module-subnav.is-animating'));
   const bounds = await page.evaluate(id => {
     const target = document.getElementById(id).getBoundingClientRect();
     const sidebar = document.querySelector('.model-sidebar').getBoundingClientRect();
@@ -77,7 +80,7 @@ try {
   await page.waitForFunction(() => document.querySelector('.model-page').style.getPropertyValue('--model-directory-height') !== '');
   assert.equal(await page.locator('.model-sidebar').evaluate(element => element.inert), true);
   assert.equal(await page.locator('[data-model-back-to-top]').evaluate(element => element.inert), true);
-  assert.equal(await page.locator('body > [data-back-to-top]').evaluate(element => getComputedStyle(element).display), 'none');
+  assert.equal(await page.locator('body > [data-back-to-top]').count(), 0);
   await page.locator('#model-content').evaluate(element => element.scrollIntoView({ block: 'start' }));
   await page.waitForFunction(() => !document.querySelector('.model-sidebar').inert && !document.querySelector('[data-model-back-to-top]').inert);
   assert.equal(await page.locator('.model-sweeper__caption textPath').count(), 2);
@@ -179,14 +182,17 @@ try {
       const mascot = document.querySelector('[data-model-back-to-top]').getBoundingClientRect();
       const prose = document.querySelector('#module4 .model-prose');
       const proseBounds = prose.getBoundingClientRect();
-      const figures = [...document.querySelectorAll('.model-prose figure')].map(item => item.getBoundingClientRect().width);
+      const figures = [...document.querySelectorAll('.model-prose figure:not(.model-overview-figure)')].map(item => item.getBoundingClientRect().width);
       return { width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth,
         sidebarHeight: sidebar.height, sidebarRight: sidebar.right, readingLeft: reading.left,
         mascotLeft: mascot.left, mascotRight: mascot.right, mascotWidth: mascot.width, mascotBottom: mascot.bottom,
         proseRight: proseBounds.right, proseWidth: proseBounds.width, proseFont: parseFloat(getComputedStyle(prose).fontSize),
-        maxFigure: Math.max(0, ...figures) };
+        maxFigure: Math.max(0, ...figures),
+        overviewFigure: document.querySelector('.model-overview-figure').getBoundingClientRect().width,
+        overviewProse: document.querySelector('#model-content .model-prose').getBoundingClientRect().width };
     });
     assert.ok(metrics.scroll <= metrics.width + 1, `${width}px horizontal overflow: ${JSON.stringify(metrics)}`);
+    assert.ok(metrics.overviewFigure <= metrics.overviewProse + 1, `${width}px overview exceeds its reading column`);
     assert.ok(metrics.maxFigure <= 721, `${width}px figure width: ${JSON.stringify(metrics)}`);
     assert.ok(metrics.mascotLeft >= metrics.proseRight - 1, `${width}px sweeper covers the prose: ${JSON.stringify(metrics)}`);
     assert.ok(metrics.mascotRight <= width && metrics.mascotBottom <= 900, `${width}px sweeper outside the viewport`);
