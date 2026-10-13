@@ -268,4 +268,34 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) closeAll(); });
   window.addEventListener('resize', () => stopMenuParticles());
   menuMotion.addEventListener?.('change', () => stopMenuParticles());
+
+  // The home navigation leaves with the opening scroll, independent of WebGL.
+  if (navigation && document.body.classList.contains('ot-crt-home')) {
+    let frame = 0;
+    const updateHomeNavigation = () => {
+      frame = 0;
+      const keyboardActive = navigation.querySelector(':focus-visible');
+      const progress = keyboardActive ? 0 : Math.max(0, Math.min(1,
+        (window.scrollY - 24) / (navigation.offsetHeight + 80)));
+      const departed = menuMotion.matches ? progress === 1 : progress > 0;
+      if (departed && !navigation.inert) {
+        clearTimeout(closeTimer);
+        closeAll();
+      }
+      navigation.inert = departed;
+      navigation.style.setProperty('--home-nav-exit', String(1 - (1 - progress) ** 2));
+      navigation.style.setProperty('--home-nav-opacity', String(1 - progress));
+      navigation.classList.toggle('is-home-nav-hidden', progress === 1);
+    };
+    const scheduleHomeNavigation = () => {
+      if (!frame) frame = requestAnimationFrame(updateHomeNavigation);
+    };
+    window.addEventListener('scroll', scheduleHomeNavigation, { passive: true });
+    window.addEventListener('resize', scheduleHomeNavigation);
+    window.addEventListener('pageshow', scheduleHomeNavigation);
+    navigation.addEventListener('focusin', scheduleHomeNavigation);
+    navigation.addEventListener('focusout', scheduleHomeNavigation);
+    menuMotion.addEventListener?.('change', scheduleHomeNavigation);
+    updateHomeNavigation();
+  }
 })();
