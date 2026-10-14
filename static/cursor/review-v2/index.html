@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN" data-choice="arrow">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORCA · 小光标提案</title>
+  <link rel="stylesheet" href="review.css">
+</head>
+<body>
+<main>
+  <header><div><p class="eyebrow">ORCA / CURSOR STUDY 02</p><h1>A lighter touch.</h1><p class="lead">小一点，轻一点。光标只留一个清晰的形状。</p></div><span class="brand">ORCA<small>SUSTECH · 2026</small></span></header>
+  <fieldset><legend>选择一种，在页面上试用</legend><div class="options">
+    <article class="option" data-variant="arrow"><label class="choice"><input type="radio" name="cursor" value="arrow" checked><span>A · 细箭头</span><span class="recommended">推荐</span></label><div class="surface light"><img class="enlarged" src="arrow.svg" width="72" height="88" alt="放大四倍的细箭头"><button type="button" data-try>悬停 / 点击</button></div><div class="surface dark"><img src="arrow.svg" width="18" height="22" alt="实际尺寸的细箭头"><span>实际大小 · 18 × 22</span><img src="arrow-hover.svg" width="18" height="22" alt="悬停时变为靛蓝的细箭头"></div><div class="description"><h2>最自然，也最耐看。</h2><p>纸白细箭头，悬停时填入靛蓝。形状保持稳定，点击反馈轻而短。</p></div></article>
+    <article class="option" data-variant="whale"><label class="choice"><input type="radio" name="cursor" value="whale"><span>B · 迷你鲸鱼</span></label><div class="surface light"><img class="enlarged" src="whale.svg" width="96" height="80" alt="放大四倍的迷你虎鲸"><button type="button" data-try>悬停 / 点击</button></div><div class="surface dark"><img src="whale.svg" width="24" height="20" alt="实际尺寸的迷你虎鲸"><span>实际大小 · 24 × 20</span><img src="whale-hover.svg" width="24" height="20" alt="悬停时变为紫色的迷你虎鲸"></div><div class="description"><h2>给 ORCA 一点性格。</h2><p>保留虎鲸的背鳍与白色斑纹，悬停时变紫。更可爱，也更有辨识度。</p></div></article>
+    <article class="option" data-variant="pearl"><label class="choice"><input type="radio" name="cursor" value="pearl"><span>C · 微光圆点</span></label><div class="surface light"><img class="enlarged" src="pearl.svg" width="48" height="48" alt="放大四倍的微小圆点"><button type="button" data-try>悬停 / 点击</button></div><div class="surface dark"><img src="pearl.svg" width="12" height="12" alt="实际尺寸的小圆点"><span>实际大小 · 约 6 px 圆点</span><img src="pearl-hover.svg" width="16" height="16" alt="悬停时出现微小紫色边缘的圆点"></div><div class="description"><h2>更安静，像一颗粒子。</h2><p>平时只有一个小圆点，悬停时轻微放大。适合首页的粒子场景。</p></div></article>
+  </div></fieldset>
+  <section class="trial" aria-label="当前光标试用"><div><p class="eyebrow">TRY IT AT REAL SIZE</p><h2 id="active-name">正在试用 A · 细箭头</h2><p>在右侧按钮上移动、点击，再选择文字。</p></div><div class="controls"><button class="primary" type="button" data-try>Explore ORCA <span aria-hidden="true">↗</span></button><input aria-label="文字选择试用" value="On-target RNA correction"><span class="grab">抓取区域</span></div></section>
+  <footer><span id="feedback" role="status" aria-live="polite">触屏保留原生交互 · 无拖尾 · 无持续光环</span><span>上方图形放大 4×，深色条与实际光标均为原尺寸。</span></footer>
+</main>
+<script src="review.js" defer></script>
+</body>
+</html>

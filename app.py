@@ -46,6 +46,12 @@ def home_next_crayon():
     return render_template("pages/home_next_crayon.html")
 
 
+@app.route("/next-journey")
+def home_next_journey():
+    """Familiar-world journey review, sharing the existing biology take."""
+    return render_template("pages/home_next_journey.html")
+
+
 @app.route("/assets/<path:filename>")
 def assets(filename):
     return send_from_directory(path.join(app.root_path, "assets"), filename)

@@ -15,6 +15,7 @@ export class PortalShader {
     this.uniforms = {
       uResolution: { value: new THREE.Vector2(1, 1) }, uTime: { value: 0 },
       uProgress: { value: 0 }, uDirection: { value: 0 }, uReveal: { value: 0 },
+      uQuality: { value: 1.0 },
     };
     this.material = new THREE.ShaderMaterial({ vertexShader, fragmentShader,
       uniforms: this.uniforms, transparent: true, depthTest: false, depthWrite: false });
@@ -121,6 +122,7 @@ export class WhiteHoleScene {
       uniforms.uProgress.value = progress; uniforms.uDirection.value = direction === 'to-home' ? 1 : 0;
       uniforms.uReveal.value = reveal; uniforms.uTime.value = time;
     }
+    this.portal.uniforms.uQuality.value = this.quality === 'low' ? 0.0 : 1.0;
     this.camera.position.z = -smooth(0.46, 0.84, progress) * 0.7;
     this.renderer.clear(); this.renderer.render(this.portalScene, this.screenCamera);
     this.renderer.render(this.scene, this.camera);
@@ -128,6 +130,7 @@ export class WhiteHoleScene {
     if (this.previous) this.samples.push(now - this.previous);
     this.previous = now;
     if (this.samples.length === 20 && this.samples.reduce((a, b) => a + b, 0) / 20 > 28) {
+      this.quality = 'low';
       this.renderer.setPixelRatio(1); this.particles.mesh.geometry.setDrawRange(0, 650 * 2);
       this.resize(); this.container.dataset.quality = 'adaptive';
     }

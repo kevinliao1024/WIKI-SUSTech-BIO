@@ -21,11 +21,27 @@ export function replayFrame(seconds) {
   return { phase: 'done', take: .955 };
 }
 
-export function createEditReplay({ root, story, toProgress, enabled }) {
+export function createEditReplay({ root, story, toProgress, enabled, autoStart = globalThis.location?.hash !== '#ot-index-title' }) {
   const skip = root.querySelector('[data-edit-skip]');
+  const startButton = root.querySelector('[data-edit-start]');
   let played = false, active = false, elapsed = 0, previous = -1, phase = '', ready = false, editingStarted = false;
+  let session = 0;
   const editStart = REPLAY_TIMING.question + REPLAY_TIMING.rewind + REPLAY_TIMING.target;
-  const scrollToTake = take => window.scrollTo({ top: toProgress(take) * Math.max(1, story.getBoundingClientRect().height - innerHeight), behavior: 'instant' });
+  const scrollToTake = take => {
+    const rect = story.getBoundingClientRect();
+    // The journey version adds an opening before the shared biology story.
+    const top = (rect.top ?? 0) + (window.scrollY || 0);
+    window.scrollTo({ top: top + toProgress(take) * Math.max(1, rect.height - innerHeight), behavior: 'instant' });
+  };
+  const start = (at = 0) => {
+    if (!enabled) return;
+    active = played = true;
+    elapsed = at; ready = editingStarted = false;
+    phase = at ? 'target' : 'question';
+    root.dataset.editSession = String(++session);
+    if (skip) skip.hidden = false;
+    if (startButton) startButton.hidden = true;
+  };
   const finish = () => {
     active = false;
     delete root.dataset.editReplay;
@@ -33,12 +49,13 @@ export function createEditReplay({ root, story, toProgress, enabled }) {
   };
   const interrupt = () => { if (active) finish(); };
   const beginEdit = () => { editingStarted = true; elapsed = editStart; };
+  startButton?.addEventListener('click', () => start(REPLAY_TIMING.question + REPLAY_TIMING.rewind));
   window.addEventListener('wheel', event => {
     if (!active) return;
     if (phase === 'placement') {
       event.preventDefault();
       if (ready && event.deltaY > 0) beginEdit();
-    } else if (phase === 'edit') event.preventDefault();
+    } else if (phase === 'edit' || (['question','rewind','target','return'].includes(phase) && event.deltaY >= 0)) event.preventDefault();
     else interrupt();
   }, { passive: false });
   let touchY = 0;
@@ -48,24 +65,27 @@ export function createEditReplay({ root, story, toProgress, enabled }) {
     if (phase === 'placement' || phase === 'edit') {
       event.preventDefault();
       if (phase === 'placement' && ready && touchY-(event.touches[0]?.clientY || touchY)>20) beginEdit();
+    } else if (['question','rewind','target','return'].includes(phase)) {
+      // A continuing downward swipe must not cancel the return to the RNA.
+      event.preventDefault();
+      if (touchY-(event.touches[0]?.clientY ?? touchY) < -20) interrupt();
     } else interrupt();
   }, { passive: false });
   window.addEventListener('keydown', event => {
     if (!active) return;
     if (phase === 'placement' && ready && ['ArrowDown','PageDown',' '].includes(event.key)) { event.preventDefault(); beginEdit(); }
-    else if (phase === 'edit' && ['ArrowDown','PageDown',' '].includes(event.key)) event.preventDefault();
+    else if (['edit','question','rewind','target','return'].includes(phase) && ['ArrowDown','PageDown',' '].includes(event.key)) event.preventDefault();
     else if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Escape'].includes(event.key)) interrupt();
   });
   skip?.addEventListener('click', () => { scrollToTake(.955); finish(); });
   return {
     setReady(value) { ready = value; },
     update(take, dt) {
-      if (enabled && !played && previous < .797 && take >= .797 && take < .94) {
-        active = played = true;
-        elapsed = 0;
-        if (skip) skip.hidden = false;
+      if (enabled && autoStart && !played && previous < .797 && take >= .797 && take < .94) {
+        start();
       }
       previous = take;
+      if (startButton) startButton.hidden = !enabled || active || !((take >= .495 && take <= .605) || take >= .784);
       if (!active) return null;
       // A background tab must not skip the readable edit when it resumes.
       elapsed += Math.min(dt, .05);
@@ -76,7 +96,9 @@ export function createEditReplay({ root, story, toProgress, enabled }) {
       }
       phase = frame.phase;
       root.dataset.editReplay = frame.phase;
-      scrollToTake(frame.phase === 'return' ? .55 + .405 * frame.cameraBlend : frame.take);
+      // The camera pulls back from edited UGC; the document goes straight to
+      // the project instead of crossing the original CGC and AD chapters again.
+      scrollToTake(frame.phase === 'return' ? .955 : frame.take);
       if (frame.phase === 'done') finish();
       return frame;
     },

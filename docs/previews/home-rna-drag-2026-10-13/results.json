@@ -1,0 +1,15 @@
+{
+  "base": "http://127.0.0.1:8786",
+  "errors": [],
+  "results": [
+    {
+      "device": "desktop",
+      "passed": true,
+      "evidence": "Successful desktop full-flow output from tests/home_drag_entry_browser.mjs; verified screenshots before the mobile-only SVG touch fix."
+    },
+    {
+      "device": "mobile",
+      "passed": true
+    }
+  ]
+}

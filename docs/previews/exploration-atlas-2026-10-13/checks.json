@@ -1,0 +1,9 @@
+{
+  "results": [
+    "New exploration adds one; revisiting does not add another.",
+    "atlas: category switching, shared footprint and 320/390px no-overflow passed.",
+    "reef: category switching, shared footprint and 320/390px no-overflow passed.",
+    "slides: category switching, shared footprint and 320/390px no-overflow passed."
+  ],
+  "errors": []
+}

@@ -15,3 +15,6 @@ input[type="range"] { width: 100%; accent-color: #91c7ff; }
 .note { color: #91a6c9; max-width: 470px; margin: 32px 0; font-size: 14px; }
 a { color: #91c7ff; padding-right: 20px; }
 @media (max-width: 600px) { .studio { padding-bottom: 360px; }.study { bottom: 16px; right: 16px; width: calc(100vw - 32px); }.subtitle { font-size: 18px; } }
+
+/* Sampling mode: hide the studio so a capture shows only the animation. */
+html[data-wh-sample] .studio { visibility: hidden; }

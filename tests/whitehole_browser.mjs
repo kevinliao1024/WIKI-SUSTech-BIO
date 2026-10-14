@@ -65,11 +65,11 @@ try {
   results.push('Project → Home: navy shield and particle unfold; completes and frees GPU');
 
   await menu(page, 'Project', 'Description'); await page.waitForURL('**/description'); await idle(page);
-  const start = Date.now();
   await menu(page, 'Wet Lab', 'Experiments'); await page.waitForURL('**/experiments');
-  await assertArrival(page, 'light');
-  const elapsed = Date.now() - start;
-  results.push(`Project → Wet Lab: lightweight fade (${elapsed}ms including menu, navigation and content readiness)`);
+  await idle(page);
+  assert.deepEqual(await page.evaluate(() => window.whEvents), []);
+  assert.deepEqual(await page.evaluate(() => window.whShields), []);
+  results.push('Project → Wet Lab: native navigation without transition events or a parser-time shield');
 
   await page.goBack(); await idle(page); assert.ok(page.url().endsWith('/description'));
   await page.evaluate(() => sessionStorage.setItem('orca.whitehole.v1', JSON.stringify({ version: 1, direction: 'to-home', to: location.href, created: Date.now() })));
@@ -102,15 +102,16 @@ try {
   results.push('Cmd/Ctrl/Shift/Alt/middle click, external, mail, download, blank target and anchors bypass transition');
 
   // Requests that fail or remain pending must release the current page.
+  await page.goto(base); await idle(page);
   await page.route('**/experiments', route => route.abort());
   await menu(page, 'Wet Lab', 'Experiments'); await idle(page);
-  assert.ok(page.url().includes('/description'));
+  assert.equal(page.url(), `${base}/`);
   assert.equal(await page.locator('.wh-notice').count(), 1);
   await page.unroute('**/experiments');
   results.push('Failed destination: current page recovered with retry notice');
   await page.route('**/experiments', route => new Promise(() => {}));
   await page.evaluate(() => window.ORCAWhiteHole.navigate('/experiments'));
-  await idle(page); assert.ok(page.url().includes('/description'));
+  await idle(page); assert.equal(page.url(), `${base}/`);
   await page.unroute('**/experiments'); results.push('Stalled destination: timeout recovery');
 
   // Repeated clicks and cancellation exercise the shared state, not only rendering.

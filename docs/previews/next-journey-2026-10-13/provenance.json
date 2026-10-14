@@ -1,0 +1,31 @@
+{
+  "route": "/next-journey",
+  "preview": "http://127.0.0.1:8786/next-journey",
+  "source": "/private/tmp/orca-journey-delivery",
+  "verified": "2026-10-13 Asia/Shanghai",
+  "checks": {
+    "errors": [],
+    "checks": [
+      "one shared canvas",
+      "first-frame companion",
+      "keyboard stations",
+      "reverse exact restoration",
+      "maze handoff",
+      "skip",
+      "44px mobile targets",
+      "reduced motion",
+      "no WebGL"
+    ]
+  },
+  "screenshots": {
+    "01-opening.png": "63e5253e48c83cbbeb6ddf355ba3b356b14f6fc5a5a2c1f9526278901ad73387",
+    "02-home.png": "9cd9af039557ddf6135b63dccae36564edc9fdc16ca36ec522fb682479cddc96",
+    "02-bridge.png": "1cad979e372dea39c829cb04406bf503efcd1eb91da3c469c159f33c411c98bf",
+    "02-road.png": "dead18204aebc1dac80741caf912451dadb6ec76daa47298e3375e239295ed7f",
+    "03-merge.png": "bc6a9b36279165e9611a33950533ddca554941c2b13f988c0c1e27fe790fa55b",
+    "04-brain.png": "044e8f22d68dc105d4c3d3d22b30fdb625bf52fcd785a3e1dd481c6a2bb72884",
+    "05-mobile.png": "960c05a0af595e0cd711cbc76bd8bdd56097842c4b0b67ffefa1bda1c53f09e9",
+    "06-static.png": "bace4bf0dbb57ff6e86a829d36bb9b94c26b9abde2b90d85fa89a146afcd4da7"
+  },
+  "note": "Opening/mobile screenshots refreshed after restarting the preview to pick up final template whitespace. Shared menu changes from another chat are preserved."
+}

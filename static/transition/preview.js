@@ -18,19 +18,17 @@ async function sample(ms) {
   time.value = ms; report(ms);
 }
 async function play(name) {
-  direction.value = name === 'light' ? 'to-light' : name;
-  const token = await prepare(name), duration = controller.motion.matches ? 80 : name === 'light' ? 250 : 2000;
+  direction.value = name;
+  const token = await prepare(name), duration = controller.motion.matches ? 80 : 2000;
   await controller.timeline.play(duration, p => {
     const ms = p * 2000;
-    if (name === 'light') controller.draw(p < .5 ? p * 2 : 1, p < .5 ? 0 : (p - .5) * 2);
-    else controller.draw(Math.min(ms / 1500, 1), ms > 1500 ? (ms - 1500) / 500 : 0);
+    controller.draw(Math.min(ms / 1500, 1), ms > 1500 ? (ms - 1500) / 500 : 0);
     time.value = ms; report(ms);
   });
   if (token === controller.generation) { controller.reset(); status.value = 'Complete · GPU released'; }
 }
 document.querySelector('#play-light').onclick = () => play('to-light');
 document.querySelector('#play-home').onclick = () => play('to-home');
-document.querySelector('#play-short').onclick = () => play('light');
 document.querySelector('#reset').onclick = () => { controller.reset(); time.value = 0; report(0); };
 document.querySelector('#core').onclick = () => sample(650);
 document.querySelector('#warp').onclick = () => sample(1100);
@@ -38,3 +36,31 @@ document.querySelector('#cover').onclick = () => sample(1500);
 time.oninput = () => sample(Number(time.value));
 direction.onchange = () => sample(Number(time.value));
 fallback.onchange = async () => { controller.reset(); await sample(Number(time.value)); };
+
+/* Frame sampling, for headless capture.
+ *
+ *   preview.html?whsample=560&whdir=to-light
+ *
+ * Paints one authored frame and holds it. The redraw runs on every animation
+ * frame rather than once: a single draw can be composited out before the
+ * screenshot is taken, and looping also keeps the real render path honest.
+ * The authored time is passed in explicitly so a capture is reproducible.
+ */
+const params = new URLSearchParams(location.search);
+if (params.has('whsample')) {
+  document.documentElement.dataset.whSample = '';
+  const ms = Number(params.get('whsample')) || 0;
+  const dir = params.get('whdir') === 'to-home' ? 'to-home' : 'to-light';
+  direction.value = dir;
+  const token = await prepare(dir);
+  if (token === controller.generation) {
+    const p = Math.min(ms / 1500, 1);
+    const reveal = ms > 1500 ? (ms - 1500) / 500 : 0;
+    const hold = () => {
+      controller.draw(p, reveal, ms / 1000);
+      report(ms);
+      requestAnimationFrame(hold);
+    };
+    hold();
+  }
+}

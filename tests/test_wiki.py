@@ -11,6 +11,7 @@ from wiki_content import NAVIGATION
 PUBLIC_ROUTES = [
     "/",
     "/next",
+    "/next-journey",
     "/team",
     "/attributions",
     "/description",
@@ -107,6 +108,20 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertIn('href="#ot-index-title"', home)
         self.assertIn('href="#apoe112"', preview)
 
+    def test_journey_preserves_biology_and_removes_crt(self):
+        home, journey = self.get_text("/"), self.get_text("/next-journey")
+        self.assertNotIn("data-crt-picture", journey)
+        self.assertEqual(journey.count("data-ot-canvas"), 1)
+        self.assertIn("Skip to project", journey)
+        for marker in ['data-bio-handle="pod"', 'data-bio-handle="cetus"',
+                       'data-burden', 'ot-index-title', 'data-journey-station="home"',
+                       'data-journey-station="bridge"', 'data-journey-station="road"']:
+            self.assertIn(marker, journey)
+        # Compare the copied post-opening chapter markup, not only its markers.
+        start = '<div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.11"'
+        self.assertEqual(home[home.index(start):home.index("</main>")],
+                         journey[journey.index(start):journey.index("</main>")])
+
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")
         team = self.get_text("/team")
@@ -150,7 +165,7 @@ class WikiRoutesTest(unittest.TestCase):
 
     def test_inner_pages_do_not_load_particle_assets(self):
         for route in PUBLIC_ROUTES:
-            if route in {"/", "/next"}:
+            if route in {"/", "/next", "/next-journey"}:
                 continue
             with self.subTest(route=route):
                 page = self.get_text(route)

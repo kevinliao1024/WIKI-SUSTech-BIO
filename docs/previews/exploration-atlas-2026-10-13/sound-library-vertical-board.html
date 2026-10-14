@@ -1,0 +1,174 @@
+<div id="orca-sound-board" class="viz-carousel viz-dotted-background" aria-label="虎鲸声库竖链风格看板" data-previous-label="上一种" data-next-label="下一种">
+  <section data-variant="声纹手稿" aria-label="声纹手稿风格">
+    <div class="sound-page sound-page--paper" aria-label="声纹手稿页面效果">
+      <div class="sound-top"><strong>ORCA</strong><span>THE SOUND LIBRARY</span><span class="sound-total" aria-live="polite">04 voices</span></div>
+      <div class="sound-layout"><nav class="sound-rail" aria-label="声库页面分组"></nav><main class="sound-article"><span class="sound-kicker">PROJECT&nbsp; / &nbsp;THE IDEA</span><h2>Engineering</h2><p class="sound-lead">From a design question to a testable system.</p><span class="sound-rule"></span><p class="sound-copy">Each chapter adds another voice to the story of the project.</p></main></div>
+      <div class="sound-popover" hidden></div>
+    </div>
+    <div class="sound-legend" aria-label="状态形状图例"><span><i class="legend-flat" aria-hidden="true"></i>静默</span><span><i class="legend-wave" aria-hidden="true">▂▅▃</i>已入册</span><span><i class="legend-current" aria-hidden="true">[▂▅▃]</i>正在刻录</span></div>
+  </section>
+  <section data-variant="磁带刻槽" aria-label="磁带刻槽风格" hidden>
+    <div class="sound-page sound-page--tape" aria-label="磁带刻槽页面效果">
+      <div class="sound-top"><strong>ORCA</strong><span>THE SOUND LIBRARY</span><span class="sound-total" aria-live="polite">04 voices</span></div>
+      <div class="sound-layout"><nav class="sound-rail" aria-label="声库页面分组"></nav><main class="sound-article"><span class="sound-kicker">PROJECT&nbsp; / &nbsp;THE IDEA</span><h2>Engineering</h2><p class="sound-lead">From a design question to a testable system.</p><span class="sound-rule"></span><p class="sound-copy">Each chapter adds another voice to the story of the project.</p></main></div>
+      <div class="sound-popover" hidden></div>
+    </div>
+    <div class="sound-legend" aria-label="状态形状图例"><span><i class="legend-flat" aria-hidden="true"></i>静默</span><span><i class="legend-wave" aria-hidden="true">▂▅▃</i>已入册</span><span><i class="legend-current" aria-hidden="true">[▂▅▃]</i>正在刻录</span></div>
+  </section>
+  <section data-variant="玻片谱条" aria-label="玻片谱条风格" hidden>
+    <div class="sound-page sound-page--slides" aria-label="玻片谱条页面效果">
+      <div class="sound-top"><strong>ORCA</strong><span>THE SOUND LIBRARY</span><span class="sound-total" aria-live="polite">04 voices</span></div>
+      <div class="sound-layout"><nav class="sound-rail" aria-label="声库页面分组"></nav><main class="sound-article"><span class="sound-kicker">PROJECT&nbsp; / &nbsp;THE IDEA</span><h2>Engineering</h2><p class="sound-lead">From a design question to a testable system.</p><span class="sound-rule"></span><p class="sound-copy">Each chapter adds another voice to the story of the project.</p></main></div>
+      <div class="sound-popover" hidden></div>
+    </div>
+    <div class="sound-legend" aria-label="状态形状图例"><span><i class="legend-flat" aria-hidden="true"></i>静默</span><span><i class="legend-wave" aria-hidden="true">▂▅▃</i>已入册</span><span><i class="legend-current" aria-hidden="true">[▂▅▃]</i>正在刻录</span></div>
+  </section>
+</div>
+<style>
+  #orca-sound-board { color-scheme: light dark; width: 100%; }
+  #orca-sound-board > section { min-height: 476px; padding: 10px 0 0; }
+  #orca-sound-board .sound-page { --sound-paper: light-dark(#faf9f5,#1e2525); --sound-ink: light-dark(#253531,#e6ebe5); --sound-muted: light-dark(#73817c,#a7b4ae); --sound-line: light-dark(#d6ddd6,#42504b); --sound-rail-paper: light-dark(#f5f5ef,#222c2a); --sound-accent: #2f7168; --sound-now: light-dark(#bc6746,#eda275); box-sizing: border-box; position: relative; width: min(100%, 684px); height: 410px; margin: 0 auto; overflow: hidden; background: var(--sound-paper); color: var(--sound-ink); border: 1px solid var(--sound-line); border-radius: 7px; font-family: Arial, Helvetica, sans-serif; box-shadow: 0 13px 36px light-dark(#32473a12,#00000035); }
+  #orca-sound-board .sound-page * { box-sizing: border-box; }
+  #orca-sound-board .sound-top { height: 44px; display: flex; align-items: center; padding: 0 18px; gap: 16px; border-bottom: 1px solid var(--sound-line); }
+  #orca-sound-board .sound-top strong { font-size: 13px; font-weight: 700; letter-spacing: .17em; }
+  #orca-sound-board .sound-top > span:nth-child(2) { color: var(--sound-muted); font-size: 10px; letter-spacing: .13em; }
+  #orca-sound-board .sound-total { margin-left: auto; color: var(--sound-accent); font-size: 10px; font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
+  #orca-sound-board .sound-layout { display: grid; grid-template-columns: 66px minmax(0,1fr); height: calc(100% - 44px); }
+  #orca-sound-board .sound-rail { position: relative; height: 100%; padding: 11px 0; background: var(--sound-rail-paper); display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+  #orca-sound-board .sound-rail::before { content: ''; position: absolute; z-index: 0; top: 13px; bottom: 13px; left: 32px; width: 1px; background: var(--sound-line); }
+  #orca-sound-board .sound-group { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 48px; min-height: 44px; padding: 4px 0; border: 0; background: transparent; color: var(--sound-muted); gap: 2px; }
+  #orca-sound-board .sound-group[aria-expanded="true"] { background: light-dark(#e9eee8,#34423d); border-radius: 4px; }
+  #orca-sound-board .sound-glyph { position: relative; display: flex; align-items: center; justify-content: center; width: 31px; height: 10px; flex: 0 0 auto; color: var(--sound-muted); }
+  #orca-sound-board .sound-glyph.is-silent::before { content: ''; display: block; width: 20px; height: 1px; background: currentColor; }
+  #orca-sound-board .sound-glyph.is-archived { color: var(--sound-accent); }
+  #orca-sound-board .sound-glyph.is-current { color: var(--sound-now); }
+  #orca-sound-board .sound-glyph.is-current::before, #orca-sound-board .sound-glyph.is-current::after { content: ''; position: absolute; top: 0; bottom: 0; width: 3px; border: solid currentColor; }
+  #orca-sound-board .sound-glyph.is-current::before { left: 0; border-width: 1px 0 1px 1px; }
+  #orca-sound-board .sound-glyph.is-current::after { right: 0; border-width: 1px 1px 1px 0; }
+  #orca-sound-board .sound-peak { width: 2px; height: var(--peak); flex: 0 0 auto; background: currentColor; border-radius: 1px; margin: 0 1px; }
+  #orca-sound-board .sound-article { min-width: 0; padding: 74px 34px 20px 45px; }
+  #orca-sound-board .sound-kicker { color: var(--sound-accent); font-size: 10px; letter-spacing: .13em; font-weight: 700; }
+  #orca-sound-board .sound-article h2 { margin: 14px 0 7px; font-size: clamp(26px,4.4vw,37px); line-height: 1.07; font-weight: 500; letter-spacing: -.045em; }
+  #orca-sound-board .sound-lead { margin: 0; font-size: 12px; line-height: 1.5; color: var(--sound-muted); }
+  #orca-sound-board .sound-rule { display: block; width: min(100%,385px); height: 1px; margin: 34px 0 16px; background: var(--sound-line); }
+  #orca-sound-board .sound-copy { margin: 0; max-width: 390px; color: var(--sound-muted); font-size: 12px; line-height: 1.55; }
+  #orca-sound-board .sound-popover { position: absolute; z-index: 5; top: 59px; left: 70px; width: min(266px,calc(100% - 82px)); padding: 7px; background: var(--sound-paper); border: 1px solid var(--sound-line); border-radius: 7px; box-shadow: 0 16px 32px light-dark(#16251d24,#0008); }
+  #orca-sound-board .sound-popover[hidden] { display: none; }
+  #orca-sound-board .sound-pophead { display: flex; justify-content: space-between; align-items: center; color: var(--sound-muted); padding: 2px 7px 5px; font-size: 11px; }
+  #orca-sound-board .sound-close { border: 0; background: transparent; color: var(--sound-muted); font-size: 19px; line-height: 1; width: 44px; height: 40px; }
+  #orca-sound-board .sound-page-link { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 5px 7px; border: 0; border-radius: 3px; background: transparent; text-align: left; color: var(--sound-ink); font-size: 11px; }
+  #orca-sound-board .sound-page-link:hover, #orca-sound-board .sound-page-link:focus-visible { background: var(--sound-rail-paper); }
+  #orca-sound-board .sound-page-link .sound-glyph { transform: scale(.76); transform-origin: left center; flex: 0 0 26px; }
+  #orca-sound-board .sound-page-link small { margin-left: auto; color: var(--sound-muted); font-size: 10px; }
+  #orca-sound-board .sound-page button { font-family: inherit; }
+  #orca-sound-board .sound-legend { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 31px; width: min(100%,684px); margin: 6px auto 0; color: light-dark(#64736e,#b8c5bf); font: 11px Arial, Helvetica, sans-serif; }
+  #orca-sound-board .sound-legend > span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  #orca-sound-board .sound-legend i { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 11px; font-style: normal; color: light-dark(#53605a,#bdc7c1); font-size: 10px; }
+  #orca-sound-board .sound-legend .legend-flat::before { content: ''; width: 19px; height: 1px; background: currentColor; }
+  #orca-sound-board .sound-legend .legend-current { letter-spacing: -2px; }
+  #orca-sound-board .sound-page--tape { --sound-paper: #101a20; --sound-ink: #eef3f1; --sound-muted: #819395; --sound-line: #304149; --sound-rail-paper: #0b1419; --sound-accent: #90c3b5; --sound-now: #f2b57d; border-radius: 3px; box-shadow: 0 15px 35px light-dark(#10282d36,#00000035); }
+  #orca-sound-board .sound-page--tape .sound-rail { border-right: 1px solid #304149; }
+  #orca-sound-board .sound-page--tape .sound-rail::before { width: 12px; left: 27px; background: linear-gradient(90deg,transparent 0 2px,#304149 2px 3px,transparent 3px 9px,#304149 9px 10px,transparent 10px); }
+  #orca-sound-board .sound-page--tape .sound-group { width: 40px; border-radius: 0; }
+  #orca-sound-board .sound-page--tape .sound-group[aria-expanded="true"] { background: #23323a; }
+  #orca-sound-board .sound-page--tape .sound-glyph { width: 30px; height: 11px; background: #0b1419; }
+  #orca-sound-board .sound-page--tape .sound-glyph.is-silent::before { width: 22px; background: linear-gradient(90deg,#59686d 0 6px,transparent 6px 8px,#59686d 8px 14px,transparent 14px 16px,#59686d 16px); height: 1px; }
+  #orca-sound-board .sound-page--tape .sound-glyph.is-archived { height: 8px; border-top: 1px solid #344952; border-bottom: 1px solid #344952; }
+  #orca-sound-board .sound-page--tape .sound-glyph.is-archived .sound-peak { width: 2px; height: 3px; border-radius: 0; margin: 0 1px; }
+  #orca-sound-board .sound-page--tape .sound-glyph.is-current .sound-peak { width: 2px; border-radius: 0; margin: 0 1px; }
+  #orca-sound-board .sound-page--tape .sound-glyph.is-current::before, #orca-sound-board .sound-page--tape .sound-glyph.is-current::after { top: 0; bottom: 0; width: 3px; border-width: 1px; }
+  #orca-sound-board .sound-page--tape .sound-article { background: radial-gradient(circle at 90% 0%,#162b31 0,#101a20 50%); }
+  #orca-sound-board .sound-page--tape .sound-popover { background: #142128; }
+  #orca-sound-board .sound-page--tape .sound-page-link:hover, #orca-sound-board .sound-page--tape .sound-page-link:focus-visible { background: #23343b; }
+  #orca-sound-board .sound-page--slides { --sound-paper: light-dark(#f7fbfa,#162629); --sound-ink: light-dark(#193b40,#e0f1ee); --sound-muted: light-dark(#77969a,#96afb0); --sound-line: light-dark(#c9dfe0,#426064); --sound-rail-paper: light-dark(#eaf3f1,#20373a); --sound-accent: #267e83; --sound-now: light-dark(#bd7462,#e9aa8e); }
+  #orca-sound-board .sound-page--slides .sound-rail { padding: 9px 0; }
+  #orca-sound-board .sound-page--slides .sound-rail::before { display: none; }
+  #orca-sound-board .sound-page--slides .sound-group { width: 48px; min-height: 44px; border: 1px solid light-dark(#d0e4e4,#3d5a5c); border-radius: 3px; background: light-dark(#f9fcfa,#263d3f); box-shadow: inset 3px 0 0 light-dark(#e1f1ef,#314d4e); }
+  #orca-sound-board .sound-page--slides .sound-group[aria-expanded="true"] { background: light-dark(#dcefed,#345253); }
+  #orca-sound-board .sound-page--slides .sound-glyph.is-silent::before { width: 16px; height: 2px; background: repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 4px); }
+  #orca-sound-board .sound-page--slides .sound-peak { width: 2px; margin: 0 1px; border-radius: 0; }
+  #orca-sound-board .sound-page--slides .sound-glyph.is-current::before, #orca-sound-board .sound-page--slides .sound-glyph.is-current::after { border-width: 1px; }
+  @media (max-width: 480px) { #orca-sound-board .sound-page { height: 410px; } #orca-sound-board .sound-top { padding: 0 12px; } #orca-sound-board .sound-top > span:nth-child(2) { display: none; } #orca-sound-board .sound-layout { grid-template-columns: 59px minmax(0,1fr); } #orca-sound-board .sound-rail::before { left: 29px; } #orca-sound-board .sound-page--tape .sound-rail::before { left: 24px; } #orca-sound-board .sound-article { padding: 74px 17px 20px 21px; } #orca-sound-board .sound-article h2 { font-size: 28px; } #orca-sound-board .sound-popover { left: 60px; width: calc(100% - 71px); } #orca-sound-board .sound-legend { gap: 9px; font-size: 11px; } #orca-sound-board .sound-legend > span { gap: 2px; } }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('orca-sound-board');
+  if (!root) return;
+  const groups = [
+    { name:'Project', pages:[['description','Description'],['engineering','Engineering'],['contribution','Contribution'],['parts','Parts']] },
+    { name:'Wet Lab', pages:[['experiments','Experiments'],['results','Results'],['notebook','Notebook'],['measurement','Measurement'],['alternative-platform','Alternative Platform'],['safety-and-security','Safety & Security']] },
+    { name:'Dry Lab', pages:[['model','Model'],['software','Software']] },
+    { name:'Human Practices', pages:[['human-practices','Human Practices'],['education','Education'],['entrepreneurship','Entrepreneurship'],['inclusivity','Inclusivity'],['sustainability','Sustainability']] },
+    { name:'Team', pages:[['team','Team'],['attributions','Attributions']] }
+  ];
+  const allPages = groups.flatMap(group => group.pages);
+  const ids = new Set(allPages.map(([id]) => id));
+  const state = { visited:new Set(['description','engineering','results','model']), current:'engineering' };
+  let openGroup = null;
+  function restore(snapshot) {
+    const data = snapshot?.privateContent;
+    if (!data || !Array.isArray(data.visited)) return;
+    state.visited = new Set(data.visited.filter(id => ids.has(id)));
+    state.current = ids.has(data.current) ? data.current : 'engineering';
+    state.visited.add(state.current);
+    render();
+  }
+  function save() {
+    window.openai?.setWidgetState?.({ modelContent:{ voices:state.visited.size, currentPage:state.current }, privateContent:{ visited:[...state.visited], current:state.current } }).catch(() => {});
+  }
+  function glyph(id) {
+    const status = state.current === id ? 'current' : state.visited.has(id) ? 'archived' : 'silent';
+    const el = document.createElement('span'); el.className = `sound-glyph is-${status}`; el.setAttribute('aria-hidden','true');
+    if (status !== 'silent') {
+      const seed = [...id].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      for (let i=0;i<5;i++) { const bar=document.createElement('span'); bar.className='sound-peak'; bar.style.setProperty('--peak',`${[3,7,5,9,4,6][(seed+i*3)%6]}px`); el.append(bar); }
+    }
+    return el;
+  }
+  function render() {
+    root.querySelectorAll('.sound-page').forEach(page => {
+      const selectedGroup = groups.find(group => group.pages.some(([id]) => id === state.current));
+      const selectedPage = selectedGroup.pages.find(([id]) => id === state.current);
+      page.querySelector('.sound-total').textContent = `${String(state.visited.size).padStart(2,'0')} voices`;
+      page.querySelector('.sound-kicker').textContent = `${selectedGroup.name.toUpperCase()} / THE IDEA`;
+      page.querySelector('.sound-article h2').textContent = selectedPage[1];
+      page.querySelector('.sound-lead').textContent = state.current === 'engineering' ? 'From a design question to a testable system.' : `A new voice from the ${selectedGroup.name} chapter.`;
+      const rail = page.querySelector('.sound-rail'); rail.replaceChildren();
+      groups.forEach((group, groupIndex) => {
+        const button=document.createElement('button'); button.type='button'; button.className='sound-group cursor-interaction';
+        button.setAttribute('aria-label',`${group.name}，${group.pages.filter(([id]) => state.visited.has(id)).length} 个声音已入册，展开页面`);
+        button.setAttribute('aria-expanded',String(openGroup?.page===page && openGroup.index===groupIndex));
+        group.pages.forEach(([id]) => button.append(glyph(id)));
+        button.addEventListener('click', () => { openGroup = openGroup?.page===page && openGroup.index===groupIndex ? null : { page, index:groupIndex }; render(); });
+        rail.append(button);
+      });
+      const popup=page.querySelector('.sound-popover'); popup.replaceChildren(); popup.hidden=openGroup?.page!==page;
+      if (popup.hidden) return;
+      const group=groups[openGroup.index];
+      const head=document.createElement('div'); head.className='sound-pophead';
+      const name=document.createElement('span'); name.textContent=group.name;
+      const close=document.createElement('button'); close.type='button'; close.className='sound-close cursor-interaction'; close.setAttribute('aria-label','关闭页面列表'); close.textContent='×'; close.addEventListener('click', () => { openGroup=null; render(); });
+      head.append(name,close); popup.append(head);
+      group.pages.forEach(([id,label]) => {
+        const button=document.createElement('button'); button.type='button'; button.className='sound-page-link cursor-interaction';
+        const status=state.current===id?'正在刻录':state.visited.has(id)?'已入册':'静默';
+        button.setAttribute('aria-label',`${label}，${status}，选择页面`);
+        button.append(glyph(id),document.createTextNode(label));
+        if (state.current===id) { const tag=document.createElement('small'); tag.textContent='正在刻录'; button.append(tag); }
+        button.addEventListener('click', () => { state.visited.add(id); state.current=id; openGroup=null; save(); render(); });
+        popup.append(button);
+      });
+    });
+  }
+  root.addEventListener('click', event => { if (openGroup && !event.target.closest('.sound-group,.sound-popover')) { openGroup=null; render(); } });
+  root.addEventListener('keydown', event => { if (event.key==='Escape' && openGroup) { openGroup=null; render(); } });
+  restore(window.openai?.widgetState);
+  render();
+  window.addEventListener('openai:set_globals', event => { if (event.detail?.globals?.widgetState) restore(event.detail.globals.widgetState); });
+  if (globalThis.Tweak) root.querySelectorAll('.sound-page').forEach(page => {
+    const control={ accent:getComputedStyle(page).getPropertyValue('--sound-accent').trim() };
+    const tweak=new Tweak({ container:page, onChange:() => page.style.setProperty('--sound-accent',control.accent) });
+    tweak.addColorPicker(control,'accent',{ label:'已入册声纹',reference:'--sound-accent' });
+  });
+})();
+</script>

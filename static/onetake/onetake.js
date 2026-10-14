@@ -812,6 +812,7 @@ function boot() {
   };
   resize();
   addEventListener('resize', resize);
+  root.dispatchEvent(new CustomEvent('ot:ready', { bubbles: true, detail: { THREE, scene, camera, renderer } }));
 
   const mouse = new THREE.Vector2(9, 9), mouseSmooth = new THREE.Vector2(0, 0);
   let mouseOn = 0, pointerMouse = false, pointerX = 0, pointerY = 0;
@@ -926,8 +927,8 @@ function boot() {
       ? (replayState.phase === 'return' ? replayState.cameraBlend : 0) : 1;
     camPos.x += mouseSmooth.x * 0.5 * motion * pointerMotion;
     camPos.y += mouseSmooth.y * 0.3 * motion * pointerMotion;
-    // Intro dolly: the take opens slightly further out.
-    camPos.z += (1 - smooth(intro)) * 6;
+    // The opening dolly must not move the RNA while a direct-entry drag starts.
+    if (!replayState) camPos.z += (1 - smooth(intro)) * 6;
     camera.position.copy(camPos); camera.lookAt(camLook);
     // Keep the C/U overlay aligned with this frame's camera before projection.
     camera.updateMatrixWorld();
@@ -936,13 +937,16 @@ function boot() {
     uniforms.uStage.value = stage;
     uniforms.uIntro.value = intro;
     uniforms.uRot.value = (reduce ? 0.3 : 0.3 + Math.sin(time * 0.12) * 0.4) * smooth(ramp(P, 0.03, 0.1));
-    uniforms.uBurden.value = ramp(P, 0.6, 0.7) * (1 - ramp(P, 0.8, 0.86));
-    uniforms.uTurb.value = ramp(P, 0.6, 0.72) * (1 - ramp(P, 0.79, 0.85));
+    uniforms.uBurden.value = ramp(P, 0.60, 0.70) * (1 - ramp(P, 0.80, 0.87));
+    uniforms.uTurb.value = ramp(P, 0.60, 0.72) * (1 - ramp(P, 0.79, 0.85));
     uniforms.uFix.value = 0;
     uniforms.uWave.value = 0;
     uniforms.uMotion.value = motion;
+    // The dementia comparison (0.747–0.78) stays inside the particle take:
+    // the scene keeps its full brightness until the comparison has ended, then
+    // hands over to the question chapter.
     uniforms.uSceneAlpha.value = (1-smooth(ramp(P,.335,.387)))
-      + smooth(ramp(P,.634,.674))*(1-smooth(ramp(P,.778,.803)))
+      + smooth(ramp(P,.634,.674))*(1-smooth(ramp(P,.786,.808)))
       + smooth(ramp(P,.914,.95));
     uniforms.uMouse.value.copy(mouseSmooth);
     const openingPointer = stage < 0 ? 1 - smooth(ramp(stage, -0.98, -0.65)) : 1;
@@ -964,6 +968,7 @@ function boot() {
     bloom.strength = (0.48 - .1*smooth(ramp(P,.22,.3))) * uniforms.uSignal.value;
 
     root.style.setProperty('--ot-p', P.toFixed(4));
+    root.dispatchEvent(new CustomEvent('ot:frame', { detail: { p, take: P, reduced: reduce } }));
     composer.render();
     if (!started) { started = true; root.classList.add('is-ready'); }
     raf = requestAnimationFrame(frame);

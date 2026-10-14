@@ -15,7 +15,7 @@ From the project root, use the existing Python environment:
 - Project: http://127.0.0.1:8081/description
 - Wet Lab: http://127.0.0.1:8081/experiments
 
-The studio plays both directions and the short fade. Its timeline can hold any real rendered frame, including the 0.65s core, 1.10s warp and 1.50s fullscreen cover. The CSS checkbox previews fallback. Reset or Escape releases the scene. These controls exist only in the studio.
+The studio plays both Home-related directions. Its timeline can hold any real rendered frame, including the 0.65s core, 1.10s warp and 1.50s fullscreen cover. The CSS checkbox previews fallback. Reset or Escape releases the scene. These controls exist only in the studio.
 
 ## Integration / handoff to the navigation session
 
@@ -29,13 +29,15 @@ That independent component adds the scoped CSS, the synchronous pre-paint boot s
 
 Existing real anchor links are automatically handled by a document bubble listener. Buttons, prevented events, external links, mail links, downloads, new tabs, modifier/middle clicks, same-page links and hashes keep their native behavior. Existing ATCG/C→U handlers run before the document listener, so a decorative-base click that they prevent never triggers a transition. Add `data-wh-exclude` to a link or ancestor to opt out. If future navigation explicitly calls `location.assign` instead of using links, call `window.ORCAWhiteHole.navigate(url)` at that exact navigation point; do not call both. No navigation changes are needed for the current markup.
 
-The controller supports extensionless Wiki routes beneath the configured Home path, including a Frozen-Flask deployment prefix. `/next` is recognized as the existing Home alias. Assets, nested application URLs and file links are left alone.
+The controller supports extensionless Wiki routes beneath the configured Home path, including a Frozen-Flask deployment prefix. `/next` is recognized as the existing Home alias. Only links crossing between Home and internal pages are intercepted. Internal-to-internal links, assets, nested application URLs and file links keep native navigation.
 
 ## Animation
 
+Run `node tests/whitehole_routes.mjs` to check native internal navigation, cleanup of old incoming fades, retained Home transitions and frozen hosting prefixes.
+
 - **Home → light:** 0–0.30s particle convergence; 0.30–0.70s photon rims, tilted light disk, high core and axial jet; 0.70–1.20s camera advance and depth-dependent GPU trails; 1.20–1.50s expanding light fills the viewport; destination reveals through a 500ms warm-white fade.
 - **Light → Home:** flat radial filaments contract; a navy aperture with icy/periwinkle rims forms and expands; after navigation a separate particle expansion fades into the existing Home scene. This has its own shader branch, not a reversed forward timeline.
-- **Light → light:** 125ms departure and 125ms reveal. The animation totals 250ms; page/network readiness can add a covered hold.
+- **Internal → internal:** native page navigation, with no transition overlay, prefetch gate, departure animation or arrival fade. Old pending `light` states are discarded before first paint.
 
 `whitehole-scene.js` exports `WhiteHoleScene`, `ParticleSystem` and `PortalShader`. The classic controller exports `PageTransitionController` and `TransitionTimeline` through `window.ORCAWhiteHoleClasses`. The default reusable instance is `window.ORCAWhiteHole`. Lifecycle methods: `navigate(url)`, `reset()`, `destroy()`. Events: `whitehole:start`, `whitehole:navigate`, `whitehole:complete`, `whitehole:error`, with details on `event.detail`.
 

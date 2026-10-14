@@ -16,13 +16,14 @@
     <link href="{{ url_for('static', filename='particle-theme.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='menu-refinements.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='school-footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='reading-orbit/reading-orbit.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='cursor/orca-cursor.css') }}" rel="stylesheet">
     <title>{% block title %}{% endblock %} | ORCA · SUSTech iGEM 2026</title>
   </head>
   <body class="{% block body_class %}inner-page{% endblock %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
     {% block navigation %}{% include 'menu.html' %}{% endblock %}
-    <div class="story-progress" data-story-progress role="progressbar" aria-label="Page reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+    {% include 'components/reading_orbit.html' %}
 
     {% block main %}
     <main id="main-content">
@@ -49,6 +50,7 @@
     {% block footer %}{% include 'footer.html' %}{% endblock %}
     <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='wiki.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='reading-orbit/reading-orbit.js') }}" defer></script>
     <script src="{{ url_for('static', filename='cursor/orca-cursor.js') }}" defer></script>
     {% block page_scripts %}{% endblock %}
   </body>

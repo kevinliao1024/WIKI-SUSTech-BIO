@@ -1,0 +1,178 @@
+<div id="orca-compact-exploration" class="viz-carousel viz-dotted-background" aria-label="探索足迹紧凑布局" data-previous-label="上一种" data-next-label="下一种">
+  <section data-variant="左侧竖链" aria-label="左侧竖链布局">
+    <div class="chain-page chain-page--rail" aria-label="页面与左侧探索链预览">
+      <div class="chain-topbar"><span class="chain-wordmark">ORCA</span><span class="chain-toplink">PROJECT&nbsp; / &nbsp;WET LAB&nbsp; / &nbsp;TEAM</span><span class="chain-menu">☰</span></div>
+      <div class="chain-rail-wrap">
+        <nav class="chain-rail" aria-label="探索足迹分类"></nav>
+        <main class="chain-article">
+          <div class="chain-eyebrow">PROJECT <span>·</span> RESEARCH STORY</div>
+          <h2>Engineering</h2>
+          <p class="chain-deck">From a design question to a testable system.</p>
+          <div class="chain-divider"></div>
+          <p>Each iteration begins with a clear goal, moves through a build and test, and returns with evidence for the next decision.</p>
+          <p>Explore the surrounding pages to follow how the idea developed.</p>
+        </main>
+      </div>
+      <div class="chain-popup" hidden></div>
+    </div>
+  </section>
+  <section data-variant="横向细链" aria-label="横向细链布局" hidden>
+    <div class="chain-page chain-page--line" aria-label="页面与横向探索链预览">
+      <div class="chain-topbar"><span class="chain-wordmark">ORCA</span><span class="chain-toplink">PROJECT&nbsp; / &nbsp;WET LAB&nbsp; / &nbsp;TEAM</span><span class="chain-menu">☰</span></div>
+      <div class="chain-line-wrap">
+        <nav class="chain-line" aria-label="探索足迹分类"></nav>
+        <span class="chain-count" aria-live="polite">4/19</span>
+      </div>
+      <main class="chain-article">
+        <div class="chain-eyebrow">PROJECT <span>·</span> RESEARCH STORY</div>
+        <h2>Engineering</h2>
+        <p class="chain-deck">From a design question to a testable system.</p>
+        <div class="chain-divider"></div>
+        <p>Each iteration begins with a clear goal, moves through a build and test, and returns with evidence for the next decision.</p>
+        <p>Explore the surrounding pages to follow how the idea developed.</p>
+      </main>
+      <div class="chain-popup" hidden></div>
+    </div>
+  </section>
+</div>
+<style>
+  #orca-compact-exploration { color-scheme: light dark; width: 100%; }
+  #orca-compact-exploration > section { min-height: 366px; padding: 15px 0 0; }
+  #orca-compact-exploration .chain-page { --chain-ink: light-dark(#1e2c2d,#e8efed); --chain-muted: light-dark(#74827e,#9cacaa); --chain-paper: light-dark(#fafbf9,#172021); --chain-soft: light-dark(#eff3f0,#273333); --chain-line-color: light-dark(#d2ddda,#465452); --chain-accent: #177d74; --chain-current: light-dark(#b37443,#dea870); box-sizing: border-box; position: relative; width: min(100%, 672px); height: 340px; margin: 0 auto; overflow: hidden; background: var(--chain-paper); color: var(--chain-ink); border: 1px solid var(--chain-line-color); border-radius: 9px; font-family: Arial, Helvetica, sans-serif; box-shadow: 0 9px 34px light-dark(#203a2812,#00000030); }
+  #orca-compact-exploration .chain-page * { box-sizing: border-box; }
+  #orca-compact-exploration .chain-topbar { height: 43px; border-bottom: 1px solid var(--chain-line-color); display: flex; align-items: center; justify-content: space-between; padding: 0 18px; gap: 12px; }
+  #orca-compact-exploration .chain-wordmark { font-size: 14px; font-weight: 700; letter-spacing: .16em; }
+  #orca-compact-exploration .chain-toplink { font-size: 10px; letter-spacing: .12em; color: var(--chain-muted); white-space: nowrap; }
+  #orca-compact-exploration .chain-menu { font-size: 14px; line-height: 1; color: var(--chain-muted); display: none; }
+  #orca-compact-exploration .chain-rail-wrap { display: flex; height: calc(100% - 43px); }
+  #orca-compact-exploration .chain-rail { flex: 0 0 60px; position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 17px 7px 34px; }
+  #orca-compact-exploration .chain-rail::before { content: ''; position: absolute; left: 29px; top: 33px; bottom: 50px; width: 1px; background: var(--chain-line-color); }
+  #orca-compact-exploration .chain-rail .chain-group { position: relative; width: 44px; min-height: 44px; border: 0; background: transparent; color: var(--chain-muted); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3px 0; gap: 3px; }
+  #orca-compact-exploration .chain-rail .chain-group::before { content: ''; position: absolute; z-index: 0; top: 0; bottom: 0; left: 17px; right: 17px; border-radius: 8px; }
+  #orca-compact-exploration .chain-rail .chain-group[aria-expanded="true"]::before { background: var(--chain-soft); }
+  #orca-compact-exploration .chain-node { position: relative; z-index: 1; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--chain-muted); background: var(--chain-paper); }
+  #orca-compact-exploration .chain-node.is-visited { border-color: var(--chain-accent); background: var(--chain-accent); }
+  #orca-compact-exploration .chain-node.is-current { width: 8px; height: 8px; border: 2px solid var(--chain-current); box-shadow: 0 0 0 2px var(--chain-paper); }
+  #orca-compact-exploration .chain-rail .chain-count { position: absolute; bottom: 7px; left: 8px; right: 8px; text-align: center; font-size: 10px; font-weight: 600; color: var(--chain-accent); font-variant-numeric: tabular-nums; }
+  #orca-compact-exploration .chain-article { min-width: 0; padding: 41px 40px 26px 20px; }
+  #orca-compact-exploration .chain-page--rail .chain-article { max-width: 590px; }
+  #orca-compact-exploration .chain-eyebrow { color: var(--chain-accent); font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+  #orca-compact-exploration .chain-eyebrow span { color: var(--chain-muted); margin: 0 5px; }
+  #orca-compact-exploration .chain-article h2 { margin: 14px 0 4px; font-size: clamp(24px,4vw,34px); line-height: 1.1; font-weight: 500; letter-spacing: -.035em; }
+  #orca-compact-exploration .chain-deck { margin: 0; font-size: 12px; color: var(--chain-muted); }
+  #orca-compact-exploration .chain-divider { height: 1px; background: var(--chain-line-color); width: min(100%,410px); margin: 23px 0 14px; }
+  #orca-compact-exploration .chain-article p:not(.chain-deck) { max-width: 460px; margin: 0 0 8px; font-size: 11px; line-height: 1.6; color: var(--chain-muted); }
+  #orca-compact-exploration .chain-line-wrap { height: 39px; display: flex; align-items: center; gap: 10px; padding: 0 18px; border-bottom: 1px solid var(--chain-line-color); }
+  #orca-compact-exploration .chain-line { min-width: 0; position: relative; display: flex; align-items: center; gap: 6px; }
+  #orca-compact-exploration .chain-line::before { content: ''; position: absolute; left: 12px; right: 12px; top: 16px; height: 1px; background: var(--chain-line-color); }
+  #orca-compact-exploration .chain-line .chain-group { position: relative; min-width: 44px; height: 34px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; gap: 3px; padding: 0 5px; border-radius: 5px; }
+  #orca-compact-exploration .chain-line .chain-group[aria-expanded="true"] { background: var(--chain-soft); }
+  #orca-compact-exploration .chain-line .chain-node { width: 5px; height: 5px; }
+  #orca-compact-exploration .chain-line .chain-node.is-current { width: 8px; height: 8px; }
+  #orca-compact-exploration .chain-line-wrap .chain-count { margin-left: auto; white-space: nowrap; font-size: 10px; font-weight: 600; color: var(--chain-accent); font-variant-numeric: tabular-nums; }
+  #orca-compact-exploration .chain-page--line .chain-article { padding: 38px 36px; }
+  #orca-compact-exploration .chain-popup { position: absolute; z-index: 5; top: 56px; left: 63px; width: min(265px,calc(100% - 78px)); padding: 8px; background: var(--chain-paper); border: 1px solid var(--chain-line-color); border-radius: 9px; box-shadow: 0 12px 28px light-dark(#1d34351e,#0006); }
+  #orca-compact-exploration .chain-page--line .chain-popup { top: 82px; left: 18px; width: min(300px,calc(100% - 36px)); }
+  #orca-compact-exploration .chain-popup[hidden] { display: none; }
+  #orca-compact-exploration .chain-popup-head { display: flex; align-items: center; justify-content: space-between; padding: 4px 7px 7px; color: var(--chain-muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  #orca-compact-exploration .chain-popup-close { border: 0; background: transparent; color: var(--chain-muted); font-size: 18px; line-height: 1; width: 27px; height: 27px; }
+  #orca-compact-exploration .chain-popup-page { display: flex; align-items: center; width: 100%; min-height: 29px; gap: 9px; padding: 4px 7px; text-align: left; color: var(--chain-ink); border: 0; border-radius: 4px; background: transparent; font-family: inherit; font-size: 11px; }
+  #orca-compact-exploration .chain-popup-page:hover, #orca-compact-exploration .chain-popup-page:focus-visible { background: var(--chain-soft); }
+  #orca-compact-exploration .chain-popup-page .chain-node { width: 7px; height: 7px; }
+  #orca-compact-exploration .chain-popup-page .chain-node.is-current { width: 9px; height: 9px; }
+  #orca-compact-exploration .chain-popup-page em { margin-left: auto; font-size: 10px; font-style: normal; color: var(--chain-muted); }
+  #orca-compact-exploration button { font-family: inherit; cursor: pointer; }
+  @media (max-width: 480px) { #orca-compact-exploration .chain-page { height: 340px; } #orca-compact-exploration .chain-toplink { display: none; } #orca-compact-exploration .chain-menu { display: block; } #orca-compact-exploration .chain-article { padding-right: 17px; } #orca-compact-exploration .chain-page--line .chain-article { padding: 36px 19px; } #orca-compact-exploration .chain-line-wrap { padding: 0 12px; gap: 4px; } #orca-compact-exploration .chain-line { gap: 2px; } #orca-compact-exploration .chain-line .chain-group { min-width: 39px; padding: 0 3px; gap: 2px; } #orca-compact-exploration .chain-article p:not(.chain-deck) { font-size: 11px; } #orca-compact-exploration .chain-article p:last-child { display: none; } }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('orca-compact-exploration');
+  if (!root) return;
+  const groups = [
+    { name: 'Project', pages: [['description','Description'],['engineering','Engineering'],['contribution','Contribution'],['parts','Parts']] },
+    { name: 'Wet Lab', pages: [['experiments','Experiments'],['results','Results'],['notebook','Notebook'],['measurement','Measurement'],['alternative-platform','Alternative Platform'],['safety-and-security','Safety & Security']] },
+    { name: 'Dry Lab', pages: [['model','Model'],['software','Software']] },
+    { name: 'Human Practices', pages: [['human-practices','Human Practices'],['education','Education'],['entrepreneurship','Entrepreneurship'],['inclusivity','Inclusivity'],['sustainability','Sustainability']] },
+    { name: 'Team', pages: [['team','Team'],['attributions','Attributions']] }
+  ];
+  const valid = new Set(groups.flatMap(g => g.pages.map(p => p[0])));
+  const state = { visited: new Set(['description','engineering','results','model']), current: 'engineering' };
+  let opened = null;
+  function applySaved(saved) {
+    const data = saved?.privateContent;
+    if (!data || !Array.isArray(data.visited)) return;
+    state.visited = new Set(data.visited.filter(id => valid.has(id)));
+    state.current = valid.has(data.current) ? data.current : 'engineering';
+    state.visited.add(state.current);
+    render();
+  }
+  function persist() {
+    if (window.openai?.setWidgetState) window.openai.setWidgetState({ modelContent: { visitedCount: state.visited.size, currentPage: state.current }, privateContent: { visited: [...state.visited], current: state.current } }).catch(() => {});
+  }
+  function mark(id) {
+    const dot = document.createElement('span');
+    dot.className = 'chain-node' + (state.visited.has(id) ? ' is-visited' : '') + (state.current === id ? ' is-current' : '');
+    dot.setAttribute('aria-hidden','true');
+    return dot;
+  }
+  function render() {
+    root.querySelectorAll('.chain-page').forEach(page => {
+      const activeGroup = groups.find(group => group.pages.some(([id]) => id === state.current));
+      const activePage = activeGroup.pages.find(([id]) => id === state.current);
+      page.querySelector('.chain-eyebrow').textContent = `${activeGroup.name.toUpperCase()} · RESEARCH STORY`;
+      page.querySelector('.chain-article h2').textContent = activePage[1];
+      const copy = page.querySelectorAll('.chain-article p');
+      copy[0].textContent = state.current === 'engineering' ? 'From a design question to a testable system.' : `Explore the ${activePage[1]} chapter of the project.`;
+      copy[1].textContent = state.current === 'engineering' ? 'Each iteration begins with a clear goal, moves through a build and test, and returns with evidence for the next decision.' : 'Follow the questions, work, and decisions behind this part of the project.';
+      copy[2].textContent = state.current === 'engineering' ? 'Explore the surrounding pages to follow how the idea developed.' : 'Use the exploration trail to move between related pages.';
+      const nav = page.querySelector('nav');
+      nav.replaceChildren();
+      groups.forEach((group, i) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'chain-group cursor-interaction';
+        button.setAttribute('aria-label', `${group.name}，${group.pages.filter(p => state.visited.has(p[0])).length}/${group.pages.length} 页已探索，展开页面`);
+        button.setAttribute('aria-expanded', String(opened?.page === page && opened.i === i));
+        group.pages.forEach(([id]) => button.append(mark(id)));
+        button.addEventListener('click', () => { opened = opened?.page === page && opened.i === i ? null : { page, i }; render(); });
+        nav.append(button);
+      });
+      let count = page.querySelector('.chain-count');
+      if (!count && page.classList.contains('chain-page--rail')) { count = document.createElement('span'); count.className = 'chain-count'; nav.append(count); }
+      count.textContent = `${state.visited.size}/19`;
+      count.setAttribute('aria-label', `已探索 ${state.visited.size} 页，共 19 页`);
+      const popup = page.querySelector('.chain-popup');
+      popup.replaceChildren();
+      const isOpen = opened?.page === page;
+      popup.hidden = !isOpen;
+      if (!isOpen) return;
+      const group = groups[opened.i];
+      const head = document.createElement('div'); head.className = 'chain-popup-head';
+      const title = document.createElement('span'); title.textContent = group.name;
+      const close = document.createElement('button'); close.type='button'; close.className='chain-popup-close cursor-interaction'; close.setAttribute('aria-label','关闭页面列表'); close.textContent='×'; close.addEventListener('click', () => { opened=null; render(); });
+      head.append(title, close); popup.append(head);
+      group.pages.forEach(([id,label]) => {
+        const button = document.createElement('button'); button.type='button'; button.className='chain-popup-page cursor-interaction';
+        button.setAttribute('aria-label', `${label}，${state.current===id?'当前页面':state.visited.has(id)?'已探索':'未探索'}，选择页面`);
+        button.append(mark(id), document.createTextNode(label));
+        if (state.current===id) { const tag=document.createElement('em'); tag.textContent='当前'; button.append(tag); }
+        button.addEventListener('click', () => { state.visited.add(id); state.current=id; opened=null; persist(); render(); });
+        popup.append(button);
+      });
+    });
+  }
+  root.addEventListener('click', event => { if (opened && !event.target.closest('.chain-group, .chain-popup')) { opened=null; render(); } });
+  root.addEventListener('keydown', event => { if (event.key==='Escape' && opened) { opened=null; render(); } });
+  applySaved(window.openai?.widgetState);
+  render();
+  window.addEventListener('openai:set_globals', event => { if (event.detail?.globals?.widgetState) applySaved(event.detail.globals.widgetState); });
+  if (globalThis.Tweak) {
+    root.querySelectorAll('.chain-page').forEach(page => {
+      const style = { accent: '#177d74' };
+      const update = () => page.style.setProperty('--chain-accent', style.accent);
+      const tweak = new Tweak({ container: page, onChange: update });
+      tweak.addColorPicker(style, 'accent', { label: '探索点颜色', reference: '--chain-accent' });
+    });
+  }
+})();
+</script>

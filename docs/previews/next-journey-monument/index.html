@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORCA journey — Monument Valley study</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #141a2a; overflow: hidden; }
+  canvas { display: block; width: 100%; height: 100%; }
+  .panel {
+    position: fixed; left: 20px; bottom: 20px; z-index: 5;
+    font: 12px/1.5 ui-monospace, Menlo, monospace; color: #cfd8ea;
+    background: rgba(10,14,24,.72); padding: 12px 14px; border-radius: 6px;
+    border: 1px solid rgba(200,220,255,.14);
+  }
+  .panel button {
+    font: inherit; color: #cfd8ea; background: #1b2438; cursor: pointer;
+    border: 1px solid rgba(200,220,255,.2); border-radius: 3px;
+    padding: 5px 9px; margin: 2px 3px 2px 0;
+  }
+  .panel button:hover { border-color: #9fd0ff; color: #fff; }
+  .panel input { width: 220px; vertical-align: middle; }
+  .hud { position: fixed; top: 16px; left: 20px; z-index: 5;
+    font: 11px/1.5 ui-monospace, monospace; color: #8390a8; }
+</style>
+</head>
+<body>
+<div class="hud" id="hud">p —</div>
+<div class="panel">
+  <div>
+    <button data-go="-1">Opening</button>
+    <button data-go="-0.90">01 Home</button>
+    <button data-go="-0.68">02 Meeting</button>
+    <button data-go="-0.46">03 The way</button>
+    <button data-go="-0.20">Merge</button>
+  </div>
+  <div style="margin-top:8px">
+    <input id="scrub" type="range" min="-100" max="5" value="-100" step="1">
+    <span id="val">-1.00</span>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+/* ---------------------------------------------------------------- */
+/* Palette — matched to the particle take: deep blue night, frosted   */
+/* white architecture, coral and mint accents.                        */
+/* ---------------------------------------------------------------- */
+const C = {
+  // Frosted architecture. These read as translucent solid, not stone.
+  frost:      0xEDF2FF,
+  frostMid:   0xD3DEF2,
+  frostDeep:  0xA8B8D8,
+  frostEdge:  0x9FC4FF,   // rim tint
+  // Accents — desaturated so they glow rather than shout.
+  coral:      0xF2A38F,
+  coralDeep:  0xD9725C,
+  mint:       0x9ADCC4,
+  powder:     0xA8C4E8,
+  lilac:      0xC3B8F0,
+  // Water / ground
+  water:      0x1E3A5C,
+  waterDeep:  0x0A1628,
+  sky:        0x070C1E,   // deep night, matches the particle take
+  fog:        0x0B1226,
+};
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(C.sky);
+scene.fog = new THREE.Fog(C.fog, 26, 66);
+
+/* ---------------------------------------------------------------- */
+/* Isometric-ish orthographic camera                                 */
+/* ---------------------------------------------------------------- */
+const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
+const CAM_DIR = new THREE.Vector3(1, 0.82, 1).normalize();  // classic MV tilt
+const CAM_TARGET = new THREE.Vector3(0, -0.2, 0);
+const CAM_DIST = 30;
+
+function resize() {
+  const w = innerWidth, h = innerHeight, aspect = w / h;
+  const span = 15;
+  cam.left = -span * aspect / 2; cam.right = span * aspect / 2;
+  cam.top = span / 2; cam.bottom = -span / 2;
+  cam.updateProjectionMatrix();
+  renderer.setSize(w, h, false);
+}
+function placeCamera() {
+  cam.position.copy(CAM_DIR).multiplyScalar(CAM_DIST).add(CAM_TARGET);
+  cam.lookAt(CAM_TARGET);
+  cam.updateMatrixWorld();
+}
+
+/* ---------------------------------------------------------------- */
+/* Renderer                                                          */
+/* ---------------------------------------------------------------- */
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+/* ---------------------------------------------------------------- */
+/* Lighting — flat, two-tone, no shadow maps (MV look, cheap)        */
+/* ---------------------------------------------------------------- */
+scene.add(new THREE.HemisphereLight(0xffffff, 0x6a7fa8, 1.15));
+const key = new THREE.DirectionalLight(0xfff4e6, 1.5);
+key.position.set(6, 12, 8);
+scene.add(key);
+const fill = new THREE.DirectionalLight(0x9fd0ff, 0.45);
+fill.position.set(-8, 4, -6);
+scene.add(fill);
+
+/* ---------------------------------------------------------------- */
+/* Material helpers — frosted, translucent, rim-lit                   */
+/* ---------------------------------------------------------------- */
+/* The look is frosted glass rather than stone: a translucent body with a
+   view-dependent rim so edges catch light and glow. The rim uses a normal
+   derived from screen-space derivatives of the world position, which gives
+   the crisp flat facets we want without tracking three.js's normal varyings
+   or paying for a physical material and an environment map. */
+let causticTime = 0;
+const causticUniforms = [];
+const shafts = [];
+
+function flat(color, extra = {}) {
+  const {
+    rim = 0.55,
+    rimColor = C.frostEdge,
+    opacity = 1,
+    caustic = 0.16,
+    glow = 0.0,
+    ...rest
+  } = extra;
+
+  const mat = new THREE.MeshPhongMaterial({
+    color,
+    transparent: opacity < 1 || rim > 0,
+    opacity,
+    shininess: 18,
+    specular: 0x2a3a5c,
+    emissive: color,
+    emissiveIntensity: glow,
+    ...rest,
+  });
+
+  mat.onBeforeCompile = shader => {
+    shader.uniforms.uCausticTime = { value: 0 };
+    shader.uniforms.uRim = { value: rim };
+    shader.uniforms.uCaustic = { value: caustic };
+    shader.uniforms.uRimColor = { value: new THREE.Color(rimColor) };
+    causticUniforms.push(shader.uniforms.uCausticTime);
+
+    shader.vertexShader = 'varying vec3 vWorld;\n' + shader.vertexShader.replace(
+      '#include <begin_vertex>',
+      '#include <begin_vertex>\n vWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;'
+    );
+
+    shader.fragmentShader = [
+      'varying vec3 vWorld;',
+      'uniform float uCausticTime;',
+      'uniform float uRim;',
+      'uniform float uCaustic;',
+      'uniform vec3 uRimColor;',
+    ].join('\n') + '\n' + shader.fragmentShader.replace('#include <dithering_fragment>', `
+        #include <dithering_fragment>
+
+        // Facet normal straight from the world position, so a box reads as
+        // flat planes and the rim follows the silhouette exactly.
+        vec3 facetN = normalize(cross(dFdx(vWorld), dFdy(vWorld)));
+        vec3 toEye = normalize(cameraPosition - vWorld);
+        float facing = abs(dot(facetN, toEye));
+
+        // Rim: brightest where the surface turns away from the eye.
+        float rim = pow(1.0 - facing, 2.2) * uRim;
+
+        // A faint upward gradient keeps tall shapes from going flat.
+        float rise = clamp(vWorld.y * 0.06 + 0.5, 0.0, 1.0);
+        gl_FragColor.rgb += uRimColor * rim * (0.55 + 0.45 * rise);
+
+        // Water light, still drifting across the faces.
+        vec2 q = vWorld.xz * 1.15 + vWorld.y * 0.22;
+        float c = 0.0;
+        c += sin(q.x * 3.1 + uCausticTime * 0.9) * sin(q.y * 2.7 - uCausticTime * 0.7);
+        c += sin(q.x * 5.3 - uCausticTime * 1.3 + 1.7) * sin(q.y * 4.9 + uCausticTime * 1.1);
+        c += sin((q.x + q.y) * 7.7 + uCausticTime * 1.7) * 0.5;
+        c = smoothstep(1.1, 2.4, c);
+        gl_FragColor.rgb += vec3(0.72, 0.84, 1.0) * c * uCaustic;
+      `);
+  };
+  return mat;
+}
+
+const M = {
+  // Architecture: frosted white at three depths of translucency.
+  frost:     flat(C.frost,     { opacity: 0.82, rim: 0.7,  glow: 0.06 }),
+  frostMid:  flat(C.frostMid,  { opacity: 0.78, rim: 0.6,  glow: 0.05 }),
+  frostDeep: flat(C.frostDeep, { opacity: 0.72, rim: 0.5,  glow: 0.03 }),
+  // Accents
+  coral:     flat(C.coral,     { opacity: 0.9,  rim: 0.8,  rimColor: C.coralDeep, glow: 0.12 }),
+  mint:      flat(C.mint,      { opacity: 0.88, rim: 0.75, rimColor: C.mint,      glow: 0.10 }),
+  powder:    flat(C.powder,    { opacity: 0.85, rim: 0.65, glow: 0.07 }),
+  lilac:     flat(C.lilac,     { opacity: 0.85, rim: 0.65, glow: 0.07 }),
+};
+
+const world = new THREE.Group();
+scene.add(world);
+
+/* ---------------------------------------------------------------- */
+/* Ambient motes — the bridge to the particle take that follows.      */
+/* ---------------------------------------------------------------- */
+/* A drifting field of soft points, tinted across the accent colours, so this
+   opening already belongs to the same world as the biology section instead of
+   handing off to a different visual language. It is one Points draw call, so
+   it costs essentially nothing. */
+const motes = (() => {
+  const COUNT = 380;
+  const pos = new Float32Array(COUNT * 3);
+  const col = new Float32Array(COUNT * 3);
+  const seed = new Float32Array(COUNT);
+  const tints = [new THREE.Color(C.powder), new THREE.Color(C.mint), new THREE.Color(C.coral), new THREE.Color(C.lilac)];
+
+  // Deterministic layout: the field must be identical on every load, so a
+  // screenshot or a scrub-back always shows the same sky.
+  let s = 987654321;
+  const rnd = () => ((s = (Math.imul(s, 1664525) + 1013904223) >>> 0) / 4294967296);
+
+  for (let i = 0; i < COUNT; i++) {
+    // Pushed well behind the architecture so motes read as distant air, not
+    // snow falling in front of the buildings.
+    pos[i * 3]     = (rnd() - 0.5) * 40;
+    pos[i * 3 + 1] = (rnd() - 0.5) * 20 + 2.0;
+    pos[i * 3 + 2] = -8 - rnd() * 22;
+    seed[i] = rnd();
+    // Bias the palette: mostly cool, a few warm motes for life.
+    const r = rnd();
+    const tint = r < 0.5 ? tints[0] : r < 0.78 ? tints[1] : r < 0.93 ? tints[3] : tints[2];
+    col[i * 3] = tint.r; col[i * 3 + 1] = tint.g; col[i * 3 + 2] = tint.b;
+  }
+
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+
+  const m = new THREE.ShaderMaterial({
+    // uSize is small and the falloff is soft, so these are faint points of
+    // light in deep air rather than visible discs.
+    uniforms: { uTime: { value: 0 }, uSize: { value: 1.7 } },
+    vertexShader: `
+      attribute float aSeed;
+      uniform float uTime, uSize;
+      varying vec3 vColor;
+      varying float vAlpha;
+      void main() {
+        vColor = color;
+        vec3 p = position;
+        // Slow vertical drift plus a shallow sway; seeded so no two motes
+        // move in lockstep.
+        p.y += sin(uTime * 0.12 + aSeed * 40.0) * 0.9;
+        p.x += sin(uTime * 0.07 + aSeed * 27.0) * 0.5;
+        vec4 mv = modelViewMatrix * vec4(p, 1.0);
+        gl_Position = projectionMatrix * mv;
+        gl_PointSize = uSize * (300.0 / -mv.z);
+        vAlpha = 0.15 + 0.5 * (0.5 + 0.5 * sin(uTime * 0.5 + aSeed * 60.0));
+      }`,
+    fragmentShader: `
+      varying vec3 vColor;
+      varying float vAlpha;
+      void main() {
+        // Round, soft-edged dot: no texture needed.
+        vec2 d = gl_PointCoord - 0.5;
+        float r = length(d);
+        if (r > 0.5) discard;
+        float a = smoothstep(0.5, 0.0, r) * vAlpha;
+        gl_FragColor = vec4(vColor, a * 0.45);
+      }`,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexColors: true,
+  });
+
+  const points = new THREE.Points(g, m);
+  points.frustumCulled = false;
+  points.name = 'motes';
+  return { points, material: m };
+})();
+scene.add(motes.points);
+
+/* ---------------------------------------------------------------- */
+/* Disassembly: the familiar comes apart, then reassembles as         */
+/* something else. Every block is driven purely by progress, so the   */
+/* whole sequence rewinds exactly when scrubbing backwards.           */
+/* ---------------------------------------------------------------- */
+const blocks = [];
+
+/* Register one architecture piece.
+   rest        — position while the world is still familiar
+   scattered   — where it drifts when the world comes apart
+   reassembled — where it lands afterwards (the new, less familiar order) */
+function registerBlock(mesh, { id, rest, scattered, reassembled, spin = 1 }) {
+  blocks.push({
+    id,
+    mesh,
+    rest: new THREE.Vector3(...rest),
+    scattered: new THREE.Vector3(...scattered),
+    reassembled: new THREE.Vector3(...reassembled),
+    restRot: mesh.rotation.clone(),
+    spin,
+  });
+}
+
+/* Each station owns a window: [apart] ramps rest -> scattered, then [settle]
+   eases scattered -> reassembled. Reading the same p twice gives the same
+   frame, so the sequence is fully reversible. */
+const STATION_WINDOWS = {
+  home:   { apart: [-0.86, -0.79], settle: [-0.79, -0.72] },
+  bridge: { apart: [-0.64, -0.57], settle: [-0.57, -0.50] },
+  road:   { apart: [-0.42, -0.35], settle: [-0.35, -0.28] },
+};
+
+function applyDisassembly(p) {
+  for (const b of blocks) {
+    const w = STATION_WINDOWS[b.id];
+    const apart = smooth(ramp(p, ...w.apart));
+    const settle = smooth(ramp(p, ...w.settle));
+    b.mesh.position.copy(b.rest).lerp(b.scattered, apart).lerp(b.reassembled, settle);
+    // Drift-and-turn while airborne; settles into a (new) upright pose.
+    const air = apart * (1 - settle);
+    b.mesh.rotation.set(
+      b.restRot.x + b.spin * air * 1.4,
+      b.restRot.y + b.spin * air * 0.9,
+      b.restRot.z + b.spin * air * 1.1
+    );
+  }
+}
+
+/* Add a box by center + size. */
+function box(parent, mat, cx, cy, cz, sx, sy, sz) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(sx, sy, sz), mat);
+  m.position.set(cx, cy, cz);
+  parent.add(m);
+  return m;
+}
+
+/* A flight of stairs climbing +y while stepping along +x or +z. */
+function stairs(parent, mat, from, to, count, width) {
+  const [x0, y0, z0] = from, [x1, y1, z1] = to;
+  for (let i = 0; i < count; i++) {
+    const t = i / count;
+    const x = x0 + (x1 - x0) * t, z = z0 + (z1 - z0) * t;
+    const y = y0 + (y1 - y0) * t;
+    const stepH = (y1 - y0) / count;
+    box(parent, mat, x, y + stepH / 2, z, width, stepH, width);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Ground: layered sandstone terraces over water                     */
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
+/* Volume light shafts (tyndall beams)                               */
+/* ---------------------------------------------------------------- */
+/* An open-ended cone with a soft falloff. Additive, depth-write off, so the
+   beams glow through the scene and read as haze rather than glass. Four of
+   these cost far less than a raymarched pass and need no render target. */
+function createShaft({ x, z, radius, height, tilt, tint }) {
+  const geo = new THREE.CylinderGeometry(radius * 0.35, radius, height, 20, 1, true);
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:   { value: 0 },
+      uScroll: { value: 0 },
+      uColor:  { value: new THREE.Color(tint) },
+      uOpacity:{ value: 0.5 },
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      varying vec3 vViewDir;
+      void main() {
+        vUv = uv;
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        vViewDir = normalize(-mv.xyz);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform float uTime, uScroll, uOpacity;
+      uniform vec3 uColor;
+      varying vec2 vUv;
+      varying vec3 vViewDir;
+      void main() {
+        // Fade along the beam and toward its edges, so the silhouette is soft.
+        float along = smoothstep(0.0, 0.35, vUv.y) * (1.0 - smoothstep(0.5, 1.0, vUv.y));
+        float edge = smoothstep(0.0, 0.45, abs(vUv.x - 0.5) * 2.0);
+        edge = 1.0 - edge;
+        // Slow vertical bands drifting upward: dust catching the light.
+        float bands = 0.75 + 0.25 * sin(vUv.y * 9.0 - uScroll * 6.0);
+        float dust = 0.85 + 0.15 * sin(vUv.y * 31.0 + uTime * 0.35) * sin(vUv.x * 17.0 - uTime * 0.2);
+        float a = along * edge * bands * dust * uOpacity;
+        // Graze-angle extinction keeps the beam from looking like a solid tube.
+        a *= 0.45 + 0.55 * (1.0 - abs(dot(normalize(vViewDir), vec3(0.0, 1.0, 0.0))));
+        gl_FragColor = vec4(uColor * a, a);
+      }`,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    side: THREE.DoubleSide,
+  });
+  const beam = new THREE.Mesh(geo, mat);
+  beam.position.set(x, 0, z);
+  beam.rotation.z = tilt;
+  beam.renderOrder = 3;
+  return beam;
+}
+
+function addShaft(scene, opts) {
+  const beam = createShaft(opts);
+  scene.add(beam);
+  shafts.push(beam);
+  return beam;
+}
+
+// Light falls from upper-left across the three stations.
+// Wider, shallower angle, more diffuse — background atmosphere, not beams.
+addShaft(world, { x: -2.0, z: -6.0, radius: 5.0, height: 18, tilt:  0.55, tint: 0xffe6c2 });
+addShaft(world, { x:  4.0, z: -5.0, radius: 5.5, height: 20, tilt:  0.42, tint: 0xfff0d6 });
+addShaft(world, { x:  8.0, z: -7.0, radius: 4.0, height: 16, tilt:  0.60, tint: 0xffe6c2 });
+
+/* Water is a pool hugging the architecture, not a full-screen plane: the page
+   background stays near-black so this opening sits in the same darkness as the
+   particle take that follows it. The plane is large and its edges are faded by
+   a radial alpha ramp, so it never shows a hard rectangular border. */
+const waterGroup = new THREE.Group();
+waterGroup.position.set(0.5, -1.9, 0);
+scene.add(waterGroup);
+
+const waterMat = new THREE.MeshLambertMaterial({
+  color: C.water, transparent: true, opacity: 0.92,
+});
+// Fade the outer edge instead of ending on a straight line.
+waterMat.onBeforeCompile = shader => {
+  shader.vertexShader = 'varying vec3 vWaterPos;\n' + shader.vertexShader.replace(
+    '#include <begin_vertex>',
+    '#include <begin_vertex>\n vWaterPos = position;'
+  );
+  shader.fragmentShader = 'varying vec3 vWaterPos;\n' + shader.fragmentShader.replace(
+    '#include <dithering_fragment>',
+    `#include <dithering_fragment>
+     // Elliptical falloff: solid where the stations are, gone by the rim.
+     float d = length(vec2(vWaterPos.x / 17.0, vWaterPos.y / 12.0));
+     gl_FragColor.a *= 1.0 - smoothstep(0.45, 1.0, d);`
+  );
+};
+const water = new THREE.Mesh(new THREE.PlaneGeometry(34, 24, 1, 1), waterMat);
+water.rotation.x = -Math.PI / 2;
+waterGroup.add(water);
+
+// A darker floor one step below reads as depth without a reflection pass.
+const waterDepth = new THREE.Mesh(
+  new THREE.PlaneGeometry(34, 24, 1, 1),
+  new THREE.MeshBasicMaterial({ color: C.waterDeep, transparent: true, opacity: 0.9 })
+);
+waterDepth.rotation.x = -Math.PI / 2;
+waterDepth.position.y = -0.6;
+waterGroup.add(waterDepth);
+
+/* A soft rim under each built platform: a slightly larger, darker plate just
+   below the waterline. Without it the stations read as floating slabs. */
+function waterline(center, size) {
+  const [cx, cz] = center;
+  const rim = new THREE.Mesh(
+    new THREE.PlaneGeometry(size[0] * 1.5, size[1] * 1.5),
+    new THREE.MeshBasicMaterial({ color: C.waterDeep, transparent: true, opacity: 0.45, depthWrite: false })
+  );
+  rim.rotation.x = -Math.PI / 2;
+  rim.position.set(cx, 0.04, cz);
+  return rim;
+}
+waterGroup.add(waterline([-5.4, -1.3], [2.7, 2.7]));
+waterGroup.add(waterline([0, 0.4], [4.8, 2.5]));
+waterGroup.add(waterline([5.2, 1.1], [3.0, 2.7]));
+
+/* ---------------------------------------------------------------- */
+/* The three stations.                                                */
+/*                                                                    */
+/* They are deliberately NOT on one line: each sits at a different     */
+/* depth so the composition layers instead of reading as a shelf of    */
+/* models. Plinth sizes differ too, so no two read as the same object. */
+/* ---------------------------------------------------------------- */
+
+/* STATION 1 — Home. A doorway you should be able to walk through. */
+const stationHome = new THREE.Group();
+stationHome.position.set(-5.4, 0, -1.3);
+world.add(stationHome);
+
+box(stationHome, M.frostDeep, 0, -1.5, 0, 2.7, 0.8, 2.7);
+box(stationHome, M.frostMid,  0, -1.05, 0, 2.35, 0.1, 2.35);
+// Two slim jambs and a lintel leave a doorway you can actually see through.
+const jambL  = box(stationHome, M.frost, -0.72, 0.1, 0, 0.36, 2.2, 1.35);
+const jambR  = box(stationHome, M.frost,  0.72, 0.1, 0, 0.36, 2.2, 1.35);
+const lintel = box(stationHome, M.frost, 0, 1.36, 0, 1.80, 0.28, 1.35);
+// The cap sits on the jambs, so it travels with them. Named, not anonymous —
+// an unregistered cap left floating is exactly the bug this avoids.
+const homeBand = box(stationHome, M.mint, 0, 1.55, 0, 1.96, 0.11, 1.45);
+const homeRoof = box(stationHome, M.frostMid, 0, 1.71, 0, 1.24, 0.20, 1.16);
+stairs(stationHome, M.frostMid, [-1.55, -1.0, 0], [-0.35, -0.62, 0], 4, 1.25);
+
+/* STATION 2 — Meeting. Two banks and a crossing between them. */
+const stationBridge = new THREE.Group();
+stationBridge.position.set(0, 0, 0.4);
+world.add(stationBridge);
+
+// Two banks of different height: an asymmetric crossing reads better than a
+// mirrored one, and it gives the walker a step to take.
+box(stationBridge, M.frostDeep, -2.3, -1.5, 0, 2.0, 0.8, 2.4);
+box(stationBridge, M.frostMid,  -2.3, -1.05, 0, 1.7, 0.1, 2.1);
+box(stationBridge, M.frost,-2.3, -0.60, 0, 1.15, 0.80, 1.5);
+box(stationBridge, M.frostDeep,  2.3, -1.5, 0, 2.2, 0.8, 2.6);
+box(stationBridge, M.frostMid,   2.3, -1.05, 0, 1.9, 0.1, 2.3);
+box(stationBridge, M.frost, 2.3, -0.50, 0, 1.25, 0.90, 1.7);
+
+// Deck halves, so the crossing can come apart in the middle.
+const deckLeft  = box(stationBridge, M.frost, -0.85, -0.20, 0, 1.7, 0.15, 0.62);
+const deckRight = box(stationBridge, M.frost,  0.85, -0.20, 0, 1.7, 0.15, 0.62);
+
+// A stepped arch under the deck: cheaper than a curve mesh and more angular,
+// which suits the geometry everywhere else.
+const arch = new THREE.Group();
+arch.name = 'arch';
+for (let i = 0; i < 9; i++) {
+  const a = Math.PI * (i / 8);
+  const x = -1.0 * Math.cos(a), y = -0.95 + Math.sin(a) * 0.6;
+  box(arch, M.mint, x, y, 0, 0.26, 0.52, 0.62);
+}
+stationBridge.add(arch);
+
+/* STATION 3 — The way. A terraced climb with a thin road on top. */
+const stationRoad = new THREE.Group();
+stationRoad.position.set(5.2, 0, 1.1);
+world.add(stationRoad);
+
+box(stationRoad, M.frostDeep, 0, -1.6, 0, 3.0, 0.7, 2.7);
+box(stationRoad, M.frostMid,  0, -1.15, 0, 2.65, 0.1, 2.3);
+// Three terraces climbing away from the water.
+box(stationRoad, M.frost, -0.55, -0.78, 0, 1.45, 0.68, 1.7);
+box(stationRoad, M.frost,  0.30, -0.24, 0, 1.45, 0.60, 1.35);
+box(stationRoad, M.frost,  0.95, 0.26, 0, 1.05, 0.55, 1.0);
+stairs(stationRoad, M.frostMid, [-0.05, -0.42, 0], [0.68, -0.06, 0], 4, 1.1);
+// The thin road that will tilt out of the terraces.
+const roadMain   = box(stationRoad, M.powder, 0.80, 0.66, 0, 2.1, 0.13, 0.62);
+const roadBranch = box(stationRoad, M.powder, 1.45, 0.40, 0.65, 1.2, 0.13, 0.45);
+for (const z of [-0.36, 0.36]) box(stationRoad, M.mint, 0.80, 0.80, z, 2.1, 0.13, 0.05);
+// End pavilion: the thing at the end of the road that you never quite reach.
+const pav = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.45, 0.62, 8), M.frostMid);
+pav.position.set(2.05, 0.98, 0);
+stationRoad.add(pav);
+const pavCap = box(stationRoad, M.mint, 2.05, 1.34, 0, 0.82, 0.09, 0.82);
+
+/* ---------------------------------------------------------------- */
+/* Register every piece that moves.                                   */
+/*                                                                    */
+/* Anything left unregistered stays put while its neighbours leave —  */
+/* which reads as a glitch, not as design. So the caps are registered */
+/* alongside the columns they sit on.                                 */
+/* ---------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- */
+/* The household — small, specific objects of an older life.          */
+/*                                                                    */
+/* A handrail, a pill organiser, a framed photograph and a walking    */
+/* stick. These carry the "老年家庭" reading that abstract geometry    */
+/* alone cannot: the story is about an ordinary home losing its       */
+/* shape, so the props have to look lived in. All are built from      */
+/* primitives at roughly one-fifth the scale of a person.             */
+/* ---------------------------------------------------------------- */
+
+// A slim balustrade along a plinth edge: the thing hands run along.
+function handrail(parent, { x, y, z, length, axis = 'x', mat = M.powder }) {
+  const rail = new THREE.Mesh(new THREE.BoxGeometry(length, 0.05, 0.05), mat);
+  rail.position.set(x, y, z);
+  if (axis === 'z') rail.rotation.y = Math.PI / 2;
+  const posts = [];
+  const n = Math.max(2, Math.round(length / 0.5));
+  for (let i = 0; i <= n; i++) {
+    const t = i / n - 0.5;
+    const post = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.30, 0.04), mat);
+    if (axis === 'x') post.position.set(x + t * length, y - 0.17, z);
+    else post.position.set(x, y - 0.17, z + t * length);
+    posts.push(post);
+  }
+  parent.add(rail, ...posts);
+  return { rail, posts };
+}
+
+// Home: a handrail by the step, a framed photograph on the lintel, and a
+// walking stick leaning where someone left it.
+const homeRail = handrail(stationHome, { x: -1.0, y: -0.52, z: 0.72, length: 2.4 });
+const photo = (() => {
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.34, 0.05), M.coral);
+  frame.position.set(0, 1.52, 0.70);
+  const inner = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.24, 0.02), M.frost);
+  inner.position.set(0, 1.52, 0.735);
+  stationHome.add(frame, inner);
+  return { frame, inner };
+})();
+const stick = (() => {
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 1.05, 8), M.powder);
+  body.position.set(-1.15, -0.05, 0.62);
+  body.rotation.z = 0.16;
+  const handle = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.026, 6, 14, Math.PI), M.coral);
+  handle.position.set(-1.23, 0.47, 0.62);
+  handle.rotation.set(Math.PI / 2, 0, 0.16);
+  stationHome.add(body, handle);
+  return { body, handle };
+})();
+
+// Meeting: a pill organiser set down on the left bank, with its days showing.
+const pillbox = (() => {
+  const tray = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.07, 0.30), M.powder);
+  tray.position.set(-2.3, -0.12, 0.42);
+  const lids = [];
+  for (let i = 0; i < 4; i++) {
+    const lid = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.035, 0.24), M.coral);
+    lid.position.set(-2.3 + (i - 1.5) * 0.15, -0.075, 0.42);
+    lids.push(lid);
+  }
+  stationBridge.add(tray, ...lids);
+  return { tray, lids };
+})();
+
+// The way: a handrail down the terraces, and a bench facing the water.
+const roadRail = handrail(stationRoad, { x: 0.2, y: 0.12, z: 0.62, length: 2.6 });
+const bench = (() => {
+  const seat = new THREE.Mesh(new THREE.BoxGeometry(0.70, 0.06, 0.30), M.coral);
+  seat.position.set(-1.05, -0.30, 0.55);
+  const back = new THREE.Mesh(new THREE.BoxGeometry(0.70, 0.26, 0.05), M.coral);
+  back.position.set(-1.05, -0.16, 0.68);
+  const legs = [-0.28, 0.28].map(dx => {
+    const leg = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.22, 0.05), M.powder);
+    leg.position.set(-1.05 + dx, -0.42, 0.55);
+    return leg;
+  });
+  stationRoad.add(seat, back, ...legs);
+  return { seat, back, legs };
+})();
+
+// Home. The doorway is the image: the two jambs shift out of alignment and the
+// lintel rides up, so the opening no longer closes. Roughly one cell of
+// displacement — the impossible-geometry register, not an explosion.
+registerBlock(jambL,  { id: 'home', spin: 0.5,
+  rest: jambL.position.toArray(),  scattered: [-1.12, 0.30, 0.26], reassembled: [-0.90, -0.58, 0] });
+registerBlock(jambR,  { id: 'home', spin: -0.5,
+  rest: jambR.position.toArray(),  scattered: [ 1.08, 0.14, -0.26], reassembled: [ 1.00, -0.36, 0] });
+registerBlock(lintel, { id: 'home', spin: 0.35,
+  rest: lintel.position.toArray(), scattered: [ 0.30, 1.86, 0.50], reassembled: [-0.52, -0.08, 0] });
+registerBlock(homeBand, { id: 'home', spin: 0.3,
+  rest: homeBand.position.toArray(), scattered: [0.30, 2.05, 0.50], reassembled: [-0.52, 0.11, 0] });
+// The roof cap follows the band, so the crown stays a crown.
+registerBlock(homeRoof, { id: 'home', spin: 0.25,
+  rest: homeRoof.position.toArray(), scattered: [0.30, 2.21, 0.50], reassembled: [-0.52, 0.27, 0] });
+
+// Meeting. The two deck halves lift and settle out of plane, so the crossing
+// no longer meets in the middle, and the arch beneath it drops away.
+registerBlock(deckLeft,  { id: 'bridge', spin: 0.5,
+  rest: deckLeft.position.toArray(),  scattered: [-1.10, 0.40, 0.24], reassembled: [-0.95, -0.20, 0.28] });
+registerBlock(deckRight, { id: 'bridge', spin: -0.5,
+  rest: deckRight.position.toArray(), scattered: [ 1.10, 0.40, -0.24], reassembled: [ 0.95, -0.20, -0.28] });
+for (const piece of arch.children) {
+  registerBlock(piece, { id: 'bridge', spin: piece.position.x * 0.22,
+    rest: piece.position.toArray(),
+    scattered:   [piece.position.x * 1.30, piece.position.y + 0.30, piece.position.z],
+    reassembled: [piece.position.x * 1.05, -0.66, piece.position.z] });
+}
+
+// The way. The thin road tilts off the terraces and the branch drops a step,
+// so the route we knew no longer leads where it did.
+registerBlock(roadMain,   { id: 'road', spin: 0.4,
+  rest: roadMain.position.toArray(),   scattered: [0.30, 1.00, 0.16], reassembled: [0.26, 0.58, 0] });
+registerBlock(roadBranch, { id: 'road', spin: -0.45,
+  rest: roadBranch.position.toArray(), scattered: [1.80, 0.90, 0.90], reassembled: [1.68, -0.14, 0.72] });
+registerBlock(pav,        { id: 'road', spin: 0.3,
+  rest: pav.position.toArray(),        scattered: [2.48, 1.26, -0.38], reassembled: [2.20, 0.98, -0.22] });
+registerBlock(pavCap,     { id: 'road', spin: 0.25,
+  rest: pavCap.position.toArray(),     scattered: [2.48, 1.62, -0.38], reassembled: [2.20, 1.34, -0.22] });
+
+/* The household objects travel with the same beats: a photograph tips askew,
+   a stick slips, a pill tray spills a step. Small displacements — the point is
+   that familiar things end up in the wrong place, not that they explode. */
+registerBlock(photo.frame, { id: 'home', spin: 0.6,
+  rest: photo.frame.position.toArray(), scattered: [0.28, 1.74, 0.92], reassembled: [0.10, 1.30, 0.70] });
+registerBlock(photo.inner, { id: 'home', spin: 0.6,
+  rest: photo.inner.position.toArray(), scattered: [0.28, 1.74, 0.955], reassembled: [0.10, 1.30, 0.735] });
+registerBlock(stick.body, { id: 'home', spin: 1.1,
+  rest: stick.body.position.toArray(), scattered: [-1.62, 0.30, 0.95], reassembled: [-1.30, -0.42, 0.62] });
+registerBlock(stick.handle, { id: 'home', spin: 1.1,
+  rest: stick.handle.position.toArray(), scattered: [-1.70, 0.82, 0.95], reassembled: [-1.38, 0.10, 0.62] });
+
+registerBlock(pillbox.tray, { id: 'bridge', spin: -0.7,
+  rest: pillbox.tray.position.toArray(), scattered: [-2.62, 0.34, 0.62], reassembled: [-2.44, -0.30, 0.42] });
+for (const lid of pillbox.lids) {
+  registerBlock(lid, { id: 'bridge', spin: -1.2,
+    rest: lid.position.toArray(),
+    scattered: [lid.position.x * 1.25, lid.position.y + 0.42, lid.position.z + 0.22],
+    reassembled: [lid.position.x * 1.10, lid.position.y - 0.16, lid.position.z + 0.08] });
+}
+
+registerBlock(bench.seat, { id: 'road', spin: 0.5,
+  rest: bench.seat.position.toArray(), scattered: [-1.24, 0.10, 0.78], reassembled: [-1.12, -0.48, 0.55] });
+registerBlock(bench.back, { id: 'road', spin: 0.5,
+  rest: bench.back.position.toArray(), scattered: [-1.24, 0.24, 0.92], reassembled: [-1.12, -0.34, 0.68] });
+
+/* ---------------------------------------------------------------- */
+/* The walker — a hollow equilateral tetrahedron drawn as white edges */
+/* ---------------------------------------------------------------- */
+const walker = new THREE.Group();
+walker.name = 'walker';
+
+// A regular tetrahedron, rendered only as its edges so the solid reads as a
+// wireframe cage rather than a filled volume. The edges are unlit and slightly
+// bright, so the walker stays legible against the near-black background.
+const WALKER_R = 0.42;
+const tetraGeo = new THREE.TetrahedronGeometry(WALKER_R, 0);
+const tetraEdges = new THREE.LineSegments(
+  new THREE.EdgesGeometry(tetraGeo),
+  new THREE.LineBasicMaterial({ color: 0xFFFFFF, transparent: true, opacity: 1 })
+);
+// Orient so one edge is horizontal — that edge is the roll axis.
+tetraEdges.rotation.z = Math.atan(Math.sqrt(2));
+walker.add(tetraEdges);
+walker.userData.tetra = tetraEdges;
+world.add(walker);
+
+/* ---------------------------------------------------------------- */
+/* Path: home → meeting → the way, sampled from segment midpoints     */
+/* ---------------------------------------------------------------- */
+/* The walker's route, in world space. Each station sits at a different z, so
+   the path swings gently out of plane and the walk reads as travel rather
+   than a conveyor belt. The opening point is deliberately in open water,
+   clear of the Home plinth, so the walker is visible on the first frame. */
+const PATH = [
+  new THREE.Vector3(-7.6, -1.15,  0.2),   // in the open, before the door
+  new THREE.Vector3(-6.0, -1.05, -0.7),
+  new THREE.Vector3(-4.4, -0.95, -1.3),   // at the door
+  new THREE.Vector3(-3.3, -0.90, -0.9),
+  new THREE.Vector3(-2.3, -0.95,  0.4),   // left bank
+  new THREE.Vector3(-0.85, -0.20, 0.4),   // left deck
+  new THREE.Vector3( 0.85, -0.20, 0.4),   // right deck
+  new THREE.Vector3( 2.3, -0.95,  0.4),   // right bank
+  new THREE.Vector3( 4.0, -0.90,  1.1),
+  new THREE.Vector3( 5.4, -0.85,  1.1),   // foot of the terraces
+  new THREE.Vector3( 6.4,  0.72,  1.1),   // end of the road
+];
+const curve = new THREE.CatmullRomCurve3(PATH, false, 'centripetal');
+
+/* ---------------------------------------------------------------- */
+/* Disassembly: the familiar comes apart, then reassembles as         */
+/* something else. Every block is driven purely by progress, so the   */
+/* whole sequence rewinds exactly when scrubbing backwards.           */
+/* ---------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- */
+/* Arc-length table so the walker holds a steady pace                 */
+/* ---------------------------------------------------------------- */
+const SAMPLES = 512;
+const cum = [0];
+let prev = curve.getPoint(0);
+for (let i = 1; i <= SAMPLES; i++) {
+  const pt = curve.getPoint(i / SAMPLES);
+  cum.push(cum[i - 1] + pt.distanceTo(prev));
+  prev = pt;
+}
+const totalLength = cum[SAMPLES];
+function tAtArc(fraction) {
+  const target = Math.max(0, Math.min(1, fraction)) * totalLength;
+  let lo = 0, hi = SAMPLES;
+  while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (cum[mid] < target) lo = mid; else hi = mid; }
+  const seg = cum[hi] - cum[lo] || 1;
+  return (lo + (target - cum[lo]) / seg) / SAMPLES;
+}
+// Journey progress -> arc fraction. Opens with a still beat, then walks.
+const arcAt = p => smooth(ramp(p, -1, -0.38));
+
+const pos = new THREE.Vector3(), tan = new THREE.Vector3(), ahead = new THREE.Vector3();
+// Edge length of a circumradius-0.28 tetrahedron; sets the roll step.
+const EDGE = 0.28 * Math.sqrt(8 / 3);
+function updateWalker(p) {
+  const f = arcAt(p);
+  const t = tAtArc(f);
+  curve.getPoint(t, pos);
+  curve.getTangent(t, tan);
+  walker.position.copy(pos);
+
+  // Face travel direction (flattened)
+  walker.rotation.y = Math.atan2(tan.x, tan.z) - Math.PI / 2;
+
+  // Rolling: the tetrahedron pivots about its leading edge. One full tumble per
+  // edge length travelled, so the roll is locked to distance and therefore
+  // identical when scrubbing backwards. No independent clock.
+  const tetra = walker.userData.tetra;
+  const travelled = f * totalLength;
+  const moving = f > 0.001 && f < 0.999 ? 1 : 0;
+  const roll = trailRoll(travelled / EDGE);
+  tetra.rotation.x = roll;
+  // The pivot raises the centre by the inradius at each quarter turn; this
+  // keeps the silhouette sitting on the path instead of sinking into it.
+  const lift = Math.abs(Math.sin(travelled / EDGE * Math.PI)) * 0.06 * moving;
+  walker.position.y += lift;
+}
+
+/* One tumble per edge. Each 120° step runs on a sine ease so the solid
+   settles onto its next face instead of rotating at a constant rate. */
+function trailRoll(steps) {
+  const whole = Math.floor(steps);
+  const frac = steps - whole;
+  const eased = frac - Math.sin(frac * 2 * Math.PI) / (2 * Math.PI);
+  return -(whole + eased) * (2 * Math.PI / 3);
+}
+
+/* ---------------------------------------------------------------- */
+/* Loop                                                              */
+/* ---------------------------------------------------------------- */
+function ramp(p, a, b) { return Math.min(1, Math.max(0, (p - a) / (b - a))); }
+function smooth(x) { return x * x * (3 - 2 * x); }
+
+let p = -1;
+const hud = document.getElementById('hud');
+const val = document.getElementById('val');
+const scrub = document.getElementById('scrub');
+
+function draw() {
+  applyDisassembly(p);
+  updateWalker(p);
+  placeCamera();
+  renderer.render(scene, cam);
+  hud.textContent = `p ${p.toFixed(3)}   arc ${arcAt(p).toFixed(3)}`;
+  val.textContent = p.toFixed(2);
+  scrub.value = String(Math.round(p * 100));
+}
+
+/* Caustics and shafts drift on their own clock. Scene state stays a pure
+   function of p, so scrubbing is still exact; only the light breathes. */
+let raf = 0, last = performance.now(), clockTime = 0;
+function frame(now) {
+  const dt = Math.min((now - last) / 1000, 0.05);
+  last = now; clockTime += dt;
+  for (const u of causticUniforms) u.value = clockTime;
+  motes.material.uniforms.uTime.value = clockTime;
+  for (const shaft of shafts) {
+    shaft.material.uniforms.uTime.value = clockTime;
+    // Dust motes ride a slow vertical drift so the beams read as hazy air.
+    shaft.material.uniforms.uScroll.value = clockTime * 0.04;
+  }
+  draw();
+  raf = requestAnimationFrame(frame);
+}
+raf = requestAnimationFrame(frame);
+
+scrub.addEventListener('input', () => { p = Number(scrub.value) / 100; });
+for (const b of document.querySelectorAll('[data-go]')) {
+  b.addEventListener('click', () => { p = Number(b.dataset.go); });
+}
+addEventListener('resize', resize);
+addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') p = Math.min(0.05, p + 0.01);
+  if (e.key === 'ArrowLeft')  p = Math.max(-1,   p - 0.01);
+});
+
+resize();
+
+// Perf probe: renderer.info is hardware independent, so these counts are
+// comparable across machines (unlike raw frame time under a software rasteriser).
+window.__mon = { renderer, scene, cam, get p() { return p; }, set p(v) { p = v; } };
+</script>
+</body>
+</html>
