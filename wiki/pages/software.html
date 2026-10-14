@@ -1,29 +1,66 @@
 {% extends "layout.html" %}
-{% from "macros.html" import evidence, markdown_panel, section_nav %}
-
+{% from "macros.html" import evidence %}
 {% block title %}{{ content.title }}{% endblock %}
-{% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
-{% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
-{% block lead %}{{ content.metadata.subtitle }}{% endblock %}
+{% block page_styles %}
+{% for stylesheet in ['model.css', 'model-typing.css', 'model-reading.css', 'model-navigation.css', 'model-entry.css', 'software-reading.css'] %}<link rel="stylesheet" href="{{ url_for('static', filename=stylesheet) }}">{% endfor %}
+{% endblock %}
+{% set sections = [
+  ('software-tools', 'Tools', [('software-tools-overview', 'Overview'), ('software-brain', 'Brain Delivery Model'), ('software-atlas', 'PUF-OffTarget Atlas')]),
+  ('handoff', 'Handoff', [('handoff-scan', 'Complete a scan'), ('handoff-panel', 'Download the panel'), ('handoff-evidence', 'Inspect the evidence'), ('handoff-twin', 'Load the digital twin')]),
+  ('reproduce', 'Reproduce', [('reproduce-records', 'Reproducibility'), ('reproduce-setup', 'Clone and activate'), ('reproduce-brain', 'Brain Delivery'), ('reproduce-atlas', 'Atlas')]),
+  ('guardrails', 'Guardrails', [('guardrails-provenance', 'Provenance'), ('guardrails-privacy', 'Privacy'), ('guardrails-labels', 'Honest labels'), ('guardrails-review', 'Human review')])
+] %}
+{% block main %}
+<main id="main-content" class="model-page software-page">
+  <header class="model-overview" id="model-overview">
+    <div class="model-introduction">
+      <div class="model-introduction-copy">
+        <h1 class="model-typed-title" aria-label="{{ content.title }}.">{% for letter in content.title ~ '.' %}<span class="typed-glyph" aria-hidden="true" style="--letter:{{ loop.index0 }}">{{ letter }}</span>{% endfor %}<i class="typing-caret" aria-hidden="true">|</i></h1>
+      </div>
+      <figure class="model-character">{% include 'components/model/typing-hero.html' %}</figure>
+    </div>
+  </header>
+  <div class="model-layout">
+    <aside class="model-sidebar" inert>
+      <nav aria-label="Software sections">
+        {% for section_id, title, chapters in sections %}
+        <div class="module-nav-group">
+          <button type="button" data-module-link data-module="{{ section_id }}" aria-expanded="false" aria-controls="software-subnav-{{ loop.index }}"><span class="module-nav-label">{{ title }}</span></button>
+          <div class="module-subnav" id="software-subnav-{{ loop.index }}" hidden>
+            {% for chapter_id, chapter_title in chapters %}<a href="#{{ chapter_id }}" data-chapter-link>{{ chapter_title }}</a>{% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </nav>
+    </aside>
+    <div class="model-reading">
+      <section class="model-module software-introduction" id="software-content">
+        <header class="module-heading"><span class="module-number">00</span><div><p class="model-eyebrow">{{ content.metadata.eyebrow }}</p><h2>{{ content.metadata.get('heading', content.title) }}</h2></div></header>
+        <div class="model-prose"><p>{{ content.metadata.subtitle }}</p></div>
+      </section>
+      <section class="model-module" id="software-tools" data-model-module><div class="model-prose"><article class="markdown-content markdown-content--custom" id="software-tools-overview" data-model-chapter data-content-source="{{ content.source_label }}">{{ rendered_markdown }}</article><div class="software-tools"><article class="software-tool" id="software-brain" data-model-chapter><span class="software-label">TOOL 01</span><h3>Brain Delivery Model</h3><p>Forward simulation, candidate-panel aggregation and comparative design screening.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4">Browse public source →</a></article><article class="software-tool" id="software-atlas" data-model-chapter><span class="software-label">TOOL 02</span><h3>PUF-OffTarget Atlas</h3><p>Transcriptome scans, candidate inspection and downloadable reports.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/puf-offtarget-atlas">Browse public source →</a></article></div>{{ evidence('Implemented software · source linked above', 'The commands below reproduce the setup from a standalone clone. Full reference datasets and optional RNAplfold are separate inputs whose versions must be recorded.', 'software') }}</div></section>
 
-{% block page_content %}
-{{ section_nav([('tools', 'Tools'), ('handoff', 'Handoff'), ('reproduce', 'Reproduce'), ('guardrails', 'Guardrails')]) }}
-{{ markdown_panel(content, rendered_markdown) }}
-<section class="content-section shell"><div class="app-grid"><article class="app-panel app-panel--brain reveal"><span>TOOL 01</span><h2>Brain Delivery Model</h2><p>Forward simulation, candidate-panel aggregation and comparative design screening.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4">Browse public source →</a></article><article class="app-panel app-panel--atlas reveal"><span>TOOL 02</span><h2>PUF-OffTarget Atlas</h2><p>Transcriptome scans, candidate inspection and downloadable reports.</p><a class="text-link" href="https://github.com/XiaobxTim/iGEM/tree/main/puf-offtarget-atlas">Browse public source →</a></article></div>{{ evidence('Implemented software · source linked above', 'The commands below reproduce the setup from a standalone clone. Full reference datasets and optional RNAplfold are separate inputs whose versions must be recorded.', 'software') }}</section>
+      <section class="model-module" id="handoff" data-model-module><header class="module-heading"><div><p class="model-eyebrow">Manual by design</p><h2>The CSV is the interface.</h2></div></header><div class="model-prose software-steps"><article id="handoff-scan" data-model-chapter><b class="software-step-number">01</b><h3>Complete a scan</h3><p>Run the Atlas with recorded transcriptome, tissue and scoring settings.</p></article><article id="handoff-panel" data-model-chapter><b class="software-step-number">02</b><h3>Download the panel</h3><p>Keep the CSV with its metadata and warnings.</p></article><article id="handoff-evidence" data-model-chapter><b class="software-step-number">03</b><h3>Inspect the evidence</h3><p>Review candidate rows and missing components before transfer.</p></article><article id="handoff-twin" data-model-chapter><b class="software-step-number">04</b><h3>Load the digital twin</h3><p>Validate fields, aggregate the panel and compare simulated designs.</p></article></div></section>
 
-<section class="ink-section" id="handoff"><div class="shell"><p class="section-kicker section-kicker--light">Manual by design</p><h2>The CSV is the interface.</h2><div class="handoff-steps"><article><b>01</b><h3>Complete a scan</h3><p>Run the Atlas with recorded transcriptome, tissue and scoring settings.</p></article><article><b>02</b><h3>Download the panel</h3><p>Keep the CSV with its metadata and warnings.</p></article><article><b>03</b><h3>Inspect the evidence</h3><p>Review candidate rows and missing components before transfer.</p></article><article><b>04</b><h3>Load the digital twin</h3><p>Validate fields, aggregate the panel and compare simulated designs.</p></article></div></div></section>
-
-<section class="content-section shell" id="reproduce"><div class="editorial-split"><div><p class="section-kicker">Reproducibility</p><h2>Start from one public source snapshot.</h2></div><div><ul class="check-list"><li>Record the Git commit and data versions.</li><li>Archive resolved parameters and input checksums.</li><li>Keep warnings beside outputs.</li><li>Distinguish missing evidence from zero.</li><li>Re-run automated tests before reporting.</li><li>Describe hardware and runtime for large scans.</li></ul></div></div>
-  <div class="code-panel reveal"><span>CLONE AND ACTIVATE</span><pre><code>git clone https://github.com/XiaobxTim/iGEM.git
+      <section class="model-module" id="reproduce" data-model-module><header class="module-heading" id="reproduce-records" data-model-chapter><div><p class="model-eyebrow">Reproducibility</p><h2>Start from one public source snapshot.</h2></div></header><div class="model-prose"><ul class="check-list"><li>Record the Git commit and data versions.</li><li>Archive resolved parameters and input checksums.</li><li>Keep warnings beside outputs.</li><li>Distinguish missing evidence from zero.</li><li>Re-run automated tests before reporting.</li><li>Describe hardware and runtime for large scans.</li></ul>
+  <section class="software-command" id="reproduce-setup" data-model-chapter><h3 class="software-label">CLONE AND ACTIVATE</h3><pre><code>git clone https://github.com/XiaobxTim/iGEM.git
 cd iGEM
-conda activate xbx_env</code></pre></div>
-  <div class="app-grid code-grid"><article class="app-panel app-panel--brain"><span>BRAIN DELIVERY · FROM REPOSITORY ROOT</span><pre><code>cd brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4
+conda activate xbx_env</code></pre></section>
+  <section class="software-command" id="reproduce-brain" data-model-chapter><h3 class="software-label">BRAIN DELIVERY · FROM REPOSITORY ROOT</h3><pre><code>cd brain_delivery_model/XiaobxTim-iGEM-REWIRE-iterated-v4
 python -m pip install -r requirements.txt
-python run_brain_app.py</code></pre></article><article class="app-panel app-panel--atlas"><span>ATLAS · FROM REPOSITORY ROOT</span><pre><code>cd puf-offtarget-atlas
+python run_brain_app.py</code></pre></section><section class="software-command" id="reproduce-atlas" data-model-chapter><h3 class="software-label">ATLAS · FROM REPOSITORY ROOT</h3><pre><code>cd puf-offtarget-atlas
 python -m pip install -e ".[dev]"
-pufscan web</code></pre></article></div>
+pufscan web</code></pre></section>
   <p class="note">Before an Atlas scan, supply the licensed/approved GENCODE FASTA and GTF plus any optional expression matrix; record paths, versions and checksums in run metadata. RNA accessibility additionally requires a reviewed RNAplfold installation.</p>
-</section>
+</div></section>
 
-<section class="content-section shell" id="guardrails"><p class="section-kicker">Scientific guardrails</p><h2>What software documentation must preserve.</h2><div class="limit-grid"><article><h3>Provenance</h3><p>Every figure and claim points back to a run, configuration or source.</p></article><article><h3>Privacy</h3><p>No credentials, personal data or confidential third-party material enters the repository.</p></article><article><h3>Honest labels</h3><p>Simulation, heuristic prioritization and experiment remain visually distinct.</p></article><article><h3>Human review</h3><p>The team must understand and approve every published claim and citation.</p></article></div></section>
+      <section class="model-module" id="guardrails" data-model-module><header class="module-heading"><div><p class="model-eyebrow">Scientific guardrails</p><h2>What software documentation must preserve.</h2></div></header><div class="model-prose software-guardrails"><article id="guardrails-provenance" data-model-chapter><h3>Provenance</h3><p>Every figure and claim points back to a run, configuration or source.</p></article><article id="guardrails-privacy" data-model-chapter><h3>Privacy</h3><p>No credentials, personal data or confidential third-party material enters the repository.</p></article><article id="guardrails-labels" data-model-chapter><h3>Honest labels</h3><p>Simulation, heuristic prioritization and experiment remain visually distinct.</p></article><article id="guardrails-review" data-model-chapter><h3>Human review</h3><p>The team must understand and approve every published claim and citation.</p></article></div></section>
+    </div>
+  </div>
+  {% include 'components/model/back-to-top.html' %}
+</main>
+{% endblock %}
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='model.js') }}" defer></script>
+<script src="{{ url_for('static', filename='model-typing.js') }}" defer></script>
 {% endblock %}

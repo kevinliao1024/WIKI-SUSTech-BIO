@@ -1,0 +1,2 @@
+shared_sites,median_PUF12_minus_PUF10_pp,PUF12_higher_sites,PUF12_lower_sites,equal_sites,PUF12_higher_fraction,descriptive_spearman,descriptive_pearson,selection,sample_pairing,p_value
+2221,3.016457964999999,1624,597,0,0.7312021611886538,0.7231986594289833,0.703836399998637,intersection of two frozen positive-site lists,none; original four-replicate medians linked by genomic allele key,not computed

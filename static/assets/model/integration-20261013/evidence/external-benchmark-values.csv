@@ -1,0 +1,34 @@
+ruler,metric,value,unit,qualifier,doi,source_url,assay_context
+R-1,WT_BE3 replicate 1,91951,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,WT_BE3 replicate 2,192088,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,WT_BE3 replicate 3,90509,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A replicate 1,236,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A replicate 2,377,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A replicate 3,197,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A_K34A replicate 1,24,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A_K34A replicate 2,26,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_R33A_K34A replicate 3,7,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_E63Q replicate 1,15,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-1,BE3_E63Q replicate 2,9,RNA C-to-U site count,reported,10.1038/s41586-019-1161-z,https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/,HEK293T RNF2 high-expression population; Extended Data Table1
+R-2 LEAPER,arRNA151_PPIB endogenous PPIB editing,37,percent,approximately,10.1038/s41587-019-0178-z,https://weilab.pku.edu.cn/docs/20190916155718828552.pdf,matched transcriptome experiment Fig4
+R-2 LEAPER,arRNA151_PPIB potential off-targets,5,sites,reported candidate count,10.1038/s41587-019-0178-z,https://weilab.pku.edu.cn/docs/20190916155718828552.pdf,not all established sequence-dependent events
+R-2 LEAPER,Ctrl_RNA151 potential off-targets,6,sites,reported candidate count,10.1038/s41587-019-0178-z,https://weilab.pku.edu.cn/docs/20190916155718828552.pdf,not all established sequence-dependent events
+R-2 LEAPER,PPIB targeted-assay editing,50,percent,approximately,10.1038/s41587-019-0178-z,https://weilab.pku.edu.cn/docs/20190916155718828552.pdf,Fig3b; separate assay from matched transcriptome Fig4
+R-2 RESCUE,RESCUE Gluc reporter editing,80,percent,approximately,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,RESCUE C-to-U off-targets,188,sites,reported,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,RESCUE A-to-I off-targets,1695,sites,reported,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,RESCUE_S Gluc reporter editing,76,percent,approximately,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,RESCUE_S C-to-U off-targets,103,sites,reported,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,RESCUE_S A-to-I off-targets,139,sites,reported,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,Fig4; reporter rates are not endogenous-site efficiency
+R-2 RESCUE,survey maximum editing,42,percent,up to,10.1126/science.aax7063,https://pmc.ncbi.nlm.nih.gov/articles/PMC6956565/,survey combines endogenous and synthetic targets; no specific endogenous maximum assigned
+R-2 AIMer,endogenous ACTB editing,50,percent,up to,10.1038/s41587-022-01225-1,https://pubmed.ncbi.nlm.nih.gov/35256816/,nonhuman-primate liver; transcriptome off-target total unverified
+R-4,SNP4 reporter discrimination,20,fold,approximately,10.1038/s41467-022-33061-x,https://www.nature.com/articles/s41467-022-33061-x,HTT reporter/cell assays; not a universal threshold
+R-4,SNP6 reporter discrimination,7,fold,approximately,10.1038/s41467-022-33061-x,https://www.nature.com/articles/s41467-022-33061-x,HTT reporter/cell assays; not a universal threshold
+R-4,SNP4 target IC50,38,nM,approximately,10.1038/s41467-022-33061-x,https://www.nature.com/articles/s41467-022-33061-x,HTT reporter/cell assays; not a universal threshold
+R-4,SNP6 target IC50,24,nM,approximately,10.1038/s41467-022-33061-x,https://www.nature.com/articles/s41467-022-33061-x,HTT reporter/cell assays; not a universal threshold
+R-4,optimized selectivity,50,fold,greater than,10.1038/s41467-022-33061-x,https://www.nature.com/articles/s41467-022-33061-x,HTT reporter/cell assays; not a universal threshold
+R-5,2017 REDIportal events,4500000,catalog sites,greater than,10.1093/nar/gkw767,https://pubmed.ncbi.nlm.nih.gov/27587585/,union across human samples
+R-5,body sites,55,body sites,reported,10.1093/nar/gkw767,https://pubmed.ncbi.nlm.nih.gov/27587585/,2017 release
+R-5,2025 REDIportal sites,16000000,putative catalog sites,approximately,10.1093/nar/gkae1083,https://pubmed.ncbi.nlm.nih.gov/39588754/,release-specific union
+R-5,selected Alu majority editing,1,percent transcripts,less than,10.1101/gr.164749.113,https://pmc.ncbi.nlm.nih.gov/articles/PMC3941102/,selected Alu ultradeep sequencing
+R-5,selected Alu median editing,0.475,percent transcripts,reported,10.1101/gr.164749.113,https://pmc.ncbi.nlm.nih.gov/articles/PMC3941102/,selected Alu ultradeep sequencing

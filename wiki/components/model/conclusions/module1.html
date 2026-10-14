@@ -1,0 +1,20 @@
+<div class="model-conclusion-addition" id="module1-synthesis" data-model-conclusion-addition>
+  <h4>Recognition variants show different editing profiles</h4>
+  <p data-claim="S-A">Under the common screening procedure, PUF12 retained 12,908 candidate sites compared with 2,774 for PUF10. Their respective retained-set median rates were 13.99% and 12.75%. The longer recognition construct therefore accompanied a broader detected profile.</p>
+  <p data-claim="S-A">Target signal and candidate-site breadth provide separate endpoints for assessing recognition and catalytic designs. Their joint interpretation accounts for the measured behaviour of the complete editor configuration.</p>
+  <h4>Shared-site rates clarify the count comparison</h4>
+  <p data-claim="I-SA">Among 2,221 jointly retained sites, PUF12 had a higher reported rate at 73.1%, with a median within-site increase of 3.02 percentage points. This comparison links rates at the same genomic allele keys within the jointly retained subset.</p>
+  <figure id="model-figure-8" data-model-integrated-figure="shared_PUF10_PUF12_rates" data-claim="I-SA">
+    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure@2x.png') }}" width="1920" height="1200" alt="PUF12 and PUF10 reported rates correlate among jointly retained sites; the median within-site difference is positive for PUF12.">
+    <figcaption><strong>Figure 8.</strong> Editing rates at 2,221 sites retained by both PUF10 and PUF12. Each rate is a four-replicate median; hexagons show site counts and the dashed line marks equality. Δ is PUF12 minus PUF10 in percentage points.</figcaption>
+  </figure>
+  <p data-claim="I-SB">Smaller candidate sets also accompanied weaker shared-site rates. For 132D, all 195 sites shared with PUF12 had a lower rate, with a median difference of −18.86 percentage points. Figure 9 re-expresses the Figure 3 counts relative to PUF12, alongside rate differences within each editor’s own intersection.</p>
+  <figure id="model-figure-9" data-model-integrated-figure="selected_count_and_shared_rate_changes" data-claim="I-SB">
+    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure@2x.png') }}" width="1920" height="1043" alt="Groups with fewer selected sites than PUF12 also have lower median rates within their shared positive-site subsets; E72A has no rate estimate.">
+    <figcaption><strong>Figure 9.</strong> Retained-site counts as a percentage of PUF12 (left) and median group-minus-PUF12 rate differences among pairwise shared sites, in percentage points (right). n denotes shared sites; E72A’s rate comparison is NA.</figcaption>
+  </figure>
+  <h4>Retaining target signal while narrowing the profile</h4>
+  <p data-literature="L-G L-Z">APOBEC-containing DNA base-editor studies reported reduced RNA off-target editing alongside retained DNA on-target activity (Grünewald et al., 2019; Zhou et al., 2019). They place control of unwanted RNA editing within an established engineering objective.</p>
+  <p data-claim="T-A">GVE retained 383 candidate sites, approximately 97.0% fewer than PUF12, alongside an apparent C388 signal of 64.98%. This combination makes GVE a lead for evaluating a narrower editing profile with retained target signal in HEK293T. Together with SNE’s higher apparent C388 profile, it defines complementary starting points for recognition-domain selection.</p>
+  <p data-literature="I-LG">Within the BE3 study, wild-type constructs produced 90,509–192,088 RNA C-to-U sites, while BE3-R33A/K34A produced 7–26 (Grünewald et al., 2019). This within-study reduction provides a precedent for engineering RNA specificity. ORCA addresses that objective through joint measurement of target signal and candidate profiles.</p>
+</div>

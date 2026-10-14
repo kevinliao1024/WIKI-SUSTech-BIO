@@ -1,0 +1,58 @@
+{
+  "template_version": "orca-data-1.1",
+  "font": "Futura",
+  "cjk_font": "Arial Unicode MS",
+  "notes": [],
+  "runtime": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.8",
+    "numpy": "2.5.3"
+  },
+  "export": {
+    "width_in": 10.0,
+    "height_in": 6.25,
+    "dpi": 192.0,
+    "display_width_px": 960,
+    "svg_text": "paths",
+    "pdf_fonttype": 42
+  },
+  "provenance": {
+    "sources": [
+      {
+        "file": "source-data/Current6/source/PUF10_positive.tsv",
+        "sha256": "afb882fc0e8f151047a6557880e64aa6fe4e6003d0f8cf597b45cade737966cf",
+        "rows": 2774
+      },
+      {
+        "file": "source-data/Current6/source/PUF12_positive.tsv",
+        "sha256": "759efefd9de6ed38e8a7679c4fdbcc20e9735e655be317e7f0b93a990a426314",
+        "rows": 12908
+      },
+      {
+        "file": "source-data/Current6/source/132D_positive.tsv",
+        "sha256": "cc24566ca73bbe1d6aab60e1090a0bb635a2ccb58198bb77e31e674dae34b370",
+        "rows": 197
+      },
+      {
+        "file": "source-data/Current6/source/E72A_positive.tsv",
+        "sha256": "eb10d953fe09956f34d84ecf5bba6da0a5c23fdee1e82de2aa5671499b30886b",
+        "rows": 0
+      },
+      {
+        "file": "source-data/Current6/source/GVE_positive.tsv",
+        "sha256": "1e9afa37280ba0a003ed5ce68fa287a517f90d120284dede79c1d301c0ed1942",
+        "rows": 383
+      },
+      {
+        "file": "source-data/Current6/source/SNE_positive.tsv",
+        "sha256": "b926e210ae37e2e60dcd81301602c21aff84a49e107844738654f9515c901728",
+        "rows": 4389
+      }
+    ],
+    "statistics": "descriptive medians, count proportions, average-rank Spearman; no tests/CI",
+    "reference": "PUF12",
+    "scientific_scope": "conditional on frozen positive-site selection; not clinical or causal inference",
+    "new_filters": [],
+    "missing_values": "no imputation"
+  }
+}

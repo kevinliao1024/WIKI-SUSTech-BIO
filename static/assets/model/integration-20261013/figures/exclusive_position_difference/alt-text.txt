@@ -1,0 +1,1 @@
+A four-row heatmap shows PUF12-only minus PUF10-only A/C/G/T proportions across all 101 sequence positions. Indigo indicates lower and coral higher proportion in PUF12-only. The largest absolute difference is lower G at minus six by about 0.198.

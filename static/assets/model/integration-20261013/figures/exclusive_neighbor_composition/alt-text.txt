@@ -1,0 +1,1 @@
+Two heatmaps compare the minus-one and plus-one base proportions of PUF10-only, shared and PUF12-only selected sites. All three sets favor G at minus one and A at plus one, with numeric proportions printed in every cell.

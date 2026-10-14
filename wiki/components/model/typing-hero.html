@@ -1,5 +1,4 @@
-<svg class="typing-hero typing-hero--original" data-typing-scene viewBox="0 0 1536 1024" role="img" aria-labelledby="typing-hero-title">
-  <title id="typing-hero-title">The seated character types on the keyboard with alternating hands.</title>
+<svg class="typing-hero typing-hero--original" data-typing-scene viewBox="0 0 1536 1024" role="img" aria-label="The seated character types on the keyboard with alternating hands.">
   <defs>
     <linearGradient id="typing-glove-shade" x1="0" y1="0" x2="0.3" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
@@ -7,6 +6,8 @@
     </linearGradient>
   </defs>
   <image href="{{ url_for('static', filename='assets/model/illustrations/orca-model-typing-plate-v3.png') }}" width="1536" height="1024"/>
+  <!-- Close the coat above the lap while keeping its edge behind the typing hands. -->
+  <path class="typing-torso-edge" d="M546 673C547 700 544 726 533 747" fill="none" stroke="#292f69" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
   <g class="typing-limb" data-typing-arm data-shoulder="532,567" data-elbow="560,612" data-wrist="623,623" data-phase="0">
     <path class="typing-forearm" data-typing-forearm d="M532 567Q560 612 623 623"/>
     <g data-typing-hand transform="translate(623 623)">

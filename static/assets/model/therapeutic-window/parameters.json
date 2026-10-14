@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "parameter_gap_fallback",
+  "plot_generated": false,
+  "reason": "Available project endpoints and verified literature do not calibrate therapeutic benefit or risk.",
+  "missing_parameters": [
+    {"id": "effective_conversion", "value": null, "unit": "fraction of intended transcripts converted", "doi": null, "needed_evidence": "Construct-aware conversion and APOE protein-isoform abundance/function."},
+    {"id": "disease_benefit", "value": null, "unit": "disease-relevant outcome as a function of conversion", "doi": null, "needed_evidence": "Editing dose-response measurements in relevant cell types and disease models."},
+    {"id": "delivery_exposure", "value": null, "unit": "cell-specific exposure and effective conversion over time", "doi": null, "needed_evidence": "Matched brain distribution, cell targeting and expression duration for the same editor."},
+    {"id": "off_target_consequences", "value": null, "unit": "functional consequence of unintended edits", "doi": null, "needed_evidence": "Matched transcriptome profiling with functional or toxicity measurements."}
+  ],
+  "excluded_proxies": ["Apparent C388 is not effective transcript conversion.", "Count multiplied by median rate is not total molecular editing or validated toxicological risk.", "Allele-level association is not a calibrated per-transcript benefit curve.", "Local triple-mutant retention cannot be pooled with another editor's RNA-seq profile."]
+}

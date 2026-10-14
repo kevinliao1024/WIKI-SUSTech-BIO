@@ -1,13 +1,14 @@
-{% extends "layout.html" %}
-{% from "macros.html" import evidence, figure_slot, markdown_panel, section_nav %}
+{% extends "pages/editorial_reading.html" %}
+{% from "macros.html" import evidence, figure_slot, markdown_panel %}
+
+{% set reading_sections = [('pipeline', 'Pipeline'), ('ranking', 'Ranking'), ('example', 'Example run'), ('limits', 'Boundaries'), ('references', 'References')] %}
 
 {% block title %}{{ content.title }}{% endblock %}
 {% block eyebrow %}{{ content.metadata.eyebrow }}{% endblock %}
 {% block page_title %}{{ content.metadata.get('heading', content.title) }}{% endblock %}
 {% block lead %}{{ content.metadata.subtitle }}{% endblock %}
 
-{% block page_content %}
-{{ section_nav([('question', 'Question'), ('pipeline', 'Pipeline'), ('ranking', 'Ranking'), ('example', 'Example run'), ('limits', 'Boundaries'), ('references', 'References')]) }}
+{% block reading_content %}
 {{ markdown_panel(content, rendered_markdown) }}
 <section class="content-section shell">{{ evidence('Heuristic prioritization', 'A candidate is a sequence-and-context lead for validation. It is not proof of binding, editing or biological harm.', 'heuristic') }}</section>
 

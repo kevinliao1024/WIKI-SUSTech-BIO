@@ -4,26 +4,37 @@
   --nav-label-size:16px;
   --submenu-label-size:14px;
   --base-label-size:14px;
+  --nav-label-drop:24px;
+  --nav-whale-rise:39px;
 }
-.whale-navigation .nav-list .nav-link { font-size:var(--nav-label-size); }
-/* Every control reserves the same whale slot, keeping title centers level. */
-.whale-navigation .nav-label { white-space:normal; overflow-wrap:anywhere; flex-shrink:0; }
+.whale-navigation .nav-list .nav-link { font-size:var(--nav-label-size); padding-block:8px; }
+/* Center every title at rest; the whale appears above its lowered title. */
+.whale-navigation .nav-label {
+  white-space:normal; overflow-wrap:anywhere; flex-shrink:0;
+  transform:translateY(0);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
+}
 .whale-navigation .nav-whale {
-  flex-shrink:0; opacity:0; transform:translateY(4px);
+  position:absolute; left:50%; top:calc(50% - var(--nav-whale-rise));
+  opacity:0; transform:translate(-50%,8px);
   transition:opacity .24s ease, transform .32s cubic-bezier(.2,.8,.2,1);
 }
-.whale-navigation .nav-item:is(:hover,:focus-within) .nav-whale { opacity:1; transform:none; }
+.whale-navigation .nav-item:is(:hover,:has(:focus-visible)) .nav-label { transform:translateY(var(--nav-label-drop)); }
+.whale-navigation .nav-item:is(:hover,:has(:focus-visible)) .nav-whale { opacity:1; transform:translate(-50%,0); }
 /* Pointer selection takes precedence over a previously focused title. */
 .whale-navigation .whale-pod:has(> .nav-item:hover) > .nav-item:not(:hover) .nav-whale { opacity:0; }
+.whale-navigation .whale-pod:has(> .nav-item:hover) > .nav-item:not(:hover) .nav-label { transform:translateY(0); }
 @media (prefers-reduced-motion:reduce) {
-  .whale-navigation .nav-whale { transition:none; transform:none; }
+  .whale-navigation :is(.nav-label,.nav-whale) { transition:none; }
 }
 /* Keep the longest desktop title on one line within its own column. */
 @media (min-width:1200px) {
   .whale-navigation .rna-toggle[aria-label="Human Practices"] .nav-label { white-space:nowrap; overflow-wrap:normal; }
   .whale-navigation .whale-pod > .rna-nav:last-child { min-width:max-content; }
 }
-@media (max-width:1199px) { .whale-navigation { --nav-label-size:13px; } }
+@media (max-width:1199px) {
+  .whale-navigation { --nav-label-size:13px; --nav-label-drop:20px; --nav-whale-rise:36px; }
+}
 @media (max-width:420px) { .whale-navigation { --nav-label-size:12px; } }
 
 /* The link remains the only control and accessible name. Both base faces are
@@ -47,7 +58,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-.rna-base-flip__back { transform: rotateY(180deg); color: #ebd4a0; }
+.rna-base-flip__back { transform: rotateY(180deg); color: inherit; }
 .rna-branch:is(:focus-visible, .is-editing) .rna-base-flip__turn { transform: rotateY(180deg); }
 
 /* A much smaller version is tucked into literal c/C characters in the main
@@ -92,7 +103,7 @@ body .whale-navigation .rna-menu__backbone .rna-chain-line { opacity:.8; }
 body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] {
   position:relative; z-index:1; box-sizing:border-box;
   flex:0 0 var(--base-size); width:var(--base-size); height:var(--base-size);
-  border:1px solid var(--base-accent); background:#10243c; color:#e9f3ff;
+  border:1px solid var(--base-accent); background:#2474c4; color:#fff;
   font-size:var(--base-label-size); font-weight:600; box-shadow:none; transform:none;
   transition:border-color .38s ease, box-shadow .38s ease;
 }

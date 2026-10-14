@@ -1,0 +1,7 @@
+group,selected_sites,PUF12_selected_sites,selected_count_fraction_of_PUF12,fewer_selected_sites_percent,shared_with_PUF12,shared_fraction_of_group,shared_group_rate_median,shared_PUF12_rate_median,median_paired_delta_pp,group_higher_sites,group_lower_sites,equal_sites,descriptive_spearman,descriptive_pearson,experimental_unit_note
+PUF10,2774,12908,0.2149054849705609,78.5094515029439,2221,0.8006488824801731,0.1263710062,0.1688778593,-3.0164579649999994,597,1624,0,0.7231986594289833,0.703836399998637,site-level summaries; not biological-replicate inferential units
+PUF12,12908,12908,1.0,0.0,12908,1.0,0.13985580535,0.13985580535,0.0,0,0,12908,1.0,1.0,site-level summaries; not biological-replicate inferential units
+132D,197,12908,0.015261853114347692,98.47381468856523,195,0.9898477157360406,0.060880312134999996,0.25749364685,-18.856960087999997,0,195,0,0.8239945621388919,0.7608259733686562,site-level summaries; not biological-replicate inferential units
+E72A,0,12908,0.0,100.0,0,,,,,,,,,,site-level summaries; not biological-replicate inferential units
+GVE,383,12908,0.029671521537031297,97.03284784629686,300,0.783289817232376,0.0866164600625,0.18404580739999998,-7.920384075250002,43,257,0,0.6351412793475483,0.5166607195182485,site-level summaries; not biological-replicate inferential units
+SNE,4389,12908,0.34002169197396964,65.99783080260305,3565,0.8122579175210755,0.1170607174,0.1610927939,-3.2690691349999996,807,2758,0,0.7674588548819965,0.7363094936924636,site-level summaries; not biological-replicate inferential units

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% set reading_toc = namespace(items=[], ids=[]) %}
+{% for item in content.toc %}
+  {% if item.level in [2, 3] and item.id and item.id not in reading_toc.ids %}
+    {% set reading_toc.items = reading_toc.items + [item] %}
+    {% set reading_toc.ids = reading_toc.ids + [item.id] %}
+  {% endif %}
+{% endfor %}
+{% for target, label in reading_sections | default([]) %}
+  {% if target not in reading_toc.ids %}
+    {% set reading_toc.items = reading_toc.items + [{'level': 2, 'id': target, 'name': label}] %}
+    {% set reading_toc.ids = reading_toc.ids + [target] %}
+  {% endif %}
+{% endfor %}
+
+{% block body_class %}inner-page content-reading-page unified-reading-page editorial-reading-page{% endblock %}
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='editorial-reading.css') }}">
+{% endblock %}
+
+{% macro toc_links() -%}
+  {% for item in reading_toc.items %}
+  <li class="toc-level-{{ item.level }}"><a href="#{{ item.id }}">{{ item.name | safe }}</a></li>
+  {% endfor %}
+{%- endmacro %}
+
+{% block page_content %}
+{% if reading_toc.items %}
+<details class="mobile-toc shell">
+  <summary>On this page</summary>
+  <ol>{{ toc_links() }}</ol>
+</details>
+{% endif %}
+<div class="shell markdown-page{% if not reading_toc.items %} markdown-page--without-toc{% endif %}" data-content-source="{{ content.source_label }}">
+  {% if reading_toc.items %}
+  <aside class="side-index markdown-toc" aria-label="On this page">
+    <span>On this page</span>
+    <ol>{{ toc_links() }}</ol>
+  </aside>
+  {% endif %}
+  <article class="markdown-content editorial-content">
+    {% block reading_content %}{% endblock %}
+  </article>
+</div>
+{% include 'components/model/back-to-top.html' %}
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='content-reading.js') }}" defer></script>
+{% endblock %}

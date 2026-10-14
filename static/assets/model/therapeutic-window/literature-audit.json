@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-12",
+  "scope": "Primary literature for additions within Module 1 and Module 4 conclusions; qualitative interpretation only.",
+  "sources": [
+    {
+      "id": "L-G",
+      "authors": "Grünewald et al.",
+      "year": 2019,
+      "title": "Transcriptome-wide off-target RNA editing induced by CRISPR-guided DNA base editors",
+      "doi": "10.1038/s41586-019-1161-z",
+      "verified_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6657343/",
+      "location": "Abstract",
+      "supports": "RNA off-target reduction with retained DNA on-target editing as an engineering outcome.",
+      "boundary": "Different editor and assay; no ORCA clinical safety threshold.",
+      "quote": null
+    },
+    {
+      "id": "L-Z",
+      "authors": "Zhou et al.",
+      "year": 2019,
+      "title": "Off-target RNA mutation induced by DNA base editing and its elimination by mutagenesis",
+      "doi": "10.1038/s41586-019-1314-0",
+      "verified_url": "https://pubmed.ncbi.nlm.nih.gov/31181567/",
+      "location": "Abstract",
+      "supports": "Deaminase engineering reduced RNA off-target SNVs while maintaining efficient DNA on-target activity.",
+      "boundary": "No common toxicity scale or comparable candidate-count denominator.",
+      "quote": null
+    },
+    {
+      "id": "L-H",
+      "authors": "Han et al.",
+      "year": 2025,
+      "title": "Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins",
+      "doi": "10.1038/s41467-025-64748-6",
+      "verified_url": "https://www.nature.com/articles/s41467-025-64748-6",
+      "location": "Figure 4 and associated APOE results",
+      "supports": "PUF–APOBEC editing of APOE reporters and endogenous APOE3 in cultured cells.",
+      "boundary": "APOE site differs from ORCA C388; no Alzheimer therapeutic efficacy calibration.",
+      "correction_doi": "10.1038/s41467-026-76669-z",
+      "correction_scope": "Figure 7j and associated mouse behavioral source data; not Figure 4 APOE experiments.",
+      "quote": null
+    },
+    {
+      "id": "L-F",
+      "authors": "Farrer et al.",
+      "year": 1997,
+      "title": "Effects of Age, Sex, and Ethnicity on the Association Between Apolipoprotein E Genotype and Alzheimer Disease: A Meta-analysis",
+      "doi": "10.1001/jama.1997.03550160069041",
+      "verified_url": "https://jamanetwork.com/journals/jama/article-abstract/418446",
+      "location": "Abstract",
+      "supports": "APOE genotype association motivates disease-relevant study.",
+      "boundary": "Genotype association is not transcript-editing dose response or a proven upper bound.",
+      "quote": null
+    }
+  ],
+  "decision": "Use the qualitative parameter-gap fallback. No epidemiological effect size, delivery assumption or clinical benefit/risk curve is introduced."
+}

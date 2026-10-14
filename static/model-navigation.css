@@ -1,0 +1,153 @@
+/* Directory motion is scoped to Model; document and chapter anchors stay native. */
+.model-page .model-sidebar [data-module-link] {
+  transition: color .22s ease, background-color .22s ease, border-color .22s ease;
+}
+
+.model-page .model-sidebar [data-module-link]::after {
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1);
+}
+
+.model-page .model-sidebar .module-subnav,
+.model-page .model-sidebar .module-subnav:not([hidden]) {
+  position: relative;
+  inset: auto;
+  isolation: isolate;
+}
+
+@media (min-width: 761px) {
+  .model-page .model-sidebar {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .model-page .model-sidebar nav {
+    gap: 4px;
+  }
+
+  .model-page .model-sidebar .module-subnav,
+  .model-page .model-sidebar .module-subnav:not([hidden]) {
+    gap: 1px;
+    margin: 4px 0 8px 12px;
+    padding-left: 6px;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 700px),
+  (min-width: 761px) and (max-width: 1100px) and (max-height: 760px) {
+  .model-page .model-sidebar {
+    position: relative;
+    top: auto;
+  }
+}
+
+.model-page .model-sidebar .module-subnav.is-animating {
+  overflow: hidden;
+}
+
+.module-subnav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 7px;
+  background: #eaeaf8;
+  box-shadow: inset 2px 0 #7d7fc1;
+  opacity: 0;
+  transition: transform .36s cubic-bezier(.22, 1, .36, 1), width .3s ease, height .3s ease, opacity .18s ease;
+}
+
+.module-subnav-indicator.is-visible {
+  opacity: 1;
+}
+
+.model-page .model-sidebar nav .module-subnav a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 7px;
+  font-size: 15px;
+  line-height: 1.35;
+  transition: color .22s ease;
+}
+
+.model-page .model-sidebar .module-subnav a > span {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.model-page .model-sidebar .module-chapter-number {
+  flex: 0 0 1.65em;
+  color: #666994;
+  font-variant-numeric: tabular-nums;
+}
+
+.model-page .model-sidebar .module-chapter-label {
+  min-width: 0;
+}
+
+.model-page .model-sidebar nav .module-subnav a[data-subchapter-link] {
+  margin-left: 14px;
+}
+
+.model-page .model-sidebar .module-subchapter-mark {
+  flex: 0 0 1em;
+  color: #666994;
+}
+
+.model-page .model-sidebar nav .module-subnav a[data-active-parent] {
+  color: #575a94;
+  font-weight: 600;
+}
+
+.model-page .model-sidebar nav .module-subnav a[aria-current] {
+  background: transparent;
+  box-shadow: none;
+}
+
+.model-page .model-sidebar nav .module-subnav a[aria-current] .module-chapter-number,
+.model-page .model-sidebar nav .module-subnav a[aria-current] .module-subchapter-mark {
+  color: inherit;
+}
+
+@media (max-width: 760px) {
+  .model-page .model-sidebar nav .module-subnav a {
+    align-items: center;
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+
+  .model-page .model-sidebar nav .module-subnav a[data-subchapter-link] {
+    margin-left: 0;
+  }
+
+  .model-page .model-sidebar .module-chapter-number,
+  .model-page .model-sidebar .module-subchapter-mark {
+    flex: 0 0 auto;
+  }
+
+  .model-page .model-sidebar .module-chapter-label {
+    white-space: nowrap;
+  }
+
+  .model-page .model-sidebar .module-subnav.is-animating {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .module-subnav-indicator {
+    box-shadow: inset 0 -2px #7d7fc1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .model-page .model-sidebar [data-module-link],
+  .model-page .model-sidebar [data-module-link]::after,
+  .model-page .model-sidebar nav .module-subnav a,
+  .module-subnav-indicator {
+    transition: none;
+  }
+}

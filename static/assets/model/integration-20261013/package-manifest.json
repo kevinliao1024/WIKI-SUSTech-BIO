@@ -1,0 +1,228 @@
+{
+  "zip_sha256": "25a19ed76602af2e1d73b38ecffa39b0225ddf63acf633ed074f1ac29db627d9",
+  "entries": [
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/evidence/RESULTS.md",
+      "sha256": "81fdd949cd8aa773606b8d5dfbcab0ad9a6383526544a33ef9f6e581626d1088",
+      "bytes": 7306
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/evidence/external-benchmark-values.csv",
+      "sha256": "dcc03ef0df0218161cb34731930a30c78160a9240ad9cc58f01f303aca71f9bc",
+      "bytes": 6287
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/evidence/final-review.md",
+      "sha256": "7eea4930d6210cfb32e648bfb19f14942bc8c5c7630cb138c21419804c7c62a2",
+      "bytes": 5361
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/evidence/external-rulers.md",
+      "sha256": "5111d22481fc7683edbfa8716c14aa03dced99007676a58f7c6e49ea96a07204",
+      "bytes": 12236
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/caption.md",
+      "sha256": "a640f9b32fdf1be461f15d5e86ba0b5d002896fe1395a9bd33a110b0e7d5f395",
+      "bytes": 940
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/alt-text.txt",
+      "sha256": "b570316e6cceb1cf3b36b6edf277ae4f09874d7dc6da2345f5ba3d9345df428c",
+      "bytes": 143
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure.svg",
+      "sha256": "9bac9989799526fab9e2b97836b512bece5b91e81d66944383195167b1e9363a",
+      "bytes": 50532
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure-manifest.json",
+      "sha256": "16b554d17e374277a8761d48d9f799bd283c70b2a83529e98eff5c6cb225e93e",
+      "bytes": 1843
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/orca-figure-style.json",
+      "sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "bytes": 2361
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure@2x.png",
+      "sha256": "3c38bd083bd2829ee98615c1470a5d49facec9ef4f80217fc5cde5729273a583",
+      "bytes": 115447
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/selected_count_and_shared_rate_changes/figure.pdf",
+      "sha256": "ed75bd077c6466ca5ed591a64c75800a51f6d0e18dc4152ebe781942731f33f2",
+      "bytes": 9729
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/caption.md",
+      "sha256": "74df58952b5d04d746dc0c1fc7ec00ac783ea2bc63dbf615de13c320a1d69fde",
+      "bytes": 824
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/alt-text.txt",
+      "sha256": "13e31a0f31b683eb0823bb4989521fbb5fa6eef6d8f01e7e8d249936152ad25f",
+      "bytes": 128
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure.svg",
+      "sha256": "6cc1c09f583bb9e853a2fae242917165090eee8461e8cb30d782c3e6b8d376ef",
+      "bytes": 70124
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure-manifest.json",
+      "sha256": "b9574cd69cc1182614009eb454b5bece6f5b2bed6a2ad9e53551a172ae2ce972",
+      "bytes": 1830
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/orca-figure-style.json",
+      "sha256": "850498f2fb901378b1afe4680259b4d008921530a8a900740165fbf2ae51e843",
+      "bytes": 2361
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure@2x.png",
+      "sha256": "f4675ac4f089b6c55a90b5fd95639426cfd89efe980211f3622108873aac0c55",
+      "bytes": 200702
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/shared_PUF10_PUF12_rates/figure.pdf",
+      "sha256": "3e73d1aafd51afe8e41f6f7a9c84e6fc65b8d7a8e9c7c7722cced5d660dbeb3f",
+      "bytes": 23157
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/caption.md",
+      "sha256": "a7d4a3dc8e51b39ba787fda3c18ff315d093db8572fd3465991891d3a9740d82",
+      "bytes": 1165
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/sources.md",
+      "sha256": "ee68d9b550a8e1be070d19fb86c70f93e1cb2dcfd436ff23fcf73eb8a7bed450",
+      "bytes": 339
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/alt-text.txt",
+      "sha256": "da48f9473da8b5a9e57a323fc83ccd68bdfa0e1567b7bd2c36086b701c8bf885",
+      "bytes": 221
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure.svg",
+      "sha256": "2fbc8c729e601fe49940dd80718b09b0f3440c380b43f9fe324fcc92f23acf03",
+      "bytes": 51062
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure-manifest.json",
+      "sha256": "d3f792c35c23fbe283ea95978bb8ec9428a18cf685f38cd4f4c80713b4badf82",
+      "bytes": 2608
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/orca-figure-style.json",
+      "sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555",
+      "bytes": 2691
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure@2x.png",
+      "sha256": "f63f00f08ab5bf85488ab45cf330d5cd2fed8da38c0ce51eb6669324e735bdab",
+      "bytes": 151083
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_neighbor_composition/figure.pdf",
+      "sha256": "5ed2c8457313de82b64fb8fd9ebcea45e63a7ad7ea8ea5283fb62ec28d8f00c8",
+      "bytes": 11190
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/caption.md",
+      "sha256": "97f851c4b46839a329f1962ae8cf634908910e65d0572fea1658195a5357cd93",
+      "bytes": 976
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/sources.md",
+      "sha256": "ee68d9b550a8e1be070d19fb86c70f93e1cb2dcfd436ff23fcf73eb8a7bed450",
+      "bytes": 339
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/alt-text.txt",
+      "sha256": "a4e05474810c14101a1c62eb2958daff7ea9ffa797a4fbe9c39fdf5325e421d5",
+      "bytes": 246
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure.svg",
+      "sha256": "03da0413522144e5b5f81ce75b57f5722361020bd8a6fb691df83c4c934f010f",
+      "bytes": 31271
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure-manifest.json",
+      "sha256": "38d36e95f5b444a2d5bcdae40a25af0076e68438063debb48389518c18020609",
+      "bytes": 2984
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/orca-figure-style.json",
+      "sha256": "ab4fb7b8fa7d3435b9749455cbf4adff1f99efeb5193ca05ee324f85c6cdb555",
+      "bytes": 2691
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure@2x.png",
+      "sha256": "c8421c041c79e10883552e1aad14b61303773ce87633e8934c6d8ecf1e0fca2e",
+      "bytes": 76267
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/figures/exclusive_position_difference/figure.pdf",
+      "sha256": "a270d3a25a9b5ff7b18b336da911b18b33d4e1b7a5af04f8a8eb6073baa9fa04",
+      "bytes": 9907
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/SPEC.md",
+      "sha256": "3d3ef527e1e2f3cc9504a4cf3e37faed218a4c9fae7aff2c26ccb6d4b3543f15",
+      "bytes": 9012
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/endpoint_changes.csv",
+      "sha256": "b8f41568ee1d170b20d828edd522ed47164efda640254faeb5de8b952daae940",
+      "bytes": 403
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/group_vs_PUF12_summary.csv",
+      "sha256": "487fbccbc392b36a698f6957fe603200df54303f05b15c9d585b749f84fe7c04",
+      "bytes": 1548
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/matched_site_rates.csv",
+      "sha256": "4b75695d94badbd53c4aebb8e15b710fca85993cf83397e3d38f730e940c58bf",
+      "bytes": 2602274
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/descriptive-metrics.csv",
+      "sha256": "58a0625f0487915c5de55627de71f6d0e3b23f02812f3861421856b9c3ad8d3c",
+      "bytes": 1059
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_marginals.csv",
+      "sha256": "4d441631dde06c0d7b388ffe333ff3c09e96837a800eb6d043cbb531d0aa6d15",
+      "bytes": 1101
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_triplets.csv",
+      "sha256": "701b8f2ce199829fb1c8c2ffa77fefc598933bf947b9e2ad55cf770a03a00287",
+      "bytes": 2059
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/exclusive_context_position_differences.csv",
+      "sha256": "9618f69d4e88fcddf38865c5907defc75d0ce77305c981aeb6b9747903277dc5",
+      "bytes": 126775
+    },
+    {
+      "member": "ORCA_synthesis_integration_2026-10-13/data/PUF10_PUF12_shared_summary.csv",
+      "sha256": "a416998513055a0556e21e76c17bc622e12693761777834b3a1615ba448ae6be",
+      "bytes": 405
+    }
+  ],
+  "source_kind": "User-supplied integration archive, preserved unchanged; instructions are reference material.",
+  "date": "2026-10-13",
+  "missing_inputs": [
+    "Original positive-site TSVs and sequence membership tables",
+    "Rounded per-record APOBEC reporter rows",
+    "Historical source23/source24 formula scripts",
+    "Referenced 171-comparison QA files and plotting scripts"
+  ]
+}

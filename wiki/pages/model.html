@@ -1,13 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}{{ content.title }}{% endblock %}
- {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">{% endblock %}
+ {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-navigation.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-entry.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-synthesis.css') }}">{% endblock %}
 {% set modules = [('01','RNA-seq Off-target Analysis'),('02','PUF Specificity Design'),('03','APOBEC Engineering'),('04','LAMAR Prioritization')] %}
 {% set chapters = [
- [(1,'Overview'),(2,'Experimental design'),(3,'Workflow'),(4,'Results'),(5,'Engineering implications'),(6,'Reproducibility'),(7,'References')],
- [(1,'Overview'),('iteration','Experimental iteration'),(2,'Specificity ranking'),(3,'Structure-guided design'),(5,'Data & reproducibility'),(6,'References')],
- [(1,'Overview'),(2,'Modeling approach'),(3,'Results'),(4,'Conclusion'),(5,'Data & code'),(6,'References')],
- [(1,'Overview'),(2,'Model & training data'),('strategy','Two-stage prediction'),(3,'Results'),(4,'Interpretation & next steps'),(6,'Reproducibility'),(7,'References')]
+ [(1,'1.1','Overview'),(2,'1.2','Experimental design'),(3,'1.3','Workflow'),(4,'1.4','Results'),(5,'1.5','Engineering implications'),(6,'1.6','Reproducibility'),(7,'1.7','References')],
+ [(1,'2.1','Overview'),('iteration','2.2','Experimental iteration'),(2,'2.3','Specificity ranking'),(3,'2.4','Structure-guided design'),(5,'2.5','Reproducibility'),(6,'2.6','References')],
+ [(1,'3.1','Overview'),(2,'3.2','Modeling approach'),(3,'3.3','Results'),(4,'3.4','Conclusion'),(5,'3.5','Reproducibility'),(6,'3.6','References')],
+ [(1,'4.1','Overview'),(2,'4.2','Model & training data'),('strategy','4.3','Two-stage prediction'),(3,'4.4','Results'),(4,'4.5','Interpretation & next steps'),(6,'4.6','Reproducibility'),(7,'4.7','References')]
 ] %}
+{% set module2_subchapters = [('module2-ranking-results','Results'),('module2-feature-ablations','Feature ablations'),('module2-readout-layers','Readout layers')] %}
 {% block main %}
 <main id="main-content" class="model-page">
       <header class="model-overview" id="model-overview">
@@ -19,18 +20,6 @@
             {% include 'components/model/typing-hero.html' %}
           </figure>
         </div>
-        <div class="module-grid">
-          {% for number, title in modules %}
-          <a class="module-card module-card--{{ loop.index }}" href="#module{{ loop.index }}">
-            {% include 'components/model/neuron-frame.html' %}
-            <div class="neuron-card-content">
-            <div class="module-card-top"><span>MODULE {{ number }}</span></div>
-            {% include 'components/model/character-card.html' %}
-            <h2>{{ title }}</h2>
-            </div>
-          </a>
-          {% endfor %}
-        </div>
       </header>
   <div class="model-layout">
     <aside class="model-sidebar" inert>
@@ -38,9 +27,14 @@
         {% for number, title in modules %}
         <div class="module-nav-group">
         {% set module_index = loop.index %}
-        <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}">Module {{ loop.index }}</button>
+        <button type="button" data-module-link data-module="module{{ loop.index }}" aria-expanded="false" aria-controls="module-subnav-{{ loop.index }}"><span class="module-nav-label">Module {{ loop.index }}<span class="module-nav-title">: {{ title }}</span></span></button>
         <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
-          {% for chapter, short in chapters[loop.index0] %}<a href="#module{{ module_index }}-{{ chapter }}" data-chapter-link>{{ short }}</a>{% endfor %}
+          {% for chapter, chapter_number, short in chapters[loop.index0] %}
+          <a href="#module{{ module_index }}-{{ chapter }}" data-chapter-link><span class="module-chapter-number">{{ chapter_number }}</span> <span class="module-chapter-label">{{ short }}</span></a>
+          {% if module_index == 2 and chapter == 2 %}
+          {% for target, label in module2_subchapters %}<a href="#{{ target }}" data-subchapter-link data-parent-chapter="module2-2"><span class="module-subchapter-mark" aria-hidden="true">›</span> <span class="module-chapter-label">{{ label }}</span></a>{% endfor %}
+          {% endif %}
+          {% endfor %}
         </div>
         </div>
         {% endfor %}
@@ -50,13 +44,19 @@
      <div class="model-reading">
        {% if content.html %}
        <section class="model-module" id="model-content" data-content-source="{{ content.source_label }}">
-         <header class="module-heading"><span class="module-number">00</span><div><p class="model-eyebrow">{{ content.metadata.eyebrow }}</p><h2>{{ content.metadata.get('heading', content.title) }}</h2><p>{{ content.metadata.subtitle }}</p></div></header>
-         <article class="model-prose markdown-content markdown-content--custom">{{ rendered_markdown }}</article>
+         <header class="module-heading"><span class="module-number">00</span><div><h2>{{ content.metadata.get('heading', content.title) }}</h2></div></header>
+         <article class="model-prose markdown-content markdown-content--custom">
+           <figure class="model-overview-figure" id="model-figure-1">
+             <img src="{{ url_for('assets', filename='images/orca-model-overview-v16.png') }}" width="2592" height="1622" alt="ORCA model overview connecting RNA-seq editing profiles, PUF recognition design, APOBEC catalytic design and LAMAR site prioritization around APOE4 RNA editing.">
+             <figcaption><strong>Figure 1.</strong> ORCA model overview.</figcaption>
+           </figure>
+           {{ rendered_markdown }}
+         </article>
        </section>
        {% endif %}
        {% for number, title in modules %}
       <section class="model-module" id="module{{ loop.index }}" data-model-module>
-        <header class="module-heading"><span class="module-number">{{ number }}</span><div><h2>{{ title }}</h2>
+        <header class="module-heading"><div><h2>Module {{ loop.index }}: {{ title }}</h2>
             </div></header>
         {% if loop.index == 1 %}
           <article class="model-prose">{% include 'components/model/module1.html' %}</article>
