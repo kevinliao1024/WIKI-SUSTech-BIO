@@ -1,0 +1,172 @@
+<div id="orca-atlas-directions" class="viz-carousel viz-dotted-background" aria-label="ORCA 阅读足迹设计" data-previous-label="上一方案" data-next-label="下一方案">
+  <section data-variant="记忆星图" aria-label="记忆星图" class="oa-stage">
+    <div class="oa-product" data-design="atlas" aria-label="记忆星图设计">
+      <header class="oa-header"><span class="oa-kicker">ORCA / YOUR EXPLORATION</span><span class="oa-total"></span></header>
+      <h2>Leave a connection.</h2><p class="oa-sub">让探索留下连接。</p>
+      <div class="oa-map" data-map="atlas" aria-label="五组章节组成的阅读足迹星图"></div>
+      <div class="oa-key"><span><i class="oa-dot"></i>尚未探索</span><span><i class="oa-dot oa-dot--lit"></i>已探索</span><span>示例阅读足迹</span></div>
+      <div class="oa-directory"></div>
+      <footer class="oa-foot"><span class="oa-last" aria-live="polite"></span><span>HOME / EXPLORE</span></footer>
+    </div>
+  </section>
+  <section data-variant="海底珊瑚" aria-label="海底珊瑚" class="oa-stage" hidden>
+    <div class="oa-product" data-design="reef" aria-label="海底珊瑚设计">
+      <header class="oa-header"><span class="oa-kicker">ORCA / YOUR EXPLORATION</span><span class="oa-total"></span></header>
+      <h2>A reef of discoveries.</h2><p class="oa-sub">每次探索，留下一点生长。</p>
+      <div class="oa-map oa-map--reef" data-map="reef" aria-label="五组珊瑚枝梢记录各章节阅读足迹"></div>
+      <div class="oa-key"><span><i class="oa-dot"></i>尚未探索</span><span><i class="oa-dot oa-dot--lit"></i>已探索</span><span>示例阅读足迹</span></div>
+      <div class="oa-directory"></div>
+      <footer class="oa-foot"><span class="oa-last" aria-live="polite"></span><span>HOME / EXPLORE</span></footer>
+    </div>
+  </section>
+  <section data-variant="玻片收藏" aria-label="玻片收藏" class="oa-stage" hidden>
+    <div class="oa-product" data-design="slides" aria-label="玻片收藏设计">
+      <header class="oa-header"><span class="oa-kicker">ORCA / YOUR EXPLORATION</span><span class="oa-total"></span></header>
+      <h2>Collect your discoveries.</h2><p class="oa-sub">把走过的章节，留在收藏里。</p>
+      <div class="oa-slides" aria-label="五组章节的玻片收藏"></div>
+      <div class="oa-key"><span><i class="oa-dot"></i>尚未探索</span><span><i class="oa-dot oa-dot--lit"></i>已探索</span><span>示例阅读足迹</span></div>
+      <div class="oa-directory"></div>
+      <footer class="oa-foot"><span class="oa-last" aria-live="polite"></span><span>HOME / EXPLORE</span></footer>
+    </div>
+  </section>
+</div>
+<style>
+#orca-atlas-directions .oa-stage{min-height:770px}
+#orca-atlas-directions .oa-product{--oa-paper:light-dark(#fffefc,#19143d);--oa-ink:light-dark(#19143d,#e9e8ff);--oa-muted:light-dark(#6b6880,#9d9cf4);--oa-line:light-dark(#d9d7e5,#5d5ad7);--oa-soft:light-dark(#e9e8ff,#2e267c);--oa-active:#f58f9c;box-sizing:border-box;padding:32px;color:var(--oa-ink);background:var(--oa-paper);font:400 14px/1.5 Futura,Onest,"PingFang SC",sans-serif;min-height:740px}
+#orca-atlas-directions .oa-product *{box-sizing:border-box}
+#orca-atlas-directions .oa-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-right:60px}
+#orca-atlas-directions .oa-kicker{font-size:10px;letter-spacing:.15em;color:var(--oa-muted)}
+#orca-atlas-directions .oa-total{font-size:12px;font-variant-numeric:tabular-nums}
+#orca-atlas-directions .oa-product h2{margin:24px 0 4px;font:700 clamp(28px,4.4vw,42px)/1.12 Georgia,serif;letter-spacing:-.035em;color:var(--oa-ink)}
+#orca-atlas-directions .oa-sub{margin:0 0 22px;color:var(--oa-muted);font-size:13px}
+#orca-atlas-directions .oa-map{height:280px;position:relative;margin:8px 0 16px}
+#orca-atlas-directions .oa-connections{width:100%;height:100%;position:absolute;inset:0;overflow:visible;pointer-events:none}
+#orca-atlas-directions .oa-connections path{fill:none;stroke:var(--oa-line);stroke-width:1.2;vector-effect:non-scaling-stroke;opacity:.45;transition:stroke .3s,opacity .3s}
+#orca-atlas-directions .oa-connections path.oa-connected{stroke:var(--oa-active);opacity:.9}
+#orca-atlas-directions .oa-node{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--oa-muted);padding:0;display:grid;place-items:center}
+#orca-atlas-directions .oa-node::before{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--oa-line);background:var(--oa-paper);border-radius:50%;transition:background .3s,transform .3s}
+#orca-atlas-directions .oa-node[data-visited="true"]::before{background:var(--oa-active);border-color:var(--oa-active);transform:scale(1.2)}
+#orca-atlas-directions .oa-node[data-current="true"]::after{content:"";position:absolute;width:28px;height:28px;border:1px solid var(--oa-ink);border-radius:50%;opacity:.5}
+#orca-atlas-directions .oa-node span{position:absolute;top:37px;font-size:10px;font-variant-numeric:tabular-nums}
+#orca-atlas-directions .oa-groupname{position:absolute;top:90%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:var(--oa-muted)}
+#orca-atlas-directions .oa-key{display:flex;gap:12px 20px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--oa-muted);padding:10px 0 18px}
+#orca-atlas-directions .oa-key span{display:flex;gap:7px;align-items:center}
+#orca-atlas-directions .oa-key span:last-child{margin-left:auto}
+#orca-atlas-directions .oa-dot{display:inline-block;width:8px;height:8px;border:1px solid var(--oa-line);border-radius:50%}
+#orca-atlas-directions .oa-dot--lit{background:var(--oa-active);border-color:var(--oa-active)}
+#orca-atlas-directions .oa-directory{border-top:1px solid var(--oa-line);padding-top:18px}
+#orca-atlas-directions .oa-groups{display:flex;gap:8px 16px;flex-wrap:wrap;margin-bottom:16px}
+#orca-atlas-directions .oa-groupbtn{border:0;border-bottom:1px solid transparent;background:transparent;color:var(--oa-muted);font:inherit;padding:8px 0;min-height:44px}
+#orca-atlas-directions .oa-groupbtn[aria-pressed="true"]{color:var(--oa-ink);border-color:var(--oa-ink)}
+#orca-atlas-directions .oa-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 16px;min-height:138px;align-content:start}
+#orca-atlas-directions .oa-page{border:0;background:transparent;color:var(--oa-ink);padding:9px 0;text-align:left;display:flex;justify-content:space-between;gap:8px;font:inherit;min-height:44px}
+#orca-atlas-directions .oa-page span{overflow-wrap:anywhere}
+#orca-atlas-directions .oa-page small{font-size:10px;white-space:nowrap;color:var(--oa-muted)}
+#orca-atlas-directions .oa-foot{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--oa-line);padding-top:13px;margin-top:12px;color:var(--oa-muted);font-size:10px;flex-wrap:wrap}
+#orca-atlas-directions .oa-slides{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:16px 0 22px;min-height:270px;align-items:center}
+#orca-atlas-directions .oa-slide{min-width:0;height:240px;position:relative;padding:12px 9px;border:1px solid var(--oa-line);background:var(--oa-paper);color:var(--oa-ink);font:inherit;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(var(--angle));transition:transform .25s}
+#orca-atlas-directions .oa-slide[aria-pressed="true"]{transform:translateY(-8px);border-color:var(--oa-ink)}
+#orca-atlas-directions .oa-slidehead{display:flex;justify-content:space-between;gap:4px;font-size:10px;color:var(--oa-muted)}
+#orca-atlas-directions .oa-cells{height:112px;position:relative}
+#orca-atlas-directions .oa-cell{position:absolute;width:24px;height:28px;border:1px solid var(--oa-line);border-radius:45% 55% 42% 58%;transform:rotate(var(--turn));background:var(--oa-soft);opacity:.7;transition:background .3s,opacity .3s}
+#orca-atlas-directions .oa-cell[data-visited="true"]{background:var(--oa-active);opacity:1;border-color:var(--oa-active)}
+#orca-atlas-directions .oa-cell::after{content:"";position:absolute;width:5px;height:6px;top:9px;left:7px;background:var(--oa-ink);border-radius:50%;opacity:.4}
+#orca-atlas-directions .oa-slidelabel{background:var(--oa-soft);padding:8px;min-height:56px;display:flex;flex-direction:column;gap:4px;font-size:12px}
+#orca-atlas-directions .oa-slidelabel small{font-size:10px;color:var(--oa-muted)}
+@media(max-width:540px){#orca-atlas-directions .oa-product{padding:22px 16px;min-height:1030px}#orca-atlas-directions .oa-stage{min-height:1060px}#orca-atlas-directions .oa-map{height:340px}#orca-atlas-directions .oa-header{padding-right:70px;gap:7px}#orca-atlas-directions .oa-groupname{font-size:11px;top:94%}#orca-atlas-directions .oa-pages{grid-template-columns:1fr;min-height:264px}#orca-atlas-directions .oa-key span:last-child{margin-left:0}#orca-atlas-directions .oa-slides{grid-template-columns:repeat(6,minmax(0,1fr));gap:16px 12px;min-height:410px}#orca-atlas-directions .oa-slide{grid-column:span 2;height:182px;padding:8px 6px;transform:none}#orca-atlas-directions .oa-slide:nth-child(4){grid-column:2/span 2}#orca-atlas-directions .oa-slide:nth-child(5){grid-column:4/span 2}#orca-atlas-directions .oa-cells{height:75px}#orca-atlas-directions .oa-cell{width:18px;height:22px}#orca-atlas-directions .oa-cell::after{top:7px;left:6px}#orca-atlas-directions .oa-slidelabel{padding:6px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){#orca-atlas-directions .oa-product *{transition:none!important}}
+</style>
+<script>
+(() => {
+  const root = document.getElementById('orca-atlas-directions');
+  const groups = [
+    {name:'Project',pages:[['description','Description'],['engineering','Engineering'],['contribution','Contribution'],['parts','Parts']]},
+    {name:'Wet Lab',pages:[['experiments','Experiments'],['results','Results'],['notebook','Notebook'],['measurement','Measurement'],['alternative-platform','Alternative Platform'],['safety-and-security','Safety & Security']]},
+    {name:'Dry Lab',pages:[['model','Model'],['software','Software']]},
+    {name:'Human Practices',pages:[['human-practices','Human Practices'],['education','Education'],['entrepreneurship','Entrepreneurship'],['inclusivity','Inclusivity'],['sustainability','Sustainability']]},
+    {name:'Team',pages:[['team','Team'],['attributions','Attributions']]}
+  ];
+  const pages = groups.flatMap((g,gi) => g.pages.map(([id,label]) => ({id,label,gi})));
+  const allowed = new Set(pages.map(p => p.id));
+  const saved = window.openai?.widgetState?.privateContent;
+  let visited = new Set((saved?.visited || ['description','engineering','model','results']).filter(id=>allowed.has(id)));
+  let current = allowed.has(saved?.current) ? saved.current : 'description';
+  let chosen = 0;
+  const products = [...root.querySelectorAll('.oa-product')];
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const positions = [
+    [[5,43],[12,22],[17,52],[8,73]],
+    [[24,38],[29,18],[34,44],[35,66],[27,76],[37,23]],
+    [[49,35],[53,66]],
+    [[65,20],[71,43],[76,67],[68,76],[79,24]],
+    [[87,43],[94,67]]
+  ];
+  function selectGroup(gi) { chosen=gi; render(); }
+  function explore(id) {
+    visited.add(id);current=id;chosen=pages.find(p=>p.id===id).gi;render();
+    window.openai?.setWidgetState?.({modelContent:{designContext:'ORCA exploration preview',selectedPage:current},privateContent:{visited:[...visited],current}})?.catch(()=>{});
+  }
+  function makeMap(product, kind) {
+    const box=product.querySelector('.oa-map');box.replaceChildren();
+    const svg=document.createElementNS(svgNS,'svg');svg.setAttribute('class','oa-connections');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('aria-hidden','true');box.append(svg);
+    const coords = new Map();
+    groups.forEach((g,gi)=>g.pages.forEach(([id],pi)=>{
+      let xy=positions[gi][pi];
+      if(kind==='reef') {
+        const offsets=[[-5,0],[5,-14],[-8,-27],[8,13],[0,-40],[12,-32]];
+        xy=[10+gi*20+offsets[pi][0]*.7,50+offsets[pi][1]+(gi%2)*8];
+      }
+      if(box.clientWidth < 450)xy=[10+gi*20,8+pi*13];
+      coords.set(id,xy);
+      const node=document.createElement('button');node.type='button';node.className='oa-node cursor-interaction';node.dataset.page=id;node.dataset.visited=String(visited.has(id));node.dataset.current=String(current===id);node.setAttribute('aria-label',pages.find(p=>p.id===id).label+'，'+(visited.has(id)?'已探索':'尚未探索'));node.style.left=xy[0]+'%';node.style.top=xy[1]+'%';node.innerHTML='<span>'+String(pages.findIndex(p=>p.id===id)+1).padStart(2,'0')+'</span>';node.addEventListener('click',()=>explore(id));box.append(node);
+    }));
+    const addPath=(a,b,base=false)=>{
+      const [x,y]=coords.get(a),[xx,yy]=coords.get(b);const p=document.createElementNS(svgNS,'path');
+      p.setAttribute('d',kind==='reef' ? 'M'+x+' '+y+' Q'+x+' '+((y+yy)/2)+' '+xx+' '+yy : 'M'+x+' '+y+' Q'+((x+xx)/2)+' '+(Math.min(y,yy)-5)+' '+xx+' '+yy);
+      p.dataset.ends=a+','+b;if(base)p.dataset.base='true';svg.append(p);
+    };
+    groups.forEach((g,gi)=>{
+      for(let i=1;i<g.pages.length;i++)addPath(g.pages[0][0],g.pages[i][0]);
+      if(gi) addPath(groups[gi-1].pages[0][0],g.pages[0][0],true);
+      if(kind==='reef'){
+        const p=document.createElementNS(svgNS,'path');const [x,y]=coords.get(g.pages[0][0]);p.setAttribute('d','M'+(10+gi*20)+' 86 Q'+(12+gi*20)+' 66 '+x+' '+y);svg.append(p);
+      }
+      const label=document.createElement('span');label.className='oa-groupname';label.style.left=(10+gi*20)+'%';label.textContent=['Project','Wet Lab','Dry Lab','HP','Team'][gi];box.append(label);
+    });
+  }
+  products.forEach(product=>{
+    if(product.dataset.design!=='slides')makeMap(product,product.dataset.design);
+    else groups.forEach((g,gi)=>{
+      const slide=document.createElement('button');slide.type='button';slide.className='oa-slide cursor-interaction';slide.dataset.group=gi;slide.style.setProperty('--angle',(gi-2)*1.4+'deg');
+      slide.innerHTML='<span class="oa-slidehead">OR—0'+(gi+1)+'<span class="oa-slidecount"></span></span><span class="oa-cells"></span><span class="oa-slidelabel">'+['Project','Wet Lab','Dry Lab','HP','Team'][gi]+'<small class="oa-groupcount"></small></span>';
+      g.pages.forEach(([id],pi)=>{
+        const cell=document.createElement('span');cell.className='oa-cell';cell.dataset.page=id;cell.style.left=(pi%2?55:15)+'%';cell.style.top=(Math.floor(pi/2)*26+6)+'%';cell.style.setProperty('--turn',(pi*29-20)+'deg');slide.querySelector('.oa-cells').append(cell);
+      });slide.addEventListener('click',()=>selectGroup(gi));product.querySelector('.oa-slides').append(slide);
+    });
+    const dir=product.querySelector('.oa-directory');dir.innerHTML='<div class="oa-groups" aria-label="选择章节"></div><div class="oa-pages" aria-label="章节页面"></div>';
+    groups.forEach((g,gi)=>{const b=document.createElement('button');b.type='button';b.className='oa-groupbtn cursor-interaction';b.dataset.group=gi;b.textContent=g.name;b.addEventListener('click',()=>selectGroup(gi));dir.querySelector('.oa-groups').append(b);});
+  });
+  const design={connections:true,accent:'#f58f9c'};
+  function render(){
+    products.forEach(product=>{
+      product.style.setProperty('--oa-active',design.accent);
+      product.querySelector('.oa-total').textContent=String(visited.size).padStart(2,'0')+' / 19 已探索';
+      product.querySelectorAll('[data-page]').forEach(el=>{
+        const page=pages.find(p=>p.id===el.dataset.page);el.dataset.visited=String(visited.has(page.id));el.dataset.current=String(current===page.id);
+        if(el.tagName==='BUTTON')el.setAttribute('aria-label',page.label+'，'+(visited.has(page.id)?'已探索':'尚未探索'));
+      });
+      product.querySelectorAll('[data-ends]').forEach(p=>p.classList.toggle('oa-connected',p.dataset.ends.split(',').every(id=>visited.has(id))));
+      const connections=product.querySelector('.oa-connections');if(connections)connections.style.visibility=design.connections?'visible':'hidden';
+      product.querySelectorAll('[data-group]').forEach(b=>{const gi=Number(b.dataset.group);b.setAttribute('aria-pressed',String(gi===chosen));const count=groups[gi].pages.filter(([id])=>visited.has(id)).length;const label=b.querySelector('.oa-groupcount');if(label)label.textContent=count+' / '+groups[gi].pages.length+' 探索';const top=b.querySelector('.oa-slidecount');if(top)top.textContent=count===groups[gi].pages.length?'✓':'↗';});
+      const list=product.querySelector('.oa-pages');list.replaceChildren();
+      groups[chosen].pages.forEach(([id,label])=>{const b=document.createElement('button');b.type='button';b.className='oa-page cursor-interaction';b.dataset.pageLink=id;b.innerHTML='<span>'+label+'</span><small>'+(visited.has(id)?'✓ 已探索':'探索 ↗')+'</small>';b.addEventListener('click',()=>explore(id));list.append(b);});
+      product.querySelector('.oa-last').textContent='当前足迹 · '+pages.find(p=>p.id===current).label;
+    });
+  }
+  render();
+  const resize = new ResizeObserver(entries=>{for(const entry of entries){const product=entry.target.closest('.oa-product');makeMap(product,product.dataset.design);}render();});
+  root.querySelectorAll('.oa-map').forEach(map=>resize.observe(map));
+  window.addEventListener('openai:set_globals',event=>{const s=event.detail?.globals?.widgetState?.privateContent;if(!s)return;visited=new Set((s.visited||[]).filter(id=>allowed.has(id)));current=allowed.has(s.current)?s.current:'description';render();});
+  if(globalThis.Tweak){products.forEach(product=>{const tweak=new Tweak({container:product,onChange:render});tweak.addColorPicker(design,'accent',{label:'点亮颜色',reference:'--oa-active'});if(product.dataset.design!=='slides')tweak.addToggle(design,'connections',{label:'显示连接线'});});}
+})();
+</script>

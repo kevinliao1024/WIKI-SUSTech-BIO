@@ -75,3 +75,22 @@ Both `/` and `/next` use this mapping; the residue-112 structure remains
 exclusive to `/next`. Browser checks use the shared mapping instead of
 duplicating old weights, verify normal wheel navigation and exit pause,
 and keep their artifacts under `/private/tmp/orca-burden-pacing-review`.
+
+Files changed for this correction: `static/onetake/burden-pacing.mjs`,
+`static/onetake/onetake.js`, `static/onetake/onetake.css`,
+`tests/burden_pacing.mjs`, `tests/dementia_burden_browser.mjs`,
+`tests/home_biology_browser.mjs`, and this record. Shared files were patched
+under the cooperative integration lock; the task's lock has been released.
+
+Verification: 48 Python checks, the isolated 26-page build/asset audit,
+reversible pacing checks, edit-replay checks and the dementia browser suite
+passed. Browser navigation allows for software-WebGL startup and uses an
+instant initial scroll position so CSS smooth scrolling does not interfere
+with the actual wheel-navigation regression.
+
+The live 8081 preview was holding a cached pre-drag template (zero
+`data-bio-hit` elements). Restarting this task's preview with template
+refreshing enabled exposed both existing hit regions. POD and CETUS were
+both manually dragged and snapped in that live in-app preview; it was then
+reset to the unplaced state for the user. No protein-drag source files were
+changed by this task.

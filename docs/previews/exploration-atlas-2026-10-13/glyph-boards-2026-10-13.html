@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORCA 探索足迹 · 两种细链形态对比板</title>
+<style>
+  :root{
+    --oy-deep:#070d0e; --oy-panel:#0e181a; --oy-panel2:#0b1416;
+    --oy-ice:#e2f2ee; --oy-glacier:#a9c8c2; --oy-mute:#6f8a88;
+    --oy-hair:rgba(169,200,194,.18);
+    --oy-signal:#52e0c8; --oy-dye:#e0975c; --oy-ring:#bfe6ff;
+    --oy-sans:Futura,"Avenir Next","Century Gothic","PingFang SC","Hiragino Sans GB",-apple-system,"Microsoft YaHei",sans-serif;
+    --oy-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Songti SC",serif;
+    --oy-mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    color-scheme:dark light;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--oy-deep); color:var(--oy-ice);
+    font-family:var(--oy-sans);
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(120% 80% at 12% -10%,rgba(82,224,200,.055),transparent 62%),
+                     radial-gradient(90% 60% at 92% 4%,rgba(224,151,92,.05),transparent 60%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:56px 30px 96px}
+
+  /* ---------- masthead ---------- */
+  .lede{max-width:62ch}
+  .lede .kicker{
+    font-family:var(--oy-mono);font-size:10.5px;letter-spacing:.13em;
+    color:var(--oy-mute);margin:0 0 22px;
+  }
+  .lede h1{
+    font-family:var(--oy-serif);font-weight:400;
+    font-size:clamp(30px,4.6vw,52px);line-height:1.1;letter-spacing:-.028em;
+    margin:0 0 18px;
+  }
+  .lede h1 em{font-style:normal;color:var(--oy-signal)}
+  .lede p{font-family:var(--oy-serif);font-size:16.5px;line-height:1.72;color:var(--oy-glacier);margin:0 0 12px}
+  .lede p:last-child{margin-bottom:0}
+  .rule{height:1px;background:var(--oy-hair);margin:40px 0 0;border:0}
+
+  /* ---------- board anatomy ---------- */
+  .board{margin-top:56px}
+  .board__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:6px}
+  .board__tag{font-family:var(--oy-mono);font-size:10.5px;letter-spacing:.12em;color:var(--oy-mute)}
+  .board__head h2{font-family:var(--oy-serif);font-weight:400;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;margin:0}
+  .board__note{font-family:var(--oy-serif);font-size:15px;line-height:1.68;color:var(--oy-glacier);max-width:66ch;margin:8px 0 30px}
+
+  .anat{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:38px;align-items:start}
+  @media (max-width:880px){.anat{grid-template-columns:1fr;gap:44px}}
+
+  .spec{border:1px solid var(--oy-hair);border-radius:4px;background:var(--oy-panel2);padding:22px 22px 20px}
+  .spec__cap{font-family:var(--oy-mono);font-size:10.5px;letter-spacing:.1em;color:var(--oy-mute);margin:0 0 20px;display:flex;justify-content:space-between;gap:14px}
+  .spec__cap b{color:var(--oy-glacier);font-weight:400}
+
+  /* ---------- state legend ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin:0 0 28px}
+  .legend__item{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--oy-glacier)}
+  .legend__swatch{width:22px;height:22px;display:grid;place-items:center;flex:none}
+
+  /* ---------- horizontal sono chain (true size) ---------- */
+  .hchain{position:relative;min-height:74px;display:flex;flex-direction:column;justify-content:center;padding:6px 0}
+  .hchain__baseline{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--oy-hair)}
+  .hchain__row{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+  .hchain__group{display:flex;align-items:center;gap:9px;flex:none}
+  .hchain__sep{width:1px;height:20px;background:var(--oy-hair);flex:none}
+  .hchain__count{font-family:var(--oy-mono);font-size:11px;color:var(--oy-glacier);font-variant-numeric:tabular-nums;flex:none;margin-left:4px}
+
+  /* sono glyph */
+  .sng{position:relative;width:11px;height:46px;display:grid;place-items:center;flex:none}
+  .sng i{display:block;width:1px;height:2px;background:rgba(111,138,136,.62);border-radius:1px;transition:height .3s,width .3s,background .3s,box-shadow .3s}
+  .sng[data-state="visited"] i{width:2.5px;height:16px;background:var(--oy-signal);box-shadow:0 0 10px rgba(82,224,200,.42)}
+  .sng[data-state="current"] i{width:2.5px;height:24px;background:var(--oy-signal);box-shadow:0 0 14px rgba(82,224,200,.58)}
+  .sng[data-state="current"]::after{
+    content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;
+    transform:translate(-50%,-50%);border:1px solid var(--oy-ring);border-radius:50%;opacity:.85;
+    animation:oy-ping 2.4s cubic-bezier(.16,.84,.24,1) infinite;
+  }
+  @keyframes oy-ping{0%{transform:translate(-50%,-50%) scale(.55);opacity:.9}70%{transform:translate(-50%,-50%) scale(2.5);opacity:0}100%{opacity:0}}
+
+  /* ---------- vertical sono chain (true size) ---------- */
+  .vchain{display:flex;gap:16px;align-items:stretch}
+  .vchain__rail{position:relative;width:26px;flex:none;display:flex;flex-direction:column;justify-content:space-between;padding:2px 0}
+  .vchain__rail::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:1px;background:var(--oy-hair)}
+  .vchain__list{display:flex;flex-direction:column;justify-content:space-between;gap:0;font-size:11.5px;flex:1;min-width:0}
+  .vchain__list span{color:var(--oy-mute);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .vchain__list span[data-state="visited"]{color:var(--oy-glacier)}
+  .vchain__list span[data-state="current"]{color:var(--oy-signal)}
+
+  /* ---------- dye chain, horizontal & vertical ---------- */
+  .dchain{position:relative;min-height:74px;display:flex;flex-direction:column;justify-content:center}
+  .dchain__baseline{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--oy-hair)}
+  .dchain__row{position:relative;display:flex;align-items:center;gap:13px;flex-wrap:nowrap;overflow-x:auto}
+  .dchain__group{display:flex;align-items:center;gap:9px;flex:none}
+  .dchain__sep{width:1px;height:18px;background:var(--oy-hair);flex:none}
+  .spot{width:12px;height:12px;border-radius:50%;border:1px solid var(--oy-mute);background:transparent;flex:none;transition:background .3s,border-color .3s,box-shadow .3s,transform .3s}
+  .spot[data-state="visited"]{background:var(--oy-dye);border-color:var(--oy-dye);box-shadow:0 0 9px rgba(224,151,92,.3)}
+  .spot[data-state="current"]{background:var(--oy-dye);border-color:var(--oy-dye);box-shadow:0 0 0 3px rgba(224,151,92,.17),0 0 14px rgba(224,151,92,.4);transform:scale(1.22)}
+  .spot--view{background:rgba(191,230,255,.1)!important;border-color:var(--oy-ring)!important;box-shadow:none!important;transform:none!important}
+
+  .vdye{display:flex;flex-direction:column;gap:11px}
+  .vdye__page{display:flex;align-items:center;gap:11px;font-size:11.5px;color:var(--oy-mute)}
+  .vdye__page[data-state="visited"]{color:var(--oy-glacier)}
+  .vdye__page[data-state="current"]{color:var(--oy-dye)}
+  .vdye__track{position:relative;width:12px;flex:none;display:grid;place-items:center}
+  .vdye__track::before{content:"";position:absolute;left:50%;top:-11px;bottom:-11px;width:1px;background:var(--oy-hair)}
+  .vdye__page:first-child .vdye__track::before{top:50%}
+  .vdye__page:last-child .vdye__track::before{bottom:50%}
+
+  /* ---------- magnified band ---------- */
+  .zoom{margin-top:34px;border-top:1px dashed var(--oy-hair);padding-top:26px}
+  .zoom__cap{font-family:var(--oy-mono);font-size:10.5px;letter-spacing:.1em;color:var(--oy-mute);margin:0 0 18px}
+  .zoom__row{display:flex;align-items:center;gap:64px;flex-wrap:wrap;row-gap:30px}
+  .zoom__cell{display:flex;align-items:center;gap:16px}
+  .zoom__scale{transform:scale(2.4);transform-origin:left center;will-change:transform}
+  .zoom__tag{font-size:11px;color:var(--oy-glacier);line-height:1.5;max-width:12ch}
+  .zoom--vert{display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap;margin-top:30px}
+  .zoom--vert .zoom__cell{flex-direction:column;align-items:flex-start;gap:14px}
+
+  /* ---------- live demo ---------- */
+  .demo{margin-top:56px;border-top:1px dashed var(--oy-hair);padding-top:34px}
+  .demo__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 20px;margin-bottom:8px}
+  .demo__head h2{font-family:var(--oy-serif);font-weight:400;font-size:clamp(20px,2.3vw,26px);margin:0;letter-spacing:-.02em}
+  .demo__hint{font-size:12.5px;color:var(--oy-mute)}
+  .demo__stage{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:38px;align-items:start;margin-top:26px}
+  @media (max-width:880px){.demo__stage{grid-template-columns:1fr}}
+  .demo__bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px}
+  .demo__count{font-family:var(--oy-mono);font-size:12px;color:var(--oy-glacier);font-variant-numeric:tabular-nums}
+  .demo__reset{
+    font-family:var(--oy-sans);font-size:12px;color:var(--oy-glacier);
+    background:transparent;border:1px solid var(--oy-hair);border-radius:99px;
+    padding:7px 15px;cursor:pointer;transition:color .2s,border-color .2s;
+  }
+  .demo__reset:hover{color:var(--oy-ice);border-color:var(--oy-glacier)}
+  .demo__reset:focus-visible,.hit:focus-visible,.chain-group:focus-visible{outline:2px solid var(--oy-ring);outline-offset:3px}
+
+  .hit{
+    appearance:none;border:0;background:transparent;padding:0;cursor:pointer;
+    display:grid;place-items:center;position:relative;
+  }
+  .chain-group{display:flex;align-items:center;gap:9px;flex:none;padding:6px 4px;border:0;background:transparent;border-radius:3px;cursor:pointer}
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="lede">
+    <p class="kicker">ORCA · 探索足迹 · 意象二与意象五</p>
+    <h1>两条细链，两种<em>被留下</em>的方式</h1>
+    <p>左边是虎鲸声库：走过一页，等于把这个页面的一段鸣声收进了库里。右边是玻片染色：走过一页，等于在切片上染到那个点。两者都只记录<em>访问</em>，不表示实验进展、证据强度或治疗有效。</p>
+    <p>每组都给了真实尺寸（页头横链约 40px 高、正文竖链约 64px 宽）和 2.4× 放大细节，最后是一段可点击的实时演示。</p>
+  </header>
+
+  <hr class="rule">
+
+  <!-- ============ STATIC ANATOMY ============ -->
+  <section class="board">
+    <div class="board__head">
+      <span class="board__tag">静态解剖</span>
+      <h2>三态在两种形态下的形状</h2>
+    </div>
+    <p class="board__note">三态只靠形状区分：未探索是一根最短的发丝线 / 一个空心环；已探索是立起来的实心刻线 / 实心点；当前页除了实心之外多一圈回波环并带呼吸。颜色是额外层级，不是唯一线索——去掉颜色仍然读得出。</p>
+
+    <div class="legend">
+      <span class="legend__item"><span class="legend__swatch"><span class="sng"><i></i></span></span>未探索</span>
+      <span class="legend__item"><span class="legend__swatch"><span class="sng" data-state="visited"><i></i></span></span>已探索</span>
+      <span class="legend__item"><span class="legend__swatch"><span class="sng" data-state="current"><i></i></span></span>当前页（回波环）</span>
+      <span class="legend__item"><span class="legend__swatch"><span class="spot"></span></span>未染色</span>
+      <span class="legend__item"><span class="legend__swatch"><span class="spot" data-state="visited"></span></span>已染色</span>
+      <span class="legend__item"><span class="legend__swatch"><span class="spot" data-state="current"></span></span>当前页</span>
+    </div>
+
+    <div class="anat">
+      <!-- sono -->
+      <div class="spec">
+        <p class="spec__cap"><span>意象二 · 虎鲸声库</span><b>横向细链 · 41px</b></p>
+        <div class="hchain">
+          <div class="hchain__baseline"></div>
+          <div class="hchain__row" id="sono-h"></div>
+        </div>
+        <p class="spec__cap" style="margin:30px 0 18px"><span>纵向细链 · 64px 宽</span><b>按组下挂</b></p>
+        <div class="vchain">
+          <div class="vchain__rail" id="sono-v"></div>
+          <div class="vchain__list" id="sono-v-list"></div>
+        </div>
+      </div>
+
+      <!-- dye -->
+      <div class="spec">
+        <p class="spec__cap"><span>意象五 · 玻片染色</span><b>横向细链 · 41px</b></p>
+        <div class="dchain">
+          <div class="dchain__baseline"></div>
+          <div class="dchain__row" id="dye-h"></div>
+        </div>
+        <p class="spec__cap" style="margin:30px 0 18px"><span>纵向细链 · 64px 宽</span><b>逐页一行</b></p>
+        <div class="vdye" id="dye-v"></div>
+      </div>
+    </div>
+
+    <!-- magnified -->
+    <div class="zoom">
+      <p class="zoom__cap">放大 2.4× · 检查最细的形态是否还认得出来</p>
+      <div class="zoom__row">
+        <div class="zoom__cell"><span class="zoom__scale"><span class="sng"><i></i></span></span><span class="zoom__tag">未探索：1px 发丝刻痕</span></div>
+        <div class="zoom__cell"><span class="zoom__scale"><span class="sng" data-state="visited"><i></i></span></span><span class="zoom__tag">已探索：2px 实心鸣声</span></div>
+        <div class="zoom__cell"><span class="zoom__scale"><span class="sng" data-state="current"><i></i></span></span><span class="zoom__tag">当前：回波环</span></div>
+        <div class="zoom__cell"><span class="zoom__scale"><span class="spot"></span></span><span class="zoom__tag">未染色：空心网孔</span></div>
+        <div class="zoom__cell"><span class="zoom__scale"><span class="spot" data-state="visited"></span></span><span class="zoom__tag">已染色：实心点</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE DEMO ============ -->
+  <section class="demo">
+    <div class="demo__head">
+      <span class="board__tag">可交互</span>
+      <h2>点任意节点，看它如何被留下</h2>
+    </div>
+    <p class="demo__hint">横向链上每个节点都可点击；再次点击可取消。右上角计数随之更新。这条演示链与上方静态板共用同一套 token。</p>
+
+    <div class="demo__stage">
+      <div class="spec">
+        <p class="spec__cap"><span>虎鲸声库 · 可点击</span><b id="live-count">0 / 19 已探索</b></p>
+        <div class="hchain">
+          <div class="hchain__baseline"></div>
+          <div class="hchain__row" id="live-h"></div>
+        </div>
+        <div class="demo__bar">
+          <button class="demo__reset" type="button" id="live-reset">重置全部</button>
+          <span class="demo__count" id="live-note" role="status" aria-live="polite">尚未探索任何页面</span>
+        </div>
+      </div>
+      <div class="spec">
+        <p class="spec__cap"><span>玻片染色 · 与左侧同步</span><b>同一份访问记录</b></p>
+        <div class="vdye" id="live-v"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var GROUPS = [
+    {name:"Project",        pages:[["description","Description"],["engineering","Engineering"],["contribution","Contribution"],["parts","Parts"]]},
+    {name:"Wet Lab",        pages:[["experiments","Experiments"],["results","Results"],["notebook","Notebook"],["measurement","Measurement"],["alternative-platform","Alternative Platform"],["safety-and-security","Safety & Security"]]},
+    {name:"Dry Lab",        pages:[["model","Model"],["software","Software"]]},
+    {name:"Human Practices",pages:[["human-practices","Human Practices"],["education","Education"],["entrepreneurship","Entrepreneurship"],["inclusivity","Inclusivity"],["sustainability","Sustainability"]]},
+    {name:"Team",           pages:[["team","Team"],["attributions","Attributions"]]}
+  ];
+  var TOTAL = GROUPS.reduce(function(n,g){return n+g.pages.length;},0);
+
+  /* 静态板用的固定演示态：只表示“访问过”，与任何真实记录无关。 */
+  var SAMPLE = {visited:["description","engineering","results","model"],current:"engineering"};
+
+  function sonoDot(state){
+    return '<span class="sng"'+(state?' data-state="'+state+'"':'')+' aria-hidden="true"><i></i></span>';
+  }
+  function spotDot(state,extra){
+    return '<span class="spot'+(extra?" "+extra:"")+'"'+(state?' data-state="'+state+'"':'')+' aria-hidden="true"></span>';
+  }
+  function stateOf(id,st){
+    if(st.current===id) return "current";
+    return st.visited.indexOf(id)>-1 ? "visited" : "";
+  }
+
+  /* ---- static horizontal sono ---- */
+  (function(){
+    var host=document.getElementById("sono-h"); if(!host) return;
+    var html="";
+    GROUPS.forEach(function(g,gi){
+      if(gi) html+='<span class="hchain__sep" aria-hidden="true"></span>';
+      html+='<span class="hchain__group">';
+      g.pages.forEach(function(p){ html+=sonoDot(stateOf(p[0],SAMPLE)); });
+      html+='</span>';
+    });
+    html+='<span class="hchain__count">'+SAMPLE.visited.length+" / "+TOTAL+'</span>';
+    host.innerHTML=html;
+  })();
+
+  /* ---- static vertical sono rail ---- */
+  (function(){
+    var rail=document.getElementById("sono-v"), list=document.getElementById("sono-v-list");
+    if(!rail) return;
+    var rh="",lh="";
+    GROUPS.forEach(function(g){
+      g.pages.forEach(function(p){
+        var st=stateOf(p[0],SAMPLE);
+        rh+=sonoDot(st);
+        lh+='<span data-state="'+(st||"")+'">'+p[1]+"</span>";
+      });
+    });
+    rail.innerHTML=rh; list.innerHTML=lh;
+  })();
+
+  /* ---- static horizontal dye ---- */
+  (function(){
+    var host=document.getElementById("dye-h"); if(!host) return;
+    var html="";
+    GROUPS.forEach(function(g,gi){
+      if(gi) html+='<span class="dchain__sep" aria-hidden="true"></span>';
+      html+='<span class="dchain__group">';
+      g.pages.forEach(function(p){ html+=spotDot(stateOf(p[0],SAMPLE)); });
+      html+='</span>';
+    });
+    host.innerHTML=html;
+  })();
+
+  /* ---- static vertical dye ---- */
+  (function(){
+    var host=document.getElementById("dye-v"); if(!host) return;
+    var html="";
+    GROUPS.forEach(function(g){
+      g.pages.forEach(function(p){
+        var st=stateOf(p[0],SAMPLE);
+        html+='<div class="vdye__page" data-state="'+(st||"")+'">'
+            + '<span class="vdye__track">'+spotDot(st)+'</span>'
+            + '<span>'+p[1]+"</span></div>";
+      });
+    });
+    host.innerHTML=html;
+  })();
+
+  /* ================= live demo ================= */
+  var live={visited:new Set(),current:null};
+  var liveHost=document.getElementById("live-h");
+  var liveV=document.getElementById("live-v");
+  var liveCount=document.getElementById("live-count");
+  var liveNote=document.getElementById("live-note");
+
+  function liveState(id){
+    if(live.current===id) return "current";
+    return live.visited.has(id) ? "visited" : "";
+  }
+
+  function renderLive(){
+    var html="";
+    GROUPS.forEach(function(g,gi){
+      if(gi) html+='<span class="hchain__sep" aria-hidden="true"></span>';
+      html+='<span class="hchain__group">';
+      g.pages.forEach(function(p){
+        html+='<button class="hit" type="button" data-id="'+p[0]+'" data-name="'+p[1]+'"'
+             + ' aria-pressed="'+(live.visited.has(p[0])?"true":"false")+'"'
+             + ' aria-label="'+p[1]+'，'+(live.visited.has(p[0])?"已探索，点击取消":"尚未探索，点击标记")+'">'
+             + sonoDot(liveState(p[0]))+"</button>";
+      });
+      html+='</span>';
+    });
+    liveHost.innerHTML=html;
+
+    var vh="";
+    GROUPS.forEach(function(g){
+      g.pages.forEach(function(p){
+        var st=liveState(p[0]);
+        vh+='<div class="vdye__page" data-state="'+(st||"")+'">'
+          + '<span class="vdye__track">'+spotDot(st)+'</span>'
+          + "<span>"+p[1]+"</span></div>";
+      });
+    });
+    liveV.innerHTML=vh;
+
+    liveCount.textContent=live.visited.size+" / "+TOTAL+" 已探索";
+    liveNote.textContent = live.visited.size===0
+      ? "尚未探索任何页面"
+      : (live.current ? "当前页："+live.current : "已探索 "+live.visited.size+" 页");
+  }
+
+  function toggle(id){
+    if(live.visited.has(id)) live.visited.delete(id);
+    else live.visited.add(id);
+    live.current=id;
+    renderLive();
+  }
+
+  liveHost.addEventListener("click",function(e){
+    var btn=e.target.closest(".hit"); if(!btn) return;
+    toggle(btn.dataset.id);
+  });
+
+  document.getElementById("live-reset").addEventListener("click",function(){
+    live.visited=new Set(); live.current=null; renderLive();
+  });
+
+  renderLive();
+})();
+</script>
+</body>
+</html>

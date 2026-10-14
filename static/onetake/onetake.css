@@ -145,6 +145,10 @@ body.ot-menu-open { overflow: hidden; }
 .ot-source { margin: 16px 0 0; color: #8994ae; font-size: 11px; letter-spacing: .035em; }
 .ot-static-explanation { display: none; }
 .ot-ch--question { left: 50%; bottom: 24vh; transform: translateX(-50%); width: min(850px,88vw); text-align: center; }
+/* Keep the horizontal centering anchor when the general chapter rule follows. */
+@media (min-width:761px) {
+  .ot-root:not(.ot--static) .ot-ch--question { left:50%; }
+}
 .ot-question { margin: 0; font-size: clamp(42px,6.5vw,96px); line-height: 1.08; font-weight: 400; letter-spacing: -.035em; }
 .ot-question em { color: #f58f9c; font-family: Georgia,serif; font-weight: 400; }
 .ot-edit-skip { position: fixed; z-index: 39; right: 24px; bottom: 24px; padding: 10px 15px;
@@ -152,10 +156,15 @@ body.ot-menu-open { overflow: hidden; }
   font: 400 12px/1.4 var(--ot-sans); cursor: pointer; }
 .ot-edit-skip[hidden] { display: none; }
 .ot-edit-skip:focus-visible { outline: 2px solid var(--ot-ice); outline-offset: 3px; }
+.ot-edit-start { position: fixed; z-index: 39; left: max(20px,env(safe-area-inset-left)); bottom: max(24px,env(safe-area-inset-bottom));
+  display: inline-flex; align-items: center; gap: 18px; padding: 12px 18px; border: 1px dashed #e2ce9580; border-radius: 4px;
+  color: #e2ce95; background: #03050be8; font: 400 14px/1.4 var(--ot-sans); cursor: pointer; }
+.ot-edit-start[hidden] { display: none; }
+.ot-edit-start:hover, .ot-edit-start:focus-visible { border-style: solid; outline: 2px solid #e2ce95; outline-offset: 3px; }
 .ot-project-link { display: inline-flex; gap: 22px; margin-top: 24px; color: #c7c5f4; font-size: 15px; text-decoration: none; border-bottom: 1px solid #9d9cf44d; padding-bottom: 8px; }
 .ot-bio-interaction { position: fixed; inset: 0; z-index: 11; pointer-events: none; }
 .ot-bio-interaction[hidden] { display: none; }
-.ot-bio-guides { width: 100%; height: 100%; overflow: visible; }
+.ot-bio-guides { width: 100%; height: 100%; overflow: visible; touch-action: none; }
 .ot-bio-guides path { fill: none; stroke: #c9c6fa; stroke-width: 1; stroke-dasharray: 3 7; animation: ot-guide 3s linear infinite; }
 .ot-bio-guides .ot-bio-hit { fill: transparent; stroke: none; animation: none;
   pointer-events: all; touch-action: none; cursor: grab; }
@@ -314,7 +323,7 @@ body.ot:has(.ot-root[data-edit-replay]) .back-to-top { display: none; }
 /* Readable baseline when JavaScript/WebGL is unavailable or motion is reduced. */
 .ot--static .ot-canvas, .ot--static .ot-letter,
 .ot--static .ot-scroll-hint { display: none; }
-.ot--static .ot-bio-labels, .ot--static .ot-edit-skip { display: none; }
+.ot--static .ot-bio-labels, .ot--static .ot-edit-skip, .ot--static .ot-edit-start { display: none; }
 .ot--static .ot-bio-interaction { display: none; }
 .ot--static .ot-static-explanation { display: block; max-width: 54ch; color: #b7c1d1; line-height: 1.6; }
 .ot--static .ot-story { height: auto; padding-top: 100px; pointer-events: auto; }

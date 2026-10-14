@@ -1,73 +1,13 @@
 <section class="burden" data-burden aria-labelledby="burden-title">
-  <header class="burden__header">
-    <p class="burden__eyebrow">The human scale</p>
-    <h2 id="burden-title">A growing burden.<br><em>A stadium is only the beginning.</em></h2>
-  </header>
+  <canvas class="burden__field" data-burden-canvas aria-hidden="true"></canvas>
 
-  <div class="burden__composition">
-    <div class="burden__trend">
-      <h3>People living with dementia worldwide</h3>
-      <p class="burden__trend-note">Projected to grow almost threefold by 2050.</p>
-      <div class="burden__chart-wrap" data-burden-chart>
-        <svg class="burden__chart" viewBox="0 0 440 300" role="img" aria-labelledby="burden-chart-title burden-chart-desc">
-          <title id="burden-chart-title">Global dementia cases: 2019 estimate and 2030–2050 projections</title>
-          <desc id="burden-chart-desc">One GBD 2019 study estimates 57.4 million cases in 2019, and projects 83.2 million in 2030, 116.0 million in 2040 and 152.8 million in 2050. Dashed segments connect published projections, not annual observations. Select a year below to compare its scale in stadiums.</desc>
-          <defs>
-            <linearGradient id="burden-chart-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#9d9cf4" stop-opacity=".17"/>
-              <stop offset="1" stop-color="#9d9cf4" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <g class="burden__grid"><path d="M46 240H416 M46 168H416 M46 96H416 M46 24H416"/></g>
-          <g class="burden__axis"><text x="34" y="244">0</text><text x="34" y="172">50</text><text x="34" y="100">100</text><text x="34" y="28">150</text><text x="46" y="283" text-anchor="start">2019</text><text x="177" y="283">2030</text><text x="296" y="283">2040</text><text x="416" y="283">2050</text></g>
-          <text class="burden__unit" x="46" y="10">MILLION PEOPLE</text>
-          <path fill="url(#burden-chart-fill)" d="M46 157.3L177 120.2L296 73L416 20L416 240H46Z"/>
-          <path class="burden__curve-glow" d="M46 157.3L177 120.2L296 73L416 20"/>
-          <path class="burden__projection" d="M46 157.3L177 120.2L296 73L416 20"/>
-          <g class="burden__point-label"><text x="58" y="145">57.4M</text><text x="396" y="44" text-anchor="end">152.8M</text></g>
-          <g class="burden__points"><circle cx="46" cy="157.3" r="4"/><circle cx="177" cy="120.2" r="4"/><circle cx="296" cy="73" r="4"/><circle cx="416" cy="20" r="4"/></g>
-          <g data-burden-cursor hidden><path class="burden__cursor-line" d="M46 157.3V240"/><circle class="burden__cursor-halo" cx="46" cy="157.3" r="12"/><circle class="burden__cursor-dot" cx="46" cy="157.3" r="5"/></g>
-        </svg>
-      </div>
-      <div class="burden__years" aria-label="Compare published dementia estimates and projections">
-        <button type="button" data-burden-year="0" aria-pressed="false">2019<span>Estimate</span></button>
-        <button type="button" data-burden-year="1" aria-pressed="false">2030<span>Projection</span></button>
-        <button type="button" data-burden-year="2" aria-pressed="false">2040<span>Projection</span></button>
-        <button type="button" data-burden-year="3" aria-pressed="false">2050<span>Projection</span></button>
-      </div>
-      <p class="burden__chart-hint">Drag along the line or choose a year to compare.</p>
-      <p class="burden__selection" data-burden-selection aria-live="polite">2019–2050 · one study, one projection series.</p>
-      <a class="burden__source" href="https://doi.org/10.1016/S2468-2667(21)00249-8" target="_blank" rel="noopener noreferrer">GBD 2019 dementia forecasting study ↗</a>
-    </div>
-
-    <div class="burden__scale">
-      <div class="burden__modes" aria-label="Explore dementia at human scale">
-        <button type="button" data-burden-mode="snapshot" aria-pressed="true">2021 snapshot</button>
-        <button type="button" data-burden-mode="incidence" aria-pressed="false">How fast does it fill?</button>
-      </div>
-      <div class="burden__scale-copy" aria-live="polite" aria-atomic="true">
-        <p class="burden__scale-context" data-burden-context>57 million people · WHO 2021 estimate</p>
-        <p class="burden__equivalent" data-burden-equivalent>Enough to fill <strong>≈432</strong> stadiums.</p>
-      </div>
-      <div class="burden__stadium" role="img" data-burden-stadium aria-label="A particle illustration of one stadium and a field of stadiums representing approximately 432 stadium capacities. Each small stadium represents 132,000 people.">
-        <canvas data-burden-canvas aria-hidden="true"></canvas>
-        <svg class="burden__stadium-fallback" viewBox="0 0 600 320" aria-hidden="true">
-          <g fill="none" stroke="#9d9cf4" stroke-width="1.2"><ellipse cx="300" cy="145" rx="235" ry="86"/><ellipse cx="300" cy="151" rx="225" ry="80"/><ellipse cx="300" cy="158" rx="211" ry="72"/><ellipse cx="300" cy="165" rx="197" ry="64"/><ellipse cx="300" cy="172" rx="183" ry="56"/><ellipse cx="300" cy="179" rx="167" ry="47"/><ellipse cx="300" cy="186" rx="152" ry="39"/><path d="M65 145v42c0 49 105 86 235 86s235-37 235-86v-42"/><path d="M282 179h36v14h-36z" stroke="#f58f9c"/></g>
-        </svg>
-        <span class="burden__capacity">One stadium · 132,000 seats</span>
-      </div>
-      <div class="burden__incidence" data-burden-incidence hidden>
-        <div class="burden__time-label"><label for="burden-days">Elapsed time</label><output for="burden-days" data-burden-days>0.0 days</output></div>
-        <input id="burden-days" data-burden-time type="range" min="0" max="4.818" step="0.001" value="0" aria-label="Days of new dementia cases, from empty to one stadium" aria-valuetext="0 days, 0 percent of one stadium">
-        <div class="burden__play-row"><button type="button" data-burden-play>Play 5 days in 10 seconds <span aria-hidden="true">↗</span></button><span data-burden-pace>Average ≈1 new case / 3.2 seconds</span></div>
-      </div>
-      <p class="burden__scale-note" data-burden-note>Each small stadium = 132,000 people. A capacity comparison, not an actual gathering.</p>
-      <p class="burden__venue"><a href="https://www.bcci.tv/venues?map=1" target="_blank" rel="noopener noreferrer">Narendra Modi Stadium, India ↗</a><span>Schematic illustration · 132,000-seat capacity</span></p>
-    </div>
+  <div class="burden__lines" aria-hidden="false">
+    <p class="burden__line" data-burden-line>57 million people are living with dementia.</p>
+    <p class="burden__line" data-burden-line>By 2050, <span data-burden-highlight>152 million</span>.</p>
+    <p class="burden__line" data-burden-line>Every one of them is someone.</p>
   </div>
-  <footer class="burden__footer">
-    <p>Alzheimer’s disease accounts for an estimated <span>60–70%</span> of dementia cases.</p>
-    <a href="https://www.who.int/health-topics/dementia" target="_blank" rel="noopener noreferrer">WHO · 2021 snapshot &amp; annual new cases ↗</a>
-  </footer>
-  <noscript><p class="burden__no-js">WHO estimates 57 million people lived with dementia in 2021, about 432 stadium capacities. Nearly 10 million new cases occur each year: at that average rate, one stadium’s capacity is reached in about 4.8 days.</p></noscript>
+
+  <p class="burden__source">57 million people · WHO 2021 estimate. Projections to 2050 from the <a href="https://doi.org/10.1016/S2468-2667(21)00249-8" target="_blank" rel="noopener noreferrer">GBD 2019 dementia forecasting study ↗</a>. Alzheimer’s disease accounts for an estimated 60–70% of dementia cases.</p>
+
+  <noscript><p class="burden__no-js">57 million people lived with dementia in 2021, according to the WHO estimate, rising toward 152.8 million by 2050 in the GBD 2019 projection series. Alzheimer’s disease accounts for an estimated 60–70% of cases.</p></noscript>
 </section>

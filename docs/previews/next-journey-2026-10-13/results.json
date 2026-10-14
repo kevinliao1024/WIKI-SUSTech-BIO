@@ -1,0 +1,14 @@
+{
+  "errors": [],
+  "checks": [
+    "one shared canvas",
+    "first-frame companion",
+    "keyboard stations",
+    "reverse exact restoration",
+    "maze handoff",
+    "skip",
+    "44px mobile targets",
+    "reduced motion",
+    "no WebGL"
+  ]
+}

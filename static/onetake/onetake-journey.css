@@ -1,0 +1,44 @@
+/* Journey-only layers; base home typography, menu and chapters stay shared. */
+.ot-journey-track { height: 700vh; position: relative; }
+.ot-journey-ui { position: fixed; inset: 0; z-index: 12; pointer-events: none; }
+.ot-journey-ui[hidden] { display: none; }
+.ot-journey-identity { position: absolute; left: 4vw; top: 120px; margin: 0; max-width: 65vw; color: var(--ot-mute); font-size: 11px; letter-spacing: .035em; }
+.ot-journey-intro { position: absolute; top: 19vh; left: 9vw; right: 9vw; text-align: center; }
+.ot-journey-intro h1 { margin: 14px 0; font: 400 clamp(28px, 3.5vw, 52px)/1.18 var(--ot-serif); letter-spacing: -.025em; }
+.ot-journey-eyebrow { color: var(--ot-ice); font-size: 10px; text-transform: uppercase; letter-spacing: .2em; }
+.ot-journey-hint { color: var(--ot-mute); font-size: 12px; margin-top: 24px; }
+.ot-journey-stations { position: absolute; left: 50%; bottom: 15vh; transform: translateX(-50%); display: flex; gap: 24px; pointer-events: auto; }
+.ot-journey-stations button { min-height: 44px; min-width: 100px; padding: 10px 14px; border: 1px solid var(--ot-line); border-radius: 3px; background: var(--ot-bg); color: var(--ot-mute); cursor: pointer; font: 400 10px/1.4 var(--ot-mono); }
+.ot-journey-stations button span { color: var(--ot-ink); margin-left: 10px; font: 400 13px/1.4 var(--ot-sans); }
+.ot-journey-stations button[aria-current="step"] { border-color: var(--ot-ice); }
+.ot-journey-stations button:hover { color: var(--ot-ice); border-color: var(--ot-ice); }
+.ot-journey-stations button:focus-visible, .ot-journey-skip:focus-visible { outline: 2px solid var(--ot-mint); outline-offset: 5px; }
+.ot-journey-panel { position: absolute; left: 12vw; bottom: 28vh; max-width: 36ch; }
+.ot-journey-panel h2 { margin: 0 0 12px; font: 400 clamp(26px, 2.8vw, 40px)/1.2 var(--ot-serif); }
+.ot-journey-panel p { color: var(--ot-mute); font-size: clamp(14px, 1.3vw, 18px); line-height: 1.5; }
+.ot-journey-boundary { max-width: 48ch; }
+[data-journey-panel] { visibility: hidden; opacity: 0; }
+[data-journey-panel].is-on { visibility: visible; opacity: 1; }
+.ot-journey-question { position: absolute; left: 4vw; bottom: 26px; color: var(--ot-ice); font-size: 12px; margin: 0; }
+.ot-journey-skip { position: fixed; right: 4vw; bottom: 26px; z-index: 14; color: var(--ot-mute); font: 400 11px/1.4 var(--ot-sans); text-decoration: none; padding: 10px; }
+.ot-journey-home .ot-canvas { transition: none; }
+.ot--static .ot-journey-track { height: auto; padding: 105px 6vw 20px; }
+.ot--static .ot-journey-ui { position: relative; inset: auto; }
+.ot--static .ot-journey-identity, .ot--static .ot-journey-intro, .ot--static .ot-journey-panel, .ot--static .ot-journey-stations { position: relative; inset: auto; transform: none; margin: 0 0 36px; }
+.ot--static [data-journey-panel] { opacity: 1; visibility: visible; max-width: 60ch; }
+.ot--static .ot-journey-identity { max-width: 100%; }
+.ot--static .ot-journey-intro { text-align: left; }
+.ot--static .ot-journey-question, .ot--static .ot-journey-hint { display: none; }
+.ot--static .ot-journey-stations { flex-wrap: wrap; }
+.ot--static .ot-journey-panel { scroll-margin-top: 130px; }
+@media (max-width: 760px) {
+  .ot-journey-identity { top: 130px; max-width: 90vw; font-size: 10px; }
+  .ot-journey-intro { top: 22vh; left: 6vw; right: 6vw; }
+  .ot-journey-intro h1 br { display: none; }
+  .ot-journey-panel { left: 7vw; right: 7vw; bottom: 26vh; }
+  .ot-journey-stations { gap: 8px; bottom: 14vh; }
+  .ot-journey-stations button { min-width: 94px; padding: 10px 8px; }
+  .ot-journey-stations button span { margin-left: 4px; }
+  .ot-journey-question { bottom: 76px; }
+  .ot--static .ot-journey-identity { top: auto; }
+}

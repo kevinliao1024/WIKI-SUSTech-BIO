@@ -81,7 +81,7 @@
       const relative = url.pathname.slice(prefix.length).replace(/\/$/, '');
       // Wiki routes are extensionless, single segments (also supports frozen /sustech/ hosting).
       if (relative && !/^[a-z0-9-]+$/i.test(relative)) return null;
-      return url;
+      return this.direction(url) === 'light' ? null : url;
     }
     direction(url) {
       const home = value => path(value) === path(this.config.home) || path(value) === path(new URL('next', this.config.home));
@@ -94,7 +94,7 @@
       const module = await this.module; await module.PortalShader.load(); return module;
     }
     async prepareScene(token) {
-      if (this.motion.matches || this.directionName === 'light' || navigator.connection?.saveData) return;
+      if (this.motion.matches || navigator.connection?.saveData) return;
       let abandoned = false;
       const work = (async () => {
         const module = await this.loadScene();
@@ -119,7 +119,7 @@
       const style = this.overlay.style;
       style.setProperty('--wh-opacity', String(smooth(0, 0.13, p) * (1 - reveal)));
       style.setProperty('--wh-scale', String(0.15 + smooth(0.08, 0.6, p) * 1.6 + Math.pow(smooth(0.65, 1, p), 3) * 16));
-      style.setProperty('--wh-cover', String(smooth(this.directionName === 'light' ? 0 : 0.87, 1, p) * (1 - reveal)));
+      style.setProperty('--wh-cover', String(smooth(0.87, 1, p) * (1 - reveal)));
       this.overlay.style.opacity = String(1 - reveal);
       try { this.scene?.render(p, this.directionName, reveal); }
       catch { this.scene?.dispose(); this.scene = null; this.overlay.dataset.renderer = 'css'; }
@@ -130,6 +130,7 @@
       await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
     async arrive(state) {
+      if (!['to-light', 'to-home'].includes(state.direction)) { this.reset(); return; }
       const token = this.begin(state.direction);
       this.overlay.dataset.phase = 'arrival';
       this.draw(1);
@@ -141,7 +142,7 @@
       if (token !== this.generation) return;
       if (state.direction === 'to-home') await this.prepareScene(token);
       if (token !== this.generation) return;
-      const duration = this.motion.matches ? 80 : state.direction === 'light' ? 125 : 500;
+      const duration = this.motion.matches ? 80 : 500;
       await this.timeline.play(duration, p => this.draw(1, smooth(0, 1, p)));
       if (token === this.generation) { this.emit('complete', { direction: state.direction }); this.reset(); }
     }
@@ -149,7 +150,9 @@
       if (this.busy) return false;
       const url = new URL(value, location.href);
       if (url.origin !== location.origin) return false;
-      const direction = this.direction(url), token = this.begin(direction);
+      const direction = this.direction(url);
+      if (direction === 'light') { location.assign(url.href); return true; }
+      const token = this.begin(direction);
       this.abort = new AbortController(); const signal = this.abort.signal;
       const timeout = setTimeout(() => this.abort?.abort(), 8000);
       // Check the destination while the animation runs. A failed fetch returns to the current page.
@@ -161,7 +164,7 @@
         }).then(() => true).catch(() => false);
       await this.prepareScene(token);
       if (token !== this.generation) { clearTimeout(timeout); return false; }
-      const duration = this.motion.matches ? 80 : direction === 'light' ? 125 : 1500;
+      const duration = this.motion.matches ? 80 : 1500;
       const completed = await this.timeline.play(duration, p => this.draw(p));
       if (!completed || token !== this.generation) { clearTimeout(timeout); return false; }
       this.overlay.dataset.phase = 'covered'; this.scene?.dispose(); this.scene = null;

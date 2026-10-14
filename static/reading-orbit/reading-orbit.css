@@ -1,0 +1,81 @@
+/* A shell moves with reading position; only its linework rotates. */
+.reading-orbit {
+  --orbit-ink: #285858;
+  --orbit-soft: #6f9998;
+  --orbit-accent: #b77932;
+  --orbit-paper: #f5f7fb;
+  --orbit-y: 0px;
+  --orbit-turn: 0deg;
+  position: fixed;
+  z-index: 32;
+  top: calc(var(--nav-h, 100px) + 28px);
+  bottom: max(116px, calc(env(safe-area-inset-bottom) + 100px));
+  right: clamp(8px, 1.35vw, 22px);
+  width: 52px;
+  color: var(--orbit-ink);
+  pointer-events: none;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+body.ot .reading-orbit, .reading-orbit.is-over-footer {
+  --orbit-ink: #bce9e3;
+  --orbit-soft: #6c9aa9;
+  --orbit-accent: #ecc38c;
+  --orbit-paper: #07142b;
+}
+.reading-orbit__soundings {
+  position: absolute;
+  inset: 35px 25px;
+  background: radial-gradient(circle, var(--orbit-soft) 1px, transparent 1.5px) center top / 2px 14px repeat-y;
+  opacity: .32;
+}
+.reading-orbit__start, .reading-orbit__end {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font: 9px/1 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: .06em;
+  opacity: .65;
+}
+.reading-orbit__start { top: -12px; }
+.reading-orbit__end { bottom: -14px; }
+.reading-orbit__traveler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 70px;
+  transform: translateY(var(--orbit-y));
+}
+.reading-orbit__form {
+  display: block;
+  width: 52px;
+  height: 52px;
+  stroke: var(--orbit-ink);
+  stroke-width: 1.3;
+  filter: drop-shadow(0 0 5px var(--orbit-paper));
+}
+.reading-orbit__spin { transform-origin: 32px 32px; transform: rotate(var(--orbit-turn)); }
+.reading-orbit__form ellipse { opacity: .44; stroke-width: .8; }
+.reading-orbit__accent { stroke: var(--orbit-accent); stroke-width: 2.2; }
+.reading-orbit__satellite { fill: var(--orbit-accent); stroke: var(--orbit-paper); stroke-width: 1.6; }
+.reading-orbit__core { fill: var(--orbit-ink); stroke: none; }
+.reading-orbit__value {
+  display: block;
+  margin-top: 3px;
+  text-align: center;
+  font: 10px/1 "SFMono-Regular", Consolas, monospace;
+  text-shadow: 0 0 6px var(--orbit-paper), 0 0 3px var(--orbit-paper);
+}
+@media (max-width: 760px) {
+  .reading-orbit { top: calc(var(--nav-h, 112px) + 20px); bottom: max(108px, calc(env(safe-area-inset-bottom) + 92px)); right: 3px; width: 30px; }
+  .reading-orbit__traveler { width: 30px; height: 49px; }
+  .reading-orbit__form { width: 30px; height: 30px; stroke-width: 1.7; }
+  .reading-orbit__soundings { inset: 24px 14px; }
+  .reading-orbit__start, .reading-orbit__end { font-size: 8px; }
+  .reading-orbit__value { font-size: 8px; margin-top: 5px; }
+  body.inner-page .markdown-page, body.inner-page .model-reading { padding-right: 24px; }
+}
+@media (max-height: 480px) {
+  .reading-orbit { top: calc(var(--nav-h, 100px) + 12px); bottom: 48px; }
+}
+@media print { .reading-orbit { display: none; } }

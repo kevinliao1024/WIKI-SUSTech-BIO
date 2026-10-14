@@ -1,0 +1,206 @@
+/* Ordinary Markdown pages follow Model's reading proportions and surfaces. */
+.content-page {
+  padding: 54px clamp(24px, 4.5vw, 88px) 90px;
+}
+.content-overview {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 12px 64px 48px 0;
+}
+.content-overview .eyebrow { margin-bottom: 18px; }
+.content-overview h1 {
+  margin: 0;
+  color: var(--particle-ink, #25314c);
+  font: 600 clamp(44px, 5.6vw, 80px)/1.08 var(--sans);
+  letter-spacing: -.055em;
+  overflow-wrap: anywhere;
+}
+.content-overview h1::after { content: '.'; color: #aa4e58; }
+.content-overview__lead {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: var(--particle-muted, #53617a);
+  font-size: 20px;
+  line-height: 1.65;
+}
+.content-page .markdown-page {
+  width: 100%;
+  max-width: 1260px;
+  grid-template-columns: 224px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+  padding: 0 64px 0 0;
+}
+.content-page .markdown-page--without-toc {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+}
+.content-reading {
+  min-width: 0;
+  padding: 42px clamp(30px, 4vw, 56px) 40px;
+  border: 1px solid #eeeef6;
+  border-radius: 28px;
+  background: #fffefc;
+}
+.content-page .content-status {
+  display: block;
+  width: 100%;
+  margin: 0 0 34px;
+  padding: 16px 20px;
+  border-radius: 0 12px 12px 0;
+}
+.content-page .content-status > span { display: block; margin-bottom: 8px; }
+.content-page .content-status p { font-size: 13px; line-height: 1.7; }
+.content-page .markdown-content { max-width: none; overflow-wrap: anywhere; }
+.content-page .markdown-content :is(p, li) { font-size: 18px; line-height: 1.85; }
+.content-page .markdown-content h2 {
+  margin: 48px 0 24px;
+  padding-top: 44px;
+  font: 600 clamp(28px, 3vw, 38px)/1.25 var(--sans);
+  letter-spacing: -.025em;
+}
+.content-page .markdown-content h2:first-child { margin-top: 0; padding-top: 0; }
+.content-page .markdown-content h3 { margin: 42px 0 20px; font-size: 32px; line-height: 1.25; }
+.content-page .markdown-content h4 { margin: 36px 0 18px; font: 600 23px/1.45 var(--sans); }
+.content-page .markdown-content :is(h5, h6) { margin: 30px 0 15px; font: 600 19px/1.5 var(--sans); }
+.content-page .markdown-content :is(h2, h3, h4, h5, h6)[id] {
+  /* The document's scroll-padding already accounts for the site navigation. */
+  scroll-margin-top: 14px;
+}
+.content-page .markdown-content figure {
+  width: min(100%, 720px);
+  margin: 34px auto 40px;
+  padding: 12px;
+  border: 1px solid #e7e7f0;
+  border-radius: 16px;
+  background: #fff;
+}
+.content-page .markdown-content img { max-width: min(100%, 696px); border-radius: 14px; }
+.content-page .markdown-content figure img { margin: 0 auto; }
+.content-page .markdown-content figcaption { padding: 16px 12px 4px; color: #62658a; font-size: 14px; line-height: 1.7; }
+.content-page .markdown-content table { display: block; max-width: 100%; overflow-x: auto; }
+.content-table {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 28px 0;
+  border: 1px solid #e1e1f6;
+  border-radius: 14px;
+  overscroll-behavior-x: contain;
+}
+.content-page .markdown-content .content-table table { display: table; width: 100%; margin: 0; font-size: 14px; line-height: 1.65; }
+.content-page .markdown-content :is(th, td) { padding: 13px 16px; min-width: 100px; border: 0; border-bottom: 1px solid #e7e7f5; }
+.content-page .markdown-content tr:last-child td { border-bottom: 0; }
+.content-page .markdown-content pre {
+  max-width: 100%;
+  padding: 24px;
+  color: var(--particle-ink, #25314c);
+  background: #eeeefa;
+  border: 1px solid #d6d8ff;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: normal;
+}
+.content-directory {
+  position: sticky;
+  top: calc(var(--nav-h, 100px) + 28px);
+  max-height: calc(100dvh - var(--nav-h, 100px) - 56px);
+  padding: 6px 6px 6px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6d8ef transparent;
+}
+.content-directory__label { display: block; padding: 0 15px 18px; color: #707299; font: 600 10px/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.content-directory ol { display: grid; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.content-group__head { display: flex; align-items: stretch; }
+.content-group__head > a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #656796;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.content-group__toggle {
+  flex: 0 0 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #656796;
+}
+.content-group__toggle::after { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); }
+.content-group__toggle[aria-expanded='true']::after { transform: rotate(45deg); }
+.content-directory a:hover, .content-group__toggle:hover { color: #3d409b; background: #eeeef8; }
+.content-directory a[aria-current] { color: #3d409b; background: #eaeaf8; border-color: #dfdff0; }
+.content-directory .content-subnav {
+  gap: 3px;
+  margin: 8px 0 12px 15px;
+  padding-left: 11px;
+  border-left: 1px solid #d7d8e9;
+}
+.content-subnav a { display: block; padding: 8px 9px; border-radius: 7px; color: #707299; font-size: 13px; line-height: 1.45; text-decoration: none; }
+.content-subnav a[aria-current] { box-shadow: inset 2px 0 #7d7fc1; }
+.content-directory :is(a, button):focus-visible { outline: 2px solid #5f62cd; outline-offset: -2px; }
+.content-directory [hidden] { display: none; }
+.content-mobile-directory { display: none; }
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .content-page .markdown-page { grid-template-columns: 180px minmax(0, 1fr); gap: 28px; }
+  .content-reading { padding-inline: 28px; }
+  .content-group__head > a { font-size: 16px; }
+  .content-subnav a { font-size: 12px; }
+}
+/* DBTL keeps its own responsive stage controls and scrolling behaviour. */
+@media (max-width: 991px) {
+  .content-page .markdown-page--dbtl { display: block; }
+  .content-page .markdown-page--dbtl .markdown-content h3 { scroll-margin-top: calc(var(--nav-h, 112px) + 168px); }
+}
+@media (max-width: 760px) {
+  .content-page { padding: 28px 14px 50px; }
+  .content-overview { padding: 0 28px 30px 6px; }
+  .content-overview h1 { font-size: clamp(38px, 9vw, 60px); }
+  .content-overview__lead { font-size: 17px; }
+  .content-page .markdown-page { display: block; padding: 0; }
+  .content-page .markdown-page > .content-directory { display: none; }
+  .content-reading { padding: 28px 34px 32px 20px; border-radius: 20px; }
+  .content-page .markdown-content :is(p, li) { font-size: 16px; }
+  .content-page .markdown-content h2 { padding-top: 32px; font-size: clamp(22px, 5.8vw, 28px); }
+  .content-page .markdown-content h3 { font-size: 28px; }
+  .content-page .markdown-content h4 { font-size: 21px; }
+  .content-page .markdown-content :is(h5, h6) { font-size: 18px; }
+  .content-page .markdown-content figure { padding: 6px; }
+  .content-page .markdown-content figcaption { font-size: 13px; }
+  .content-mobile-directory {
+    display: block;
+    position: sticky;
+    top: var(--nav-h, 112px);
+    z-index: 20;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #ddddec;
+    background: #f5f7fbf5;
+    backdrop-filter: blur(12px);
+  }
+  .content-mobile-directory > summary { padding: 14px 10px; color: #3d409b; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .content-mobile-directory .content-directory { position: static; max-height: min(55dvh, 440px); padding: 0 4px 12px; }
+  .content-mobile-directory .content-directory__label { display: none; }
+  .content-mobile-directory .content-group__head > a { min-height: 44px; padding: 10px 12px; font-size: 15px; }
+  .content-page:not(:has(.markdown-page--dbtl)) .markdown-content :is(h2, h3, h4, h5, h6)[id] { scroll-margin-top: 62px; }
+}
+@media (max-width: 380px) { .content-reading { padding-left: 14px; } }
+@media print {
+  .content-page { padding: 0; }
+  .content-overview { padding-right: 0; }
+  .content-page .markdown-page { display: block; padding: 0; }
+  .content-directory, .content-mobile-directory { display: none; }
+  .content-reading { border: 0; padding: 0; background: #fff; }
+}

@@ -1,0 +1,31 @@
+<nav class="dbtl-wheel" data-dbtl-wheel aria-label="Design Build Test Learn stages">
+  <div class="dbtl-wheel__eyebrow">THE ENGINEERING LOOP</div>
+  <label class="dbtl-wheel__cycle">Iteration
+    <select data-dbtl-cycle aria-label="Engineering iteration">
+      <option value="cycle-01">Cycle 01</option>
+      <option value="cycle-02">Cycle 02</option>
+    </select>
+  </label>
+  <div class="dbtl-wheel__dial">
+    <svg class="dbtl-wheel__orbit" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+      <circle class="dbtl-wheel__guide" cx="110" cy="110" r="69"/>
+      <circle class="dbtl-wheel__guide" cx="110" cy="110" r="56"/>
+      <g class="dbtl-wheel__rotor">
+        <path class="dbtl-wheel__arc" d="M61 62A69 69 0 0 1 159 62"/>
+        <path class="dbtl-wheel__ribbon" d="M110 45C156 45 180 88 153 128S79 171 69 133 105 75 131 94 133 132 110 132"/>
+        <ellipse class="dbtl-wheel__ribbon dbtl-wheel__ribbon--fine" cx="110" cy="110" rx="43" ry="19" transform="rotate(-42 110 110)"/>
+        <path class="dbtl-wheel__pointer" d="m110 32 5 9h-10z"/>
+      </g>
+      <circle class="dbtl-wheel__nucleus" cx="110" cy="110" r="5"/>
+    </svg>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--design" href="#cycle-01-design" data-dbtl-stage="design"><b>D</b><span>Design</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--build" href="#cycle-01-build" data-dbtl-stage="build"><b>B</b><span>Build</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--test" href="#cycle-01-test" data-dbtl-stage="test"><b>T</b><span>Test</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--learn" href="#cycle-01-learn" data-dbtl-stage="learn"><b>L</b><span>Learn</span></a>
+  </div>
+  <p class="dbtl-wheel__readout"><span data-dbtl-number>01 / 04</span><strong data-dbtl-current>Design</strong></p>
+  <p class="dbtl-wheel__hint">Choose a stage to follow the cycle.</p>
+  <div class="dbtl-wheel__overview">
+    {% for item in content.toc if item.level == 2 %}<a href="#{{ item.id }}">{{ item.name }}</a>{% endfor %}
+  </div>
+</nav>

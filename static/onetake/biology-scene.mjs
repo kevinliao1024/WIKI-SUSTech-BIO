@@ -165,6 +165,7 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
     cetus: { layer: cetus, slot: cetusSlot, center: new THREE.Vector3(.18,1.5,.7), centers: [[.18,1.5,.7]], radii: [.42,.34,.37], offset: new THREE.Vector3(), home: new THREE.Vector3(), placed: false },
   };
   let placementInitialized = false, dragging = null, activeCamera = null, activePlacement = false;
+  let placementSession = '';
   const world = new THREE.Vector3();
   const screenOf = p => {
     const v = p.clone().project(activeCamera);
@@ -243,10 +244,13 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
       const replayEdit = replay && ['target','placement','edit','return'].includes(replay.phase);
       activePlacement = placement; activeCamera = camera;
       if (ui) ui.hidden = !placement;
-      if (placement && !placementInitialized) {
+      if (placement && (!placementInitialized || placementSession !== root.dataset.editSession)) {
         placementInitialized = true;
+        placementSession = root.dataset.editSession;
+        onReady?.(false);
         if (instruction) instruction.textContent = 'Drag POD and CETUS to the RNA.';
         for (const [name,item] of Object.entries(items)) {
+          item.placed = false;
           const target = screenOf(fixedCenter(item));
           const x = name === 'pod' ? (small?.19:.18) : (small?.81:.82);
           world.set(x*2-1,1-.59*2,target.z).unproject(camera);

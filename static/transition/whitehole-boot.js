@@ -9,7 +9,7 @@
   try {
     const pending = JSON.parse(sessionStorage.getItem(key) || 'null');
     const type = performance.getEntriesByType('navigation')[0]?.type;
-    if (pending?.version === 1 && Date.now() - pending.created < 20000 &&
+    if (pending?.version === 1 && ['to-light', 'to-home'].includes(pending.direction) && Date.now() - pending.created < 20000 &&
         Date.now() >= pending.created && canonical(pending.to) === canonical(location.href) &&
         type !== 'reload' && type !== 'back_forward') incoming = pending;
     sessionStorage.removeItem(key);

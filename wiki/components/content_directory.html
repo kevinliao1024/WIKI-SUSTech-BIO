@@ -1,0 +1,22 @@
+{% macro content_directory(groups, prefix) -%}
+<nav class="content-directory" data-content-directory aria-label="On this page">
+  <span class="content-directory__label">On this page</span>
+  <ol>
+    {% for group in groups %}
+    <li data-content-group="{{ group.heading.id }}">
+      <div class="content-group__head">
+        <a href="#{{ group.heading.id }}" data-content-major>{{ group.heading.name }}</a>
+        {% if group.children %}
+        <button class="content-group__toggle" type="button" hidden aria-label="Toggle subsections: {{ group.heading.name }}" aria-expanded="true" aria-controls="{{ prefix }}-subnav-{{ loop.index }}"></button>
+        {% endif %}
+      </div>
+      {% if group.children %}
+      <ol class="content-subnav" id="{{ prefix }}-subnav-{{ loop.index }}">
+        {% for item in group.children %}<li><a href="#{{ item.id }}">{{ item.name }}</a></li>{% endfor %}
+      </ol>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</nav>
+{%- endmacro %}

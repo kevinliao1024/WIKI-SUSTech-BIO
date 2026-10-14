@@ -1,40 +1,63 @@
 {% extends "layout.html" %}
+{% from 'components/content_directory.html' import content_directory %}
 
 {% block title %}{{ content.title }}{% endblock %}
-{% block eyebrow %}{{ content.metadata.get('eyebrow', 'ORCA · SUSTech 2026') }}{% endblock %}
-{% block page_title %}{{ content.title }}{% endblock %}
-{% block lead %}{{ content.metadata.get('subtitle', '') }}{% endblock %}
-
-{% macro toc_links() -%}
-  {% for item in content.toc %}
-  <li class="toc-level-{{ item.level }}"><a href="#{{ item.id }}">{{ item.name }}</a></li>
-  {% endfor %}
-{%- endmacro %}
-
-{% block page_content %}
-{% if content.metadata.get('status') %}
-<div class="content-status shell" data-content-status="{{ content.metadata.status }}">
-  <span>{{ content.metadata.get('status_label', 'Content status') }}</span>
-  <p>{{ content.metadata.get('status_message', '') }}</p>
-</div>
-{% endif %}
-
-{% if content.toc %}
-<details class="mobile-toc shell">
-  <summary>On this page</summary>
-  <ol>{{ toc_links() }}</ol>
-</details>
-{% endif %}
-
-<div class="shell markdown-page{% if not content.toc %} markdown-page--without-toc{% endif %}" data-content-source="{{ content.source_label }}">
-  {% if content.toc %}
-  <aside class="side-index markdown-toc" aria-label="On this page">
-    <span>On this page</span>
-    <ol>{{ toc_links() }}</ol>
-  </aside>
+{% set has_dbtl = content.source_label == 'docs/project/engineering.md' %}
+{% set directory = namespace(groups=[], current=none) %}
+{% for item in content.toc %}
+  {% if item.level == 2 or directory.current is none %}
+    {% set directory.current = {'heading': item, 'children': []} %}
+    {% set directory.groups = directory.groups + [directory.current] %}
+  {% else %}
+    {% set _ = directory.current.children.append(item) %}
   {% endif %}
-  <article class="markdown-content">
-    {{ rendered_markdown }}
-  </article>
-</div>
+{% endfor %}
+{% block page_styles %}
+{% if has_dbtl %}<link rel="stylesheet" href="{{ url_for('static', filename='reading-orbit/dbtl-wheel.css') }}">{% endif %}
+<link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">
+{% endblock %}
+{% block page_scripts %}
+{% if has_dbtl %}<script src="{{ url_for('static', filename='reading-orbit/dbtl-wheel.js') }}" defer></script>{% endif %}
+<script src="{{ url_for('static', filename='content-reading.js') }}" defer></script>
+<script src="{{ url_for('static', filename='content-back-to-top.js') }}" defer></script>
+{% endblock %}
+
+{% block main %}
+<main id="main-content" class="content-page">
+  <header class="content-overview">
+    <p class="eyebrow">{{ content.metadata.get('eyebrow', 'ORCA · SUSTech 2026') }}</p>
+    <h1>{{ content.title }}</h1>
+    {% if content.metadata.get('subtitle') %}<p class="content-overview__lead">{{ content.metadata.subtitle }}</p>{% endif %}
+  </header>
+
+  {% if content.toc and not has_dbtl %}
+  <details class="content-mobile-directory">
+    <summary>On this page</summary>
+    {{ content_directory(directory.groups, 'mobile') }}
+  </details>
+  {% endif %}
+
+  <div class="shell markdown-page{% if has_dbtl %} markdown-page--dbtl{% endif %}{% if not content.toc %} markdown-page--without-toc{% endif %}" data-content-source="{{ content.source_label }}">
+    {% if has_dbtl %}
+    <aside class="dbtl-directory" aria-label="Engineering cycle navigation">
+      {% include 'components/dbtl_wheel.html' %}
+    </aside>
+    {% elif content.toc %}
+    {{ content_directory(directory.groups, 'desktop') }}
+    {% endif %}
+    <div class="content-reading">
+      {% if content.metadata.get('status') %}
+      <div class="content-status" data-content-status="{{ content.metadata.status }}">
+        <span>{{ content.metadata.get('status_label', 'Content status') }}</span>
+        <p>{{ content.metadata.get('status_message', '') }}</p>
+      </div>
+      {% endif %}
+      <article class="markdown-content">
+        {{ rendered_markdown }}
+      </article>
+    </div>
+  </div>
+  {% include 'components/model/back-to-top.html' %}
+</main>
 {% endblock %}

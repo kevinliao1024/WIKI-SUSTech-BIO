@@ -1,5 +1,5 @@
-{% macro whale(label) -%}
-  <span class="nav-whale" aria-hidden="true"><img src="{{ url_for('static', filename='assets/intro/fish-large-01.png') }}" alt="" width="174" height="128"><i></i><i></i><i></i></span><span class="nav-label">{{ label }}</span>
+{% macro whale(label=none) -%}
+  <span class="nav-whale" aria-hidden="true"><img src="{{ url_for('static', filename='assets/intro/fish-large-01.png') }}" alt="" width="174" height="128"><i></i><i></i><i></i></span>{% if label is not none %}<span class="nav-label">{{ label }}</span>{% endif %}
 {%- endmacro %}
 
 {% macro editable_label(label) -%}
@@ -18,7 +18,7 @@
       {% set key = 'nav-' ~ loop.index %}
       {% set group_active = request.path[1:] in group['items']|map(attribute=0)|list %}
       <li class="nav-item rna-nav" data-rna-nav>
-        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-label="{{ group.label }}" aria-expanded="false" aria-controls="rna-{{ key }}">{{ editable_label(group.label) }}</button>
+        <button class="nav-link rna-toggle{% if group_active %} active{% endif %}" id="whale-{{ key }}" type="button" aria-label="{{ group.label }}" aria-expanded="false" aria-controls="rna-{{ key }}">{{ whale() }}{{ editable_label(group.label) }}</button>
         <div class="rna-menu" id="rna-{{ key }}" aria-labelledby="whale-{{ key }}" hidden>
           <div class="rna-strand">
             <svg class="rna-menu__backbone" viewBox="0 0 72 1" aria-hidden="true" focusable="false" preserveAspectRatio="xMinYMin meet"><path class="rna-chain-halo"/><path class="rna-chain-line"/></svg>

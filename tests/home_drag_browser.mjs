@@ -16,6 +16,8 @@ try {
  for (const mobile of [false,true]) {
   const context=await browser.newContext({viewport:mobile?{width:390,height:844}:{width:1280,height:800},hasTouch:mobile,isMobile:mobile});
   const page=await context.newPage(), device=mobile?'mobile':'desktop';
+  // Software WebGL can compile slowly while other preview checks are running.
+  page.setDefaultTimeout(120000);
   page.on('pageerror',e=>errors.push(e.message));
   const ready=()=>page.waitForFunction(()=>document.querySelector('[data-ot]').classList.contains('is-ready'));
   await page.goto(`${base}/?p=${raw(.71)}`);await ready();
@@ -24,7 +26,7 @@ try {
   await page.screenshot({path:`${out}/${device}-pathways.png`});
   await page.goto(base);await ready();
   await page.mouse.wheel(0,await page.locator('[data-ot-story]').evaluate((e,p)=>(e.getBoundingClientRect().height-innerHeight)*p,raw(.798)));
-  await page.waitForFunction(()=>document.querySelector('[data-ot]').dataset.editReplay==='placement',null,{timeout:60000});
+  await page.waitForFunction(()=>document.querySelector('[data-ot]').dataset.editReplay==='placement',null,{timeout:120000});
   const startScroll=await page.evaluate(()=>scrollY);
   const touch=mobile?await context.newCDPSession(page):null;
   async function coordinates(name) {
@@ -85,4 +87,4 @@ try {
  }
  assert.deepEqual(errors,[]);
  await writeFile(`${out}/results.json`,JSON.stringify({errors,checks:['updated pathway copy','desktop protein-surface drag','mobile protein-surface touch drag','wrong-drop return','gold target outlines','snap and fixed placement','one-gesture complete edit']},null,2));
-} finally {await browser.close();}
+} catch(error) {console.log({errors});throw error;} finally {await browser.close();}
