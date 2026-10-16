@@ -1,0 +1,15 @@
+<p>Extract <code>REWIRE_model_toolkit</code> and use Python 3.12.</p>
+<details class="software-setup" open><summary>macOS / Linux</summary>
+<pre class="software-code"><code>cd REWIRE_model_toolkit
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-core-tested.txt
+python main.py --help
+python smoke_check.py</code></pre></details>
+<details class="software-setup"><summary>Windows · PowerShell</summary>
+<pre class="software-code"><code>cd REWIRE_model_toolkit
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-core-tested.txt
+.venv\Scripts\python.exe main.py --help
+.venv\Scripts\python.exe smoke_check.py</code></pre></details>
+<p>The smoke check uses a one-hour, three-timepoint fixture and six contract tests. Full analyses and the optional dashboard are documented in the package.</p>

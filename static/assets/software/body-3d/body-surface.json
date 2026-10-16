@@ -1,0 +1,64 @@
+{
+  "format": "body-mesh-v1",
+  "buffer": "body-surface.bin",
+  "vertex_count": 45538,
+  "index_count": 273912,
+  "positions": {
+    "byte_offset": 0,
+    "count": 136614
+  },
+  "normals": {
+    "byte_offset": 546456,
+    "count": 136614
+  },
+  "indices": {
+    "byte_offset": 1092912,
+    "count": 273912
+  },
+  "coordinate_system": {
+    "up": "+Y",
+    "front": "+Z",
+    "height": 1.7518928050994873,
+    "units": "nominal metres, artistic anatomy"
+  },
+  "bounds": {
+    "min": [
+      -0.42299196124076843,
+      0.0060570877976715565,
+      -0.11376092582941055
+    ],
+    "max": [
+      0.4240018129348755,
+      1.757949948310852,
+      0.1834922581911087
+    ]
+  },
+  "landmarks": {
+    "brain": [
+      0,
+      1.64,
+      0
+    ],
+    "liver": [
+      -0.065,
+      1.08,
+      0.035
+    ],
+    "chest": [
+      0,
+      1.25,
+      0.02
+    ],
+    "pelvis": [
+      0,
+      0.88,
+      0
+    ]
+  },
+  "provenance": {
+    "original_geometry": true,
+    "method": "smooth implicit torso loft and blended anatomical primitives, extracted by marching tetrahedra",
+    "not_patient_specific": true,
+    "external_assets": false
+  }
+}

@@ -1,0 +1,17 @@
+<div class="delivery-mechanisms" data-delivery-mechanisms-3d data-mechanism-module="{{ url_for('static', filename='software-delivery-mechanisms-3d.js') }}" data-mechanism-css="{{ url_for('static', filename='software-delivery-mechanisms-3d.css') }}">
+  <div class="delivery-mechanisms__fallback" data-mechanism-fallback>{{ mechanisms_fallback | safe }}</div>
+  <div class="delivery-mechanisms__scenes" data-mechanism-scenes hidden>
+    <section class="delivery-mechanisms__card" aria-labelledby="mechanism-barrier-title">
+      <header><h4 id="mechanism-barrier-title">Blood–brain barrier</h4><button type="button" data-mechanism-reset="barrier" aria-label="Reset barrier view" title="Reset barrier view">↺</button></header>
+      <div class="delivery-mechanisms__viewport" data-mechanism-3d="barrier"></div>
+      <div class="delivery-mechanisms__compartments" aria-label="Barrier compartments"><span>Blood side</span><span>Endothelium</span><span>Brain ISF</span></div>
+      <p class="delivery-mechanisms__key"><i class="delivery-mechanisms__dot delivery-mechanisms__dot--cargo" aria-hidden="true"></i>AAV <i class="delivery-mechanisms__dot delivery-mechanisms__dot--vesicle" aria-hidden="true"></i>Vesicle</p>
+    </section>
+    <section class="delivery-mechanisms__card" aria-labelledby="mechanism-cell-title">
+      <header><h4 id="mechanism-cell-title">Expression &amp; RNA editing</h4><button type="button" data-mechanism-reset="cell" aria-label="Reset cell view" title="Reset cell view">↺</button></header>
+      <div class="delivery-mechanisms__viewport" data-mechanism-3d="cell"></div>
+      <p class="delivery-mechanisms__key delivery-mechanisms__key--cell"><i class="delivery-mechanisms__dot delivery-mechanisms__dot--nucleus" aria-hidden="true"></i>Nucleus <i class="delivery-mechanisms__dot delivery-mechanisms__dot--rna" aria-hidden="true"></i>RNA <i class="delivery-mechanisms__dot delivery-mechanisms__dot--editor" aria-hidden="true"></i>Editor <strong data-mechanism-edit-state>C → U</strong></p>
+    </section>
+    <p class="delivery-body__sr-only" data-mechanism-status role="status">Drag to rotate · arrow keys to orbit · Home to reset</p>
+  </div>
+</div>

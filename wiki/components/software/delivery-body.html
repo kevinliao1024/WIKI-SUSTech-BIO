@@ -1,0 +1,171 @@
+<div class="delivery-body" data-delivery-body role="region" aria-label="Delivery process schematic">
+  <div class="delivery-body__visual">
+    <div class="delivery-body__anatomy">
+      <div class="delivery-body__anatomy-heading"><span>Whole body</span><div data-body-3d-controls hidden><button type="button" data-body-3d-surface aria-pressed="false">Surface view</button><button type="button" data-body-3d-reset aria-label="Reset body view" title="Reset body view">↺</button></div></div>
+      <div class="delivery-body__viewport" data-body-3d data-body-3d-module="{{ url_for('static', filename='software-delivery-body-3d.js') }}" data-body-mesh="{{ url_for('static', filename='assets/software/body-3d/body-surface.json') }}">
+    <svg class="delivery-body__human" viewBox="0 0 360 560" role="img" aria-label="Body schematic showing depot, lymph, circulation, liver, other tissues and brain">
+      <path class="delivery-body__silhouette" d="M166 145 L166 133 C141 121 132 101 134 76 C136 44 155 26 181 26 C207 26 226 44 228 76 C230 101 221 121 196 133 L196 145 C222 146 246 158 255 181 L285 275 Q294 295 279 301 Q265 306 258 286 L234 224 L233 321 C237 345 229 366 219 384 L218 505 Q218 525 202 525 Q187 525 186 505 L181 404 L176 505 Q175 525 159 525 Q143 525 144 505 L143 384 C133 366 125 345 129 321 L128 224 L104 286 Q97 306 83 301 Q68 295 77 275 L107 181 C116 158 140 146 166 145 Z"/>
+      <g class="delivery-body__organ delivery-body__tissues" data-body-emphasis="1">
+        <path d="M170 184 C153 184 143 205 142 231 Q144 253 166 246 L174 235 Z"/>
+        <path d="M192 184 C209 184 219 205 220 231 Q218 253 196 246 L188 235 Z"/>
+        <path d="M151 320 Q181 302 211 320 L213 345 Q180 368 149 345 Z"/>
+      </g>
+      <g class="delivery-body__organ delivery-body__brain" data-body-emphasis="1 2">
+        <path d="M149 73 C141 63 150 50 161 51 C163 40 177 39 182 46 C192 38 205 46 204 54 C218 56 219 71 212 76 C221 88 211 102 201 100 C192 110 180 107 177 101 C162 108 151 100 153 90 C143 87 143 78 149 73 Z"/>
+        <path class="delivery-body__fold" d="M181 48 Q174 61 182 71 Q172 86 180 101 M153 65 Q166 62 169 73 M150 84 Q163 78 168 90 M190 56 Q202 56 203 67 M191 82 Q204 77 208 88"/>
+      </g>
+      <g class="delivery-body__organ delivery-body__liver" data-body-emphasis="1 5">
+        <path d="M141 266 Q161 256 190 262 Q209 260 222 271 Q213 288 191 287 L166 301 Q147 296 141 282 Z"/>
+        <path class="delivery-body__fold" d="M184 264 L177 289"/>
+      </g>
+      <g class="delivery-body__vessels" data-body-emphasis="0 1 5">
+        <path d="M181 105 L181 379 M181 174 L122 193 L91 281 M181 174 L240 193 L271 281 M181 277 L155 276 M181 321 L153 334 M181 321 L209 334 M181 376 L159 482 M181 376 L203 482"/>
+        <path class="delivery-body__vessel-return" d="M188 115 L188 376 M188 190 L234 207 L264 282 M188 375 L210 482"/>
+      </g>
+      <g data-body-emphasis="0" class="delivery-body__depot">
+        <circle cx="159" cy="475" r="13"/><circle cx="159" cy="475" r="4"/>
+        <circle cx="153" cy="384" r="5"/><circle cx="151" cy="357" r="5"/><circle cx="153" cy="330" r="5"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="0">
+        <path data-body-path d="M159 475 C149 443 153 416 153 384 L151 357 L153 330 Q154 309 181 303"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="0">
+        <path data-body-path d="M159 475 Q179 434 181 379 L181 310"/>
+        <circle data-body-dot r="3.5"/><circle data-body-dot r="3.5"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="1">
+        <path data-body-path d="M181 318 L181 120 Q181 105 182 89"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="1">
+        <path data-body-path d="M181 204 L181 265 Q172 280 156 276"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route delivery-body__route--loss" data-body-track="5">
+        <path data-body-path d="M181 247 Q178 267 160 277"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="3"/><circle data-body-dot r="2"/>
+      </g>
+      <g class="delivery-body__route delivery-body__route--loss" data-body-track="5">
+        <path data-body-path d="M199 272 Q189 287 169 285"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="3"/>
+      </g>
+      <g class="delivery-body__loss-symbol" data-body-emphasis="5">
+        <circle cx="170" cy="280" r="8"/><path d="M166 280 L174 280"/>
+      </g>
+      <g class="delivery-body__labels">
+        <path d="M222 69 L257 57 L310 57"/><text x="260" y="48">Brain</text>
+        <path d="M141 272 L107 272 L52 255"/><text x="24" y="249">Liver</text>
+        <path d="M213 330 L254 326"/><text x="259" y="323">Tissues</text>
+        <path d="M151 357 L99 351"/><text x="48" y="348">Lymph</text>
+        <path d="M188 210 L256 228"/><text x="258" y="226">Blood</text>
+        <path d="M150 475 L102 482"/><text x="32" y="489">Depot</text>
+        <text x="262" y="448">Clearance</text><text class="delivery-body__small" x="268" y="466">and loss</text>
+      </g>
+      <path class="delivery-body__zoom-link" d="M222 84 L306 84 L338 110"/>
+      <circle class="delivery-body__zoom-end" cx="338" cy="110" r="4"/>
+      <text class="delivery-body__view-label" x="181" y="552" text-anchor="middle">Whole-body compartments</text>
+    </svg>
+      </div>
+      <p class="delivery-body__sr-only" data-body-3d-status role="status">Interactive anatomy loads when this figure is in view.</p>
+      <ul class="delivery-body__organ-key" aria-label="Organ and pathway key"><li><i class="delivery-body__key-brain"></i>Brain</li><li><i class="delivery-body__key-blood"></i>Blood</li><li><i class="delivery-body__key-liver"></i>Liver</li><li><i class="delivery-body__key-depot"></i>Depot / lymph</li></ul>
+    </div>
+
+    {% set mechanisms_fallback %}
+    <svg class="delivery-body__detail" viewBox="0 0 500 560" role="img" aria-label="Enlarged barrier transport, cell expression and RNA editing pathways">
+      <text class="delivery-body__view-label" x="20" y="30">From brain blood to RNA</text>
+      <g class="delivery-body__barrier" data-body-emphasis="2">
+        <rect class="delivery-body__zoom-panel" x="12" y="47" width="476" height="196" rx="18"/>
+        <text class="delivery-body__panel-title" x="32" y="78">Blood–brain barrier</text>
+        <path class="delivery-body__blood-pool" d="M35 105 L104 105 L104 195 L35 195"/>
+        <path class="delivery-body__blood-wave" d="M44 119 Q58 111 72 119 T98 119 M44 183 Q58 175 72 183 T98 183"/>
+        <rect class="delivery-body__endothelium" x="133" y="104" width="188" height="100" rx="28"/>
+        <circle class="delivery-body__vesicle" cx="177" cy="145" r="17"/>
+        <circle class="delivery-body__vesicle" cx="273" cy="145" r="17"/>
+        <path class="delivery-body__arrow" d="M107 145 L151 145 M145 140 L151 145 L145 150 M198 145 L247 145 M241 140 L247 145 L241 150 M299 145 L379 145 M373 140 L379 145 L373 150"/>
+        <path class="delivery-body__recycle" d="M274 168 Q274 190 239 190 L125 190 Q83 190 70 170 M69 178 L70 170 L78 173"/>
+        <circle class="delivery-body__isf" cx="413" cy="143" r="25"/>
+        <circle class="delivery-body__isf-dot" cx="405" cy="135" r="3"/><circle class="delivery-body__isf-dot" cx="419" cy="142" r="3"/><circle class="delivery-body__isf-dot" cx="408" cy="153" r="3"/>
+        <text class="delivery-body__detail-label" x="70" y="224" text-anchor="middle">Blood</text>
+        <text class="delivery-body__detail-label" x="227" y="224" text-anchor="middle">Endothelium</text>
+        <text class="delivery-body__detail-label" x="413" y="191" text-anchor="middle">Brain ISF</text>
+      </g>
+      <g class="delivery-body__route" data-body-track="2">
+        <path data-body-path d="M48 145 L177 145 L273 145 L412 145"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="2">
+        <path data-body-path d="M274 168 Q274 190 239 190 L125 190 Q83 190 70 170"/>
+        <circle data-body-dot r="3"/>
+      </g>
+      <path class="delivery-body__connector" d="M413 210 L413 269 L391 289 M390 282 L391 289 L398 288"/>
+      <g class="delivery-body__cell" data-body-emphasis="3 4">
+        <path class="delivery-body__membrane" d="M124 294 C163 262 336 264 404 297 C473 332 466 430 404 461 C341 495 165 485 117 449 C67 411 72 338 124 294 Z"/>
+        <path class="delivery-body__membrane-inner" d="M131 303 C167 273 333 275 397 307 C455 337 451 420 397 451 C340 482 174 474 128 440 C84 405 88 343 131 303 Z"/>
+        <text class="delivery-body__panel-title" x="37" y="276">Inside a brain cell</text>
+        <circle class="delivery-body__nucleus" cx="193" cy="359" r="49"/>
+        <path class="delivery-body__dna" d="M179 331 Q208 343 179 358 Q208 373 179 387 M208 331 Q179 343 208 358 Q179 373 208 387 M182 337 L204 337 M184 349 L202 349 M183 367 L204 367 M182 381 L205 381"/>
+        <path class="delivery-body__rna" d="M265 351 Q276 339 287 351 T309 351 T331 351"/>
+        <path class="delivery-body__arrow" d="M244 357 L264 357 M258 352 L264 357 L258 362 M337 357 L354 357 M348 352 L354 357 L348 362"/>
+        <g class="delivery-body__editor"><circle cx="373" cy="345" r="12"/><circle cx="389" cy="357" r="12"/><circle cx="372" cy="370" r="12"/></g>
+        <text class="delivery-body__detail-label" x="194" y="423" text-anchor="middle">Nuclear entry</text>
+        <text class="delivery-body__detail-label" x="299" y="384" text-anchor="middle">mRNA</text>
+        <text class="delivery-body__detail-label" x="380" y="403" text-anchor="middle">Editor</text>
+        <path class="delivery-body__arrow" d="M376 414 Q366 434 344 434 M350 429 L344 434 L350 439"/>
+        <path class="delivery-body__target-rna" d="M220 453 Q230 440 240 453 T260 453 T280 453 T300 453 T320 453 T340 453"/>
+        <circle class="delivery-body__base-before" cx="280" cy="453" r="12"/><text class="delivery-body__base-letter" x="280" y="458" text-anchor="middle">C</text>
+        <path class="delivery-body__arrow" d="M301 453 L316 453 M311 448 L316 453 L311 458"/>
+        <circle class="delivery-body__base-after" cx="332" cy="453" r="12"/><text class="delivery-body__base-letter" x="332" y="458" text-anchor="middle">U</text>
+      </g>
+      <g class="delivery-body__route" data-body-track="3">
+        <path data-body-path d="M413 210 L413 268 Q403 295 368 303 Q291 285 194 310 L194 353"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="3">
+        <path data-body-path d="M228 357 L298 357 L374 357"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route" data-body-track="4">
+        <path data-body-path d="M373 370 L373 413 Q373 433 344 434 L331 451 L280 451"/>
+        <circle data-body-dot r="4"/><circle data-body-dot r="4"/>
+      </g>
+      <g class="delivery-body__route delivery-body__route--loss" data-body-track="5">
+        <path data-body-path d="M273 145 Q296 164 274 185"/>
+        <circle data-body-dot r="3"/><circle data-body-dot r="2"/>
+      </g>
+      <g class="delivery-body__route delivery-body__route--loss" data-body-track="5">
+        <path data-body-path d="M373 403 Q347 416 316 431"/>
+        <circle data-body-dot r="3"/><circle data-body-dot r="2"/>
+      </g>
+      <text class="delivery-body__detail-label" x="280" y="510" text-anchor="middle">Binding → catalysis → RNA products</text>
+      <text class="delivery-body__view-label" x="250" y="552" text-anchor="middle">Cell and molecular compartments</text>
+    </svg>
+    {% endset %}
+    {% include 'components/software/delivery-mechanisms.html' %}
+  </div>
+
+  <div class="delivery-body__stages" role="group" aria-label="Choose a delivery stage" data-body-stage-controls hidden>
+    <button type="button" data-body-stage="0" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="17" r="4"/><path d="M12 2v9m-4-4 4 4 4-4"/></svg><span>Administration</span></button>
+    <button type="button" data-body-stage="1" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4a9 9 0 0 1 13 8m0-5v5h-5M17 20A9 9 0 0 1 4 12m0 5v-5h5"/></svg><span>Distribution</span></button>
+    <button type="button" data-body-stage="2" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3v18M16 3v18M2 12h20m-4-4 4 4-4 4"/></svg><span>Barrier transport</span></button>
+    <button type="button" data-body-stage="3" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="10" ry="8"/><circle cx="9" cy="12" r="3"/><path d="M14 10h5m-5 4h5"/></svg><span>Cell expression</span></button>
+    <button type="button" data-body-stage="4" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6q5 0 9 6t9 6M3 18q5 0 9-6t9-6M5 7v10M18 8v8"/></svg><span>RNA editing</span></button>
+    <button type="button" data-body-stage="5" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v8q0 7 8 7h7m-4-4 4 4-4 4M4 10h12"/><circle cx="20" cy="10" r="1"/></svg><span>Clearance branch</span></button>
+  </div>
+
+  <div class="delivery-body__footer">
+    <div class="delivery-body__description" data-body-descriptions>
+      <p data-body-description="0">Depot input reaches the blood directly or through lymphatic uptake.</p>
+      <p data-body-description="1">Circulating AAV exchanges with the liver, other tissues and brain vasculature.</p>
+      <p data-body-description="2">Endothelial uptake, transport and release lead to brain ISF, with recycling and loss.</p>
+      <p data-body-description="3">Cellular uptake and nuclear entry drive mRNA production and editor expression.</p>
+      <p data-body-description="4">Editor binding and catalysis produce edited RNA, alongside bystander and off-target pathways.</p>
+      <p data-body-description="5">Clearance and degradation remove material throughout the delivery pathway.</p>
+    </div>
+  <div class="delivery-body__transport" data-body-transport hidden>
+    <button type="button" class="delivery-body__play" data-body-play aria-pressed="false" aria-label="Play selected stage"><svg viewBox="0 0 20 20" aria-hidden="true"><path data-body-play-icon d="M6 3 L16 10 L6 17 Z"/></svg><span data-body-play-label>Play</span></button>
+    <div class="delivery-body__step-controls"><button type="button" data-body-previous aria-label="Previous delivery stage">←</button><span class="delivery-body__sr-only" data-body-position aria-live="off">1 / 6</span><button type="button" data-body-next aria-label="Next delivery stage">→</button></div>
+    <span class="delivery-body__sr-only" data-body-motion-note>Conceptual motion · no biological time scale</span>
+  </div>
+  </div>
+</div>

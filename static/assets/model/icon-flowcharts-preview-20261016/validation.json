@@ -1,0 +1,53 @@
+{
+  "svg_count": 7,
+  "svg_image_nodes_total": 0,
+  "native_text": true,
+  "label_clipping": {
+    "figure-01-overview": [],
+    "figure-02-rna-seq": [],
+    "figure-10-puf-esm": [],
+    "figure-20-inverse-folding": [],
+    "figure-25-structure-assay": [],
+    "figure-33-lamar-foundation": [],
+    "figure-extra-lamar-two-stage": []
+  },
+  "label_overlaps": {
+    "figure-01-overview": [],
+    "figure-02-rna-seq": [],
+    "figure-10-puf-esm": [],
+    "figure-20-inverse-folding": [],
+    "figure-25-structure-assay": [],
+    "figure-33-lamar-foundation": [],
+    "figure-extra-lamar-two-stage": []
+  },
+  "source_files_unchanged": true,
+  "model_computation": false,
+  "browser_qa": {
+    "browser": "Chrome via CUA",
+    "desktop_viewport": [
+      1512,
+      779
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "figure_count": 7,
+    "all_svg_image_nodes": 0,
+    "inline_duplicate_ids": 0,
+    "desktop_text_overlap_pairs": 0,
+    "desktop_document_width": 1512,
+    "mobile_document_width": 390,
+    "mobile_card_overflow_count": 0,
+    "mobile_vector_canvas_width": 900,
+    "mobile_canvas_client_width": 362,
+    "keyboard_horizontal_scroll_observed_px": 80,
+    "source_comparison_expanded": true,
+    "source_original_natural_width": 1429,
+    "console_warnings_and_errors": [],
+    "viewport_reset": true,
+    "preview_only": true
+  },
+  "figure_count": 7,
+  "source_hashes_verified": true
+}

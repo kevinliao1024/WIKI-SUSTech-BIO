@@ -1,0 +1,252 @@
+{
+  "status": "User-approved selection: Figures 2, 10, 20 and 25; integration handled by page owner",
+  "generated_date": "2026-10-16",
+  "style": "ORCA original native vector icon system",
+  "model_recomputed": false,
+  "scientific_values_changed": false,
+  "native_svg_text": true,
+  "runtime": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.9",
+    "numpy": "2.3.5",
+    "font": "Futura"
+  },
+  "figures": [
+    {
+      "id": "figure-02-rna-seq",
+      "number": "Figure 2",
+      "title": "RNA-seq candidate detection",
+      "source": "static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png",
+      "url": "/static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png",
+      "alt": "Adapter trimming, alignment, candidate detection, control and sequence filtering, replicate quantification and editor comparison form a six-step RNA-seq workflow.",
+      "caption": "36 libraries, nine groups and four biological replicates per group; GRCh38 with GENCODE v50. The original screening and recounting rules remain in the Model page. Candidate sites and editing profiles support planned training and evaluation.",
+      "canvas": [
+        1200,
+        540
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "Adapter trimming",
+          "Read alignment"
+        ],
+        [
+          "Read alignment",
+          "Candidate detection"
+        ],
+        [
+          "Candidate detection",
+          "SNP / sequence filters"
+        ],
+        [
+          "SNP / sequence filters",
+          "Editing quantification"
+        ],
+        [
+          "Editing quantification",
+          "Editor comparison"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "fa2cbd98dbb17f150affebd5f7ffa4c9629a0f03731ece2d91d8800430774fe4",
+      "files": {
+        "svg": "figure-02-rna-seq.svg",
+        "png": "figure-02-rna-seq.png",
+        "pdf": "figure-02-rna-seq.pdf"
+      },
+      "output_sha256": {
+        "svg": "ea76d065f225eb86473a26aa32a005f1076e2b36456e3e108ba34fc08eaf009b",
+        "png": "d0f3e07dea0b7c2db70771c9728bf1ba34794f657b45ddc631045ec42ec1c004",
+        "pdf": "85904b7e3ef0444f76d9e72ad4c1695365d232d7665ab5f15fd0adf3abe25af3"
+      }
+    },
+    {
+      "id": "figure-10-puf-esm",
+      "number": "Figure 10",
+      "title": "PUF-ESM specificity ranking",
+      "source": "static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png",
+      "url": "/static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png",
+      "alt": "A 493-amino-acid PUF sequence feeds frozen ESM-2 scores and reference-centred one-hot features. Grouped inner validation selects Ridge settings, which predict three editing outputs, specificity and held-out ranks.",
+      "caption": "The original feature branches and three endpoint outputs are preserved. Grouped inner cross-validation selects settings using Spearman correlation; the held-out assessment contains 66 complete constructs, including Top30 comparison with random expectation.",
+      "canvas": [
+        1200,
+        720
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "grouped inner CV",
+          "Ridge settings"
+        ],
+        [
+          "PUF sequence",
+          "ESM score"
+        ],
+        [
+          "PUF sequence",
+          "one-hot features"
+        ],
+        [
+          "ESM score",
+          "Ridge outputs"
+        ],
+        [
+          "one-hot features",
+          "Ridge outputs"
+        ],
+        [
+          "Ridge outputs",
+          "specificity"
+        ],
+        [
+          "specificity",
+          "held-out ranking"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "0d4498257a651b54416bab2fe48fed22683a1084b2659370a42842c899864102",
+      "files": {
+        "svg": "figure-10-puf-esm.svg",
+        "png": "figure-10-puf-esm.png",
+        "pdf": "figure-10-puf-esm.pdf"
+      },
+      "output_sha256": {
+        "svg": "55a86613eb3ee38b8995aae592b0a026347f7478366ca5c3684643a3f31293a8",
+        "png": "f59c1052dad7b2b8ef1dcf54a3262e2076d66b5e788a55e58e7cc91b88231d8f",
+        "pdf": "fa1bb4fb41c1e5465dd1f2dd4e099ccfa8ca3119628b8843f88c75e4986dfcb6"
+      }
+    },
+    {
+      "id": "figure-20-inverse-folding",
+      "number": "Figure 20",
+      "title": "Structure-conditioned PUF nomination",
+      "source": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "url": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "alt": "The fixed PUF–RNA complex branches into all-position and TRM-only masks, each sampled with two pretrained inverse-folding models, screened and compared with measured constructs.",
+      "caption": "Each model and mask used 10,000 samples, temperature 0.5 and seed 111. The AiCE-inspired screen yielded 128 non-TRM and 10 TRM nominations, with 46 and 0 exact dual-model matches, respectively. Comparison used 81 measured constructs; nominations do not imply experimental validation.",
+      "canvas": [
+        1200,
+        865
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "fixed complex",
+          "all-position mask"
+        ],
+        [
+          "fixed complex",
+          "TRM-only mask"
+        ],
+        [
+          "all-position mask",
+          "paired models"
+        ],
+        [
+          "TRM-only mask",
+          "paired models"
+        ],
+        [
+          "paired models",
+          "AiCE-inspired screen"
+        ],
+        [
+          "screened nominations",
+          "assay comparison"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "926b8e5b7db2138fd6e42c5fab25c421ad838f7a18de0c34c9683d37f1260316",
+      "files": {
+        "svg": "figure-20-inverse-folding.svg",
+        "png": "figure-20-inverse-folding.png",
+        "pdf": "figure-20-inverse-folding.pdf"
+      },
+      "output_sha256": {
+        "svg": "9f6a17718a0b2bdd30c4477c1d6169437c1d573bdc49f2b925098bbe2121eee6",
+        "png": "8da3716ad747fc89c993c429251b1d44372c02f85d11ce2ca8948cdda1be3b16",
+        "pdf": "b977b0f299aadd7ef6e5149f3ec2482c931c5ca7f7633d59be2c029da1ddd628"
+      }
+    },
+    {
+      "id": "figure-25-structure-assay",
+      "number": "Figure 25",
+      "title": "Structural hypotheses and assay feedback",
+      "source": "static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "url": "/static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "alt": "A closed six-step cycle compares RNA contexts, audits structural models, screens single mutants, combines hits, tests within batches and updates designs around a conceptual protein–RNA complex.",
+      "caption": "The original six-step order and feedback connection are unchanged. RNA comparisons address the +1 base and sequence context; selection pairs preference with retained activity, and each batch uses its matched parental normalization. The central complex is schematic.",
+      "canvas": [
+        1200,
+        760
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "Compare RNA",
+          "Audit models"
+        ],
+        [
+          "Audit models",
+          "Screen single mutants"
+        ],
+        [
+          "Screen single mutants",
+          "Combine hits"
+        ],
+        [
+          "Combine hits",
+          "Test each batch"
+        ],
+        [
+          "Test each batch",
+          "Update designs"
+        ],
+        [
+          "Update designs",
+          "Compare RNA"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "08c40469f2988715e3c3fa1561ccee4175fb6fc7672803f0171198f8b9ed3c68",
+      "files": {
+        "svg": "figure-25-structure-assay.svg",
+        "png": "figure-25-structure-assay.png",
+        "pdf": "figure-25-structure-assay.pdf"
+      },
+      "output_sha256": {
+        "svg": "fe678316bdb300334af55ae550d3c7c28ea0f623c05d9448151aad22a1e7cbc3",
+        "png": "517167a724771afd734bef8bc496e9a9c76e303b1d97550fba68658d62eef923",
+        "pdf": "61e0910216b52953bae9d9dd59c777f3ffac41394ada76d1013bcf4c0a1beaf5"
+      }
+    }
+  ],
+  "excluded": {
+    "not_selected": "Figure 1, Figure 33 and the additional LAMAR text workflow retain their frozen preview versions and current mounted originals.",
+    "quantitative": "All quantitative panels remain unchanged."
+  },
+  "refinements": {
+    "figure_02": "Remove top library-count line and bottom reference-build line; canvas height 690 to 540. Separate RNA from lens with one target.",
+    "figure_10": "Separate lock from network nodes.",
+    "figure_20": "Separate paired model-network pictograms.",
+    "figure_25": "Separate protein–RNA complex from lens and isolated checkmark."
+  },
+  "revision": "v2",
+  "revision_changes": {
+    "figure_02": "Move scissors pivot to the exact intersection of the unchanged blade centre lines.",
+    "figure_25": "Use one continuous circular path with a tangent arrowhead; match the left feedback route to the indigo workflow arrows."
+  },
+  "unchanged_files_preserved": true
+}

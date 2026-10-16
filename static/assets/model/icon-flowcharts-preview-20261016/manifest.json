@@ -1,0 +1,432 @@
+{
+  "status": "preview only; no mounted Model assets replaced",
+  "generated_date": "2026-10-16",
+  "style": "ORCA original native vector icon system",
+  "model_recomputed": false,
+  "scientific_values_changed": false,
+  "native_svg_text": true,
+  "runtime": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.9",
+    "numpy": "2.3.5",
+    "font": "Futura"
+  },
+  "figures": [
+    {
+      "id": "figure-01-overview",
+      "number": "Figure 1",
+      "title": "Integrated modeling decisions",
+      "source": "assets/images/orca-model-overview-v16.png",
+      "url": "/assets/images/orca-model-overview-v16.png",
+      "alt": "Four icon-based modeling areas connect RNA-seq evidence, PUF recognition, APOBEC catalytic design and LAMAR site ranking, with matched validation feeding updated editing profiles.",
+      "caption": "The four modeling areas share an activity-and-selectivity objective. Historical contact-probability models, the current ESM ranker and inverse-folding nominations remain distinct. Matched validation returns new evidence to editing-profile analysis.",
+      "canvas": [
+        1200,
+        1200
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "libraries",
+          "editing profiles"
+        ],
+        [
+          "editing profiles",
+          "candidate sites"
+        ],
+        [
+          "APOBEC sequence",
+          "next stage"
+        ],
+        [
+          "APOBEC sequence",
+          "next stage"
+        ],
+        [
+          "APOBEC sequence",
+          "next stage"
+        ],
+        [
+          "LAMAR workflow",
+          "next stage"
+        ],
+        [
+          "LAMAR workflow",
+          "next stage"
+        ],
+        [
+          "LAMAR workflow",
+          "next stage"
+        ],
+        [
+          "matched validation",
+          "updated editing profiles"
+        ],
+        [
+          "updated editing profiles",
+          "RNA-seq evidence"
+        ],
+        [
+          "assays",
+          "matched validation"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "1bb2d7ecc4fa1bb2c5741c5be6dfe4cb919a7688f5100d851d1325011dde910a",
+      "files": {
+        "svg": "figure-01-overview.svg",
+        "png": "figure-01-overview.png",
+        "pdf": "figure-01-overview.pdf"
+      },
+      "output_sha256": {
+        "svg": "9bf773ca79a6ecb421e0f110762abfcf7260edd4ac85ae0755ca24c75b7bfdc2",
+        "png": "444604634ca708f287f173c19d6d3c9371069123006a6697f43fe60e1fbc284a",
+        "pdf": "cb03fe32d0577e909e591c04a0d5b9037ef426e3f5013cb4039262fed35d442b"
+      }
+    },
+    {
+      "id": "figure-02-rna-seq",
+      "number": "Figure 2",
+      "title": "RNA-seq candidate detection",
+      "source": "static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png",
+      "url": "/static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png",
+      "alt": "Adapter trimming, alignment, candidate detection, control and sequence filtering, replicate quantification and editor comparison form a six-step RNA-seq workflow.",
+      "caption": "36 libraries, nine groups and four biological replicates per group; GRCh38 with GENCODE v50. The original screening and recounting rules remain in the Model page. Candidate sites and editing profiles support planned training and evaluation.",
+      "canvas": [
+        1200,
+        690
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "Adapter trimming",
+          "Read alignment"
+        ],
+        [
+          "Read alignment",
+          "Candidate detection"
+        ],
+        [
+          "Candidate detection",
+          "SNP / sequence filters"
+        ],
+        [
+          "SNP / sequence filters",
+          "Editing quantification"
+        ],
+        [
+          "Editing quantification",
+          "Editor comparison"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "fa2cbd98dbb17f150affebd5f7ffa4c9629a0f03731ece2d91d8800430774fe4",
+      "files": {
+        "svg": "figure-02-rna-seq.svg",
+        "png": "figure-02-rna-seq.png",
+        "pdf": "figure-02-rna-seq.pdf"
+      },
+      "output_sha256": {
+        "svg": "13ab4fcf0a001bf3d07eebba7e8ce2531f2f28bfcc6f0c9f8f3fbc8366467bcb",
+        "png": "37c127e479e98643fd3891771418ddb4e20a30d9f1914ec9a11c8b29dc960b72",
+        "pdf": "7258a717d13977f6202ac8b6b82c83e37b7ac3eaf8eb98c3f9d088aa3028a8e7"
+      }
+    },
+    {
+      "id": "figure-10-puf-esm",
+      "number": "Figure 10",
+      "title": "PUF-ESM specificity ranking",
+      "source": "static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png",
+      "url": "/static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png",
+      "alt": "A 493-amino-acid PUF sequence feeds frozen ESM-2 scores and reference-centred one-hot features. Grouped inner validation selects Ridge settings, which predict three editing outputs, specificity and held-out ranks.",
+      "caption": "The original feature branches and three endpoint outputs are preserved. Grouped inner cross-validation selects settings using Spearman correlation; the held-out assessment contains 66 complete constructs, including Top30 comparison with random expectation.",
+      "canvas": [
+        1200,
+        720
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "grouped inner CV",
+          "Ridge settings"
+        ],
+        [
+          "PUF sequence",
+          "ESM score"
+        ],
+        [
+          "PUF sequence",
+          "one-hot features"
+        ],
+        [
+          "ESM score",
+          "Ridge outputs"
+        ],
+        [
+          "one-hot features",
+          "Ridge outputs"
+        ],
+        [
+          "Ridge outputs",
+          "specificity"
+        ],
+        [
+          "specificity",
+          "held-out ranking"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "0d4498257a651b54416bab2fe48fed22683a1084b2659370a42842c899864102",
+      "files": {
+        "svg": "figure-10-puf-esm.svg",
+        "png": "figure-10-puf-esm.png",
+        "pdf": "figure-10-puf-esm.pdf"
+      },
+      "output_sha256": {
+        "svg": "530a2c52894dd5f6a3143c0e40b8e3ee12ae40629c7b8a14fc63ea487f360128",
+        "png": "b3aeabe9ea681fdc60e8b3780df1404423f9ff789fceaa72f3c7b505bd82a2a6",
+        "pdf": "1dc2f470edeff74366e47e4ae8c5794634040dfcb6abac5ffc6fe1fb4aa8cce7"
+      }
+    },
+    {
+      "id": "figure-20-inverse-folding",
+      "number": "Figure 20",
+      "title": "Structure-conditioned PUF nomination",
+      "source": "static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "url": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png",
+      "alt": "The fixed PUF–RNA complex branches into all-position and TRM-only masks, each sampled with two pretrained inverse-folding models, screened and compared with measured constructs.",
+      "caption": "Each model and mask used 10,000 samples, temperature 0.5 and seed 111. The AiCE-inspired screen yielded 128 non-TRM and 10 TRM nominations, with 46 and 0 exact dual-model matches, respectively. Comparison used 81 measured constructs; nominations do not imply experimental validation.",
+      "canvas": [
+        1200,
+        865
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "fixed complex",
+          "all-position mask"
+        ],
+        [
+          "fixed complex",
+          "TRM-only mask"
+        ],
+        [
+          "all-position mask",
+          "paired models"
+        ],
+        [
+          "TRM-only mask",
+          "paired models"
+        ],
+        [
+          "paired models",
+          "AiCE-inspired screen"
+        ],
+        [
+          "screened nominations",
+          "assay comparison"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "926b8e5b7db2138fd6e42c5fab25c421ad838f7a18de0c34c9683d37f1260316",
+      "files": {
+        "svg": "figure-20-inverse-folding.svg",
+        "png": "figure-20-inverse-folding.png",
+        "pdf": "figure-20-inverse-folding.pdf"
+      },
+      "output_sha256": {
+        "svg": "c245cf715bffdef33ab5cfb8e32f08d97e72017262ced0d4fb46eb1f88817102",
+        "png": "53153cf42eec016e018f0744f374f1f87088aa6981ee6511661126c269f9e29d",
+        "pdf": "eab7a4161ffd43d5ac20fcc643d687ae6cbc947f871b35b7f7590b5f8633ab07"
+      }
+    },
+    {
+      "id": "figure-25-structure-assay",
+      "number": "Figure 25",
+      "title": "Structural hypotheses and assay feedback",
+      "source": "static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "url": "/static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png",
+      "alt": "A closed six-step cycle compares RNA contexts, audits structural models, screens single mutants, combines hits, tests within batches and updates designs around a conceptual protein–RNA complex.",
+      "caption": "The original six-step order and feedback connection are unchanged. RNA comparisons address the +1 base and sequence context; selection pairs preference with retained activity, and each batch uses its matched parental normalization. The central complex is schematic.",
+      "canvas": [
+        1200,
+        760
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "Compare RNA",
+          "Audit models"
+        ],
+        [
+          "Audit models",
+          "Screen single mutants"
+        ],
+        [
+          "Screen single mutants",
+          "Combine hits"
+        ],
+        [
+          "Combine hits",
+          "Test each batch"
+        ],
+        [
+          "Test each batch",
+          "Update designs"
+        ],
+        [
+          "Update designs",
+          "Compare RNA"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "08c40469f2988715e3c3fa1561ccee4175fb6fc7672803f0171198f8b9ed3c68",
+      "files": {
+        "svg": "figure-25-structure-assay.svg",
+        "png": "figure-25-structure-assay.png",
+        "pdf": "figure-25-structure-assay.pdf"
+      },
+      "output_sha256": {
+        "svg": "04300d3cd4f252015f7fb6837deaab4c61983bcde221d4504033f845e66c86a6",
+        "png": "a4f031b9545e7cc0801a8ffc60782f8987b0726d42a452e6c72b3b4692cdbd8e",
+        "pdf": "5ca840836dc0c669c776a43188c0bbc2a11fb095d09ed2291b09ebfcc98e5608"
+      }
+    },
+    {
+      "id": "figure-33-lamar-foundation",
+      "number": "Figure 33 · workflow panels",
+      "title": "LAMAR corpus, pretraining and downstream tasks",
+      "source": "static/assets/model/revisions/20261011/module4-figures/figure-1.png",
+      "url": "/static/assets/model/revisions/20261011/module4-figures/figure-1.png",
+      "alt": "RefSeq and RNAcentral sequences are deduplicated into a corpus, used for masked nucleotide prediction with a Transformer encoder, and fine-tuned for four separate RNA regulatory tasks.",
+      "caption": "Redraw scope is the original workflow panels A, C and D. The numerical corpus-composition plots in panel B are not redrawn and remain in the original image. This preview is not a full replacement for the mixed workflow-and-data figure. Source attribution: adapted from Zhou et al. (2025), as on the current Model page.",
+      "partial": true,
+      "canvas": [
+        1200,
+        1050
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "sequence resources",
+          "reduce redundancy"
+        ],
+        [
+          "reduce redundancy",
+          "pretraining corpus"
+        ],
+        [
+          "pretraining corpus",
+          "RNA input"
+        ],
+        [
+          "pretrained encoder",
+          "splice-site task"
+        ],
+        [
+          "RNA input",
+          "masked input"
+        ],
+        [
+          "masked input",
+          "Transformer encoder"
+        ],
+        [
+          "Transformer encoder",
+          "base probabilities"
+        ],
+        [
+          "pretrained encoder",
+          "task-specific fine-tuning"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "5d0cb4b8bfa7c1bd93f6835d17b83801a926bfd5ecb1c1463bd8459f3e4f7b63",
+      "files": {
+        "svg": "figure-33-lamar-foundation.svg",
+        "png": "figure-33-lamar-foundation.png",
+        "pdf": "figure-33-lamar-foundation.pdf"
+      },
+      "output_sha256": {
+        "svg": "f8d3e03fe4288a483c2129dae8dcf7b78a75d8f384c5ac9dd516a1373c3d6c8a",
+        "png": "a426b83bd0e5ecb299fd356313b5d21822f838ca1fbc64aabf4271d3a9ba92dc",
+        "pdf": "f27b6bf8da1ac6a8ad80d33b148f7de9c00004a377f18d32a67b5a09a356a614"
+      }
+    },
+    {
+      "id": "figure-extra-lamar-two-stage",
+      "number": "Additional workflow · Section 4.3",
+      "title": "LAMAR region selection and cytidine ranking",
+      "source": "wiki/components/model/module4.html",
+      "url": "/model#module4-strategy",
+      "alt": "The earlier 101-nucleotide binary classification task is shown separately from the current two-stage application: 1024-nucleotide region scoring followed by 101-nucleotide cytidine context scoring and ranked follow-up.",
+      "caption": "The current application links Stage I region selection to Stage II ranking. Stage I outputs a probability of at least one RNA-seq-supported site; Stage II outputs a scalar editing-associated score. The design uses 1,024-nt windows with 128-nt overlap, although the evaluated data also include shorter regions. The reported Stage II evaluation scored cytidines in positive regions directly; the combined application is not presented as an evaluated end-to-end cascade.",
+      "text_source": true,
+      "canvas": [
+        1200,
+        890
+      ],
+      "native_svg": true,
+      "svg_image_nodes": 0,
+      "text_outside_canvas": [],
+      "text_overlap_pairs": [],
+      "directed_relationships": [
+        [
+          "earlier 101-nt input",
+          "earlier binary output"
+        ],
+        [
+          "transcript windows",
+          "Stage I probability"
+        ],
+        [
+          "selected regions",
+          "101-nt C contexts"
+        ],
+        [
+          "101-nt C contexts",
+          "Stage II scalar score"
+        ],
+        [
+          "Stage II scalar score",
+          "ranked shortlist"
+        ]
+      ],
+      "font": "Futura",
+      "source_sha256": "4438d7b315a5c92cb57faba267ca11ceac56c88096f5dc6d933d4fe31ec4184a",
+      "files": {
+        "svg": "figure-extra-lamar-two-stage.svg",
+        "png": "figure-extra-lamar-two-stage.png",
+        "pdf": "figure-extra-lamar-two-stage.pdf"
+      },
+      "output_sha256": {
+        "svg": "2c19c588cdbad7b3f20dcd0ad8e08da5deb025dbf6c9a244d04c8fcd8477bea8",
+        "png": "623c6377a5cd6aada1fb1caf2219fbf6641561ab72e4dd8be851dd82fa325e7d",
+        "pdf": "cbd2032d736eda4c927433c82e86ad140c0d83d95944e8dfefcb0e7f8263ccf2"
+      }
+    }
+  ],
+  "excluded": {
+    "data_figures": "All quantitative panels, including Figure 31 and Figure 33B, are outside redraw scope.",
+    "decorative": "Typing hero excluded.",
+    "unmounted": "Historical module*-dbtl.html files are not mounted on /model and are excluded."
+  }
+}

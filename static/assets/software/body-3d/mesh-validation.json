@@ -1,0 +1,28 @@
+{
+  "python_version": "3.12.14",
+  "numpy_version": "2.3.5",
+  "positions_dtype": "little-endian Float32",
+  "normals_dtype": "little-endian Float32",
+  "indices_dtype": "little-endian Uint32",
+  "vertex_count": 45538,
+  "triangle_count": 91304,
+  "binary_bytes": 2188560,
+  "all_values_finite": true,
+  "indices_in_range": true,
+  "normal_max_length_error": 5.960464477539063e-08,
+  "surface_components": 1,
+  "boundary_edges": 351,
+  "nonmanifold_edges": 553,
+  "zero_area_triangles": 0,
+  "quality_scope": "Original illustrative surface. Grid clustering can create small nonmanifold/boundary edges; not a watertight manufacturing/medical/anatomy measurement mesh.",
+  "visual_qa": "Three orthographic views in body-qa-contact.png visually inspected. Scene agent also reviewed actual WebGL lighting and accepted continuous body silhouette.",
+  "no_external_assets": true,
+  "no_model_simulation": true,
+  "sha256": {
+    "body-surface.json": "da4e4d1d4d173ca0c969784eef1ce66642ddcb0ea8f3cf96377db48be0dbf068",
+    "body-surface.bin": "81c015e94d4f46bd131b49a838326e6e0be2fb7a8d561f6c714a34fd07be09c1",
+    "body-parameters.json": "a3f841a6881554fc5ce073c5186127d5f9a2e8766b4245ae598d37a5a96965c3",
+    "generate_body.py": "c3e1b81268564d48e0e6f404a452d1dc2c2a876167614c8741d85960914e5116",
+    "body-qa-contact.png": "316c92ad283683a57ae1ddd0ada62e38e48c4b2eb50b552999387f777a3bb185"
+  }
+}

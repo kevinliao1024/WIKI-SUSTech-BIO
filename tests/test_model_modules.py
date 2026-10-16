@@ -142,6 +142,25 @@ MODEL_PAGE_CAPTION_LABEL_EDITS = {
     },
     4: {f"Figure {number}.": f"Figure {number + 32}." for number in range(1, 5)},
 }
+# Four approved vector replacements; every other image attribute stays exact.
+MODEL_PAGE_IMAGE_EDITS = {
+    "/static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png": {
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-02-rna-seq.svg",
+        "width": "1200", "height": "540",
+    },
+    "/static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png": {
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-10-puf-esm.svg",
+        "width": "1200", "height": "720",
+    },
+    "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/workflow/figure@2x.png": {
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-20-inverse-folding.svg",
+        "width": "1200", "height": "865",
+    },
+    "/static/assets/model/igem_module3/wiki/figures/workflow/rendered/workflow.png": {
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-25-structure-assay.svg",
+        "width": "1200", "height": "760",
+    },
+}
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
 
@@ -215,7 +234,10 @@ class FourModelModulesTest(unittest.TestCase):
                     expected = [normalized(node.text()) for node in baseline.root.walk() if node.tag == tag]
                     actual = [normalized(node.text()) for node in module.walk() if node.tag == tag]
                     self.assertEqual(actual, expected)
-                original_images = [node.attrs for node in baseline.root.walk() if node.tag == "img"]
+                original_images = [
+                    {**node.attrs, **MODEL_PAGE_IMAGE_EDITS.get(node.attrs.get("src"), {})}
+                    for node in baseline.root.walk() if node.tag == "img"
+                ]
                 actual_images = [node.attrs for node in module.walk() if node.tag == "img" and "/integration-20261013/" not in node.attrs.get("src", "")]
                 self.assertEqual(actual_images, original_images)
 
