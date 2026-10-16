@@ -13,6 +13,9 @@
   html.orca-cursor-enabled [data-orca-cursor="link"] {
     cursor: url("probe.svg") 12 12, pointer;
   }
+  html.orca-cursor-enabled .reading-orbit__traveler[data-orca-cursor="link"] {
+    cursor: url("probe.svg") 12 12, pointer;
+  }
   /* Bootstrap's button cursor outranks the original protein handle rule. */
   html.orca-cursor-enabled [data-bio-handle] { cursor: grab; }
   html.orca-cursor-enabled [data-bio-handle].is-placed { cursor: default; }

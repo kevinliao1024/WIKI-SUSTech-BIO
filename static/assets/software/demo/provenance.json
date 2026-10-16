@@ -1,0 +1,65 @@
+{
+  "asset_filename": "orca-software-demo-20261016.mp4",
+  "sha256": "144ffad9285ca1f19587f122e71c3e8963491d99eb14ee95856c1371a729ba76",
+  "bytes": 44556786,
+  "poster_filename": "orca-software-demo-20261016.jpg",
+  "poster_sha256": "fe8570f7802272f4dbc8f979a786f35c9533a57125fc68505fbf29f4b14efeea",
+  "poster_bytes": 188212,
+  "poster_timestamp_seconds": 23.47266666666667,
+  "duration_seconds": 58.681666666666665,
+  "width": 1280,
+  "height": 832,
+  "codec": "H.264 / avc1",
+  "audio_codec": "AAC",
+  "audio_preserved": true,
+  "fast_start": true,
+  "source_filename": "录屏2026-10-16 下午8.58.37.mov",
+  "source_sha256": "be8b800e75d9f343cde8cf28703ea2d834eea7c23e582146414d52b0765d3cc9",
+  "source_bytes": 68850954,
+  "source_duration_seconds": 58.682375,
+  "source_width": 3024,
+  "source_height": 1964,
+  "source_description": "User-provided screen recording of the ORCA website, supplied for embedding on the Software page. The original recording remains unchanged.",
+  "creator_source": "SUSTech 2026 team / user-provided recording",
+  "page": "Software, after Website Overview and before Tutorial",
+  "caption": "A walkthrough of the ORCA website, from RNA input and PUF design to export and methods.",
+  "processing": {
+    "tool": "macOS avconvert (system tool)",
+    "macos_version": "26.6.2",
+    "preset": "Preset1280x720",
+    "network_playback_optimization": "Default fast-start retained; moov precedes mdat.",
+    "original_frame_and_audio_content": "No cuts or overlays; full recording and its AAC audio retained."
+  },
+  "validation": {
+    "source_samples_seconds": [
+      0.2,
+      11.736475,
+      23.47295,
+      35.209425,
+      46.9459,
+      58.382375
+    ],
+    "visual_review": "Six sampled frames show the requested ORCA website demonstration; no obvious credentials were observed in these sampled frames. Audio contents were not separately reviewed.",
+    "output_decoding": "Six sampled frames decoded successfully with AVFoundation.",
+    "source_unchanged": true,
+    "top_level_mp4_atoms": [
+      {
+        "type": "ftyp",
+        "offset": 0,
+        "bytes": 28
+      },
+      {
+        "type": "moov",
+        "offset": 28,
+        "bytes": 67385
+      },
+      {
+        "type": "mdat",
+        "offset": 67413,
+        "bytes": 44489373
+      }
+    ]
+  },
+  "hosting_status": "Local preview asset. Before final iGEM publication, upload the video to iGEM Video Universe and the poster through the iGEM uploads tool; replace local media URLs with the approved iGEM-hosted URLs.",
+  "license_status": "Provided by the user for this requested Wiki preview; final publication rights remain subject to the team review described in the repository content guide."
+}

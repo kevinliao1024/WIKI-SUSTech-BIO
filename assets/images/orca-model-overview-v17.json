@@ -1,0 +1,18 @@
+{
+  "revision": "v17",
+  "source": "assets/images/orca-model-overview-v16.png",
+  "output": "assets/images/orca-model-overview-v17.png",
+  "dimensions": [
+    1584,
+    993
+  ],
+  "changes": [
+    "Added outer right M2–CYCLE connection with arrowheads at both ends.",
+    "Added CYCLE-side arrowhead to the existing outer left M1 feedback route."
+  ],
+  "method": "Built-in image_gen local editing; original v16 PNG and PDF preserved.",
+  "prompt_summary": "Add a thin blue M2-to-CYCLE route outside M3, preserve all labels and icons, then add the CYCLE-end arrowhead to the left M1 feedback route.",
+  "visual_review": "All original labels and four panels are retained; both requested connections inspected. Raster illustration only, no scientific data recalculation.",
+  "sha256": "bdbfec564e4efb31c3c0d60b0881705550873862c694915cbd69a3d91254e0b6",
+  "final_edit_prompt": "Make only one tiny local edit in this ORCA MODEL infographic: add a blue right-pointing triangular ARROWHEAD on the thin blue horizontal line immediately to the LEFT of the bottom-left corner of the CYCLE box. The existing outer LEFT feedback line runs from CYCLE around the bottom-left margin and UP to M1, with an arrowhead at M1 already. Add its missing second arrowhead at the CYCLE end, approximately x=488,y=953 on this 1584x992 image. It must point RIGHT into the CYCLE box, so this LEFT outer feedback line is bidirectional. The arrow should be visibly the same size, dark blue color and shape as other arrowheads. Keep the horizontal line, and place the arrowhead just before the rounded bottom-left CYCLE corner without covering its border. Preserve everything else EXACTLY: ALL text, diagrams, colors, layout, every existing arrow, including BOTH arrowheads on the RIGHT OUTER M2-CYCLE connection. Do not crop or add margin. Return the complete diagram with this one additional triangle only."
+}

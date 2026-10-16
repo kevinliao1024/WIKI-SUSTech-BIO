@@ -48,6 +48,11 @@ async function stage(name,cycle='cycle-01') {
 try {
   for (const route of ['/', '/next', '/description', '/model']) {
     await page.goto(`${base}${route}${route==='/' || route==='/next' ? '?p=0.43' : ''}`,{waitUntil:'networkidle'});
+    if (route === '/') {
+      assert.equal(await page.locator('[data-reading-orbit]').count(),0);
+      console.log('Home: reading navigation is omitted.');
+      continue;
+    }
     assert.equal(await page.locator('[data-reading-orbit]').count(),1);
     assert.equal(await page.locator('[data-story-progress]').count(),0);
     const start = await scrollFraction(0);
@@ -82,7 +87,7 @@ try {
   for (const name of ['design','build','test','learn']) await stage(name);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/dbtl-mobile.png`});
-  for(const route of ['/', '/description','/model']) {
+  for(const route of ['/description','/model']) {
     await page.goto(`${base}${route}${route==='/' ? '?p=0.43' : ''}`,{waitUntil:'networkidle'});
     const middle=await scrollFraction(.43);
     assert.ok(middle.left>=0 && middle.right<=390 && middle.bottom<844,JSON.stringify(middle));

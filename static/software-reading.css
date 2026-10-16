@@ -66,6 +66,7 @@ body:not(.ot) .software-page .model-prose a.software-action--primary:hover { col
 .software-page .software-workflow .software-step svg { display: block; width: 40px; height: 40px; margin-bottom: 10px; fill: none; stroke: #2e267c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .software-page .software-tutorial { margin: 28px 0 36px; }
 .software-page .software-tutorial video { display: block; width: 100%; height: auto; aspect-ratio: 3024 / 2144; background: #171536; border-radius: 8px; }
+.software-page .software-demo video { aspect-ratio: 1280 / 832; }
 .software-page .model-prose .software-tutorial p { margin-top: 12px; font-size: 15px; color: #625f76; }
 
 /* Four concise result stories, with figures kept in their numbered sequence. */

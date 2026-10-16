@@ -12,7 +12,7 @@
   halo.className = 'orca-cursor-halo';
   layer.append(halo);
   document.body.append(layer);
-  let target = null, active = null, x = 0, y = 0, frame = 0, pressed = false;
+  let target = null, active = null, capturedOrbit = null, x = 0, y = 0, frame = 0, pressed = false;
   const enabled = () => fine.matches && !contrast.matches;
   const animated = () => enabled() && !reduced.matches;
   const clearActive = () => {
@@ -24,6 +24,7 @@
     frame = 0;
     pressed = false;
     target = null;
+    capturedOrbit = null;
     clearActive();
     halo.classList.remove('is-visible', 'is-pressed');
     layer.querySelectorAll('.orca-cursor-ripple').forEach(node => node.remove());
@@ -32,6 +33,13 @@
     clearActive();
     if (!enabled() || !(element instanceof Element)) return false;
     if (element.closest(':disabled, [aria-disabled="true"], [inert]')) return false;
+    // The reading handle opts into the same circular probe used by navigation links.
+    const orbitHandle = element.closest('[data-orbit-traveler]');
+    if (orbitHandle) {
+      active = orbitHandle;
+      active.setAttribute('data-orca-cursor', 'link');
+      return true;
+    }
     if (element.closest('[data-bio-handle], [data-bio-hit], [draggable="true"], [data-cursor="native"]')) return false;
     // Respect authored grab, grabbing, text, resize and other functional cursors.
     const cursor = getComputedStyle(element).cursor;
@@ -82,6 +90,16 @@
     layer.append(ripple);
   }, { passive: true });
   document.addEventListener('pointerup', event => { pressed = false; update(event); }, { passive: true });
+  document.addEventListener('gotpointercapture', event => {
+    if (event.pointerType === 'mouse' && event.target.matches?.('[data-orbit-traveler]')) capturedOrbit = event.target;
+  });
+  document.addEventListener('lostpointercapture', event => {
+    if (event.target !== capturedOrbit) return;
+    capturedOrbit = null;
+    pressed = false;
+    target = document.elementFromPoint(x, y);
+    if (!frame) frame = requestAnimationFrame(render);
+  });
   document.addEventListener('pointercancel', hide, { passive: true });
   document.addEventListener('pointerleave', hide);
   document.addEventListener('keydown', hide);
@@ -91,7 +109,7 @@
   // A wheel can move a new target under a stationary mouse.
   document.addEventListener('scroll', () => {
     if (!target) return;
-    target = document.elementFromPoint(x, y);
+    target = capturedOrbit || document.elementFromPoint(x, y);
     if (!frame) frame = requestAnimationFrame(render);
   }, { passive: true, capture: true });
 })();

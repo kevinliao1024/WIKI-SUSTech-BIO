@@ -1,9 +1,10 @@
 {% raw %}
 <h3 id="module2-1" data-model-chapter><span class="chapter-number">2.1</span>Overview</h3>
-<p>The PUF ranker concentrated higher-specificity variants within its predicted shortlist in the evaluated construct library. We ranked variants by the balance between target editing and two comparison sites, using the fixed score:</p>
+<p>PUF-directed RNA editing requires control of unwanted editing alongside activity at the intended site. Published PUF–APOBEC studies assess target activity together with bystander and transcriptome-wide off-target editing (Han et al., 2025). In our APOE editing assay, C388 is the intended editing endpoint, whereas C295 and C871 are the two principal bystander sites that we aim to suppress. Measuring all three sites allows us to assess whether a PUF variant preserves target activity while reducing unwanted editing elsewhere in the same transcript.</p>
+<p>The PUF ranker concentrated higher-specificity variants within its predicted shortlist in the evaluated construct library. We ranked variants by the balance between target editing and these two bystander sites, using the fixed score:</p>
 <p class="model-equation">S = C<sub>388</sub> − (C<sub>295</sub> + C<sub>871</sub>) / 2</p>
 <p>Our two experimental batches contain 81 constructs. Sixty-six have measurements at all three sites, while the remaining 15 have partial measurements. All 66 complete scores satisfy S &gt; 0, defining the task as <strong>relative specificity ranking within this measured library</strong>.</p>
-<p>Within ORCA, this module addresses selection of the RNA-recognition component. The measured editing profiles show why target activity needs to be considered alongside competing sites. We use two complementary approaches: <strong>an assay-informed model ranks variants against that experimental objective</strong>, while structure-conditioned design proposes substitutions beyond the measured library.</p>
+<p>Module 2 develops the RNA-recognition component through two complementary parts. Part I (Section 2.3) evaluates designed tripartite recognition motif (TRM) variants by <strong>modeling their measured three-site editing profiles and ranking specificity</strong>. Part II (Section 2.4) uses structure-conditioned sequence generation to explore <strong>PUF scaffold substitutions and new TRM candidates</strong>, extending the design space beyond previously characterized recognition combinations. Together, these parts connect evaluation of designed recognition motifs with generation of additional scaffold and recognition candidates.</p>
 <h3 id="module2-iteration" data-model-chapter><span class="chapter-number">2.2</span>Model-guided experimental iteration</h3>
 <p><strong>We used model predictions to select five PUF candidates before constructing them.</strong> We then tested those candidates in wet-lab experiments and used the measured editing profiles to guide the next model iteration.</p>
 <p>The five-candidate panel included a double-repeat SNE construct with a favorable measured editing profile. Relative to its matched control, <strong>C388 increased by 7.77 percentage points, while C295 and C871 decreased by 13.15 and 34.90 points</strong>, respectively. This result connected model-guided selection to a useful experimental outcome and helped motivate ranking the combined three-site profile.</p>
@@ -33,7 +34,7 @@ C_hat = predict(models, onehot, esm_score, test_idx)
 S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 </code></pre>
 <p>Here, <code>Y</code> contains C295, C388 and C871 in that order. Missing labels remain masked for the corresponding endpoint regressor.</p>
-<h4 id="module2-ranking-results" data-model-subchapter data-parent-chapter="module2-2">Results: overall ranking and Top-K recovery</h4>
+<h4 id="module2-ranking-results">Results: overall ranking and Top-K recovery</h4>
 <p>The PUF-ESM Specificity Ranker reached <strong>Spearman ρ = 0.405</strong> and <strong>Kendall τ = 0.264</strong>. It had the highest Spearman correlation among the original 12 methods in the matched comparison and among the five feature ablations below.</p>
 <p>Removing the evolutionary feature reduced Spearman correlation to 0.292 in the matched one-hot Ridge model using the same A selection rule. Frozen local ESM plus Ridge reached 0.289 under its B selection rule. This latter comparison evaluates configurations with different feature blocks and selection rules.</p>
 <figure id="model-figure-11"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/figures/topk_random/figure@2x.png" alt="Observed Top5, Top15 and Top30 overlap versus random expectation" width="1920" height="1200"><figcaption><strong>Figure 11.</strong> Top-K overlap between predicted and measured rankings among 66 constructs. Random expectation is K²/66.</figcaption></figure>
@@ -41,7 +42,7 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <p>Top30 is a retrospective reporting cutoff applied to the fixed OOF predictions. Within the 66-construct cohort, the predicted Top30 was enriched for higher measured specificity. The random expectation describes drawing constructs uniformly from this same cohort.</p>
 <p>The practical benefit is enrichment of a testing panel: the predicted Top30 contains more high-scoring constructs than random selection would recover on average. Top5 recovered one member, favoring <strong>prioritization of a candidate panel</strong> over selection of a single winner. The three-site score and the RNA-seq profiles in Module 1 provide complementary measures for follow-up.</p>
 <figure id="model-figure-12"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/figures/oof_scatter/figure@2x.png" alt="Measured versus held-out predicted specificity for all 66 constructs" width="1920" height="1200"><figcaption><strong>Figure 12.</strong> Measured versus out-of-fold predicted specificity score S for 66 constructs, highlighting the predicted Top30. The dashed line marks equality.</figcaption></figure>
-<h5 id="module2-feature-ablations" data-model-subchapter data-parent-chapter="module2-2">Feature ablations: position, amino-acid identity and evolutionary score</h5>
+<h5 id="module2-feature-ablations">Feature ablations: position, amino-acid identity and evolutionary score</h5>
 <p>We tested whether ranking depended on mutation location, amino-acid identity or the evolutionary score. The position-only baseline uses a 493-dimensional binary vector to record substituted positions. The amino-acid model uses the 493 × 20 reference-centred one-hot difference encoding: −1 for the reference residue and +1 for its replacement at each mutated position.</p>
 <p>All supervised variants predict the three C values separately, using available labels from the same 81-construct pool. They reuse the identical 66 outer sequence-group folds, inner partitions, Ridge penalty grid and A selection rule.</p>
 <p>The zero-shot control ranks the fixed ESM-2 mutation score in descending order, with higher pretrained log-odds ranked higher. The score-only Ridge control evaluates supervised calibration of this single feature using the assay labels.</p>
@@ -52,7 +53,7 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <p><strong>The uncalibrated ESM-2 score had negative rank agreement.</strong> The additive reference-masked score reached ρ = −0.265 and recovered 9 of the measured Top30 in descending score order. Fitting Ridge to the score increased recovery to 16, with ρ = 0.098.</p>
 <p><strong>Combining the two feature sources performs best within this ablation.</strong> The combined model reached ρ = 0.405 and recovered 20 of the measured Top30. Relative to amino-acid one-hot Ridge, this corresponds to Δρ = 0.113 and four additional hits; relative to score-only Ridge, Δρ = 0.307 and four additional hits. The combined selected mean S was 0.292, versus 0.259 for one-hot Ridge and 0.264 for score-only Ridge. Thus, this comparison supports a benefit from combining the features after assay-based fitting, despite poor direct zero-shot ranking.</p>
 <p>Across the same grouped folds, the combined features produced stronger rank agreement and recovered more high-specificity constructs than either feature source alone. Sequence-group holdout evaluates variants within this library, with examples at the same mutation positions potentially present in training.</p>
-<h5 id="module2-readout-layers" data-model-subchapter data-parent-chapter="module2-2">Sensitivity to ESM-2 readout depth</h5>
+<h5 id="module2-readout-layers">Sensitivity to ESM-2 readout depth</h5>
 <p>We tested sensitivity to ESM-2 readout depth within the main model's <strong>reference-masked mutation score + reference-centred one-hot encoding + Ridge</strong> pipeline. Only the readout depth varied across blocks 1–12. The analysis used the same 81-construct pool of observed C labels, 66 sequence-group outer test folds, inner partitions, Ridge penalties, score weights and A selection rule.</p>
 <p>At each substituted position, the reference sequence was masked and the mutant-minus-reference log probability was read from the selected layer, then summed across substitutions. Blocks 1–11 used the frozen final encoder normalization and pretrained vocabulary prediction head; block 12 used its native normalized output. This shared-head <strong>logit-lens diagnostic</strong> reads intermediate states through a head trained for the final layer. The block-12 control reproduced the main-model predictions.</p>
 <figure id="model-figure-15"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/ranking/figure@2x.png" alt="Main-model Spearman and pairwise ranking accuracy across ESM-2 readout layers" width="1920" height="2016"><figcaption><strong>Figure 15.</strong> ESM-2 readout-layer sensitivity: grouped outer-OOF Spearman correlation above and all-pair/within-batch accuracy below. Pairs with |ΔS| ≤0.01 are excluded; ties score 0.5. The dashed reference selects layers within inner validation.</figcaption></figure>
@@ -64,175 +65,17 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <h5>Five highlighted constructs</h5>
 <p>These five constructs appear in both the predicted and measured Top30 sets in the grouped OOF assessment. They illustrate high measured specificity, with predicted and measured ranks differing by 7–20 places.</p>
 <figure id="model-figure-18"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/figures/five_targets/figure@2x.png" alt="Predicted and measured ranks of five highlighted constructs in the current ESM assessment" width="1920" height="1200"><figcaption><strong>Figure 18.</strong> Current out-of-fold and measured ranks of five highlighted constructs among 66 candidates. All five enter the predicted Top30.</figcaption></figure>
-<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
-<thead>
-<tr>
-<th>Construct</th>
-<th align="right">OOF predicted S</th>
-<th align="right">Measured S</th>
-<th align="right">OOF rank / 66</th>
-<th align="right">Measured rank / 66</th>
-<th align="center">OOF Top30</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P8-GVE</td>
-<td align="right">0.240</td>
-<td align="right">0.481</td>
-<td align="right">22</td>
-<td align="right">2</td>
-<td align="center">Yes</td>
-</tr>
-<tr>
-<td>P9-NTQ</td>
-<td align="right">0.245</td>
-<td align="right">0.422</td>
-<td align="right">19</td>
-<td align="right">6</td>
-<td align="center">Yes</td>
-</tr>
-<tr>
-<td>P9-NPS</td>
-<td align="right">0.270</td>
-<td align="right">0.375</td>
-<td align="right">15</td>
-<td align="right">8</td>
-<td align="center">Yes</td>
-</tr>
-<tr>
-<td>P9-NSG</td>
-<td align="right">0.233</td>
-<td align="right">0.345</td>
-<td align="right">24</td>
-<td align="right">11</td>
-<td align="center">Yes</td>
-</tr>
-<tr>
-<td>P9-GNS</td>
-<td align="right">0.339</td>
-<td align="right">0.342</td>
-<td align="right">4</td>
-<td align="right">13</td>
-<td align="center">Yes</td>
-</tr>
-</tbody></table></div>
 <h5>Retrospective examples of agreement at higher and lower ranks</h5>
 <p>We selected five examples with higher specificity and five with lower specificity, excluding the five previously highlighted constructs. Higher-ranked examples must appear in both predicted and measured Top30 sets. Lower-ranked examples must appear in both bottom-30 sets, corresponding to ranks 37–66.</p>
 <p>Within each eligible group, we selected the five smallest absolute differences between predicted and measured ranks, breaking ties by absolute S error and then construct identifier. This retrospective selection illustrates agreement at higher and lower ranks within the positive-score library; the full-cohort metrics summarize overall performance.</p>
 <figure id="model-figure-19"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/figures/selected_cases/figure@2x.png" alt="Five concordant higher-ranked examples followed by five concordant lower-ranked examples" width="1919" height="1745"><figcaption><strong>Figure 19.</strong> Five higher-ranked and five lower-ranked examples selected retrospectively for close predicted and measured ranks.</figcaption></figure>
-<h6>Five higher-ranked examples</h6>
-<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
-<thead>
-<tr>
-<th>Construct</th>
-<th align="right">Predicted S</th>
-<th align="right">Measured S</th>
-<th align="right">Predicted rank / 66</th>
-<th align="right">Measured rank / 66</th>
-<th align="right">Absolute rank error</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P9-NFP</td>
-<td align="right">0.270</td>
-<td align="right">0.336</td>
-<td align="right">14</td>
-<td align="right">14</td>
-<td align="right">0</td>
-</tr>
-<tr>
-<td>P4-SNE + P7-SNE</td>
-<td align="right">0.406</td>
-<td align="right">0.541</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td>P1-GVD</td>
-<td align="right">0.243</td>
-<td align="right">0.257</td>
-<td align="right">21</td>
-<td align="right">23</td>
-<td align="right">2</td>
-</tr>
-<tr>
-<td>P9-QKQ</td>
-<td align="right">0.266</td>
-<td align="right">0.264</td>
-<td align="right">16</td>
-<td align="right">19</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td>P9-NWP</td>
-<td align="right">0.244</td>
-<td align="right">0.288</td>
-<td align="right">20</td>
-<td align="right">17</td>
-<td align="right">3</td>
-</tr>
-</tbody></table></div>
-<h6>Five lower-ranked examples</h6>
-<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
-<thead>
-<tr>
-<th>Construct</th>
-<th align="right">Predicted S</th>
-<th align="right">Measured S</th>
-<th align="right">Predicted rank / 66</th>
-<th align="right">Measured rank / 66</th>
-<th align="right">Absolute rank error</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P2-CKR</td>
-<td align="right">0.180</td>
-<td align="right">0.133</td>
-<td align="right">60</td>
-<td align="right">60</td>
-<td align="right">0</td>
-</tr>
-<tr>
-<td>P5-AYE</td>
-<td align="right">0.211</td>
-<td align="right">0.201</td>
-<td align="right">42</td>
-<td align="right">44</td>
-<td align="right">2</td>
-</tr>
-<tr>
-<td>P2-CRR</td>
-<td align="right">0.176</td>
-<td align="right">0.106</td>
-<td align="right">61</td>
-<td align="right">63</td>
-<td align="right">2</td>
-</tr>
-<tr>
-<td>P2-TKR</td>
-<td align="right">0.166</td>
-<td align="right">0.140</td>
-<td align="right">62</td>
-<td align="right">59</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td>P10-SRQ</td>
-<td align="right">0.201</td>
-<td align="right">0.198</td>
-<td align="right">49</td>
-<td align="right">45</td>
-<td align="right">4</td>
-</tr>
-</tbody></table></div>
 <p>The higher-ranked examples differ from their measured ranks by 0–3 places; the lower-ranked examples differ by 0–4 places. Rank agreement and absolute-score calibration are distinct properties. P4-SNE + P7-SNE ranks second by prediction and first by measurement, with predicted S of 0.406 and measured S of 0.541.</p>
-<h5>Sequence-only inference and further experimental iteration</h5>
+<h5>Sequence-only inference</h5>
 <p>The deployment model uses the prespecified A selection rule on all available training data, with fitted inference weights separate from the OOF evaluation. Sequence-only inference accepts a fixed-length 493-residue PUF FASTA sequence using standard amino acids and the model's reference-scoring table.</p>
-<p>A further experimental cycle should lock candidate predictions before testing, measure all three C values and assess performance in a new experimental batch.</p>
 <h3 id="module2-3" data-model-chapter><span class="chapter-number">2.4</span>Part II. Structure-conditioned PUF design and experimental comparison</h3>
 <h4>Design rationale</h4>
-<p>PUF recognition residues help specify RNA binding, whereas other residues support the surrounding protein scaffold (Wang et al., 2002; Cheong &amp; Hall, 2006). We examined both regions to nominate substitutions for the next experimental cycle. The objective was to identify <strong>structure-compatible candidates and compare their sequence preferences with measured editing profiles</strong>. Engineering of PUF binding specificity and affinity provides the biological context for these choices (Zhao et al., 2018).</p>
+<p>PUF recognition follows a modular principle: each repeat typically recognizes one RNA base through three amino-acid residues, termed a <strong>tripartite recognition motif (TRM)</strong>. Two residues contact the base edge, while the third contributes stacking interactions. The surrounding PUF scaffold supports the spatial arrangement of these recognition elements (Wang et al., 2002; Cheong &amp; Hall, 2006).</p>
+<p>Building on this recognition rule, Part II explores both the amino-acid sequence of the <strong>PUF scaffold and new TRM candidates</strong>. The design space extends beyond previously characterized TRM combinations to alternative recognition-residue identities and substitutions elsewhere in the scaffold. Structure-conditioned sequence generation proposes these candidates on a fixed protein backbone. Our objective was to identify structure-compatible candidates and compare their sequence preferences with measured editing profiles. Engineering of PUF binding specificity and affinity provides the biological context for these choices (Zhao et al., 2018).</p>
 <p>We followed the single-substitution screening logic of AiCE, combining inverse-folding preferences with structural constraints (Fei et al., 2025). Our implementation is an <strong>AiCE-inspired single-substitution screen using PyDSSP three-state assignments</strong>.</p>
 <h4>Models and two design spaces</h4>
 <p>ProteinMPNN conditions sequence generation on protein backbone geometry (Dauparas et al., 2022). LigandMPNN additionally represents nonprotein atomic context, including nucleotides (Dauparas et al., 2025). LigandMPNN received the fixed RNA coordinates, while ProteinMPNN provided the protein-backbone comparison. Both use pretrained parameters for structural inference, with editing measurements supplying the assay comparison.</p>
@@ -274,65 +117,6 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <p>Each TRM-only run completed 10,000 samples with all 457 non-TRM residues fixed. LigandMPNN produced 9,961 unique sequences and averaged 21.53 TRM substitutions per sample. ProteinMPNN produced 10,000 unique sequences and averaged 29.25 substitutions. The sampled sequences therefore usually combined many recognition changes.</p>
 <p>All 36 TRM residues were assigned helix, so the 0.5 loop route did not apply. LigandMPNN nominated <strong>10 substitutions</strong>, whereas ProteinMPNN nominated <strong>none</strong>. Consequently, the TRM-only screen had <strong>zero exact dual-model consensus substitutions</strong>.</p>
 <figure id="model-figure-22"><img loading="lazy" decoding="async" src="/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png" alt="Sampling frequencies for all ten nominated TRM substitutions" width="1920" height="1344"><figcaption><strong>Figure 22.</strong> Frequencies of ten nominated substitutions in 10,000 TRM-only samples per model. The dashed line marks the 80% threshold.</figcaption></figure>
-<div class="model-table" tabindex="0" role="region" aria-label="Scrollable data table"><table>
-<thead>
-<tr>
-<th>Substitution</th>
-<th align="right">LigandMPNN frequency</th>
-<th align="right">ProteinMPNN frequency</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Y37R</td>
-<td align="right">99.40%</td>
-<td align="right">18.08%</td>
-</tr>
-<tr>
-<td>E40Q</td>
-<td align="right">84.91%</td>
-<td align="right">0.32%</td>
-</tr>
-<tr>
-<td>S72C</td>
-<td align="right">82.42%</td>
-<td align="right">18.22%</td>
-</tr>
-<tr>
-<td>R109L</td>
-<td align="right">85.93%</td>
-<td align="right">12.97%</td>
-</tr>
-<tr>
-<td>E148Q</td>
-<td align="right">90.06%</td>
-<td align="right">40.09%</td>
-</tr>
-<tr>
-<td>S180C</td>
-<td align="right">99.78%</td>
-<td align="right">22.96%</td>
-</tr>
-<tr>
-<td>E184Q</td>
-<td align="right">98.22%</td>
-<td align="right">47.09%</td>
-</tr>
-<tr>
-<td>E256Q</td>
-<td align="right">94.50%</td>
-<td align="right">49.12%</td>
-</tr>
-<tr>
-<td>E292Q</td>
-<td align="right">93.09%</td>
-<td align="right">51.06%</td>
-</tr>
-<tr>
-<td>R400Q</td>
-<td align="right">87.25%</td>
-<td align="right">55.74%</td>
-</tr>
-</tbody></table></div>
 <p>The models differ in both atomic conditioning and pretrained parameters, providing complementary structural views of substitution preference.</p>
 <h4>Experimental overlap, similarity and disagreement</h4>
 <p>The assay dataset contains 168 records across 81 mutant constructs and three control groups, with two records per group. Sequence mapping identified 121 distinct substitutions across 31 positions, all within the configured TRM region.</p>
@@ -378,13 +162,9 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <p>Direct binding assays should compare the fixed target RNA with defined alternative RNAs. Matched editing experiments should measure all three endpoints, together with expression and protein integrity where feasible. These experiments would distinguish binding effects from changes in expression, catalytic positioning or cellular context.</p>
 {% endraw %}{% include 'components/model/conclusions/module2.html' %}{% raw %}
 <h3 id="module2-5" data-model-chapter><span class="chapter-number">2.5</span>Reproducibility and availability</h3>
-<p>Assay ranking uses the fixed 493-residue reference, observed endpoint labels and prespecified sequence-group validation folds. Structural design uses the fixed PUF backbone and RNA coordinates with separate all-position and TRM-only sampling masks.</p>
-<p>Model versions, sampling seeds, mutation masks, nomination thresholds and preprocessing rules define each evaluation. Top30 results are reported for subsets containing at least 30 constructs.</p>
+<p>The Module 2 repository contains the PUF ranking implementation, fitted inference weights, a cached reference-scoring table, dependency specifications and example inputs. The fixed assay dataset, recorded validation splits, fold results, training scripts, comparison tables and plotting sources support inspection and reproduction of the documented feature-ablation evaluation. Editable workflow artwork and exported figures accompany these records. The archived material supports reuse of the ranking workflow; it does not contain the complete structure-conditioned design package. Reported model performance remains development-stage cross-validation.</p>
 <ul class="model-resource-links" data-model-resource-links>
-  <li><a href="https://github.com/pdx12320/igem_module2">PUF models and code</a></li>
-  <li><a href="https://github.com/pdx12320/igem_module2/blob/main/wiki/data/hsu_A_oof_rankings.csv">Out-of-fold predictions</a></li>
-  <li><a href="https://github.com/pdx12320/igem_module2/blob/main/wiki/data/protocol.json">Ranking protocol</a></li>
-  <li><a href="/static/assets/model/evidence/module2-reproducibility.zip">Design sequences and plotting code</a></li>
+  <li><a href="https://github.com/pdx12320/igem_module2">Module 2 GitHub repository</a></li>
 </ul>
 <h3 id="module2-6" data-model-chapter><span class="chapter-number">2.6</span>References</h3>
 <ol class="model-references">
@@ -401,5 +181,6 @@ S_hat = C_hat[:, 1] - (C_hat[:, 0] + C_hat[:, 2]) / 2
 <li>Fei, H., Li, Y., Liu, Y., Wei, J., Chen, A., &amp; Gao, C. (2025). Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints. <em>Cell, 188</em>(17), 4674–4692.e19. doi:10.1016/j.cell.2025.06.014</li>
 <li>Dauparas, J., Anishchenko, I., Bennett, N., Bai, H., Ragotte, R. J., Milles, L. F., Wicky, B. I. M., Courbet, A., de Haas, R. J., Bethel, N., Leung, P. J. Y., Huddy, T. F., Pellock, S., Tischer, D., Chan, F., Koepnick, B., Nguyen, H., Kang, A., Sankaran, B., … Baker, D. (2022). Robust deep learning–based protein sequence design using ProteinMPNN. <em>Science, 378</em>(6615), 49–56. doi:10.1126/science.add2187</li>
 <li>Dauparas, J., Lee, G. R., Pecoraro, R., An, L., Anishchenko, I., Glasscock, C., &amp; Baker, D. (2025). Atomic context-conditioned protein sequence design using LigandMPNN. <em>Nature Methods, 22</em>(4), 717–723. doi:10.1038/s41592-025-02626-1</li>
+<li>Han, W., et al. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. <em>Nature Communications, 16</em>, 9727. doi:10.1038/s41467-025-64748-6. See also the 2026 author correction, doi:10.1038/s41467-026-76669-z.</li>
 </ol>
 {% endraw %}

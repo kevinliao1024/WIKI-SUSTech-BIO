@@ -145,8 +145,9 @@ MODEL_PAGE_CAPTION_LABEL_EDITS = {
 # Four approved vector replacements; every other image attribute stays exact.
 MODEL_PAGE_IMAGE_EDITS = {
     "/static/assets/model/igem_module1/assets/01_module1_workflow_illustrated.png": {
-        "src": "/static/assets/model/icon-flowcharts-20261016/figure-02-rna-seq.svg",
-        "width": "1200", "height": "540",
+        "src": "/static/assets/model/rna-seq-module-links-20261016/figure-02-rna-seq.svg",
+        "width": "1200", "height": "840",
+        "alt": "Module 1 workflow showing adapter trimming, alignment, candidate detection, filtering, quantification and editor comparison, with branches to Module 2 PUF specificity design, Module 3 APOBEC engineering and Module 4 LAMAR prioritization.",
     },
     "/static/assets/model/igem_module2/wiki/figures/architecture/figure@2x.png": {
         "src": "/static/assets/model/icon-flowcharts-20261016/figure-10-puf-esm.svg",
@@ -223,7 +224,7 @@ class FourModelModulesTest(unittest.TestCase):
             if "data-model-module" in node.attrs
         }
 
-    def test_module_prose_edits_preserve_published_tables_code_and_images(self):
+    def test_module_prose_edits_preserve_retained_tables_code_and_images(self):
         self.assertEqual(set(self.modules), {f"module{number}" for number in range(1, 5)})
         for number in range(1, 5):
             with self.subTest(module=number):
@@ -232,6 +233,14 @@ class FourModelModulesTest(unittest.TestCase):
                 baseline = Document((MODEL_ASSETS / f"synthesis/sources/module{number}-published.html").read_text())
                 for tag in ("table", "pre"):
                     expected = [normalized(node.text()) for node in baseline.root.walk() if node.tag == tag]
+                    if number == 2 and tag == "table":
+                        # Four presentation tables were explicitly removed; frozen sources stay intact.
+                        removed_headers = ("Construct OOF predicted S", "Construct Predicted S", "Substitution LigandMPNN frequency")
+                        self.assertEqual(sum(text.startswith(removed_headers) for text in expected), 4)
+                        expected = [text for text in expected if not text.startswith(removed_headers)]
+                    if number == 4 and tag == "pre":
+                        # Correct only the displayed mask escape; keep the frozen source intact.
+                        expected = [text.replace(r"AUGCUA\[MASK]GGUA", "AUGCUA[MASK]GGUA") for text in expected]
                     actual = [normalized(node.text()) for node in module.walk() if node.tag == tag]
                     self.assertEqual(actual, expected)
                 original_images = [
@@ -360,7 +369,7 @@ class FourModelModulesTest(unittest.TestCase):
                 self.assertEqual(labels.count("Overview"), 1)
                 self.assertNotIn("Module overview", subnav.text())
                 subsection_links = [node for node in subnav.walk() if "data-subchapter-link" in node.attrs]
-                expected = ["module2-ranking-results", "module2-feature-ablations", "module2-readout-layers"] if number == 2 else []
+                expected = []
                 self.assertEqual([node.attrs.get("href") for node in subsection_links], [f"#{item}" for item in expected])
                 targets = [node for node in self.modules[f"module{number}"].walk() if "data-model-subchapter" in node.attrs]
                 self.assertEqual([node.attrs.get("id") for node in targets], expected)
@@ -527,8 +536,8 @@ class FourModelModulesTest(unittest.TestCase):
                     self.assertEqual(len(ordered), 1)
                     self.assertEqual([node for node in ordered[0].children if isinstance(node, Element)], bibliography)
                     expected_authors = {
-                        "module1": ["Grünewald", "Zhou", "Chen", "Dobin", "McKenna", "Mudge", "GENCODE", "GATK Team", "Flati", "Picardi", "McLaren", "Benjamini"],
-                        "module2": ["Abramson", "Hu", "Radivojević", "Hsu", "Lin", "Hoerl", "Varma", "Wang", "Cheong", "Zhao", "Fei", "Dauparas", "Dauparas"],
+                        "module1": ["Grünewald", "Zhou", "Chen", "Dobin", "McKenna", "Mudge", "GENCODE", "GATK Team", "Flati", "Picardi", "McLaren", "Benjamini", "Han", "Zhao", "Han"],
+                        "module2": ["Abramson", "Hu", "Radivojević", "Hsu", "Lin", "Hoerl", "Varma", "Wang", "Cheong", "Zhao", "Fei", "Dauparas", "Dauparas", "Han"],
                     }[name]
                     self.assertEqual(len(texts), len(expected_authors))
                     self.assertTrue(all(text.startswith(author) for text, author in zip(texts, expected_authors)))

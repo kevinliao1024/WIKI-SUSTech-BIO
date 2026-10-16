@@ -25,25 +25,30 @@
   </header>
   <div class="model-layout">
     <aside class="model-sidebar" inert><nav aria-label="Software sections">
-      {% for section_id, title, chapters in sections %}<div class="module-nav-group">
+      {% for section_id, title, chapters in sections %}{% set section_number = loop.index %}<div class="module-nav-group">
         <button type="button" data-module-link data-module="{{ section_id }}" aria-expanded="false" aria-controls="software-subnav-{{ loop.index }}"><span class="module-nav-label">{{ title }}</span></button>
-        <div class="module-subnav" id="software-subnav-{{ loop.index }}" hidden>{% for chapter_id, chapter_title in chapters %}<a href="#{{ chapter_id }}" data-chapter-link>{{ chapter_title }}</a>{% endfor %}</div>
+        <div class="module-subnav" id="software-subnav-{{ loop.index }}" hidden>{% for chapter_id, chapter_title in chapters %}<a href="#{{ chapter_id }}" data-chapter-link><span class="module-chapter-number">{{ section_number }}.{{ loop.index }}</span> <span class="module-chapter-label">{{ chapter_title }}</span></a>{% endfor %}</div>
       </div>{% endfor %}
     </nav></aside>
     <div class="model-reading">
       <section class="model-module" id="rewire" data-model-module>
         <header class="module-heading"><div><article class="markdown-content markdown-content--custom" data-content-source="{{ content.source_label }}">{{ rendered_markdown }}</article></div></header>
         <div class="model-prose">
-          <h3 id="rewire-purpose" data-model-chapter>Overview</h3>
+          <h3 id="rewire-purpose" data-model-chapter><span class="chapter-number">1.1</span>Overview</h3>
           <p>The whole-body model connects delivery, tissue distribution, cellular expression and RNA editing in a single dynamical model. It asks how losses along the delivery pathway and competing editing reactions shape the final APOE RNA profile.</p>
+          <p>An editor's activity in a cellular assay does not describe the entire delivery-to-editing process. Editor availability in brain cells depends on tissue distribution and clearance, blood–brain barrier transport, cellular uptake and expression. Each process can alter how much editor reaches its substrate and how long it remains available. Meanwhile, additional editing can convert an intended APOE3-like product into a different RNA state. We therefore needed to relate delivery and exposure to both product composition and unwanted editing, beyond the aggregate editing yield.</p>
+          <p>We built the whole-body model to examine these connected processes under a shared set of assumptions. It allows us to compare delivery, expression and reaction parameters and identify which processes most strongly affect the outputs. Dose scans ask whether increasing input improves the intended product or mainly increases competing reactions. The accompanying tissue simulation asks whether a higher average editing fraction also provides more even coverage across cells at different distances from a vessel.</p>
           <p>Programmable PUF–APOBEC editing provides the biological starting point (Han et al., 2022). The model extends this concept with explicit transport and reaction assumptions.</p>
+          <p><strong>Our modeling contribution connects systemic delivery, intracellular expression and explicit multisite RNA reactions within one interpretable framework.</strong> A complementary spatial model examines tissue coverage. This design distinguishes intended-product retention, unwanted-edit burden and spatial coverage, allowing each to inform a different engineering decision.</p>
+          <p>In the saved 168-hour dose scan, APOE3-like RNA reached about 46% at normalized doses of 0.7–1.0 before declining at higher doses. In the 72-hour spatial simulations, a tenfold dose increase raised mean editing nearly tenfold but retained an approximately fourfold near-vessel versus far-vessel gap. These model-derived findings distinguish two effects that a single editing-efficiency value would miss. More editing need not preserve more of the intended product, and a higher tissue average need not provide more even coverage.</p>
+          <p><strong>The reproducible software makes these modeling decisions inspectable and reusable.</strong> We share the ODE source, configuration and parameter records, frozen plotting inputs and viewers for saved outputs. These resources let other teams reproduce the supplied ODE workflows and regenerate figures from saved data. Readers can trace figures to their inputs, compare assumptions and inspect the processes behind aggregate results when developing their own models.</p>
           <figure class="software-figure" id="software-figure-1" data-figure-number="1" data-panel-count="3">
             {% include 'components/software/delivery-body.html' %}
             <figcaption><strong>Figure 1. Whole-body delivery.</strong> From systemic transport to RNA editing.</figcaption>
           </figure>
           {% for item in content.metadata.figures if item.section == 'overview' %}{{ figure(item) }}{% endfor %}
 
-          <h3 id="rewire-logic" data-model-chapter>Modeling approach</h3>
+          <h3 id="rewire-logic" data-model-chapter><span class="chapter-number">1.2</span>Modeling approach</h3>
           <h4>Delivery and expression determine editor availability</h4>
           <p>The input specifies dose, route and a parameter set. Compartment balances track absorption, exchange between blood and tissues, clearance, barrier transport and intracellular expression. AAV distribution modeling provides a basis for this compartmental representation (Liu et al., 2024).</p>
           <p>Each state changes through incoming and outgoing fluxes, production and loss. The coupled ordinary differential equations share a state vector, so upstream delivery changes propagate to editor availability.</p>
@@ -58,7 +63,7 @@
           <p>Off-target burden normalizes the three accumulated unwanted-edit outputs by the same RNA pool. Specificity divides the combined edited product by those unwanted-edit outputs, with a small numerical stabilizer. The model tracks the APOE2-like fraction as its LDLR-binding risk proxy.</p>
           <p>Dose scans compare these outputs with exposure and existing model criteria. Local sensitivity perturbs parameters, while sampled parameter sets quantify uncertainty. The compartmental ODE chain uses SciPy's LSODA solver (Virtanen et al., 2020).</p>
 
-          <h3 id="rewire-results" data-model-chapter>Results</h3>
+          <h3 id="rewire-results" data-model-chapter><span class="chapter-number">1.3</span>Results</h3>
           <p data-evidence="software">Across the whole-body, cellular and tissue simulations, four stories turn model outputs into design choices. All dose comparisons use normalized model inputs.</p>
           <ol class="software-stories" id="software-stories" data-software-stories>
             <li data-software-story="dose">
@@ -92,7 +97,7 @@
           {% for item in content.metadata.figures if item.section == 'uncertainty' %}{{ figure(item) }}{% endfor %}
           {% for item in content.metadata.figures if item.section == 'comparisons' %}{{ figure(item) }}{% endfor %}
 
-          <h3 id="rewire-library" data-model-chapter>State and flux profiles</h3>
+          <h3 id="rewire-library" data-model-chapter><span class="chapter-number">1.4</span>State and flux profiles</h3>
           <p>The profiles below trace the processes behind the aggregate outputs. The archived baseline ends at its saved time limit; the earlier notebook model is shown separately.</p>
           {% for group in content.metadata.figure_groups %}
           <details class="software-figure-group"><summary>{{ group.title }}</summary>
@@ -100,10 +105,10 @@
             {% for item in content.metadata.figures if item.section == group.id %}{{ figure(item) }}{% endfor %}
           </details>{% endfor %}
 
-          <h3 id="rewire-references" data-model-chapter>References</h3>
+          <h3 id="rewire-references" data-model-chapter><span class="chapter-number">1.5</span>References</h3>
           <ol class="software-references">{% for reference in content.metadata.rewire_references %}<li>{{ reference }}</li>{% endfor %}</ol>
 
-          <h3 id="rewire-reuse" data-model-chapter>Reproducible Code</h3>
+          <h3 id="rewire-reuse" data-model-chapter><span class="chapter-number">1.6</span>Reproducible Code</h3>
           <p>Python models, frozen plot data, drawing scripts and the interactive viewer source are included in one package.</p>
           <div class="software-actions">
             <a class="software-action software-action--primary" href="{{ url_for('static', filename='downloads/delivery-reproducibility.zip') }}" download>Reproducible Code</a>
@@ -115,20 +120,28 @@
       <section class="model-module" id="workbench" data-model-module>
         <header class="module-heading"><div><h2>PUF Website</h2></div></header>
         <div class="model-prose">
-          <h3 id="workbench-purpose" data-model-chapter>Overview</h3>
+          <h3 id="workbench-purpose" data-model-chapter><span class="chapter-number">2.1</span>Overview</h3>
           <p>The PUF website provides a browser workspace for selecting RNA recognition windows, assembling PUF candidates and exporting records for local analysis. A saved project keeps the target sequence, candidate proteins and measured assay records together.</p>
+          <p>The website and its companion local application connect two workflows from our Model page: <strong>Module 2's assay-informed PUF specificity ranking</strong> and <strong>Module 4's LAMAR-based RNA-site prioritization</strong>. The browser organizes target sequences, PUF candidates and assay records; the local application performs the supported protein-ranking and RNA-context analyses. The outputs prioritize candidate proteins and RNA sites, respectively, and remain separate in the exported results.</p>
           <p>PUF repeat recognition provides the basis for assigning RNA-binding motifs (Wang et al., 2002; Zhou et al., 2021). The interface supports complete built-in 8R and 12R scaffolds; other lengths require compatible scaffold input.</p>
 
-          <h3 id="workbench-tutorial" data-model-chapter>Tutorial</h3>
+          <div class="software-tutorial software-demo" id="workbench-demo">
+            <h4>Website demonstration</h4>
+            <video controls playsinline preload="metadata" width="1280" height="832" poster="{{ url_for('static', filename='assets/software/demo/orca-software-demo-20261016.jpg') }}" aria-label="ORCA website demonstration">
+              <source src="{{ url_for('static', filename='assets/software/demo/orca-software-demo-20261016.mp4') }}" type="video/mp4">
+              Your browser does not support HTML video.
+            </video>
+          </div>
+
+          <h3 id="workbench-tutorial" data-model-chapter><span class="chapter-number">2.2</span>Tutorial</h3>
           <div class="software-tutorial">
             <video controls playsinline preload="metadata" width="3024" height="2144" poster="{{ url_for('static', filename='assets/software/puf-tutorial/poster.jpg') }}" aria-label="PUF website tutorial with English subtitles">
               <source src="{{ url_for('static', filename='assets/software/puf-tutorial/puf-website-tutorial-en.mp4') }}" type="video/mp4">
               Your browser does not support HTML video.
             </video>
-            <p>English-subtitled walkthrough · 4 min 42 sec</p>
           </div>
 
-          <h3 id="workbench-logic" data-model-chapter>Modeling approach</h3>
+          <h3 id="workbench-logic" data-model-chapter><span class="chapter-number">2.3</span>Modeling approach</h3>
           <h4>Protein sequence supports candidate ranking</h4>
           <p>The local application sums mutant-minus-reference masked log-probability differences in the original reference sequence to obtain an ESM-2 score (Lin et al., 2023). Frozen Ridge regressors combine the standardized score with mutation indicators to predict the team's C295, C388 and C871 assay readouts (Hoerl and Kennard, 1970).</p>
           <p>The ranking score subtracts the mean predicted C295 and C871 readouts from predicted C388. The fitted coefficients and scoring definition come from the team's assay data.</p>
@@ -137,19 +150,18 @@
           <p>LAMAR represents RNA sequence context using a pretrained RNA language model (Zhou et al., 2025). The local application uses an adapted model to prioritize cytidines within RNA windows.</p>
           <p>The RNA-context score is independent of the selected PUF and is not an editing probability. Protein ranking and RNA-site ranking therefore remain separate outputs.</p>
 
-          <h3 id="workbench-workflow" data-model-chapter>Workflow</h3>
+          <h3 id="workbench-workflow" data-model-chapter><span class="chapter-number">2.4</span>Workflow</h3>
           <ol class="software-workflow">
             <li><span class="software-step"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="30" height="28" rx="4"/><path d="M12 14h16M12 20h10M12 26h13"/></svg>Input</span><strong>Define the target</strong><p>Enter RNA, DNA or a single-record FASTA sequence. Select a cytidine using 1-based coordinates and inspect 8–12-nucleotide recognition windows.</p></li>
             <li><span class="software-step"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 12h12l4 5h14v17H5z"/><path d="M12 9V5h21v8M12 24h16M12 29h10"/></svg>Design</span><strong>Save the candidates</strong><p>Review repeat assignments, build or import candidate proteins, and retain the project as JSON.</p></li>
             <li><span class="software-step"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 5v29h29M12 28V19M21 28V12M30 28V7"/></svg>Analysis</span><strong>Run the local models</strong><p>Export candidate CSV and supply a species FASTA to the local application. Keep ranking tables, site outputs and the run manifest together.</p></li>
           </ol>
           <p>Additional exports include protein FASTA, matching-site TSV and a local HTML report. The run manifest records input and model hashes, software versions and completion status.</p>
-          <p class="software-note">The local app is a preview. Windows x64 and Intel Mac acceptance testing is pending; Apple Silicon checks cover small fixtures. Hosted LAMAR inference and raw-FASTQ off-target detection are not implemented.</p>
 
-          <h3 id="workbench-references" data-model-chapter>References</h3>
+          <h3 id="workbench-references" data-model-chapter><span class="chapter-number">2.5</span>References</h3>
           <ol class="software-references">{% for reference in content.metadata.workbench_references %}<li>{{ reference }}</li>{% endfor %}</ol>
 
-          <h3 id="workbench-reuse" data-model-chapter>Reproducible Code</h3>
+          <h3 id="workbench-reuse" data-model-chapter><span class="chapter-number">2.6</span>Reproducible Code</h3>
           <p>The source repository is <code>pdx12320/igem_software</code>, released under the MIT license. Use Node.js 22.13 or newer:</p>
           <pre class="software-code"><code>git clone https://github.com/pdx12320/igem_software.git
 cd igem_software

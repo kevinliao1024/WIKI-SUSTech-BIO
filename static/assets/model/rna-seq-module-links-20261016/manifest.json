@@ -1,0 +1,70 @@
+{
+  "figure": "Figure 2",
+  "title": "RNA-seq candidate detection and downstream module tasks",
+  "revision": "module-links-20261016",
+  "source": "static/assets/model/icon-flowcharts-20261016/figure-02-rna-seq.svg",
+  "source_sha256": "ea76d065f225eb86473a26aa32a005f1076e2b36456e3e108ba34fc08eaf009b",
+  "drawing_primitives_source": "static/assets/model/icon-flowcharts-20261016/generate.py",
+  "drawing_primitives_source_sha256": "e3c1a3530ac53d84f47f79d9dfc1899b02291221f47194855b9e81566620c4ba",
+  "change": "Keep all six approved RNA-seq steps and labels. Add a left-side branch from Editor comparison to Module 2 PUF specificity design, Module 3 APOBEC engineering, and Module 4 LAMAR prioritization.",
+  "canvas": [
+    1200,
+    840
+  ],
+  "native_svg": true,
+  "svg_image_nodes": 0,
+  "text_outside_canvas": [],
+  "text_overlap_pairs": [],
+  "directed_relationships": [
+    [
+      "Adapter trimming",
+      "Read alignment"
+    ],
+    [
+      "Read alignment",
+      "Candidate detection"
+    ],
+    [
+      "Candidate detection",
+      "SNP / sequence filters"
+    ],
+    [
+      "SNP / sequence filters",
+      "Editing quantification"
+    ],
+    [
+      "Editing quantification",
+      "Editor comparison"
+    ],
+    [
+      "Editor comparison",
+      "Module 2: PUF specificity design"
+    ],
+    [
+      "Editor comparison",
+      "Module 3: APOBEC engineering"
+    ],
+    [
+      "Editor comparison",
+      "Module 4: LAMAR prioritization"
+    ]
+  ],
+  "model_recomputed": false,
+  "scientific_values_changed": false,
+  "runtime": {
+    "python": "3.12.14",
+    "matplotlib": "3.10.9",
+    "numpy": "2.5.4",
+    "font": "Futura"
+  },
+  "files": {
+    "svg": "figure-02-rna-seq.svg",
+    "png": "figure-02-rna-seq.png",
+    "pdf": "figure-02-rna-seq.pdf"
+  },
+  "sha256": {
+    "svg": "53ffa3928975be0ab5f53d97790a6a4de782d0ddfa19e59de6ab9d26f4c22fbb",
+    "png": "399f0f4da976863b8bf69119c3f63ccb34fd09bb6473c56bf8ae67747a02ef05",
+    "pdf": "77902906f1d47d7a4e916579eeefc662f9d0bfa3cfa33cbe2bbec94cbc0d4567"
+  }
+}

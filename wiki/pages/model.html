@@ -8,7 +8,6 @@
  [(1,'3.1','Overview'),(2,'3.2','Modeling approach'),(3,'3.3','Results'),(4,'3.4','Conclusion'),(5,'3.5','Reproducibility'),(6,'3.6','References')],
  [(1,'4.1','Overview'),(2,'4.2','Model & training data'),('strategy','4.3','Two-stage prediction'),(3,'4.4','Results'),(4,'4.5','Interpretation & next steps'),(6,'4.6','Reproducibility'),(7,'4.7','References')]
 ] %}
-{% set module2_subchapters = [('module2-ranking-results','Results'),('module2-feature-ablations','Feature ablations'),('module2-readout-layers','Readout layers')] %}
 {% block main %}
 <main id="main-content" class="model-page">
       <header class="model-overview" id="model-overview">
@@ -31,9 +30,6 @@
         <div class="module-subnav" id="module-subnav-{{ loop.index }}" hidden>
           {% for chapter, chapter_number, short in chapters[loop.index0] %}
           <a href="#module{{ module_index }}-{{ chapter }}" data-chapter-link><span class="module-chapter-number">{{ chapter_number }}</span> <span class="module-chapter-label">{{ short }}</span></a>
-          {% if module_index == 2 and chapter == 2 %}
-          {% for target, label in module2_subchapters %}<a href="#{{ target }}" data-subchapter-link data-parent-chapter="module2-2"><span class="module-subchapter-mark" aria-hidden="true">›</span> <span class="module-chapter-label">{{ label }}</span></a>{% endfor %}
-          {% endif %}
           {% endfor %}
         </div>
         </div>
@@ -47,7 +43,7 @@
          <header class="module-heading"><span class="module-number">00</span><div><h2>{{ content.metadata.get('heading', content.title) }}</h2></div></header>
          <article class="model-prose markdown-content markdown-content--custom">
            <figure class="model-overview-figure" id="model-figure-1">
-             <img src="{{ url_for('assets', filename='images/orca-model-overview-v16.png') }}" width="2592" height="1622" alt="ORCA model overview connecting RNA-seq editing profiles, PUF recognition design, APOBEC catalytic design and LAMAR site prioritization around APOE4 RNA editing.">
+             <img src="{{ url_for('assets', filename='images/orca-model-overview-v17.png') }}" width="1584" height="993" alt="ORCA model overview connecting RNA-seq editing profiles, PUF recognition design, APOBEC catalytic design and LAMAR site prioritization around APOE4 RNA editing.">
              <figcaption><strong>Figure 1.</strong> ORCA model overview.</figcaption>
            </figure>
            {{ rendered_markdown }}
