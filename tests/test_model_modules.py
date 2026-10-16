@@ -230,25 +230,22 @@ class FourModelModulesTest(unittest.TestCase):
             with self.subTest(module=number):
                 module = self.modules[f"module{number}"]
                 self.assertGreater(len(module.text()), 1000)
-                baseline = Document((MODEL_ASSETS / f"synthesis/sources/module{number}-published.html").read_text())
+                baseline = json.loads((PROJECT_ROOT / "tests/fixtures/model-current-structure.json").read_text())[str(number)]
                 for tag in ("table", "pre"):
-                    expected = [normalized(node.text()) for node in baseline.root.walk() if node.tag == tag]
-                    if number == 2 and tag == "table":
-                        # Four presentation tables were explicitly removed; frozen sources stay intact.
-                        removed_headers = ("Construct OOF predicted S", "Construct Predicted S", "Substitution LigandMPNN frequency")
-                        self.assertEqual(sum(text.startswith(removed_headers) for text in expected), 4)
-                        expected = [text for text in expected if not text.startswith(removed_headers)]
-                    if number == 4 and tag == "pre":
-                        # Correct only the displayed mask escape; keep the frozen source intact.
-                        expected = [text.replace(r"AUGCUA\[MASK]GGUA", "AUGCUA[MASK]GGUA") for text in expected]
-                    actual = [normalized(node.text()) for node in module.walk() if node.tag == tag]
-                    self.assertEqual(actual, expected)
-                original_images = [
-                    {**node.attrs, **MODEL_PAGE_IMAGE_EDITS.get(node.attrs.get("src"), {})}
-                    for node in baseline.root.walk() if node.tag == "img"
-                ]
-                actual_images = [node.attrs for node in module.walk() if node.tag == "img" and "/integration-20261013/" not in node.attrs.get("src", "")]
-                self.assertEqual(actual_images, original_images)
+                    actual = [hashlib.sha256(normalized(node.text()).encode()).hexdigest()
+                              for node in module.walk() if node.tag == tag]
+                    self.assertEqual(actual, baseline[tag])
+                self.assertEqual([node.attrs for node in module.walk() if node.tag == "img"], baseline["images"])
+                for table in (node for node in module.walk() if node.tag == "table"):
+                    self.assertNotRegex(normalized(table.text()), r"^Construct (?:OOF predicted|Predicted) S")
+
+    def test_deleted_tables_cannot_return_from_legacy_import(self):
+        legacy = Document((PROJECT_ROOT / "wiki/components/model/module2-dbtl.html").read_text())
+        for table in (node for node in legacy.root.walk() if node.tag == "table"):
+            self.assertNotRegex(normalized(table.text()),
+                                r"^(?:Construct (?:OOF predicted|Predicted) S|Substitution LigandMPNN frequency)")
+        with self.assertRaisesRegex(RuntimeError, "historical model importer is retired"):
+            Importer(PROJECT_ROOT / "work/import-fixture", PROJECT_ROOT).run()
 
     def test_module_resource_links_are_confined_to_reproducibility(self):
         reading = next(node for node in self.document.root.walk() if "model-reading" in node.attrs.get("class", "").split())
@@ -278,7 +275,9 @@ class FourModelModulesTest(unittest.TestCase):
                 if not parsed.netloc:
                     self.assertTrue((PROJECT_ROOT / unquote(parsed.path).lstrip("/")).is_file(), href)
             allowed_links.extend(resources)
-        self.assertEqual([node for node in reading.walk() if node.tag == "a"], allowed_links)
+        overview_links = [node for node in reading.walk() if node.tag == "a" and node.attrs.get("href") == "/software#rewire"]
+        self.assertEqual(len(overview_links), 1)
+        self.assertEqual([node for node in reading.walk() if node.tag == "a"], overview_links + allowed_links)
         self.assertFalse(any("ev-badge" in node.attrs.get("class", "").split() for node in reading.walk()))
         text = normalized(reading.text()).lower()
         for phrase in ("claim audit", "integration evidence audit", "source checksums", "this update", "this website revision", "this integration", "not supplied", "remain unavailable", "has not been established"):
@@ -304,11 +303,18 @@ class FourModelModulesTest(unittest.TestCase):
         self.assertEqual(introduction.attrs.get("data-content-source"), "docs/dry-lab/model.md")
         roles = next(node for node in introduction.walk() if node.tag == "ol")
         items = [node for node in roles.children if isinstance(node, Element) and node.tag == "li"]
-        self.assertEqual(len(items), 4)
-        for number, item in enumerate(items, 1):
+        self.assertEqual(len(items), 5)
+        for number, item in enumerate(items[:4], 1):
             self.assertIn(f"Module {number}", item.text())
             self.assertIn(f"module{number}", self.modules)
             self.assertFalse(any(node.tag == "a" for node in item.walk()))
+        self.assertIn("Whole-body Delivery Model", items[4].text())
+        paragraphs = [node for node in introduction.walk() if node.tag == "p"]
+        second_paragraph_links = [node for node in paragraphs[1].walk() if node.tag == "a"]
+        self.assertEqual([node.attrs.get("href") for node in second_paragraph_links], ["/software#rewire"])
+        self.assertTrue(normalized(paragraphs[1].text()).endswith("Whole-body Delivery Model."))
+        software = Document(self.client.get("/software").get_data(as_text=True))
+        self.assertTrue(any(node.attrs.get("id") == "rewire" for node in software.root.walk()))
 
     def test_model_page_has_no_dbtl_content_or_navigation(self):
         main = next(node for node in self.document.root.walk() if node.tag == "main")
@@ -349,8 +355,12 @@ class FourModelModulesTest(unittest.TestCase):
 
     def test_sidebar_chapters_follow_their_module_in_reading_order(self):
         nav = next(node for node in self.document.root.walk() if node.tag == "nav" and node.attrs.get("aria-label") == "Model modules")
-        groups = [node for node in nav.children if isinstance(node, Element)]
-        self.assertEqual(len(groups), 4)
+        entries = [node for node in nav.children if isinstance(node, Element)]
+        self.assertEqual(len(entries), 5)
+        overview, *groups = entries
+        self.assertEqual(overview.tag, "a")
+        self.assertEqual(overview.attrs.get("href"), "#model-content")
+        self.assertEqual(overview.attrs.get("aria-label"), "ORCA model overview")
         for number, group in enumerate(groups, 1):
             with self.subTest(module=number):
                 children = [node for node in group.children if isinstance(node, Element)]
@@ -471,11 +481,10 @@ class FourModelModulesTest(unittest.TestCase):
     def test_document_and_asset_hashes_match_the_published_files(self):
         manifest = json.loads((MODEL_ASSETS / "source-manifest.json").read_text(encoding="utf-8"))
         documents = manifest["document_records"]
-        self.assertEqual(len(documents), 8)
-        self.assertEqual({Path(record["destination"]).name for record in documents}, {f"module{number}{suffix}.md" for number in range(1, 5) for suffix in ("", "-dbtl")})
-        self.assertEqual({record["source"] for record in documents}, set(manifest["documents"]))
-        self.assertEqual(len(manifest["archived_document_records"]), 4)
-        for record in documents + manifest["assets"] + manifest["archived_document_records"]:
+        self.assertEqual(documents, [])
+        self.assertEqual(manifest["documents"], [])
+        self.assertEqual(manifest["archived_document_records"], [])
+        for record in manifest["assets"]:
             with self.subTest(source=record["source"]):
                 destination = PROJECT_ROOT / record["destination"]
                 self.assertTrue(destination.is_relative_to(MODEL_ASSETS))

@@ -37,7 +37,7 @@
     "33": "LAMAR pretraining and masked nucleotide prediction. Adapted from Zhou et al. (2025).",
     "34": "Training loss and masked nucleotide accuracy during continued LAMAR pretraining on human transcripts.",
     "35": "Stage I training loss and validation PR-AUC across continued-pretrained, original, encoder-frozen and randomly initialized LAMAR configurations.",
-    "36": "Reported Hit@K and Recall@K for 140 positive test regions. Hit@K indicates any supported site within the top K; Recall@K is the fraction of supported sites recovered within the top K.",
+    "36": "Reported Hit@K and Recall@K for 140 positive test windows. Hit@K indicates any supported site within the top K; Recall@K is the fraction of supported sites recovered within the top K.",
     "37": "Base proportions at −1 and +1 around edited C in PUF10-only (553), shared (2,221) and PUF12-only (10,687) retained-site sets.",
     "38": "Base-proportion differences, PUF12-only minus PUF10-only, across 101 positions centred on edited C. Indigo is negative; coral is positive."
   }

@@ -1,10 +1,10 @@
 # Source and evidence record
 
-Checked on 10 October 2026. The attached drafts provide the module-specific claims; external sources verify background and references only.
+Historical import record, checked on 10 October 2026. This is not a current availability statement; see the [current Model page](/model#module4) and [module repository](https://github.com/pdx12320/igem_module4). The attached drafts provide the module-specific claims; external sources verify background and references only.
 
 | Topic | Evidence status | Source and supporting location | Boundary |
 |---|---|---|---|
-| Module 4 results, splits, labels and hyperparameters | Reported in supplied drafts | Original `WIKI.md` and `DBTL.md`, preserved in `input-drafts/` | No original predictions, result tables, sequences or training logs were supplied for independent reproduction. |
+| Module 4 results, splits, labels and hyperparameters | Reported in supplied drafts | Original drafts at the initial import revision in Git history (duplicate downloads removed) | No original predictions, result tables, sequences or training logs were supplied for independent reproduction. |
 | LAMAR architecture and pretraining corpus | Published background | [Zhou et al., 2025](https://doi.org/10.1186/s13059-025-03752-x), Results: The pretrained RNA foundation model; Methods: Model architecture | Literature results do not validate Module 4 editing predictions. |
 | LAMAR source and checkpoints | Public upstream availability | [Official paper-linked repository](https://github.com/rnasys/LAMAR) and [checkpoint repository](https://huggingface.co/zhw-e8/LAMAR), also linked in the paper's Data availability section | These are upstream resources; the module-specific adapted and fine-tuned checkpoints were not provided. |
 | GENCODE v50 release date | Official release metadata | [Human release history](https://www.gencodegenes.org/human/releases.html), release 50 row: release June 2026, freeze May 2025 | Bibliographic year corrected to 2026; reference version remains v50. |

@@ -11,7 +11,7 @@ figures:
   height: 580
   alt: Seven process icons connect administration, tissue distribution, BBB transport, cellular expression, APOE editing, unintended editing and comparison.
   caption: Transport and expression connect the administered input to APOE editing and three unwanted-editing pathways.
-  number: 2
+  number: 1
 - title: 'Dose response: editing and specificity'
   file: 01_dose_response-01
   panels: 4

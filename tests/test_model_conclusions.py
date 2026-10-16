@@ -20,15 +20,14 @@ class ModelConclusionAdditionsTest(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.document = Document(response.get_data(as_text=True))
 
-    def test_original_chapter_anchors_and_source_snapshots_are_preserved(self):
+    def test_original_chapter_anchors_are_preserved(self):
         for number in range(1, 5):
             with self.subTest(module=number):
                 source = (ROOT / f"wiki/components/model/module{number}.html").read_text()
                 include = "{% endraw %}{% include 'components/model/conclusions/module" + str(number) + ".html' %}{% raw %}"
                 self.assertEqual(source.count(include), 1)
-                baseline = Document((ASSETS / f"synthesis/sources/module{number}-published.html").read_text())
                 current = Document(source)
-                expected = [node.attrs["id"] for node in baseline.root.walk() if "data-model-chapter" in node.attrs]
+                expected = json.loads((ROOT / "tests/fixtures/model-current-structure.json").read_text())[str(number)]["chapters"]
                 actual = [node.attrs["id"] for node in current.root.walk() if "data-model-chapter" in node.attrs]
                 self.assertEqual(actual, expected)
 
@@ -83,7 +82,12 @@ class ModelConclusionAdditionsTest(unittest.TestCase):
         for key, source in all_sources.items():
             with self.subTest(source=key):
                 path = ROOT / source["path"]
-                if "archive_member" in source and path.suffix == ".zip":
+                if source.get("storage") == "git_history":
+                    self.assertFalse(path.exists(), "Obsolete prose must not be republished")
+                    self.assertRegex(source["repository_revision"], r"^[0-9a-f]{40}$")
+                    self.assertRegex(source["sha256"], r"^[0-9a-f]{64}$")
+                    continue
+                elif "archive_member" in source and path.suffix == ".zip":
                     with ZipFile(path) as archive:
                         content = archive.read(source["archive_member"])
                 else:

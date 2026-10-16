@@ -1,0 +1,394 @@
+{
+  "1": {
+    "table": [
+      "84e771dce10964ca6e550068d9a5d670ba0534091c2028d422f6bf0ac1677230",
+      "d36016a390d1edca005ca26a150008747a60430042926bba28fb1dda9af19d39"
+    ],
+    "pre": [
+      "3dbcad250dcb86bdeae427d328e076996c6f01c8c2108c63821382e5d7bc85b3",
+      "b2d71a2c186454b2f888b7f911685e7e85fac28258d49bacb6ae60c2271126f0",
+      "48e02cbacddb4aa7c592e3f6688ad53b107c8141e5b642b8be3805711334a747"
+    ],
+    "images": [
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/rna-seq-module-links-20261016/figure-02-rna-seq.svg",
+        "alt": "Module 1 workflow showing adapter trimming, alignment, candidate detection, filtering, quantification and editor comparison, with branches to Module 2 PUF specificity design, Module 3 APOBEC engineering and Module 4 LAMAR prioritization.",
+        "width": "1200",
+        "height": "840"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module1/assets/02_candidate_counts.png",
+        "alt": "Retained candidate-site counts for six editors.",
+        "width": "1920",
+        "height": "1200"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module1/assets/03_site_rate_summary.png",
+        "alt": "Median editing rate across retained sites for each editor.",
+        "width": "1920",
+        "height": "1200"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module1/assets/04_target_comparison.png",
+        "alt": "Apparent editing rates at C295, C388 and C871 across six editors.",
+        "width": "1920",
+        "height": "891"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module1/assets/05_motif_logos.png",
+        "alt": "Sequence logos from positions minus two to plus one around the central cytosine.",
+        "width": "1800",
+        "height": "450"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module1/assets/06_chromosome_distribution.png",
+        "alt": "Chromosome distribution heatmap for the six editors.",
+        "width": "1920",
+        "height": "2112"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/integration-20261013/figures/shared_PUF10_PUF12_rates/figure@2x.png",
+        "width": "1920",
+        "height": "1200",
+        "alt": "PUF12 and PUF10 reported rates correlate among jointly retained sites; the median within-site difference is positive for PUF12."
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/integration-20261013/figures/selected_count_and_shared_rate_changes/figure@2x.png",
+        "width": "1920",
+        "height": "1043",
+        "alt": "Groups with fewer selected sites than PUF12 also have lower median rates within their shared positive-site subsets; E72A has no rate estimate."
+      }
+    ],
+    "chapters": [
+      "module1-1",
+      "module1-2",
+      "module1-3",
+      "module1-4",
+      "module1-5",
+      "module1-6",
+      "module1-7"
+    ]
+  },
+  "2": {
+    "table": [
+      "a9786e1a4e65171474d85c6a87dbe0fffcc84435ab194333f172a4a7ced83ed9",
+      "f78b9e001c5cf8ffc1d19dde656413fd8c25165d6df7f72d011f315068dc9921"
+    ],
+    "pre": [
+      "04127ac18065a70f2ad87f2ff75d60996f2d0cec878bac0eb77c20a1b39cccf1"
+    ],
+    "images": [
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-10-puf-esm.svg",
+        "alt": "Sequence features, training-side selection, three editing predictions and specificity ranking",
+        "width": "1200",
+        "height": "720"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/topk_random/figure@2x.png",
+        "alt": "Observed Top5, Top15 and Top30 overlap versus random expectation",
+        "width": "1920",
+        "height": "1200"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/oof_scatter/figure@2x.png",
+        "alt": "Measured versus held-out predicted specificity for all 66 constructs",
+        "width": "1920",
+        "height": "1200"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/ablation_spearman/figure@2x.png",
+        "alt": "Spearman correlation across five feature ablations",
+        "width": "1919",
+        "height": "1221"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/ablation_top30/figure@2x.png",
+        "alt": "Top30 overlap across five feature ablations versus random expectation",
+        "width": "1919",
+        "height": "1221"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/ranking/figure@2x.png",
+        "alt": "Main-model Spearman and pairwise ranking accuracy across ESM-2 readout layers",
+        "width": "1920",
+        "height": "2016"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/spearman/figure@2x.png",
+        "alt": "Spearman correlation labelled separately for all twelve main-model ESM-2 readout layers",
+        "width": "1920",
+        "height": "1632"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/main_model_layer_sensitivity/figures/topk/figure@2x.png",
+        "alt": "Main-model Top15 and Top30 recovery across all twelve ESM-2 readout layers",
+        "width": "1920",
+        "height": "2016"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/five_targets/figure@2x.png",
+        "alt": "Predicted and measured ranks of five highlighted constructs in the current ESM assessment",
+        "width": "1920",
+        "height": "1200"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/figures/selected_cases/figure@2x.png",
+        "alt": "Five concordant higher-ranked examples followed by five concordant lower-ranked examples",
+        "width": "1919",
+        "height": "1745"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-20-inverse-folding.svg",
+        "alt": "Two inverse-folding design spaces and their comparison with measured constructs",
+        "width": "1200",
+        "height": "865"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/nontrm_screen/figure@2x.png",
+        "alt": "Non-TRM nomination counts before and after structural screening",
+        "width": "1920",
+        "height": "1056"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/trm_frequencies/figure@2x.png",
+        "alt": "Sampling frequencies for all ten nominated TRM substitutions",
+        "width": "1920",
+        "height": "1344"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/assay_comparison/figure@2x.png",
+        "alt": "Editing changes for nominated single mutants and selected experimental examples",
+        "width": "1920",
+        "height": "1344"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module2/wiki/inverse_folding_20260928/figures/single_scores/figure@2x.png",
+        "alt": "Single-mutant scores relative to WT under both inverse-folding models",
+        "width": "1920",
+        "height": "1344"
+      }
+    ],
+    "chapters": [
+      "module2-1",
+      "module2-iteration",
+      "module2-2",
+      "module2-3",
+      "module2-5",
+      "module2-6"
+    ]
+  },
+  "3": {
+    "table": [
+      "fd29aa7e1c5c89d257f5ab7d7eaa61aaa4da0a88185908da4c3b3e3d07caf788"
+    ],
+    "pre": [],
+    "images": [
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-25-structure-assay.svg",
+        "alt": "Workflow connecting RNA comparison, model auditing, single-mutant screening, combination selection, within-batch testing and revised designs.",
+        "width": "1200",
+        "height": "760"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/figure_03_ddcp_heatmap/figure_03_ddcp_heatmap.png",
+        "alt": "Heatmap of mutant-induced changes in relative contacts with the +1 RNA base.",
+        "width": "4740",
+        "height": "6600"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/figure_04_negctrl_diagnosis/figure_04_negctrl_diagnosis.png",
+        "alt": "Catalytic geometry and contact-based deviations across variants and controls.",
+        "width": "4740",
+        "height": "6300"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/figure_08_single_site/figure_08_single_site.png",
+        "alt": "Activity retention versus the GCG/GCA editing ratio for the single-mutant screen.",
+        "width": "4740",
+        "height": "3000"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/N1_combinatorial_pareto/N1_combinatorial_pareto.png",
+        "alt": "Combination-screen Pareto frontier highlighting G27T-K30H-Q58M.",
+        "width": "3600",
+        "height": "2700"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/figure_09_targeting_ratio/figure_09_targeting_ratio.png",
+        "alt": "Amplicon targeting ratio compared with on-target and non-GCG editing.",
+        "width": "4740",
+        "height": "3150"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/figure_10_candidates/figure_10_candidates.png",
+        "alt": "Candidate groups and priorities for follow-up measurements.",
+        "width": "4740",
+        "height": "3600"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/igem_module3/wiki/figures/N3_designed_batch/N3_designed_batch.png",
+        "alt": "Designed-batch preference–activity results and selected retention comparisons.",
+        "width": "3600",
+        "height": "5100"
+      }
+    ],
+    "chapters": [
+      "module3-1",
+      "module3-2",
+      "module3-3",
+      "module3-4",
+      "module3-5",
+      "module3-6"
+    ]
+  },
+  "4": {
+    "table": [
+      "2e93df0c6754c4d19fdba379e82ca5f5cc1221be1706dc565d2db70b74a803d3",
+      "87b075e88cd4e596a599e1e4d5aae5bccecf03db3b43dae774e6bb15049e8af5",
+      "b72d5764464e3e613d172fc106a3c1dfb0270e7fa92581271e669800411ec34f",
+      "38c0667d174b4b94b20a54a51afcc67ddc69d6fbb87b5f9ac09c827302ca2e07",
+      "4ec2077df8d3d1a57f3169828ada1adc16818954ff53402449a295d568ba47a7",
+      "06a3c7598f1e73c5a9ec2be3f9e01924bc0fdc383256096236faf8a885602702",
+      "0a44d077e9565555030ac332c31c67df767efa13b7fde2f49cdfcbc90273d2cc",
+      "582becc304927aea86a5f539859ff312d3729d1fc3e16ca5bdf7aca4f13abdcf",
+      "e0f7ffe9d57e2baf04dd5f7c019076399166a22b0cbd16c4669eb0ff03e55d1b",
+      "28a7a4ef4374a531930a1bfb5f697a71ee0913695d430a2ad8d6631653c9a9a9"
+    ],
+    "pre": [
+      "75c439b4db935ca0c6a53953f6641b4f89edc4d6fd29f0489d1e29a1f6dabe40",
+      "c8fdc08f3426eddbc7cb37d01d57865656eb4d45fd9254895394081f06b43c29",
+      "04c3692465f053fe8f0fa3f22be78c354c9bc97d07501b3754c0c4f8f114218d",
+      "ee4448fa4ce8b61581eebe4713c5781ae3487b12fdff80e9e66d74e450a54b15"
+    ],
+    "images": [
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/revisions/20261011/module4-figures/figure-1.png",
+        "alt": "LAMAR pretraining corpus, masked nucleotide modeling and downstream RNA regulatory tasks.",
+        "width": "1429",
+        "height": "1133"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/revisions/20261011/module4-figures/figure-2.png",
+        "alt": "Continued-pretraining loss and validation masked nucleotide accuracy across training steps.",
+        "width": "1560",
+        "height": "1440"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/revisions/20261011/module4-figures/figure-3_a.png",
+        "alt": "Stage I training loss across pretraining and encoder-freezing configurations.",
+        "width": "1560",
+        "height": "840"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/revisions/20261011/module4-figures/figure-3_b.png",
+        "alt": "Stage I validation PR-AUC across pretraining and encoder-freezing configurations.",
+        "width": "1560",
+        "height": "840"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/revisions/20261011/module4-figures/figure-4.png",
+        "alt": "Test-window Hit@K and Recall@K for ranked cytidines, n = 140.",
+        "width": "2984",
+        "height": "1514"
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/integration-20261013/figures/exclusive_neighbor_composition/figure@2x.png",
+        "width": "1920",
+        "height": "960",
+        "alt": "Two heatmaps compare the minus-one and plus-one base proportions of PUF10-only, shared and PUF12-only selected sites. All three sets favor G at minus one and A at plus one, with numeric proportions printed in every cell."
+      },
+      {
+        "loading": "lazy",
+        "decoding": "async",
+        "src": "/static/assets/model/integration-20261013/figures/exclusive_position_difference/figure@2x.png",
+        "width": "1920",
+        "height": "864",
+        "alt": "A four-row heatmap shows PUF12-only minus PUF10-only A/C/G/T proportions across all 101 sequence positions. Indigo indicates lower and coral higher proportion in PUF12-only. The largest absolute difference is lower G at minus six by about 0.198."
+      }
+    ],
+    "chapters": [
+      "module4-1",
+      "module4-2",
+      "module4-strategy",
+      "module4-3",
+      "module4-4",
+      "module4-6",
+      "module4-7"
+    ]
+  }
+}

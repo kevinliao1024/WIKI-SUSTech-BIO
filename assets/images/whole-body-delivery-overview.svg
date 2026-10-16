@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="delivery-title delivery-description" data-input-x="800" data-input-y="290" data-connector-x="800">
+<title id="delivery-title">Whole-body delivery model</title>
+<desc id="delivery-description">Systemic distribution, barrier transport and expression, explicit RNA product states, and a complementary tissue coverage model. Central modeling data informs RNA product composition. Outputs distinguish intended-product retention, unwanted-edit burden, and tissue coverage. Schematic only; no measured data are depicted.</desc>
+<metadata>Scientific source: wiki/pages/software.html. AI-assisted art direction; original Python vector construction. Reproduce with scripts/draw_delivery_overview.py. Created 2026-10-16. License: CC BY 4.0, as in the repository.</metadata>
+<defs>
+      <radialGradient id="blue-panel"><stop stop-color="#f2fbff"/><stop offset="1" stop-color="#dff2fb"/></radialGradient>
+      <radialGradient id="teal-panel"><stop stop-color="#f2fcfa"/><stop offset="1" stop-color="#dff4f0"/></radialGradient>
+      <radialGradient id="purple-panel"><stop stop-color="#f7f3fd"/><stop offset="1" stop-color="#e9ddf6"/></radialGradient>
+      <radialGradient id="coral-panel"><stop stop-color="#fff9f3"/><stop offset="1" stop-color="#fce9db"/></radialGradient>
+      <radialGradient id="center"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e0f5fa"/></radialGradient>
+      <linearGradient id="body" x2="1" y2="0"><stop stop-color="#e1f2fb"/><stop offset=".5" stop-color="#c1e1f5"/><stop offset="1" stop-color="#e9f7fc"/></linearGradient>
+      <radialGradient id="liver" cx=".3" cy=".2"><stop stop-color="#ebbcb2"/><stop offset=".45" stop-color="#c88c87"/><stop offset="1" stop-color="#b77976"/></radialGradient>
+      <linearGradient id="muscle" x2="0" y2="1"><stop stop-color="#f9d2c9"/><stop offset=".5" stop-color="#e9aaa2"/><stop offset="1" stop-color="#f3c2b9"/></linearGradient>
+      <linearGradient id="vessel" x2="0" y2="1"><stop stop-color="#f6c4c5"/><stop offset=".5" stop-color="#f3adaf"/><stop offset="1" stop-color="#f9d5d5"/></linearGradient>
+      <radialGradient id="cell" cx=".35" cy=".3"><stop stop-color="#f3edfd"/><stop offset="1" stop-color="#d4c4ef"/></radialGradient>
+      <radialGradient id="nucleus"><stop stop-color="#c8b6eb"/><stop offset="1" stop-color="#a78dd2"/></radialGradient>
+      <radialGradient id="protein" cx=".3" cy=".25"><stop stop-color="#c5f0ec"/><stop offset="1" stop-color="#64c8c6"/></radialGradient>
+      <linearGradient id="database" x2="1" y2="0"><stop stop-color="#c9e9f2"/><stop offset=".5" stop-color="#f4fdff"/><stop offset="1" stop-color="#afd6e7"/></linearGradient>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#297dc3"/></marker>
+    </defs>
+<rect x="0" y="0" width="1600" height="1100" rx="0" fill="#ffffff" stroke="none" stroke-width="1.8" />
+<g font-family="Georgia, Times New Roman, serif">
+<path d="M24 378 C7 272 27 132 116 76 C201 21 352 19 500 30 C634 40 715 60 731 118 L731 252 C731 278 686 292 658 321 C631 349 620 397 580 417 C511 451 208 427 91 416 C48 413 29 403 24 378 Z" fill="url(#blue-panel)" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<g transform="translate(1600 0) scale(-1 1)">
+<path d="M24 378 C7 272 27 132 116 76 C201 21 352 19 500 30 C634 40 715 60 731 118 L731 252 C731 278 686 292 658 321 C631 349 620 397 580 417 C511 451 208 427 91 416 C48 413 29 403 24 378 Z" fill="url(#teal-panel)" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<path d="M25 474 C71 439 247 448 454 457 C552 460 605 483 630 532 C658 592 674 609 716 634 C739 648 752 650 772 654 C762 725 705 797 581 819 C422 847 172 829 81 790 C28 769 17 709 18 632 C17 563 14 505 25 474 Z" fill="url(#purple-panel)" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<g transform="translate(1600 0) scale(-1 1)">
+<path d="M25 474 C71 439 247 448 454 457 C552 460 605 483 630 532 C658 592 674 609 716 634 C739 648 752 650 772 654 C762 725 705 797 581 819 C422 847 172 829 81 790 C28 769 17 709 18 632 C17 563 14 505 25 474 Z" fill="url(#coral-panel)" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<text x="363" y="94" font-size="37" font-weight="bold" text-anchor="middle" fill="#10264b" >Systemic distribution</text>
+<text x="1237" y="94" font-size="37" font-weight="bold" text-anchor="middle" fill="#10264b" >Barrier &amp; expression</text>
+<text x="348" y="508" font-size="37" font-weight="bold" text-anchor="middle" fill="#10264b" >Tissue coverage</text>
+<text x="1260" y="508" font-size="33" font-weight="bold" text-anchor="middle" fill="#10264b" >RNA product composition</text>
+<g transform="translate(163 257) scale(0.81)">
+<path d="M-15 -98 C-29 -102 -28 -128 -21 -139 C-14 -151 15 -151 22 -138 C29 -124 26 -106 15 -98 L16 -85 C28 -76 52 -75 59 -56 L77 20 L63 25 L39 -41 L32 -22 L36 38 L26 119 L8 119 L0 51 L-8 119 L-26 119 L-36 38 L-32 -22 L-39 -41 L-63 25 L-77 20 L-59 -56 C-52 -75 -28 -76 -16 -85 Z" fill="url(#body)" stroke="#8dbfe1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 -103 L0 40 M0 -54 C-18 -72 -34 -48 -51 0 M0 -54 C18 -72 34 -48 51 0 M0 34 L-18 104 M0 34 L18 104 M0 -30 L-24 -15 M0 -15 L24 0" fill="none" stroke="#5e9dcd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M6 -103 L6 39 M6 -49 C-14 -66 -31 -41 -44 7 M6 -49 C24 -65 39 -39 57 7 M6 40 L-12 109 M6 40 L24 109" fill="none" stroke="#df8e85" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-2 -47 C-15 -58 -24 -37 -9 -27 L4 -16 L15 -33 C23 -53 8 -59 -2 -47 Z" fill="#d97d78" stroke="#b96568" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<text x="163" y="390" font-size="24" font-weight="normal" text-anchor="middle" fill="#10264b" >Blood circulation</text>
+<g transform="translate(406 199) scale(0.85)">
+<path d="M-65 -26 C-40 -47 -6 -40 15 -34 C37 -36 64 -32 73 -22 C68 -8 38 3 22 1 C6 11 -3 30 -27 42 C-42 49 -53 35 -55 18 C-63 2 -72 -10 -65 -26 Z" fill="url(#liver)" stroke="#ab6b68" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M15 -32 C4 -16 10 -3 22 1 M-50 -23 C-36 -35 -12 -31 -4 -27" fill="none" stroke="#e9b0aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M11 3 Q18 14 12 25" fill="none" stroke="#72a880" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(407 311) scale(0.8)">
+<g transform="translate(-28 -18) rotate(-25)">
+<path d="M-42 0 C-20 -26 19 -26 42 0 C20 23 -18 25 -42 0 Z" fill="url(#muscle)" stroke="#dc9d99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31 0 Q0 -11 31 0 M-26 5 Q0 -4 28 5" fill="none" stroke="#f4bdb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(25 -14) rotate(10)">
+<path d="M-42 0 C-20 -26 19 -26 42 0 C20 23 -18 25 -42 0 Z" fill="url(#muscle)" stroke="#dc9d99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31 0 Q0 -11 31 0 M-26 5 Q0 -4 28 5" fill="none" stroke="#f4bdb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(-14 16) rotate(-12)">
+<path d="M-42 0 C-20 -26 19 -26 42 0 C20 23 -18 25 -42 0 Z" fill="url(#muscle)" stroke="#dc9d99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31 0 Q0 -11 31 0 M-26 5 Q0 -4 28 5" fill="none" stroke="#f4bdb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(39 23) rotate(18)">
+<path d="M-42 0 C-20 -26 19 -26 42 0 C20 23 -18 25 -42 0 Z" fill="url(#muscle)" stroke="#dc9d99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31 0 Q0 -11 31 0 M-26 5 Q0 -4 28 5" fill="none" stroke="#f4bdb5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+</g>
+<path d="M246 234 C295 234 293 200 331 200" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M246 256 C292 256 294 308 331 308" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="490" y="196" font-size="25" font-weight="bold" text-anchor="start" fill="#10264b" >Liver</text>
+<text x="490" y="226" font-size="22" font-weight="normal" text-anchor="start" fill="#10264b" >Clearance</text>
+<text x="470" y="282" font-size="22" font-weight="bold" text-anchor="start" fill="#10264b" >Peripheral tissues</text>
+<text x="470" y="312" font-size="21" font-weight="normal" text-anchor="start" fill="#10264b" >Tissue uptake</text>
+<g transform="translate(1000 224) scale(0.67)">
+<path d="M-90 -33 C-30 -16 30 -48 90 -26 L90 34 C27 12 -27 46 -90 27 Z" fill="url(#vessel)" stroke="#e6a1a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-90 -25 C-25 -8 30 -39 90 -18 M-90 20 C-25 38 26 4 90 26" fill="none" stroke="#f8c5c6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="-57" cy="-1" rx="14" ry="8" transform="rotate(-25 -57 -1)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="-57" cy="-1" rx="7" ry="3" transform="rotate(-25 -57 -1)" fill="#e49b9c"/>
+<ellipse cx="-18" cy="6" rx="14" ry="8" transform="rotate(15 -18 6)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="-18" cy="6" rx="7" ry="3" transform="rotate(15 -18 6)" fill="#e49b9c"/>
+<ellipse cx="28" cy="-7" rx="14" ry="8" transform="rotate(20 28 -7)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="28" cy="-7" rx="7" ry="3" transform="rotate(20 28 -7)" fill="#e49b9c"/>
+<ellipse cx="61" cy="8" rx="14" ry="8" transform="rotate(-15 61 8)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="61" cy="8" rx="7" ry="3" transform="rotate(-15 61 8)" fill="#e49b9c"/>
+<circle cx="-65" cy="-13" r="8" fill="#90d4ee" stroke="#4ca7ce" stroke-width="1.5" />
+<circle cx="46" cy="13" r="8" fill="#90d4ee" stroke="#4ca7ce" stroke-width="1.5" />
+</g>
+<g transform="translate(1150 224) scale(0.84)">
+<path d="M0 0 Q-16.0 -11.2 -49.1 -34.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31.9 -22.4 L-54.6 -26.1" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31.9 -22.4 L-43.2 -42.4" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-3.4 -19.2 -10.4 -59.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-6.8 -38.4 L-20.2 -57.1" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-6.8 -38.4 L-0.5 -60.5" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q11.2 -16.0 34.4 -49.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M22.4 -31.9 L26.1 -54.6" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M22.4 -31.9 L42.4 -43.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q19.3 -2.7 59.4 -8.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M38.6 -5.4 L57.7 -18.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M38.6 -5.4 L60.5 1.6" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q15.6 11.7 47.9 36.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M31.1 23.5 L53.7 27.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M31.1 23.5 L41.7 43.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q2.7 19.3 8.4 59.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M5.4 38.6 L18.2 57.7" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M5.4 38.6 L-1.6 60.5" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-12.0 15.4 -36.9 47.3" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-24.0 30.7 L-28.9 53.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-24.0 30.7 L-44.6 40.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-19.4 2.4 -59.6 7.3" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-38.7 4.8 L-58.0 17.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-38.7 4.8 L-60.5 -2.7" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-25 -13 Q-29 -29 -10 -26 Q5 -36 20 -22 Q34 -14 25 4 Q28 25 10 25 Q-3 35 -21 19 Q-38 10 -25 -13 Z" fill="url(#cell)" stroke="#b09bdd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="0" cy="0" r="10" fill="#957ac8" stroke="#7660b1" stroke-width="1.5" />
+<circle cx="-3" cy="-3" r="3" fill="#c0abe8" stroke="none" stroke-width="1.5" />
+</g>
+<g transform="translate(1300 224) scale(0.78)">
+<circle cx="0" cy="0" r="63" fill="url(#cell)" stroke="#ae94df" stroke-width="2" />
+<circle cx="4" cy="6" r="34" fill="url(#nucleus)" stroke="#9c7dcb" stroke-width="2" />
+<path d="M-17 5 Q-12 -10 -7 5 T3 5 T13 5 T23 5" fill="none" stroke="#62559a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="-37" cy="-25" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="-38" cy="23" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="22" cy="-42" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="40" cy="23" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="0" cy="-49" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="45" cy="-16" r="4" fill="#cab9e9" stroke="none" stroke-width="1.5" />
+<circle cx="-41" cy="1" r="8" fill="#89d5e8" stroke="#51abc9" stroke-width="1.5" />
+</g>
+<g transform="translate(1450 203) scale(0.65)">
+<path d="M-35 -18 C-55 -37 -38 -61 -16 -49 C-12 -78 26 -77 29 -50 C56 -64 78 -37 58 -19 C85 6 62 34 40 28 C40 57 9 69 -9 47 C-35 63 -58 39 -44 18 C-74 12 -64 -15 -35 -18 Z" fill="url(#protein)" stroke="#209b9e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-29 -25 Q-38 -10 -24 -5 M5 -47 Q-10 -29 3 -20 M33 0 Q15 7 23 26" fill="none" stroke="#62c9c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(1450 254) scale(0.61)">
+<path d="M-64.0 7.1 v25" fill="none" stroke="#79b7da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-48.0 14.5 v20" fill="none" stroke="#a07bd3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-32.0 15.6 v25" fill="none" stroke="#5fbcc3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-16.0 9.9 v20" fill="none" stroke="#79b7da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0.0 0.0 v25" fill="none" stroke="#a07bd3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.0 -9.9 v20" fill="none" stroke="#5fbcc3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M32.0 -15.6 v25" fill="none" stroke="#79b7da" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48.0 -14.5 v20" fill="none" stroke="#a07bd3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64.0 -7.1 v25" fill="none" stroke="#5fbcc3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 0 C-54 -31 -30 -23 0 0 S53 28 80 0" fill="none" stroke="#537797" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 -2 C-54 -33 -30 -25 0 -2 S53 26 80 -2" fill="none" stroke="#b7d3df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<path d="M1066 225 H1093" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1205 225 H1239" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1360 225 H1396" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="1000" y="310" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >Blood–brain</text>
+<text x="1000" y="338" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >barrier</text>
+<text x="1150" y="310" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >Brain tissue</text>
+<text x="1300" y="310" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >Uptake &amp;</text>
+<text x="1300" y="338" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >expression</text>
+<text x="1450" y="310" font-size="22" font-weight="normal" text-anchor="middle" fill="#10264b" >Editor protein</text>
+<g transform="translate(109 665) scale(1.02)">
+<g transform="rotate(90)">
+<path d="M-90 -33 C-30 -16 30 -48 90 -26 L90 34 C27 12 -27 46 -90 27 Z" fill="url(#vessel)" stroke="#e6a1a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-90 -25 C-25 -8 30 -39 90 -18 M-90 20 C-25 38 26 4 90 26" fill="none" stroke="#f8c5c6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="-57" cy="-1" rx="14" ry="8" transform="rotate(-25 -57 -1)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="-57" cy="-1" rx="7" ry="3" transform="rotate(-25 -57 -1)" fill="#e49b9c"/>
+<ellipse cx="-18" cy="6" rx="14" ry="8" transform="rotate(15 -18 6)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="-18" cy="6" rx="7" ry="3" transform="rotate(15 -18 6)" fill="#e49b9c"/>
+<ellipse cx="28" cy="-7" rx="14" ry="8" transform="rotate(20 28 -7)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="28" cy="-7" rx="7" ry="3" transform="rotate(20 28 -7)" fill="#e49b9c"/>
+<ellipse cx="61" cy="8" rx="14" ry="8" transform="rotate(-15 61 8)" fill="#d97476" stroke="#bc5e64" stroke-width="1.5"/>
+<ellipse cx="61" cy="8" rx="7" ry="3" transform="rotate(-15 61 8)" fill="#e49b9c"/>
+<circle cx="-65" cy="-13" r="8" fill="#90d4ee" stroke="#4ca7ce" stroke-width="1.5" />
+<circle cx="46" cy="13" r="8" fill="#90d4ee" stroke="#4ca7ce" stroke-width="1.5" />
+</g>
+</g>
+<g opacity="0.940">
+<circle cx="195" cy="581" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="193" cy="582" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.865">
+<circle cx="241" cy="581" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="239" cy="582" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.790">
+<circle cx="287" cy="581" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="285" cy="582" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.715">
+<circle cx="333" cy="581" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="331" cy="582" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.640">
+<circle cx="379" cy="581" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="377" cy="582" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.565">
+<circle cx="425" cy="581" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="423" cy="582" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.490">
+<circle cx="471" cy="581" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="469" cy="582" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.415">
+<circle cx="517" cy="581" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="515" cy="582" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.340">
+<circle cx="563" cy="581" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="561" cy="582" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.940">
+<circle cx="210" cy="618" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="208" cy="619" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.865">
+<circle cx="256" cy="618" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="254" cy="619" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.790">
+<circle cx="302" cy="618" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="300" cy="619" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.715">
+<circle cx="348" cy="618" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="346" cy="619" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.640">
+<circle cx="394" cy="618" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="392" cy="619" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.565">
+<circle cx="440" cy="618" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="438" cy="619" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.490">
+<circle cx="486" cy="618" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="484" cy="619" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.415">
+<circle cx="532" cy="618" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="530" cy="619" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.340">
+<circle cx="578" cy="618" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="576" cy="619" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.940">
+<circle cx="195" cy="655" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="193" cy="656" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.865">
+<circle cx="241" cy="655" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="239" cy="656" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.790">
+<circle cx="287" cy="655" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="285" cy="656" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.715">
+<circle cx="333" cy="655" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="331" cy="656" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.640">
+<circle cx="379" cy="655" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="377" cy="656" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.565">
+<circle cx="425" cy="655" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="423" cy="656" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.490">
+<circle cx="471" cy="655" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="469" cy="656" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.415">
+<circle cx="517" cy="655" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="515" cy="656" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.340">
+<circle cx="563" cy="655" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="561" cy="656" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.940">
+<circle cx="210" cy="692" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="208" cy="693" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.865">
+<circle cx="256" cy="692" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="254" cy="693" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.790">
+<circle cx="302" cy="692" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="300" cy="693" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.715">
+<circle cx="348" cy="692" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="346" cy="693" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.640">
+<circle cx="394" cy="692" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="392" cy="693" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.565">
+<circle cx="440" cy="692" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="438" cy="693" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.490">
+<circle cx="486" cy="692" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="484" cy="693" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.415">
+<circle cx="532" cy="692" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="530" cy="693" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.340">
+<circle cx="578" cy="692" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="576" cy="693" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.940">
+<circle cx="195" cy="729" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="193" cy="730" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.865">
+<circle cx="241" cy="729" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="239" cy="730" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.790">
+<circle cx="287" cy="729" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="285" cy="730" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.715">
+<circle cx="333" cy="729" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="331" cy="730" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.640">
+<circle cx="379" cy="729" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="377" cy="730" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.565">
+<circle cx="425" cy="729" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="423" cy="730" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.490">
+<circle cx="471" cy="729" r="16" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="469" cy="730" r="5.12" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.415">
+<circle cx="517" cy="729" r="17" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="515" cy="730" r="5.44" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<g opacity="0.340">
+<circle cx="563" cy="729" r="15" fill="url(#cell)" stroke="#c4ace6" stroke-width="1.2" />
+<circle cx="561" cy="730" r="4.8" fill="#9671c9" stroke="none" stroke-width="1.5" />
+</g>
+<text x="109" y="791" font-size="24" font-weight="normal" text-anchor="middle" fill="#10264b" >Vessel</text>
+<text x="252" y="791" font-size="24" font-weight="normal" text-anchor="middle" fill="#10264b" >Near vessel</text>
+<text x="545" y="791" font-size="24" font-weight="normal" text-anchor="middle" fill="#10264b" >Far from vessel</text>
+<path d="M205 752 H579" fill="none" stroke="#297dc3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<g transform="translate(1036 650) scale(0.55)">
+<path d="M-64.0 7.1 v25" fill="none" stroke="#a17bd1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-48.0 14.5 v20" fill="none" stroke="#77b7d9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-32.0 15.6 v25" fill="none" stroke="#a17bd1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-16.0 9.9 v20" fill="none" stroke="#77b7d9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0.0 0.0 v25" fill="none" stroke="#a17bd1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.0 -9.9 v20" fill="none" stroke="#77b7d9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M32.0 -15.6 v25" fill="none" stroke="#a17bd1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48.0 -14.5 v20" fill="none" stroke="#77b7d9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64.0 -7.1 v25" fill="none" stroke="#a17bd1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 0 C-54 -31 -30 -23 0 0 S53 28 80 0" fill="none" stroke="#537797" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 -2 C-54 -33 -30 -25 0 -2 S53 26 80 -2" fill="none" stroke="#b7d3df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(1213 584) scale(0.55)">
+<path d="M-64.0 7.1 v25" fill="none" stroke="#4ab1ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-48.0 14.5 v20" fill="none" stroke="#75b8d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-32.0 15.6 v25" fill="none" stroke="#4ab1ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-16.0 9.9 v20" fill="none" stroke="#75b8d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0.0 0.0 v25" fill="none" stroke="#4ab1ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.0 -9.9 v20" fill="none" stroke="#75b8d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M32.0 -15.6 v25" fill="none" stroke="#4ab1ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48.0 -14.5 v20" fill="none" stroke="#75b8d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64.0 -7.1 v25" fill="none" stroke="#4ab1ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 0 C-54 -31 -30 -23 0 0 S53 28 80 0" fill="none" stroke="#537797" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 -2 C-54 -33 -30 -25 0 -2 S53 26 80 -2" fill="none" stroke="#b7d3df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(1433 650) scale(0.55)">
+<path d="M-64.0 7.1 v25" fill="none" stroke="#e89b70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-48.0 14.5 v20" fill="none" stroke="#6bb4d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-32.0 15.6 v25" fill="none" stroke="#e89b70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-16.0 9.9 v20" fill="none" stroke="#6bb4d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0.0 0.0 v25" fill="none" stroke="#e89b70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.0 -9.9 v20" fill="none" stroke="#6bb4d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M32.0 -15.6 v25" fill="none" stroke="#e89b70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48.0 -14.5 v20" fill="none" stroke="#6bb4d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64.0 -7.1 v25" fill="none" stroke="#e89b70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 0 C-54 -31 -30 -23 0 0 S53 28 80 0" fill="none" stroke="#537797" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 -2 C-54 -33 -30 -25 0 -2 S53 26 80 -2" fill="none" stroke="#b7d3df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<g transform="translate(1213 724) scale(0.55)">
+<path d="M-64.0 7.1 v25" fill="none" stroke="#ae81ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-48.0 14.5 v20" fill="none" stroke="#dfaa7c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-32.0 15.6 v25" fill="none" stroke="#ae81ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-16.0 9.9 v20" fill="none" stroke="#dfaa7c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0.0 0.0 v25" fill="none" stroke="#ae81ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.0 -9.9 v20" fill="none" stroke="#dfaa7c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M32.0 -15.6 v25" fill="none" stroke="#ae81ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48.0 -14.5 v20" fill="none" stroke="#dfaa7c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M64.0 -7.1 v25" fill="none" stroke="#ae81ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 0 C-54 -31 -30 -23 0 0 S53 28 80 0" fill="none" stroke="#537797" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-80 -2 C-54 -33 -30 -25 0 -2 S53 26 80 -2" fill="none" stroke="#b7d3df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+<text x="1036" y="696" font-size="25" font-weight="bold" text-anchor="middle" fill="#10264b" >APOE4</text>
+<text x="1213" y="630" font-size="25" font-weight="bold" text-anchor="middle" fill="#10264b" >APOE3-like</text>
+<text x="1433" y="696" font-size="25" font-weight="bold" text-anchor="middle" fill="#10264b" >APOE2-like</text>
+<text x="1213" y="766" font-size="23" font-weight="bold" text-anchor="middle" fill="#10264b" >Alternative</text>
+<text x="1213" y="793" font-size="23" font-weight="bold" text-anchor="middle" fill="#10264b" >RNA state</text>
+<path d="M1087 638 C1114 622 1117 587 1153 584" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1271 585 C1320 587 1332 632 1373 641" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1087 661 C1112 677 1115 724 1153 724" fill="none" stroke="#297dc3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="800" cy="442" r="152" fill="#ffffff" stroke="#ffffff" stroke-width="15" />
+<circle cx="800" cy="442" r="152" fill="url(#center)" stroke="none" stroke-width="1.5" />
+<text x="800" y="422" font-size="39" font-weight="bold" text-anchor="middle" fill="#10264b" >Modeling data</text>
+<g transform="translate(800 489) scale(0.92)">
+<path d="M-56 -29 L-56 39 C-56 62 56 62 56 39 L56 -29 Z" fill="url(#database)" stroke="#659fbd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<ellipse cx="0" cy="-29" rx="56" ry="18" fill="#e8f8fc" stroke="#659fbd" stroke-width="2"/>
+<path d="M-56 -7 C-56 17 56 17 56 -7 M-56 16 C-56 40 56 40 56 16" fill="none" stroke="#88b7ce" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="22" y="-7" width="46" height="64" rx="4" fill="#ffffff" stroke="#75a5c2" stroke-width="1.8" />
+<path d="M32 8 h24 M32 20 h24 M32 32 h17 M32 44 h20" fill="none" stroke="#9abfd2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="-35" cy="18" r="3" fill="#19a8ac" stroke="none" stroke-width="1.5" />
+<circle cx="-35" cy="40" r="3" fill="#19a8ac" stroke="none" stroke-width="1.5" />
+</g>
+<path d="M916 543 C953 569 991 585 1016 608" fill="none" stroke="#297dc3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="257" y="867" width="1086" height="132" rx="22" fill="#ffffff" stroke="#70a4ce" stroke-width="2" />
+<text x="800" y="904" font-size="33" font-weight="bold" text-anchor="middle" fill="#10264b" >Compare strategies &amp; guide validation</text>
+<path d="M617 925 V981 M984 925 V981" fill="none" stroke="#b7d2e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="294" y="927" width="42" height="52" rx="5" fill="#f1f9fd" stroke="#7faad0" stroke-width="1.8" />
+<path d="M304 939 h21 M304 950 h19 M304 961 h14" fill="none" stroke="#96b8d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="334" cy="970" r="13" fill="#5cbb9c" stroke="#37997d" stroke-width="1.5" />
+<path d="M328 969 l5 5 l8 -10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="464" y="946" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >Intended-product</text>
+<text x="464" y="977" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >retention</text>
+<path d="M655 972 L678 930 Q682 922 687 930 L711 972 Q715 980 706 980 L661 980 Q650 980 655 972 Z" fill="#fff6ed" stroke="#ca7862" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M682 942 V960" fill="none" stroke="#bf6f5d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="682" cy="969" r="2.5" fill="#bf6f5d" stroke="none" stroke-width="1.5" />
+<text x="838" y="946" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >Unwanted-edit</text>
+<text x="838" y="977" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >burden</text>
+<g transform="translate(1040 954) scale(0.39)">
+<path d="M0 0 Q-16.0 -11.2 -49.1 -34.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31.9 -22.4 L-54.6 -26.1" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-31.9 -22.4 L-43.2 -42.4" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-3.4 -19.2 -10.4 -59.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-6.8 -38.4 L-20.2 -57.1" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-6.8 -38.4 L-0.5 -60.5" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q11.2 -16.0 34.4 -49.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M22.4 -31.9 L26.1 -54.6" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M22.4 -31.9 L42.4 -43.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q19.3 -2.7 59.4 -8.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M38.6 -5.4 L57.7 -18.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M38.6 -5.4 L60.5 1.6" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q15.6 11.7 47.9 36.1" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M31.1 23.5 L53.7 27.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M31.1 23.5 L41.7 43.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q2.7 19.3 8.4 59.4" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M5.4 38.6 L18.2 57.7" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M5.4 38.6 L-1.6 60.5" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-12.0 15.4 -36.9 47.3" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-24.0 30.7 L-28.9 53.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-24.0 30.7 L-44.6 40.9" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M0 0 Q-19.4 2.4 -59.6 7.3" fill="none" stroke="#a894d5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-38.7 4.8 L-58.0 17.2" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-38.7 4.8 L-60.5 -2.7" fill="none" stroke="#bba8e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M-25 -13 Q-29 -29 -10 -26 Q5 -36 20 -22 Q34 -14 25 4 Q28 25 10 25 Q-3 35 -21 19 Q-38 10 -25 -13 Z" fill="url(#cell)" stroke="#b09bdd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="0" cy="0" r="10" fill="#957ac8" stroke="#7660b1" stroke-width="1.5" />
+<circle cx="-3" cy="-3" r="3" fill="#c0abe8" stroke="none" stroke-width="1.5" />
+</g>
+<text x="1184" y="946" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >Tissue</text>
+<text x="1184" y="977" font-size="25" font-weight="normal" text-anchor="middle" fill="#10264b" >coverage</text>
+<text x="800" y="1071" font-size="49" font-weight="bold" text-anchor="middle" fill="#10264b" >WHOLE-BODY DELIVERY MODEL</text>
+</g>
+</svg>

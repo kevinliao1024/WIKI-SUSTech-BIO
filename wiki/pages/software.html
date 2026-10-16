@@ -34,6 +34,7 @@
       <section class="model-module" id="rewire" data-model-module>
         <header class="module-heading"><div><article class="markdown-content markdown-content--custom" data-content-source="{{ content.source_label }}">{{ rendered_markdown }}</article></div></header>
         <div class="model-prose">
+          {% for item in content.metadata.figures if item.section == 'overview' %}{{ figure(item) }}{% endfor %}
           <h3 id="rewire-purpose" data-model-chapter><span class="chapter-number">1.1</span>Overview</h3>
           <p>The whole-body model connects delivery, tissue distribution, cellular expression and RNA editing in a single dynamical model. It asks how losses along the delivery pathway and competing editing reactions shape the final APOE RNA profile.</p>
           <p>An editor's activity in a cellular assay does not describe the entire delivery-to-editing process. Editor availability in brain cells depends on tissue distribution and clearance, blood–brain barrier transport, cellular uptake and expression. Each process can alter how much editor reaches its substrate and how long it remains available. Meanwhile, additional editing can convert an intended APOE3-like product into a different RNA state. We therefore needed to relate delivery and exposure to both product composition and unwanted editing, beyond the aggregate editing yield.</p>
@@ -42,11 +43,10 @@
           <p><strong>Our modeling contribution connects systemic delivery, intracellular expression and explicit multisite RNA reactions within one interpretable framework.</strong> A complementary spatial model examines tissue coverage. This design distinguishes intended-product retention, unwanted-edit burden and spatial coverage, allowing each to inform a different engineering decision.</p>
           <p>In the saved 168-hour dose scan, APOE3-like RNA reached about 46% at normalized doses of 0.7–1.0 before declining at higher doses. In the 72-hour spatial simulations, a tenfold dose increase raised mean editing nearly tenfold but retained an approximately fourfold near-vessel versus far-vessel gap. These model-derived findings distinguish two effects that a single editing-efficiency value would miss. More editing need not preserve more of the intended product, and a higher tissue average need not provide more even coverage.</p>
           <p><strong>The reproducible software makes these modeling decisions inspectable and reusable.</strong> We share the ODE source, configuration and parameter records, frozen plotting inputs and viewers for saved outputs. These resources let other teams reproduce the supplied ODE workflows and regenerate figures from saved data. Readers can trace figures to their inputs, compare assumptions and inspect the processes behind aggregate results when developing their own models.</p>
-          <figure class="software-figure" id="software-figure-1" data-figure-number="1" data-panel-count="3">
+          <figure class="software-figure" id="software-figure-2" data-figure-number="2" data-panel-count="3">
             {% include 'components/software/delivery-body.html' %}
-            <figcaption><strong>Figure 1. Whole-body delivery.</strong> From systemic transport to RNA editing.</figcaption>
+            <figcaption><strong>Figure 2. Whole-body delivery.</strong> From systemic transport to RNA editing.</figcaption>
           </figure>
-          {% for item in content.metadata.figures if item.section == 'overview' %}{{ figure(item) }}{% endfor %}
 
           <h3 id="rewire-logic" data-model-chapter><span class="chapter-number">1.2</span>Modeling approach</h3>
           <h4>Delivery and expression determine editor availability</h4>

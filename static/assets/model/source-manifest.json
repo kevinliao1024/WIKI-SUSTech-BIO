@@ -1,61 +1,7 @@
 {
   "source": "Team-supplied Module 1–4 archives; Module 2 and Module 4 revised 2026-10-11",
-  "documents": [
-    "igem_module1/01_Module1_Wiki_EN.md",
-    "igem_module1/02_Module1_DBTL_EN.md",
-    "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
-    "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
-    "igem_module3/wiki/module3.md",
-    "igem_module3/wiki/DBTL.md",
-    "ORCA_EditPredict/01_WIKI.md",
-    "ORCA_EditPredict/02_DBTL.md"
-  ],
-  "document_records": [
-    {
-      "source": "igem_module1/01_Module1_Wiki_EN.md",
-      "destination": "static/assets/model/module1.md",
-      "sha256": "cfb22a2e78738b4aa31b75effa0b56f42c5200dcde4eceb75b1dfdf6d7cfe3e3"
-    },
-    {
-      "source": "igem_module1/02_Module1_DBTL_EN.md",
-      "destination": "static/assets/model/module1-dbtl.md",
-      "sha256": "9eaab73538e37513b2634241e49b51c5b438fe2a47b1248225fd976228048b8c"
-    },
-    {
-      "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
-      "destination": "static/assets/model/revisions/20261011/module2.md",
-      "sha256": "6a5b64801bc5197457999cfa8ba21df6039d6f0038bdb61bcec61c08ab64591e",
-      "archive": "igem_module2_five_cycles_final.zip"
-    },
-    {
-      "source": "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
-      "destination": "static/assets/model/revisions/20261011/module2-dbtl.md",
-      "sha256": "2f76de73383afc8332c6c9f9593430ac360276f272e2e11133796594c9091049",
-      "archive": "igem_module2_five_cycles_final.zip"
-    },
-    {
-      "source": "igem_module3/wiki/module3.md",
-      "destination": "static/assets/model/module3.md",
-      "sha256": "c48553de05aa7816791182b054aff3919ebc17d81960684c61580fc48f4afb5b"
-    },
-    {
-      "source": "igem_module3/wiki/DBTL.md",
-      "destination": "static/assets/model/module3-dbtl.md",
-      "sha256": "c3e07e22f71e1476981246cd809e63795b3ce5a6138fb89b9b5b576cdb1e0edd"
-    },
-    {
-      "source": "ORCA_EditPredict/01_WIKI.md",
-      "destination": "static/assets/model/revisions/20261011/module4.md",
-      "sha256": "3e92bc7ea72e30b4efda0bcf2b6496433a7525d22df77fcff74d79d374d7c4c4",
-      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
-    },
-    {
-      "source": "ORCA_EditPredict/02_DBTL.md",
-      "destination": "static/assets/model/revisions/20261011/module4-dbtl.md",
-      "sha256": "b953931d46312bf9c83601daa47397146e4592ba2c749ea5ca363c028110382f",
-      "archive": "igem_module4.zip → ORCA_EditPredict.zip"
-    }
-  ],
+  "documents": [],
+  "document_records": [],
   "assets": [
     {
       "source": "igem_module1/assets/01_module1_workflow_illustrated.png",
@@ -392,7 +338,7 @@
     {
       "source": "igem_module4/README.md",
       "destination": "static/assets/model/igem_module4/README.md",
-      "sha256": "618d7173e006cabfe4cb632946d4c603a32a846a5acfb2be489e1f8664d6629c"
+      "sha256": "14a27be3dab994e9161dcd4380d7d7654c0076de37c433ff2f74d43d4b979353"
     },
     {
       "source": "igem_module4/provenance/REVISION_NOTES.md",
@@ -405,22 +351,6 @@
       "sha256": "2564172d291b9d64d9fd459b7399601f1193b3a808ab8748f061450aeaad49f6"
     },
     {
-      "source": "igem_module4/provenance/input-drafts/{WIKI.md,DBTL.md}",
-      "destination": "static/assets/model/igem_module4/provenance/input-drafts.zip",
-      "sha256": "2d3552b9899edcfd9df525216f27de2e0b0a3aa4ba940bca7069f75248c9c466",
-      "note": "Deterministic download archive; individual drafts are preserved byte-for-byte."
-    },
-    {
-      "source": "igem_module4/provenance/input-drafts/DBTL.md",
-      "destination": "static/assets/model/igem_module4/provenance/input-drafts/DBTL.md",
-      "sha256": "6d2a7279847a2ba79a5fbea039ae0c437140cc87b45b4dcfcd2906bb3cc21b12"
-    },
-    {
-      "source": "igem_module4/provenance/input-drafts/WIKI.md",
-      "destination": "static/assets/model/igem_module4/provenance/input-drafts/WIKI.md",
-      "sha256": "af3ba86e9a3245c6b9206c719a267891fe8eb0ea4b26e1f76be0f0a32dc85007"
-    },
-    {
       "source": "igem_module4/provenance/input-manifest.json",
       "destination": "static/assets/model/igem_module4/provenance/input-manifest.json",
       "sha256": "923c09dbcfeedff06f0943f3ecb943e39785b9528d8ea8d12d8f532cd2c27398"
@@ -428,7 +358,7 @@
     {
       "source": "igem_module4/provenance/sources.md",
       "destination": "static/assets/model/igem_module4/provenance/sources.md",
-      "sha256": "6d032b32ca441cd7fc294a08ec2920f29f23cefd4d2410c9b9b2fbbdf6da59ff"
+      "sha256": "460decd7871366e86cfdd8238b4c92c1f1aad79c068583fdeab7e171236302de"
     },
     {
       "source": "ORCA_EditPredict/assets/Figure 1.png",
@@ -473,30 +403,9 @@
       "archive": "igem_module2_Wiki_DBTL_revised.zip"
     }
   ],
-  "scope": "Presentation import and evidence-attribution corrections; no model training or assay reanalysis. Original source documents and numerical result tables are preserved.",
+  "scope": "Current Model prose is maintained in wiki/components/model/module1.html through module4.html and their conclusion includes. Obsolete imported prose copies have been removed. Scientific evidence assets are unchanged.",
   "module4_evidence_status": "Rendered claims reconciled with the versioned Module 4 evidence audit. Saved Stage I records are distinguished from source-reported settings and Stage II summaries. Split overlap, missing transcript identifiers, context-length discrepancies and incomplete historical run mapping remain explicit. No models were executed or scientific results recomputed for this website revision.",
-  "archived_document_records": [
-    {
-      "source": "igem_module2/wiki/PUF_Dry_Lab_Wiki_EN_ESM.md",
-      "destination": "static/assets/model/module2.md",
-      "sha256": "bfeb44de66eb8f5c4cde3820b9015a424617abfeec7eca6df036fa151808c55c"
-    },
-    {
-      "source": "igem_module2/wiki/PUF_Module2_DBTL_EN_ESM.md",
-      "destination": "static/assets/model/module2-dbtl.md",
-      "sha256": "51caf546e081f0a6550fce439ff879158878ac2e19af42bf8e48d1d98fceade9"
-    },
-    {
-      "source": "igem_module4/wiki/module4.md",
-      "destination": "static/assets/model/module4.md",
-      "sha256": "190e1895dfe536ba7751a760db87383d421b00d4f4cf37fbe79cd4d64523ca29"
-    },
-    {
-      "source": "igem_module4/wiki/DBTL.md",
-      "destination": "static/assets/model/module4-dbtl.md",
-      "sha256": "d72f1109b713584bac95a611a564f167b47678674fbdb704c1386ae3f8909cea"
-    }
-  ],
+  "archived_document_records": [],
   "updates": [
     {
       "date": "2026-10-11",

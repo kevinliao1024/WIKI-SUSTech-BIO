@@ -97,6 +97,11 @@ class SoftwareDeliveryTest(unittest.TestCase):
 
     def test_numbered_figures_and_descriptive_names(self):
         self.assertEqual(self.page.figure_numbers, list(range(1, 41)))
+        self.assertLess(self.html.index('id="software-figure-1"'), self.html.index('id="rewire-purpose"'))
+        first_figure = self.html.split('id="software-figure-1"', 1)[1].split('</figure>', 1)[0]
+        self.assertIn('14_full_model_workflow/figure.svg', first_figure)
+        self.assertIn('Figure 1. Delivery-to-editing model.', first_figure)
+        self.assertIn('Figure 2. Whole-body delivery.', self.html)
         for number in self.page.figure_numbers:
             self.assertIn(f'<strong>Figure {number}.', self.html)
         self.assertIn("Module 2's assay-informed PUF specificity ranking", self.html)

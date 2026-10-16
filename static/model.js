@@ -281,6 +281,8 @@
     }
     let chapter = navigation?.chapter || null;
     if (!navigation) for (const position of chapterPositions) {
+      // Hidden viewer headings have top=0 and must not select a later chapter.
+      if (!position.heading.getClientRects().length) continue;
       if (position.module === current && position.heading.getBoundingClientRect().top <= offset) chapter = position.chapter;
     }
     const activeChapterLink = chapterLinks.find(link => link.hash === `#${chapter}`) || null;

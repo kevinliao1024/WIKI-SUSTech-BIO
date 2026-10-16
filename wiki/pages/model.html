@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}{{ content.title }}{% endblock %}
- {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-navigation.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-entry.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-synthesis.css') }}">{% endblock %}
+ {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='model.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-typing.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-navigation.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-entry.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-synthesis.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='model-overview.css') }}">{% endblock %}
 {% set modules = [('01','RNA-seq Off-target Analysis'),('02','PUF Specificity Design'),('03','APOBEC Engineering'),('04','LAMAR Prioritization')] %}
 {% set chapters = [
  [(1,'1.1','Overview'),(2,'1.2','Experimental design'),(3,'1.3','Workflow'),(4,'1.4','Results'),(5,'1.5','Engineering implications'),(6,'1.6','Reproducibility'),(7,'1.7','References')],
@@ -23,6 +23,7 @@
   <div class="model-layout">
     <aside class="model-sidebar" inert>
       <nav aria-label="Model modules">
+        <a class="model-overview-link" href="#model-content" aria-label="ORCA model overview"><span class="model-overview-label" aria-hidden="true">ORCA model overview</span><span class="model-overview-short-label" aria-hidden="true">Overview</span></a>
         {% for number, title in modules %}
         <div class="module-nav-group">
         {% set module_index = loop.index %}
@@ -43,7 +44,7 @@
          <header class="module-heading"><span class="module-number">00</span><div><h2>{{ content.metadata.get('heading', content.title) }}</h2></div></header>
          <article class="model-prose markdown-content markdown-content--custom">
            <figure class="model-overview-figure" id="model-figure-1">
-             <img src="{{ url_for('assets', filename='images/orca-model-overview-v17.png') }}" width="1584" height="993" alt="ORCA model overview connecting RNA-seq editing profiles, PUF recognition design, APOBEC catalytic design and LAMAR site prioritization around APOE4 RNA editing.">
+             <img src="{{ url_for('assets', filename='images/orca-model-overview-combined.svg') }}" width="1600" height="1949" alt="ORCA model overview. The larger upper four-module cycle connects through a broad arrow to Modeling data at the center of the smaller lower whole-body delivery model. Modeling data connects only to the lower-right RNA product composition panel; the other panels show systemic distribution, barrier and expression, and tissue coverage.">
              <figcaption><strong>Figure 1.</strong> ORCA model overview.</figcaption>
            </figure>
            {{ rendered_markdown }}

@@ -73,36 +73,40 @@
       "sha256": "967b3c5bd0568b214aa19bf772cb4362bf622435d21ba93ed8ccc30dc8e6c0ab",
       "bytes": 29802,
       "description": "Published Module 1 statements, caveats, and display precision at the baseline revision.",
-      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
-      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
-      "original_wiki_path": "wiki/components/model/module1.html"
+      "repository_revision": "49c96178ab5f673105a64ca1b82ab009e27d4069",
+      "hash_scope": "Historical Git blob; no duplicate prose is shipped in the current tree.",
+      "original_wiki_path": "wiki/components/model/module1.html",
+      "storage": "git_history"
     },
     "m2_published_fragment": {
       "path": "static/assets/model/synthesis/sources/module2-published.html",
       "sha256": "78ddfa2e25291252490238a24bc494d767beff70768caebf2da0ac6f257bf542",
       "bytes": 53198,
       "description": "Published Module 2 statements, caveats, and display precision at the baseline revision.",
-      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
-      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
-      "original_wiki_path": "wiki/components/model/module2.html"
+      "repository_revision": "49c96178ab5f673105a64ca1b82ab009e27d4069",
+      "hash_scope": "Historical Git blob; no duplicate prose is shipped in the current tree.",
+      "original_wiki_path": "wiki/components/model/module2.html",
+      "storage": "git_history"
     },
     "m3_published_fragment": {
       "path": "static/assets/model/synthesis/sources/module3-published.html",
       "sha256": "d38a3a2436594ee1c81ee82e24e2c5c66841cf0715573fface09dd4637ecf75d",
       "bytes": 25665,
       "description": "Published Module 3 statements, caveats, and display precision at the baseline revision.",
-      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
-      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
-      "original_wiki_path": "wiki/components/model/module3.html"
+      "repository_revision": "49c96178ab5f673105a64ca1b82ab009e27d4069",
+      "hash_scope": "Historical Git blob; no duplicate prose is shipped in the current tree.",
+      "original_wiki_path": "wiki/components/model/module3.html",
+      "storage": "git_history"
     },
     "m4_published_fragment": {
       "path": "static/assets/model/synthesis/sources/module4-published.html",
       "sha256": "3c295daf67f6e5e31d60a62f9240cf56adac6414fac22ccee4ea38106527aaf6",
       "bytes": 40530,
       "description": "Published Module 4 statements, caveats, and display precision at the baseline revision.",
-      "repository_revision": "966194205b64f865ebcdf586084654415cbf8f19",
-      "hash_scope": "byte-identical published fragment snapshot created before additions; original_wiki_path and repository_revision identify its baseline source",
-      "original_wiki_path": "wiki/components/model/module4.html"
+      "repository_revision": "49c96178ab5f673105a64ca1b82ab009e27d4069",
+      "hash_scope": "Historical Git blob; no duplicate prose is shipped in the current tree.",
+      "original_wiki_path": "wiki/components/model/module4.html",
+      "storage": "git_history"
     },
     "m2_original_oof_archive_member": {
       "path": "static/assets/model/evidence/module2-reproducibility.zip",

@@ -204,73 +204,10 @@ class Importer:
         }
 
     def run(self) -> None:
-        manifest_path = self.asset_root / "source-manifest.json"
-        old_manifest = json.loads(manifest_path.read_text())
-        for asset in old_manifest["assets"]:
-            destination = (self.repository / asset["destination"] if "destination" in asset
-                           else self.asset_root / asset["source"])
-            if not destination.is_file():
-                raise FileNotFoundError(destination)
-            public = "/" + destination.relative_to(self.repository).as_posix()
-            record = dict(asset, destination=destination.relative_to(self.repository).as_posix())
-            actual = sha256(destination.read_bytes())
-            if actual != asset["sha256"]:
-                source_path = self.source_root / asset["source"]
-                if (not source_path.is_file() or
-                        source_path.read_bytes().replace(b"\r\n", b"\n") !=
-                        destination.read_bytes().replace(b"\r\n", b"\n")):
-                    raise ValueError(f"Existing imported asset changed: {asset['source']}")
-                record.update(sha256=actual, source_sha256=asset["sha256"],
-                              note="Existing import normalized line endings; content is unchanged.")
-            self.assets[public] = record
-        for number, sources in DOCUMENTS.items():
-            for index, relative in enumerate(sources):
-                suffix = "-dbtl" if index else ""
-                source_path = self.source(number, relative)
-                data = source_path.read_bytes()
-                markdown_path = self.asset_root / f"module{number}{suffix}.md"
-                if number == 1:
-                    if markdown_path.read_bytes() != data:
-                        raise ValueError("Module 1 source differs; review before changing its existing import")
-                else:
-                    write_if_changed(markdown_path, data)
-                self.document_records.append({
-                    "source": f"igem_module{number}/{relative}",
-                    "destination": markdown_path.relative_to(self.repository).as_posix(),
-                    "sha256": sha256(data),
-                })
-                template = self.repository / f"wiki/components/model/module{number}{suffix}.html"
-                if number == 2:
-                    self.module2_addition(data.decode(), source_path, template)
-                elif number in (3, 4):
-                    fragment = self.render(data.decode(), number, source_path, dbtl=bool(index))
-                    write_if_changed(template, ("{% raw %}\n" + fragment + "\n{% endraw %}\n").encode())
-        # Keep compact provenance and plot tables. Historical programs, large
-        # structure archives, checkpoints and dependency caches are not imported.
-        for relative in ("README.md", "provenance/REVISION_NOTES.md",
-                         "provenance/TERMINOLOGY.md", "provenance/sources.md",
-                         "provenance/input-manifest.json"):
-            self.register_asset(4, self.source(4, relative))
-        self.original_drafts()
-        for source_path in sorted(self.source(3, "data/plot-tables").glob("*.csv")):
-            self.register_asset(3, source_path)
-        for relative in ("figure-sources/orca-n1-n4/input/data/combo_batch_ratio_vs_retention.csv",
-                         "figure-sources/orca-n1-n4/input/data/designed_batch_groups.csv"):
-            self.register_asset(3, self.source(3, relative))
-        manifest = {
-            "source": "Team-supplied Module 1–4 archives, imported 2026-10-10",
-            "documents": [r["source"] for r in self.document_records],
-            "document_records": self.document_records,
-            "assets": sorted(self.assets.values(), key=lambda row: row["destination"]),
-            "scope": "Presentation import only; no model training, assay reanalysis or claim verification.",
-            "module4_evidence_status": (
-                "Text-only release. Project-specific numbers come from the supplied drafts "
-                "and await reconciliation with original results. No synthetic figures, "
-                "training curves, checkpoints or inference program were added."
-            ),
-        }
-        write_if_changed(manifest_path, (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode())
-        print(f"Imported {len(self.document_records)} documents; recorded {len(self.assets)} assets.")
+        raise RuntimeError(
+            "The historical model importer is retired. Edit wiki/components/model/ "
+            "and export the current rendered content; do not restore deleted draft tables."
+        )
 
 
 if __name__ == "__main__":
