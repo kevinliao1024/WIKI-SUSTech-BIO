@@ -241,14 +241,14 @@ EDGES.extend([
 
 # Leave Editor comparison from its left side and branch below all six steps.
 # A shared bus makes the three relationships explicit without crossing labels.
-line([(143,360),(55,360),(55,550),(1000,550)], C['teal'], lw=2.0, z=1)
+line([(143,360),(55,360),(55,550),(1000,550)], C['purple'], lw=2.0, z=1)
 tasks = [
     (200, 'puf', 'Module 2', 'PUF specificity design'),
     (600, 'protein', 'Module 3', 'APOBEC engineering'),
     (1000, 'rank', 'Module 4', 'LAMAR prioritization'),
 ]
 for x, kind, module, task in tasks:
-    arrow((x,550), (x,590), c=C['teal'])
+    arrow((x,550), (x,590), c=C['purple'])
     icon(kind, x, 660, .82, 'teal')
     text(x, 732, module, 25, C['teal'], weight='bold')
     text(x, 770, task, 23, C['ink'])
