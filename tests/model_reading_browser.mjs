@@ -129,24 +129,15 @@ try {
   }
   console.log('All four modules and every primary chapter: correct expansion, active item, and anchor alignment.');
 
-  const subsections = await page.locator('[data-model-subchapter]').evaluateAll(items => items.map(item => item.id));
-  assert.equal(subsections.length, 3);
-  await jump('module2-2');
-  for (const id of subsections) {
-    await page.locator(`[data-subchapter-link][href="#${id}"]`).click();
+  assert.equal(await page.locator('[data-model-subchapter], [data-subchapter-link]').count(), 0);
+  for (const id of ['module2-ranking-results', 'module2-feature-ablations', 'module2-readout-layers']) {
+    await jump(id);
     await activeModule('module2');
     await checkAlignment(id);
-    assert.equal((await state()).chapter, `#${id}`);
+    await page.waitForFunction(() => document.querySelector('[data-chapter-link][aria-current]')?.hash === '#module2-2');
     assert.equal(await page.locator('.module-subnav [aria-current]').count(), 1);
-    assert.equal(await page.locator('[data-chapter-link][data-active-parent]').getAttribute('href'), '#module2-2');
   }
-  console.log('Three subsection entries navigate correctly, select one current entry, and identify their parent chapter.');
-  await page.getByRole('heading', { name: 'Five highlighted constructs in the current model assessment', exact: true }).evaluate(heading => {
-    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
-    scrollTo({ top: heading.getBoundingClientRect().top + scrollY - header - 20, behavior: 'instant' });
-  });
-  await page.waitForFunction(() => document.querySelector('[data-subchapter-link][aria-current]')?.hash === '#module2-ranking-results');
-  console.log('An unlisted sibling subsection restores the Results entry instead of retaining Readout layers.');
+  console.log('Legacy result anchors remain reachable and keep Specificity ranking selected without subsection entries.');
 
   await jump('module3');
   await page.locator('.model-sidebar').evaluate(element => { element.scrollTop = 0; });

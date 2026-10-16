@@ -45,7 +45,16 @@ body.ot .reading-orbit, .reading-orbit.is-over-footer {
   width: 52px;
   height: 70px;
   transform: translateY(var(--orbit-y));
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
 }
+.reading-orbit.is-dragging .reading-orbit__traveler { cursor: grabbing; }
+body .reading-orbit:focus { outline: none; }
+.reading-orbit:focus-visible:not(.is-pointer-focused) .reading-orbit__form { outline: 2px solid var(--orbit-accent); outline-offset: 3px; border-radius: 50%; }
+.reading-orbit[aria-disabled="true"] .reading-orbit__traveler { cursor: default; pointer-events: none; }
 .reading-orbit__form {
   display: block;
   width: 52px;
@@ -68,7 +77,7 @@ body.ot .reading-orbit, .reading-orbit.is-over-footer {
 }
 @media (max-width: 760px) {
   .reading-orbit { top: calc(var(--nav-h, 112px) + 20px); bottom: max(108px, calc(env(safe-area-inset-bottom) + 92px)); right: 3px; width: 30px; }
-  .reading-orbit__traveler { width: 30px; height: 49px; }
+  .reading-orbit__traveler { left: -14px; width: 44px; height: 49px; padding-left: 14px; box-sizing: border-box; }
   .reading-orbit__form { width: 30px; height: 30px; stroke-width: 1.7; }
   .reading-orbit__soundings { inset: 24px 14px; }
   .reading-orbit__start, .reading-orbit__end { font-size: 8px; }

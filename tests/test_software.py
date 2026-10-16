@@ -50,6 +50,11 @@ class SoftwareDeliveryTest(unittest.TestCase):
         self.assertRegex(self.html, r'<h2[^>]*>Whole-body Delivery Model</h2>')
         self.assertIn('<h2>PUF Website</h2>', self.html)
         self.assertNotRegex(self.html, r'[\u4e00-\u9fff]')
+        chapter_numbers = re.findall(r'<h3 id="[^"]+" data-model-chapter><span class="chapter-number">([\d.]+)</span>', self.html)
+        expected_numbers = [f'{section}.{chapter}' for section in (1, 2) for chapter in range(1, 7)]
+        self.assertEqual(chapter_numbers, expected_numbers)
+        sidebar_numbers = re.findall(r'<span class="module-chapter-number">([\d.]+)</span>', self.html)
+        self.assertEqual(sidebar_numbers, expected_numbers)
 
     def test_each_figure_has_no_more_than_four_panels(self):
         self.assertGreater(len(self.page.figures), 20)
@@ -94,7 +99,8 @@ class SoftwareDeliveryTest(unittest.TestCase):
         self.assertEqual(self.page.figure_numbers, list(range(1, 41)))
         for number in self.page.figure_numbers:
             self.assertIn(f'<strong>Figure {number}.', self.html)
-        self.assertNotRegex(self.html, r'>[^<]*Module\s+\d')
+        self.assertIn("Module 2's assay-informed PUF specificity ranking", self.html)
+        self.assertIn("Module 4's LAMAR-based RNA-site prioritization", self.html)
         self.assertNotIn('DBTL', self.html.upper())
 
     def test_references_and_code_last_without_body_hyperlinks(self):
@@ -133,14 +139,18 @@ class SoftwareDeliveryTest(unittest.TestCase):
         self.assertIn('data-spatial-viewer', self.html)
         self.assertIn('data-delivery-body', self.html)
 
-    def test_tutorial_preserves_supplied_video_and_supports_range_requests(self):
-        base = Path('static/assets/software/puf-tutorial')
-        record = json.loads((base / 'provenance.json').read_text())
-        video = base / record['asset_filename']
-        self.assertEqual(hashlib.sha256(video.read_bytes()).hexdigest(), record['sha256'])
-        response = self.client.get('/' + video.as_posix(), headers={'Range': 'bytes=0-1023'})
-        self.assertEqual(response.status_code, 206)
-        self.assertEqual(len(response.data), 1024)
-        response.close()
-        self.assertIn('controls playsinline preload="metadata"', self.html)
+    def test_videos_preserve_recorded_assets_and_support_range_requests(self):
+        for folder in ('puf-tutorial', 'demo'):
+            with self.subTest(video=folder):
+                base = Path('static/assets/software') / folder
+                record = json.loads((base / 'provenance.json').read_text())
+                video = base / record['asset_filename']
+                self.assertEqual(hashlib.sha256(video.read_bytes()).hexdigest(), record['sha256'])
+                self.assertIn('/' + video.as_posix(), self.html)
+                response = self.client.get('/' + video.as_posix(), headers={'Range': 'bytes=0-1023'})
+                self.assertEqual(response.status_code, 206)
+                self.assertEqual(len(response.data), 1024)
+                response.close()
+        self.assertEqual(self.html.count('controls playsinline preload="metadata"'), 2)
+        self.assertLess(self.html.index('id="workbench-demo"'), self.html.index('id="workbench-tutorial"'))
         self.assertNotIn('autoplay', self.html)

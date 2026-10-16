@@ -113,7 +113,17 @@ class ModelConclusionAdditionsTest(unittest.TestCase):
         self.assertFalse(any("model-honesty" in node.attrs.get("class", "").split() for node in module4.walk()))
         self.assertFalse(any(node.tag == "a" for node in module4.walk()))
         self.assertEqual(sum(node.tag == "figure" for node in module4.walk()), 2)
-        self.assertIn("disease models", module4.text())
+        introduction = next(node for node in self.document.root.walk() if node.attrs.get("id") == "model-content")
+        disease_heading = [node for node in self.document.root.walk() if node.attrs.get("id") == "module4-therapeutic-window"]
+        self.assertEqual(len(disease_heading), 1)
+        self.assertIn(disease_heading[0], list(introduction.walk()))
+        self.assertNotIn(disease_heading[0], list(module4.walk()))
+        article = next(node for node in introduction.children if isinstance(node, Element) and node.tag == "article")
+        elements = [node for node in article.children if isinstance(node, Element)]
+        self.assertEqual(elements[-4].tag, "ol")
+        self.assertIs(elements[-3], disease_heading[0])
+        self.assertEqual(elements[-1].attrs.get("data-claim"), "T-A")
+        self.assertNotIn("The next translational questions", introduction.text())
 
 
 
