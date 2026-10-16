@@ -1,0 +1,225 @@
+{
+  "svg_count": 4,
+  "svg_image_nodes_total": 0,
+  "native_text": true,
+  "label_clipping": {
+    "figure-02-rna-seq": [],
+    "figure-10-puf-esm": [],
+    "figure-20-inverse-folding": [],
+    "figure-25-structure-assay": []
+  },
+  "label_overlaps": {
+    "figure-02-rna-seq": [],
+    "figure-10-puf-esm": [],
+    "figure-20-inverse-folding": [],
+    "figure-25-structure-assay": []
+  },
+  "source_files_unchanged": true,
+  "frozen_preview_unchanged": true,
+  "model_computation": false,
+  "browser_qa": {
+    "desktop": {
+      "documentWidth": 1512,
+      "figureCount": 38,
+      "height": 779,
+      "url": "http://127.0.0.1:8776/model#model-figure-2",
+      "width": 1512
+    },
+    "desktopFigures": [
+      {
+        "complete": true,
+        "height": 439.53125,
+        "naturalHeight": 730,
+        "naturalWidth": 1152,
+        "number": 25,
+        "width": 694,
+        "x": 517,
+        "y": 157.140625
+      },
+      {
+        "complete": true,
+        "height": 416.3984375,
+        "naturalHeight": 691,
+        "naturalWidth": 1152,
+        "number": 10,
+        "width": 694,
+        "x": 517,
+        "y": 157.015625
+      },
+      {
+        "complete": true,
+        "height": 500.2578125,
+        "naturalHeight": 830,
+        "naturalWidth": 1152,
+        "number": 20,
+        "width": 694,
+        "x": 517,
+        "y": 157.171875
+      },
+      {
+        "bounds": {
+          "height": 312.296875,
+          "width": 694,
+          "x": 517,
+          "y": 156.9296875
+        },
+        "complete": true,
+        "figure": "model-figure-2",
+        "naturalHeight": 518,
+        "naturalWidth": 1152,
+        "src": "/static/assets/model/icon-flowcharts-20261016/figure-02-rna-seq.svg",
+        "number": 2
+      }
+    ],
+    "desktopLoaded": {
+      "allSelectedLoaded": true,
+      "figureCount": 38,
+      "images": [
+        {
+          "complete": true,
+          "id": "model-figure-2",
+          "naturalHeight": 518,
+          "naturalWidth": 1152
+        },
+        {
+          "complete": true,
+          "id": "model-figure-10",
+          "naturalHeight": 691,
+          "naturalWidth": 1152
+        },
+        {
+          "complete": true,
+          "id": "model-figure-20",
+          "naturalHeight": 830,
+          "naturalWidth": 1152
+        },
+        {
+          "complete": true,
+          "id": "model-figure-25",
+          "naturalHeight": 730,
+          "naturalWidth": 1152
+        }
+      ],
+      "selectedImageCount": 4
+    },
+    "mobile": {
+      "bodyWidth": 390,
+      "documentWidth": 390,
+      "height": 844,
+      "selectedImages": [
+        {
+          "complete": true,
+          "declaredHeight": "540",
+          "declaredWidth": "1200",
+          "height": 135.8984375,
+          "heightErrorPx": 0.0015625000000056843,
+          "id": "model-figure-2",
+          "naturalHeight": 518,
+          "naturalWidth": 1152,
+          "width": 302,
+          "x": 42,
+          "y": -28373.171875
+        },
+        {
+          "complete": true,
+          "declaredHeight": "720",
+          "declaredWidth": "1200",
+          "height": 181.1953125,
+          "heightErrorPx": 0.004687499999988631,
+          "id": "model-figure-10",
+          "naturalHeight": 691,
+          "naturalWidth": 1152,
+          "width": 302,
+          "x": 42,
+          "y": -6255.3125
+        },
+        {
+          "complete": true,
+          "declaredHeight": "865",
+          "declaredWidth": "1200",
+          "height": 217.6875,
+          "heightErrorPx": 0.004166666666662877,
+          "id": "model-figure-20",
+          "naturalHeight": 830,
+          "naturalWidth": 1152,
+          "width": 302,
+          "x": 42,
+          "y": 10828.234375
+        },
+        {
+          "complete": true,
+          "declaredHeight": "760",
+          "declaredWidth": "1200",
+          "height": 191.265625,
+          "heightErrorPx": 0.00104166666667993,
+          "id": "model-figure-25",
+          "naturalHeight": 730,
+          "naturalWidth": 1152,
+          "width": 302,
+          "x": 42,
+          "y": 29957.9375
+        }
+      ],
+      "width": 390
+    },
+    "consoleWarningsErrors": [],
+    "restoredViewport": {
+      "height": 779,
+      "width": 1512
+    },
+    "reviewedAt": "2026-10-16",
+    "browser": "Chrome via CUA",
+    "revision": "v2",
+    "screenshots": [
+      "desktop-figure-02-v2.jpg",
+      "mobile-figure-02-v2.jpg",
+      "desktop-figure-10-v2.jpg",
+      "mobile-figure-10-v2.jpg",
+      "desktop-figure-20-v2.jpg",
+      "mobile-figure-20-v2.jpg",
+      "desktop-figure-25-v2.jpg",
+      "mobile-figure-25-v2.jpg"
+    ],
+    "visualReview": "All four mounted icon figures inspected at desktop and 390px mobile. Corrected scissors pivot and continuous circular arrow are visible. No icon/label overlap or image clipping observed. Mobile scales diagrams to the existing 302px content width; zoom is needed for fine labels."
+  },
+  "figure_count": 4,
+  "revision_verification": {
+    "revision": "v2",
+    "scientific_labels_identical": {
+      "figure-02-rna-seq": true,
+      "figure-10-puf-esm": true,
+      "figure-20-inverse-folding": true,
+      "figure-25-structure-assay": true
+    },
+    "canvas_dimensions_identical": {
+      "figure-02-rna-seq": "0 0 864 388.8",
+      "figure-10-puf-esm": "0 0 864 518.4",
+      "figure-20-inverse-folding": "0 0 864 622.8",
+      "figure-25-structure-assay": "0 0 864 547.2"
+    },
+    "unchanged_file_hashes": {
+      "figure-10-puf-esm.svg": "55a86613eb3ee38b8995aae592b0a026347f7478366ca5c3684643a3f31293a8",
+      "figure-10-puf-esm.png": "f59c1052dad7b2b8ef1dcf54a3262e2076d66b5e788a55e58e7cc91b88231d8f",
+      "figure-10-puf-esm.pdf": "fa1bb4fb41c1e5465dd1f2dd4e099ccfa8ca3119628b8843f88c75e4986dfcb6",
+      "figure-20-inverse-folding.svg": "9f6a17718a0b2bdd30c4477c1d6169437c1d573bdc49f2b925098bbe2121eee6",
+      "figure-20-inverse-folding.png": "8da3716ad747fc89c993c429251b1d44372c02f85d11ce2ca8948cdda1be3b16",
+      "figure-20-inverse-folding.pdf": "b977b0f299aadd7ef6e5149f3ec2482c931c5ca7f7633d59be2c029da1ddd628"
+    },
+    "pixel_change_bounding_boxes": {
+      "figure-02-rna-seq": [
+        307,
+        185,
+        329,
+        203
+      ],
+      "figure-10-puf-esm": null,
+      "figure-20-inverse-folding": null,
+      "figure-25-structure-assay": [
+        83,
+        239,
+        403,
+        862
+      ]
+    }
+  }
+}

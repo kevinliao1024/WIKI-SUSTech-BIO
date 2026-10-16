@@ -1,0 +1,143 @@
+/* All body-diagram styles are isolated from the Wiki's shared figure rules. */
+[data-delivery-body] { --db-ink: #171536; --db-indigo: #2e267c; --db-teal: #27877f; --db-orange: #c77c28; color: var(--db-ink); font-family: var(--sans, Arial, sans-serif); border: 1px solid #dedbea; border-radius: 16px; overflow: hidden; background: #fff; }
+[data-delivery-body] [hidden] { display: none !important; }
+[data-delivery-body] .delivery-body__visual { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 12px; padding: 24px 20px 10px; background: radial-gradient(ellipse at 22% 35%, #f0effb, transparent 52%), #fff; }
+[data-delivery-body] .delivery-body__visual > svg { width: 100%; height: auto; display: block; overflow: visible; }
+[data-delivery-body] .delivery-body__detail { width: 100%; height: auto; display: block; overflow: visible; }
+[data-delivery-body] svg text { font-family: var(--sans, Arial, sans-serif); fill: var(--db-ink); font-size: 16px; }
+[data-delivery-body] .delivery-body__silhouette { fill: #f3f2f9; stroke: #aca8ca; stroke-width: 2; }
+[data-delivery-body] .delivery-body__organ { stroke-width: 1.6; }
+[data-delivery-body] .delivery-body__tissues { fill: #e7e5f0; stroke: #c7c3dd; }
+[data-delivery-body] .delivery-body__brain { fill: #c8c3ed; stroke: var(--db-indigo); }
+[data-delivery-body] .delivery-body__fold { fill: none; stroke-width: 1.3; stroke-linecap: round; }
+[data-delivery-body] .delivery-body__liver { fill: #efc88e; stroke: var(--db-orange); }
+[data-delivery-body] .delivery-body__vessels { fill: none; stroke: #aa95c7; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+[data-delivery-body] .delivery-body__vessel-return { stroke: #a7ceca; stroke-width: 2; }
+[data-delivery-body] .delivery-body__depot { fill: #f5d8ac; stroke: var(--db-orange); stroke-width: 2; }
+[data-delivery-body] .delivery-body__depot circle:not(:first-child) { fill: var(--db-orange); stroke: #fff; stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__labels path { stroke: #aaa5bb; stroke-width: 1; fill: none; }
+[data-delivery-body] .delivery-body__small { font-size: 13px; fill: #6a647c; }
+[data-delivery-body] .delivery-body__view-label { font-size: 14px; fill: #78718d; letter-spacing: .02em; }
+[data-delivery-body] .delivery-body__zoom-link { fill: none; stroke: #a39ac9; stroke-width: 1.4; stroke-dasharray: 4 5; }
+[data-delivery-body] .delivery-body__zoom-end { fill: #a39ac9; }
+[data-delivery-body] .delivery-body__zoom-panel { fill: #faf9ff; stroke: #dcd7ed; stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__panel-title { font-size: 18px; font-weight: 650; fill: var(--db-indigo); }
+[data-delivery-body] .delivery-body__blood-pool { fill: #f3e7f4; stroke: #c4a5c5; stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__blood-wave { fill: none; stroke: #bc91be; stroke-width: 1.2; }
+[data-delivery-body] .delivery-body__endothelium { fill: #e5e1f5; stroke: #a197ca; stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__vesicle { fill: #f8f6ff; stroke: #9c91c7; stroke-width: 1.5; stroke-dasharray: 4 3; }
+[data-delivery-body] .delivery-body__arrow { fill: none; stroke: #8c83a7; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+[data-delivery-body] .delivery-body__recycle { fill: none; stroke: var(--db-orange); stroke-width: 1.4; stroke-dasharray: 3 3; }
+[data-delivery-body] .delivery-body__isf { fill: #e9f4f1; stroke: #8dbeb7; stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__isf-dot { fill: var(--db-teal); }
+[data-delivery-body] .delivery-body__detail-label { font-size: 13px; fill: #6a647c; }
+[data-delivery-body] .delivery-body__connector { fill: none; stroke: #9cb9b4; stroke-width: 1.5; stroke-dasharray: 4 4; }
+[data-delivery-body] .delivery-body__membrane { fill: #f0f7f5; stroke: #8ebcb3; stroke-width: 2; }
+[data-delivery-body] .delivery-body__membrane-inner { fill: none; stroke: #c0dad4; stroke-width: 1; }
+[data-delivery-body] .delivery-body__nucleus { fill: #e9e5f6; stroke: #a79acb; stroke-width: 1.6; }
+[data-delivery-body] .delivery-body__dna { fill: none; stroke: #a094c6; stroke-width: 1.7; }
+[data-delivery-body] .delivery-body__rna { fill: none; stroke: var(--db-teal); stroke-width: 2.5; }
+[data-delivery-body] .delivery-body__editor { fill: #e9b362; stroke: #b9772b; stroke-width: 1.4; }
+[data-delivery-body] .delivery-body__target-rna { fill: none; stroke: #85b8ad; stroke-width: 2; }
+[data-delivery-body] .delivery-body__base-before { fill: #e3def6; stroke: #ada0d0; stroke-width: 1; }
+[data-delivery-body] .delivery-body__base-after { fill: #cae8de; stroke: #7bb5a5; stroke-width: 1; }
+[data-delivery-body] .delivery-body__base-letter { font-size: 13px; font-weight: 650; }
+[data-delivery-body] .delivery-body__loss-symbol { fill: #fff4e5; stroke: var(--db-orange); stroke-width: 1.5; }
+[data-delivery-body] .delivery-body__route [data-body-path] { fill: none; stroke: transparent; stroke-width: 2; stroke-linecap: round; }
+[data-delivery-body] [data-body-dot] { display: none; fill: var(--db-indigo); stroke: #fff; stroke-width: 1.4; }
+[data-delivery-body].is-ready .delivery-body__route.is-active [data-body-path] { stroke: #64589e; stroke-opacity: .45; }
+[data-delivery-body].is-ready .delivery-body__route.is-active [data-body-dot] { display: block; }
+[data-delivery-body].is-ready .delivery-body__route--loss.is-active [data-body-path] { stroke: var(--db-orange); stroke-dasharray: 5 5; }
+[data-delivery-body] .delivery-body__route--loss [data-body-dot] { fill: var(--db-orange); }
+[data-delivery-body].is-ready [data-body-emphasis] { opacity: .52; transition: opacity .35s; }
+[data-delivery-body].is-ready [data-body-emphasis].is-active { opacity: 1; }
+[data-delivery-body] .delivery-body__stages { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; padding: 1px 0; background: #e4e0ee; border-block: 1px solid #e4e0ee; }
+[data-delivery-body] button { -webkit-appearance: none; appearance: none; font: inherit; cursor: pointer; border: 0; box-shadow: none; }
+[data-delivery-body] .delivery-body__stages button { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 9px; min-height: 94px; padding: 16px 5px 12px; color: #625a79; background: #fcfbff; font-size: 12px; font-weight: 550; line-height: 1.3; text-align: center; }
+[data-delivery-body] .delivery-body__stages button svg { width: 24px; height: 24px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+[data-delivery-body] .delivery-body__stages button[aria-pressed="true"] { background: #efecfa; color: var(--db-indigo); box-shadow: inset 0 -3px var(--db-indigo); }
+[data-delivery-body] .delivery-body__stages button[data-body-stage="5"][aria-pressed="true"] { background: #fff3e3; color: #975c18; box-shadow: inset 0 -3px var(--db-orange); }
+[data-delivery-body] button:hover { background: #f0edf8; }
+[data-delivery-body] button:focus-visible { outline: 3px solid #6b59ae; outline-offset: -4px; border-radius: 4px; }
+[data-delivery-body] .delivery-body__description { box-sizing: border-box; padding: 22px 26px 12px; min-height: 105px; }
+[data-delivery-body] .delivery-body__description p { margin: 0 0 12px; font-size: 15px; line-height: 1.65; color: #625a73; }
+[data-delivery-body] .delivery-body__description strong { color: var(--db-indigo); font-weight: 650; }
+[data-delivery-body] .delivery-body__transport { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; padding: 0 26px 22px; }
+[data-delivery-body] .delivery-body__play { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 9px 13px; border-radius: 6px; background: var(--db-indigo); color: #fff; font-size: 13px; }
+[data-delivery-body] .delivery-body__play:hover { background: #433994; }
+[data-delivery-body] .delivery-body__play svg { width: 16px; height: 16px; fill: currentColor; }
+[data-delivery-body] .delivery-body__step-controls { display: flex; gap: 6px; align-items: center; font-size: 12px; font-variant-numeric: tabular-nums; color: #625a73; }
+[data-delivery-body] .delivery-body__step-controls button { width: 40px; height: 40px; border-radius: 6px; color: var(--db-indigo); background: #f3f0fa; font-size: 20px; }
+[data-delivery-body] .delivery-body__step-controls span { min-width: 34px; text-align: center; }
+[data-delivery-body] .delivery-body__motion-note { color: #7b748a; font-size: 11px; line-height: 1.5; margin-left: auto; max-width: 185px; }
+@media (max-width: 700px) {
+  [data-delivery-body] .delivery-body__visual { gap: 0; padding: 18px 12px 8px; }
+  [data-delivery-body] .delivery-body__stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  [data-delivery-body] .delivery-body__stages button { min-height: 82px; padding-block: 12px; }
+  [data-delivery-body] .delivery-body__description { padding: 18px 18px 8px; min-height: 125px; }
+  [data-delivery-body] .delivery-body__transport { padding: 0 18px 18px; gap: 10px; }
+  [data-delivery-body] .delivery-body__motion-note { flex-basis: 100%; max-width: none; margin-left: 0; }
+}
+@media (max-width: 480px) {
+  [data-delivery-body] .delivery-body__visual { grid-template-columns: 1fr; gap: 8px; }
+  [data-delivery-body] .delivery-body__human { max-width: 280px; justify-self: center; }
+  [data-delivery-body] .delivery-body__detail { max-width: 460px; justify-self: center; }
+  [data-delivery-body] .delivery-body__detail .delivery-body__detail-label { font-size: 18px; }
+  [data-delivery-body] .delivery-body__detail .delivery-body__panel-title { font-size: 20px; }
+  [data-delivery-body] .delivery-body__detail .delivery-body__view-label { font-size: 16px; }
+  [data-delivery-body] .delivery-body__detail .delivery-body__base-letter { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-delivery-body].is-ready [data-body-emphasis] { transition: none; }
+}
+/* A continuous 3D surface replaces the SVG silhouette when WebGL is available. */
+[data-delivery-body] .delivery-body__visual { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 20px; }
+[data-delivery-body] .delivery-body__anatomy { min-width: 0; align-self: stretch; display: flex; flex-direction: column; }
+[data-delivery-body] .delivery-body__anatomy-heading { display: flex; gap: 12px; align-items: center; justify-content: space-between; min-height: 38px; font-size: 13px; color: #625a79; }
+[data-delivery-body] .delivery-body__anatomy-heading > div { display: flex; gap: 5px; }
+[data-delivery-body] .delivery-body__anatomy-heading button { border: 1px solid #dcd7e6; border-radius: 5px; background: #ffffffb8; padding: 7px 8px; min-height: 34px; color: #493a75; font-size: 10px; white-space: nowrap; }
+[data-delivery-body] .delivery-body__anatomy-heading button[aria-pressed="true"] { background: #ebe5f7; border-color: #a294c2; }
+[data-delivery-body] .delivery-body__viewport { position: relative; min-height: 480px; height: 540px; width: 100%; border-radius: 12px; background: radial-gradient(ellipse at 40% 40%, #fffdfa 0%, #f5f1f2 55%, #eeebf5 100%); overflow: hidden; }
+[data-delivery-body] .delivery-body__viewport > .delivery-body__human { width: 100%; height: 100%; max-width: none; display: block; }
+[data-delivery-body] .delivery-body__viewport > canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; outline-offset: -4px; }
+[data-delivery-body] .delivery-body__viewport > canvas:active { cursor: grabbing; }
+[data-delivery-body] .delivery-body__viewport > canvas:focus-visible { outline: 3px solid #6b59ae; }
+[data-delivery-body] .delivery-body__rotate-note { margin: 10px 0 8px !important; text-align: center; font-size: 11px !important; line-height: 1.5 !important; color: #736a81; }
+[data-delivery-body] .delivery-body__organ-key { display: flex; gap: 8px 14px; flex-wrap: wrap; justify-content: center; margin: 0 0 8px; padding: 0; list-style: none; color: #625a79; font-size: 10px; }
+[data-delivery-body] .delivery-body__organ-key li { display: flex; gap: 5px; align-items: center; }
+[data-delivery-body] .delivery-body__organ-key i { display: block; width: 7px; height: 7px; border-radius: 50%; background: #9a718d; }
+[data-delivery-body] .delivery-body__organ-key .delivery-body__key-brain { background: #9d7dc9; }
+[data-delivery-body] .delivery-body__organ-key .delivery-body__key-blood { background: #bf6c80; }
+[data-delivery-body] .delivery-body__organ-key .delivery-body__key-liver { background: #b77753; }
+[data-delivery-body] .delivery-body__organ-key .delivery-body__key-depot { background: #299384; }
+@media (max-width: 1000px) { [data-delivery-body] .delivery-body__anatomy-heading { flex-wrap: wrap; gap: 4px; padding-bottom: 8px; } }
+@media (max-width: 700px) {
+  [data-delivery-body] .delivery-body__visual { grid-template-columns: 1fr; gap: 24px; }
+  [data-delivery-body] .delivery-body__anatomy-heading { flex-wrap: nowrap; }
+  [data-delivery-body] .delivery-body__viewport { height: 510px; min-height: 480px; }
+  [data-delivery-body] .delivery-body__detail { width: 100%; max-width: 500px; justify-self: center; }
+}
+/* Compact presentation: the views and active stage carry the explanation. */
+[data-delivery-body] .delivery-body__sr-only { position:absolute!important; width:1px!important; min-width:0!important; height:1px!important; margin:-1px!important; padding:0!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; clip-path:inset(50%)!important; white-space:nowrap!important; border:0!important; }
+[data-delivery-body] .delivery-body__visual { padding:18px 18px 14px; gap:16px; }
+[data-delivery-body] .delivery-body__anatomy-heading { min-height:36px; font-size:13px; }
+[data-delivery-body] [data-body-3d-reset], [data-delivery-body] [data-mechanism-reset] { width:32px; min-width:32px; min-height:32px; padding:0; font-size:17px; line-height:1; }
+[data-delivery-body] .delivery-body__organ-key { margin:10px 0 0; font-size:11px; }
+[data-delivery-body] .delivery-body__stages button { flex-direction:row; align-items:center; justify-content:center; gap:7px; min-height:58px; padding:12px 7px; font-size:11px; }
+[data-delivery-body] .delivery-body__stages button svg { width:18px; height:18px; }
+[data-delivery-body] .delivery-body__stages button { position:relative; overflow:hidden; }
+[data-delivery-body] .delivery-body__stages button::after { content:""; position:absolute; inset:auto 0 0; height:3px; background:#399b8c; transform:scaleX(var(--body-stage-progress,0)); transform-origin:left; pointer-events:none; }
+[data-delivery-body] .delivery-body__stages button:not([aria-pressed="true"])::after { display:none; }
+[data-delivery-body] .delivery-body__footer { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:18px; padding:16px 20px; }
+[data-delivery-body] .delivery-body__description { padding:0; min-height:0; }
+[data-delivery-body] .delivery-body__description p { margin:0!important; font-size:13px!important; line-height:1.6!important; }
+[data-delivery-body] .delivery-body__transport { padding:0; gap:6px; flex-wrap:nowrap; }
+[data-delivery-body] .delivery-body__play { min-width:76px; min-height:38px; justify-content:center; padding:8px 11px; }
+[data-delivery-body] .delivery-body__step-controls { gap:4px; }
+[data-delivery-body] .delivery-body__step-controls button { width:34px; height:38px; font-size:17px; }
+@media(max-width:700px) {
+  [data-delivery-body] .delivery-body__visual { padding:14px 12px 12px; gap:16px; }
+  [data-delivery-body] .delivery-body__stages button { flex-direction:column; min-height:64px; padding:8px 4px; gap:5px; }
+  [data-delivery-body] .delivery-body__footer { grid-template-columns:1fr; gap:12px; padding:14px 16px; }
+  [data-delivery-body] .delivery-body__transport { justify-content:flex-start; }
+}

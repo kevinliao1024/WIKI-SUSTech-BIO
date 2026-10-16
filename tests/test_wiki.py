@@ -189,22 +189,30 @@ class WikiRoutesTest(unittest.TestCase):
         app_source = Path("app.py").read_text(encoding="utf-8")
         self.assertIn('app.run(host="127.0.0.1",', app_source)
 
-    def test_evidence_callouts_are_omitted_only_from_model(self):
+    def test_evidence_context_follows_each_page_format(self):
         for route in ["/dry-lab", "/model", "/brain-delivery", "/offtarget-atlas", "/software"]:
             with self.subTest(route=route):
                 page = self.get_text(route)
                 if route == "/model":
                     self.assertNotIn("Evidence status", page)
                     self.assertNotIn('data-evidence=', page)
+                elif route == "/software":
+                    self.assertNotIn("Evidence status", page)
+                    self.assertIn('data-evidence="software"', page)
+                    self.assertIn("normalized model inputs", page)
+                    self.assertEqual(page.count('data-software-story='), 4)
                 else:
                     self.assertIn("Evidence status", page)
                     self.assertIn('data-evidence=', page)
 
-    def test_spatial_model_is_not_publicly_mentioned(self):
+    def test_spatial_model_is_limited_to_requested_software_page(self):
         for route in PUBLIC_ROUTES:
             with self.subTest(route=route):
                 page = self.get_text(route).lower()
-                self.assertNotIn("physicell", page)
+                if route == "/software":
+                    self.assertIn("physicell", page)
+                else:
+                    self.assertNotIn("physicell", page)
                 self.assertNotIn("paraview", page)
 
     def test_framework_pages_are_explicitly_pending_without_lorem_ipsum(self):

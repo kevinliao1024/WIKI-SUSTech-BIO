@@ -45,6 +45,14 @@ class BuildAuditTest(unittest.TestCase):
         issues = audit_document("index.html", VALID_DOCUMENT.replace("Repository", "ParaView"))
         self.assertTrue(any("excluded term" in issue for issue in issues))
 
+    def test_archived_physicell_viewer_is_allowed_only_on_software(self):
+        document = VALID_DOCUMENT.replace("Repository", "PhysiCell")
+        for name in ("software", "software.html"):
+            self.assertEqual(audit_document(name, document), [])
+        self.assertTrue(any("excluded term" in issue for issue in audit_document("model", document)))
+        document = VALID_DOCUMENT.replace("Repository", "ParaView")
+        self.assertTrue(any("excluded term" in issue for issue in audit_document("software", document)))
+
     def test_rejects_third_party_asset_in_stylesheet(self):
         issues = audit_stylesheet(
             "style.css", '.hero { background: url("https://cdn.example.com/hero.png"); }'

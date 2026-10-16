@@ -1,0 +1,24 @@
+{
+  "artifact": "Interactive whole-body delivery anatomy",
+  "version": 1,
+  "scene_source": "../../../software-delivery-body-3d.js",
+  "controller_source": "../../../software-delivery-body.js",
+  "stylesheet_source": "../../../software-delivery-body.css",
+  "rendering": "Native WebGL using the existing locally vendored three.js 0.186.1",
+  "runtime_assets": ["body-surface.json", "body-surface.bin"],
+  "third_party": {
+    "name": "three.js",
+    "version": "0.186.1",
+    "license": "MIT",
+    "license_file": "../../../vendor/three/LICENSE.txt"
+  },
+  "original_scene_content": [
+    "Lighting, materials, camera, pointer and keyboard controls",
+    "Procedural brain, liver, heart and lung forms",
+    "Three-dimensional blood and lymph pathway curves",
+    "Stage-dependent emphasis and conceptual transport particles"
+  ],
+  "scene_landmark_adjustment": "The liver lobes are placed inside the final torso surface: main lobe centre [-0.040, 1.115, 0.015], radii [0.065, 0.040, 0.040]; secondary lobe centre [0.025, 1.125, 0.015], radii [0.045, 0.025, 0.028]. These are illustrative scene coordinates; the mesh metadata landmarks remain the original coarse guides.",
+  "scientific_scope": "The body and organ shapes are original illustrative geometry, not patient imaging or calibrated anatomy. Pathway locations and particle motion communicate the existing six-stage delivery logic. They do not encode measured anatomy, dose, concentration, velocity or elapsed biological time. No scientific model was rerun and no saved result values were changed.",
+  "reuse": "Serve the component and its local assets through HTTP. The controller resolves the module and mesh URLs from the component attributes; the scene imports the local three.js module and uses no CDN or external runtime resources."
+}

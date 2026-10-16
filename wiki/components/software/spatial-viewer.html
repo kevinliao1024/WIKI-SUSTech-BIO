@@ -1,0 +1,71 @@
+<div class="spatial-viewer" data-spatial-viewer data-source="{{ spatial_source | default(url_for('static', filename='assets/software/brain-delivery/brain-delivery-spatial.json')) }}" data-spatial-module="{{ url_for('static', filename='software-spatial-scene-3d.js') }}">
+  <p class="spatial-viewer__sr-only" data-spatial-status role="status">Saved spatial results</p>
+
+  <div class="spatial-viewer__fallback" data-spatial-fallback>
+    {% if spatial_fallback is defined and spatial_fallback %}<img src="{{ spatial_fallback }}" alt="Saved spatial simulation: extracellular AAV distribution and cell editing in the brain domain." loading="lazy" decoding="async">{% endif %}
+    <p>Loading spatial results…</p>
+    <button type="button" class="spatial-viewer__button" data-spatial-retry hidden>Retry loading</button>
+    <noscript><p>JavaScript is required for rotation and frame playback. Saved source data are available in the reproducibility package.</p></noscript>
+  </div>
+
+  <div data-spatial-interface hidden>
+    <div class="spatial-viewer__toolbar">
+      <fieldset class="spatial-viewer__dose"><legend>Normalized dose</legend><div data-spatial-doses></div></fieldset>
+      <label class="spatial-viewer__filter">Cell type
+        <select data-spatial-filter aria-label="Cell types shown">
+          <option value="all">All cell types</option>
+          <option value="1">Neurons</option>
+          <option value="2">Astrocytes</option>
+          <option value="0">Endothelial cells</option>
+        </select>
+      </label>
+      <button type="button" class="spatial-viewer__button spatial-viewer__reset" data-spatial-reset aria-label="Reset spatial views" title="Reset views">↺</button>
+    </div>
+
+    <div class="spatial-viewer__panes">
+      <section class="spatial-viewer__pane" aria-label="Extracellular AAV field">
+        <div class="spatial-viewer__pane-heading"><h4>Extracellular AAV</h4><span class="spatial-viewer__sr-only" data-spatial-field-count>Saved grid locations</span></div>
+        <canvas data-spatial-field tabindex="0" role="img" aria-label="Rotatable 3D saved extracellular AAV field">Extracellular AAV at saved grid locations.</canvas>
+        <div class="spatial-viewer__scale">
+          <span class="spatial-viewer__scale-label" title="Linear scale fixed across all saved doses and times">Normalized AAV · linear scale</span>
+          <span class="spatial-viewer__colorbar spatial-viewer__colorbar--field" aria-hidden="true"></span>
+          <div class="spatial-viewer__scale-values"><span data-spatial-field-min>0</span><span data-spatial-field-max>—</span></div>
+        </div>
+      </section>
+      <section class="spatial-viewer__pane" aria-label="Cell editing">
+        <div class="spatial-viewer__pane-heading"><h4>Cell editing</h4><span class="spatial-viewer__sr-only" data-spatial-cell-count>Saved cells</span></div>
+        <canvas data-spatial-cells tabindex="0" role="img" aria-label="Rotatable 3D cells colored by saved editing fraction">Cells colored by saved editing fraction.</canvas>
+        <div class="spatial-viewer__scale">
+          <span class="spatial-viewer__scale-label" title="Edited RNA fraction displayed as percent. Linear scale fixed across all saved doses and times.">Edited fraction (%) · linear scale</span>
+          <span class="spatial-viewer__colorbar spatial-viewer__colorbar--cells" aria-hidden="true"></span>
+          <div class="spatial-viewer__scale-values"><span data-spatial-edit-min>0%</span><span data-spatial-edit-max>—</span></div>
+        </div>
+      </section>
+    </div>
+
+    <p class="spatial-viewer__sr-only" data-spatial-domain>Domain: 400 × 300 × 300 μm (x × y × z)</p>
+    <div class="spatial-viewer__explore">
+      <span class="spatial-viewer__vessel-key"><i aria-hidden="true"></i>Capillary · radius 12 μm</span>
+      <label class="spatial-viewer__slice">Slice <output data-spatial-slice-label>Full volume</output><input data-spatial-slice type="range" min="0" max="100" step="1" value="100" aria-label="Depth slice through the tissue" aria-valuetext="Full volume"></label>
+    </div>
+    <div class="spatial-viewer__view-key">
+      <p class="spatial-viewer__sr-only" data-spatial-help>Drag either view to rotate both. Arrow keys rotate; Home resets the angle. Field cubes mark sampled 10 μm voxels. Cell glyphs distinguish types with their saved centers and radii, not reconstructed morphology. All 1,480 cells are retained. The slice hides the front of the volume; summary means always include the full saved cell populations. Only recorded frames are shown. Color ranges stay fixed across doses and times.</p>
+      <ul aria-label="Cell shape key"><li><i class="spatial-viewer__shape spatial-viewer__shape--neuron" aria-hidden="true"></i>Neuron</li><li><i class="spatial-viewer__shape spatial-viewer__shape--astrocyte" aria-hidden="true"></i>Astrocyte</li><li><i class="spatial-viewer__shape spatial-viewer__shape--endothelial" aria-hidden="true"></i>Endothelial</li></ul>
+    </div>
+
+    <div class="spatial-viewer__playback">
+      <div class="spatial-viewer__playback-buttons">
+        <button type="button" class="spatial-viewer__button spatial-viewer__button--play" data-spatial-play aria-pressed="false" aria-label="Play saved frames">Play</button>
+        <button type="button" class="spatial-viewer__button spatial-viewer__step" data-spatial-previous aria-label="Previous recorded frame">‹</button>
+        <button type="button" class="spatial-viewer__button spatial-viewer__step" data-spatial-next aria-label="Next recorded frame">›</button>
+      </div>
+      <label class="spatial-viewer__timeline"><span>Time <output data-spatial-time-label>72 h</output></span><input data-spatial-time type="range" min="0" max="36" step="1" value="36" aria-label="Recorded simulation time"><span class="spatial-viewer__timeline-ticks"><span data-spatial-start>0 h</span><span class="spatial-viewer__sr-only" data-spatial-frame-label>37 saved frames · every 2 h</span><span data-spatial-end>72 h</span></span></label>
+    </div>
+
+    <dl class="spatial-viewer__metrics">
+      <div><dt>Neuron mean editing</dt><dd data-spatial-neuron>—</dd></div>
+      <div><dt>Astrocyte mean editing</dt><dd data-spatial-astrocyte>—</dd></div>
+    </dl>
+  </div>
+  <div class="spatial-viewer__tooltip" data-spatial-tooltip hidden></div>
+</div>

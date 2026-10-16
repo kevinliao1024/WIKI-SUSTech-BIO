@@ -1,0 +1,19 @@
+{
+  "source_filename": "ORCA-recording-English-subtitled-clean-v2-20261016.mp4",
+  "asset_filename": "puf-website-tutorial-en.mp4",
+  "sha256": "b5161d061f3cadf1e7ced1c2a853947f1e077354a979572b0098743418e1408d",
+  "bytes": 49749328,
+  "processing": "Unmodified supplied tutorial; English captions are burned into video.",
+  "verified_browser_metadata": {
+    "duration_seconds": 281.643333,
+    "width": 3024,
+    "height": 2144,
+    "playback_verified": true
+  },
+  "poster": {
+    "filename": "poster.jpg",
+    "source_time_seconds": 12,
+    "method": "native browser video frame capture; no crop or content edit",
+    "sha256": "52547b07f3a408d994d4bfa7e01aa4adc0552f52a20d8c715e2bb5c57a965d55"
+  }
+}

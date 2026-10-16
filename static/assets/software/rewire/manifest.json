@@ -1,0 +1,1992 @@
+{
+  "format_version": 1,
+  "source_figures": 62,
+  "data_figures": 37,
+  "schematics": 1,
+  "max_panels_per_figure": 4,
+  "frozen_data_files": 59,
+  "read_only_inputs_verified": true,
+  "notes": [
+    "Every output is an independent vector figure with no more than four scientific panels.",
+    "All source arrays and existing criteria are retained. The legacy NB03/NB04 duplicate is shown once.",
+    "Source overview plots map to their individual state panels; repeated runs are overlaid by metric.",
+    "APOE3-like to Mixed-edit source arrow is unresolved; schematic retained only as an excluded appendix.",
+    "Scientific validation is not implied by a successful redraw.",
+    "DBTL figure omitted by request in Software revision 2."
+  ],
+  "figures": [
+    {
+      "id": "14_full_model_workflow",
+      "previous_group": "14_full_model_workflow",
+      "svg": "figures/14_full_model_workflow/figure.svg",
+      "png": "figures/14_full_model_workflow/figure@2x.png",
+      "pdf": "figures/14_full_model_workflow/figure.pdf",
+      "panel_count": 1,
+      "panels": [],
+      "caption": "Preserved source model schematic: full model workflow. Directed relationships are retained from the supplied model documentation; this is not an experimentally validated mechanism.",
+      "sources": [
+        "diagrams/full_model_workflow.svg"
+      ],
+      "main_page_eligible": true,
+      "title": "Full model workflow",
+      "section": "main",
+      "page_number": 1
+    },
+    {
+      "id": "01_dose_response-01",
+      "previous_group": "01_dose_response",
+      "svg": "figures/01_dose_response-01/figure.svg",
+      "png": "figures/01_dose_response-01/figure@2x.png",
+      "pdf": "figures/01_dose_response-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "APOE RNA fraction, 168 h",
+          "xlabel": "Dose (model units)",
+          "ylabel": "APOE RNA fraction, 168 h",
+          "kind": "",
+          "line_count": 7,
+          "line_points": 76
+        },
+        {
+          "label": "B",
+          "metric": "On-target editing rate",
+          "xlabel": "Dose (model units)",
+          "ylabel": "On-target editing rate",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        },
+        {
+          "label": "C",
+          "metric": "Off-target burden",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Off-target burden",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        },
+        {
+          "label": "D",
+          "metric": "Specificity index",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Specificity index",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        }
+      ],
+      "caption": "Panels: A: APOE RNA fraction, 168 h; B: On-target editing rate; C: Off-target burden; D: Specificity index.\n\nCoarse and fine dose scans, including the F1 product fractions and all 14 original dose-response figures. Existing feasibility flags are retained. F1 vertical lines: efficacy crossing 0.127421, off-target crossing 0.168078, product-mix inversion 3.19008; linear interpolation as in the source plotting script. Dose axes are logarithmic for readability; all values are retained. Circle = coarse; square = fine. The supplied thresholds are model criteria, not validated clinical boundaries.",
+      "sources": [
+        "new_results/module6_v4_dose_scan/module6_dose_scan.csv",
+        "new_results/module6_v4_dose_scan_fine/module6_dose_scan.csv"
+      ],
+      "main_page_eligible": true,
+      "title": "Dose response: editing and specificity",
+      "section": "main",
+      "page_number": 2
+    },
+    {
+      "id": "01_dose_response-02",
+      "previous_group": "01_dose_response",
+      "svg": "figures/01_dose_response-02/figure.svg",
+      "png": "figures/01_dose_response-02/figure@2x.png",
+      "pdf": "figures/01_dose_response-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "Liver AUC (model units)",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Liver AUC (model units)",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        },
+        {
+          "label": "B",
+          "metric": "Blood Cmax (model units)",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Blood Cmax (model units)",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        },
+        {
+          "label": "C",
+          "metric": "Peak brain expression",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Peak brain expression",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 35
+        },
+        {
+          "label": "D",
+          "metric": "On-target editing rate",
+          "xlabel": "Dose (model units)",
+          "ylabel": "On-target editing rate",
+          "kind": "",
+          "line_count": 0,
+          "line_points": 0
+        }
+      ],
+      "caption": "Panels: A: Liver AUC (model units); B: Blood Cmax (model units); C: Peak brain expression; D: On-target editing rate.\n\nCoarse and fine dose scans, including the F1 product fractions and all 14 original dose-response figures. Existing feasibility flags are retained. F1 vertical lines: efficacy crossing 0.127421, off-target crossing 0.168078, product-mix inversion 3.19008; linear interpolation as in the source plotting script. Dose axes are logarithmic for readability; all values are retained. Circle = coarse; square = fine. The supplied thresholds are model criteria, not validated clinical boundaries.",
+      "sources": [
+        "new_results/module6_v4_dose_scan/module6_dose_scan.csv",
+        "new_results/module6_v4_dose_scan_fine/module6_dose_scan.csv"
+      ],
+      "main_page_eligible": true,
+      "title": "Dose response: exposure and feasibility",
+      "section": "main",
+      "page_number": 3
+    },
+    {
+      "id": "02_trajectories_and_uncertainty-01",
+      "previous_group": "02_trajectories_and_uncertainty",
+      "svg": "figures/02_trajectories_and_uncertainty-01/figure.svg",
+      "png": "figures/02_trajectories_and_uncertainty-01/figure@2x.png",
+      "pdf": "figures/02_trajectories_and_uncertainty-01/figure.pdf",
+      "panel_count": 2,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "Dose 0.5",
+          "xlabel": "Time (h)",
+          "ylabel": "APOE RNA fraction",
+          "kind": "",
+          "line_count": 4,
+          "line_points": 3364
+        },
+        {
+          "label": "B",
+          "metric": "Dose 2",
+          "xlabel": "Time (h)",
+          "ylabel": "APOE RNA fraction",
+          "kind": "",
+          "line_count": 4,
+          "line_points": 3364
+        }
+      ],
+      "caption": "Two saved v4 trajectories: dose 0.5 and dose 2.0, both 168 h. Fractions are normalized by the recorded total APOE RNA pool. Panels A and B correspond to dose 0.5 and dose 2.0, respectively. The shared legend applies to both panels. Model predictions; no model computation or parameter changes were made for this layout revision.",
+      "sources": [
+        "new_results/run_dose0p5_t168/simulation_results.npz",
+        "new_results/run_dose2_t168/simulation_results.npz"
+      ],
+      "main_page_eligible": true,
+      "title": "APOE product trajectories",
+      "section": "main",
+      "revision": "shared-legend-outside-v2",
+      "layout_note": "Shared species legend below both plots; dose labels above axes. All 8 curves and 6728 points are unchanged.",
+      "page_number": 4
+    },
+    {
+      "id": "02_trajectories_and_uncertainty-02",
+      "previous_group": "02_trajectories_and_uncertainty",
+      "svg": "figures/02_trajectories_and_uncertainty-02/figure.svg",
+      "png": "figures/02_trajectories_and_uncertainty-02/figure@2x.png",
+      "pdf": "figures/02_trajectories_and_uncertainty-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "APOE3-like fraction",
+          "xlabel": "APOE3-like fraction",
+          "ylabel": "Parameter samples",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 4
+        },
+        {
+          "label": "B",
+          "metric": "Specificity index",
+          "xlabel": "Specificity index",
+          "ylabel": "Parameter samples",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 4
+        },
+        {
+          "label": "C",
+          "metric": "LDLR-binding risk proxy",
+          "xlabel": "LDLR-binding risk proxy",
+          "ylabel": "Parameter samples",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 4
+        },
+        {
+          "label": "D",
+          "metric": "Off-target burden",
+          "xlabel": "Off-target burden",
+          "ylabel": "Parameter samples",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 2
+        }
+      ],
+      "caption": "Four uncertainty distributions from 200 frozen parameter samples (seed 7) for 10R-proapobec, dose 0.9, 168 h. Shading is the 5th–95th parameter-sample interval; solid lines are medians and dashed lines are existing criteria. These are model uncertainty intervals, not experimental confidence intervals. Positive values are displayed without clipping.\nAPOE3-like fraction: median 0.0837548; p05–p95 0.00162004–0.740191; P(meets criterion) 0.23\nSpecificity index: median 8.2032; p05–p95 2.89873–9.53152; P(meets criterion) 0.86\nLDLR-binding risk proxy: median 1.10444e-05; p05–p95 4.11049e-09–0.00814138; P(meets criterion) 0.96\nOff-target burden: median 0.0103819; p05–p95 0.000172482–0.162409",
+      "sources": [
+        "new_results/run_dose0p5_t168/simulation_results.npz",
+        "new_results/run_dose2_t168/simulation_results.npz",
+        "new_results/design_uncertainty/design_uncertainty_samples.csv",
+        "new_results/design_uncertainty/design_uncertainty_summary.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Uncertainty across frozen parameter samples",
+      "section": "main",
+      "page_number": 5
+    },
+    {
+      "id": "03_sensitivity_design_spatial-01",
+      "previous_group": "03_sensitivity_design_spatial",
+      "svg": "figures/03_sensitivity_design_spatial-01/figure.svg",
+      "png": "figures/03_sensitivity_design_spatial-01/figure@2x.png",
+      "pdf": "figures/03_sensitivity_design_spatial-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "Local sensitivity",
+          "xlabel": "Specificity sensitivity (parameter\n×1.2)",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 2
+        },
+        {
+          "label": "B",
+          "metric": "Design comparison at 72 h",
+          "xlabel": "APOE2-like fraction",
+          "ylabel": "APOE3-like fraction",
+          "kind": "",
+          "line_count": 0,
+          "line_points": 0
+        },
+        {
+          "label": "C",
+          "metric": "Distance from vessel",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Mean editing fraction, 72 h",
+          "kind": "",
+          "line_count": 2,
+          "line_points": 6
+        },
+        {
+          "label": "D",
+          "metric": "Cell-type comparison",
+          "xlabel": "Dose (model units)",
+          "ylabel": "Mean editing fraction, 72 h",
+          "kind": "",
+          "line_count": 3,
+          "line_points": 9
+        }
+      ],
+      "caption": "Panels: A: Local sensitivity; B: Design comparison at 72 h; C: Distance from vessel; D: Cell-type comparison.\n\nF3–F5 comparisons. Top left retains the source top-10 absolute sensitivity ranking at scale 1.2. Top right: all 72 h design-screen rows; marker area = 60 + 20000 × off-target burden; square = ProAPOBEC, circle = A3A; suffix L/M/H denotes source dose category. Design IDs: 1: 10R-proapobec; 2: 10R-design-4; 3: 10R-dual-site; 4: 8R-design-2; 5: inactive-control; 6: puf-only-control. Bottom: archived spatial summary means, without invented error bars. Near/far means are shown as points on a log axis rather than bars with an undefined zero baseline.",
+      "sources": [
+        "archive/outputs/sensitivity_analysis/local_sensitivity_results.csv",
+        "archive/reports/iterated_analysis/v4_design_screen.csv",
+        "archive/outputs/physicell_brain_delivery/scientific_checks.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Sensitivity, design, and spatial comparisons",
+      "section": "main",
+      "page_number": 6
+    },
+    {
+      "id": "04_benchmark_scorecard-01",
+      "previous_group": "04_benchmark_scorecard",
+      "svg": "figures/04_benchmark_scorecard-01/figure.svg",
+      "png": "figures/04_benchmark_scorecard-01/figure@2x.png",
+      "pdf": "figures/04_benchmark_scorecard-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "B1 · PASS",
+          "xlabel": "Inactive-deaminase control",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "B",
+          "metric": "B2 · PASS",
+          "xlabel": "PUF-only control",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "C",
+          "metric": "B3 · PASS",
+          "xlabel": "Preferred-design editing",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "D",
+          "metric": "B4 · PARTIAL",
+          "xlabel": "Editing(+7) / editing(+2)",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        }
+      ],
+      "caption": "Panels: A: B1 · PASS; B: B2 · PASS; C: B3 · PASS; D: B4 · PARTIAL.\n\nF6 benchmark scorecard, retaining all eight saved model values and PASS/PARTIAL/FAIL statuses. Green bands = source PASS display range; orange bands = source PARTIAL display range. Each panel has its own actual numeric axis. B6 is displayed in full at 460.937, without clamping to 5. B8 band is the original display convention; its source criterion is monotonic accumulation. This redraw does not independently validate the literature anchors or benchmark definitions.",
+      "sources": [
+        "new_results/benchmarks/benchmark_scorecard.csv"
+      ],
+      "main_page_eligible": true,
+      "title": "Benchmark checks B1–B4",
+      "section": "main",
+      "page_number": 7
+    },
+    {
+      "id": "04_benchmark_scorecard-02",
+      "previous_group": "04_benchmark_scorecard",
+      "svg": "figures/04_benchmark_scorecard-02/figure.svg",
+      "png": "figures/04_benchmark_scorecard-02/figure@2x.png",
+      "pdf": "figures/04_benchmark_scorecard-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "B5 · FAIL",
+          "xlabel": "Editing(UC) / editing(CC)",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "B",
+          "metric": "B6 · PASS",
+          "xlabel": "Mismatch burden: 8R / 10R",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "C",
+          "metric": "B7 · PASS",
+          "xlabel": "Background: dose 2 / dose 0.5",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        },
+        {
+          "label": "D",
+          "metric": "B8 · PASS",
+          "xlabel": "Edited-112 fraction, 72 h",
+          "ylabel": "",
+          "kind": "",
+          "line_count": 1,
+          "line_points": 1
+        }
+      ],
+      "caption": "Panels: A: B5 · FAIL; B: B6 · PASS; C: B7 · PASS; D: B8 · PASS.\n\nF6 benchmark scorecard, retaining all eight saved model values and PASS/PARTIAL/FAIL statuses. Green bands = source PASS display range; orange bands = source PARTIAL display range. Each panel has its own actual numeric axis. B6 is displayed in full at 460.937, without clamping to 5. B8 band is the original display convention; its source criterion is monotonic accumulation. This redraw does not independently validate the literature anchors or benchmark definitions.",
+      "sources": [
+        "new_results/benchmarks/benchmark_scorecard.csv"
+      ],
+      "main_page_eligible": true,
+      "title": "Benchmark checks B5–B8",
+      "section": "main",
+      "page_number": 8
+    },
+    {
+      "id": "05_module1-01",
+      "previous_group": "05_module1",
+      "svg": "figures/05_module1-01/figure.svg",
+      "png": "figures/05_module1-01/figure@2x.png",
+      "pdf": "figures/05_module1-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "A_dep",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module1_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "A_lymph",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module1_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "A_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module1_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "to_lymph",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module1_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: A_dep; B: A_lymph; C: A_blood; D: to_lymph.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module1_states.json",
+        "plot_series/run_dose2_t168/module1_states.json",
+        "plot_series/wiki_assets/module1_absorption_states.json",
+        "plot_series/run_dose0p5_t168/module1_fluxes.json",
+        "plot_series/run_dose2_t168/module1_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Absorption states and uptake",
+      "section": "gallery",
+      "page_number": 9
+    },
+    {
+      "id": "05_module1-02",
+      "previous_group": "05_module1",
+      "svg": "figures/05_module1-02/figure.svg",
+      "png": "figures/05_module1-02/figure@2x.png",
+      "pdf": "figures/05_module1-02/figure.pdf",
+      "panel_count": 3,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "to_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module1_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "local_loss",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module1_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "lymph_to_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module1_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: to_blood; B: local_loss; C: lymph_to_blood.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module1_states.json",
+        "plot_series/run_dose2_t168/module1_states.json",
+        "plot_series/wiki_assets/module1_absorption_states.json",
+        "plot_series/run_dose0p5_t168/module1_fluxes.json",
+        "plot_series/run_dose2_t168/module1_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Absorption fluxes",
+      "section": "gallery",
+      "page_number": 10
+    },
+    {
+      "id": "06_module2-01",
+      "previous_group": "06_module2",
+      "svg": "figures/06_module2-01/figure.svg",
+      "png": "figures/06_module2-01/figure@2x.png",
+      "pdf": "figures/06_module2-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "A_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module2_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "A_liver",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module2_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "A_peripheral",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module2_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "A_brain_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module2_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: A_blood; B: A_liver; C: A_peripheral; D: A_brain_blood.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module2_states.json",
+        "plot_series/run_dose2_t168/module2_states.json",
+        "plot_series/wiki_assets/module2_distribution_states.json",
+        "plot_series/run_dose0p5_t168/module2_fluxes.json",
+        "plot_series/run_dose2_t168/module2_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Distribution profiles",
+      "section": "gallery",
+      "page_number": 11
+    },
+    {
+      "id": "06_module2-02",
+      "previous_group": "06_module2",
+      "svg": "figures/06_module2-02/figure.svg",
+      "png": "figures/06_module2-02/figure@2x.png",
+      "pdf": "figures/06_module2-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "A_cleared",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module2_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "blood_to_liver",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "blood_to_peripheral",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "D",
+          "metric": "blood_to_brain",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: A_cleared; B: blood_to_liver; C: blood_to_peripheral; D: blood_to_brain.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module2_states.json",
+        "plot_series/run_dose2_t168/module2_states.json",
+        "plot_series/wiki_assets/module2_distribution_states.json",
+        "plot_series/run_dose0p5_t168/module2_fluxes.json",
+        "plot_series/run_dose2_t168/module2_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Distribution and clearance",
+      "section": "gallery",
+      "page_number": 12
+    },
+    {
+      "id": "06_module2-03",
+      "previous_group": "06_module2",
+      "svg": "figures/06_module2-03/figure.svg",
+      "png": "figures/06_module2-03/figure@2x.png",
+      "pdf": "figures/06_module2-03/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "liver_to_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "peripheral_to_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "brain_to_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "D",
+          "metric": "clear_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: liver_to_blood; B: peripheral_to_blood; C: brain_to_blood; D: clear_blood.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module2_states.json",
+        "plot_series/run_dose2_t168/module2_states.json",
+        "plot_series/wiki_assets/module2_distribution_states.json",
+        "plot_series/run_dose0p5_t168/module2_fluxes.json",
+        "plot_series/run_dose2_t168/module2_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Return and clearance fluxes",
+      "section": "gallery",
+      "page_number": 13
+    },
+    {
+      "id": "06_module2-04",
+      "previous_group": "06_module2",
+      "svg": "figures/06_module2-04/figure.svg",
+      "png": "figures/06_module2-04/figure@2x.png",
+      "pdf": "figures/06_module2-04/figure.pdf",
+      "panel_count": 3,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "clear_liver",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "clear_peripheral",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "clear_brainblood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module2_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: clear_liver; B: clear_peripheral; C: clear_brainblood.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module2_states.json",
+        "plot_series/run_dose2_t168/module2_states.json",
+        "plot_series/wiki_assets/module2_distribution_states.json",
+        "plot_series/run_dose0p5_t168/module2_fluxes.json",
+        "plot_series/run_dose2_t168/module2_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Clearance fluxes",
+      "section": "gallery",
+      "page_number": 14
+    },
+    {
+      "id": "07_module3-01",
+      "previous_group": "07_module3",
+      "svg": "figures/07_module3-01/figure.svg",
+      "png": "figures/07_module3-01/figure@2x.png",
+      "pdf": "figures/07_module3-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "A_brain_blood",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module3_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "A_brain_EC",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module3_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "A_brain_endo",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module3_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "A_brain_ISF",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module3_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: A_brain_blood; B: A_brain_EC; C: A_brain_endo; D: A_brain_ISF.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module3_states.json",
+        "plot_series/run_dose2_t168/module3_states.json",
+        "plot_series/wiki_assets/module3_bbb_transport_states.json",
+        "plot_series/run_dose0p5_t168/module3_fluxes.json",
+        "plot_series/run_dose2_t168/module3_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Blood–brain barrier states",
+      "section": "gallery",
+      "page_number": 15
+    },
+    {
+      "id": "07_module3-02",
+      "previous_group": "07_module3",
+      "svg": "figures/07_module3-02/figure.svg",
+      "png": "figures/07_module3-02/figure@2x.png",
+      "pdf": "figures/07_module3-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "brainblood_to_EC",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "EC_to_endo",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "EC_to_brainblood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "D",
+          "metric": "endo_to_ISF",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: brainblood_to_EC; B: EC_to_endo; C: EC_to_brainblood; D: endo_to_ISF.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module3_states.json",
+        "plot_series/run_dose2_t168/module3_states.json",
+        "plot_series/wiki_assets/module3_bbb_transport_states.json",
+        "plot_series/run_dose0p5_t168/module3_fluxes.json",
+        "plot_series/run_dose2_t168/module3_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Blood–brain barrier transport",
+      "section": "gallery",
+      "page_number": 16
+    },
+    {
+      "id": "07_module3-03",
+      "previous_group": "07_module3",
+      "svg": "figures/07_module3-03/figure.svg",
+      "png": "figures/07_module3-03/figure@2x.png",
+      "pdf": "figures/07_module3-03/figure.pdf",
+      "panel_count": 3,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "endo_to_brainblood",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "endo_loss",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "clear_ISF",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module3_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: endo_to_brainblood; B: endo_loss; C: clear_ISF.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module3_states.json",
+        "plot_series/run_dose2_t168/module3_states.json",
+        "plot_series/wiki_assets/module3_bbb_transport_states.json",
+        "plot_series/run_dose0p5_t168/module3_fluxes.json",
+        "plot_series/run_dose2_t168/module3_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Blood–brain barrier return and loss",
+      "section": "gallery",
+      "page_number": 17
+    },
+    {
+      "id": "08_module4-01",
+      "previous_group": "08_module4",
+      "svg": "figures/08_module4-01/figure.svg",
+      "png": "figures/08_module4-01/figure@2x.png",
+      "pdf": "figures/08_module4-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "A_brain_ISF",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module4_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "A_brain_cell",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module4_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "A_brain_nuc",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module4_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "mRNA_brain",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module4_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: A_brain_ISF; B: A_brain_cell; C: A_brain_nuc; D: mRNA_brain.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module4_states.json",
+        "plot_series/run_dose2_t168/module4_states.json",
+        "plot_series/wiki_assets/module4_expression_states.json",
+        "plot_series/run_dose0p5_t168/module4_fluxes.json",
+        "plot_series/run_dose2_t168/module4_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Cellular delivery states",
+      "section": "gallery",
+      "page_number": 18
+    },
+    {
+      "id": "08_module4-02",
+      "previous_group": "08_module4",
+      "svg": "figures/08_module4-02/figure.svg",
+      "png": "figures/08_module4-02/figure@2x.png",
+      "pdf": "figures/08_module4-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "P_brain",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module4_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "ISF_to_cell",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "cell_to_nuc",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "D",
+          "metric": "cell_loss",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: P_brain; B: ISF_to_cell; C: cell_to_nuc; D: cell_loss.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module4_states.json",
+        "plot_series/run_dose2_t168/module4_states.json",
+        "plot_series/wiki_assets/module4_expression_states.json",
+        "plot_series/run_dose0p5_t168/module4_fluxes.json",
+        "plot_series/run_dose2_t168/module4_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Expression and delivery fluxes",
+      "section": "gallery",
+      "page_number": 19
+    },
+    {
+      "id": "08_module4-03",
+      "previous_group": "08_module4",
+      "svg": "figures/08_module4-03/figure.svg",
+      "png": "figures/08_module4-03/figure@2x.png",
+      "pdf": "figures/08_module4-03/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "deg_v",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "B",
+          "metric": "tx",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "C",
+          "metric": "deg_m",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        },
+        {
+          "label": "D",
+          "metric": "tl",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: deg_v; B: tx; C: deg_m; D: tl.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module4_states.json",
+        "plot_series/run_dose2_t168/module4_states.json",
+        "plot_series/wiki_assets/module4_expression_states.json",
+        "plot_series/run_dose0p5_t168/module4_fluxes.json",
+        "plot_series/run_dose2_t168/module4_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Expression and degradation fluxes",
+      "section": "gallery",
+      "page_number": 20
+    },
+    {
+      "id": "08_module4-04",
+      "previous_group": "08_module4",
+      "svg": "figures/08_module4-04/figure.svg",
+      "png": "figures/08_module4-04/figure@2x.png",
+      "pdf": "figures/08_module4-04/figure.pdf",
+      "panel_count": 1,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "deg_p",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module4_fluxes",
+          "line_count": 2,
+          "line_points": 1682
+        }
+      ],
+      "caption": "Panels: A: deg_p.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module4_states.json",
+        "plot_series/run_dose2_t168/module4_states.json",
+        "plot_series/wiki_assets/module4_expression_states.json",
+        "plot_series/run_dose0p5_t168/module4_fluxes.json",
+        "plot_series/run_dose2_t168/module4_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Protein degradation",
+      "section": "gallery",
+      "page_number": 21
+    },
+    {
+      "id": "09_module5_states-01",
+      "previous_group": "09_module5_states",
+      "svg": "figures/09_module5_states-01/figure.svg",
+      "png": "figures/09_module5_states-01/figure@2x.png",
+      "pdf": "figures/09_module5_states-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "P_brain",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "S_APOE4",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "S_APOE3_like",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "S_APOE2_like",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: P_brain; B: S_APOE4; C: S_APOE3_like; D: S_APOE2_like.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_states.json",
+        "plot_series/run_dose2_t168/module5_states.json",
+        "plot_series/wiki_assets/apoe_multisite_editing_states.json"
+      ],
+      "main_page_eligible": true,
+      "title": "APOE editing states",
+      "section": "gallery",
+      "page_number": 22
+    },
+    {
+      "id": "09_module5_states-02",
+      "previous_group": "09_module5_states",
+      "svg": "figures/09_module5_states-02/figure.svg",
+      "png": "figures/09_module5_states-02/figure@2x.png",
+      "pdf": "figures/09_module5_states-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "S_APOE158_only",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "B_local_bystander",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "S_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "E_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: S_APOE158_only; B: B_local_bystander; C: S_puf_off; D: E_puf_off.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_states.json",
+        "plot_series/run_dose2_t168/module5_states.json",
+        "plot_series/wiki_assets/apoe_multisite_editing_states.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Bystander and background states",
+      "section": "gallery",
+      "page_number": 23
+    },
+    {
+      "id": "09_module5_states-03",
+      "previous_group": "09_module5_states",
+      "svg": "figures/09_module5_states-03/figure.svg",
+      "png": "figures/09_module5_states-03/figure@2x.png",
+      "pdf": "figures/09_module5_states-03/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "S_deaminase_bg",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "E_deaminase_bg",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "S_on",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "S_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: S_deaminase_bg; B: E_deaminase_bg; C: S_on; D: S_off.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_states.json",
+        "plot_series/run_dose2_t168/module5_states.json",
+        "plot_series/wiki_assets/apoe_multisite_editing_states.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Substrate and complex states",
+      "section": "gallery",
+      "page_number": 24
+    },
+    {
+      "id": "09_module5_states-04",
+      "previous_group": "09_module5_states",
+      "svg": "figures/09_module5_states-04/figure.svg",
+      "png": "figures/09_module5_states-04/figure@2x.png",
+      "pdf": "figures/09_module5_states-04/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "ES_on",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "ES_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "E_on",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "E_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Amount / level",
+          "kind": "module5_states",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: ES_on; B: ES_off; C: E_on; D: E_off.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_states.json",
+        "plot_series/run_dose2_t168/module5_states.json",
+        "plot_series/wiki_assets/apoe_multisite_editing_states.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Complex and product states",
+      "section": "gallery",
+      "page_number": 25
+    },
+    {
+      "id": "10_module5_metrics-01",
+      "previous_group": "10_module5_metrics",
+      "svg": "figures/10_module5_metrics-01/figure.svg",
+      "png": "figures/10_module5_metrics-01/figure@2x.png",
+      "pdf": "figures/10_module5_metrics-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "on_target_editing_rate",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "off_target_burden",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "specificity_index",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "off_target_editing_fraction",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: on_target_editing_rate; B: off_target_burden; C: specificity_index; D: off_target_editing_fraction.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_metrics.json",
+        "plot_series/run_dose2_t168/module5_metrics.json",
+        "plot_series/wiki_assets/apoe_editing_metrics.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Editing efficiency and specificity",
+      "section": "gallery",
+      "page_number": 26
+    },
+    {
+      "id": "10_module5_metrics-02",
+      "previous_group": "10_module5_metrics",
+      "svg": "figures/10_module5_metrics-02/figure.svg",
+      "png": "figures/10_module5_metrics-02/figure@2x.png",
+      "pdf": "figures/10_module5_metrics-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "apoe4_fraction",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "apoe3_like_fraction",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "apoe2_like_fraction",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "mixed_edit_fraction",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: apoe4_fraction; B: apoe3_like_fraction; C: apoe2_like_fraction; D: mixed_edit_fraction.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_metrics.json",
+        "plot_series/run_dose2_t168/module5_metrics.json",
+        "plot_series/wiki_assets/apoe_editing_metrics.json"
+      ],
+      "main_page_eligible": true,
+      "title": "APOE product fractions",
+      "section": "gallery",
+      "page_number": 27
+    },
+    {
+      "id": "10_module5_metrics-03",
+      "previous_group": "10_module5_metrics",
+      "svg": "figures/10_module5_metrics-03/figure.svg",
+      "png": "figures/10_module5_metrics-03/figure@2x.png",
+      "pdf": "figures/10_module5_metrics-03/figure.pdf",
+      "panel_count": 3,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "local_bystander_burden",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "puf_mismatch_burden",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "deaminase_background_burden",
+          "xlabel": "Time (h)",
+          "ylabel": "Metric",
+          "kind": "module5_metrics",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: local_bystander_burden; B: puf_mismatch_burden; C: deaminase_background_burden.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_metrics.json",
+        "plot_series/run_dose2_t168/module5_metrics.json",
+        "plot_series/wiki_assets/apoe_editing_metrics.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Off-target burden components",
+      "section": "gallery",
+      "page_number": 28
+    },
+    {
+      "id": "11_module5_fluxes_a-01",
+      "previous_group": "11_module5_fluxes_a",
+      "svg": "figures/11_module5_fluxes_a-01/figure.svg",
+      "png": "figures/11_module5_fluxes_a-01/figure@2x.png",
+      "pdf": "figures/11_module5_fluxes_a-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "prod_apoe",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "deg_apoe4",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "deg_apoe3_like",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "deg_apoe2_like",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: prod_apoe; B: deg_apoe4; C: deg_apoe3_like; D: deg_apoe2_like.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "APOE production and degradation",
+      "section": "gallery",
+      "page_number": 29
+    },
+    {
+      "id": "11_module5_fluxes_a-02",
+      "previous_group": "11_module5_fluxes_a",
+      "svg": "figures/11_module5_fluxes_a-02/figure.svg",
+      "png": "figures/11_module5_fluxes_a-02/figure@2x.png",
+      "pdf": "figures/11_module5_fluxes_a-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "deg_apoe158_only",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "bind112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "unbind112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "edit112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: deg_apoe158_only; B: bind112; C: unbind112; D: edit112.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Site 112 editing fluxes",
+      "section": "gallery",
+      "page_number": 30
+    },
+    {
+      "id": "11_module5_fluxes_a-03",
+      "previous_group": "11_module5_fluxes_a",
+      "svg": "figures/11_module5_fluxes_a-03/figure.svg",
+      "png": "figures/11_module5_fluxes_a-03/figure@2x.png",
+      "pdf": "figures/11_module5_fluxes_a-03/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "bind158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "unbind158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "edit158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "bind158_after112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: bind158; B: unbind158; C: edit158; D: bind158_after112.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Site 158 editing fluxes",
+      "section": "gallery",
+      "page_number": 31
+    },
+    {
+      "id": "11_module5_fluxes_a-04",
+      "previous_group": "11_module5_fluxes_a",
+      "svg": "figures/11_module5_fluxes_a-04/figure.svg",
+      "png": "figures/11_module5_fluxes_a-04/figure@2x.png",
+      "pdf": "figures/11_module5_fluxes_a-04/figure.pdf",
+      "panel_count": 1,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "unbind158_after112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: unbind158_after112.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Sequential editing flux",
+      "section": "gallery",
+      "page_number": 32
+    },
+    {
+      "id": "12_module5_fluxes_b-01",
+      "previous_group": "12_module5_fluxes_b",
+      "svg": "figures/12_module5_fluxes_b-01/figure.svg",
+      "png": "figures/12_module5_fluxes_b-01/figure@2x.png",
+      "pdf": "figures/12_module5_fluxes_b-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "edit158_after112",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "bind112_after158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "unbind112_after158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "edit112_after158",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: edit158_after112; B: bind112_after158; C: unbind112_after158; D: edit112_after158.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Sequential editing fluxes",
+      "section": "gallery",
+      "page_number": 33
+    },
+    {
+      "id": "12_module5_fluxes_b-02",
+      "previous_group": "12_module5_fluxes_b",
+      "svg": "figures/12_module5_fluxes_b-02/figure.svg",
+      "png": "figures/12_module5_fluxes_b-02/figure@2x.png",
+      "pdf": "figures/12_module5_fluxes_b-02/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "local_bystander",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "prod_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "deg_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "bind_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: local_bystander; B: prod_puf_off; C: deg_puf_off; D: bind_puf_off.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Bystander and mismatch fluxes",
+      "section": "gallery",
+      "page_number": 34
+    },
+    {
+      "id": "12_module5_fluxes_b-03",
+      "previous_group": "12_module5_fluxes_b",
+      "svg": "figures/12_module5_fluxes_b-03/figure.svg",
+      "png": "figures/12_module5_fluxes_b-03/figure@2x.png",
+      "pdf": "figures/12_module5_fluxes_b-03/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "unbind_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "B",
+          "metric": "edit_puf_off",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "C",
+          "metric": "prod_deaminase_bg",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        },
+        {
+          "label": "D",
+          "metric": "deg_deaminase_bg",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: unbind_puf_off; B: edit_puf_off; C: prod_deaminase_bg; D: deg_deaminase_bg.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Mismatch and background fluxes",
+      "section": "gallery",
+      "page_number": 35
+    },
+    {
+      "id": "12_module5_fluxes_b-04",
+      "previous_group": "12_module5_fluxes_b",
+      "svg": "figures/12_module5_fluxes_b-04/figure.svg",
+      "png": "figures/12_module5_fluxes_b-04/figure@2x.png",
+      "pdf": "figures/12_module5_fluxes_b-04/figure.pdf",
+      "panel_count": 1,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "edit_deaminase_bg",
+          "xlabel": "Time (h)",
+          "ylabel": "Flux",
+          "kind": "module5_fluxes",
+          "line_count": 3,
+          "line_points": 1779
+        }
+      ],
+      "caption": "Panels: A: edit_deaminase_bg.\n\nSaved model trajectories grouped by metric. Purple solid = dose 0.5; orange dashed = dose 2.0; teal dotted = archived baseline where available. Baseline may have a shorter recorded time domain; no extrapolation. All original points are retained. Mixed units in source plots are separated into panels. Full-chain overview curves map to these existing state panels and are not repeated. Module 5 metrics consolidate two numerically identical aliases: on_target_editing_fraction = on_target_editing_rate; ldlr_binding_risk_proxy = apoe2_like_fraction. Model flux/metric arrays were evaluated from saved states with supplied base_config.yaml using original functions; raw state arrays are unchanged.",
+      "sources": [
+        "plot_series/run_dose0p5_t168/module5_fluxes.json",
+        "plot_series/run_dose2_t168/module5_fluxes.json",
+        "plot_series/wiki_assets/apoe_editing_fluxes.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Background editing flux",
+      "section": "gallery",
+      "page_number": 36
+    },
+    {
+      "id": "13_legacy_notebook-01",
+      "previous_group": "13_legacy_notebook",
+      "svg": "figures/13_legacy_notebook-01/figure.svg",
+      "png": "figures/13_legacy_notebook-01/figure@2x.png",
+      "pdf": "figures/13_legacy_notebook-01/figure.pdf",
+      "panel_count": 4,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "Legacy NB01",
+          "xlabel": "Time (hours)",
+          "ylabel": "Enzyme production rate u(t)",
+          "kind": "NB01",
+          "line_count": 1,
+          "line_points": 500
+        },
+        {
+          "label": "B",
+          "metric": "Legacy NB02",
+          "xlabel": "Time",
+          "ylabel": "Concentration",
+          "kind": "NB02",
+          "line_count": 4,
+          "line_points": 2000
+        },
+        {
+          "label": "C",
+          "metric": "Legacy NB03",
+          "xlabel": "Time",
+          "ylabel": "Editing Fraction",
+          "kind": "NB03",
+          "line_count": 1,
+          "line_points": 500
+        },
+        {
+          "label": "D",
+          "metric": "Legacy NB05",
+          "xlabel": "Time",
+          "ylabel": "Editing Rate",
+          "kind": "NB05",
+          "line_count": 1,
+          "line_points": 500
+        }
+      ],
+      "caption": "Panels: A: Legacy NB01; B: Legacy NB02; C: Legacy NB03; D: Legacy NB05.\n\nSeven legacy notebook images consolidated into six panels: the two identical editing-fraction plots appear once. Re-executed only after user approval with original parameters, RK45/default tolerances and original 20×20 parameter grid. This is an early simplified model, distinct from the v4 multisite model; no v4 biological inference should be drawn from the legacy product label. Heatmap retains source extent and orientation; color changed to ORCA sequential purple. No parameters or statistical methods changed.",
+      "sources": [
+        "plot_series/notebook/NB01.json",
+        "plot_series/notebook/NB02.json",
+        "plot_series/notebook/NB03.json",
+        "plot_series/notebook/NB04.json",
+        "plot_series/notebook/NB05.json",
+        "plot_series/notebook/NB06.json",
+        "plot_series/notebook/NB07.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Legacy notebook trajectories",
+      "section": "gallery",
+      "page_number": 37
+    },
+    {
+      "id": "13_legacy_notebook-02",
+      "previous_group": "13_legacy_notebook",
+      "svg": "figures/13_legacy_notebook-02/figure.svg",
+      "png": "figures/13_legacy_notebook-02/figure@2x.png",
+      "pdf": "figures/13_legacy_notebook-02/figure.pdf",
+      "panel_count": 2,
+      "panels": [
+        {
+          "label": "A",
+          "metric": "Legacy NB06",
+          "xlabel": "Time",
+          "ylabel": "Total Edited RNA",
+          "kind": "NB06",
+          "line_count": 1,
+          "line_points": 500
+        },
+        {
+          "label": "B",
+          "metric": "Legacy NB07",
+          "xlabel": "u_max (Expression Level)",
+          "ylabel": "k_cat (Catalytic Rate)",
+          "kind": "NB07",
+          "line_count": 0,
+          "line_points": 0
+        }
+      ],
+      "caption": "Panels: A: Legacy NB06; B: Legacy NB07.\n\nSeven legacy notebook images consolidated into six panels: the two identical editing-fraction plots appear once. Re-executed only after user approval with original parameters, RK45/default tolerances and original 20×20 parameter grid. This is an early simplified model, distinct from the v4 multisite model; no v4 biological inference should be drawn from the legacy product label. Heatmap retains source extent and orientation; color changed to ORCA sequential purple. No parameters or statistical methods changed.",
+      "sources": [
+        "plot_series/notebook/NB01.json",
+        "plot_series/notebook/NB02.json",
+        "plot_series/notebook/NB03.json",
+        "plot_series/notebook/NB04.json",
+        "plot_series/notebook/NB05.json",
+        "plot_series/notebook/NB06.json",
+        "plot_series/notebook/NB07.json"
+      ],
+      "main_page_eligible": true,
+      "title": "Legacy accumulation and parameter grid",
+      "section": "gallery",
+      "page_number": 38
+    }
+  ],
+  "omitted_figures": [
+    {
+      "id": "14_dbtl_model_loop",
+      "reason": "Removed from Software at user request; original source data retained."
+    }
+  ],
+  "source_figures_original": 63
+}

@@ -1,48 +1,83 @@
-/* Software shares Model's reading layout, typography and directory motion. */
+/* Software-specific content; shared Wiki navigation and reading behavior stay local. */
 .software-page .model-overview h1 { font-size: clamp(58px, 6.4vw, 96px); }
 .software-page .model-typed-title .typed-glyph { animation-delay: calc(.2s + var(--letter) * .2s); }
 body:not(.ot) .software-page .model-typed-title .typed-glyph:not(:last-of-type) { color: inherit !important; }
 body:not(.ot) .software-page .model-typed-title .typed-glyph:last-of-type { color: var(--particle-coral, #aa4e58) !important; }
-
-.software-page .software-introduction .module-heading h2,
-.software-page .markdown-content > h2 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
-.software-page .markdown-content > h2 { margin: 0 0 28px; }
-.software-page .software-tools { display: grid; gap: 24px; margin: 32px 0; }
-.software-page .software-tool { min-width: 0; padding: 26px 28px; border: 1px solid #e1e5f2; border-radius: 16px; background: #f3f6fc; }
-.software-page .model-prose .software-label { display: block; margin: 0 0 10px; color: #626897; font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 650; line-height: 1.5; letter-spacing: .07em; }
-.software-page .software-tool h3 { margin: 0 0 14px; font-size: 28px; }
-.software-page .software-tool .text-link { font-size: 17px; }
-
-.software-page .software-steps,
-.software-page .software-guardrails { display: grid; gap: 0; }
-.software-page .software-steps > article,
-.software-page .software-guardrails > article { position: relative; min-width: 0; padding: 26px 0; border-bottom: 1px solid #e4e5ef; }
-.software-page .software-steps > article:first-child,
-.software-page .software-guardrails > article:first-child { padding-top: 0; }
-.software-page .software-steps > article:last-child,
-.software-page .software-guardrails > article:last-child { border-bottom: 0; padding-bottom: 0; }
-.software-page .software-steps > article { padding-left: 54px; }
-.software-page .model-prose .software-step-number { position: absolute; top: 28px; left: 0; color: #7a86b7; font-size: 22px; font-weight: 600; }
-.software-page .software-steps > article:first-child .software-step-number { top: 2px; }
-.software-page :is(.software-steps, .software-guardrails) h3 { margin: 0 0 12px; font-size: 28px; }
-.software-page :is(.software-steps, .software-guardrails) p { margin-bottom: 0; }
-
-.software-page .software-command { margin: 34px 0; }
-.software-page .model-prose .software-command pre { margin: 0; }
-.software-page .model-prose .evidence-note { margin: 30px 0 0; padding: 22px 24px; border-radius: 12px; font-size: 17px; }
-.software-page .model-prose .evidence-note > span,
-.software-page .model-prose .evidence-note > strong { display: block; margin-bottom: 10px; }
-.software-page .model-prose .evidence-note > span { font-size: 13px; font-weight: 650; letter-spacing: .06em; }
-.software-page .model-prose .evidence-note p { margin: 0; }
-.software-page .model-prose .note { padding: 20px 24px; border-radius: 12px; font-size: 17px; }
-
+.software-page .software-intro { padding: 18px 0 42px; }
+.software-page .model-prose .software-lead { font-size: clamp(26px, 3vw, 36px); line-height: 1.25; font-weight: 650; color: #2e267c; margin: 0 0 24px; }
+.software-page .model-prose h3 { margin-top: 52px; font-size: clamp(25px, 2.5vw, 32px); }
+.software-page .model-prose h4 { font-size: clamp(20px, 2vw, 26px); line-height: 1.35; margin: 0 0 18px; }
+.software-page .module-heading h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.18; }
+.software-page .software-capabilities { margin: 28px 0 34px; }
+.software-page .software-capabilities > div { padding: 20px 0; border-bottom: 1px solid #e4e2ef; }
+.software-page .software-capabilities dt { font-weight: 650; color: #2e267c; margin-bottom: 8px; }
+.software-page .software-capabilities dd { margin: 0; }
+.software-page .software-actions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin: 28px 0 12px; }
+.software-page a.software-action { display: flex; flex-direction: column; justify-content: center; padding: 22px 24px; border: 1px solid #2e267c; border-radius: 10px; color: #2e267c; text-decoration: none; font-size: 18px; font-weight: 650; line-height: 1.4; background: #f8f7ff; transition: background .15s; }
+.software-page a.software-action--primary { background: #2e267c; color: #fff; }
+.software-page a.software-action:hover { background: #e9e8ff; }
+.software-page a.software-action--primary:hover { background: #19143d; }
+.software-page .software-action span { display: block; font-weight: 400; font-size: 14px; margin-top: 7px; opacity: .85; }
+.software-page .model-prose :is(.software-download-meta,.software-source-note) { font-size: 15px; line-height: 1.6; color: #625f76; overflow-wrap: anywhere; }
+.software-page .model-prose .software-code { margin: 28px 0; overflow-x: auto; padding: 22px 24px; font-size: 15px; line-height: 1.8; border: 1px solid #e0ddef; background: #f7f6fc; color: #171536; }
+.software-page .software-figure { margin: 44px 0; min-width: 0; }
+.software-page .software-figure-view { display: block; background: #fff; border: 1px solid #e8e6f0; border-radius: 4px; padding: 8px; }
+.software-page .software-figure img { width: 100%; height: auto; display: block; }
+.software-page .software-figure figcaption { margin-top: 16px; font-size: 16px; line-height: 1.65; color: #625f76; }
+.software-page .software-figure figcaption a { white-space: nowrap; }
+.software-page .software-figure-group { border-top: 1px solid #d9d7e5; margin: 0; }
+.software-page .software-figure-group:last-of-type { border-bottom: 1px solid #d9d7e5; margin-bottom: 24px; }
+.software-page .software-figure-group summary { padding: 22px 4px; cursor: pointer; font-size: 20px; font-weight: 600; color: #2e267c; }
+.software-page .software-figure-group summary span { display: block; margin: 6px 0 0 20px; font-weight: 400; font-size: 14px; color: #625f76; }
+.software-page .software-figure-group[open] summary { border-bottom: 1px solid #eeedf4; }
+.software-page .software-workflow { padding: 0; list-style: none; margin: 30px 0; }
+.software-page .software-workflow li { position: relative; padding: 20px 0 20px 112px; border-bottom: 1px solid #e4e2ef; }
+.software-page .software-workflow .software-step { position: absolute; left: 0; top: 22px; font-size: 16px; font-weight: 650; color: #2e267c; }
+.software-page .software-workflow strong { display: block; margin-bottom: 8px; }
+.software-page .software-workflow p { margin-bottom: 0; }
+.software-page .software-note { padding: 20px 24px; border-left: 3px solid #9d9cf4; background: #f7f6fc; font-size: 17px; }
+.software-page :is(a,summary):focus-visible { outline: 3px solid #5d5ad7; outline-offset: 5px; }
 @media (max-width: 760px) {
   .software-page .model-overview h1 { font-size: clamp(30px, 7.6vw, 55px); }
-  .software-page .model-sidebar [data-module-link] { font-size: clamp(10px, 2.6vw, 15px); }
-  .software-page .software-tool { padding: 20px; }
-  .software-page .software-tool h3,
-  .software-page :is(.software-steps, .software-guardrails) h3 { font-size: 24px; }
-  .software-page .software-steps > article { padding-left: 40px; }
-  .software-page .model-prose .software-step-number { font-size: 19px; }
-  .software-page .model-prose :is(.evidence-note, .note) { padding: 18px; font-size: 16px; }
+  .software-page .model-sidebar [data-module-link] { font-size: clamp(11px, 2.6vw, 15px); }
+  .software-page .software-actions { grid-template-columns: 1fr; }
+  .software-page a.software-action { padding: 18px; }
+  .software-page .software-workflow li { padding: 18px 0; }
+  .software-page .software-workflow .software-step { position: static; display: block; margin-bottom: 9px; }
+  .software-page .software-figure figcaption { font-size: 14px; }
+  .software-page .software-figure-view { padding: 3px; }
+  .software-page .model-prose .software-code { font-size: 13px; padding: 16px; }
+}
+/* Override later global link/figure styling only inside this page. */
+body:not(.ot) .software-page .model-prose a.software-action--primary,
+body:not(.ot) .software-page .model-prose a.software-action--primary:hover { color: #fff; }
+.software-page .model-reading .model-prose figure.software-figure { width: 100%; padding: 0; border: 0; box-shadow: none; border-radius: 0; background: transparent; }
+.software-page .model-reading .model-prose .software-figure figcaption { padding: 0; }
+.software-page .module-heading { align-items: flex-start; }
+.software-page .module-heading .module-number { margin-top: 28px; }
+.software-page .software-setup summary { cursor: pointer; color: #2e267c; padding: 8px 0; font-weight: 600; }
+.software-page .model-prose .software-equation { padding: 24px 16px; margin: 24px 0; border-block: 1px solid #e4e2ef; text-align: center; font-size: clamp(18px, 2.1vw, 25px); line-height: 1.8; color: #2e267c; }
+.software-page .model-prose .software-references { font-size: 16px; line-height: 1.65; padding-left: 24px; overflow-wrap: anywhere; }
+.software-page .model-prose .software-references li { margin-bottom: 16px; }
+.software-page .model-prose .software-evidence { margin-top: 28px; font-size: 16px; line-height: 1.6; color: #625f76; }
+.software-page .software-figure figcaption strong { font-style: normal; }
+
+.software-page .software-actions { grid-template-columns: minmax(0, 360px); }
+.software-page .software-workflow .software-step svg { display: block; width: 40px; height: 40px; margin-bottom: 10px; fill: none; stroke: #2e267c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.software-page .software-tutorial { margin: 28px 0 36px; }
+.software-page .software-tutorial video { display: block; width: 100%; height: auto; aspect-ratio: 3024 / 2144; background: #171536; border-radius: 8px; }
+.software-page .model-prose .software-tutorial p { margin-top: 12px; font-size: 15px; color: #625f76; }
+
+/* Four concise result stories, with figures kept in their numbered sequence. */
+.software-page .software-stories { margin: 30px 0 42px; padding: 0; list-style: none; counter-reset: software-story; }
+.software-page .software-stories > li { position: relative; padding: 28px 0 28px 62px; border-top: 1px solid #dedbea; counter-increment: software-story; }
+.software-page .software-stories > li:last-child { border-bottom: 1px solid #dedbea; }
+.software-page .software-stories > li::before { content: counter(software-story, decimal-leading-zero); position: absolute; top: 30px; left: 0; color: #8b82b6; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.software-page .model-prose .software-stories h4 { margin: 0 0 14px; color: #2e267c; font-size: clamp(21px, 2.3vw, 28px); }
+.software-page .model-prose .software-stories p { margin: 0 0 12px; }
+.software-page .model-prose .software-stories p:last-child { margin-bottom: 0; }
+.software-page .model-prose .software-story-choice { color: #2e267c; font-weight: 600; }
+@media (max-width: 760px) {
+  .software-page .software-stories > li { padding: 24px 0 24px 40px; }
+  .software-page .software-stories > li::before { top: 25px; font-size: 16px; }
 }
