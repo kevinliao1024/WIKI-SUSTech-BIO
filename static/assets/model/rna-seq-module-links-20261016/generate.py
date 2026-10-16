@@ -249,8 +249,8 @@ tasks = [
 ]
 for x, kind, module, task in tasks:
     arrow((x,550), (x,590), c=C['purple'])
-    icon(kind, x, 660, .82, 'teal')
-    text(x, 732, module, 25, C['teal'], weight='bold')
+    icon(kind, x, 660, .82, 'purple')
+    text(x, 732, module, 25, C['ink'], weight='bold')
     text(x, 770, task, 23, C['ink'])
     EDGES.append(['Editor comparison', f'{module}: {task}'])
 
