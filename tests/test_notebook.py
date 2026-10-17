@@ -16,9 +16,14 @@ class NotebookTest(unittest.TestCase):
 
     def test_pdf_and_preview_bytes_match_the_source_index(self):
         records=self.index['records']
-        self.assertEqual(len(records),178)
-        self.assertEqual(sum(r['pageCount'] for r in records),181)
+        self.assertEqual(len(records),168)
+        self.assertEqual(sum(r['pageCount'] for r in records),171)
         self.assertEqual(len({r['id'] for r in records}),len(records))
+        fundmental=[r for r in records if r['trackId']=='fundmental']
+        self.assertEqual(len(fundmental),15)
+        self.assertEqual(max(r['date'] for r in fundmental),'2026-07-31')
+        self.assertEqual({p.relative_to(BASE).as_posix() for p in (BASE/'pdfs').rglob('*.pdf')},{r['pdf'] for r in records})
+        self.assertEqual({p.relative_to(BASE).as_posix() for p in (BASE/'previews').rglob('*.webp')},{p['preview'] for r in records for p in r['pages']})
         for r in records:
             with self.subTest(record=r['id']):
                 data=(BASE/r['pdf']).read_bytes()

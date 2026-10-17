@@ -3,8 +3,8 @@ import {readFileSync} from 'node:fs';
 import {dayNumber,isoDay,groupTrack,dateBounds,overviewY,focusY,validateIndex} from '../static/notebook/notebook-core.mjs';
 const index=JSON.parse(readFileSync(new URL('../static/notebook/index.json',import.meta.url)));
 validateIndex(index);
-assert.equal(index.records.length,178);
-assert.equal(index.records.reduce((n,r)=>n+r.pages.length,0),181);
+assert.equal(index.records.length,168);
+assert.equal(index.records.reduce((n,r)=>n+r.pages.length,0),171);
 const bounds=dateBounds(index.records);
 assert.equal(isoDay(bounds.start),'2026-06-21');assert.equal(isoDay(bounds.end),'2026-10-13');
 // Equal calendar gaps stay equal, including months and unrecorded dates.

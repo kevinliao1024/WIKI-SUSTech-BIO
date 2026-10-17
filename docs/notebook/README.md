@@ -13,16 +13,21 @@
 ## Source coverage
 
 The source is the project owner's finalized Notebook archive dated 2026-10-17.
-All 178 PDFs were checked against `FINALIZATION.json` hashes, their 181 physical
+The initial 178 PDFs were checked against `FINALIZATION.json` hashes, their 181 physical
 pages, approved daily record metadata and PDF date text. Every source PDF is
 copied byte for byte; original branch folders and filenames are preserved.
 The project owner explicitly confirmed use of all finalized dates for this
 page on 2026-10-17. No chronology or scientific findings were newly inferred
 by the website implementation. Private daily JSON and source notes are not shipped.
 
+The current published selection contains **168 records / 171 pages**. At the
+owner's request, Fundmental ends on 2026-07-31; its ten later records and their
+website PDF/preview copies were removed. `scripts/notebook_publication.json`
+preserves this cutoff on future imports. The original local archive is retained.
+
 | Archive branch / track | Records | First date | Last date |
 | --- | ---: | --- | --- |
-| Fundmental | 25 | 2026-06-21 | 2026-08-16 |
+| Fundmental | 15 | 2026-06-21 | 2026-07-31 |
 | PUF | 38 | 2026-07-27 | 2026-09-19 |
 | Apobec | 21 | 2026-08-24 | 2026-09-28 |
 | Gfa | 9 | 2026-08-11 | 2026-08-30 |
