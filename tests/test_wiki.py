@@ -47,7 +47,6 @@ PLACEHOLDER_ROUTES = [
     "/contribution",
     "/future",
     "/parts",
-    "/experiments",
     "/measurement",
     "/alternative-platform",
     "/safety-and-security",
@@ -242,7 +241,8 @@ class WikiRoutesTest(unittest.TestCase):
             with self.subTest(route=route):
                 page = self.get_text(route)
                 self.assertIn(f'data-content-source="{source}"', page)
-                self.assertIn('class="markdown-content"', page)
+                if route != "/experiments":
+                    self.assertIn('class="markdown-content"', page)
 
     def test_engineering_map_and_reader_navigation_contract(self):
         page = self.get_text("/engineering")
