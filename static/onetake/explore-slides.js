@@ -12,7 +12,7 @@
 
     const select = (control, announce = true) => {
       const selectedId = control.dataset.exploreSelect;
-      controls.forEach((item) => item.setAttribute('aria-pressed', String(item === control)));
+      controls.forEach((item) => item.setAttribute('data-selected', String(item === control)));
       panels.forEach((panel) => {
         const inactive = panel.id !== selectedId;
         panel.hidden = inactive;
@@ -26,7 +26,13 @@
       }
     };
 
-    controls.forEach((control) => control.addEventListener('click', () => select(control)));
+    // Preview the directory without intercepting native link navigation.
+    controls.forEach((control) => {
+      control.addEventListener('pointerenter', (event) => {
+        if (event.pointerType !== 'touch') select(control, false);
+      });
+      control.addEventListener('focus', () => select(control));
+    });
     select(controls.find((control) => control.hasAttribute('data-explore-default')) || controls[0], false);
     root.classList.add('is-enhanced');
     deck.hidden = false;

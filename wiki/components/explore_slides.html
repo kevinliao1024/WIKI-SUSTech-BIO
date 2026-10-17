@@ -47,20 +47,20 @@
       <h2 id="ot-index-title" class="explore-slides__title">Explore the <em>project.</em></h2>
     </header>
 
-    {# Reveal controls only after enhancement; without JS all 19 links stay visible. #}
-    <div class="explore-slides__deck" role="group" aria-label="Choose a project chapter" data-explore-deck hidden>
+    {# Each slide links to its chapter entry page; the directory keeps all child links. #}
+    <div class="explore-slides__deck" role="group" aria-label="Choose a project chapter" data-explore-deck>
       {% for group in navigation_groups %}
-      <button type="button" class="explore-slide" id="explore-selector-{{ loop.index }}"
+      <a href="{{ url_for('pages', page=group['items'][0][0]) }}" class="explore-slide" id="explore-selector-{{ loop.index }}"
         data-explore-select="explore-panel-{{ loop.index }}"{% if group.label == 'Project' %} data-explore-default{% endif %}
-        aria-pressed="false" aria-controls="explore-panel-{{ loop.index }}"
-        aria-label="{{ group.label }}, {{ group['items']|length }} pages">
+        data-selected="false" aria-controls="explore-panel-{{ loop.index }}"
+        aria-label="{{ group.label }} — {{ group['items'][0][1] }}">
         <span class="explore-slide__serial" aria-hidden="true">OR—{{ '%02d'|format(loop.index) }}<span class="explore-slide__mark">↗</span></span>
         {{ specimen(loop.index) }}
         <span class="explore-slide__label">
           <span class="explore-slide__name">{{ group.label }}</span>
           <span class="explore-slide__count">{{ '%02d'|format(group['items']|length) }} PAGES</span>
         </span>
-      </button>
+      </a>
       {% endfor %}
     </div>
 

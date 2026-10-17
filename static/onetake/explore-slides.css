@@ -58,6 +58,7 @@
   cursor: pointer;
   touch-action: manipulation;
   text-align: left;
+  text-decoration: none;
   font-family: var(--ot-sans);
   -webkit-tap-highlight-color: transparent;
 }
@@ -65,7 +66,7 @@
 .explore-slide:nth-child(3) { --slide-rest-y: 17px; --slide-rest-angle: 2deg; }
 .explore-slide:nth-child(4) { --slide-rest-y: -2px; --slide-rest-angle: -1deg; }
 .explore-slide:nth-child(5) { --slide-rest-y: 12px; --slide-rest-angle: 3deg; }
-.explore-slide[aria-pressed="true"] {
+.explore-slide[data-selected="true"] {
   z-index: 1;
   transform: translateY(-12px) rotate(0);
   border-color: var(--slide-accent);
@@ -73,7 +74,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .explore-slide:hover { transform: translateY(-6px) rotate(0); border-color: #bbcdeac7; }
-  .explore-slide[aria-pressed="true"]:hover { transform: translateY(-12px) rotate(0); }
+  .explore-slide[data-selected="true"]:hover { transform: translateY(-12px) rotate(0); }
 }
 .explore-slide:focus-visible { outline: 2px solid #e0ebff; outline-offset: 6px; }
 .explore-slide__serial {
@@ -86,7 +87,7 @@
   letter-spacing: .035em;
 }
 .explore-slide__mark { opacity: 0; font-size: 15px; transition: opacity 250ms; }
-.explore-slide[aria-pressed="true"] .explore-slide__mark,
+.explore-slide[data-selected="true"] .explore-slide__mark,
 .explore-slide:focus-visible .explore-slide__mark { opacity: 1; }
 .explore-slide__specimen { display: block; width: 100%; min-height: 0; flex: 1 1 0; margin: 12px 0 16px; overflow: visible; pointer-events: none; }
 .explore-slide__field { fill: none; stroke: #a9c2e8; stroke-width: .6; opacity: .09; }
@@ -171,7 +172,7 @@
   .explore-slide { grid-column: span 2; aspect-ratio: .48; padding: 6px; transform: none; }
   .explore-slide:nth-child(4) { grid-column: 2 / span 2; }
   .explore-slide:nth-child(5) { grid-column: 4 / span 2; }
-  .explore-slide[aria-pressed="true"] { transform: translateY(-5px); }
+  .explore-slide[data-selected="true"] { transform: translateY(-5px); }
   .explore-slide__label { min-height: 70px; gap: 7px; padding: 9px 6px 7px; }
   .explore-slide__name { font-size: clamp(12px, 3.25vw, 15px); }
   .explore-slide__count { font-size: 10px; letter-spacing: .015em; }
