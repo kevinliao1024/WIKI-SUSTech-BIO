@@ -1,0 +1,51 @@
+/* Original artwork: docs/design/sustechbio-404-layered-package.
+   All positions refer to its 1672 × 941 canvas. */
+html body.not-found-page { margin: 0; padding-top: 0; background: #070a18; color: #f9f5ff; color-scheme: dark; font-family: "Avenir Next", Futura, "Segoe UI", sans-serif; }
+.not-found-page .nf-main { display: grid; min-height: 100svh; padding: 0; place-items: center; background: radial-gradient(ellipse at 50% 65%, #171b3b, #080b1b 74%); }
+.not-found-page .nf-stage { position: relative; isolation: isolate; width: min(100%, 1672px); aspect-ratio: 1672 / 941; overflow: clip; container-type: inline-size; }
+.nf-art { position: absolute; inset: 0; pointer-events: none; }
+.nf-layer { position: absolute; height: auto; max-width: none; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.nf-full { inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.nf-background { z-index: 1; }
+.nf-bubbles { z-index: 2; opacity: .95; animation: nf-bob-slow 8s ease-in-out infinite; }
+.nf-stars { z-index: 3; opacity: .98; animation: nf-bob-medium 6.5s ease-in-out infinite; /* Omit the raster orbit now drawn by the numeral SVG. */ clip-path: polygon(evenodd, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 19% 25%, 19% 45%, 38% 45%, 38% 25%, 19% 25%); }
+.nf-island { z-index: 4; width: 66%; left: 34%; top: 25%; }
+.nf-mascot { z-index: 5; width: 48%; right: 10%; top: 20%; transform-origin: center bottom; animation: nf-bob-mascot 5.3s ease-in-out infinite; }
+.nf-question { z-index: 6; width: 6.5%; right: 17.2%; top: 20%; transform-origin: center; animation: nf-bob-question 3.4s ease-in-out infinite; }
+.nf-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.nf-copy { position: absolute; z-index: 9; left: 8.5%; top: 21%; width: 43.5%; }
+.nf-copy h1 { margin: 0 0 14px; line-height: 1; }
+.nf-numeral { display: block; width: 100%; height: auto; overflow: visible; }
+.nf-copy h2 { margin: 0 0 15px; color: #fcf5ff; font-family: "Avenir Next", "Arial Rounded MT Bold", "Segoe UI", sans-serif; font-size: clamp(23px, 2.7cqw, 46px); font-weight: 800; line-height: 1.2; letter-spacing: -.065em; text-wrap: balance; text-shadow: 0 0 18px #c9aaff30; }
+.nf-copy p { margin: 0; color: #c9bfe6; font-size: clamp(14px, 1.35cqw, 23px); line-height: 1.6; font-weight: 450; letter-spacing: -.02em; }
+.not-found-page .nf-action:focus-visible { outline: 3px solid #f4c6ed; outline-offset: 4px; box-shadow: 0 0 24px #c8abff70; }
+.not-found-page .nf-action { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .8em; min-height: 52px; padding: .85em 1.8em; margin-top: 1.35em; border: 2px solid #c4a6ff; border-radius: 999px; background: linear-gradient(150deg, #bd9aff 0%, #9470fc 35%, #724bea 100%); box-shadow: inset 0 2px 4px #fff7, inset 0 -3px 8px #5633c45c, 0 0 0 5px #b291ff16, 0 7px 35px #8d5dff42; color: #fff; font-size: clamp(16px, 1.45cqw, 24px); font-weight: 750; line-height: 1.3; letter-spacing: -.02em; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.nf-action::before { content: ""; position: absolute; left: 7%; right: 7%; top: 4px; height: 42%; border-radius: 999px; background: linear-gradient(#fff3, transparent); pointer-events: none; }
+.not-found-page .nf-action:hover { transform: translateY(-3px); box-shadow: inset 0 2px 4px #fff9, 0 0 0 5px #b291ff25, 0 10px 40px #8d5dff65; color: #fff; }
+.not-found-page .nf-action:active { transform: translateY(0); }
+.nf-action svg { width: 1.2em; height: 1.2em; flex: 0 0 auto; }
+.not-found-page .site-footer { background: #090d20; border-top: 1px solid #7773bb35; }
+@keyframes nf-bob-mascot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes nf-bob-question { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(-2deg); } }
+@keyframes nf-bob-medium { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes nf-bob-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@media (max-width: 700px) {
+  .not-found-page .nf-stage { width: 100%; min-height: max(940px, calc(600px + 50vw)); aspect-ratio: auto; }
+  .nf-background { object-fit: cover; object-position: 72% bottom; opacity: .7; }
+  .nf-bubbles, .nf-stars { object-fit: cover; }
+  .nf-stars { display: none; }
+  .not-found-page .whale-navigation .rna-toggle[aria-label="Human Practices"] .nav-label { font-size: 10px; overflow-wrap: normal; }
+  .nf-island { width: 154%; left: -35%; top: auto; bottom: 0; }
+  .nf-mascot { width: min(112%, 540px); right: max(-4%, calc(50% - 270px)); top: auto; bottom: 44px; }
+  .nf-question { width: 19%; right: 7%; top: auto; bottom: 270px; }
+  .nf-copy { position: relative; left: auto; top: auto; width: auto; padding: 150px 7% 0; margin: 0; text-align: center; }
+  .nf-copy h1 { width: min(100%, 390px); margin: 0 auto; }
+  .nf-copy h2 { margin: 22px 0 12px; font-size: clamp(22px, 6.5vw, 32px); letter-spacing: -.045em; }
+  .nf-copy p { max-width: 440px; margin: 0 auto; color: #c7bfe4; font-size: 16px; line-height: 1.65; }
+  .nf-copy p br { display: none; }
+  .not-found-page .nf-action { min-height: 54px; padding: 14px 27px; margin-top: 25px; font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nf-bubbles, .nf-stars, .nf-mascot, .nf-question { animation: none; }
+  .not-found-page .nf-action { transition: none; }
+}

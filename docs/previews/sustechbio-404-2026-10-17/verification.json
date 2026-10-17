@@ -1,0 +1,81 @@
+{
+  "desktop": {
+    "x": 122.390625,
+    "y": 214.96875,
+    "width": 626.390625,
+    "height": 483.15625
+  },
+  "layouts": [
+    {
+      "width": 320,
+      "button": {
+        "x": 53.625,
+        "y": 424.640625,
+        "width": 212.75,
+        "height": 54.09375
+      },
+      "copy": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 478.734375
+      }
+    },
+    {
+      "width": 390,
+      "button": {
+        "x": 88.625,
+        "y": 452.734375,
+        "width": 212.75,
+        "height": 54.09375
+      },
+      "copy": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 506.828125
+      }
+    },
+    {
+      "width": 700,
+      "button": {
+        "x": 243.625,
+        "y": 456.171875,
+        "width": 212.75,
+        "height": 54.09375
+      },
+      "copy": {
+        "x": 0,
+        "y": 0,
+        "width": 700,
+        "height": 510.265625
+      }
+    },
+    {
+      "width": 768,
+      "button": {
+        "x": 65.265625,
+        "y": 575.640625,
+        "width": 207.234375,
+        "height": 52
+      },
+      "copy": {
+        "x": 65.265625,
+        "y": 296.65625,
+        "width": 334.078125,
+        "height": 330.984375
+      }
+    }
+  ],
+  "page_errors": [],
+  "checks": [
+    "single native home action",
+    "SVG numeral, no content image",
+    "search matching and empty state",
+    "Escape closes search",
+    "320, 390, 700, 768 layouts",
+    "reduced motion",
+    "home button navigation",
+    "nested missing page"
+  ]
+}

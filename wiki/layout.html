@@ -15,6 +15,7 @@
     {% block page_styles %}{% endblock %}
     <link href="{{ url_for('static', filename='particle-theme.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='menu-refinements.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='navigation-search.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='school-footer.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='reading-orbit/reading-orbit.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='cursor/orca-cursor.css') }}" rel="stylesheet">
@@ -48,6 +49,7 @@
     {% block footer %}{% include 'footer.html' %}{% endblock %}
     <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='wiki.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='navigation-search.js') }}" defer></script>
     <script src="{{ url_for('static', filename='reading-orbit/reading-orbit.js') }}" defer></script>
     <script src="{{ url_for('static', filename='cursor/orca-cursor.js') }}" defer></script>
     {% block page_scripts %}{% endblock %}

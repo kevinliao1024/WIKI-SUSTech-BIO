@@ -1,0 +1,58 @@
+{
+  "stage": {
+    "width": 1672,
+    "height": 941
+  },
+  "layers": {
+    "background": {
+      "file": "assets/background.png",
+      "type": "full-canvas",
+      "animation": "none"
+    },
+    "nav": {
+      "file": "assets/nav.png",
+      "type": "full-canvas",
+      "animation": "none"
+    },
+    "content": {
+      "file": "assets/content.png",
+      "type": "full-canvas",
+      "animation": "none"
+    },
+    "island_sign": {
+      "file": "assets/island_sign.png",
+      "type": "full-canvas",
+      "animation": "none"
+    },
+    "stars": {
+      "file": "assets/stars.png",
+      "type": "full-canvas",
+      "animation": "gentle vertical float"
+    },
+    "bubbles": {
+      "file": "assets/bubbles.png",
+      "type": "full-canvas",
+      "animation": "gentle vertical float"
+    },
+    "mascot": {
+      "file": "assets/mascot.png",
+      "type": "cropped element",
+      "suggested_css": {
+        "right": "7.5%",
+        "top": "12.5%",
+        "width": "44%",
+        "animation": "bob-mascot"
+      }
+    },
+    "question_mark": {
+      "file": "assets/question_mark.png",
+      "type": "cropped element",
+      "suggested_css": {
+        "right": "17.2%",
+        "top": "20.0%",
+        "width": "8.8%",
+        "animation": "bob-question"
+      }
+    }
+  }
+}

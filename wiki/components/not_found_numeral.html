@@ -1,0 +1,26 @@
+{# Code-drawn, resolution-independent lettering; no text or buttons baked into an image. #}
+<svg class="nf-numeral" viewBox="-14 -8 750 300" fill="none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="nf-digit-fill" x1="350" y1="10" x2="410" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffefd"/><stop offset=".38" stop-color="#e7deff"/><stop offset=".73" stop-color="#bca6f7"/><stop offset="1" stop-color="#ffcced"/>
+    </linearGradient>
+    <linearGradient id="nf-ring-fill" x1="225" y1="220" x2="535" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff4ff"/><stop offset=".55" stop-color="#efbdee"/><stop offset="1" stop-color="#c1a0ef"/>
+    </linearGradient>
+    <filter id="nf-digit-shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#aa8ae6" flood-opacity=".65"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="11" flood-color="#a785ee" flood-opacity=".22"/>
+    </filter>
+    <path id="nf-four" fill-rule="evenodd" d="M151 22C164 7 175 5 187 12C196 17 200 27 200 41V163H213C231 163 240 173 240 191S230 219 213 219H200V249C200 267 190 277 173 277S144 266 144 249V219H34C15 219 6 210 6 194C6 183 10 175 20 164ZM144 101 89 163H144Z"/>
+  </defs>
+  {# Two halves of the SAME ellipse: the far half is occluded by the digits. #}
+  <path class="nf-ring-back" d="M196 149A176 32 0 0 1 548 149" transform="rotate(-27 372 149)" stroke="url(#nf-ring-fill)" stroke-width="9" stroke-linecap="round"/>
+  <g fill="url(#nf-digit-fill)" stroke="#f7efff" stroke-width="2.5" filter="url(#nf-digit-shadow)">
+    <use href="#nf-four"/>
+    <path fill-rule="evenodd" d="M373 12C302 12 260 62 260 145S302 278 373 278S486 228 486 145S444 12 373 12ZM373 76C406 76 423 101 423 145S406 214 373 214S323 189 323 145S340 76 373 76Z"/>
+    <use href="#nf-four" transform="translate(482)"/>
+  </g>
+  <path class="nf-ring-front" d="M548 149A176 32 0 0 1 196 149" transform="rotate(-27 372 149)" stroke="url(#nf-ring-fill)" stroke-width="9" stroke-linecap="round"/>
+  <path d="m477 80 15 15 22-4-9 21 10 19-23-2-16 16-4-23-20-11 21-10Z" fill="#f8d4f1" stroke="#aa8cdb" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M410 35q14 1 23 12" stroke="#fff" stroke-width="13" stroke-linecap="round" opacity=".9"/>
+</svg>
