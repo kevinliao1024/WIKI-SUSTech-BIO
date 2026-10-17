@@ -20,6 +20,12 @@
   display: block;
   width: 100%; height: 100%;
 }
+.burden[data-burden-soft-entry] .burden__field {
+  opacity: 0;
+  transition: opacity .9s cubic-bezier(.22, .61, .36, 1);
+}
+.burden[data-burden-soft-entry].is-live .burden__field,
+.ot--static .burden[data-burden-soft-entry] .burden__field { opacity: 1; }
 
 /* ---------- One sentence at a time ---------- */
 .burden__lines {
@@ -43,6 +49,14 @@
 }
 .burden__line.is-on { opacity: 1; transform: none; }
 .burden__line span { color: var(--ot-coral); }
+/* Absolutely positioned sentences need a real containing width. */
+.ot-crt-home .burden__lines { width: min(620px, 60vw); max-width: none; }
+.ot-crt-home .burden__line { width: 100%; }
+.ot-crt-home .ot-root:not(.ot--static) .ot-ch--stats.is-on { opacity: var(--burden-scene-opacity, 1); }
+.ot-crt-home .ot-root:not(.ot--static) .burden__lines { opacity: var(--burden-copy-opacity, 1); }
+.ot-crt-home .ot-root:not(.ot--static) .ot-ch--question.is-on { opacity: var(--burden-question-opacity, 0); }
+.ot-crt-home .ot-root:not(.ot--static) :is(.ot-ch--stats, .ot-ch--question) { transition: opacity .65s ease, visibility 0s linear .65s; }
+.ot-crt-home .ot-root:not(.ot--static) :is(.ot-ch--stats, .ot-ch--question).is-on { transition-delay: 0s; }
 
 /* Source line stays quiet and out of the way, but present for judging. */
 .burden__source {
@@ -71,8 +85,11 @@
   .burden__lines { left: 22px; right: 22px; bottom: clamp(120px, 22vh, 190px); max-width: none; }
   .burden__line { font-size: clamp(23px, 6.4vw, 34px); }
   .burden__source { left: 22px; right: 22px; font-size: 9px; }
+  .ot-crt-home .burden__lines { width: calc(100% - 44px); }
+  .ot-crt-home .ot--static .burden__lines { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .burden__line { transition: none; }
+  .burden[data-burden-soft-entry] .burden__field { opacity: 1; transition: none; }
 }

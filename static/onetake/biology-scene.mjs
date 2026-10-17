@@ -1,5 +1,6 @@
 // Conceptual, independently identified particle objects. No measured molecular
 // trajectories, exact protein structures or functional rescue are implied.
+import { positionCallout } from './bio-callouts.mjs';
 const clamp = x => Math.max(0, Math.min(1, x));
 const ramp = (x, a, b) => clamp((x - a) / (b - a));
 const smooth = x => x * x * (3 - 2 * x);
@@ -142,6 +143,7 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
   const amyloid = points('extracellular-amyloid', ap, ac, ak, ae, 2.1);
 
   const labels = Object.fromEntries([...root.querySelectorAll('[data-bio-label]')].map(el => [el.dataset.bioLabel, el]));
+  const calloutLines = Object.fromEntries([...root.querySelectorAll('[data-bio-callout-line]')].map(el => [el.dataset.bioCalloutLine, el]));
   const projected = new THREE.Vector3();
   function label(name, position, opacity, camera, offset = 0) {
     const el = labels[name]; if (!el) return;
@@ -150,15 +152,18 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
     el.style.opacity = visible ? opacity.toFixed(3) : '0';
     el.style.visibility = visible ? 'visible' : 'hidden';
     if (visible) {
-      const margin = small ? 44 : 60;
+      const homeCodon = name === 'codon' && labels.pod?.hasAttribute('data-bio-callout');
+      const margin = homeCodon ? Math.max(small ? 44 : 60, el.offsetWidth / 2 + 16) : small ? 44 : 60;
       const x = Math.max(margin, Math.min(innerWidth-margin,(projected.x*.5+.5)*innerWidth));
-      const y = Math.max(182, Math.min(innerHeight-150,(-projected.y*.5+.5)*innerHeight + offset));
+      const minY = homeCodon ? Math.max(182, el.offsetHeight + 126) : 182;
+      const y = Math.max(minY, Math.min(innerHeight-150,(-projected.y*.5+.5)*innerHeight + offset));
       el.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-100%)`;
     }
   }
   const preview = new THREE.Vector3(.55,.2,.78), final = new THREE.Vector3(targetX,0,0);
   const ui = root.querySelector('[data-bio-interaction]');
   const instruction = root.querySelector('[data-placement-instruction]');
+  const initialInstruction = instruction?.textContent;
   const podCenter = podCenters.reduce((sum,p) => sum.add(new THREE.Vector3(...p)),new THREE.Vector3()).multiplyScalar(1/podCenters.length);
   const items = {
     pod: { layer: pod, slot: podSlot, center: podCenter, centers: podCenters, radii: [.23,.25,.24], offset: new THREE.Vector3(), home: new THREE.Vector3(), placed: false },
@@ -248,7 +253,7 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
         placementInitialized = true;
         placementSession = root.dataset.editSession;
         onReady?.(false);
-        if (instruction) instruction.textContent = 'Drag POD and CETUS to the RNA.';
+        if (instruction) instruction.textContent = initialInstruction;
         for (const [name,item] of Object.entries(items)) {
           item.placed = false;
           const target = screenOf(fixedCenter(item));
@@ -333,6 +338,18 @@ export function createBiologyScene(THREE, scene, { root, cell, strand, small, on
       label('codon', final.clone().add(new THREE.Vector3(.62,.95,.2)),codonOn,camera,-18);
       label('pod', fixedCenter(items.pod).add(new THREE.Vector3(-.45,-.25,0)),placement?0:editVisible*edit.pod,camera,22);
       label('cetus', fixedCenter(items.cetus),placement?0:editVisible*edit.cetus,camera,small?-85:-28);
+      let calloutBottom = innerHeight * .8;
+      if (labels.pod?.hasAttribute('data-bio-callout') && (placement || editVisible > .02)) {
+        const narrative = root.querySelector('.ot-ch.is-on .ot-narrative');
+        if (narrative) calloutBottom = Math.min(calloutBottom, narrative.getBoundingClientRect().top);
+        if (placement && instruction) calloutBottom = Math.min(calloutBottom, instruction.getBoundingClientRect().top);
+      }
+      for (const [name, item] of Object.entries(items)) {
+        if (!labels[name]?.hasAttribute('data-bio-callout')) continue;
+        const anchor = item.layer.object.position.clone().add(item.center);
+        positionCallout(labels[name], calloutLines[name], screenOf(anchor), codon.getBoundingClientRect(),
+          placement ? 1 : editVisible * edit[name], name === 'cetus', calloutBottom);
+      }
       label('amyloid',new THREE.Vector3(-2.7,2.1,1.2),amyloid.uniforms.uOpacity.value,camera,-14);
       label('nucleus',new THREE.Vector3(.15,-.3,.45),windowOf(q,.26,.28,.326,.348),camera,30);
       return edit;

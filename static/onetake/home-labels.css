@@ -1,0 +1,55 @@
+/* Home annotations occupy their own space, clear of the RNA codon. */
+/* Twice the reading distance makes the scroll-driven story advance at 0.5x. */
+.ot-crt-home .ot-root:not(.ot--static) .ot-story { height: calc(100vh + 4480vh * var(--ot-track-scale, 1)); }
+.ot-crt-home .ot-chapter-copy {
+  max-width: 43ch; margin: 18px 0 0; color: #cbd3e2;
+  font-size: clamp(17px, 1.7vw, 22px); line-height: 1.5;
+  text-shadow: 0 2px 18px #03050b;
+}
+.ot-crt-home .ot-ch--right .ot-chapter-copy { margin-left: auto; }
+.ot-crt-home .ot-ch--conclusion { right: clamp(20px, 6vw, 96px); max-width: none; }
+.ot-crt-home .ot-ch--conclusion .ot-chapter-copy { max-width: none; }
+.ot-crt-home .ot-residue-before { color: #ffb0bd; font-weight: 500; }
+.ot-crt-home .ot-residue-after { color: #a5ffda; font-weight: 500; }
+.ot-crt-home .ot-codon__sequence { justify-content: center; }
+.ot-crt-home .ot-codon__protein {
+  display: grid; justify-items: center;
+  margin-top: 12px; font-size: clamp(17px, 1.8vw, 24px); font-weight: 600;
+  line-height: 1.3; letter-spacing: .01em;
+}
+.ot-crt-home .ot-codon__protein :is(.ot-before, .ot-after) {
+  grid-area: 1 / 1;
+}
+/* Reveal the edited residue only during the edit, without overlapping labels. */
+.ot-crt-home .ot-codon__protein .ot-before {
+  color: #ffb0bd; opacity: clamp(0, calc(1 - var(--fix, 0) * 2), 1);
+  text-shadow: 0 0 18px #ff8297b3;
+}
+.ot-crt-home .ot-codon__protein .ot-after {
+  color: #a5ffda; opacity: clamp(0, calc(var(--fix, 0) * 2 - 1), 1);
+  text-shadow: 0 0 18px #5cffb8b3;
+}
+.ot-crt-home .ot-bio-callout {
+  width: 200px; padding: 10px 12px; box-sizing: border-box;
+  white-space: normal; letter-spacing: 0; line-height: 1.35;
+  background: linear-gradient(110deg, #080e1eeb, #080e1e80);
+  border-left: 1px solid currentColor; border-radius: 0 6px 6px 0;
+}
+.ot-crt-home .ot-bio-callout::after { display: none; }
+.ot-crt-home .ot-bio-callout strong { display: block; font-size: 17px; font-weight: 500; }
+.ot-crt-home .ot-bio-callout small { display: block; margin-top: 6px; color: #c4ccdc; font-size: 13px; }
+.ot-crt-home .ot-bio-callout-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ot-crt-home .ot-bio-callout-lines path { fill: none; stroke: #a8b5d5; stroke-width: 1; opacity: 0; }
+/* The particle itself remains the drag target; its separate callout names it. */
+.ot-crt-home .ot-bio-handle > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.ot-crt-home .ot-bio-handle small { color: #e0e3ef; }
+@media (max-width: 899px) {
+  .ot-crt-home .ot-bio-callout { width: calc(50vw - 26px); max-width: 220px; padding: 8px 10px; }
+  .ot-crt-home .ot-bio-callout strong { font-size: 15px; }
+  .ot-crt-home .ot-bio-callout small { font-size: 12px; margin-top: 4px; }
+}
+@media (max-width: 760px) {
+  .ot-crt-home .ot-root:not(.ot--static) .ot-story { height: calc(100vh + 4000vh * var(--ot-track-scale, 1)); }
+  .ot-crt-home .ot-chapter-copy { margin-top: 14px; line-height: 1.45; }
+  .ot-crt-home .ot-ch--right .ot-chapter-copy { margin-left: 0; }
+}

@@ -21,11 +21,11 @@ export function replayFrame(seconds) {
   return { phase: 'done', take: .955 };
 }
 
-export function createEditReplay({ root, story, toProgress, enabled, autoStart = globalThis.location?.hash !== '#ot-index-title' }) {
+export function createEditReplay({ root, story, toProgress, enabled, autoStart = globalThis.location?.hash !== '#ot-index-title', scrollReturn = root.hasAttribute?.('data-edit-scroll-return') || false }) {
   const skip = root.querySelector('[data-edit-skip]');
   const startButton = root.querySelector('[data-edit-start]');
   let played = false, active = false, elapsed = 0, previous = -1, phase = '', ready = false, editingStarted = false;
-  let session = 0;
+  let session = 0, returning = false;
   const editStart = REPLAY_TIMING.question + REPLAY_TIMING.rewind + REPLAY_TIMING.target;
   const scrollToTake = take => {
     const rect = story.getBoundingClientRect();
@@ -36,7 +36,7 @@ export function createEditReplay({ root, story, toProgress, enabled, autoStart =
   const start = (at = 0) => {
     if (!enabled) return;
     active = played = true;
-    elapsed = at; ready = editingStarted = false;
+    elapsed = at; ready = editingStarted = returning = false;
     phase = at ? 'target' : 'question';
     root.dataset.editSession = String(++session);
     if (skip) skip.hidden = false;
@@ -52,6 +52,7 @@ export function createEditReplay({ root, story, toProgress, enabled, autoStart =
   startButton?.addEventListener('click', () => start(REPLAY_TIMING.question + REPLAY_TIMING.rewind));
   window.addEventListener('wheel', event => {
     if (!active) return;
+    if (scrollReturn && phase === 'return') return;
     if (phase === 'placement') {
       event.preventDefault();
       if (ready && event.deltaY > 0) beginEdit();
@@ -62,6 +63,7 @@ export function createEditReplay({ root, story, toProgress, enabled, autoStart =
   window.addEventListener('touchstart', event => { touchY = event.touches[0]?.clientY || 0; }, { passive: true });
   window.addEventListener('touchmove', event => {
     if (!active || event.target.closest?.('[data-bio-handle], [data-bio-hit]')) return;
+    if (scrollReturn && phase === 'return') return;
     if (phase === 'placement' || phase === 'edit') {
       event.preventDefault();
       if (phase === 'placement' && ready && touchY-(event.touches[0]?.clientY || touchY)>20) beginEdit();
@@ -73,6 +75,7 @@ export function createEditReplay({ root, story, toProgress, enabled, autoStart =
   }, { passive: false });
   window.addEventListener('keydown', event => {
     if (!active) return;
+    if (scrollReturn && phase === 'return' && event.key !== 'Escape') return;
     if (phase === 'placement' && ready && ['ArrowDown','PageDown',' '].includes(event.key)) { event.preventDefault(); beginEdit(); }
     else if (['edit','question','rewind','target','return'].includes(phase) && ['ArrowDown','PageDown',' '].includes(event.key)) event.preventDefault();
     else if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Escape'].includes(event.key)) interrupt();
@@ -89,6 +92,20 @@ export function createEditReplay({ root, story, toProgress, enabled, autoStart =
       if (!active) return null;
       // A background tab must not skip the readable edit when it resumes.
       elapsed += Math.min(dt, .05);
+      if (scrollReturn && editingStarted && elapsed >= editStart + REPLAY_TIMING.edit) {
+        // Hold the completed edit. Rebase the document once without moving
+        // the camera; from here the reader's scroll is the only clock.
+        const entering = !returning;
+        if (entering) { returning = true; scrollToTake(.89); }
+        if (!entering && take < .888) { finish(); return null; }
+        const amount = entering ? 0 : clamp((take - .89) / .065);
+        phase = 'return';
+        root.dataset.editReplay = phase;
+        if (skip) skip.hidden = true;
+        const frame = { phase, take: .89 + .065 * amount, cameraBlend: ease(amount), edit: 1 };
+        if (amount >= 1) finish();
+        return frame;
+      }
       let frame = replayFrame(elapsed);
       if (!editingStarted && elapsed >= editStart) {
         elapsed = editStart;

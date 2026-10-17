@@ -18,6 +18,19 @@ page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
 const root = page.locator('[data-ot]');
 const ready = () => page.waitForFunction(() => document.querySelector('[data-ot]')?.classList.contains('is-ready'));
+async function checkLabelSpacing() {
+  const boxes = await page.locator('[data-bio-label="codon"], [data-bio-callout]').evaluateAll(elements => elements.map(el => {
+    const r = el.getBoundingClientRect(); return {name:el.dataset.bioLabel,x:r.x,y:r.y,right:r.right,bottom:r.bottom};
+  }));
+  const viewport = page.viewportSize();
+  for (const box of boxes) {
+    assert.ok(box.x >= 0 && box.right <= viewport.width && box.y >= 112 && box.bottom < viewport.height, JSON.stringify(box));
+    for (const other of boxes) if (box.name !== other.name) {
+      assert.ok(box.right <= other.x || other.right <= box.x || box.bottom <= other.y || other.bottom <= box.y,
+        `Overlapping annotations: ${JSON.stringify([box,other])}`);
+    }
+  }
+}
 async function outerPodPoint() {
   return page.locator('[data-bio-hit="pod"]').evaluate(el => {
     const disks=[...el.getAttribute('d').matchAll(/M([-\d.]+),([-\d.]+)a([-\d.]+),/g)];
@@ -41,8 +54,10 @@ try {
   await pinned(.763, '05-numbers');
   await pinned(.803, '06-question');
   await pinned(.85, '07-docking');
+  await checkLabelSpacing();
   for (const name of ['pod','cetus']) assert.ok(await page.locator(`[data-bio-label="${name}"]`).evaluate(e => +e.style.opacity) > .8);
   await pinned(.891, '08-ugc');
+  await checkLabelSpacing();
   assert.equal(await page.locator('[data-bio-label="codon"]').getAttribute('aria-label'), 'UGC, intended APOE3-like RNA sequence');
 
   await page.goto(base); await ready();
@@ -78,6 +93,7 @@ try {
     await page.waitForFunction(n => document.querySelector(`[data-bio-handle="${n}"]`).getAttribute('aria-pressed') === 'true',name);
   }
   assert.equal(await page.getByText('Both are in place. Scroll once to edit.',{exact:true}).isVisible(),true);
+  await checkLabelSpacing();
   assert.equal(await root.getAttribute('data-edit-replay'),'placement');
   await page.mouse.wheel(0,300); // Exactly one gesture starts the complete edit.
   await page.waitForFunction(() => document.querySelector('[data-ot]').dataset.editReplay === 'edit', null, { timeout: 60000 });
@@ -86,12 +102,22 @@ try {
   await page.screenshot({ path: `${out}/10-replay-edit.png` });
   await page.waitForFunction(() => +document.querySelector('[data-bio-label="codon"]').style.getPropertyValue('--fix') > .99, null, { timeout: 60000 });
   await page.screenshot({ path: `${out}/11-replay-ugc.png` });
+  await page.waitForFunction(() => document.querySelector('[data-ot]').dataset.editReplay === 'return', null, { timeout: 60000 });
+  const heldScroll = await page.evaluate(() => scrollY);
+  await page.waitForTimeout(1500);
+  assert.ok(Math.abs(await page.evaluate(() => scrollY) - heldScroll) < 2, 'completed edit does not move the page automatically');
+  assert.ok(Math.abs(await root.evaluate(e => +e.style.getPropertyValue('--ot-p')) - .89) < .001);
+  await page.mouse.wheel(0, await page.locator('[data-ot-story]').evaluate((e,p) => (e.getBoundingClientRect().height-innerHeight)*p,raw(.958)-raw(.89)));
   await page.waitForFunction(() => !document.querySelector('[data-ot]').dataset.editReplay, null, { timeout: 60000 });
   assert.ok(Date.now()-start >= 8000, 'edit is given readable time');
   assert.ok(await root.evaluate(e => +e.style.getPropertyValue('--ot-p')) >= .94);
+  assert.equal(await page.locator('[data-edit-start]').count(),0,'Home has no floating retry entry after completion');
+  assert.equal(await page.locator('[data-edit-skip]').isVisible(),false,'Completed interaction releases its skip control');
   await page.screenshot({ path: `${out}/12-project.png` });
-  await page.getByRole('link',{name:'Explore ORCA'}).click();
+  assert.equal(await page.getByRole('link',{name:'Explore ORCA'}).count(),0);
+  await page.mouse.wheel(0, await page.locator('#ot-index-title').evaluate(el=>el.getBoundingClientRect().top-160));
   await page.waitForFunction(() => document.querySelector('#ot-index-title').getBoundingClientRect().top<innerHeight);
+  assert.equal(await page.locator('[data-school-footer]').count(),0,'Home omits the large school footer');
 
   await page.goto(base); await ready();
   await page.mouse.wheel(0, await page.locator('[data-ot-story]').evaluate((e,p) => (e.getBoundingClientRect().height-innerHeight)*p,raw(.798)));
@@ -103,6 +129,7 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await pinned(.29, '13-mobile-cell');
   await pinned(.891, '14-mobile-edit');
+  await checkLabelSpacing();
   for (const name of ['codon','pod','cetus']) {
     const box = await page.locator(`[data-bio-label="${name}"]`).boundingBox();
     assert.ok(box.x >= 0 && box.x+box.width <= 390 && box.y >= 112);
@@ -130,18 +157,23 @@ try {
   }
   assert.ok(Math.abs(await page.evaluate(()=>scrollY)-mobileScroll)<2,'touch dragging holds the scene still');
   await page.screenshot({path:`${out}/15-mobile-placed.png`});
+  await checkLabelSpacing();
   await swipe({x:195,y:720},{x:195,y:580});
   await page.waitForFunction(()=>document.querySelector('[data-ot]').dataset.editReplay==='edit');
   await page.waitForFunction(()=>+document.querySelector('[data-bio-label="codon"]').style.getPropertyValue('--fix')>.99,null,{timeout:60000});
   await page.screenshot({path:`${out}/16-mobile-ugc.png`});
+  await page.waitForFunction(()=>document.querySelector('[data-ot]').dataset.editReplay==='return',null,{timeout:60000});
+  await swipe({x:195,y:720},{x:195,y:380});
+  await page.mouse.wheel(0, await page.locator('[data-ot-story]').evaluate((e,p) => (e.getBoundingClientRect().height-innerHeight)*p,raw(.958)-raw(.89)));
   await page.waitForFunction(()=>!document.querySelector('[data-ot]').dataset.editReplay,null,{timeout:60000});
+  assert.equal(await page.locator('[data-edit-start]').count(),0,'Mobile completion has no floating retry entry');
   await touch.detach();
   await page.emulateMedia({ reducedMotion: 'reduce' }); await page.goto(base);
   assert.equal(await root.evaluate(e => e.classList.contains('ot--static')), true);
   assert.equal(await page.locator('[data-edit-skip]').isVisible(), false);
-  assert.equal(await page.getByText('POD recognises the RNA. CETUS edits the target C to U.', { exact: true }).isVisible(), true);
+  assert.equal(await page.getByText('PUF recognizes and binds the target RNA. APOBEC converts the target C to U.', { exact: true }).isVisible(), true);
   assert.deepEqual(errors, []);
-  await writeFile(`${out}/results.json`, JSON.stringify({ errors, checks: ['real particle rendering','CGC first-position target','protein surface grab outside label','POD and CETUS drag and snap','incorrect drop returns home','gold destination contours','placement pause','one-scroll full edit','UGC product','automatic upward scroll','8.5 second edit hold','project continuation and link','user interruption','mobile label bounds','mobile protein surface touch drag and one swipe edit','reduced motion'] },null,2));
+  await writeFile(`${out}/results.json`, JSON.stringify({ errors, checks: ['real particle rendering','CGC first-position target','protein surface grab outside label','PUF and APOBEC drag and snap','incorrect drop returns home','gold destination contours','placement pause','one-scroll full edit','UGC product','automatic upward scroll','8.5 second edit hold','project continuation by scrolling','user interruption','desktop/mobile annotations do not overlap','mobile protein surface touch drag and one swipe edit','reduced motion'] },null,2));
   console.log(`Passed biology browser checks; screenshots in ${out}`);
 } catch (error) {
   console.log(errors); await page.screenshot({ path: `${out}/failure.png` }); throw error;

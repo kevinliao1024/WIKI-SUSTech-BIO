@@ -88,16 +88,13 @@ function buildMap() {
     const line=svg('line',{class:'nb-tick-line',x1:major?-16:week?-9:-4,x2:major?16:week?9:4});
     const label=svg('text',{x:0,y:-10,'text-anchor':'middle'},major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(d):week?String(d.getUTCDate()):'');
     const guide=svg('line',{class:'nb-week-guide'});
-    const badge=svg('rect',{class:'nb-month-badge',x:-51,y:-25,width:102,height:51,rx:12});
-    const count=svg('text',{class:'nb-month-count',x:0,y:16,'text-anchor':'middle'});
+    const badge=svg('rect',{class:'nb-month-badge',x:-51,y:-25,width:102,height:32,rx:12});
     if(major) {
-      const records=index.records.filter(r=>r.date.slice(0,7)===date.slice(0,7));
-      count.textContent=`${records.length} records`;
       const band=svg('rect',{class:`nb-month-band${months.length%2?' is-alternate':''}`});
       bands.append(band);months.push({date,band});
     }
-    node.append(guide,line,...(major?[badge]:[]),label,...(major?[count]:[]));
-    map.append(node);ticks.push({node,line,guide,badge,count,label,date,major,week});
+    node.append(guide,line,...(major?[badge]:[]),label);
+    map.append(node);ticks.push({node,line,guide,badge,label,date,major,week});
   }
   for(const [i,track] of index.tracks.entries()) {
     const records=index.records.filter(r => r.trackId===track.id);
@@ -118,7 +115,6 @@ function buildMap() {
       const entries=records.filter(r=>r.date===date);
       target.setAttribute('aria-label',`${track.label}, ${formatDate(date)}: ${entries.length} ${entries.length===1?'record':'records'}`);
       target.append(svg('title',{},`${track.label} · ${formatDate(date)}\n${entries.map(r=>r.title).join('\n')}`),svg('circle',{r:13,fill:'transparent'}),svg('circle',{class:'nb-event',r:entries.length>1?6:5.5}));
-      if(entries.length>1)target.append(svg('text',{class:'nb-event-count',x:14,y:4},String(entries.length)));
       target.addEventListener('click',e=>{e.stopPropagation();if(selected===track.id){writeURL(selected,date);jumpTo(date,null,true);}else navigate(track.id,date);});
       target.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
       g.append(target);return {date,node:target};
@@ -141,7 +137,7 @@ function highlight(id) {
   for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
   if(!selected) {
     const lane=lanes.find(l=>l.track.id===id);
-    $('instruction').textContent=lane?`${lane.track.label} · ${lane.track.description} · ${lane.events.length} recorded days`:'Select a line or track name to follow its experiments. On small screens, swipe the map sideways.';
+    $('instruction').textContent=lane?`${lane.track.label} · ${lane.track.description}`:'Select a line or track name to follow its experiments. On small screens, swipe the map sideways.';
   }
 }
 function layoutMap() {
@@ -205,10 +201,7 @@ function makePages(record,body) {
   const actions=el('div','nb-source-actions');
   const source=link('Open original PDF ↗',`${sourceURL(record.pdf)}#page=${record.pages[0].number}`);
   source.title=record.originalFilename;
-  const permalink=el('a','','Link to this record');
-  const url=new URL(location.href);url.searchParams.set('track',record.trackId);url.searchParams.set('date',record.date);url.searchParams.set('record',record.id);permalink.href=url.href;
-  permalink.addEventListener('click',e=>{if(!e.ctrlKey&&!e.metaKey&&!e.shiftKey){e.preventDefault();writeURL(record.trackId,record.date,record.id);$('status').textContent='This record’s link is now in the address bar.';}});
-  actions.append(source,permalink);body.append(actions);
+  actions.append(source);body.append(actions);
   const pages=el('div','nb-pages');body.append(pages);
   for(const page of record.pages) {
     const figure=el('figure','nb-pdf-page');
@@ -240,7 +233,7 @@ function renderRecords(track) {
   resizeObserver.disconnect();dateObserver?.disconnect();$('records').replaceChildren();rowElements=[];
   for(const group of groups) {
     const row=el('section','nb-day');row.dataset.date=group.date;row.id=`day-${group.date}`;row.setAttribute('aria-label',`${track.label}, ${formatDate(group.date)}`);
-    const heading=el('h3','nb-day-label');const time=el('time','',formatDate(group.date));time.dateTime=group.date;heading.append(time,el('span','nb-day-count',`${group.records.length} ${group.records.length===1?'record':'records'}`));row.append(heading);
+    const heading=el('h3','nb-day-label');const time=el('time','',formatDate(group.date));time.dateTime=group.date;heading.append(time);row.append(heading);
     for(const record of group.records) row.append(makeCard(record));
     $('records').append(row);rowElements.push(row);resizeObserver.observe(row);
   }
@@ -294,8 +287,7 @@ function renderState(state,userAction=false) {
 async function init() {
   try {
     const response=await fetch(baseURL);if(!response.ok)throw new Error('Source index request failed.');index=validateIndex(await response.json());bounds=dateBounds(index.records);
-    if(!bounds){$('coverage').textContent='No records indexed yet.';$('status').textContent='Original notebook records will appear here after they have been verified and indexed.';return;}
-    const count=index.records.length;$('coverage').textContent=`${index.tracks.length} tracks / ${count} records / ${index.records.reduce((n,r)=>n+r.pages.length,0)} original pages`;
+    if(!bounds){$('status').textContent='Original notebook records will appear here after they have been verified and indexed.';return;}
     for(const track of index.tracks) {
       const records=index.records.filter(r=>r.trackId===track.id),range=dateBounds(records);if(!range)continue;
       const button=el('button','nb-track-chip');button.type='button';button.dataset.track=track.id;button.style.setProperty('--track',track.color);button.setAttribute('aria-pressed','false');button.title=`${track.description} · ${formatDate(isoDay(range.start))} – ${formatDate(isoDay(range.end))}`;
@@ -303,9 +295,7 @@ async function init() {
       const title=el('span','nb-track-title',track.label);
       const description=el('span','nb-track-description',track.description);
       const dates=el('span','nb-track-dates',`${shortDate(isoDay(range.start))} — ${shortDate(isoDay(range.end))}`);
-      const total=el('span','nb-track-total');total.append(el('strong','',String(records.length)),el('small','','records'));
-      const arrow=el('span','nb-track-arrow','↗');arrow.setAttribute('aria-hidden','true');
-      button.append(icon,title,description,dates,total,arrow);button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
+      button.append(icon,title,description,dates);button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
     }
     $('switch').replaceChildren(...index.tracks.filter(t=>index.records.some(r=>r.trackId===t.id)).map(t=>{const option=el('option','',t.label);option.value=t.id;return option;}));
     $('switch').addEventListener('change',()=>navigate($('switch').value,activeDate));
@@ -317,7 +307,7 @@ async function init() {
     window.addEventListener('resize',scheduleLayout);
     renderState(readURL());
   } catch(error) {
-    console.error('Notebook initialization failed:',error);$('coverage').textContent='Notebook index unavailable';$('status').replaceChildren(el('span','','The timeline could not load. '),link('Browse the original PDF index.',sourceURL('catalog.html')));
+    console.error('Notebook initialization failed:',error);$('status').replaceChildren(el('span','','The timeline could not load. '),link('Browse the original PDF index.',sourceURL('catalog.html')));
   } finally {app.setAttribute('aria-busy','false');requestAnimationFrame(()=>requestAnimationFrame(()=>app.classList.remove('is-initializing')));}
 }
 init();

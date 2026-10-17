@@ -17,6 +17,7 @@ import {
 } from './burden-flight.mjs';
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = v => { const t = clamp(v); return t * t * (3 - 2 * t); };
 
 function mount(el) {
   const root = el.closest('[data-ot]');
@@ -25,6 +26,7 @@ function mount(el) {
   const ctx = canvas?.getContext('2d');
   const lines = [...el.querySelectorAll('[data-burden-line]')];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const softEntry = el.hasAttribute('data-burden-soft-entry');
 
   const count = MAP_POINTS ? MAP_POINTS.length / 2 : 0;
   const [gridW, gridH] = MAP_GRID || [512, 256];
@@ -45,9 +47,13 @@ function mount(el) {
   function resize() {
     if (!canvas) return;
     const bounds = canvas.getBoundingClientRect();
+    const nextDpr = Math.min(devicePixelRatio || 1, 2);
+    // ResizeObserver and the window event can report the same size together.
+    // Keep the prepared field instead of clearing and rebuilding it twice.
+    if (bounds.width === width && bounds.height === height && dpr === nextDpr) return;
     width = bounds.width; height = bounds.height;
     if (width <= 0 || height <= 0) return;
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    dpr = nextDpr;
     canvas.width = Math.max(1, Math.round(width * dpr));
     canvas.height = Math.max(1, Math.round(height * dpr));
     ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -157,12 +163,27 @@ function mount(el) {
     const take = Number(event.detail?.take);
     if (!Number.isFinite(take)) return;
     local = clamp((take - BURDEN_IN) / (BURDEN_OUT - BURDEN_IN));
-    const on = take >= BURDEN_IN && take <= BURDEN_OUT;
+    if (softEntry) {
+      // Give the closing field and the question a shared, scroll-reversible
+      // dissolve, while clearing the sentence before the question is bright.
+      root.style.setProperty('--burden-scene-opacity', (1 - ease((take - .78) / .018)).toFixed(3));
+      root.style.setProperty('--burden-copy-opacity', (1 - ease((take - .778) / .010)).toFixed(3));
+      root.style.setProperty('--burden-question-opacity', ease((take - .786) / .017).toFixed(3));
+    }
+    const on = take >= BURDEN_IN && take <= BURDEN_OUT + (softEntry ? .018 : 0);
     if (on) {
+      if (softEntry && !running) {
+        // Prepare the current shot before fading it in, including a reverse
+        // entry. Never reveal the camera position left by the previous visit.
+        shown = local;
+        draw(performance.now());
+        setLines(shown);
+      }
       resting = false;
       el.classList.add('is-live');
       start();
     } else if (running) {
+      el.classList.remove('is-live');
       stop();
     }
   });

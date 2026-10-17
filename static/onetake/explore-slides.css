@@ -192,3 +192,19 @@
 @media (prefers-reduced-motion: reduce) {
   .explore-slides *, .explore-slides *::before, .explore-slides *::after { transition: none !important; animation: none !important; }
 }
+
+/* Home ends at the chapter directory, followed by a quiet attribution line. */
+.explore-slides--clean .explore-slide__label { justify-content: center; min-height: 72px; }
+.explore-slides--clean { padding-bottom: clamp(36px, 5vw, 64px); }
+body.ot .ot-home-footer {
+  padding: 22px max(20px, calc((100vw - 1120px) / 2)) 32px;
+  border-top: 1px solid #a3bdd326;
+  background: #05080e;
+  color: #aab9cf;
+}
+.ot-home-footer p { margin: 0; font: 12px/1.8 var(--ot-sans); }
+.ot-home-footer a { color: #c8d4e6; text-underline-offset: 3px; }
+.ot-home-footer a:focus-visible { outline: 2px solid #bbd2f4; outline-offset: 3px; }
+@media (max-width: 680px) {
+  .explore-slides--clean .explore-slide__label { min-height: 64px; }
+}

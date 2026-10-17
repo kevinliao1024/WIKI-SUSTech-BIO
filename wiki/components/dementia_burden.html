@@ -1,4 +1,4 @@
-<section class="burden" data-burden aria-labelledby="burden-title">
+<section class="burden" data-burden{% if compact_burden %} data-burden-soft-entry{% endif %} aria-labelledby="burden-title">
   <canvas class="burden__field" data-burden-canvas aria-hidden="true"></canvas>
 
   <div class="burden__lines" aria-hidden="false">
@@ -7,7 +7,9 @@
     <p class="burden__line" data-burden-line>Every one of them is someone.</p>
   </div>
 
+  {% if not compact_burden %}
   <p class="burden__source">57 million people · WHO 2021 estimate. Projections to 2050 from the <a href="https://doi.org/10.1016/S2468-2667(21)00249-8" target="_blank" rel="noopener noreferrer">GBD 2019 dementia forecasting study ↗</a>. Alzheimer’s disease accounts for an estimated 60–70% of dementia cases.</p>
+  {% endif %}
 
   <noscript><p class="burden__no-js">57 million people lived with dementia in 2021, according to the WHO estimate, rising toward 152.8 million by 2050 in the GBD 2019 projection series. Alzheimer’s disease accounts for an estimated 60–70% of cases.</p></noscript>
 </section>

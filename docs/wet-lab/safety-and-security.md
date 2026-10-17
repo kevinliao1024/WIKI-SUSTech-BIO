@@ -1,124 +1,123 @@
 ---
 title: Safety & Security
-subtitle: Safety Across Scales—from RNA sequence to potential treatment.
+subtitle: Connecting wet-lab evidence, computational uncertainty and responsible research.
 eyebrow: Wet Lab
 status: pending
 status_label: Content pending team review
-status_message: This draft uses the team’s safety forms and current design plans. Experimental results are still being added.
+status_message: This draft reflects the current wet- and dry-lab documentation. Project-specific safety arrangements and supporting records remain subject to team review.
 ---
 
 # Safety & Security
 
 ## Safety Across Scales
 
-ORCA is designed to edit an APOE4-associated site in RNA. When choosing an editor, we also need to understand its activity elsewhere: whether it recognizes other transcripts, changes nearby bases or remains active in cells where it is not intended to act. Delivery and the methods used to measure editing add further questions.
+ORCA investigates RNA editing at an APOE4-associated site. Safety assessment must consider both the intended molecular change and unintended effects: changes at other RNA sites, activity outside the intended cellular context, and the consequences of delivery and sustained expression. A favorable editing result alone cannot answer all of these questions.
 
-We follow these questions across eight scales: sequence, system, editor, cell, measurement, function, treatment, and people and society. The sections are grouped into four actions: **Anticipate → Constrain → Detect → Decide**. Sequence and system analysis identify risks; editor and cellular controls aim to limit them; molecular and functional measurements test the consequences. Delivery studies and the views of future users then inform decisions about further development.
+We organize these questions across eight scales and four actions: **Anticipate → Constrain → Detect → Decide**. The current wet-lab work provides experimental records and measurement context; the dry-lab work connects RNA-seq analysis, editor comparisons, site prioritization and whole-body modeling. Their conclusions must remain tied to the evidence each approach can support.
 
 ## I. Anticipate
 
 ### Scale 01 — Sequence Scale
 
-A PUF designed for APOE can encounter similar sequences in other transcripts. We developed the [PUF-OffTarget Atlas](/offtarget-atlas) to search for these sites under defined mismatch settings and organize the candidates for inspection. Where data are available, the workflow adds tissue expression, RNA accessibility and annotation to help explain why a site deserves attention. Run settings and evidence are exported alongside the ranking.
+A targeted RNA editor may also affect other transcripts or nearby sites. The current [Model](/model) page brings RNA-seq candidate-site analysis and LAMAR site prioritization into the same evidence framework. RNA-seq provides candidate editing evidence under a documented analysis procedure; LAMAR ranks sites for follow-up.
 
-The Atlas helps select what to test. A sequence match alone does not tell us whether the editor binds or edits that RNA in a cell. Our [archived example](/static/evidence/puf-atlas-example/run_metadata.json) uses a liver context; applying the workflow to the final ORCA sequence and checking selected sites experimentally are the next steps.
+Neither a sequence match nor a model ranking establishes that a site is edited in a particular cell. A smaller detected candidate set also does not prove that unintended editing is absent. Interpretation depends on the samples, background screening and detection limits, with independent validation needed for individual biological claims.
 
 ### Scale 02 — System Scale
 
-The [Brain Delivery Digital Twin](/brain-delivery) lets us examine how delivery, brain entry, editor expression and editing interact. It reports desired editing alongside three possible sources of unintended activity: nearby bystander editing, PUF-mismatch editing and deaminase background. Keeping these outputs separate helps us examine the trade-offs in a candidate design.
+The current [Whole-body Delivery Model](/software) connects delivery, tissue distribution, cellular expression and RNA editing. It examines intended and unintended editing alongside exposure and tissue coverage. Sensitivity and uncertainty analyses show how conclusions depend on the model inputs.
 
-Several parameters are literature-informed estimates or normalized assumptions. The model therefore compares hypothetical designs and helps prioritize measurements. For example, its sensitivity analysis points to transport and editing kinetics as important sources of uncertainty. Measuring those parameters would let us update the comparison. The current [ProAPOBEC example](/static/evidence/brain-delivery-v4-summary.md) also uses placeholder activity and background values, so its ranking remains conditional on those inputs.
+These outputs are simulations under specified assumptions. Model units, comparison criteria and risk proxies must retain their original meaning; they are not clinical doses, validated safety limits or evidence of successful delivery in a living organism. The model helps identify unanswered questions rather than resolving them experimentally.
 
 ## II. Constrain
 
 ### Scale 03 — Editor Scale
 
-We want enough activity at the APOE target while keeping unintended editing low. This means evaluating the PUF recognition domain and APOBEC module together. Candidate comparisons need to include the target site, nearby editable bases, other transcripts identified by the Atlas and background activity.
+The PUF and APOBEC work documented in Model compares target activity with unwanted editing. For safety interpretation, these outcomes must be considered together: an apparent reduction in unwanted activity may also reflect a general reduction in editor activity.
 
-This is the comparison we plan to use in editor selection. The experimental activity–specificity results will determine whether a candidate can advance or needs to be changed. Construct comparisons and the reasons for changes will be documented in [Engineering](/engineering).
+Results from a tested panel support conclusions about that panel and its measurement context. They do not establish transcriptome-wide or long-term safety. The design decisions and remaining limitations belong alongside the experimental evidence in [Engineering](/engineering).
 
 ### Scale 04 — Cellular Scale
 
-We are considering the gfaABC1D promoter and microRNA response elements (MREs) to reduce expression outside the intended cellular context. The design draft also describes an ASO synthetic tag and Cre-loxP control as further options.
+The wet-lab design includes a Control branch addressing where and when editor activity occurs. Such controls should be described as proposed or evaluated design features according to their actual evidence status.
 
-For each module, we need to test both the intended response and expression under conditions where the editor should be inactive. Background expression, switching behaviour and the time taken for activity to fall matter as much as the desired signal. These proposed modules still need experimental evaluation before we can rely on them as safeguards.
+Intended behavior, unintended activity and the persistence of expression all matter when judging whether a control provides protection. A design diagram or an isolated reporter response does not establish reliable restriction across cell types. Cellular controls also do not replace laboratory containment and institutional review.
 
 ## III. Detect
 
 ### Scale 05 — Measurement Scale
 
-SONAR is our proposed reporter-based measurement system for RNA editing. Its validation plan includes control conditions, DNA and true-editing gradients, Western blotting and Sanger sequencing. Together, these measurements are intended to establish when a reporter signal can be attributed to editing and how background affects the readout.
+[SONAR](/project-contribution-sonar) connects a fluorescence reporter with a measurement and analysis framework. Its documentation distinguishes reporter activity, reference-calibrated scores and sequencing-linked estimates. Each level has its own evidence requirements, and fluorescence alone does not establish the fraction of edited RNA.
 
-A fluorescence increase can have more than one explanation. We therefore need to compare it with controls and check the underlying molecular change before using it to judge an editor. The same distinction applies to AAV delivery: our separate reporter vector measures delivery and reporter expression. Assessing ORCA editing requires the ORCA-containing vector and its own measurements. Assay definitions and calibration results will be included in [Measurement](/measurement).
+Controls, calibration context, uncertainty and software provenance must remain attached to the reported result. A delivery or expression readout must not be relabelled as editing evidence. The [Notebook](/notebook) provides the experimental chronology; the interpretation must still be checked against the underlying records and the measurement's validated scope.
 
 ### Scale 06 — Functional Scale
 
-Our functional-validation plan includes Aβ uptake and clearance, supernatant Aβ ELISA and BODIPY-based lipid phenotyping. We also plan to assess cell viability in the AAV9 experiments. These readouts let us examine cellular effects alongside the editing result, including any unexpected changes.
+The wet-lab functional-validation work asks whether molecular changes are accompanied by changes in cellular phenotypes. These observations complement editing measurements but answer a different question.
 
-The findings will need to be interpreted in the cell model and conditions tested. They can inform the next experiment, while long-term tolerability and effects in a whole organism require other studies. Completed assays and their controls will be reported in [Results](/results).
+A favorable cellular readout does not by itself establish a therapeutic benefit or long-term tolerability. Results need to identify the model, controls, uncertainty and alternative explanations. The [Results](/results) page remains pending team review, so this safety summary does not treat its framework as completed validation.
 
 ## IV. Decide
 
 ### Scale 07 — Treatment Scale
 
-We already use plasmid transfection to study ORCA expression, editing and regulatory modules. This allows us to address initial questions without producing viral particles. The AAV9 plan addresses a different question: whether viral delivery supports ORCA function in the selected cell models.
+The documented project combines laboratory research with computational modeling. Its delivery branch raises questions about exposure, unintended activity and the duration of expression, which must be assessed within the reviewed scope of each study.
 
-Our [rAAV9 Check-In](https://teams.igem.org/6085/safety/safety-check-in-form/cebd1639-2deb-42da-a5ba-c0fb82806114) covers planned production in HEK293T cells and evaluation in HEK293T and CCF-STTG1 cells. ORCA and reporter vectors are separate preparations, and no live helper virus is used in the proposed system. The submission describes packaging as not yet started and commits to confirming institutional authorization before beginning. On 12 October 2026, its status was Approved; the current experimental progress still needs to be added from laboratory records.
+Cell experiments and simulation outputs do not establish safety for administration to people or animals. They also do not resolve immune effects, long-term distribution or the consequences of repeated exposure. Any future expansion of the research scope requires its own evidence and applicable institutional review.
 
-These cell experiments address delivery and function in vitro. Questions about blood–brain barrier crossing, distribution in the CNS, immune effects and repeat administration belong to later studies. We would also need to review changes to the payload, production system, recipient cells or experimental scope before implementing them.
-
-RNA editing avoids a permanent change at the genomic target, but this does not establish that an intervention can be stopped immediately. Editor expression and delivery may persist. Their duration and controllability need to be measured before making claims about reversibility.
+Targeting RNA does not by itself establish that an intervention can be stopped immediately. Expression and downstream effects may persist, so claims about reversibility require supporting evidence.
 
 ### Scale 08 — Human & Societal Scale
 
-A future treatment would need to be acceptable to the people receiving it and those supporting their care. Treatment frequency, monitoring, cost, ability to stop, serious adverse events and uncertainty about long-term effects all matter.
+A possible future intervention would need to consider the priorities of people receiving care and those supporting them. Monitoring, treatment burden, accessibility, cost and uncertainty about long-term effects all matter.
 
-We propose an Acceptable Risk and Treatment Burden Study to examine how different groups weigh these factors. It would use neutrally worded scenarios and would require a review of consent, privacy, accessibility and institutional requirements before collecting data. Our current Human Practices work involves interviews and stakeholder opinions; the proposed study has not produced results.
+Stakeholder views can help frame research questions, but they cannot establish biological safety or substitute for informed consent. Any additional participant research needs an appropriate review of consent, privacy and accessibility before data collection.
 
-Feedback could help us decide which features to prioritize, such as monitoring or expression control. Any resulting change should be explained through a specific example in [Human Practices](/human-practices), with participation accessibility considered in [Inclusivity](/inclusivity).
+Changes motivated by engagement should be traceable to the relevant discussion and clearly separated from clinical recommendations. This page does not claim that a treatment-burden study has been completed.
 
 ## V. Security Across the Same Scales
 
-We control laboratory access and track biological materials to reduce the chance of unauthorized use or loss. Computational work raises additional concerns about data handling and the use of results.
+Laboratory security depends on documented access permissions, material accountability and reporting of loss or unauthorized use. Project-specific arrangements must be confirmed against institutional records rather than inferred from the Wiki.
 
-Our [software documentation](/software) requires outputs to retain their configuration and sources, and to distinguish simulations, candidate rankings and experimental findings. Team members and supervisors must review analyses and AI-assisted material used in decisions. Public releases must exclude credentials, personal data and confidential third-party information.
+For computational work, the repository's content guidance requires a clear distinction between experimental data, simulation outputs, heuristic prioritization and implemented software. Source data, analysis versions, run settings and limitations should accompany the claims they support. A working interface or a passing software check does not constitute biological validation.
 
-We also plan a focused review of the tools’ actual capabilities, foreseeable harmful uses and data flows, including what is stored or sent to other services. This review remains to be completed. It should consider specific risks associated with the tools rather than treating every alternative research target as misuse. Model and Atlas outputs are intended to support research; they cannot establish a clinical dose or patient safety.
+Public releases must exclude credentials, personal data and confidential third-party information. Team review should consider the tools' actual capabilities, foreseeable misuse and data flows before release. AI-assisted text and analyses remain drafts until a responsible team member has verified the claims and their sources.
 
 ## VI. General Lab Safety
 
-Our current project is limited to in vitro research. We use *E. coli* DH5α and Stbl3 for molecular biology work and the established human cell lines HEK293T, U251MG, SH-SY5Y and CCF-STTG1 for cell experiments. Recombinant AAV9 is included in our delivery research plan. We do not conduct animal experiments, administer ORCA to people or animals, collect primary human biological samples, or release engineered materials into the environment. The earlier plan to use iPSC-derived astrocytes has been discontinued. These activities and limits are described in our [Project Safety Form](https://teams.igem.org/6085/safety/safety-project-form/5acc4aa8-798e-4a11-bc2b-fc7832f6116d).
+The wet-lab documentation covers molecular biology, cell-based research, measurement and functional validation. These activities require risk assessments appropriate to the materials and facilities involved. Detailed laboratory procedures and authorization records belong in the institution's controlled documentation.
 
 ### Facilities and supervision
 
-At SUSTech, plasmid construction, PCR, cloning and electrophoresis take place in a BSL-1 laboratory. Mammalian cell culture and planned AAV9 work use a shared BSL-2 facility, with certified Class II biosafety cabinets for open handling of cells and vector-containing material. Cabinets are cleared and decontaminated after use.
+The team must confirm that facilities, containment, training, supervision and permissions match the actual work before it begins. Changes in materials or scope require renewed consideration by the responsible supervisors and institutional safety staff.
 
-Before starting laboratory work, team members completed institutional safety training and received project-specific guidance. This covered laboratory access, biosafety equipment, microbial technique, disinfection, sample transport, emergency response, chemical safety and biosecurity. Our PI, research assistant, Ph.D. mentor and laboratory management advisor supervise the work. When an unexpected hazard arises, we report it and pause the affected work as appropriate while seeking advice.
+Current training completion, facility certification and approval status should be reported only from verified records. This page does not replace those records or imply authorization from the presence of an experiment in the Notebook.
 
 ### Biological materials, chemicals and waste
 
-The main laboratory risks are accidental exposure to recombinant materials, chemical injury and unintended release through spills or improper disposal. We manage them through the following arrangements.
+Risk assessment must address accidental exposure, contamination, chemical injury, waste handling and unintended release. The following categories summarize the issues to review; they are not handling instructions.
 
-| Work or material | Main concern | How it is managed |
+| Area | Main concern | Required review |
 |---|---|---|
-| Mammalian cells and recombinant biological materials | Exposure through spills, splashes or contamination | Appropriate containment, biosafety cabinets, PPE and controlled access |
-| Planned rAAV9 production and handling | Exposure to vector-containing material and unintended transduction | BSL-2 facilities, trained supervision, clearly labelled preparations and institutional procedures |
-| TRIzol, chloroform and other hazardous reagents | Exposure during use or disposal | Safety Data Sheet review, suitable PPE and a chemical fume hood where required |
-| Ethanol, isopropanol and methanol | Flammability and chemical exposure | Institutional storage, handling and disposal rules |
-| Biological waste, chemical waste and sharps | Injury or release during disposal | Separate waste streams and designated collection containers |
+| Cells and recombinant biological materials | Accidental exposure, contamination or loss | Institutional risk assessment, containment and material accountability |
+| Hazardous chemicals | Toxicity, flammability and incompatible materials | Safety Data Sheets and applicable institutional controls |
+| Biological waste, chemical waste and sharps | Injury or unintended release | Approved waste responsibilities and disposal arrangements |
+| Unexpected events | Unrecognized exposure or a change in risk | Reporting, supervisor review and a decision on whether work can continue |
 
-We also use inventory and access controls, accident reporting, and rules for lone or out-of-hours work. The proposed controls within ORCA add to these laboratory protections; they do not replace them.
+The team must verify the applicable arrangements before presenting them as implemented safeguards. Biological design controls supplement these protections; they do not replace them.
 
 ## VII. ORCA Safety Decision Gate
 
-Before the next experiment, we need to consider whether the target activity is interpretable, unintended effects have been adequately examined, the relevant controls work and the planned activity is covered by the required review. We propose recording the outcome as GO, REDESIGN, MORE EVIDENCE REQUIRED or STOP, together with the reason and supporting records. The acceptance criteria for each assay still need to be agreed with our supervisors.
+Before interpreting a result or advancing the work, review whether the evidence supports the claim, unintended effects and uncertainty have been addressed, and the planned activity falls within the approved scope. Where evidence is incomplete, record the unresolved question and the responsible reviewer.
 
-## Sources
+We propose recording the outcome as GO, REDESIGN, MORE EVIDENCE REQUIRED or STOP, with the reason and supporting records. This is a documentation framework, not a new scientific threshold or an authorization decision. Assay criteria and project approvals remain the responsibility of the team and its supervisors.
 
-The project scope and laboratory arrangements above are based on the team’s safety submissions. At the 12 October 2026 review, the Project Safety Form showed Final Submitted and an open review thread; the rAAV9 Check-In showed Approved.
+## Current Project Evidence
 
-- [SUSTech Project Safety Form](https://teams.igem.org/6085/safety/safety-project-form/5acc4aa8-798e-4a11-bc2b-fc7832f6116d)
-- [SUSTech rAAV9 Check-In](https://teams.igem.org/6085/safety/safety-check-in-form/cebd1639-2deb-42da-a5ba-c0fb82806114)
-- [iGEM Safety Policies](https://responsibility.igem.org/safety-policies)
-- [iGEM Human Subjects Research Policy](https://responsibility.igem.org/safety-policies/human-subjects)
-- [UC San Diego AAV containment guidance](https://blink.ucsd.edu/safety/research-lab/biosafety/containment/adeno-bsl.html) and [Addgene biosafety guidance](https://www.addgene.org/biosafety/), cited in our Check-In. Our procedures follow the applicable SUSTech requirements.
+This draft follows the current project pages listed below and the repository's evidence-labeling guidance. Their individual review status and limitations still apply. Institutional safety records require separate team verification.
+
+- [Model](/model): RNA-seq evidence, PUF and APOBEC comparisons, and LAMAR prioritization.
+- [Software](/software): whole-body delivery modeling and its assumptions.
+- [Engineering](/engineering): the project's design and evidence cycle.
+- [SONAR](/project-contribution-sonar): measurement context and limits of interpretation.
+- [Notebook](/notebook) and [Results](/results): experimental records and the status of integrated reporting.

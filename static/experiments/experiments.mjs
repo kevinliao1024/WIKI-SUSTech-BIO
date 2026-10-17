@@ -6,23 +6,45 @@ if (root) {
   const protocols = [...root.querySelectorAll('[data-protocol]')];
   const dialog = root.querySelector('[data-reader]');
   const host = root.querySelector('[data-reader-host]');
+  const directory = root.querySelector('.exp-sidebar nav');
+  const indicator = root.querySelector('[data-category-indicator]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let category = 'all';
   let returnHash = '#protocol-library';
   let trigger = null;
-  const normalize = text => text.toLowerCase().normalize('NFKD').replace(/β/g, 'beta').replace(/[\u0300-\u036f]/g, '');
+  const normalize = text => text.toLowerCase().normalize('NFKD').replace(/β/g, 'beta')
+    .replace(/[\u0300-\u036f]/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const searchIndex = new Map(protocols.map(protocol => [protocol,
+    normalize(`${protocol.dataset.searchText} ${protocol.id.replace(/^([A-Z]+)0+(\d+)/, '$1$2')}`),
+  ]));
+  function updateIndicator() {
+    const active = categories.find(link => link.dataset.category === category);
+    if (!active) return;
+    indicator.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+    indicator.style.width = `${active.offsetWidth}px`;
+    indicator.style.height = `${active.offsetHeight}px`;
+    indicator.classList.add('is-visible');
+    if (directory.scrollWidth > directory.clientWidth) {
+      directory.scrollTo({
+        left: Math.max(0, active.offsetLeft - (directory.clientWidth - active.offsetWidth) / 2),
+        behavior: reducedMotion.matches ? 'instant' : 'smooth',
+      });
+    }
+  }
   function filter() {
     const terms = normalize(search.value).trim().split(/\s+/).filter(Boolean);
-    let total = 0, groupCount = 0;
+    const hasQuery = search.value.trim().length > 0;
+    let total = 0, allMatches = 0, groupCount = 0;
     for (const protocol of protocols) {
-      const show = (category === 'all' || protocol.dataset.categoryCode === category)
-        && terms.every(term => normalize(protocol.dataset.searchText).includes(term));
+      const matches = !hasQuery || (terms.length > 0 && terms.every(term => searchIndex.get(protocol).includes(term)));
+      if (matches) allMatches++;
+      const show = (category === 'all' || protocol.dataset.categoryCode === category) && matches;
       protocol.hidden = !show;
       if (show) total++;
     }
     for (const group of groups) {
       const count = [...group.querySelectorAll('[data-protocol]')].filter(p => !p.hidden).length;
       group.hidden = !count;
-      group.querySelector('[data-group-count]').textContent = count;
       if (count) groupCount++;
     }
     for (const link of categories) {
@@ -31,8 +53,22 @@ if (root) {
       if (active) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     }
-    root.querySelector('[data-result-count]').textContent = `${total} ${total === 1 ? 'experiment' : 'experiments'} · ${groupCount} ${groupCount === 1 ? 'category' : 'categories'}`;
+    const result = root.querySelector('[data-result-count]');
+    const scope = categories.find(link => link.dataset.category === category).textContent.trim();
+    result.textContent = hasQuery
+      ? `${total} ${total === 1 ? 'match' : 'matches'} for “${search.value.trim()}” · ${scope}`
+      : `${total} experiments · ${groupCount} categories`;
+    result.classList.toggle('exp-sr-only', !hasQuery);
+    root.querySelector('[data-search-clear]').hidden = !search.value;
+    root.querySelector('[data-reset]').hidden = !hasQuery && category === 'all';
+    const searchAll = root.querySelector('[data-search-all]');
+    searchAll.hidden = !hasQuery || category === 'all' || allMatches <= total;
+    searchAll.textContent = `Search all categories (${allMatches})`;
+    root.querySelector('[data-empty-message]').textContent = allMatches > 0 && category !== 'all'
+      ? `No matches in ${scope}. Search all categories to see the other matches.`
+      : 'Try another name, experiment ID, or keyword.';
     root.querySelector('[data-empty]').hidden = total !== 0;
+    updateIndicator();
   }
   function releaseReader() {
     if (dialog.open) dialog.close();
@@ -68,11 +104,10 @@ if (root) {
     } else {
       releaseReader();
       showRoute(hash);
-      if (hash === '#how-to-read') root.querySelector('.exp-guide').open = true;
-      if (scroll && hash !== '#how-to-read') {
+      if (scroll) {
         const navBottom = document.querySelector('.site-nav')?.getBoundingClientRect().bottom || 100;
         const top = window.scrollY + root.querySelector('#experiment-workspace').getBoundingClientRect().top - navBottom - 24;
-        window.scrollTo({top, behavior:'instant'});
+        window.scrollTo({top, behavior:reducedMotion.matches ? 'instant' : 'smooth'});
       }
     }
   }
@@ -110,10 +145,22 @@ if (root) {
   root.querySelector('[data-reader-close]').addEventListener('click', closeReader);
   dialog.addEventListener('cancel', e => { e.preventDefault(); closeReader(); });
   search.addEventListener('input', filter);
+  root.querySelector('[data-search-tools]').addEventListener('submit', event => {
+    event.preventDefault();
+    filter();
+  });
+  const clearSearch = () => { search.value = ''; filter(); search.focus({preventScroll:true}); };
+  root.querySelector('[data-search-clear]').addEventListener('click', clearSearch);
+  search.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && search.value) { event.preventDefault(); clearSearch(); }
+  });
+  root.querySelector('[data-search-all]').addEventListener('click', () => navigate('#protocol-library'));
   const reset = () => { search.value = ''; navigate('#protocol-library'); search.focus({preventScroll:true}); };
   root.querySelector('[data-reset]').addEventListener('click', reset);
   root.querySelector('[data-clear]').addEventListener('click', reset);
   window.addEventListener('hashchange', () => applyHash(true));
   root.querySelector('[data-search-tools]').hidden = false;
   applyHash(Boolean(location.hash));
+  new ResizeObserver(updateIndicator).observe(directory);
+  document.fonts.ready.then(updateIndicator);
 }
