@@ -12,6 +12,12 @@ from pathlib import Path
 import shutil
 
 
+def write_catalog(index, dest):
+    tracks = index['tracks']
+    rows = ''.join(f'<tr><td>{r["date"]}</td><td>{html.escape(next(t["label"] for t in tracks if t["id"] == r["trackId"]))}</td><td><a href="{html.escape(r["pdf"])}">{html.escape(r["title"])}</a></td><td>{html.escape(r["experimenter"])}</td></tr>' for r in index['records'])
+    (dest / 'catalog.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ORCA Notebook source index</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:20px;color:#2e3065}table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #d6d8ff;text-align:left}a{color:#3d409b}td:first-child{white-space:nowrap}.table{overflow:auto}</style><h1>ORCA Notebook source index</h1><p>Finalized experiment records and their original PDFs.</p><p><a href="../../notebook">Return to the interactive Notebook</a></p><div class="table"><table><thead><tr><th>Date</th><th>Track</th><th>Experiment / original PDF</th><th>Experimenter</th></tr></thead><tbody>' + rows + '</tbody></table></div></html>')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('source', type=Path)
@@ -21,6 +27,7 @@ def main():
     source = args.source.resolve()
     root = Path(__file__).resolve().parents[1]
     dest = root / 'static/notebook'
+    end_dates = json.loads((root / 'scripts/notebook_publication.json').read_text())['trackEndDates']
     finalized = json.loads((source / 'FINALIZATION.json').read_text())
     assert finalized['status'] == 'final'
     records = [r for f in sorted(source.glob('20*/records.json'))
@@ -51,6 +58,13 @@ def main():
         relative = Path(r['branch']) / r['filename']
         assert relative.as_posix() == entry['file']
         assert entry['status'] == 'final'  # Finalization covers legacy daily records without status.
+        cutoff = end_dates.get(r['branch'].lower())
+        if cutoff and r['date'] > cutoff:
+            # Keep the website's curated cutoff across future archive imports.
+            (dest / 'pdfs' / relative).unlink(missing_ok=True)
+            for page in range(1, entry['pages'] + 1):
+                (dest / 'previews' / r['branch'] / f'{relative.stem}-p{page}.webp').unlink(missing_ok=True)
+            continue
         pdf = source / relative
         digest = hashlib.sha256(pdf.read_bytes()).hexdigest()
         assert digest == entry['sha256'], f'PDF changed since finalization: {relative}'
@@ -76,8 +90,7 @@ def main():
             sourceNote='Finalized Notebook PDF; title and calendar date matched to the approved daily index.'))
     index['records'].sort(key=lambda r: (r['date'], r['order']))
     (dest / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=2) + '\n')
-    rows = ''.join(f'<tr><td>{r["date"]}</td><td>{html.escape(next(t["label"] for t in tracks if t["id"] == r["trackId"]))}</td><td><a href="{html.escape(r["pdf"])}">{html.escape(r["title"])}</a></td><td>{html.escape(r["experimenter"])}</td></tr>' for r in index['records'])
-    (dest / 'catalog.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ORCA Notebook source index</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:20px;color:#2e3065}table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #d6d8ff;text-align:left}a{color:#3d409b}td:first-child{white-space:nowrap}.table{overflow:auto}</style><h1>ORCA Notebook source index</h1><p>Finalized experiment records and their original PDFs.</p><p><a href="../../notebook">Return to the interactive Notebook</a></p><div class="table"><table><thead><tr><th>Date</th><th>Track</th><th>Experiment / original PDF</th><th>Experimenter</th></tr></thead><tbody>' + rows + '</tbody></table></div></html>')
+    write_catalog(index, dest)
     print(f'Imported {len(index["records"])} PDFs / {sum(r["pageCount"] for r in index["records"])} pages; original hashes preserved.')
 
 if __name__ == '__main__':

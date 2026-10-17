@@ -542,28 +542,6 @@
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
-      "id": "QX24",
-      "trackId": "fundmental",
-      "date": "2026-08-01",
-      "title": "Maintenance of the Thawed HEK293T Culture",
-      "experimenter": "Xiaoyu Que",
-      "order": 20,
-      "pdf": "pdfs/Fundmental/2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "d9ae80e4ac976be628c0ae68652b29efa58de1d1daba0ffbb846e02344bec093"
-        }
-      ],
-      "sha256": "3136da3ac10a8f36b1a015e607479d074b492886f61a7f67be77b521133e5cfb",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
       "id": "QX06",
       "trackId": "puf",
       "date": "2026-08-01",
@@ -583,50 +561,6 @@
         }
       ],
       "sha256": "8807c652e5014c28fa176e5fcb8e2826d87cd2cad1007ca45c4dd732208c7129",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "QX25",
-      "trackId": "fundmental",
-      "date": "2026-08-02",
-      "title": "HEK293T Confluence Check and Medium Change",
-      "experimenter": "Xiaoyu Que",
-      "order": 22,
-      "pdf": "pdfs/Fundmental/2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "11c30d1aecd405fa89b10ea1144677143fd3ce8e72686e5be228c854d8a58366"
-        }
-      ],
-      "sha256": "247a6e8dce989a72b6c39e9dfd9cf52cc339e16392c0019648baaedb6d068167",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "QX26",
-      "trackId": "fundmental",
-      "date": "2026-08-03",
-      "title": "Passaging of the HEK293T P1 Culture",
-      "experimenter": "Xiaoyu Que",
-      "order": 23,
-      "pdf": "pdfs/Fundmental/2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "75536621929b478037b7ec2033a0b1e96a3edcf2298be2cf9755952a86615fe4"
-        }
-      ],
-      "sha256": "9c8c89c9bace88b4d38bdb38154bb060cd089a7bdfdb12280b1b1c20bc5bffdc",
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
@@ -857,28 +791,6 @@
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
-      "id": "QX30",
-      "trackId": "fundmental",
-      "date": "2026-08-10",
-      "title": "APOE4-his Culture for Plasmid Preparation",
-      "experimenter": "Xiaoyu Que",
-      "order": 34,
-      "pdf": "pdfs/Fundmental/2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "24827dcc60b3b7c779c04d722f0cca67d244557f1404fa5c919cd78d9506baa6"
-        }
-      ],
-      "sha256": "8b59e28e8c852f2ff5a070895e94235c4d53cb5585914453916a258e69d4a014",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
       "id": "QX14",
       "trackId": "puf",
       "date": "2026-08-10",
@@ -898,28 +810,6 @@
         }
       ],
       "sha256": "90242cc59c9a5c82696fa9e6ed103d2990002856f715b86070875cb5246836e3",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "QX31",
-      "trackId": "fundmental",
-      "date": "2026-08-11",
-      "title": "APOE4-his Plasmid Extraction",
-      "experimenter": "Xiaoyu Que",
-      "order": 36,
-      "pdf": "pdfs/Fundmental/2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "72c0efc0ded18b1569aeafe758eaf8ba4e910feda94a028b7cd98ec78ad373d6"
-        }
-      ],
-      "sha256": "b9d88cd1a7b6870eb82b60fc66d156c20cd1a99ff6434f1f35a92ce26e2e1d38",
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
@@ -986,28 +876,6 @@
         }
       ],
       "sha256": "1af64eae745639ea2222fca5737ab0d2a91baaa695085a3e273987e574dbef3e",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "QX32",
-      "trackId": "fundmental",
-      "date": "2026-08-12",
-      "title": "Culture of Plasmids for Off-Target Assays",
-      "experimenter": "Xiaoyu Que",
-      "order": 40,
-      "pdf": "pdfs/Fundmental/2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "009f7665170e7fa94547237f764d12f9aba0d8ba563625ba2e15b74fcfcd570e"
-        }
-      ],
-      "sha256": "57a348e7f79d15caf71de3b0055cf3495861c53357e9f07572ccff6302f4cd1f",
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
@@ -1121,50 +989,6 @@
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
-      "id": "QX34",
-      "trackId": "fundmental",
-      "date": "2026-08-13",
-      "title": "Construction of the PUF-Flag-only Empty Vector",
-      "experimenter": "Xiaoyu Que",
-      "order": 46,
-      "pdf": "pdfs/Fundmental/2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "abcd5460e9a5bcdfd6905a29db67577410150d82a56a9b08684d6c4c1911f45e"
-        }
-      ],
-      "sha256": "50ecf5d373305c1d0e553f9bfdc80d0dcc1e5d5675b80b5ffd316a9401242edf",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "QX33",
-      "trackId": "fundmental",
-      "date": "2026-08-13",
-      "title": "Plasmid Extraction for Off-Target Assays",
-      "experimenter": "Xiaoyu Que",
-      "order": 47,
-      "pdf": "pdfs/Fundmental/2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu.pdf",
-      "originalFilename": "2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "8d6d843c0923162995f6655b83478830fed02e8bb91bc55447a4850da53102a5"
-        }
-      ],
-      "sha256": "c6a1c1f0546f527ecefbbf2d7413b952fbb71aeef5015fed4260c479f4929db3",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
       "id": "MAINT-2026-08-13-Endogenous_miRNA_RNA_RT",
       "trackId": "mre",
       "date": "2026-08-13",
@@ -1253,28 +1077,6 @@
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {
-      "id": "MAINT-2026-08-14-APOE4_His_Cell_Transfection",
-      "trackId": "fundmental",
-      "date": "2026-08-14",
-      "title": "Cell Transfection for the His-Tag APOE4 Repeat",
-      "experimenter": "Muyin Guo",
-      "order": 52,
-      "pdf": "pdfs/Fundmental/2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo.pdf",
-      "originalFilename": "2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "52d2810e18e08c37a7b9576a5245d26ce26fe4e7e1c30d9222c37076a82f4191"
-        }
-      ],
-      "sha256": "9c46abc2695895b24d0a454ef531f327028994e9d25db9e69171f292aa113e19",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
       "id": "QPCR-EXISTING-2",
       "trackId": "mre",
       "date": "2026-08-14",
@@ -1316,28 +1118,6 @@
         }
       ],
       "sha256": "2506b5f342ea21a554754abeb4980b301dd4fc0066ea210e21b035ab4574cb40",
-      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
-    },
-    {
-      "id": "GMQX-09-13-Core_Editor_WB_Followup",
-      "trackId": "fundmental",
-      "date": "2026-08-16",
-      "title": "Repeat APOE4 Western Blot with His-Tag Detection",
-      "experimenter": "Xiaoyu Que and Muyin Guo",
-      "order": 55,
-      "pdf": "pdfs/Fundmental/2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin.pdf",
-      "originalFilename": "2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin.pdf",
-      "pageCount": 1,
-      "pages": [
-        {
-          "number": 1,
-          "preview": "previews/Fundmental/2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin-p1.webp",
-          "width": 1600,
-          "height": 2271,
-          "sha256": "8688d6652a13b6f4ce102f8d273f9ac2203ee66be6ba78eff65962af63e5d513"
-        }
-      ],
-      "sha256": "fec8f5039f95bf30332429e78eae14120f5ab7eb48bd284ea64588ed585bf2ab",
       "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
     },
     {

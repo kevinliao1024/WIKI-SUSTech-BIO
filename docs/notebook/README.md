@@ -13,16 +13,21 @@
 ## Source coverage
 
 The source is the project owner's finalized Notebook archive dated 2026-10-17.
-All 178 PDFs were checked against `FINALIZATION.json` hashes, their 181 physical
+The initial 178 PDFs were checked against `FINALIZATION.json` hashes, their 181 physical
 pages, approved daily record metadata and PDF date text. Every source PDF is
 copied byte for byte; original branch folders and filenames are preserved.
 The project owner explicitly confirmed use of all finalized dates for this
 page on 2026-10-17. No chronology or scientific findings were newly inferred
 by the website implementation. Private daily JSON and source notes are not shipped.
 
+The current published selection contains **168 records / 171 pages**. At the
+owner's request, Fundmental ends on 2026-07-31; its ten later records and their
+website PDF/preview copies were removed. `scripts/notebook_publication.json`
+preserves this cutoff on future imports. The original local archive is retained.
+
 | Archive branch / track | Records | First date | Last date |
 | --- | ---: | --- | --- |
-| Fundmental | 25 | 2026-06-21 | 2026-08-16 |
+| Fundmental | 15 | 2026-06-21 | 2026-07-31 |
 | PUF | 38 | 2026-07-27 | 2026-09-19 |
 | Apobec | 21 | 2026-08-24 | 2026-09-28 |
 | Gfa | 9 | 2026-08-11 | 2026-08-30 |
@@ -74,8 +79,8 @@ explicit `sourceNote` describing the shared source.
 3. For a new branch, add its metadata to `track_specs` in the importer and rerun.
    For a curated index not generated from this archive, edit `index.json` with
    the same schema, copy its original PDFs, and render the indexed pages.
-4. The current nine-track lane layout is explicit in `overviewLanes` in
-   `notebook.mjs`; extend the lane positions and minimum map width when adding
+4. The current nine-track lane layout is computed by `overviewLaneX` in
+   `notebook.mjs`; extend the left/right lane counts and minimum map width when adding
    more than nine tracks. Dates and cards never require changes to animation code.
 5. Add verified Engineering links as `{ "label": "POD Engineering", "route":
    "engineering#verified-section-id" }` only after that section actually exists
@@ -91,15 +96,17 @@ It intentionally does not delete arbitrary existing assets.
 
 ## Interaction and accessibility
 
-Overview uses UTC calendar-day arithmetic at **20 CSS pixels per day** for all
+Overview uses UTC calendar-day arithmetic at **14 CSS pixels per day** for all
 tracks, including days without records. Month, Monday and day ticks share the
 same scale. The minimum and maximum real dates determine track terminals.
 
 The SVG calendar and every lane remain mounted when switching views. Their
-horizontal translations animate together into a compact left rail. Focus
+horizontal translations animate into a compact left rail. Focus hides all
+nonselected lanes, including their keyboard and accessibility targets; the toolbar
+provides track switching. Focus
 records are filtered by `trackId` before grouping by date. A `ResizeObserver`
 measures each shared day row and places the selected line's date nodes and
-connectors beside the first card's callout. Expanding PDFs changes row height,
+connectors beside the first record title. Expanding PDFs changes row height,
 not their historical time span. Other rail dates interpolate between those
 rows; Focus intentionally does not imply a proportional calendar scale.
 
@@ -118,7 +125,10 @@ are removed from the DOM on collapse or track change and re-created on demand.
 
 No PDF renderer, iframe, canvas or image is loaded in Overview. Expanded records
 load only their indexed previews, with explicit dimensions and browser lazy
-loading. Each preview has a full-size link and a direct original PDF link with
+loading. Previews use a maximum 500px reading width and shrink to fit mobile
+screens. Each record has a plain rounded frame that encloses its title and expands to
+contain the centered original pages. Explicit View record / Close record
+controls and direction arrows show the current action. Each preview has a full-size link and a direct original PDF link with
 `#page=N`. Failed previews retain a source-file fallback. `catalog.html` lists
 all originals when JavaScript or the manifest is unavailable.
 
@@ -146,3 +156,32 @@ No third-party CDN or external PDF runtime is used. In the final iGEM media
 publication step, follow the repository's requirement to upload media to
 `static.igem.wiki`. The committed local assets provide an operational repository
 preview and static build; they are not a claim of an iGEM media upload.
+
+## Visual hierarchy revision — 2026-10-17
+
+The title leads directly into a nine-card track selector, with one SVG
+navigation icon per track on a common 48px grid. Each card shows the indexed
+record count and actual date range. The redundant introductory copy is omitted.
+The shared calendar uses responsive lane positions across the available width,
+stronger lines and labels, alternating monthly bands, weekly guides and monthly
+record totals calculated from the index. Counts beside a date node indicate
+multiple separate records on that date. No dates, milestones or source files
+were added or altered. On narrow screens, the track cards use two columns and
+the calendar remains horizontally scrollable at a readable minimum width.
+
+
+## Activity cards and icon refinement
+
+Record cards retain their exact source titles and show one compact activity cue
+matched to the title, with a stronger 22px heading (18px on mobile). These cues
+identify work types, not successful outcomes; failed attempts and repeats remain
+explicit in the unchanged title. The complete frame and 500px original-page
+reader are retained. The title eyebrows, end-of-track summary copy and visible
+source-index footer have been removed; the no-JavaScript source catalog fallback
+and each record's PDF link remain accessible.
+
+APOBEC uses a trident, Gfa a promoter arrow, and AAV a projected regular
+icosahedron. Reporter adapts the team's current SAP / SONAR symbol from
+`sonar_app/static/brand/sonar-symbol.svg`: broken concentric arcs and a central
+point, redrawn on the shared 48px grid in the track color. No external asset
+requests are made.

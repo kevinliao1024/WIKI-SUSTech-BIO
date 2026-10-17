@@ -7,13 +7,13 @@
     <h1>{{ content.title }}<span>.</span></h1>
   </header>
   <section class="nb-app" data-notebook data-index="{{ url_for('static', filename='notebook/index.json') }}" aria-label="Interactive research notebook" aria-busy="true">
+    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <div class="nb-toolbar">
       <div class="nb-view-label"><button class="nb-back" type="button" data-back hidden aria-label="Return to timeline overview">← <span>Overview</span></button><span data-view-label>Research timeline</span></div>
       <p data-coverage class="nb-coverage">Loading the source index…</p>
       <label class="nb-track-switch" hidden data-switch-label>Track <select data-switch aria-label="Switch experimental track"></select></label>
       <label class="nb-jump" hidden data-jump-label>Jump to date <select data-jump aria-label="Jump to a recorded date"></select></label>
     </div>
-    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <div class="nb-caption"><p data-instruction>Select a line to follow its experiments.</p><span data-date-range></span></div>
     <div class="nb-focus-heading" data-focus-heading hidden tabindex="-1"></div>
     <div class="nb-viewport" data-viewport tabindex="0" aria-label="Timeline; scroll horizontally on small screens">
@@ -25,8 +25,7 @@
     <div class="nb-end" data-end hidden></div>
     <p class="nb-status" data-status role="status" aria-live="polite"></p>
   </section>
-  <p class="nb-source-index">The original record, always one click away. <a href="{{ url_for('static', filename='notebook/catalog.html') }}">Browse all source PDFs ↗</a></p>
-  <noscript><p>The interactive timeline needs JavaScript. The source index above provides every date, experiment title and original PDF without JavaScript.</p></noscript>
+  <noscript><p>The interactive timeline needs JavaScript. <a href="{{ url_for('static', filename='notebook/catalog.html') }}">Browse the source index</a> for every date, experiment title and original PDF.</p></noscript>
 </main>
 {% endblock %}
 {% block page_scripts %}<script type="module" src="{{ url_for('static', filename='notebook/notebook.mjs') }}"></script>{% endblock %}
