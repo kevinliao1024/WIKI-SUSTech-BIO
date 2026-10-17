@@ -30,11 +30,9 @@ EXPECTED_OUTPUTS = {
     "offtarget-atlas",
     "software",
     "hardware",
-    "entrepreneurship",
     "human-practices",
     "education",
     "inclusivity",
-    "sustainability",
     "404.html",
 }
 EXPECTED_EVIDENCE = {

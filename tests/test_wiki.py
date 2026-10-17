@@ -32,11 +32,9 @@ PUBLIC_ROUTES = [
     "/offtarget-atlas",
     "/software",
     "/hardware",
-    "/entrepreneurship",
     "/human-practices",
     "/education",
     "/inclusivity",
-    "/sustainability",
 ]
 
 PLACEHOLDER_ROUTES = [
@@ -54,11 +52,9 @@ PLACEHOLDER_ROUTES = [
     "/alternative-platform",
     "/safety-and-security",
     "/hardware",
-    "/entrepreneurship",
     "/human-practices",
     "/education",
     "/inclusivity",
-    "/sustainability",
 ]
 
 ENGINEERING_PARTS = [
