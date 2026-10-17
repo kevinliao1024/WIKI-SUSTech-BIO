@@ -1,0 +1,11 @@
+{
+  "results": [
+    "Overview: no source downloads, shared calendar coordinates, persistent map DOM, strict AAV/Reporter switching, keyboard activation and overview scroll restoration.",
+    "Focus: multipage record deep link, original image load, measured node/card alignment, resource cleanup and Back/Forward.",
+    "Responsive: 834px tablet, 390px and 320px mobile; no document overflow; selected-track date jump and PDF expansion.",
+    "Reduced motion disables the timeline movement without disabling navigation.",
+    "Unavailable preview shows a readable error and a direct original PDF fallback.",
+    "Empty source index remains truthful and usable."
+  ],
+  "errors": []
+}

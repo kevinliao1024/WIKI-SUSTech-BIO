@@ -1,0 +1,4029 @@
+{
+  "schemaVersion": 1,
+  "title": "ORCA research notebook",
+  "finalizedOn": "2026-10-17",
+  "datePolicy": "All finalized record dates confirmed by the project owner for this timeline on 2026-10-17.",
+  "tracks": [
+    {
+      "id": "fundmental",
+      "label": "Fundmental",
+      "archiveBranch": "Fundmental",
+      "description": "Core editor & foundational assays",
+      "color": "#6466ab",
+      "category": "edit",
+      "engineeringLinks": []
+    },
+    {
+      "id": "puf",
+      "label": "PUF",
+      "archiveBranch": "PUF",
+      "description": "PUF mutant construction & screening",
+      "color": "#41469a",
+      "category": "edit",
+      "engineeringLinks": []
+    },
+    {
+      "id": "apobec",
+      "label": "Apobec",
+      "archiveBranch": "Apobec",
+      "description": "APOBEC mutant construction & screening",
+      "color": "#96705d",
+      "category": "edit",
+      "engineeringLinks": []
+    },
+    {
+      "id": "gfa",
+      "label": "Gfa",
+      "archiveBranch": "Gfa",
+      "description": "GFAP promoter experiments",
+      "color": "#387e85",
+      "category": "control",
+      "engineeringLinks": []
+    },
+    {
+      "id": "mre",
+      "label": "MRE",
+      "archiveBranch": "MRE",
+      "description": "MicroRNA response elements",
+      "color": "#7161a1",
+      "category": "control",
+      "engineeringLinks": []
+    },
+    {
+      "id": "aso",
+      "label": "ASO",
+      "archiveBranch": "ASO",
+      "description": "Antisense oligonucleotide experiments",
+      "color": "#a85374",
+      "category": "control",
+      "engineeringLinks": []
+    },
+    {
+      "id": "aav",
+      "label": "AAV",
+      "archiveBranch": "AAV",
+      "description": "AAV construction & delivery",
+      "color": "#b36c50",
+      "category": "deliver",
+      "engineeringLinks": []
+    },
+    {
+      "id": "reporter",
+      "label": "Reporter",
+      "archiveBranch": "Reporter",
+      "description": "Reporter construction & measurement",
+      "color": "#4b789b",
+      "category": "measure",
+      "engineeringLinks": []
+    },
+    {
+      "id": "fv",
+      "label": "FV",
+      "archiveBranch": "FV",
+      "description": "Functional validation experiments",
+      "color": "#6b814d",
+      "category": "validation",
+      "engineeringLinks": []
+    }
+  ],
+  "records": [
+    {
+      "id": "ZH-06-21-10R_Construction",
+      "trackId": "fundmental",
+      "date": "2026-06-21",
+      "title": "10R Core Editor Provided by the Instructor",
+      "experimenter": "Instructor",
+      "order": 0,
+      "pdf": "pdfs/Fundmental/2026-06-21_10R_Provision_Instructor.pdf",
+      "originalFilename": "2026-06-21_10R_Provision_Instructor.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-21_10R_Provision_Instructor-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "96f470c16e4da37b814b31beda207b74d05f02a1d302ffb0846c2d13eb754ce5"
+        }
+      ],
+      "sha256": "09666b95d28f9e77fbf94c744406aa36c159ea0abe83d84bafde511d2c38e099",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-06-25-Initial_10R_Cell_Transfection",
+      "trackId": "fundmental",
+      "date": "2026-06-25",
+      "title": "Cell Transfection for the Initial 10R Assessment",
+      "experimenter": "Muyin Guo",
+      "order": 1,
+      "pdf": "pdfs/Fundmental/2026-06-25_Initial_10R_Cell_Transfection_Muyin_Guo.pdf",
+      "originalFilename": "2026-06-25_Initial_10R_Cell_Transfection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-25_Initial_10R_Cell_Transfection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "14abb1a33b5bb35f66dd17c1b3de5a348bec457afc36cfa300f74198fb8488b0"
+        }
+      ],
+      "sha256": "fbaada18d6c1e885b0afe460e534de22e71cb7508ce55570cb28848578eb811c",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-06-27-Initial_10R_Protein_Collection",
+      "trackId": "fundmental",
+      "date": "2026-06-27",
+      "title": "Protein Sample Collection for the Initial 10R Blot",
+      "experimenter": "Xiaoyu Que and Muyin Guo",
+      "order": 2,
+      "pdf": "pdfs/Fundmental/2026-06-27_Initial_10R_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo.pdf",
+      "originalFilename": "2026-06-27_Initial_10R_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-27_Initial_10R_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "cc4726b30abf7145b04bf0e396a6a5cc679eabb0a20a22d2ea33c39919053160"
+        }
+      ],
+      "sha256": "86a509371b1a78b183a6724df334550329592b633e30f674862319415aa7a630",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GMQX-07-16-Core_Editor_WB",
+      "trackId": "fundmental",
+      "date": "2026-06-28",
+      "title": "Successful Western Blot of the Initial 10R Comparison",
+      "experimenter": "Xiaoyu Que and Muyin Guo",
+      "order": 3,
+      "pdf": "pdfs/Fundmental/2026-06-28_10R_Western_Blot_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "originalFilename": "2026-06-28_10R_Western_Blot_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-28_10R_Western_Blot_Que_Xiaoyu_and_Guo_Muyin-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c58a5eb7d4259cd35ffc5a70cd9fe89be804ab3c12838bf13b9f68a16cb7eb25"
+        }
+      ],
+      "sha256": "3865d7a78872a09e0546f6035abfd374ea4b513213ac11c4946c8c454fff0fc6",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-06-29-Initial_10R_RNA_RT",
+      "trackId": "fundmental",
+      "date": "2026-06-29",
+      "title": "RNA Preparation for the Initial APOE Sequencing Assay",
+      "experimenter": "Hansen Zhang",
+      "order": 4,
+      "pdf": "pdfs/Fundmental/2026-06-29_Initial_10R_RNA_RT_Hansen_Zhang.pdf",
+      "originalFilename": "2026-06-29_Initial_10R_RNA_RT_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-29_Initial_10R_RNA_RT_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "57ff8e4dbd1aa7892525619acc3420352beb02006e7abb44f31a5ef234ff07b7"
+        }
+      ],
+      "sha256": "0e7c0141b5be0b0473bb24bbdb25e0017ca0456a784fc44dbc937b57524fd188",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-06-30-Initial_10R_Amplicon_Submission",
+      "trackId": "fundmental",
+      "date": "2026-06-30",
+      "title": "APOE Amplicon Preparation and Submission for the Initial Assay",
+      "experimenter": "Hansen Zhang",
+      "order": 5,
+      "pdf": "pdfs/Fundmental/2026-06-30_Initial_10R_Amplicon_Submission_Hansen_Zhang.pdf",
+      "originalFilename": "2026-06-30_Initial_10R_Amplicon_Submission_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-06-30_Initial_10R_Amplicon_Submission_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "0b036db3c2b8f92184ababb3063f93fde16df1532311f4e52fadac6124153ca2"
+        }
+      ],
+      "sha256": "168a647c414c2b487ac46e766649c17566e519c449461df46c65cf754beb763a",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-07-16-Core_Editor_Sequencing",
+      "trackId": "fundmental",
+      "date": "2026-07-01",
+      "title": "APOE Sequencing in the Initial 10R Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 6,
+      "pdf": "pdfs/Fundmental/2026-07-01_Core_Editor_Sequencing_Zhang_Hansen.pdf",
+      "originalFilename": "2026-07-01_Core_Editor_Sequencing_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-01_Core_Editor_Sequencing_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a9dd5d4254179f8ff3e928749a0f88e2b7ff5beba5ec4b712ed7654a95585578"
+        }
+      ],
+      "sha256": "23b71fe3d4781ec30933395f656970a66db424ec7c80074a218570d70585ac33",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-07-03-PUF_Length_Panel_Construction",
+      "trackId": "fundmental",
+      "date": "2026-07-03",
+      "title": "Construction of the 10R, 12R, 13R and 15R Editor Panel",
+      "experimenter": "Hansen Zhang, Hairong Xi and Sirui Wang",
+      "order": 7,
+      "pdf": "pdfs/Fundmental/2026-07-03_PUF_Length_Panel_Construction_Zhang_Hansen_Hairong_Xi_and_Sirui_Wang.pdf",
+      "originalFilename": "2026-07-03_PUF_Length_Panel_Construction_Zhang_Hansen_Hairong_Xi_and_Sirui_Wang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-03_PUF_Length_Panel_Construction_Zhang_Hansen_Hairong_Xi_and_Sirui_Wang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "259603ad4c4640e820fbd7b81fdd777a3f40a89a4e409421b3a5f2cac1d83d81"
+        }
+      ],
+      "sha256": "e4532144271e49ee4471bee5bb86d7fce03db22ce23ae300e07d2a3ad5474b59",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-07-09-APOE4_Panel_Cell_Transfection",
+      "trackId": "fundmental",
+      "date": "2026-07-09",
+      "title": "Cell Transfection for the APOE4 Editor Comparison",
+      "experimenter": "Muyin Guo",
+      "order": 8,
+      "pdf": "pdfs/Fundmental/2026-07-09_APOE4_Panel_Cell_Transfection_Muyin_Guo.pdf",
+      "originalFilename": "2026-07-09_APOE4_Panel_Cell_Transfection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-09_APOE4_Panel_Cell_Transfection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "e57fec1f6fb176093d78625d3d10fdcbbbc4588fc59dab22d03607cec1b493f7"
+        }
+      ],
+      "sha256": "2ed6b694814fdbcc596ac17e93f8ade35756411546c343acf2629436663d7e60",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-07-11-APOE4_Protein_Collection",
+      "trackId": "fundmental",
+      "date": "2026-07-11",
+      "title": "Protein Sample Preparation for the First APOE4 Blot",
+      "experimenter": "Xiaoyu Que and Muyin Guo",
+      "order": 9,
+      "pdf": "pdfs/Fundmental/2026-07-11_APOE4_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo.pdf",
+      "originalFilename": "2026-07-11_APOE4_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-11_APOE4_Protein_Collection_Xiaoyu_Que_and_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "df0b58bdff393e01c2b8252b23e10634827c117c4035664b8726c70347b21300"
+        }
+      ],
+      "sha256": "872d0a0d63bb872a6b3ef53a3ff2baa837aead47aff7422ac831002e129b66eb",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GMQX-07-13-PUF_Length_WB_First",
+      "trackId": "fundmental",
+      "date": "2026-07-13",
+      "title": "First APOE4 Western Blot Assessment",
+      "experimenter": "Xiaoyu Que and Muyin Guo",
+      "order": 10,
+      "pdf": "pdfs/Fundmental/2026-07-13_PUF_Length_WB_First_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "originalFilename": "2026-07-13_PUF_Length_WB_First_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-13_PUF_Length_WB_First_Que_Xiaoyu_and_Guo_Muyin-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2537c7681dfe112773d95d5d2869a27e5c560fdbfd4abecd5f900014a0fdf771"
+        }
+      ],
+      "sha256": "c0697ebcf33eedcfaa71948b9a92d4622a4e7504119ca69c9c2a1dc58fed1314",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-07-14-PUF_Length_RNA_RT",
+      "trackId": "fundmental",
+      "date": "2026-07-14",
+      "title": "RNA Preparation for the PUF-Length Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 11,
+      "pdf": "pdfs/Fundmental/2026-07-14_PUF_Length_RNA_RT_Hansen_Zhang.pdf",
+      "originalFilename": "2026-07-14_PUF_Length_RNA_RT_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-14_PUF_Length_RNA_RT_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ffda2db9ba79a334224b79366cd5c69ad54daba25902b1bc6b91150be79031c6"
+        }
+      ],
+      "sha256": "4085b3cd43b2d4eed3b5baf2a31df9be4593bb5272383a288cf8d43ff9383619",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-07-15-PUF_Length_Amplicon_Submission",
+      "trackId": "fundmental",
+      "date": "2026-07-15",
+      "title": "APOE Amplicon Submission for the PUF-Length Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 12,
+      "pdf": "pdfs/Fundmental/2026-07-15_PUF_Length_Amplicon_Submission_Hansen_Zhang.pdf",
+      "originalFilename": "2026-07-15_PUF_Length_Amplicon_Submission_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-15_PUF_Length_Amplicon_Submission_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "6aaedf2cde883c176af40c5f2d5a4561b3198ddcda20e1f0c22edb7c766c80a7"
+        }
+      ],
+      "sha256": "f58a55588d5c28fead781593e90e494f3761399349de1b8fe9233001d4982b46",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-09-21-Fund1_Sequencing",
+      "trackId": "fundmental",
+      "date": "2026-07-18",
+      "title": "APOE Sequencing in the PUF-Length Editor Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 13,
+      "pdf": "pdfs/Fundmental/2026-07-18_Fund1_Sequencing_Zhang_Hansen.pdf",
+      "originalFilename": "2026-07-18_Fund1_Sequencing_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-18_Fund1_Sequencing_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f1a7f87a2654f61c13f1315a247a64c6fbc312a15cddbaba8b4d17ff75853171"
+        }
+      ],
+      "sha256": "09b8f9af7779be1496f4364e1aa877973d2f882663591891dd33e1a731a70862",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX01",
+      "trackId": "puf",
+      "date": "2026-07-27",
+      "title": "Construction of the First P5 Mutant Panel",
+      "experimenter": "Xiaoyu Que",
+      "order": 14,
+      "pdf": "pdfs/PUF/2026-07-27_Construction_of_the_First_P5_Mutant_Panel_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-27_Construction_of_the_First_P5_Mutant_Panel_Que_Xiaoyu.pdf",
+      "pageCount": 2,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-07-27_Construction_of_the_First_P5_Mutant_Panel_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "55be8c0b5a20b4d5e40925bbd754cef107ca2de5298ea5aed32c5173e30eaa31"
+        },
+        {
+          "number": 2,
+          "preview": "previews/PUF/2026-07-27_Construction_of_the_First_P5_Mutant_Panel_Que_Xiaoyu-p2.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d70c3fac9c4ae1966c54847df67b39fe42c2de7e71409f60e5c886526e4bb882"
+        }
+      ],
+      "sha256": "61754fb7636a715cfa175ccd89ca156377318dbe8fe25dd3f66359a5cbdd5558",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX02",
+      "trackId": "puf",
+      "date": "2026-07-28",
+      "title": "Construction of the First P7 Mutant Panel",
+      "experimenter": "Xiaoyu Que",
+      "order": 15,
+      "pdf": "pdfs/PUF/2026-07-28_Construction_of_the_First_P7_Mutant_Panel_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-28_Construction_of_the_First_P7_Mutant_Panel_Que_Xiaoyu.pdf",
+      "pageCount": 2,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-07-28_Construction_of_the_First_P7_Mutant_Panel_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8a5c202fc28b37491409111a9f964ad0fead1ab1b67afb97c593f268c23cd652"
+        },
+        {
+          "number": 2,
+          "preview": "previews/PUF/2026-07-28_Construction_of_the_First_P7_Mutant_Panel_Que_Xiaoyu-p2.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "0447cc1dfac625683a7a7147c47b0d58ca1f7407f840f5e18c71560c3d6e31a8"
+        }
+      ],
+      "sha256": "acef21e8dd6e5970bde896350a1540813cc6ea0e625e0e12a6319fec8c94c0cc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX03",
+      "trackId": "puf",
+      "date": "2026-07-28",
+      "title": "P5 Colony Culture and Sequencing Submission",
+      "experimenter": "Xiaoyu Que",
+      "order": 16,
+      "pdf": "pdfs/PUF/2026-07-28_P5_Colony_Culture_and_Sequencing_Submission_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-28_P5_Colony_Culture_and_Sequencing_Submission_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-07-28_P5_Colony_Culture_and_Sequencing_Submission_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "80462af367a600e75e14308234e901cd0b2b1c651b7e1174be5f45230d23e82f"
+        }
+      ],
+      "sha256": "7389cdeff134e274ee03a552c60ed5aa032543b56129489c088c48235c9dba78",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX04",
+      "trackId": "puf",
+      "date": "2026-07-29",
+      "title": "P5 and P7 Colony Culture for Sanger Sequencing",
+      "experimenter": "Xiaoyu Que",
+      "order": 17,
+      "pdf": "pdfs/PUF/2026-07-29_P5_and_P7_Colony_Culture_for_Sanger_Sequencing_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-29_P5_and_P7_Colony_Culture_for_Sanger_Sequencing_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-07-29_P5_and_P7_Colony_Culture_for_Sanger_Sequencing_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "689c7444f7afc078bd51fbf57726ca2a3e19e9fabf6748aaf23c565c20789c4e"
+        }
+      ],
+      "sha256": "49ad748456a482a2cefa81334eaed86bcb863bc0cc60343e72be6921fd6c9adc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX23",
+      "trackId": "fundmental",
+      "date": "2026-07-31",
+      "title": "HEK293T Cell Thawing",
+      "experimenter": "Xiaoyu Que",
+      "order": 18,
+      "pdf": "pdfs/Fundmental/2026-07-31_HEK293T_Cell_Thawing_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-31_HEK293T_Cell_Thawing_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-07-31_HEK293T_Cell_Thawing_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5defad281a3921ad6c395106809719d09aae26856473af3e8b8ee7d9ffec5b74"
+        }
+      ],
+      "sha256": "833d80d3622185fa673750d8f904af2e152cca24afe8dc051c3b8bdf312d4345",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX05",
+      "trackId": "puf",
+      "date": "2026-07-31",
+      "title": "Reactivation of P5 and P7 Bacterial Cultures",
+      "experimenter": "Xiaoyu Que",
+      "order": 19,
+      "pdf": "pdfs/PUF/2026-07-31_Reactivation_of_P5_and_P7_Bacterial_Cultures_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-07-31_Reactivation_of_P5_and_P7_Bacterial_Cultures_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-07-31_Reactivation_of_P5_and_P7_Bacterial_Cultures_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4c0503c72383e73be37645634886e4ba9b6260a3bbf5d592d6c4858afcb17baf"
+        }
+      ],
+      "sha256": "fceef1840c6c85d1a4e9a06b89287795e3060a27d9f600e6a75f92c18bec2f50",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX24",
+      "trackId": "fundmental",
+      "date": "2026-08-01",
+      "title": "Maintenance of the Thawed HEK293T Culture",
+      "experimenter": "Xiaoyu Que",
+      "order": 20,
+      "pdf": "pdfs/Fundmental/2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-01_Maintenance_of_the_Thawed_HEK293T_Culture_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d9ae80e4ac976be628c0ae68652b29efa58de1d1daba0ffbb846e02344bec093"
+        }
+      ],
+      "sha256": "3136da3ac10a8f36b1a015e607479d074b492886f61a7f67be77b521133e5cfb",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX06",
+      "trackId": "puf",
+      "date": "2026-08-01",
+      "title": "Plasmid Extraction from the P5 and P7 Panel",
+      "experimenter": "Xiaoyu Que",
+      "order": 21,
+      "pdf": "pdfs/PUF/2026-08-01_Plasmid_Extraction_from_the_P5_and_P7_Panel_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-01_Plasmid_Extraction_from_the_P5_and_P7_Panel_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-01_Plasmid_Extraction_from_the_P5_and_P7_Panel_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b2ad5a58b04eda583612ce84bfd3e1b2784d8e8eb76503631455f3ed73a9fc14"
+        }
+      ],
+      "sha256": "8807c652e5014c28fa176e5fcb8e2826d87cd2cad1007ca45c4dd732208c7129",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX25",
+      "trackId": "fundmental",
+      "date": "2026-08-02",
+      "title": "HEK293T Confluence Check and Medium Change",
+      "experimenter": "Xiaoyu Que",
+      "order": 22,
+      "pdf": "pdfs/Fundmental/2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-02_HEK293T_Confluence_Check_and_Medium_Change_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "11c30d1aecd405fa89b10ea1144677143fd3ce8e72686e5be228c854d8a58366"
+        }
+      ],
+      "sha256": "247a6e8dce989a72b6c39e9dfd9cf52cc339e16392c0019648baaedb6d068167",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX26",
+      "trackId": "fundmental",
+      "date": "2026-08-03",
+      "title": "Passaging of the HEK293T P1 Culture",
+      "experimenter": "Xiaoyu Que",
+      "order": 23,
+      "pdf": "pdfs/Fundmental/2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-03_Passaging_of_the_HEK293T_P1_Culture_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "75536621929b478037b7ec2033a0b1e96a3edcf2298be2cf9755952a86615fe4"
+        }
+      ],
+      "sha256": "9c8c89c9bace88b4d38bdb38154bb060cd089a7bdfdb12280b1b1c20bc5bffdc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX07",
+      "trackId": "reporter",
+      "date": "2026-08-03",
+      "title": "Reporter Insertion into the PUF12 Backbone",
+      "experimenter": "Xiaoyu Que",
+      "order": 24,
+      "pdf": "pdfs/Reporter/2026-08-03_Reporter_Insertion_into_the_PUF12_Backbone_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-03_Reporter_Insertion_into_the_PUF12_Backbone_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-03_Reporter_Insertion_into_the_PUF12_Backbone_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "27a5e50f392257d1591062ccb835b816773f7fcbb9b9b7c3589e34e27ee65f37"
+        }
+      ],
+      "sha256": "8f602849b0dc715b6afff254dda6de2b5a8d74ec14e41f8e92913658bd44b5d7",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX08",
+      "trackId": "puf",
+      "date": "2026-08-04",
+      "title": "Repeat Colony Screening of P5 and P7 Constructs",
+      "experimenter": "Xiaoyu Que",
+      "order": 25,
+      "pdf": "pdfs/PUF/2026-08-04_Repeat_Colony_Screening_of_P5_and_P7_Constructs_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-04_Repeat_Colony_Screening_of_P5_and_P7_Constructs_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-04_Repeat_Colony_Screening_of_P5_and_P7_Constructs_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "312bfce91162ffb3b7e2a4f5cdfabbeae900588015233b77f210c1021ec8b4e6"
+        }
+      ],
+      "sha256": "32b8eb1279be42a1d6c8efd89408ce71ada30384bbc1fe02887909b9d599ea8d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX09",
+      "trackId": "reporter",
+      "date": "2026-08-04",
+      "title": "Reporter Colony Culture for Plasmid Preparation",
+      "experimenter": "Xiaoyu Que",
+      "order": 26,
+      "pdf": "pdfs/Reporter/2026-08-04_Reporter_Colony_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-04_Reporter_Colony_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-04_Reporter_Colony_Culture_for_Plasmid_Preparation_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ba4e7651572d3e3db0a824d3ba7b58b152f12dc96b5e7edd0264a5dcab4c457c"
+        }
+      ],
+      "sha256": "7e1a03eca468960ab0f4de9b4a0c3d89984d29b25ab0a267e29d4828cd640942",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX10",
+      "trackId": "reporter",
+      "date": "2026-08-05",
+      "title": "Plasmid Extraction from the Reporter Construct",
+      "experimenter": "Xiaoyu Que",
+      "order": 27,
+      "pdf": "pdfs/Reporter/2026-08-05_Plasmid_Extraction_from_the_Reporter_Construct_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-05_Plasmid_Extraction_from_the_Reporter_Construct_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-05_Plasmid_Extraction_from_the_Reporter_Construct_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b8366ebf270bd13d6cedf873a8090395373909e52dd85b2b4f0ccb0d3ed15bed"
+        }
+      ],
+      "sha256": "1e8d2929d39a55cd5d7a61d0ce7fd0028840bcead84db0ef157a2cae4880a6dc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX27",
+      "trackId": "puf",
+      "date": "2026-08-07",
+      "title": "Construction of the P4 and P6 Mutant Panel",
+      "experimenter": "Xiaoyu Que",
+      "order": 28,
+      "pdf": "pdfs/PUF/2026-08-07_Construction_of_the_P4_and_P6_Mutant_Panel_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-07_Construction_of_the_P4_and_P6_Mutant_Panel_Que_Xiaoyu.pdf",
+      "pageCount": 2,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-07_Construction_of_the_P4_and_P6_Mutant_Panel_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "85d1506ebf3cd0961d10f767e78fb8bc1992871b0fdcd4b16f37644f5c027974"
+        },
+        {
+          "number": 2,
+          "preview": "previews/PUF/2026-08-07_Construction_of_the_P4_and_P6_Mutant_Panel_Que_Xiaoyu-p2.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b508ae6e2839f962d495b561c34072d55f13d466f7744308629f7cb32bdb4bcd"
+        }
+      ],
+      "sha256": "c1e978283749bbfc0c667633e0bb4cc1d6112887f0f53eb7ce08ef7efb4db163",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX29",
+      "trackId": "puf",
+      "date": "2026-08-08",
+      "title": "Colony Culture from the P4 and P6 Construction Batch",
+      "experimenter": "Xiaoyu Que",
+      "order": 29,
+      "pdf": "pdfs/PUF/2026-08-08_Colony_Culture_from_the_P4_and_P6_Construction_Batch_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-08_Colony_Culture_from_the_P4_and_P6_Construction_Batch_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-08_Colony_Culture_from_the_P4_and_P6_Construction_Batch_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "6a64c5164a2abfaa40855ee7b13fd178f1aea6250d6e8ead27c1f0f3c6bc2a94"
+        }
+      ],
+      "sha256": "96e950e559b612d60fbe1d5e550514004a3d48cf43942e4b331bd3a01413a2c3",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX28",
+      "trackId": "puf",
+      "date": "2026-08-08",
+      "title": "P6 and P8 Mutagenesis and Repeat Transformation",
+      "experimenter": "Xiaoyu Que",
+      "order": 30,
+      "pdf": "pdfs/PUF/2026-08-08_P6_and_P8_Mutagenesis_and_Repeat_Transformation_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-08_P6_and_P8_Mutagenesis_and_Repeat_Transformation_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-08_P6_and_P8_Mutagenesis_and_Repeat_Transformation_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a62c91bd6fc31354ad1f655f3de3a8d43a73bc630f17106da3d12565f1a40dd3"
+        }
+      ],
+      "sha256": "d9c07b6a4c5036459d5b6c704f211c2617133c473e062f2d6b56717b4669baf0",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX11",
+      "trackId": "reporter",
+      "date": "2026-08-08",
+      "title": "Removal of an Extra BsaI Site from the Reporter",
+      "experimenter": "Xiaoyu Que",
+      "order": 31,
+      "pdf": "pdfs/Reporter/2026-08-08_Removal_of_an_Extra_BsaI_Site_from_the_Reporter_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-08_Removal_of_an_Extra_BsaI_Site_from_the_Reporter_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-08_Removal_of_an_Extra_BsaI_Site_from_the_Reporter_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4cb8c6308bfcb2fb507c5628ec1a73f081add702e199f3157b6cd1cc6dd7bc77"
+        }
+      ],
+      "sha256": "d73cf93e30ba9f2fb4de90f4933ea8f0ddf022108dc583c662cc2a0aa204bc64",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX13",
+      "trackId": "puf",
+      "date": "2026-08-09",
+      "title": "P6 and P8 Colony Culture for Screening",
+      "experimenter": "Xiaoyu Que",
+      "order": 32,
+      "pdf": "pdfs/PUF/2026-08-09_P6_and_P8_Colony_Culture_for_Screening_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-09_P6_and_P8_Colony_Culture_for_Screening_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-09_P6_and_P8_Colony_Culture_for_Screening_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c9dec03eac44b7a5e839b02ff51f0fe3e9b7e3bf60e460a201c25d20aaf525b5"
+        }
+      ],
+      "sha256": "5649000d986c8fb4b6776725d65f94c0050db25a4a0071db58bc7713021667ee",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX12",
+      "trackId": "puf",
+      "date": "2026-08-09",
+      "title": "Reconstruction of P6 and P8 Mutants",
+      "experimenter": "Xiaoyu Que",
+      "order": 33,
+      "pdf": "pdfs/PUF/2026-08-09_Reconstruction_of_P6_and_P8_Mutants_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-09_Reconstruction_of_P6_and_P8_Mutants_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-09_Reconstruction_of_P6_and_P8_Mutants_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "e02d915c65fd44402c91d86dfe673ab2a09e51343dc1c841217a0547a2e71ba0"
+        }
+      ],
+      "sha256": "47739676348a0e6dbb531b2ccbe6e3ef3e24ced8e75b8ee239039bcb7b91a941",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX30",
+      "trackId": "fundmental",
+      "date": "2026-08-10",
+      "title": "APOE4-his Culture for Plasmid Preparation",
+      "experimenter": "Xiaoyu Que",
+      "order": 34,
+      "pdf": "pdfs/Fundmental/2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-10_APOE4_his_Culture_for_Plasmid_Preparation_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "24827dcc60b3b7c779c04d722f0cca67d244557f1404fa5c919cd78d9506baa6"
+        }
+      ],
+      "sha256": "8b59e28e8c852f2ff5a070895e94235c4d53cb5585914453916a258e69d4a014",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX14",
+      "trackId": "puf",
+      "date": "2026-08-10",
+      "title": "P6 and P8 Culture for Sequence Screening",
+      "experimenter": "Xiaoyu Que",
+      "order": 35,
+      "pdf": "pdfs/PUF/2026-08-10_P6_and_P8_Culture_for_Sequence_Screening_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-10_P6_and_P8_Culture_for_Sequence_Screening_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-10_P6_and_P8_Culture_for_Sequence_Screening_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2a54da946a9d61551e0f67005bb18857410143effa3652027bd2f4f978636089"
+        }
+      ],
+      "sha256": "90242cc59c9a5c82696fa9e6ed103d2990002856f715b86070875cb5246836e3",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX31",
+      "trackId": "fundmental",
+      "date": "2026-08-11",
+      "title": "APOE4-his Plasmid Extraction",
+      "experimenter": "Xiaoyu Que",
+      "order": 36,
+      "pdf": "pdfs/Fundmental/2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-11_APOE4_his_Plasmid_Extraction_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "72c0efc0ded18b1569aeafe758eaf8ba4e910feda94a028b7cd98ec78ad373d6"
+        }
+      ],
+      "sha256": "b9d88cd1a7b6870eb82b60fc66d156c20cd1a99ff6434f1f35a92ce26e2e1d38",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-11-GFAP_RNA_RT_Preparation",
+      "trackId": "gfa",
+      "date": "2026-08-11",
+      "title": "RNA Preparation for the GFAP Cell-Line Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 37,
+      "pdf": "pdfs/Gfa/2026-08-11_GFAP_RNA_RT_Preparation_Hansen_Zhang.pdf",
+      "originalFilename": "2026-08-11_GFAP_RNA_RT_Preparation_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-11_GFAP_RNA_RT_Preparation_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8f72adc1c72ac12a7afb7c70ea98b1e3fbc9f323a5401f26c081f8b5bce2092c"
+        }
+      ],
+      "sha256": "b61e07824219f10bb03cbd31226edff6a55af5363274a4f9284b48e6ec8e02e1",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX15",
+      "trackId": "mre",
+      "date": "2026-08-11",
+      "title": "Recovery of the CMV+MRE Plasmid",
+      "experimenter": "Xiaoyu Que",
+      "order": 38,
+      "pdf": "pdfs/MRE/2026-08-11_Recovery_of_the_CMV_MRE_Plasmid_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-11_Recovery_of_the_CMV_MRE_Plasmid_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-11_Recovery_of_the_CMV_MRE_Plasmid_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "e2cb3cbe29f91b695c1ac6c99860e5e32d2aa704e93fd3898d082bb23b639ca5"
+        }
+      ],
+      "sha256": "e22377d8738ee475b285d7c8baa8f5170e704fa30a6df25e2216b361c5acb10b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX16",
+      "trackId": "puf",
+      "date": "2026-08-11",
+      "title": "PUF Culture Expansion and Re-streaking",
+      "experimenter": "Xiaoyu Que",
+      "order": 39,
+      "pdf": "pdfs/PUF/2026-08-11_PUF_Culture_Expansion_and_Re_streaking_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-11_PUF_Culture_Expansion_and_Re_streaking_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-11_PUF_Culture_Expansion_and_Re_streaking_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2e19c1c61750503c02362564428d5802a861fe02b499c32ea2b9e2c0f0b71d54"
+        }
+      ],
+      "sha256": "1af64eae745639ea2222fca5737ab0d2a91baaa695085a3e273987e574dbef3e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX32",
+      "trackId": "fundmental",
+      "date": "2026-08-12",
+      "title": "Culture of Plasmids for Off-Target Assays",
+      "experimenter": "Xiaoyu Que",
+      "order": 40,
+      "pdf": "pdfs/Fundmental/2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-12_Culture_of_Plasmids_for_Off_Target_Assays_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "009f7665170e7fa94547237f764d12f9aba0d8ba563625ba2e15b74fcfcd570e"
+        }
+      ],
+      "sha256": "57a348e7f79d15caf71de3b0055cf3495861c53357e9f07572ccff6302f4cd1f",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QPCR-EXISTING-1",
+      "trackId": "gfa",
+      "date": "2026-08-12",
+      "title": "GFAP Expression in U251 and HEK293T Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 41,
+      "pdf": "pdfs/Gfa/2026-08-12_GFAP_Expression_by_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-12_GFAP_Expression_by_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-12_GFAP_Expression_by_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b05ee8cedada4e9b8f111c7c7c299f08f49e0ee5924d53645ddac608f64b4205"
+        }
+      ],
+      "sha256": "36c3d4d494f8d050c5392c7012784f2a05b37cd7f27a1cc458371c787d91436c",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX19",
+      "trackId": "mre",
+      "date": "2026-08-12",
+      "title": "CMV+MRE Plasmid Extraction",
+      "experimenter": "Xiaoyu Que",
+      "order": 42,
+      "pdf": "pdfs/MRE/2026-08-12_CMV_MRE_Plasmid_Extraction_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-12_CMV_MRE_Plasmid_Extraction_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-12_CMV_MRE_Plasmid_Extraction_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "218bfee648be2fad092028990fc596c2c99fc2b7dd82f0f9850c8a7f6f232bab"
+        }
+      ],
+      "sha256": "000d34f6c5ad3c97d4b5241ff4fe7439d7d381e256d546997b16653ac84d636d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX17",
+      "trackId": "puf",
+      "date": "2026-08-12",
+      "title": "Culture Attempts for P6 and P8 Sequence Screening",
+      "experimenter": "Xiaoyu Que",
+      "order": 43,
+      "pdf": "pdfs/PUF/2026-08-12_Culture_Attempts_for_P6_and_P8_Sequence_Screening_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-12_Culture_Attempts_for_P6_and_P8_Sequence_Screening_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-12_Culture_Attempts_for_P6_and_P8_Sequence_Screening_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "175b5aada9bb1231420627b286bcce30431bbf03fab4b5977217fb3e44af82c5"
+        }
+      ],
+      "sha256": "facc5d68c905334afd38e2671af032b3b5a4d22cd334dfd2a04283844dd58571",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX18",
+      "trackId": "puf",
+      "date": "2026-08-12",
+      "title": "Plasmid Extraction from Ten PUF Mutants",
+      "experimenter": "Xiaoyu Que",
+      "order": 44,
+      "pdf": "pdfs/PUF/2026-08-12_Plasmid_Extraction_from_Ten_PUF_Mutants_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-12_Plasmid_Extraction_from_Ten_PUF_Mutants_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-12_Plasmid_Extraction_from_Ten_PUF_Mutants_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b6079ac6ec8247bcf0b962bc64ba994ea5a027748c70785004d83f262ec2eaaa"
+        }
+      ],
+      "sha256": "2d34861ffafe6d5346ce90d99c1f5f0325b8b6570219a3fe8f920aab711c5352",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX20",
+      "trackId": "reporter",
+      "date": "2026-08-12",
+      "title": "Culture of the BsaI-Modified Reporter Clone",
+      "experimenter": "Xiaoyu Que",
+      "order": 45,
+      "pdf": "pdfs/Reporter/2026-08-12_Culture_of_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-12_Culture_of_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-12_Culture_of_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "273d5a6dbb9cf2841579843da5618b62653accbe7bf5a46e35f714be7d0df880"
+        }
+      ],
+      "sha256": "23941c86a55464617c36a31d6ae89224d8fde0b34106d718168ebc6809ffe6d8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX34",
+      "trackId": "fundmental",
+      "date": "2026-08-13",
+      "title": "Construction of the PUF-Flag-only Empty Vector",
+      "experimenter": "Xiaoyu Que",
+      "order": 46,
+      "pdf": "pdfs/Fundmental/2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-13_Construction_of_the_PUF_Flag_only_Empty_Vector_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "abcd5460e9a5bcdfd6905a29db67577410150d82a56a9b08684d6c4c1911f45e"
+        }
+      ],
+      "sha256": "50ecf5d373305c1d0e553f9bfdc80d0dcc1e5d5675b80b5ffd316a9401242edf",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX33",
+      "trackId": "fundmental",
+      "date": "2026-08-13",
+      "title": "Plasmid Extraction for Off-Target Assays",
+      "experimenter": "Xiaoyu Que",
+      "order": 47,
+      "pdf": "pdfs/Fundmental/2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-13_Plasmid_Extraction_for_Off_Target_Assays_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8d6d843c0923162995f6655b83478830fed02e8bb91bc55447a4850da53102a5"
+        }
+      ],
+      "sha256": "c6a1c1f0546f527ecefbbf2d7413b952fbb71aeef5015fed4260c479f4929db3",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-13-Endogenous_miRNA_RNA_RT",
+      "trackId": "mre",
+      "date": "2026-08-13",
+      "title": "RNA and Stem-Loop RT Preparation for Endogenous miRNA Detection",
+      "experimenter": "Hansen Zhang",
+      "order": 48,
+      "pdf": "pdfs/MRE/2026-08-13_Endogenous_miRNA_RNA_RT_Hansen_Zhang.pdf",
+      "originalFilename": "2026-08-13_Endogenous_miRNA_RNA_RT_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-13_Endogenous_miRNA_RNA_RT_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c6392ace50c03d170817372e2a13e79bff5bc58c13b46bea3809e064f971ebf6"
+        }
+      ],
+      "sha256": "d6df2171724b8d7509f460bd0a7f3c7c2c9cf668eec630cba23fae7ea16bb070",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX35",
+      "trackId": "mre",
+      "date": "2026-08-13",
+      "title": "Gfa+MRE Plasmid Transformation for Amplification",
+      "experimenter": "Xiaoyu Que",
+      "order": 49,
+      "pdf": "pdfs/MRE/2026-08-13_Gfa_MRE_Plasmid_Transformation_for_Amplification_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-13_Gfa_MRE_Plasmid_Transformation_for_Amplification_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-13_Gfa_MRE_Plasmid_Transformation_for_Amplification_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ad62c5abf092a1103edfa184064786cb809e49dbbbe0645e1ba33a3f9801ad02"
+        }
+      ],
+      "sha256": "665ab65cdd4a53fd915a48364fa41686e78fa90d4e1c05e22e3ebea82e84ff29",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX22",
+      "trackId": "puf",
+      "date": "2026-08-13",
+      "title": "Reconstruction of Fourteen Failed Mutant Groups",
+      "experimenter": "Xiaoyu Que",
+      "order": 50,
+      "pdf": "pdfs/PUF/2026-08-13_Reconstruction_of_Fourteen_Failed_Mutant_Groups_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-13_Reconstruction_of_Fourteen_Failed_Mutant_Groups_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-13_Reconstruction_of_Fourteen_Failed_Mutant_Groups_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "fe6f7fc36eb791b38fae4e7b5598a5dd6785ecdb82974c4ac4b1b5654704ae24"
+        }
+      ],
+      "sha256": "745beb191f11dcefb3a4bfcbabf76a71715033cfae7cf3e20f386dc64cc62a59",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QX21",
+      "trackId": "reporter",
+      "date": "2026-08-13",
+      "title": "Plasmid Extraction from the BsaI-Modified Reporter Clone",
+      "experimenter": "Xiaoyu Que",
+      "order": 51,
+      "pdf": "pdfs/Reporter/2026-08-13_Plasmid_Extraction_from_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu.pdf",
+      "originalFilename": "2026-08-13_Plasmid_Extraction_from_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-13_Plasmid_Extraction_from_the_BsaI_Modified_Reporter_Clone_Que_Xiaoyu-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "55238f81b80a899695462a76caacf458a8d3dfc6e617bddc58115fee8de85821"
+        }
+      ],
+      "sha256": "a9bb02076012259351c244ffab81ac5fd5f4203156463fc70bf341cf24eaea8f",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-14-APOE4_His_Cell_Transfection",
+      "trackId": "fundmental",
+      "date": "2026-08-14",
+      "title": "Cell Transfection for the His-Tag APOE4 Repeat",
+      "experimenter": "Muyin Guo",
+      "order": 52,
+      "pdf": "pdfs/Fundmental/2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-14_APOE4_His_Cell_Transfection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "52d2810e18e08c37a7b9576a5245d26ce26fe4e7e1c30d9222c37076a82f4191"
+        }
+      ],
+      "sha256": "9c46abc2695895b24d0a454ef531f327028994e9d25db9e69171f292aa113e19",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QPCR-EXISTING-2",
+      "trackId": "mre",
+      "date": "2026-08-14",
+      "title": "Endogenous miRNA Detection by Stem-Loop RT-qPCR",
+      "experimenter": "Hansen Zhang",
+      "order": 53,
+      "pdf": "pdfs/MRE/2026-08-14_Endogenous_miRNA_RT_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-14_Endogenous_miRNA_RT_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-14_Endogenous_miRNA_RT_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "11dc6fba3918c3f355df633f74ed197754e8205194481b3dbeef4525a52e4799"
+        }
+      ],
+      "sha256": "50fb2b187c36176b6644f41982bf33498a9780c8f6f2fefe123fd2f5123b6e2e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-15-Gfa_MRE_Candidate_Sequencing",
+      "trackId": "mre",
+      "date": "2026-08-15",
+      "title": "Sequence Screening of Gfa/MRE Candidates",
+      "experimenter": "Hansen Zhang",
+      "order": 54,
+      "pdf": "pdfs/MRE/2026-08-15_Gfa_MRE_Candidate_Sequencing_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-15_Gfa_MRE_Candidate_Sequencing_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-15_Gfa_MRE_Candidate_Sequencing_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "653dd1a3c792c7c04b6f269df564fc024f92e9c8a286a155912aecf14009ffd6"
+        }
+      ],
+      "sha256": "2506b5f342ea21a554754abeb4980b301dd4fc0066ea210e21b035ab4574cb40",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GMQX-09-13-Core_Editor_WB_Followup",
+      "trackId": "fundmental",
+      "date": "2026-08-16",
+      "title": "Repeat APOE4 Western Blot with His-Tag Detection",
+      "experimenter": "Xiaoyu Que and Muyin Guo",
+      "order": 55,
+      "pdf": "pdfs/Fundmental/2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "originalFilename": "2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Fundmental/2026-08-16_APOE4_WB_His_Tag_Repeat_Que_Xiaoyu_and_Guo_Muyin-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8688d6652a13b6f4ce102f8d273f9ac2203ee66be6ba78eff65962af63e5d513"
+        }
+      ],
+      "sha256": "fec8f5039f95bf30332429e78eae14120f5ab7eb48bd284ea64588ed585bf2ab",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-18-Reporter_Recognition_Insertion",
+      "trackId": "reporter",
+      "date": "2026-08-18",
+      "title": "Insertion of Reporter Recognition Sequences",
+      "experimenter": "Hansen Zhang",
+      "order": 56,
+      "pdf": "pdfs/Reporter/2026-08-18_Reporter_Recognition_Insertion_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-18_Reporter_Recognition_Insertion_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-18_Reporter_Recognition_Insertion_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ed5c3201a15df5ad6cbc8f3e9862e76e3bc5f230a3bfe30389b35853700db806"
+        }
+      ],
+      "sha256": "18f848328a2dbca2d5ff5ffabe06a7f3887e5c7aa7f31167c8be3251c8f14697",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-19-First_GFAMRE_Cotransfection",
+      "trackId": "mre",
+      "date": "2026-08-19",
+      "title": "Co-transfection for the First Gfa/MRE Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 57,
+      "pdf": "pdfs/MRE/2026-08-19_First_GFAMRE_Cotransfection_Hansen_Zhang.pdf",
+      "originalFilename": "2026-08-19_First_GFAMRE_Cotransfection_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-19_First_GFAMRE_Cotransfection_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "e698e1d24ce83453c59953410de9407bd579a21d38e4ef1ca33c9aa50a78ff2c"
+        }
+      ],
+      "sha256": "74d25202fd89242bb0a6184b7ea9db60fa79554b9bbc5b3297ccbfe1a97a0900",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-19-First_PUF_Functional_Transfection",
+      "trackId": "puf",
+      "date": "2026-08-19",
+      "title": "First PUF Functional-Screen Transfection",
+      "experimenter": "Muyin Guo",
+      "order": 58,
+      "pdf": "pdfs/PUF/2026-08-19_First_PUF_Functional_Transfection_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-19_First_PUF_Functional_Transfection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-19_First_PUF_Functional_Transfection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8d9c324070e9cb3aa86f01f8b3658115f8e6c9b40b38e527a012871ebebb7a02"
+        }
+      ],
+      "sha256": "91c7b115398b0bfeddb909fcf6adb254449a10ffd1d400ebcd8fa32c9a99e982",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-20-Reporter_Clone_Sequencing",
+      "trackId": "reporter",
+      "date": "2026-08-20",
+      "title": "Sequence Screening of WT, AC and InAC Reporter Clones",
+      "experimenter": "Hansen Zhang",
+      "order": 59,
+      "pdf": "pdfs/Reporter/2026-08-20_Reporter_Clone_Sequencing_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-20_Reporter_Clone_Sequencing_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-20_Reporter_Clone_Sequencing_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "58b2d08b9a55c7194e2a8a5aca3fbe41d0d1b12b7744b9c05b278c866ef9d61c"
+        }
+      ],
+      "sha256": "c299cbbf7aa08dae3a856a4750bcedc17c2daf520c4f7f0e1f234d85e092d61b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QPCR-EXISTING-3",
+      "trackId": "mre",
+      "date": "2026-08-21",
+      "title": "Editor Expression with Gfa and MRE Modules",
+      "experimenter": "Hansen Zhang",
+      "order": 60,
+      "pdf": "pdfs/MRE/2026-08-21_Gfa_MRE_Editor_Expression_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-21_Gfa_MRE_Editor_Expression_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-21_Gfa_MRE_Editor_Expression_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5b21f8245976476f1cd0fc07f9ec528b73703d5686b6295311c1623364116602"
+        }
+      ],
+      "sha256": "af0434cbda81ca7b331d8932d4b73b32a7989e43428d833a0c97b965bcfc911e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-21-First_PUF_RNA_RT",
+      "trackId": "puf",
+      "date": "2026-08-21",
+      "title": "First PUF Functional-Screen RNA Preparation",
+      "experimenter": "Muyin Guo",
+      "order": 61,
+      "pdf": "pdfs/PUF/2026-08-21_First_PUF_RNA_RT_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-21_First_PUF_RNA_RT_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-21_First_PUF_RNA_RT_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "686c308b03d49f54a656f12ad296924cc7dc950ea3a7c2de8a5ef6ace359510c"
+        }
+      ],
+      "sha256": "44338616565fd3266f9bd3220e0fce63d18f80e3b8a4b2fd2c128a828070a098",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-22-APOE4_PCR",
+      "trackId": "mre",
+      "date": "2026-08-22",
+      "title": "APOE4 cDNA PCR for the First Gfa/MRE Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 62,
+      "pdf": "pdfs/MRE/2026-08-22_APOE4_PCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-22_APOE4_PCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-22_APOE4_PCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "1582b5894f136c8758029a893a16af3a5185dd984970110cfcf0fd9e3436ae7d"
+        }
+      ],
+      "sha256": "75c2de0612eaac6a5609a2aea7e3489610f0cbce4c9b5ededccf38b90189bca8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-22-First_PUF_Amplicon_Submission",
+      "trackId": "puf",
+      "date": "2026-08-22",
+      "title": "First PUF Functional-Screen Amplicon Submission",
+      "experimenter": "Muyin Guo",
+      "order": 63,
+      "pdf": "pdfs/PUF/2026-08-22_First_PUF_Amplicon_Submission_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-22_First_PUF_Amplicon_Submission_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-22_First_PUF_Amplicon_Submission_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4b63b35225d51f679b3aee7fda61abe00b310d1290530b6fd924e5f51bd4c660"
+        }
+      ],
+      "sha256": "9940e2cf8ef53e12c4e831b2134b6c55bac1fb551c2ce8ab716c7a6a006822b1",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-22-Reporter_Initial_Transfection",
+      "trackId": "reporter",
+      "date": "2026-08-22",
+      "title": "Initial Transfection of WT, AC and InAC Reporters",
+      "experimenter": "Hansen Zhang",
+      "order": 64,
+      "pdf": "pdfs/Reporter/2026-08-22_Reporter_Initial_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-22_Reporter_Initial_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-22_Reporter_Initial_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "406e73129a7b0a9b7365ca4a13fb2222e29b26cb1bed367027e256cd9d284055"
+        }
+      ],
+      "sha256": "b05ed861b877df52b2c55e3d452b68e84f1a61aa5fe380d0a68157a93b985691",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-23-GFAnoMRE_Construction",
+      "trackId": "gfa",
+      "date": "2026-08-23",
+      "title": "Construction of GFAnoMRE",
+      "experimenter": "Hansen Zhang",
+      "order": 65,
+      "pdf": "pdfs/Gfa/2026-08-23_GFAnoMRE_Construction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-23_GFAnoMRE_Construction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-23_GFAnoMRE_Construction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "29fdda9fff7b7e237dd6e42cee48e98208c1403c5576394c4388b9407f4b4d59"
+        }
+      ],
+      "sha256": "e41f205aed1cbd52aedc9e9d0fb69519f80c42b613a0aaaa6f5a0520a01a944d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-23-M1_Sequencing_Readout",
+      "trackId": "mre",
+      "date": "2026-08-23",
+      "title": "Sequencing Readout of the First Gfa/MRE Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 66,
+      "pdf": "pdfs/MRE/2026-08-23_M1_Sequencing_Readout_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-23_M1_Sequencing_Readout_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-23_M1_Sequencing_Readout_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "289b8d74863a17932e46457a247893e8d600a6c3956f4f816e02eed6350ddb6e"
+        }
+      ],
+      "sha256": "1ba0b24d4437955d8f92400c38b90a61598a128c583ef2d1f584b11908bcebb4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-23-Mimic_Transfection",
+      "trackId": "mre",
+      "date": "2026-08-23",
+      "title": "miR-124 Mimic Transfection in HEK293T Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 67,
+      "pdf": "pdfs/MRE/2026-08-23_Mimic_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-23_Mimic_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-23_Mimic_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "9077e54afe84a434f4120f582ce9a0aeaccede0e88b095517d39909e9f88fb66"
+        }
+      ],
+      "sha256": "70b29f4614f96a3c7ced9fafc730f6bc73a34bdef3930c6de6fd2f890e368043",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260824-Round1_Mutant_Construction",
+      "trackId": "apobec",
+      "date": "2026-08-24",
+      "title": "Construction of the First REWIRE Pro.hA1 Mutant Panel",
+      "experimenter": "Yunxiang Zhang",
+      "order": 68,
+      "pdf": "pdfs/Apobec/2026-08-24_Round1_Mutant_Construction_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-24_Round1_Mutant_Construction_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-24_Round1_Mutant_Construction_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f375b5845ed54e5f86b57b0395d81abddc409ca83c6a8f31d2bc7aa51f681368"
+        }
+      ],
+      "sha256": "802776529e75676ff6bbfc598a2904f1ed07d35a8c8f4e32367b3660ed1e4004",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-24-GFAnoMRE_Sequencing_Submission",
+      "trackId": "gfa",
+      "date": "2026-08-24",
+      "title": "Sequencing Submission of GFAnoMRE Colonies",
+      "experimenter": "Hansen Zhang",
+      "order": 69,
+      "pdf": "pdfs/Gfa/2026-08-24_GFAnoMRE_Sequencing_Submission_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-24_GFAnoMRE_Sequencing_Submission_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-24_GFAnoMRE_Sequencing_Submission_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5ae924dff860a4d36762b5279acc5fea6b68557fbb04a956357fee6ce296a90a"
+        }
+      ],
+      "sha256": "98895189abbace006d3aa49dc8cabdf6caa529fc5b191186c180c9976d469faf",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-24-Initial_Reporter_Flow",
+      "trackId": "reporter",
+      "date": "2026-08-24",
+      "title": "Flow Cytometry of the Initial Reporter Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 70,
+      "pdf": "pdfs/Reporter/2026-08-24_Initial_Reporter_Flow_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-24_Initial_Reporter_Flow_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-24_Initial_Reporter_Flow_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "9f584b0e6413536bc91dabd8d598c29ce959fa4330f1c6fa78f30a44eea1fe62"
+        }
+      ],
+      "sha256": "8e6d302aebaa7ec896d985f7a866f1e4814ad8208a872d2477b62259a3a5491a",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260825-Round1_Sanger_Submission",
+      "trackId": "apobec",
+      "date": "2026-08-25",
+      "title": "Sanger Submission of First-Round Mutant Colonies",
+      "experimenter": "Yunxiang Zhang",
+      "order": 71,
+      "pdf": "pdfs/Apobec/2026-08-25_Round1_Sanger_Submission_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-25_Round1_Sanger_Submission_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-25_Round1_Sanger_Submission_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4d592c87e66f80fe09c67ab6f2278eaa867322577868419ab02a0462f1d12d4d"
+        }
+      ],
+      "sha256": "4bc0b310fbb073b7bc52ce613bc32b35305707cf2ed8c1290ad2064151d70eb8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-25-GFAnoMRE_Bacterial_Culture",
+      "trackId": "gfa",
+      "date": "2026-08-25",
+      "title": "Culture Expansion of GFAnoMRE",
+      "experimenter": "Hansen Zhang",
+      "order": 72,
+      "pdf": "pdfs/Gfa/2026-08-25_GFAnoMRE_Bacterial_Culture_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-25_GFAnoMRE_Bacterial_Culture_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-25_GFAnoMRE_Bacterial_Culture_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "3d1da7c767699380b06580aa0a009acfd7e5625b652bcd0ade6f7a1dabcf6e6c"
+        }
+      ],
+      "sha256": "e8e74fa9c90cbd50ef84ef70667f056997aabb455041c803e4e0d716e8d0a635",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-25-MRE_Sequential_Plasmid_Transfection",
+      "trackId": "mre",
+      "date": "2026-08-25",
+      "title": "Plasmid Transfection after miR-124 Mimic Treatment",
+      "experimenter": "Hansen Zhang",
+      "order": 73,
+      "pdf": "pdfs/MRE/2026-08-25_MRE_Sequential_Plasmid_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-25_MRE_Sequential_Plasmid_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-25_MRE_Sequential_Plasmid_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "921a258fcdd9a966ad95419edff9c9863b088475dca31ff4de058850806e76a6"
+        }
+      ],
+      "sha256": "46c056e433eedc5a2cb0febdf4df3fc2b47ec2cae88790b75179fc8b64f5444a",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-25-TMP_Reporter_Transfection",
+      "trackId": "reporter",
+      "date": "2026-08-25",
+      "title": "Reporter Transfection for the TMP Rescue Assay",
+      "experimenter": "Hansen Zhang",
+      "order": 74,
+      "pdf": "pdfs/Reporter/2026-08-25_TMP_Reporter_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-25_TMP_Reporter_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-25_TMP_Reporter_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4dfa31df7330f16c56aa51b194aac6f4ca8b91f0abc4a8c99ecba00e9922f0de"
+        }
+      ],
+      "sha256": "9ef20b0ddb665fcaeee993bb457b63c1ce78224c311df1ecbcd7c905240a038b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-26-Gfa_Transfection",
+      "trackId": "gfa",
+      "date": "2026-08-26",
+      "title": "Transfection for Gfa Promoter Validation",
+      "experimenter": "Hansen Zhang",
+      "order": 75,
+      "pdf": "pdfs/Gfa/2026-08-26_Gfa_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-26_Gfa_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-26_Gfa_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "7b574013ad090efef19fcc0f6fe04d603502c635822b2c8cd07e6417d50c8769"
+        }
+      ],
+      "sha256": "0cd6b8d8cc495e48e383c9f6fc1d721ed0f99af7759268f14a7ec5efceb4b75e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-08-26-First_PUF_Result_Receipt",
+      "trackId": "puf",
+      "date": "2026-08-26",
+      "title": "First PUF Functional-Screen Result Receipt",
+      "experimenter": "Muyin Guo",
+      "order": 76,
+      "pdf": "pdfs/PUF/2026-08-26_First_PUF_Result_Receipt_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-26_First_PUF_Result_Receipt_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-26_First_PUF_Result_Receipt_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c2a20d19ca207fa4157ecce9447bf2a7fef5822d578f3fa5b3a66739ddbbc41c"
+        }
+      ],
+      "sha256": "e589cad45485795b80fbf84199444dc928e3dbf61dccd09bdef3068e25da8fb8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-26-Reporter_Editing_Transfection",
+      "trackId": "reporter",
+      "date": "2026-08-26",
+      "title": "Reporter Dose-Gradient and Editor Cotransfection",
+      "experimenter": "Hansen Zhang",
+      "order": 77,
+      "pdf": "pdfs/Reporter/2026-08-26_Reporter_Editing_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-26_Reporter_Editing_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-26_Reporter_Editing_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "52e83c52f383f7bfe5a549fcd5545d712935c837231d36b796267f2ba6161419"
+        }
+      ],
+      "sha256": "8cffbea6312535bef22a30df28d277f7801806f1fd7dc4789948115f7b2df8a7",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-26-TMP_Treatment",
+      "trackId": "reporter",
+      "date": "2026-08-26",
+      "title": "TMP Treatment of Reporter-Transfected Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 78,
+      "pdf": "pdfs/Reporter/2026-08-26_TMP_Treatment_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-26_TMP_Treatment_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-26_TMP_Treatment_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "3045c5713433156ebb62b276d3ccf0f1df6f8846873b0d6bc7e4e60682dc4ea0"
+        }
+      ],
+      "sha256": "c30af17d321dfa06585bb66739d70dc11bda2b7d2f23fefc0782861e043c4ece",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-27-Gfa_Medium_Change",
+      "trackId": "gfa",
+      "date": "2026-08-27",
+      "title": "Observation and Medium Replacement of Gfa Cultures",
+      "experimenter": "Hansen Zhang",
+      "order": 79,
+      "pdf": "pdfs/Gfa/2026-08-27_Gfa_Medium_Change_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-27_Gfa_Medium_Change_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-27_Gfa_Medium_Change_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c8b1236c508b54b0e092598c1d78a434974fe3713d0bdda7fea961c9d0101331"
+        }
+      ],
+      "sha256": "c5ab6cf48274f61da2f084cf71d8a45e7f8225590c584bfea627208dd7439981",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Second_PUF_Library_Planning",
+      "trackId": "puf",
+      "date": "2026-08-27",
+      "title": "Planning of the Second PUF12 Mutant Library",
+      "experimenter": "Muyin Guo",
+      "order": 80,
+      "pdf": "pdfs/PUF/2026-08-27_Second_PUF_Library_Planning_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-27_Second_PUF_Library_Planning_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-27_Second_PUF_Library_Planning_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "1b5f11893ac8c6dc726d9709f5ffc20a59871634bc7627542a8370c676ae431a"
+        }
+      ],
+      "sha256": "7d08618e75b09dda2f6e33bb175e27526a96b6cbd5fcddcf2ba9a071395e7e1e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-27-Reporter_Medium_Change",
+      "trackId": "reporter",
+      "date": "2026-08-27",
+      "title": "Maintenance of Reporter Dose and Cotransfection Cultures",
+      "experimenter": "Hansen Zhang",
+      "order": 81,
+      "pdf": "pdfs/Reporter/2026-08-27_Reporter_Medium_Change_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-27_Reporter_Medium_Change_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-27_Reporter_Medium_Change_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "72021006ef77088772a7b759d97cf08845e5a42dc6a7b92b4ec551917291218a"
+        }
+      ],
+      "sha256": "5e0d2a901cb254ea938c342a96677cf597bc3e9a3d9ef793aeee22a29b4f3a90",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-27-TMP_Flow_Cytometry",
+      "trackId": "reporter",
+      "date": "2026-08-27",
+      "title": "Flow Cytometry of the TMP Rescue Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 82,
+      "pdf": "pdfs/Reporter/2026-08-27_TMP_Flow_Cytometry_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-27_TMP_Flow_Cytometry_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-27_TMP_Flow_Cytometry_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "07a8910e9450fc80640e69f871c09e8306d3b71f16afee8bd90db19551b011cc"
+        }
+      ],
+      "sha256": "6e60e4082c19fbf514a525f2c76e315b16af69c28c47b3bc0c56e69ad7884eb0",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260828-Round1_Sanger_Screening_and_Expansion",
+      "trackId": "apobec",
+      "date": "2026-08-28",
+      "title": "Sanger Screening and Expansion of First-Round Mutants",
+      "experimenter": "Yunxiang Zhang",
+      "order": 83,
+      "pdf": "pdfs/Apobec/2026-08-28_Round1_Sanger_Screening_and_Expansion_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-28_Round1_Sanger_Screening_and_Expansion_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-28_Round1_Sanger_Screening_and_Expansion_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "61c80f3037932c4aa305fa6c683a8eee9f479821cdc8faa974e8633de69bdbe0"
+        }
+      ],
+      "sha256": "125f06ebcbe779927105fdfcf56bae813a9306c62536a1852ace7dc26cfd1931",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-28-Gfa_RNA_Collection",
+      "trackId": "gfa",
+      "date": "2026-08-28",
+      "title": "RNA Sample Collection from Gfa Validation Cultures",
+      "experimenter": "Hansen Zhang",
+      "order": 84,
+      "pdf": "pdfs/Gfa/2026-08-28_Gfa_RNA_Collection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-28_Gfa_RNA_Collection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-28_Gfa_RNA_Collection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "0ec677b440470a7ac66566da266ba800b96194f96894787b145da068da0c7404"
+        }
+      ],
+      "sha256": "f3687ef46e75931a7404c558cfc739f11489021d384e2ea29cf95135ff3bcd7e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-28-Mimic_RNA_Collection",
+      "trackId": "mre",
+      "date": "2026-08-28",
+      "title": "Sample Collection from the miR-124 Mimic Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 85,
+      "pdf": "pdfs/MRE/2026-08-28_Mimic_RNA_Collection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-28_Mimic_RNA_Collection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-28_Mimic_RNA_Collection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "aaa30d09804793cc705f0e56e02934bcb0028263cdbc6475efcb36a4277a8303"
+        }
+      ],
+      "sha256": "2ab309cf59c6aab197b7536e20e8a667d98ad8b0015b68411f1c1098a643b9cb",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Mutagenic_Primer_Design_Review",
+      "trackId": "puf",
+      "date": "2026-08-28",
+      "title": "Review of Mutagenic Primer Designs",
+      "experimenter": "Muyin Guo",
+      "order": 86,
+      "pdf": "pdfs/PUF/2026-08-28_Mutagenic_Primer_Design_Review_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-28_Mutagenic_Primer_Design_Review_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-28_Mutagenic_Primer_Design_Review_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2d2f0cceb67b51db33e9e3c09c58cf0c358931eda8715cc4aaef5266731c63f7"
+        }
+      ],
+      "sha256": "bfeebbadc5e698a6db04d262786445256553cdefc9b88950777fa9457076ef01",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-28-Initial_Editing_Flow",
+      "trackId": "reporter",
+      "date": "2026-08-28",
+      "title": "Flow Cytometry of the Reporter Dose and Editing Comparison",
+      "experimenter": "Hansen Zhang",
+      "order": 87,
+      "pdf": "pdfs/Reporter/2026-08-28_Initial_Editing_Flow_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-28_Initial_Editing_Flow_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-08-28_Initial_Editing_Flow_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2bb19ae13d07b9d9f0b4864140b17f937f3f4bfb6fc88e3e0d44c5d3e8466e63"
+        }
+      ],
+      "sha256": "aa78e5c10635c914ff05446113be90737c1d41d0be26011b22429567cecc555c",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260829-Round1_Bacterial_Pellet_Storage",
+      "trackId": "apobec",
+      "date": "2026-08-29",
+      "title": "Harvest and Storage of First-Round Bacterial Pellets",
+      "experimenter": "Yunxiang Zhang",
+      "order": 88,
+      "pdf": "pdfs/Apobec/2026-08-29_Round1_Bacterial_Pellet_Storage_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-29_Round1_Bacterial_Pellet_Storage_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-29_Round1_Bacterial_Pellet_Storage_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "644db4f3b5717165e8ddd9d978ed0a36261a4e11a1a800280918f92fd4a5be3d"
+        }
+      ],
+      "sha256": "4ace308ea2a71033bfc40f28bac696f1590415be51f1c4ce1565c7741e33174d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-08-29-Mimic_qPCR",
+      "trackId": "mre",
+      "date": "2026-08-29",
+      "title": "Editor Expression after miR-124 Mimic Treatment",
+      "experimenter": "Hansen Zhang",
+      "order": 89,
+      "pdf": "pdfs/MRE/2026-08-29_Mimic_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-29_Mimic_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-08-29_Mimic_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "40fe357104e86ac38a783726b3787ef23f914320f56d331e2e01a7d08a289e2c"
+        }
+      ],
+      "sha256": "58184940d2bbcd7af2e3866a97b4cfa74013f95207cc14017801fb8160b2dfdc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Primer_Orders_and_Construction_Preparation",
+      "trackId": "puf",
+      "date": "2026-08-29",
+      "title": "Primer Orders and Preparation for PUF12 Mutagenesis",
+      "experimenter": "Muyin Guo",
+      "order": 90,
+      "pdf": "pdfs/PUF/2026-08-29_Primer_Orders_and_Construction_Preparation_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-29_Primer_Orders_and_Construction_Preparation_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-29_Primer_Orders_and_Construction_Preparation_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "26fa032eabbb923581837e0abb5be2b7a0136c06dba63249c155ef44f4c37351"
+        }
+      ],
+      "sha256": "7b254d0b25adb68bc6c71ec5caa9783d676199a73019e9e8afe5852ebffa12ce",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260830-Round1_HEK293T_Seeding",
+      "trackId": "apobec",
+      "date": "2026-08-30",
+      "title": "HEK293T Seeding for the First-Round Editing Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 91,
+      "pdf": "pdfs/Apobec/2026-08-30_Round1_HEK293T_Seeding_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-30_Round1_HEK293T_Seeding_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-30_Round1_HEK293T_Seeding_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a85d1fe9b8f4af54aab1c3e1435372fca9c1ef06c2394a7d82f2e783156cf8e3"
+        }
+      ],
+      "sha256": "c67b65f287bce5bc70b61cb0a9dfed610a40641b658c68a45681faea49778b36",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260830-Round1_Plasmid_Extraction",
+      "trackId": "apobec",
+      "date": "2026-08-30",
+      "title": "Plasmid Extraction from the First-Round Mutant Panel",
+      "experimenter": "Yunxiang Zhang",
+      "order": 92,
+      "pdf": "pdfs/Apobec/2026-08-30_Round1_Plasmid_Extraction_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-30_Round1_Plasmid_Extraction_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-30_Round1_Plasmid_Extraction_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ff6f152bdfba3ff4feb4c820c6e0e0de2f2d730bc4325224e9103d54679545f7"
+        }
+      ],
+      "sha256": "168a0d5f4d43f500fd749fbafa3b8e4196e8cdb109492198a696169cb0de6aaa",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QPCR-EXISTING-4",
+      "trackId": "gfa",
+      "date": "2026-08-30",
+      "title": "Gfa Promoter Expression without MRE",
+      "experimenter": "Hansen Zhang",
+      "order": 93,
+      "pdf": "pdfs/Gfa/2026-08-30_Gfa_Promoter_Expression_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-08-30_Gfa_Promoter_Expression_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Gfa/2026-08-30_Gfa_Promoter_Expression_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d8951bc4a8a3a0ce214897d27548914d85845b6c6c1feaa761d61103f932512f"
+        }
+      ],
+      "sha256": "c6579f090b01fb1287b20fe10cda3c9f35dfef18059f37efbf0730a5736c34bc",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P1_P3_Mutant_Construction",
+      "trackId": "puf",
+      "date": "2026-08-30",
+      "title": "Construction of the P1-P3 Mutant Batch",
+      "experimenter": "Muyin Guo",
+      "order": 94,
+      "pdf": "pdfs/PUF/2026-08-30_P1_P3_Mutant_Construction_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-30_P1_P3_Mutant_Construction_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-30_P1_P3_Mutant_Construction_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f4ce4def97fce2f7a0490bf3c266f6000be941c910cff4ef16715fd36fe18dbc"
+        }
+      ],
+      "sha256": "51023f337b0e08a49cccd1cc220e2690035f25487f93a9d65359019b67a70488",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260831-Round1_HEK293T_Cotransfection",
+      "trackId": "apobec",
+      "date": "2026-08-31",
+      "title": "First-Round REWIRE Pro.hA1 and APOE4 Reporter Co-transfection",
+      "experimenter": "Yunxiang Zhang",
+      "order": 95,
+      "pdf": "pdfs/Apobec/2026-08-31_Round1_HEK293T_Cotransfection_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-08-31_Round1_HEK293T_Cotransfection_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-08-31_Round1_HEK293T_Cotransfection_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "9a78bfe0b6f396bc65fbb9f5ce3216f0f0434ca36d641a9a2a7f9d985de068b7"
+        }
+      ],
+      "sha256": "1472d2cadd9466440d6ac7d7d50c73d01d5450c57b74fdc07c5f26e608e1faf4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P1_P3_Plate_Sequencing_Submission",
+      "trackId": "puf",
+      "date": "2026-08-31",
+      "title": "Plate Inspection and Sequencing Submission of the P1-P3 Batch",
+      "experimenter": "Muyin Guo",
+      "order": 96,
+      "pdf": "pdfs/PUF/2026-08-31_P1_P3_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "originalFilename": "2026-08-31_P1_P3_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-08-31_P1_P3_Plate_Sequencing_Submission_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ecce56b5f0a522820a1e259687d05efecd99eb98b04bd90086704030eb2e5a9e"
+        }
+      ],
+      "sha256": "099eb97896faa3914278d769af5b9fd6f06c0f2d0dcc5a54e051c176f41e648e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P3_P9_Mutant_Construction",
+      "trackId": "puf",
+      "date": "2026-09-01",
+      "title": "Construction of the P3/P9 Mutant Batch",
+      "experimenter": "Muyin Guo",
+      "order": 97,
+      "pdf": "pdfs/PUF/2026-09-01_P3_P9_Mutant_Construction_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-01_P3_P9_Mutant_Construction_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-01_P3_P9_Mutant_Construction_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "fc93622aa39728c14835255617be5c5e271e7012818501a08af3d776553cf632"
+        }
+      ],
+      "sha256": "9d786fe7210e1f16b98f4ae77f1b962e95918cca84bbdece25676258b6cb42c5",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260902-Round1_RNA_Extraction_and_RT",
+      "trackId": "apobec",
+      "date": "2026-09-02",
+      "title": "RNA Extraction and Reverse Transcription for the First-Round Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 98,
+      "pdf": "pdfs/Apobec/2026-09-02_Round1_RNA_Extraction_and_RT_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-02_Round1_RNA_Extraction_and_RT_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-02_Round1_RNA_Extraction_and_RT_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "53be21006fe5faf715cf37311741fdad3a44d6a33a9d0d021d72996a722a38b7"
+        }
+      ],
+      "sha256": "810dc55818d1276dea98248f80c4360957eca2e64896d4378ed1c45fb79c8642",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P3_P9_Plate_Sequencing_Submission",
+      "trackId": "puf",
+      "date": "2026-09-02",
+      "title": "Plate Inspection and Sequencing Submission of the P3/P9 Batch",
+      "experimenter": "Muyin Guo",
+      "order": 99,
+      "pdf": "pdfs/PUF/2026-09-02_P3_P9_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-02_P3_P9_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-02_P3_P9_Plate_Sequencing_Submission_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f34a2e8d80c4563ddd4a127615e07e01fbcaea8980ebcc11a9a696579a19230f"
+        }
+      ],
+      "sha256": "bf361a53f14822c6e4c110fdd5dedfb4fbb3aa58813a5c344cb30286a68a3211",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P9_P11_Mutant_Construction",
+      "trackId": "puf",
+      "date": "2026-09-02",
+      "title": "Construction of the P9-P11 Mutant Batch",
+      "experimenter": "Muyin Guo",
+      "order": 100,
+      "pdf": "pdfs/PUF/2026-09-02_P9_P11_Mutant_Construction_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-02_P9_P11_Mutant_Construction_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-02_P9_P11_Mutant_Construction_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4042ef45f4f67abfed6b0bd8f8fbdefa34af98d12fcb4e854bbbba71c62d7b21"
+        }
+      ],
+      "sha256": "8d9c2ef2fc8760cc3cddf5e331062f52fbdcba7f273599fece0d0f98b59457fa",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-02-RepOpen_Construction_Attempt",
+      "trackId": "reporter",
+      "date": "2026-09-02",
+      "title": "Initial Construction Attempt for Reporter Accessibility Variants",
+      "experimenter": "Hansen Zhang",
+      "order": 101,
+      "pdf": "pdfs/Reporter/2026-09-02_RepOpen_Construction_Attempt_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-02_RepOpen_Construction_Attempt_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-02_RepOpen_Construction_Attempt_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "307ddc31d7c008db908cc169a95f2cf5afcba1f6640254b1563241542a565355"
+        }
+      ],
+      "sha256": "f64f20ab6cfff2e7e7521b276d3a6537bdd67dfcfee4272246ce66b976ca01be",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260903-Round1_APOE4_Amplicon_Sequencing_Submission",
+      "trackId": "apobec",
+      "date": "2026-09-03",
+      "title": "APOE4 Amplicon PCR and Nanopore Submission for the First-Round Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 102,
+      "pdf": "pdfs/Apobec/2026-09-03_Round1_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-03_Round1_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-03_Round1_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f2df3f531bdf086e0cab33aa06767efc0b0ebcb388f635fe1053b914781b7343"
+        }
+      ],
+      "sha256": "fd03c8b279cca548bebd797bf1f600bc91fa9e4794e5243d0361f2a40d2f77f8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-03-Gfa_MRE_cDNA_PCR",
+      "trackId": "mre",
+      "date": "2026-09-03",
+      "title": "APOE4 cDNA Amplification for Gfa/MRE Sequencing",
+      "experimenter": "Hansen Zhang",
+      "order": 103,
+      "pdf": "pdfs/MRE/2026-09-03_Gfa_MRE_cDNA_PCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-03_Gfa_MRE_cDNA_PCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/MRE/2026-09-03_Gfa_MRE_cDNA_PCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "11f70757ec3799f457386d2bf4f6fcff09d4b799387c29a4eb505328beeaec7e"
+        }
+      ],
+      "sha256": "9489c8b65b2d8ee72d87c83d1eafd96b839f4d605b275f134261a262ee336000",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-P9_P11_Plate_Sequencing_Submission",
+      "trackId": "puf",
+      "date": "2026-09-03",
+      "title": "Plate Inspection and Sequencing Submission of the P9-P11 Batch",
+      "experimenter": "Muyin Guo",
+      "order": 104,
+      "pdf": "pdfs/PUF/2026-09-03_P9_P11_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-03_P9_P11_Plate_Sequencing_Submission_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-03_P9_P11_Plate_Sequencing_Submission_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a167156bae5289759962de8cd7e6340373caf098892b75e57e297603d7de8fda"
+        }
+      ],
+      "sha256": "7274a6010af7a7b6044111b8ab3c3f035f42766d3b0219f70e0d3bd4451d8891",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-03-RepOpen_Failed_Construction",
+      "trackId": "reporter",
+      "date": "2026-09-03",
+      "title": "Failed Reporter Reconstruction Attempt",
+      "experimenter": "Hansen Zhang",
+      "order": 105,
+      "pdf": "pdfs/Reporter/2026-09-03_RepOpen_Failed_Construction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-03_RepOpen_Failed_Construction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-03_RepOpen_Failed_Construction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "819557a8cb7462f39b0a9c8359e4503210cd13ebdb02dce467a8fffc444d9761"
+        }
+      ],
+      "sha256": "84f54d129ccc86c1b7ce6ff860b010273d7a2997930684f0265d8eae6bd55f3f",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Sanger_Sequence_Review",
+      "trackId": "puf",
+      "date": "2026-09-04",
+      "title": "Review of Sanger Sequences from the PUF Mutant Batches",
+      "experimenter": "Muyin Guo",
+      "order": 106,
+      "pdf": "pdfs/PUF/2026-09-04_Sanger_Sequence_Review_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-04_Sanger_Sequence_Review_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-04_Sanger_Sequence_Review_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "7651223e883812b098982edda9a7c60a519bc8ca37695fefb0ca8c1452d99b27"
+        }
+      ],
+      "sha256": "179be9f2a4846925a2d49caccb3ebea4d09cc914eeb33e78b2ca030db0f332ce",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-04-BFP_Editor_Construction",
+      "trackId": "reporter",
+      "date": "2026-09-04",
+      "title": "Construction of the BFP-Linked Editor",
+      "experimenter": "Hansen Zhang",
+      "order": 107,
+      "pdf": "pdfs/Reporter/2026-09-04_BFP_Editor_Construction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-04_BFP_Editor_Construction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-04_BFP_Editor_Construction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b4be52225cce323fd1923df5b374b5cf8bc56c186331c7b7022c2d35d0f48334"
+        }
+      ],
+      "sha256": "39c8703a71861c1b5d4abb19df202c8f1647b0af40df2c5cda795895632194ef",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-04-RepOpen_Reconstruction",
+      "trackId": "reporter",
+      "date": "2026-09-04",
+      "title": "Reconstruction of Reporter Accessibility Variants",
+      "experimenter": "Hansen Zhang",
+      "order": 108,
+      "pdf": "pdfs/Reporter/2026-09-04_RepOpen_Reconstruction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-04_RepOpen_Reconstruction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-04_RepOpen_Reconstruction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "7173b7b6eab9746076735938f9a91e41a3527fed4de8bce9302d1f09a7649494"
+        }
+      ],
+      "sha256": "802b0a68eb666cda6b78df96d861e895e821ef2d6d72d2aa176cd86e19e9ffdd",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Sequence_Verified_Mutant_Selection",
+      "trackId": "puf",
+      "date": "2026-09-05",
+      "title": "Selection of Sequence-Verified PUF12 Mutants",
+      "experimenter": "Muyin Guo",
+      "order": 109,
+      "pdf": "pdfs/PUF/2026-09-05_Sequence_Verified_Mutant_Selection_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-05_Sequence_Verified_Mutant_Selection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-05_Sequence_Verified_Mutant_Selection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "00a7057c70161fddb245bd40d4445f18b156640a78f26b96778afbe46439eae2"
+        }
+      ],
+      "sha256": "80284547b9b68ba9541e5b2d62c8ea5365857b06403d0ca8ae0a082224c1ab7f",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-05-BFP_RepOpen_Sequencing_Submission",
+      "trackId": "reporter",
+      "date": "2026-09-05",
+      "title": "Sequencing Submission of BFP Editor and RepOpen A/B",
+      "experimenter": "Hansen Zhang",
+      "order": 110,
+      "pdf": "pdfs/Reporter/2026-09-05_BFP_RepOpen_Sequencing_Submission_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-05_BFP_RepOpen_Sequencing_Submission_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-05_BFP_RepOpen_Sequencing_Submission_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "eebbf3d9fc9ae715eac26ee8602e06635101efaf5a194abdcb24b1e1ae367f05"
+        }
+      ],
+      "sha256": "2052626f5f45b77d0462eb63221e7614bb531b0d860fd7944ae7699752306190",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260906-Round1_Nanopore_Result_Receipt",
+      "trackId": "apobec",
+      "date": "2026-09-06",
+      "title": "Receipt of Nanopore Results for the First-Round Editing Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 111,
+      "pdf": "pdfs/Apobec/2026-09-06_Round1_Nanopore_Result_Receipt_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-06_Round1_Nanopore_Result_Receipt_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-06_Round1_Nanopore_Result_Receipt_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d618d5c4394b5e4944d28ab6efe4c7729dfa13be9fb9866254e695b885e1a3b1"
+        }
+      ],
+      "sha256": "7ec8d22cdcbbe62e88263b76250df9573cecc6d14aeab53f8556780dd21e329d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Verified_Plasmid_Retransformation_and_Culture",
+      "trackId": "puf",
+      "date": "2026-09-08",
+      "title": "Retransformation and Culture of Sequence-Verified PUF Plasmids",
+      "experimenter": "Muyin Guo",
+      "order": 112,
+      "pdf": "pdfs/PUF/2026-09-08_Verified_Plasmid_Retransformation_and_Culture_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-08_Verified_Plasmid_Retransformation_and_Culture_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-08_Verified_Plasmid_Retransformation_and_Culture_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ff963f14932a5e2a76ca7633a7b39fda6da3a15a8e4e256110bb6313a14242a7"
+        }
+      ],
+      "sha256": "41f2cb26241e3b4703751f1edede7b2f0126560183d57d42b1604ae39b5bc6a4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "GM-Verified_PUF_Plasmid_Extraction",
+      "trackId": "puf",
+      "date": "2026-09-09",
+      "title": "Plasmid Extraction from the Verified PUF Mutants",
+      "experimenter": "Muyin Guo",
+      "order": 113,
+      "pdf": "pdfs/PUF/2026-09-09_Verified_PUF_Plasmid_Extraction_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-09_Verified_PUF_Plasmid_Extraction_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-09_Verified_PUF_Plasmid_Extraction_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "82ee9cc3b98746659a4c2694195c9d6e5b5d2ce66970049a80fdd219b19d1fc9"
+        }
+      ],
+      "sha256": "4df799961f45a059fa3ae23c1afb42c1712d9bec33052498dd26300b8ecdddf4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-12-ORCA_Insert_PCR",
+      "trackId": "aav",
+      "date": "2026-09-12",
+      "title": "PCR Amplification of GFA-ORCA and CMV-ORCA Inserts",
+      "experimenter": "Hansen Zhang",
+      "order": 114,
+      "pdf": "pdfs/AAV/2026-09-12_ORCA_Insert_PCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-12_ORCA_Insert_PCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-12_ORCA_Insert_PCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8fb6114284f579888b9a31dc8c2c755abab748e00420abe8a80e279bc65b769d"
+        }
+      ],
+      "sha256": "0588d960d0eaddc2beef09f780f0002669b7dd33246c82db2f98d9b60d6586db",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-13-Second_PUF_Functional_Transfection",
+      "trackId": "puf",
+      "date": "2026-09-13",
+      "title": "Second PUF Functional-Screen Transfection",
+      "experimenter": "Muyin Guo",
+      "order": 115,
+      "pdf": "pdfs/PUF/2026-09-13_Second_PUF_Functional_Transfection_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-13_Second_PUF_Functional_Transfection_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-13_Second_PUF_Functional_Transfection_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c1343d06cd9895a13e089af23c9d331f03bf3eafb81b5f801993ac5e6b5cca86"
+        }
+      ],
+      "sha256": "611d7d97a3943e943aaf3bfb635713bae474c86d86db76d4af4e4f9af3af33c4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-13-mCherryOnly_Construction",
+      "trackId": "reporter",
+      "date": "2026-09-13",
+      "title": "Construction of the mCherry-Only Reporter",
+      "experimenter": "Hansen Zhang",
+      "order": 116,
+      "pdf": "pdfs/Reporter/2026-09-13_mCherryOnly_Construction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-13_mCherryOnly_Construction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-13_mCherryOnly_Construction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d99b166763c3b57045c99d6f2b6f6d6267768ccb29375b0987a5b390c58184a7"
+        }
+      ],
+      "sha256": "b652bed138b41f3a52856708ac6dd1bb2857d1edeb36b3aafd9b54f0f020712e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260914-Round2_Mutation_and_Primer_Design",
+      "trackId": "apobec",
+      "date": "2026-09-14",
+      "title": "Mutation and Primer Design for the Second REWIRE Pro.hA1 Panel",
+      "experimenter": "Yunxiang Zhang",
+      "order": 117,
+      "pdf": "pdfs/Apobec/2026-09-14_Round2_Mutation_and_Primer_Design_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-14_Round2_Mutation_and_Primer_Design_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-14_Round2_Mutation_and_Primer_Design_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "70a10cfbe8551f67982eec0c06fcae0a6a3b893ad49867e62c1d0d3e0471215e"
+        }
+      ],
+      "sha256": "b9e2b1f28fb23dafac62a913a64f53d2e26e86510126b605d1010d811fa2c2bf",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-14-mCherryOnly_Sequencing_Submission",
+      "trackId": "reporter",
+      "date": "2026-09-14",
+      "title": "Submission of mCherry-Only Reporter Candidates",
+      "experimenter": "Hansen Zhang",
+      "order": 118,
+      "pdf": "pdfs/Reporter/2026-09-14_mCherryOnly_Sequencing_Submission_Hansen_Zhang.pdf",
+      "originalFilename": "2026-09-14_mCherryOnly_Sequencing_Submission_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-14_mCherryOnly_Sequencing_Submission_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "7cdf212518d8aa9ec6b37d41958cf7bc073b8696ae093fefa47b510763945e79"
+        }
+      ],
+      "sha256": "ef76802fcb6e766b24b8c7d4d6079c6c9fbbd0e3c382e713b84fb7a54f515755",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260915-Round2_Mutant_Construction",
+      "trackId": "apobec",
+      "date": "2026-09-15",
+      "title": "Construction of the Second REWIRE Pro.hA1 Mutant Panel",
+      "experimenter": "Yunxiang Zhang",
+      "order": 119,
+      "pdf": "pdfs/Apobec/2026-09-15_Round2_Mutant_Construction_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-15_Round2_Mutant_Construction_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-15_Round2_Mutant_Construction_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5c53f0bba53114d2647667b045e12eaa9b7f190d73c6fcf8ad5735c91245e6a5"
+        }
+      ],
+      "sha256": "06f7a143189cd86e84d54063953c8b3a683c261f1af3d15679e1a354d64bc0e9",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-15-Second_PUF_RNA_RT",
+      "trackId": "puf",
+      "date": "2026-09-15",
+      "title": "Second PUF Functional-Screen RNA Preparation",
+      "experimenter": "Muyin Guo",
+      "order": 120,
+      "pdf": "pdfs/PUF/2026-09-15_Second_PUF_RNA_RT_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-15_Second_PUF_RNA_RT_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-15_Second_PUF_RNA_RT_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d1472fae6bc78b25c1e779011ab80c11e724b80b0b76ec8743052fad047f8fff"
+        }
+      ],
+      "sha256": "98326fb78aa2e5d3483e898edf85c329fcb150a7a4ceba862679a5e5ec643140",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-15-AC_INAC_Initial_Transfection",
+      "trackId": "reporter",
+      "date": "2026-09-15",
+      "title": "Initial AC/InAC Mixture Transfection",
+      "experimenter": "Hansen Zhang",
+      "order": 121,
+      "pdf": "pdfs/Reporter/2026-09-15_AC_INAC_Initial_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-15_AC_INAC_Initial_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-15_AC_INAC_Initial_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "4502f45a2412f927c00f38a5244aa35b1bc597fdc255b9c31e3c98058b3ad6b1"
+        }
+      ],
+      "sha256": "4fe54df1afb2e77001727e4b5de6961662f309f67c05bc3a4183e3d7cb9c14ea",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-15-BFP_RepOpen_Transfection",
+      "trackId": "reporter",
+      "date": "2026-09-15",
+      "title": "Transfection of BFP Editor and RepOpen Reporters",
+      "experimenter": "Hansen Zhang",
+      "order": 122,
+      "pdf": "pdfs/Reporter/2026-09-15_BFP_RepOpen_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-15_BFP_RepOpen_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-15_BFP_RepOpen_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d6cbe7044fab5779e53ada146db8b2f2006508f7c9c99711dfe7e353a2aa75a1"
+        }
+      ],
+      "sha256": "25ccee72836c3566121ca836c66ffc33381b721823c19dfb92d2e7dd7281050c",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260916-Round2_Sanger_Submission",
+      "trackId": "apobec",
+      "date": "2026-09-16",
+      "title": "Sanger Submission of Second-Round Mutant Colonies",
+      "experimenter": "Yunxiang Zhang",
+      "order": 123,
+      "pdf": "pdfs/Apobec/2026-09-16_Round2_Sanger_Submission_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-16_Round2_Sanger_Submission_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-16_Round2_Sanger_Submission_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5ececa416cce4c42d76ccf6e3907ece178c15cc044cff69c0ef074c24564a9ab"
+        }
+      ],
+      "sha256": "e8fb95789a8ffd2457c253c9860b558676f0d319b34d8cf0b0920062af10d204",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-17-Second_PUF_Amplicon_Submission",
+      "trackId": "puf",
+      "date": "2026-09-17",
+      "title": "Second PUF Functional-Screen Amplicon Submission",
+      "experimenter": "Muyin Guo",
+      "order": 124,
+      "pdf": "pdfs/PUF/2026-09-17_Second_PUF_Amplicon_Submission_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-17_Second_PUF_Amplicon_Submission_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-17_Second_PUF_Amplicon_Submission_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5cf6d4db7c68878a523a004de35fbec61bdd717f7fef57c667ba31f1269bed73"
+        }
+      ],
+      "sha256": "191d6784f581e1c339ca30a514a84f0f313fc50771136bd9169220c70f0ddd65",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-17-AC_INAC_Initial_Flow",
+      "trackId": "reporter",
+      "date": "2026-09-17",
+      "title": "Flow Cytometry of the Initial AC/InAC Series",
+      "experimenter": "Hansen Zhang",
+      "order": 125,
+      "pdf": "pdfs/Reporter/2026-09-17_AC_INAC_Initial_Flow_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-17_AC_INAC_Initial_Flow_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-17_AC_INAC_Initial_Flow_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "87615843506106bd6cdbcb2657784471a6fda8d1c0893ea80585be814c558076"
+        }
+      ],
+      "sha256": "5bbf29ef2a7384fd63269a107b328924072a71d96675480822b36d2def354863",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-17-BFP_RepOpen_Flow",
+      "trackId": "reporter",
+      "date": "2026-09-17",
+      "title": "Flow Cytometry of BFP Editor and RepOpen Samples",
+      "experimenter": "Hansen Zhang",
+      "order": 126,
+      "pdf": "pdfs/Reporter/2026-09-17_BFP_RepOpen_Flow_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-17_BFP_RepOpen_Flow_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-17_BFP_RepOpen_Flow_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "22b6353c53bcef284dd5d2be0c8abf80d605f459a5dcf1660649e0fa84a17acb"
+        }
+      ],
+      "sha256": "f409f0082c94d5bd518b95830f1344983e51073081f0331b9fbbd04861db35ed",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-18-AAV_Plasmid_Culture",
+      "trackId": "aav",
+      "date": "2026-09-18",
+      "title": "Transformation and Culture of AAV Plasmids",
+      "experimenter": "Hansen Zhang",
+      "order": 127,
+      "pdf": "pdfs/AAV/2026-09-18_AAV_Plasmid_Culture_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-18_AAV_Plasmid_Culture_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-18_AAV_Plasmid_Culture_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "8025080ec4e414199604ef21e27aab45d23300171007e8ea133cf7904f6a1f3a"
+        }
+      ],
+      "sha256": "1388eca79c1b0e5b29c41d7acb56dcfe114c3c8a4138ed8f9ff2cd07068e247b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-18-CCF_Receipt_Culture",
+      "trackId": "fv",
+      "date": "2026-09-18",
+      "title": "Receipt and Culture of CCF-STTG1 Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 128,
+      "pdf": "pdfs/FV/2026-09-18_CCF_Receipt_Culture_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-18_CCF_Receipt_Culture_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-09-18_CCF_Receipt_Culture_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "02f4d1fd94ac34606d320878444a004dcf37e75d29324981c64a19ba56f6f240"
+        }
+      ],
+      "sha256": "a6f0dd1af8b8d4e5dee3d155a42460c4f66872b1517fbbf471466feb02c5fbe8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "APPROVED-0919-1",
+      "trackId": "aav",
+      "date": "2026-09-19",
+      "title": "AAV Plasmid Extraction",
+      "experimenter": "Hansen Zhang",
+      "order": 129,
+      "pdf": "pdfs/AAV/2026-09-19_AAV_Plasmid_Extraction.pdf",
+      "originalFilename": "2026-09-19_AAV_Plasmid_Extraction.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-19_AAV_Plasmid_Extraction-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "9725a679a84503d923e9d23b2f83f009bee367dd002c13e10814842f49c1e294"
+        }
+      ],
+      "sha256": "2a99f95757710e697685647c42dbe38bde2ac89dec8fd2424c31ac03b863c81b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "APPROVED-0919-2",
+      "trackId": "aav",
+      "date": "2026-09-19",
+      "title": "GFA/CMV-ORCA-AAV Assembly",
+      "experimenter": "Hansen Zhang",
+      "order": 130,
+      "pdf": "pdfs/AAV/2026-09-19_ORCA_AAV_Assembly.pdf",
+      "originalFilename": "2026-09-19_ORCA_AAV_Assembly.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-19_ORCA_AAV_Assembly-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "278911af76c9063f9a55645412ace910d45824689afe917809f6a49e7cdb3dda"
+        }
+      ],
+      "sha256": "3d503009bfc05627cb9209c5cb91a7f52b5d64c3c0321d65ca180fa58541c29d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "APPROVED-0919-3",
+      "trackId": "aso",
+      "date": "2026-09-19",
+      "title": "PCR for ASO-mCherry and ASO-ORCA Construction",
+      "experimenter": "Hansen Zhang",
+      "order": 131,
+      "pdf": "pdfs/ASO/2026-09-19_ASO_Construct_PCR.pdf",
+      "originalFilename": "2026-09-19_ASO_Construct_PCR.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-19_ASO_Construct_PCR-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "eeae80adc526f486c9a5818af78e0d6675fe2a2623308ce88993f45ebd8a5ad1"
+        }
+      ],
+      "sha256": "ba078c5a82de39dbd736896c5d3270c699258852b1496ff0db59f60b8c9579ff",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260919-Round2_Sanger_Screening_and_Expansion",
+      "trackId": "apobec",
+      "date": "2026-09-19",
+      "title": "Sanger Screening and Expansion of Second-Round Mutants",
+      "experimenter": "Yunxiang Zhang",
+      "order": 132,
+      "pdf": "pdfs/Apobec/2026-09-19_Round2_Sanger_Screening_and_Expansion_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-19_Round2_Sanger_Screening_and_Expansion_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-19_Round2_Sanger_Screening_and_Expansion_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "fb21d506b45c3461fa7e124b0047972b2d62c0bc2f253102261faece5fdc0a0d"
+        }
+      ],
+      "sha256": "b2b976edfb193fbcbcaa8d095ae94eaab65cd39a4fcb9b7b8ec08db3c16264b4",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-19-Second_PUF_Result_Receipt",
+      "trackId": "puf",
+      "date": "2026-09-19",
+      "title": "Second PUF Functional-Screen Result Receipt",
+      "experimenter": "Muyin Guo",
+      "order": 133,
+      "pdf": "pdfs/PUF/2026-09-19_Second_PUF_Result_Receipt_Muyin_Guo.pdf",
+      "originalFilename": "2026-09-19_Second_PUF_Result_Receipt_Muyin_Guo.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/PUF/2026-09-19_Second_PUF_Result_Receipt_Muyin_Guo-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "da545d081f4dc85d8ef26bc5b3db8e400418257995331f84a294d9d084b35fb9"
+        }
+      ],
+      "sha256": "550c38ff24098c7e30f513bc2451e72adb3395a733bec4f488eb8dbcbe97d0dd",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-20-DeltaF6_Plasmid_Extraction",
+      "trackId": "aav",
+      "date": "2026-09-20",
+      "title": "Extraction of the DeltaF6 Helper Plasmid",
+      "experimenter": "Hansen Zhang",
+      "order": 134,
+      "pdf": "pdfs/AAV/2026-09-20_DeltaF6_Plasmid_Extraction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-20_DeltaF6_Plasmid_Extraction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-20_DeltaF6_Plasmid_Extraction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "62a441e60d6abdbab58e749986e14d2bd582f423cca0625b8ab47aee93478a8f"
+        }
+      ],
+      "sha256": "3dd1d8058b104549f07e4d93f203e59b9774bdaa8b2a16c6eef8b4f8b0c5cf16",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-20-ORCA_AAV_Sequencing_Submission",
+      "trackId": "aav",
+      "date": "2026-09-20",
+      "title": "Sequencing Submission of ORCA-AAV Candidates",
+      "experimenter": "Hansen Zhang",
+      "order": 135,
+      "pdf": "pdfs/AAV/2026-09-20_ORCA_AAV_Sequencing_Submission_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-20_ORCA_AAV_Sequencing_Submission_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-20_ORCA_AAV_Sequencing_Submission_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "97e255726fbbb701e57c53bea0267390aa2a73e42110c45722f6d077cf368af5"
+        }
+      ],
+      "sha256": "35cc9216c58af86109e05ecbaafda5089d2b10c16ed55e62814cdec78b613130",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260920-Round2_Bacterial_Pellet_Storage",
+      "trackId": "apobec",
+      "date": "2026-09-20",
+      "title": "Harvest and Storage of Second-Round Bacterial Pellets",
+      "experimenter": "Yunxiang Zhang",
+      "order": 136,
+      "pdf": "pdfs/Apobec/2026-09-20_Round2_Bacterial_Pellet_Storage_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-20_Round2_Bacterial_Pellet_Storage_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-20_Round2_Bacterial_Pellet_Storage_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a0d1fa2c229882f7f98dbf90af5bf8411551dae82ca6dc7fe26b70bf0563db13"
+        }
+      ],
+      "sha256": "e3566ac965bee10120e522b2c853458360f0be1231e0a4a2c76b71bcb85a91fb",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-21-mCherry_AAV_Packaging_Transfection",
+      "trackId": "aav",
+      "date": "2026-09-21",
+      "title": "Transfection for mCherry AAV Packaging",
+      "experimenter": "Hansen Zhang",
+      "order": 137,
+      "pdf": "pdfs/AAV/2026-09-21_mCherry_AAV_Packaging_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-21_mCherry_AAV_Packaging_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-21_mCherry_AAV_Packaging_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "2821773dc9274f5f50eb8f2e7c55e249cae7c2bc4583f6408f5884348a45c1b9"
+        }
+      ],
+      "sha256": "7d3f5299f82ccb14176ec575ac7972363e4c0da95d8a86a473ba4b6f7deecf44",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260921-Round2_HEK293T_Seeding",
+      "trackId": "apobec",
+      "date": "2026-09-21",
+      "title": "HEK293T Seeding for the Second-Round Editing Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 138,
+      "pdf": "pdfs/Apobec/2026-09-21_Round2_HEK293T_Seeding_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-21_Round2_HEK293T_Seeding_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-21_Round2_HEK293T_Seeding_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "fc9dc4aa761cb44db9d0194bc20ce5d527af2b5e70d1b45c0766574d21a1bcc0"
+        }
+      ],
+      "sha256": "4a3ded198893edd5eae9d721a0212bd5485a7bcef2fbb20395cdedcb81afb18e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260921-Round2_Plasmid_Extraction",
+      "trackId": "apobec",
+      "date": "2026-09-21",
+      "title": "Plasmid Extraction from the Second-Round Mutant Panel",
+      "experimenter": "Yunxiang Zhang",
+      "order": 139,
+      "pdf": "pdfs/Apobec/2026-09-21_Round2_Plasmid_Extraction_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-21_Round2_Plasmid_Extraction_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-21_Round2_Plasmid_Extraction_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "338adc11214c6f01e70276024b4be11aa1f8e34b6a83ef65f1cdd47c54fdfe9a"
+        }
+      ],
+      "sha256": "f9fddf5d4582100fce5782a54e3af422f7508c667e14fc5cf77309466b1610e1",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-21-AC_INAC_Second_Transfection",
+      "trackId": "reporter",
+      "date": "2026-09-21",
+      "title": "Transfection of the Second AC/InAC Series",
+      "experimenter": "Hansen Zhang",
+      "order": 140,
+      "pdf": "pdfs/Reporter/2026-09-21_AC_INAC_Second_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-21_AC_INAC_Second_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-21_AC_INAC_Second_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "96058edcc1696b724a35d6fb7b8533d1e8442e958fdfb7fdf9476452baa4d5aa"
+        }
+      ],
+      "sha256": "5e0372357b66f53bc3c9e36d104d0ff06a39c57cfe52bb7ce0fbb30e6f93e00a",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-21-Editor_Gradient_Transfection",
+      "trackId": "reporter",
+      "date": "2026-09-21",
+      "title": "Transfection of the Editor-Gradient Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 141,
+      "pdf": "pdfs/Reporter/2026-09-21_Editor_Gradient_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-21_Editor_Gradient_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-21_Editor_Gradient_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a00b9adb44e8b4ad12b83d07ac7b877cc6dc279479ded0abc7fa1e18406f09e8"
+        }
+      ],
+      "sha256": "ae36f278c110ae8e4f7c5017cd8055f659681e57661d18472e8cf4215a9f74ad",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-22-ASO_Construct_PCR_Ligation",
+      "trackId": "aso",
+      "date": "2026-09-22",
+      "title": "PCR and Ligation of ASO-Tagged Constructs",
+      "experimenter": "Hansen Zhang",
+      "order": 142,
+      "pdf": "pdfs/ASO/2026-09-22_ASO_Construct_PCR_Ligation_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-22_ASO_Construct_PCR_Ligation_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-22_ASO_Construct_PCR_Ligation_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "337eb5fdab6b2635e618da65b1acccc09a4542dd2b506e9fe0c1cda870d9f277"
+        }
+      ],
+      "sha256": "d3dabcd940137e1a5378dd5cec7a9756fa0e8129ff931b3bd043a0fa5045650c",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260922-Round2_HEK293T_Cotransfection",
+      "trackId": "apobec",
+      "date": "2026-09-22",
+      "title": "Second-Round REWIRE Pro.hA1 and APOE4 Reporter Co-transfection",
+      "experimenter": "Yunxiang Zhang",
+      "order": 143,
+      "pdf": "pdfs/Apobec/2026-09-22_Round2_HEK293T_Cotransfection_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-22_Round2_HEK293T_Cotransfection_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-22_Round2_HEK293T_Cotransfection_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5cc096a17534b3526f79ae0869691788f481a0aa51094ffcb1eaee56887e8144"
+        }
+      ],
+      "sha256": "683e7791906b2d4db49b823751e77630ea200761e08d52b15c384907e07f7aba",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-22-CCF_Voltage_Electroporation",
+      "trackId": "fv",
+      "date": "2026-09-22",
+      "title": "mCherry Electroporation Voltage Screen in CCF-STTG1",
+      "experimenter": "Hansen Zhang",
+      "order": 144,
+      "pdf": "pdfs/FV/2026-09-22_CCF_Voltage_Electroporation_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-22_CCF_Voltage_Electroporation_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-09-22_CCF_Voltage_Electroporation_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b3636e617fc074958e48b96f4811e2e3699b392b459de01ae8851f1707d8e6df"
+        }
+      ],
+      "sha256": "2694cb28b652e356bb1da926863fe19f6455aa4cc91fbae5da3e67e7e37e1c0e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-23-AC_INAC_Multimodal_Readout",
+      "trackId": "reporter",
+      "date": "2026-09-23",
+      "title": "Fluorescence Readout of the Second AC/InAC Series",
+      "experimenter": "Hansen Zhang",
+      "order": 145,
+      "pdf": "pdfs/Reporter/2026-09-23_AC_INAC_Multimodal_Readout_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-23_AC_INAC_Multimodal_Readout_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-23_AC_INAC_Multimodal_Readout_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c3c92805fc93f6d785f997efb11cb2dd4af4c96fb4a661dfbcfd6e736a4861a6"
+        }
+      ],
+      "sha256": "7df26d0bd26376f8658c40e42e690478c14817e0369e9b1d2bbfe6b5acf31c1e",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-23-Editor_Gradient_Readout",
+      "trackId": "reporter",
+      "date": "2026-09-23",
+      "title": "Fluorescence Readout of the Editor-Gradient Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 146,
+      "pdf": "pdfs/Reporter/2026-09-23_Editor_Gradient_Readout_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-23_Editor_Gradient_Readout_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-23_Editor_Gradient_Readout_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "15bd048d78ffcd3047dc0f33b6bb74bd9193dee20fa16870ff5b00a6a5af9afb"
+        }
+      ],
+      "sha256": "b478ffb77ead1dd468d00b95cce9a6cc52be4d71a62ccd42cc0a18f1e6c10b07",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-24-ASO_Construct_Sequencing_Submission",
+      "trackId": "aso",
+      "date": "2026-09-24",
+      "title": "Submission of ASO-Tagged Construct Candidates",
+      "experimenter": "Hansen Zhang",
+      "order": 147,
+      "pdf": "pdfs/ASO/2026-09-24_ASO_Construct_Sequencing_Submission_Hansen_Zhang.pdf",
+      "originalFilename": "2026-09-24_ASO_Construct_Sequencing_Submission_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-24_ASO_Construct_Sequencing_Submission_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "08d70300e64d58f4cba9977a8fdcca352733f0960c96939f0feb0618b3c56064"
+        }
+      ],
+      "sha256": "e9ba46fb2b8587acca73d709cb3c37a46be24408732f41ecba2207de5d4bfca0",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260924-Round2_RNA_Extraction_and_RT",
+      "trackId": "apobec",
+      "date": "2026-09-24",
+      "title": "RNA Extraction and Reverse Transcription for the Second-Round Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 148,
+      "pdf": "pdfs/Apobec/2026-09-24_Round2_RNA_Extraction_and_RT_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-24_Round2_RNA_Extraction_and_RT_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-24_Round2_RNA_Extraction_and_RT_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "77fd66d2998489c0e4626e3834a70cf70fa77a04aa12d9f6d0ee82e7fd12241c"
+        }
+      ],
+      "sha256": "ead0ad5a4601a73a42e3e49b45b070a8cde608caa86483183e960362a6c5d942",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-24-Editor_Gradient_Failed_PCR",
+      "trackId": "reporter",
+      "date": "2026-09-24",
+      "title": "RNA Processing and Failed PCR of the Editor-Gradient Samples",
+      "experimenter": "Hansen Zhang",
+      "order": 149,
+      "pdf": "pdfs/Reporter/2026-09-24_Editor_Gradient_Failed_PCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-24_Editor_Gradient_Failed_PCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-24_Editor_Gradient_Failed_PCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "507d85de4c3d70391838a0dc7ba613cf51798059529652488336f552fb2ff69b"
+        }
+      ],
+      "sha256": "2bd0e8ad544f1bd4e40fcd69c82a3f7fe411c57d7257888570652c73726d48a3",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-25-ORCA_AAV_Bacterial_Expansion",
+      "trackId": "aav",
+      "date": "2026-09-25",
+      "title": "Bacterial Expansion of ORCA-AAV Constructs",
+      "experimenter": "Hansen Zhang",
+      "order": 150,
+      "pdf": "pdfs/AAV/2026-09-25_ORCA_AAV_Bacterial_Expansion_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-25_ORCA_AAV_Bacterial_Expansion_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-25_ORCA_AAV_Bacterial_Expansion_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c2062a0439b6b6d0715344c804ee96e4b4624dfe288c0a4e8b7ea05a208d8993"
+        }
+      ],
+      "sha256": "5ad048a9945d1b3135c1ee6814d8c2dfc1053df2fc2bea080e58ae969a3b0437",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-25-mCherry_AAV_Extraction",
+      "trackId": "aav",
+      "date": "2026-09-25",
+      "title": "Extraction of mCherry AAV",
+      "experimenter": "Hansen Zhang",
+      "order": 151,
+      "pdf": "pdfs/AAV/2026-09-25_mCherry_AAV_Extraction_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-25_mCherry_AAV_Extraction_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-25_mCherry_AAV_Extraction_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ca75870b28884d5df19c1c99f01127581699290902cc46603af6bb93bb7daa60"
+        }
+      ],
+      "sha256": "a1eec1cf6893f2c6a5d236a37494ba0b6d7b841c3d50669b08ae51c16ad1f30d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-25-ASO_Sequence_Screening",
+      "trackId": "aso",
+      "date": "2026-09-25",
+      "title": "Sequence Screening of ASO-Tagged Constructs",
+      "experimenter": "Hansen Zhang",
+      "order": 152,
+      "pdf": "pdfs/ASO/2026-09-25_ASO_Sequence_Screening_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-25_ASO_Sequence_Screening_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-25_ASO_Sequence_Screening_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "f7375573693a81fbf93b61dabfa8c61981c0543dee5e2b8d22eb743e2802e778"
+        }
+      ],
+      "sha256": "b97e0f32b1f8d630fe55b4fe0a83768c5beb09e3d7dc6546b982fb6168f9d07b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260925-Round2_APOE4_Amplicon_Sequencing_Submission",
+      "trackId": "apobec",
+      "date": "2026-09-25",
+      "title": "APOE4 Amplicon PCR and Nanopore Submission for the Second-Round Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 153,
+      "pdf": "pdfs/Apobec/2026-09-25_Round2_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-25_Round2_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-25_Round2_APOE4_Amplicon_Sequencing_Submission_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "d690a53600a605507ba66b4ac815bae98dc6e7bdb4ed469c5b43b069caf7401a"
+        }
+      ],
+      "sha256": "76e77be84262f746c2276128313316f17004e2eab34e57d125d83de9b6ba4b87",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-25-CCF_Voltage_Flow",
+      "trackId": "fv",
+      "date": "2026-09-25",
+      "title": "Flow Cytometry of the CCF-STTG1 Voltage Screen",
+      "experimenter": "Hansen Zhang",
+      "order": 154,
+      "pdf": "pdfs/FV/2026-09-25_CCF_Voltage_Flow_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-25_CCF_Voltage_Flow_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-09-25_CCF_Voltage_Flow_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "64312cdc1ad9f6efcfca91c1e0c9ca652190fe25f8475a7c398245a448e27a4a"
+        }
+      ],
+      "sha256": "b381a49d4398103ad6469b370df5fbb15189a7b164399fa37447ea7e291f53a8",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "QPCR-EXISTING-5",
+      "trackId": "aav",
+      "date": "2026-09-26",
+      "title": "AAV-mCherry Genome Quantification by qPCR",
+      "experimenter": "Hansen Zhang",
+      "order": 155,
+      "pdf": "pdfs/AAV/2026-09-26_AAV_mCherry_Genome_qPCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-26_AAV_mCherry_Genome_qPCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-26_AAV_mCherry_Genome_qPCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c04668bffeae36409fd650b95705cec76ee8095cc5b1a78cfc5d4e819e272a4e"
+        }
+      ],
+      "sha256": "a468212244e4dfa77508393d819f51eecd1049c61d5a77178694f77a77090c22",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-26-Editor_Gradient_Repeat_PCR",
+      "trackId": "reporter",
+      "date": "2026-09-26",
+      "title": "Repeat PCR and Sequencing Submission of Editor-Gradient Samples",
+      "experimenter": "Hansen Zhang",
+      "order": 156,
+      "pdf": "pdfs/Reporter/2026-09-26_Editor_Gradient_Repeat_PCR_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-26_Editor_Gradient_Repeat_PCR_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Reporter/2026-09-26_Editor_Gradient_Repeat_PCR_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "6eabe08ae54fe5fa4f123613d3b4fceb0e1fa9df23ca2fc781554e96afdea2c4"
+        }
+      ],
+      "sha256": "b8544ede46266a3e3edee6e3f2fb549c2944f264be6949f565cf5e285910524b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-27-Large_Scale_Plasmid_Preparation",
+      "trackId": "aav",
+      "date": "2026-09-27",
+      "title": "Large-Scale Plasmid Preparation for AAV and Electroporation",
+      "experimenter": "Hansen Zhang",
+      "order": 157,
+      "pdf": "pdfs/AAV/2026-09-27_Large_Scale_Plasmid_Preparation_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-27_Large_Scale_Plasmid_Preparation_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-27_Large_Scale_Plasmid_Preparation_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "b4fa797c7b42de291b52a030c5006a39f44e171fc6dee0254ea026411cb0b487"
+        }
+      ],
+      "sha256": "5c83876934512a2e7ed062df5c7874a966fa7b8b946e115ee45b72f932b57b06",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-27-mCherry_AAV_Transduction",
+      "trackId": "aav",
+      "date": "2026-09-27",
+      "title": "mCherry-AAV Transduction of HEK293T Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 158,
+      "pdf": "pdfs/AAV/2026-09-27_mCherry_AAV_Transduction_Hansen_Zhang.pdf",
+      "originalFilename": "2026-09-27_mCherry_AAV_Transduction_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-27_mCherry_AAV_Transduction_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a17ebbde57dfa96976be1e62fe84688ba15bfcb78245b4ec5df6a0957c900bc3"
+        }
+      ],
+      "sha256": "267599cdf94131fecd194286d84ff65268b9d174129c0fda7bcc1272957dbde2",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-09-27-ASO_Assay_Cell_Seeding",
+      "trackId": "aso",
+      "date": "2026-09-27",
+      "title": "Cell Seeding for the ASO Assays",
+      "experimenter": "Hansen Zhang",
+      "order": 159,
+      "pdf": "pdfs/ASO/2026-09-27_ASO_Assay_Cell_Seeding_Hansen_Zhang.pdf",
+      "originalFilename": "2026-09-27_ASO_Assay_Cell_Seeding_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-27_ASO_Assay_Cell_Seeding_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c2af51810e7b8e8d1412131f4c1e563b4e47433eedde40a9572d29e023fc03a4"
+        }
+      ],
+      "sha256": "2e14980f6b1131f3a09788b99c8c010217327e3d4c20b41198b39b835beb3526",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-28-ORCA_AAV_Packaging_Transfection",
+      "trackId": "aav",
+      "date": "2026-09-28",
+      "title": "Packaging Transfection of GFA-ORCA-AAV and CMV-ORCA-AAV",
+      "experimenter": "Hansen Zhang",
+      "order": 160,
+      "pdf": "pdfs/AAV/2026-09-28_ORCA_AAV_Packaging_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-28_ORCA_AAV_Packaging_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-28_ORCA_AAV_Packaging_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ee1eb4c07a3f33e48817f96a5b893fb565884354fc29dd4d4c2fd8e4be1d132b"
+        }
+      ],
+      "sha256": "e405c59a21193933f89fbadf8fb6af69051491a5b07017966223321ada20c67f",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-28-ASO_Assay_Plasmid_Transfection",
+      "trackId": "aso",
+      "date": "2026-09-28",
+      "title": "Plasmid Transfection for ASO Knockdown Experiments",
+      "experimenter": "Hansen Zhang",
+      "order": 161,
+      "pdf": "pdfs/ASO/2026-09-28_ASO_Assay_Plasmid_Transfection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-28_ASO_Assay_Plasmid_Transfection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-28_ASO_Assay_Plasmid_Transfection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "c27105a77ba8d830f43de87f413ea974a6292f07e6842f92d6ba05c0d4598c7e"
+        }
+      ],
+      "sha256": "b131b6a982bee1e6afc31247c662fda69841fe9c08ec5674e85db13415b93792",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "yz-20260928-Round2_Nanopore_Result_Receipt",
+      "trackId": "apobec",
+      "date": "2026-09-28",
+      "title": "Receipt of Nanopore Results for the Second-Round Editing Assay",
+      "experimenter": "Yunxiang Zhang",
+      "order": 162,
+      "pdf": "pdfs/Apobec/2026-09-28_Round2_Nanopore_Result_Receipt_Yunxiang_Zhang.pdf",
+      "originalFilename": "2026-09-28_Round2_Nanopore_Result_Receipt_Yunxiang_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/Apobec/2026-09-28_Round2_Nanopore_Result_Receipt_Yunxiang_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "e8b085bda7fa9ef683fe3ba82adf20a14f1c90b71110ba39ed7b58dad6e12248"
+        }
+      ],
+      "sha256": "0d498bd0eef1845b5d893a8f87482f68312ecaf66090097e89b608a256004f48",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-29-ORCA_AAV_Medium_Change",
+      "trackId": "aav",
+      "date": "2026-09-29",
+      "title": "Medium Replacement after ORCA-AAV Packaging Transfection",
+      "experimenter": "Hansen Zhang",
+      "order": 163,
+      "pdf": "pdfs/AAV/2026-09-29_ORCA_AAV_Medium_Change_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-29_ORCA_AAV_Medium_Change_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-09-29_ORCA_AAV_Medium_Change_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ddd7becd00de380d0236f88f7bf29656801a7dce2ff453b31c2bb6581d308e17"
+        }
+      ],
+      "sha256": "7e1510723f271cedc51e6c0146ab13efc66b904bc764a041373d913bdb821b67",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-29-ASO_Transfection_and_Baseline",
+      "trackId": "aso",
+      "date": "2026-09-29",
+      "title": "ASO Transfection and Baseline Collection",
+      "experimenter": "Hansen Zhang",
+      "order": 164,
+      "pdf": "pdfs/ASO/2026-09-29_ASO_Transfection_and_Baseline_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-29_ASO_Transfection_and_Baseline_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-29_ASO_Transfection_and_Baseline_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "7bd47fb93e1ebe9be649da648ef006f6ef1027de51d681592c77c60e1308aa3f"
+        }
+      ],
+      "sha256": "487919d29f8ccd98ec3fa0a9d5eeca19630f7934bfbbd8ae58aa8cccbf184311",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-29-CCF_Functional_Electroporation",
+      "trackId": "fv",
+      "date": "2026-09-29",
+      "title": "CCF-STTG1 Electroporation for Functional Validation",
+      "experimenter": "Hansen Zhang",
+      "order": 165,
+      "pdf": "pdfs/FV/2026-09-29_CCF_Functional_Electroporation_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-29_CCF_Functional_Electroporation_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-09-29_CCF_Functional_Electroporation_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "cd81454a56eba2bfe54c41923e9be6f76d5928f7f55cc5b9dc161565b99d9cac"
+        }
+      ],
+      "sha256": "1c499d1ce41b8aa0569464312f5ca3147698563ee1884693af778e505d3f7f98",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-09-30-ASO_mCherry_24h",
+      "trackId": "aso",
+      "date": "2026-09-30",
+      "title": "24-Hour Flow Cytometry of the ASO-mCherry Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 166,
+      "pdf": "pdfs/ASO/2026-09-30_ASO_mCherry_24h_Zhang_Hansen.pdf",
+      "originalFilename": "2026-09-30_ASO_mCherry_24h_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-09-30_ASO_mCherry_24h_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "13af89fe27061da18fe812f83d7ce394a14d5c284d1e4c465759115bf3832a13"
+        }
+      ],
+      "sha256": "ab9d19a4d4a37e0150779ed3d6fda6f82e7f09b4b4765c21dc979a046f7d6906",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-10-01-ASO_ORCA_48h",
+      "trackId": "aso",
+      "date": "2026-10-01",
+      "title": "48-Hour Cell Collection from the ASO-ORCA Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 167,
+      "pdf": "pdfs/ASO/2026-10-01_ASO_ORCA_48h_Zhang_Hansen.pdf",
+      "originalFilename": "2026-10-01_ASO_ORCA_48h_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-10-01_ASO_ORCA_48h_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "aecf0ce8eef0c342b9cbbed64f037fb2ab2c126eab7712d837b4c6abc94261b8"
+        }
+      ],
+      "sha256": "7e32c7716c48ef3c5cec595c4438c1d64562191c02c91d30b768ea844c66be98",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-10-01-ASO_mCherry_48h",
+      "trackId": "aso",
+      "date": "2026-10-01",
+      "title": "48-Hour Flow Cytometry of the ASO-mCherry Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 168,
+      "pdf": "pdfs/ASO/2026-10-01_ASO_mCherry_48h_Zhang_Hansen.pdf",
+      "originalFilename": "2026-10-01_ASO_mCherry_48h_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-10-01_ASO_mCherry_48h_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "779cea91a60dbd1582fcc91cd6404ccd738a6fdadae703e497383136205847e4"
+        }
+      ],
+      "sha256": "23a0746976072d2d1bfecbcc198d9d30b69c6477815d33a74c301a46d4effe0a",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-02-mCherry_AAV_120h_Observation",
+      "trackId": "aav",
+      "date": "2026-10-02",
+      "title": "Serial Fluorescence Observation after mCherry-AAV Treatment",
+      "experimenter": "Hansen Zhang",
+      "order": 169,
+      "pdf": "pdfs/AAV/2026-10-02_mCherry_AAV_120h_Observation_Hansen_Zhang.pdf",
+      "originalFilename": "2026-10-02_mCherry_AAV_120h_Observation_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-10-02_mCherry_AAV_120h_Observation_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "5a263ec56ea5133c49ec121b74ca6deb007a2ea1794b32aa839c5be133743ee7"
+        }
+      ],
+      "sha256": "428f13995ba8d923aaa53ee464d3634a1d8620d9cd19c8879b52d634ecfba0ee",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-10-02-ASO_mCherry_72h",
+      "trackId": "aso",
+      "date": "2026-10-02",
+      "title": "72-Hour Flow Cytometry of the ASO-mCherry Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 170,
+      "pdf": "pdfs/ASO/2026-10-02_ASO_mCherry_72h_Zhang_Hansen.pdf",
+      "originalFilename": "2026-10-02_ASO_mCherry_72h_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-10-02_ASO_mCherry_72h_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "90eb3b3bdbb71b44ad6c101e5a30a877c6c8193068e5610f1566aefe4a34e1e5"
+        }
+      ],
+      "sha256": "5e4cf733676e2a3b6c20c295c772ae47c0b7b9ed9ee6af07483f9c2cbc663e3d",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-10-02-CCF_Abeta_Collection",
+      "trackId": "fv",
+      "date": "2026-10-02",
+      "title": "A-beta Exposure and Sample Collection from CCF-STTG1 Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 171,
+      "pdf": "pdfs/FV/2026-10-02_CCF_Abeta_Collection_Zhang_Hansen.pdf",
+      "originalFilename": "2026-10-02_CCF_Abeta_Collection_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-10-02_CCF_Abeta_Collection_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "a60ccb03ebb763b5fa807317ce6e703a874b7f02e423dbb12b540d73a02647f6"
+        }
+      ],
+      "sha256": "c3ad42e034bedddbb8a445d7ceec65b331f6703582b3db22d6152b95afdd2632",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "ZH-10-02-CCF_BODIPY_Staining",
+      "trackId": "fv",
+      "date": "2026-10-02",
+      "title": "BODIPY and DAPI Staining of Electroporated CCF-STTG1 Cells",
+      "experimenter": "Hansen Zhang",
+      "order": 172,
+      "pdf": "pdfs/FV/2026-10-02_CCF_BODIPY_Staining_Zhang_Hansen.pdf",
+      "originalFilename": "2026-10-02_CCF_BODIPY_Staining_Zhang_Hansen.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-10-02_CCF_BODIPY_Staining_Zhang_Hansen-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "db869a95d5467a833684980e2fff2039dab41118f61e5eb4551763f3cbf6859c"
+        }
+      ],
+      "sha256": "09ff13788904669accc54281a15133cc76affc2718c44213eb6fc4aa48fd5e10",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-03-ORCA_AAV_Extraction",
+      "trackId": "aav",
+      "date": "2026-10-03",
+      "title": "Harvest and Extraction of ORCA-AAV Preparations",
+      "experimenter": "Hansen Zhang",
+      "order": 173,
+      "pdf": "pdfs/AAV/2026-10-03_ORCA_AAV_Extraction_Hansen_Zhang.pdf",
+      "originalFilename": "2026-10-03_ORCA_AAV_Extraction_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-10-03_ORCA_AAV_Extraction_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "45e0370bfc8573bb5cae85388187e8dd97425883dbc2f0486d388010afde6ef3"
+        }
+      ],
+      "sha256": "0b4913f8859c936df94a217a42df30f2cdd303e4df8418b82899cd6e16956d03",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-03-ASO_mCherry_96h",
+      "trackId": "aso",
+      "date": "2026-10-03",
+      "title": "96-Hour Flow Cytometry of the ASO-mCherry Experiment",
+      "experimenter": "Hansen Zhang",
+      "order": 174,
+      "pdf": "pdfs/ASO/2026-10-03_ASO_mCherry_96h_Hansen_Zhang.pdf",
+      "originalFilename": "2026-10-03_ASO_mCherry_96h_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/ASO/2026-10-03_ASO_mCherry_96h_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "3adc1781d4bf9fb94e6558789ce0f19a64e9187cc239bbdc7d4a5a19e0c50c23"
+        }
+      ],
+      "sha256": "51b1b0efdf1916f074e150a9565966f79961e749d5eefadee991fd7a8f37dd69",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-10-CCF_BODIPY_Confocal",
+      "trackId": "fv",
+      "date": "2026-10-10",
+      "title": "Confocal Imaging of BODIPY- and DAPI-Stained CCF-STTG1 Cells",
+      "experimenter": "Hansen Zhang, Xueyin Lu and Min Zhang",
+      "order": 175,
+      "pdf": "pdfs/FV/2026-10-10_CCF_BODIPY_Confocal_Hansen_Zhang_Xueyin_Lu_and_Min_Zhang.pdf",
+      "originalFilename": "2026-10-10_CCF_BODIPY_Confocal_Hansen_Zhang_Xueyin_Lu_and_Min_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-10-10_CCF_BODIPY_Confocal_Hansen_Zhang_Xueyin_Lu_and_Min_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "ce6c8003f1befd21c9e49e51835fbbce2039e5942847519f67aad282c0bb70f9"
+        }
+      ],
+      "sha256": "bd56eaeef85f021a58059bf83455b7d207b6666dc0e3ef07b792ceb5cee4324b",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-12-ORCA_AAV_Genome_qPCR",
+      "trackId": "aav",
+      "date": "2026-10-12",
+      "title": "Genome qPCR of GFA-ORCA-AAV and CMV-ORCA-AAV",
+      "experimenter": "Hansen Zhang",
+      "order": 176,
+      "pdf": "pdfs/AAV/2026-10-12_ORCA_AAV_Genome_qPCR_Hansen_Zhang.pdf",
+      "originalFilename": "2026-10-12_ORCA_AAV_Genome_qPCR_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/AAV/2026-10-12_ORCA_AAV_Genome_qPCR_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "29e23b521218dd74fb42d65d1bf5131a3663977ea6925854cf508eb37657a4b3"
+        }
+      ],
+      "sha256": "9ad5868d7df90f5ea6afc92e6b23a9ffbee2f90955f58514211ef22206f5f452",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    },
+    {
+      "id": "MAINT-2026-10-13-CCF_Abeta_ELISA",
+      "trackId": "fv",
+      "date": "2026-10-13",
+      "title": "A-beta ELISA of CCF-STTG1 Culture Supernatants",
+      "experimenter": "Hansen Zhang",
+      "order": 177,
+      "pdf": "pdfs/FV/2026-10-13_CCF_Abeta_ELISA_Hansen_Zhang.pdf",
+      "originalFilename": "2026-10-13_CCF_Abeta_ELISA_Hansen_Zhang.pdf",
+      "pageCount": 1,
+      "pages": [
+        {
+          "number": 1,
+          "preview": "previews/FV/2026-10-13_CCF_Abeta_ELISA_Hansen_Zhang-p1.webp",
+          "width": 1600,
+          "height": 2271,
+          "sha256": "9872d0f5ee3c19c655ded9ea5dd0bfbae132746da0a71dd3aa7bc0a2a29a575e"
+        }
+      ],
+      "sha256": "3cb16c5dea53c333ee0ada390e31249a8f634c386c019c84a71a6af3dfa508a3",
+      "sourceNote": "Finalized Notebook PDF; title and calendar date matched to the approved daily index."
+    }
+  ],
+  "milestones": []
+}

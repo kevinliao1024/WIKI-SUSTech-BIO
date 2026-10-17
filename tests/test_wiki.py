@@ -46,7 +46,6 @@ PLACEHOLDER_ROUTES = [
     "/contribution",
     "/parts",
     "/experiments",
-    "/notebook",
     "/measurement",
     "/alternative-platform",
     "/safety-and-security",
