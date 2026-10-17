@@ -64,11 +64,9 @@ CONTENT_PAGES: dict[str, PageConfig] = {
     "offtarget-atlas": PageConfig("dry-lab/offtarget-atlas.md", "pages/offtarget-atlas.html"),
     "software": PageConfig("dry-lab/software.md", "pages/software.html"),
     "hardware": PageConfig("dry-lab/hardware.md"),
-    "entrepreneurship": PageConfig("human-practices/entrepreneurship.md"),
     "human-practices": PageConfig("human-practices/human-practices.md"),
     "education": PageConfig("human-practices/education.md"),
     "inclusivity": PageConfig("human-practices/inclusivity.md"),
-    "sustainability": PageConfig("human-practices/sustainability.md"),
 }
 
 
@@ -110,9 +108,7 @@ NAVIGATION = (
         "items": (
             ("human-practices", "Human Practices"),
             ("education", "Education"),
-            ("entrepreneurship", "Entrepreneurship"),
             ("inclusivity", "Inclusivity"),
-            ("sustainability", "Sustainability"),
         ),
     },
 )

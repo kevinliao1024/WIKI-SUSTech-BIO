@@ -299,23 +299,11 @@ body .whale-navigation .rna-menu .rna-branch[href$="/education"] .rna-branch__ba
   --node-glow:211,113,177;
   --node-sheen:239,162,211;
 }
-body .whale-navigation .rna-menu .rna-branch[href$="/entrepreneurship"] .rna-branch__base[data-base] {
-  --node-fill:191,130,202;
-  --node-edge:236,201,245;
-  --node-glow:182,113,197;
-  --node-sheen:221,167,233;
-}
 body .whale-navigation .rna-menu .rna-branch[href$="/inclusivity"] .rna-branch__base[data-base] {
   --node-fill:173,136,220;
   --node-edge:226,210,253;
   --node-glow:160,119,213;
   --node-sheen:202,176,241;
-}
-body .whale-navigation .rna-menu .rna-branch[href$="/sustainability"] .rna-branch__base[data-base] {
-  --node-fill:162,152,226;
-  --node-edge:223,218,255;
-  --node-glow:148,136,220;
-  --node-sheen:191,183,246;
 }
 body .whale-navigation .rna-menu .rna-branches .rna-branch:is(:focus-visible,.active,.is-editing) .rna-branch__base[data-base] {
   --node-surface:.62;
