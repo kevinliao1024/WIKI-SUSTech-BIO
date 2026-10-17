@@ -1,5 +1,6 @@
 import {DAY, dayNumber, isoDay, formatDate, dateBounds, groupTrack, overviewY, focusY, validateIndex} from './notebook-core.mjs';
 import {createTrackIcon} from './notebook-icons.mjs';
+import {recordActivities} from './notebook-activities.mjs';
 
 const app = document.querySelector('[data-notebook]');
 app.classList.add('is-initializing');
@@ -222,7 +223,10 @@ function makePages(record,body) {
 function makeCard(record) {
   const card=el('article','nb-card');card.id=`record-${record.id}`;card.dataset.track=record.trackId;
   const button=el('button','nb-card-toggle');button.type='button';button.setAttribute('aria-controls',`pages-${record.id}`);
-  const title=el('span');title.append(el('span','nb-card-title',record.title),el('span','nb-card-meta',`${record.experimenter} · ${record.pageCount} ${record.pageCount===1?'page':'pages'}`));
+  const title=el('span','nb-card-heading');
+  const activities=el('span','nb-card-activities');
+  for(const activity of recordActivities(record.title)) activities.append(el('span','nb-activity',activity));
+  title.append(activities,el('span','nb-card-title',record.title),el('span','nb-card-meta',`${record.experimenter} · ${record.pageCount} ${record.pageCount===1?'page':'pages'}`));
   const arrow=el('span','nb-chevron'), actionLabel=el('span','','View record');
   const chevron=svg('svg',{viewBox:'0 0 16 16','aria-hidden':'true',focusable:'false'});
   chevron.append(svg('path',{d:'m4 6 4 4 4-4',fill:'none',stroke:'currentColor','stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round'}));
@@ -261,10 +265,10 @@ function renderState(state,userAction=false) {
     $('viewport').scrollLeft=0;
     $('instruction').textContent='Follow the dates. Open a title to read the original notebook pages.';
     $('date-range').textContent=`${formatDate(groups[0].date)} — ${formatDate(groups.at(-1).date)}`;
-    $('focus-heading').replaceChildren(el('p','nb-eyebrow','THE EXPERIMENTAL RECORD'),el('h2','',track.label),el('p','',track.description));
+    $('focus-heading').replaceChildren(el('h2','',track.label),el('p','',track.description));
     $('jump').replaceChildren(...groups.map(g=>{const o=el('option','',formatDate(g.date));o.value=g.date;return o;}));
     renderRecords(track);
-    $('end').replaceChildren(el('p','nb-eyebrow','END OF THIS TRACK'),el('h3','',`${track.label}, day by day.`),el('p','',`${groups.reduce((n,g)=>n+g.records.length,0)} original records across ${groups.length} recorded days.`));
+    $('end').replaceChildren();
     for(const destination of track.engineeringLinks||[]) {
       const a=el('a','',`${destination.label || 'Explore the Engineering Process'} →`);a.href=new URL(`../../${destination.route.replace(/^\//,'')}`,baseURL).href;$('end').append(a);
     }

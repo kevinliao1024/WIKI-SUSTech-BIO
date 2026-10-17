@@ -154,7 +154,7 @@ preview and static build; they are not a claim of an iGEM media upload.
 
 ## Visual hierarchy revision — 2026-10-17
 
-The title leads directly into a nine-card track selector, with one original SVG
+The title leads directly into a nine-card track selector, with one SVG
 navigation icon per track on a common 48px grid. Each card shows the indexed
 record count and actual date range. The redundant introductory copy is omitted.
 The shared calendar uses responsive lane positions across the available width,
@@ -163,3 +163,20 @@ record totals calculated from the index. Counts beside a date node indicate
 multiple separate records on that date. No dates, milestones or source files
 were added or altered. On narrow screens, the track cards use two columns and
 the calendar remains horizontally scrollable at a readable minimum width.
+
+
+## Activity cards and icon refinement
+
+Record cards retain their exact source titles and show one compact activity cue
+matched to the title, with a stronger 22px heading (18px on mobile). These cues
+identify work types, not successful outcomes; failed attempts and repeats remain
+explicit in the unchanged title. The complete frame and 500px original-page
+reader are retained. The title eyebrows, end-of-track summary copy and visible
+source-index footer have been removed; the no-JavaScript source catalog fallback
+and each record's PDF link remain accessible.
+
+APOBEC uses a trident, Gfa a promoter arrow, and AAV a projected regular
+icosahedron. Reporter adapts the team's current SAP / SONAR symbol from
+`sonar_app/static/brand/sonar-symbol.svg`: broken concentric arcs and a central
+point, redrawn on the shared 48px grid in the track color. No external asset
+requests are made.

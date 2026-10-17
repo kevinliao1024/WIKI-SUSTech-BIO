@@ -63,3 +63,17 @@ The enclosing-frame revision also passed the Chrome suite, including desktop
 and 834/390/320px layouts, opening/closing multipage records, measured node
 alignment and PDF fallback. Review screenshots above show the final framed
 reader with the 500px page limit retained.
+
+
+## Activity-card refinement
+
+The title eyebrows, end summary copy and source-index footer were removed.
+The four revised symbols and stronger activity headings were visually checked.
+The three Notebook Python checks, full existing Chrome interaction suite
+(1440/834/390/320px), and frozen build audit passed. All 178 titles receive an
+activity cue; exact source titles, dates, source index, PDFs and previews remain
+unchanged. The expanded QX01 page remains 498px wide.
+
+- [Updated navigation icons](qa/track-cards.png)
+- [Activity cards](qa/reader-list.png)
+- [Expanded activity card](qa/reader-original.png)

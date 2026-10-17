@@ -9,13 +9,13 @@ const drawings = {
     ['path', {d:'M8 32c10 9 23 9 32-2M14 12l-5 6 5 6M22 8l-3 8 5 6M31 10l-1 8 6 4M39 17l1 7 5 3'}],
     ['path', {d:'m13 35 1-5m8 8 1-5m8 4-1-5',opacity:'.55'}],
   ],
+  // APOBEC: a three-pronged trident; Gfa: a promoter / transcription arrow.
   apobec: [
-    ['path', {d:'M10 29V14l13-7 13 7v10M10 29l13 8 6-4M17 16l6-3 6 3M17 28l6 3'}],
-    ['path', {d:'m29 30 9-9 5 5-9 9-7 2zM36 23l5 5'}],
+    ['path', {d:'M24 42V6m-5 6 5-6 5 6M10 12v10c0 7 6 10 14 10s14-3 14-10V12M6 17l4-5 4 5m20 0 4-5 4 5M19 42h10'}],
   ],
   gfa: [
-    ['circle', {cx:24,cy:24,r:6}],
-    ['path', {d:'M24 18V9l-4-4m4 4 5-3M30 24h9l4-4m-4 4 3 5M24 30v9l-4 4m4-4 5 3M18 24H9l-4-4m4 4-3 5M20 20l-8-8M28 20l8-8M28 28l8 8M20 28l-8 8'}],
+    ['path', {d:'M5 36h38M16 36V13h23m-7-7 7 7-7 7'}],
+    ['path', {d:'M7 32v8m5-8v8',opacity:'.5'}],
   ],
   mre: [
     ['path', {d:'M8 37h12V17a7 7 0 0 1 14 0v20h7M20 19h14M20 25h14M20 31h14'}],
@@ -26,13 +26,16 @@ const drawings = {
     ['path', {d:'M5 16h38M10 32h28M12 16v6m8-6v6m8-6v6m8-6v6M12 26v6m8-6v6m8-6v6m8-6v6'}],
     ['path', {d:'m7 13-3 3 3 3m30 10 3 3-3 3',opacity:'.55'}],
   ],
+  // Front-facing edges of a projected regular icosahedron (20 triangular faces).
   aav: [
-    ['path', {d:'m24 4 17 10v20L24 44 7 34V14zM7 14l17 10 17-10M24 24v20M24 4v10M7 34l8-5m26 5-8-5'}],
-    ['circle', {cx:24,cy:24,r:4,fill:'currentColor',stroke:'none'}],
+    ['path', {d:'M26.1 9.4 27.1 28.4M26.1 9.4 9.7 20.9M27.1 28.4 9.7 20.9M26.1 9.4 41.6 20.9M27.1 28.4 41.6 20.9M26.1 9.4 13.3 8.6M26.1 9.4 33.0 8.6M13.3 8.6 33.0 8.6M13.3 8.6 9.7 20.9M33.0 8.6 41.6 20.9M27.1 28.4 15.0 39.4M27.1 28.4 34.7 39.4M15.0 39.4 34.7 39.4M15.0 39.4 9.7 20.9M34.7 39.4 41.6 20.9M13.3 8.6 6.4 27.1M6.4 27.1 9.7 20.9M15.0 39.4 6.4 27.1'}],
   ],
+  // Adapted from the team's SAP / SONAR symbol: broken concentric arcs + core.
   reporter: [
-    ['path', {d:'M7 10v29h34M14 31v-7m9 7V18m9 13v-9M33 7v8m-4-4h8M39 17h4m-2-2v4'}],
-    ['circle', {cx:23,cy:13,r:2,fill:'currentColor',stroke:'none'}],
+    ['path', {d:'M9 32a18 18 0 0 1 26-22M42 27a18 18 0 0 1-23 15M12 30a13 13 0 0 1 15-19M18 18a9 9 0 1 1 5 15M27 28a5 5 0 0 1-6 0'}],
+    ['path', {d:'M34 15a14 14 0 0 1 4 8',opacity:'.45'}],
+    ['circle', {cx:39,cy:12,r:1,fill:'currentColor',stroke:'none',opacity:'.45'}],
+    ['circle', {cx:24,cy:24,r:2.2,fill:'currentColor',stroke:'none'}],
   ],
   fv: [
     ['path', {d:'M40 22A16 16 0 1 0 26 40M19 14c-7 0-9 9-4 13M27 14l3 3'}],

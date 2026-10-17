@@ -4,7 +4,6 @@
 {% block main %}
 <main id="main-content" class="notebook-page">
   <header class="nb-intro">
-    <p class="nb-eyebrow">WET LAB / THE EXPERIMENTAL RECORD</p>
     <h1>{{ content.title }}<span>.</span></h1>
   </header>
   <section class="nb-app" data-notebook data-index="{{ url_for('static', filename='notebook/index.json') }}" aria-label="Interactive research notebook" aria-busy="true">
@@ -26,8 +25,7 @@
     <div class="nb-end" data-end hidden></div>
     <p class="nb-status" data-status role="status" aria-live="polite"></p>
   </section>
-  <p class="nb-source-index">The original record, always one click away. <a href="{{ url_for('static', filename='notebook/catalog.html') }}">Browse all source PDFs ↗</a></p>
-  <noscript><p>The interactive timeline needs JavaScript. The source index above provides every date, experiment title and original PDF without JavaScript.</p></noscript>
+  <noscript><p>The interactive timeline needs JavaScript. <a href="{{ url_for('static', filename='notebook/catalog.html') }}">Browse the source index</a> for every date, experiment title and original PDF.</p></noscript>
 </main>
 {% endblock %}
 {% block page_scripts %}<script type="module" src="{{ url_for('static', filename='notebook/notebook.mjs') }}"></script>{% endblock %}
