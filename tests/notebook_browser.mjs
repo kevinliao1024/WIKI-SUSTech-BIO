@@ -27,8 +27,10 @@ assert.equal(await page.locator('.nb-card').count(),17);
 await page.screenshot({path:`${output}/desktop-focus.png`});
 await page.locator('[data-jump]').selectOption('2026-09-26');await page.waitForTimeout(100);
 const jumpY=await page.locator('#day-2026-09-26').evaluate(n=>n.getBoundingClientRect().top);assert.ok(jumpY>=100&&jumpY<350,'Date jump is below fixed nav');
-// Switch tracks through the persistent shared rail, not the overview.
-await page.locator('.nb-lane[data-track="reporter"]').focus();await page.keyboard.press('Enter');await page.waitForTimeout(550);
+// Focus exposes only the selected lane; the toolbar remains the track switcher.
+assert.equal(await page.locator('.nb-lane:visible').count(),1);
+assert.equal(await page.locator('.nb-lane[aria-hidden="true"][tabindex="0"]').count(),0);
+await page.locator('[data-switch]').selectOption('reporter');await page.waitForTimeout(550);
 assert.equal(await page.locator('.nb-card').count(),33);
 assert.equal(await page.locator('.nb-card:not([data-track="reporter"])').count(),0);
 await page.locator('[data-back]').click();await page.waitForTimeout(550);
@@ -37,6 +39,7 @@ assert.ok(Math.abs(await page.evaluate(()=>scrollY-history.state.overviewScroll)
 results.push('Overview: no source downloads, shared calendar coordinates, persistent map DOM, strict AAV/Reporter switching, keyboard activation and overview scroll restoration.');
 await page.goto(`${base}/notebook?track=puf&date=2026-07-27&record=QX01`);await page.waitForSelector('#record-QX01 [aria-expanded="true"]');await page.waitForTimeout(550);
 assert.equal(await page.locator('#record-QX01 img').count(),2);
+assert.ok((await page.locator('#record-QX01 img').first().boundingBox()).width<=500,'Original pages retain a compact reading width');
 await page.locator('#record-QX01 img').first().scrollIntoViewIfNeeded();
 await page.waitForFunction(()=>document.querySelector('#record-QX01 img').naturalWidth>0);
 const aligned=await page.evaluate(()=>{

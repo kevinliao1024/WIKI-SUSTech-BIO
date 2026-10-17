@@ -92,3 +92,39 @@ body:has(.notebook-page) .reading-orbit{display:none!important}
   .nb-toolbar{padding:14px 0}.nb-view-label{font-size:13px}.nb-coverage{font-size:10px}
   .nb-caption{font-size:12px;line-height:1.5;margin:16px 0}.nb-caption>p{max-width:none}
 }
+
+/* Focus reads like a notebook index: one rail, quiet rules and compact pages. */
+.nb-focus-heading{padding-left:210px}
+.nb-records,.nb-end{margin-left:210px;max-width:850px}
+.nb-app.is-focus .nb-axis{display:none}
+.nb-app.is-focus .nb-lane.is-selected{opacity:1}
+.nb-app.is-focus .nb-tick text{font-size:12px}
+.nb-connector{stroke-dasharray:none;opacity:.2}
+.nb-day{padding-bottom:28px}
+.nb-day-label{font-size:12px;margin-bottom:8px}
+.nb-card{background:transparent;border:0;border-bottom:1px solid #e2e2ef;border-radius:0;box-shadow:none;margin-bottom:0}
+.nb-card::before{display:none}
+.nb-card-toggle{padding:18px 0 20px;border-radius:0;gap:22px;transition:color .2s}
+.nb-card-toggle:hover{background:transparent;color:var(--track)}
+.nb-card-title{font-size:18px;font-weight:550;line-height:1.5}
+.nb-card-meta{font-size:12px;margin-top:7px}
+.nb-chevron{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;font-size:22px;font-weight:400;line-height:1;border-radius:50%;background:color-mix(in srgb,var(--track) 7%,var(--nb-paper))}
+.nb-card-toggle[aria-expanded=true] .nb-chevron{transform:none}
+.nb-card-body{padding:0 0 26px}
+.nb-source-actions{max-width:500px;border-top:0;padding:4px 0 16px;font-size:12px}
+.nb-pages{max-width:500px;gap:20px}
+.nb-pdf-page>a{border:1px solid #e1e1eb;box-shadow:0 4px 14px #2e306509}
+.nb-page-caption{font-size:10px;line-height:1.5}
+@media(max-width:1000px){
+  .nb-focus-heading{padding-left:160px}
+  .nb-records,.nb-end{margin-left:160px}
+}
+@media(max-width:600px){
+  .nb-focus-heading{padding-left:0}
+  .nb-records,.nb-end{margin-left:32px}
+  .nb-day{padding-bottom:22px}.nb-day-label{font-size:10px}
+  .nb-card-toggle{padding:14px 0 18px;gap:10px}
+  .nb-card-title{font-size:15px}.nb-card-meta{font-size:10px}
+  .nb-chevron{flex-basis:26px;width:26px;height:26px;font-size:20px}
+  .nb-source-actions{font-size:11px;gap:8px}
+}

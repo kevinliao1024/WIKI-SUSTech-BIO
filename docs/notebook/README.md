@@ -96,10 +96,12 @@ tracks, including days without records. Month, Monday and day ticks share the
 same scale. The minimum and maximum real dates determine track terminals.
 
 The SVG calendar and every lane remain mounted when switching views. Their
-horizontal translations animate together into a compact left rail. Focus
+horizontal translations animate into a compact left rail. Focus hides all
+nonselected lanes, including their keyboard and accessibility targets; the toolbar
+provides track switching. Focus
 records are filtered by `trackId` before grouping by date. A `ResizeObserver`
 measures each shared day row and places the selected line's date nodes and
-connectors beside the first card's callout. Expanding PDFs changes row height,
+connectors beside the first record title. Expanding PDFs changes row height,
 not their historical time span. Other rail dates interpolate between those
 rows; Focus intentionally does not imply a proportional calendar scale.
 
@@ -118,7 +120,8 @@ are removed from the DOM on collapse or track change and re-created on demand.
 
 No PDF renderer, iframe, canvas or image is loaded in Overview. Expanded records
 load only their indexed previews, with explicit dimensions and browser lazy
-loading. Each preview has a full-size link and a direct original PDF link with
+loading. Previews use a maximum 500px reading width and shrink to fit mobile
+screens. Record titles use flat dividers rather than speech-bubble boxes. Each preview has a full-size link and a direct original PDF link with
 `#page=N`. Failed previews retain a source-file fallback. `catalog.html` lists
 all originals when JavaScript or the manifest is unavailable.
 

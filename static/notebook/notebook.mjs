@@ -115,7 +115,7 @@ function buildMap() {
     const events=dates.map(date=>{
       const target=svg('g',{class:'nb-date-target',role:'button',tabindex:-1,'aria-label':`${track.label}, ${formatDate(date)}`,'data-date':date});
       const entries=records.filter(r=>r.date===date);
-      target.setAttribute('aria-label',`${track.label}, ${formatDate(date)}: ${entries.length} records`);
+      target.setAttribute('aria-label',`${track.label}, ${formatDate(date)}: ${entries.length} ${entries.length===1?'record':'records'}`);
       target.append(svg('title',{},`${track.label} · ${formatDate(date)}\n${entries.map(r=>r.title).join('\n')}`),svg('circle',{r:13,fill:'transparent'}),svg('circle',{class:'nb-event',r:entries.length>1?6:5.5}));
       if(entries.length>1)target.append(svg('text',{class:'nb-event-count',x:14,y:4},String(entries.length)));
       target.addEventListener('click',e=>{e.stopPropagation();if(selected===track.id){writeURL(selected,date);jumpTo(date,null,true);}else navigate(track.id,date);});
@@ -148,7 +148,7 @@ function layoutMap() {
   const stage=$('stage'), width=stage.clientWidth, small=innerWidth<=600;
   const height=selected?Math.max(240,$('records').offsetHeight):140+(bounds.end-bounds.start)*OVERVIEW_SCALE;
   stage.style.height=`${height}px`;
-  const axisX=selected?(small?12:innerWidth<=1000?80:126):width/2;
+  const axisX=selected?(small?10:innerWidth<=1000?70:100):width/2;
   $('map-group').style.transform=`translateX(${axisX}px)`;
   const rows=rowElements.map(row=>({day:dayNumber(row.dataset.date),y:row.offsetTop + row.querySelector('.nb-card').offsetTop + 25}));
   const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.start,OVERVIEW_SCALE);
@@ -168,30 +168,34 @@ function layoutMap() {
     tick.label.style.display=!selected&&!tick.major&&nearMonth?'none':'';
     if(!selected&&tick.major)tick.label.textContent=new Intl.DateTimeFormat('en-GB',{month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)).toUpperCase();
     else if(!selected&&tick.week)tick.label.textContent=shortDate(tick.date);
-    attr(tick.label,{x:selected?(small?0:innerWidth<=1000?-58:-66):0,y:selected?4:tick.major?-4:-9,'text-anchor':selected?'end':'middle'});
+    attr(tick.label,{x:selected?(small?0:-20):0,y:selected?4:tick.major?-4:-9,'text-anchor':selected?'end':'middle'});
     attr(tick.guide,{x1:-axisX+1,x2:width-axisX-1});
     tick.guide.style.display=!selected&&(tick.week||tick.major)?'':'none';
   }
   for(const lane of lanes) {
-    const laneX=selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLaneX(lane.index,width);
+    const laneX=selected?0:overviewLaneX(lane.index,width);
     lane.g.style.transform=`translateX(${laneX}px)`;
     const startY=y(isoDay(lane.range.start)),endY=y(isoDay(lane.range.end));
     const d=`M 0 ${startY} L 0 ${Math.max(endY,startY+1)}`;
     attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:startY-24});attr(lane.labelPanel,{y:startY-45});
+    const hidden=!!selected&&lane.track.id!==selected;
+    lane.g.style.display=hidden?'none':'';
+    lane.g.setAttribute('aria-hidden',String(hidden));
+    lane.g.setAttribute('tabindex',hidden?'-1':'0');
     lane.g.classList.toggle('is-selected',lane.track.id===selected);
     lane.g.setAttribute('aria-pressed',String(lane.track.id===selected));
     for(const event of lane.events) {event.node.setAttribute('transform',`translate(0 ${y(event.date)})`);event.node.setAttribute('tabindex',selected===lane.track.id?'0':'-1');}
   }
   for(const {node,data} of milestones) {
     const lane=lanes.find(l=>l.track.id===data.trackId);
-    const x=lane?(selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLaneX(lane.index,width)):0;
+    const x=lane?(selected?0:overviewLaneX(lane.index,width)):0;
     node.setAttribute('transform',`translate(${x} ${y(data.date)})`);
     node.style.display=selected&&data.trackId&&data.trackId!==selected?'none':'';
   }
   // Connectors share the very same measured row positions as the active date nodes.
   for(const node of app.querySelectorAll('.nb-connector')) node.remove();
   if(selected) {
-    const lane=lanes.find(l=>l.track.id===selected), laneX=small?4:(lane.index-4)*11;
+    const laneX=0;
     for(const row of rows) $('map-group').prepend(svg('line',{class:'nb-connector',x1:laneX,x2:$('records').offsetLeft-axisX-8,y1:row.y,y2:row.y}));
   }
 }
@@ -219,9 +223,9 @@ function makeCard(record) {
   const card=el('article','nb-card');card.id=`record-${record.id}`;card.dataset.track=record.trackId;
   const button=el('button','nb-card-toggle');button.type='button';button.setAttribute('aria-controls',`pages-${record.id}`);
   const title=el('span');title.append(el('span','nb-card-title',record.title),el('span','nb-card-meta',`${record.experimenter} · ${record.pageCount} ${record.pageCount===1?'page':'pages'}`));
-  const arrow=el('span','nb-chevron','›');arrow.setAttribute('aria-hidden','true');button.append(title,arrow);
+  const arrow=el('span','nb-chevron','+');arrow.setAttribute('aria-hidden','true');button.append(title,arrow);
   const body=el('div','nb-card-body');body.id=`pages-${record.id}`;
-  const update=()=>{const isOpen=expanded.has(record.id);button.setAttribute('aria-expanded',String(isOpen));body.hidden=!isOpen;if(isOpen)makePages(record,body);else body.replaceChildren();scheduleLayout();};
+  const update=()=>{const isOpen=expanded.has(record.id);arrow.textContent=isOpen?'−':'+';button.setAttribute('aria-expanded',String(isOpen));body.hidden=!isOpen;if(isOpen)makePages(record,body);else body.replaceChildren();scheduleLayout();};
   button.addEventListener('click',()=>{if(expanded.has(record.id))expanded.delete(record.id);else expanded.add(record.id);update();});
   card.append(button,body);update();return card;
 }
