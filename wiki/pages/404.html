@@ -1,3 +1,33 @@
 {% extends "layout.html" %}
-{% block title %}Page not found{% endblock %}
-{% block main %}<main id="main-content" class="not-found"><div class="shell"><p class="chapter-index chapter-index--light">404 · OFF COURSE</p><h1>Lost in the current.</h1><p>The page you followed is not part of this year’s route.</p><a class="button button--pale" href="{{ url_for('home') }}">Return to the pod <span>→</span></a></div></main>{% endblock %}
+{% block title %}404 · Page not found{% endblock %}
+{% block body_class %}ot not-found-page{% endblock %}
+{% block navigation %}{% include 'menu.html' %}{% endblock %}
+{% block reading_navigation %}{% endblock %}
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='onetake/onetake.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='not-found/not-found.css') }}">
+{% endblock %}
+{% block main %}
+<main id="main-content" class="nf-main">
+  <section class="nf-stage" aria-labelledby="nf-title">
+    <div class="nf-art" aria-hidden="true">
+      <img class="nf-layer nf-full nf-background" src="{{ url_for('static', filename='not-found/assets/background.png') }}" alt="" width="1672" height="941" fetchpriority="high">
+      <img class="nf-layer nf-full nf-bubbles" src="{{ url_for('static', filename='not-found/assets/bubbles.png') }}" alt="" width="1672" height="941" data-nf-float>
+      <img class="nf-layer nf-full nf-stars" src="{{ url_for('static', filename='not-found/assets/stars.png') }}" alt="" width="1672" height="941" data-nf-float>
+      <img class="nf-layer nf-island" src="{{ url_for('static', filename='not-found/assets/island_sign.png') }}" alt="" width="1672" height="941">
+      <img class="nf-layer nf-mascot" src="{{ url_for('static', filename='not-found/assets/mascot.png') }}" alt="" width="1189" height="891" data-nf-float>
+      <img class="nf-layer nf-question" src="{{ url_for('static', filename='not-found/assets/question_mark.png') }}" alt="" width="185" height="387" data-nf-float>
+    </div>
+    <div class="nf-copy">
+      <h1 id="nf-title"><span class="nf-sr-only">404 · Lost in the current.</span>{% include 'components/not_found_numeral.html' %}</h1>
+      <h2>Oops — this page got lost.</h2>
+      <p>The page you’re looking for seems to have drifted off course.<br>
+        Let’s head back to explore together!</p>
+      <a class="nf-action" href="{{ url_for('home') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3l9 8v10h-6v-7H9v7H3Z" fill="currentColor"/></svg><span>Go back home</span></a>
+    </div>
+  </section>
+</main>
+{% endblock %}
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='not-found/not-found.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+<details class="wiki-search" data-wiki-search>
+  <summary aria-label="Search Wiki pages"><span class="wiki-search-sr-only">Search Wiki pages</span><svg class="wiki-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></summary>
+  <div class="wiki-search-panel">
+    <label for="wiki-search-input">Find a Wiki page</label>
+    <input id="wiki-search-input" type="search" placeholder="Search pages…" autocomplete="off" aria-controls="wiki-search-results">
+    <ul id="wiki-search-results">
+      <li data-wiki-search-row data-wiki-search-group="home"><a href="{{ url_for('home') }}">Home</a></li>
+      {% for group in navigation_groups %}
+      {% set group_index = loop.index %}
+      <li class="wiki-search-group" data-wiki-search-group="{{ group_index }}">{{ group.label }}</li>
+      {% for route, label in group['items'] %}
+      <li data-wiki-search-row data-wiki-search-group="{{ group_index }}"><a href="{{ url_for('pages', page=route) }}">{{ label }}</a></li>
+      {% endfor %}{% endfor %}
+    </ul>
+    <p class="wiki-search-empty" hidden>No matching pages. Try another word.</p>
+    <p class="wiki-search-status wiki-search-sr-only" role="status" aria-live="polite"></p>
+  </div>
+</details>

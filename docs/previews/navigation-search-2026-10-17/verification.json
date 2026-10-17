@@ -1,0 +1,100 @@
+{
+  "checks": [
+    {
+      "route": "/404.html",
+      "theme": "dark",
+      "search_and_menu_interaction": "OK"
+    },
+    {
+      "route": "/description",
+      "theme": "light",
+      "search_and_menu_interaction": "OK"
+    },
+    {
+      "route": "/model",
+      "theme": "light",
+      "search_and_menu_interaction": "OK"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "search_and_menu_interaction": "OK"
+    },
+    {
+      "width": 320,
+      "button": {
+        "x": 268,
+        "y": 0,
+        "width": 40,
+        "height": 40
+      },
+      "panel": {
+        "x": 20,
+        "y": 120,
+        "width": 288,
+        "height": 482
+      }
+    },
+    {
+      "width": 390,
+      "button": {
+        "x": 338,
+        "y": 0,
+        "width": 40,
+        "height": 40
+      },
+      "panel": {
+        "x": 20,
+        "y": 120,
+        "width": 358,
+        "height": 482
+      }
+    },
+    {
+      "width": 768,
+      "button": {
+        "x": 716,
+        "y": 0,
+        "width": 40,
+        "height": 40
+      },
+      "panel": {
+        "x": 366,
+        "y": 120,
+        "width": 390,
+        "height": 482
+      }
+    },
+    {
+      "width": 1200,
+      "button": {
+        "x": 1108,
+        "y": 28,
+        "width": 44,
+        "height": 44
+      },
+      "panel": {
+        "x": 762,
+        "y": 108,
+        "width": 390,
+        "height": 482
+      }
+    },
+    {
+      "width": 1440,
+      "button": {
+        "x": 1340,
+        "y": 28,
+        "width": 44,
+        "height": 44
+      },
+      "panel": {
+        "x": 994,
+        "y": 108,
+        "width": 390,
+        "height": 482
+      }
+    }
+  ],
+  "page_errors": []
+}
