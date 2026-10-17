@@ -1,0 +1,66 @@
+{
+  "source_archive": "BLUEPRINT.zip",
+  "source_archive_sha256": "92dc2b2396abdbd22164501738046369e31524efc16d4e94da87041e3993b380",
+  "source_markdown_archive_path": "BLUEPRINT/ORCA_Blueprint_Final_EN.md",
+  "source_markdown_sha256": "48e36187b5295144f0e60038897c72cdf1e3c67a92ce0273c15f9a21661d490a",
+  "imported_on": "2026-10-17",
+  "destination_markdown": "docs/project/blueprint.md",
+  "source_role": "User-supplied content and final figures; archive documentation was treated as source material, not execution instructions.",
+  "counts": {
+    "h2_sections": 3,
+    "content_sections": 2,
+    "cycles": 2,
+    "dbtl_stages": 8,
+    "tables": 1,
+    "table_columns": 4,
+    "table_data_rows": 3,
+    "figures": 2,
+    "references": 2
+  },
+  "structural_adaptations": [
+    "Replaced the old placeholder body with the complete supplied Markdown in original order; retained the Blueprint title, original front matter and existing pending-review status.",
+    "Inserted the two specified final PNG figures immediately before their corresponding source captions. Each image links directly to that same original PNG for inspection at full size.",
+    "Preserved all source prose, numeric values, recognition sequences, table cells, headings, PROGRAM/MODEL wording, figure titles and full captions, and reference URLs unchanged.",
+    "Used the corresponding supplied ALT_TEXT.txt / alt-text.txt only as image alternative text.",
+    "Did not execute or import archive scripts, raw data, duplicate nested archives, editing source files, temporary locks or operating-system metadata.",
+    "Expressed the source captions’ two Markdown double-space hard line breaks as explicit <br> tags, preserving the rendered line breaks without trailing whitespace."
+  ],
+  "review_notes": [
+    "The two final PNGs were visually inspected against the source Figure 1/2 descriptions; no redraw, crop, re-encoding or scientific edits were performed.",
+    "Source claims, reference identities and image rights were not independently scientifically validated during this content import; team review status remains unchanged."
+  ],
+  "verification": {
+    "figure_bytes_exact_match": true,
+    "source_body_exact_match_after_removing_added_image_links_and_restoring_hard_break_syntax": true
+  },
+  "assets": [
+    {
+      "source_archive_path": "BLUEPRINT/Core_Editor_Cycle1_Compact/figure.png",
+      "destination_path": "assets/images/blueprint/core-editor-cycle-1.png",
+      "sha256": "39e9a88b73231b5313313654fa1655dea163c38d383d72d92363db772fe85dcd",
+      "bytes": 625339,
+      "dimensions_px": [
+        2560,
+        4060
+      ],
+      "alt_source_archive_path": "BLUEPRINT/Core_Editor_Cycle1_Compact/ALT_TEXT.txt",
+      "alt_source_sha256": "acda4252baf923a450b6d43a871a262ca94f4f20718c6826cadc7ae61d88dcd0",
+      "alt_text": "Five-panel portrait. A spans the full width and shows a straight ten-repeat PUF array with real repeat names and recognition-residue codes aligned to the APOE RNA sequence; a non-circular APOBEC shape directly engages C388. B shows the source PowerPoint FLAG Western blot and C shows C388 editing with three biological observations per group. D shows 63 APOE bystander sites and explains synonymous, missense and stop-gained symbols. E shows conditional same-read co-occurrence: 70.72 ± 2.37% for C295 and 93.97 ± 0.39% for C871 among C388-edited callable reads.",
+      "caption_source": "ORCA_Blueprint_Final_EN.md; original Figure 1 title and full A–E caption retained unchanged"
+    },
+    {
+      "source_archive_path": "BLUEPRINT/Core_Editor_Cycle2_Figure_Original_Types/figure.png",
+      "destination_path": "assets/images/blueprint/core-editor-cycle-2.png",
+      "sha256": "7fc91daa54e7730d18376dd4305b699fa18f9ee767b84586c29d839151df9425",
+      "bytes": 1027322,
+      "dimensions_px": [
+        2560,
+        4880
+      ],
+      "alt_source_archive_path": "BLUEPRINT/Core_Editor_Cycle2_Figure_Original_Types/alt-text.txt",
+      "alt_source_sha256": "c9f3426a30a56fd7d907d28c6e214e47646766ccaa8818325afd81ba735c6915",
+      "alt_text": "Portrait A–E figure. A aligns PUF recognition sequences. B retains the original three scatter plots of C388 editing against mean bystander editing, with distinct mean shapes, direct labels, biological replicate dots, SD and 10R-to-12R arrows. C retains original three-color 100% stacked bars for C388/C871 paired-read outcomes with a shorter legend, TC replicate points and SD, and amber numerical TC means. D and the original WB in E are unchanged.",
+      "caption_source": "ORCA_Blueprint_Final_EN.md; original Figure 2 title and full A–E caption retained unchanged"
+    }
+  ]
+}

@@ -4,12 +4,7 @@
 {% block main %}
 <main id="main-content" class="notebook-page">
   <header class="nb-intro">
-    <p class="nb-eyebrow">WET LAB / THE EXPERIMENTAL RECORD</p>
     <h1>{{ content.title }}<span>.</span></h1>
-    <div class="nb-intro-bottom">
-      <div class="nb-intro-copy">{{ rendered_markdown }}</div>
-      <p class="nb-season">SUSTech–BIO<br><strong>2026</strong></p>
-    </div>
   </header>
   <section class="nb-app" data-notebook data-index="{{ url_for('static', filename='notebook/index.json') }}" aria-label="Interactive research notebook" aria-busy="true">
     <div class="nb-toolbar">

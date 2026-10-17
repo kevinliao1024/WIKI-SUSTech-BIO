@@ -3,6 +3,7 @@
 
 {% block title %}{{ content.title }}{% endblock %}
 {% set has_dbtl = content.source_label == 'docs/project/engineering.md' %}
+{% set has_model_reading = not has_dbtl and (content.source_label.startswith('docs/project/') or content.source_label.startswith('docs/human-practices/')) %}
 {% set directory = namespace(groups=[], current=none) %}
 {% for item in content.toc %}
   {% if item.level == 2 or directory.current is none %}
@@ -16,6 +17,7 @@
 {% if has_dbtl %}<link rel="stylesheet" href="{{ url_for('static', filename='reading-orbit/dbtl-wheel.css') }}">{% endif %}
 <link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">
+{% if has_model_reading %}<link rel="stylesheet" href="{{ url_for('static', filename='content-model-reading.css') }}">{% endif %}
 {% endblock %}
 {% block page_scripts %}
 {% if has_dbtl %}<script src="{{ url_for('static', filename='reading-orbit/dbtl-wheel.js') }}" defer></script>{% endif %}
@@ -24,16 +26,15 @@
 {% endblock %}
 
 {% block main %}
-<main id="main-content" class="content-page">
+<main id="main-content" class="content-page{% if has_model_reading %} content-page--model-reading{% endif %}">
   <header class="content-overview">
-    <p class="eyebrow">{{ content.metadata.get('eyebrow', 'ORCA · SUSTech 2026') }}</p>
     <h1>{{ content.title }}</h1>
-    {% if content.metadata.get('subtitle') %}<p class="content-overview__lead">{{ content.metadata.subtitle }}</p>{% endif %}
   </header>
 
+  {% if has_model_reading %}<div class="content-model-stage">{% endif %}
   {% if content.toc and not has_dbtl %}
   <details class="content-mobile-directory">
-    <summary>On this page</summary>
+    {% include 'components/page_sections_control.html' %}
     {{ content_directory(directory.groups, 'mobile') }}
   </details>
   {% endif %}
@@ -47,17 +48,12 @@
     {{ content_directory(directory.groups, 'desktop') }}
     {% endif %}
     <div class="content-reading">
-      {% if content.metadata.get('status') %}
-      <div class="content-status" data-content-status="{{ content.metadata.status }}">
-        <span>{{ content.metadata.get('status_label', 'Content status') }}</span>
-        <p>{{ content.metadata.get('status_message', '') }}</p>
-      </div>
-      {% endif %}
       <article class="markdown-content">
         {{ rendered_markdown }}
       </article>
     </div>
   </div>
+  {% if has_model_reading %}</div>{% endif %}
   {% include 'components/model/back-to-top.html' %}
 </main>
 {% endblock %}

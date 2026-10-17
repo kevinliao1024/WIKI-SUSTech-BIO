@@ -1,0 +1,190 @@
+{
+  "import_date": "2026-10-17",
+  "source_archive": "Description.zip",
+  "source_archive_sha256": "bbde2cd710d4b2ffe0547acb9c178b9989da9d3d91750582837dcd4f1b53f75f",
+  "source_document": "Description/Alzheimer.docx",
+  "source_document_sha256": "73cead635902950b391c9157f1b33e22f504681ba52f82a087621ce4f3a39e23",
+  "destination_page": "docs/project/description.md",
+  "source_nonempty_paragraphs": 27,
+  "source_section_count": 5,
+  "source_body_paragraph_count": 22,
+  "transformations": [
+    "Promoted the five source section titles to Markdown H2 headings.",
+    "Preserved all source manuscript text and numerical values.",
+    "Added hyperlinks to the existing PubMed, PubMed Central (PMC), OUP Academic and Human Practices labels.",
+    "Placed the nine unchanged supplied PNGs next to their matching subject paragraphs and added descriptive captions and alt text.",
+    "Added bibliographic records from the three supplied reference PDFs.",
+    "Retained the existing pending status and status label; updated the generic pending message to reflect the populated content.",
+    "Shortened the page title to Description at the user’s request; the common category, subtitle and review banner are no longer rendered.",
+    "At the user’s request, displayed the dementia-burden image as a compact 240px illustration beside the opening paragraph (stacking on narrow screens), without the Figure 1 caption; the original image and scientific text remain unchanged."
+  ],
+  "source_document_structure": {
+    "embedded_images": 0,
+    "hyperlinks": 0,
+    "tables": 0,
+    "tracked_changes": 0
+  },
+  "source_files_not_published": [
+    "Description/Alzheimer.docx",
+    "Description/文献/APOE4.pdf",
+    "Description/文献/nihms-1560100.pdf",
+    "Description/文献/fnagi-15-1274452.pdf",
+    "Description/_work/*.txt",
+    "__MACOSX/*",
+    ".DS_Store"
+  ],
+  "references": [
+    {
+      "source": "Description/文献/APOE4.pdf",
+      "sha256": "60a53b334e20d6b923944a3938f8554b53fd93c937394865e5948ba1c55663f1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3726719/"
+    },
+    {
+      "source": "Description/文献/nihms-1560100.pdf",
+      "sha256": "5f9cba85eb6cf28e11d61f0593aeb4a79e13b76ae468d067b2b26f5da0b3ba97",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7055192/"
+    },
+    {
+      "source": "Description/文献/fnagi-15-1274452.pdf",
+      "sha256": "19d9d7d1d474ae29d154f6762fbbeaea1949a4bb075bb9f03cd0ba7d8611ba19",
+      "url": "https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2023.1274452/full"
+    }
+  ],
+  "restored_source_labels": [
+    {
+      "label": "PubMed",
+      "match": "PE7, Kim et al. 2026, also named in supplied 8.png",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42467931/"
+    },
+    {
+      "label": "PubMed Central (PMC)",
+      "match": "PH002, Wang et al. 2018, also named in supplied 8.png",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5948154/"
+    },
+    {
+      "label": "OUP Academic",
+      "match": "REWIRE original study and Figure 4D",
+      "url": "https://academic.oup.com/nar/article/50/16/9580/6677559"
+    }
+  ],
+  "figures": [
+    {
+      "source": "Description/配图/1.png",
+      "destination": "assets/images/description/dementia-burden.png",
+      "sha256": "640d16218fc39cb653c7be4fd4529c74294b96598ff1b76d4618628b30d60511",
+      "after_docx_paragraph_zero_based": 1,
+      "alt": "Worldwide dementia burden in 2021 and the estimated share of Alzheimer’s disease",
+      "caption": null,
+      "reference": null,
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending",
+      "display": "inline introduction illustration, maximum width 240px"
+    },
+    {
+      "source": "Description/配图/2.png",
+      "destination": "assets/images/description/alzheimers-pathology.png",
+      "sha256": "57f587895232370e13f087b0a00af5c02710fb2781b218996652ec7e458d3e45",
+      "after_docx_paragraph_zero_based": 2,
+      "alt": "Comparison of normal brain cells and Alzheimer’s disease pathological features",
+      "caption": "Figure 2. Alzheimer’s disease pathological features. Source: [Shajahan et al. (2024), Figure 1](https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2023.1274452/full).",
+      "reference": "https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2023.1274452/full",
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/3.png",
+      "destination": "assets/images/description/apoe-isoforms.png",
+      "sha256": "bc9ed10d7dfd7ef99f5cf1f826441bb6acb84199c7865ca200c96a9438a22fec",
+      "after_docx_paragraph_zero_based": 6,
+      "alt": "APOE structure and amino acid differences at residues 112 and 158",
+      "caption": "Figure 3. ApoE structure and isoform differences. Source: [Liu et al. (2013), Figure 1a](https://pmc.ncbi.nlm.nih.gov/articles/PMC3726719/).",
+      "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3726719/",
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/4.png",
+      "destination": "assets/images/description/apoe-risk.png",
+      "sha256": "1127f0203fa121d9043c8fc9555b80dbe67cb60d719b154bf65deeb46789e9a8",
+      "after_docx_paragraph_zero_based": 7,
+      "alt": "APOE genotype odds ratios and genotype frequencies",
+      "caption": "Figure 4. APOE genotype, odds ratios and genotype frequencies. Data shown in [Yamazaki et al. (2019), Table 2](https://pmc.ncbi.nlm.nih.gov/articles/PMC7055192/).",
+      "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7055192/",
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/5.png",
+      "destination": "assets/images/description/apoe4-functions.png",
+      "sha256": "8f6b530fa83bba5fab8541b8790ea4868b32403cfc1aca2723a23d32cfb63485",
+      "after_docx_paragraph_zero_based": 8,
+      "alt": "ApoE4 gain of toxic function and potential loss of protective function",
+      "caption": "Figure 5. ApoE4 gain of toxic function and potential loss of protective function. Source: [Liu et al. (2013), Figure 3](https://pmc.ncbi.nlm.nih.gov/articles/PMC3726719/).",
+      "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3726719/",
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/6.png",
+      "destination": "assets/images/description/current-treatments.png",
+      "sha256": "d63cf4eed779bfa886b80f9ef09fcf7a9a01ccba32b71196ab4b9a1ec7c76e07",
+      "after_docx_paragraph_zero_based": 11,
+      "alt": "Symptomatic and disease-modifying treatments shown in the supplied illustration",
+      "caption": "Figure 6. Symptomatic and disease-modifying treatment approaches.",
+      "reference": null,
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/7.png",
+      "destination": "assets/images/description/lx1001-overview.png",
+      "sha256": "3fb2e75369cce674f7f23d69e76eb8b3d957013819c34dfe27f7254f72bf01bc",
+      "after_docx_paragraph_zero_based": 13,
+      "alt": "LX1001 APOE2 gene therapy overview",
+      "caption": "Figure 7. LX1001 APOE2 gene therapy overview.",
+      "reference": null,
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/8.png",
+      "destination": "assets/images/description/intervention-levels.png",
+      "sha256": "c17f34ece944ce6d684d13591110b0f3ac104d970d1cef01aea11449948ac5df",
+      "after_docx_paragraph_zero_based": 19,
+      "alt": "Comparison of DNA editing, RNA editing and protein-level correction",
+      "caption": "Figure 8. DNA editing, RNA editing and protein-level correction.",
+      "reference": null,
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    },
+    {
+      "source": "Description/配图/图片 1.png",
+      "destination": "assets/images/description/rewire-architecture.png",
+      "sha256": "4246c71f7db4c87b41e001b47238b2b07d850938ec2ecf4285c341bd56cf0908",
+      "after_docx_paragraph_zero_based": 24,
+      "alt": "Original and upgraded CU-REWIRE architectures from the original study’s Figure 4D",
+      "caption": "Figure 9. Original and upgraded CU-REWIRE architectures, shown in [Figure 4D of the original REWIRE study](https://academic.oup.com/nar/article/50/16/9580/6677559).",
+      "reference": "https://academic.oup.com/nar/article/50/16/9580/6677559",
+      "creator": null,
+      "license": null,
+      "attribution_review": "pending"
+    }
+  ],
+  "unresolved_source_gaps": [
+    "The DOCX contains no numbered citations or bibliography. The three included reference PDFs do not cover every manuscript claim.",
+    "The manuscript’s descriptions of antisense oligonucleotides, LX1001, APOE3 Christchurch and the meeting with Prof. Keqiang Ye have been imported unchanged. No inferred references were inserted for these paragraphs.",
+    "Image placement is based on subject matching because no image anchors were embedded in the DOCX. Source 1.png through 8.png follow the supplied numeric sequence; 图片 1.png matches the explicit REWIRE Figure 4D mention.",
+    "Creators and publication licenses for the supplied images were not supplied as a manifest. Paper-source captions were added where supported by the supplied references, but media permissions still require team review.",
+    "The supplied risk chart reproduces selected data rows from Yamazaki et al. Table 2. Scientific interpretation and population context were not rewritten.",
+    "The supplied papers are retained outside the repository in the extracted source directory; only their bibliographic records and links were integrated.",
+    "This is a content migration and link identity check, not scientific or experimental validation."
+  ]
+}

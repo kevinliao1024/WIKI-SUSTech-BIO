@@ -1,4 +1,5 @@
 import json
+import html
 import re
 import unittest
 from pathlib import Path
@@ -210,22 +211,22 @@ class WikiRoutesTest(unittest.TestCase):
                     self.assertIn("Evidence status", page)
                     self.assertIn('data-evidence=', page)
 
-    def test_spatial_model_is_limited_to_requested_software_page(self):
+    def test_spatial_model_is_limited_to_requested_software_and_engineering_pages(self):
         for route in PUBLIC_ROUTES:
             with self.subTest(route=route):
                 page = self.get_text(route).lower()
-                if route == "/software":
+                if route in {"/software", "/engineering"}:
                     self.assertIn("physicell", page)
                 else:
                     self.assertNotIn("physicell", page)
                 self.assertNotIn("paraview", page)
 
-    def test_framework_pages_are_explicitly_pending_without_lorem_ipsum(self):
+    def test_framework_pages_omit_generic_review_banners_without_lorem_ipsum(self):
         for route in PLACEHOLDER_ROUTES:
             with self.subTest(route=route):
                 page = self.get_text(route)
-                self.assertIn('data-content-status="pending"', page)
-                self.assertIn("Content pending team review", page)
+                self.assertNotIn('data-content-status=', page)
+                self.assertNotIn("Content pending team review", page)
                 self.assertNotIn("Lorem ipsum", page)
 
     def test_markdown_pages_expose_their_docs_source(self):
@@ -251,8 +252,8 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertEqual(re.findall(r'\bdata-engineering-group="([^"]+)"', page),
                          ["edit", "control", "deliver", "measure", "model"])
         self.assertIn('data-selected-group=""', page)
-        buttons = re.findall(r'<button\b[^>]*data-engineering-group="[^"]+"[^>]*>', page)
-        self.assertTrue(all('aria-expanded="false"' in button for button in buttons))
+        self.assertNotIn('data-engineering-expand', page)
+        self.assertNotIn('engineering-map-expand', page)
         branches = re.findall(r'<div\b[^>]*data-map-branch-group="[^"]+"[^>]*>', page)
         self.assertEqual(len(branches), 3)
         self.assertTrue(all(re.search(r'\bhidden(?=[\s>])', branch) for branch in branches))
@@ -271,33 +272,33 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertIsNotNone(config)
         groups = json.loads(config.group(1))
         self.assertEqual([part["id"] for group in groups for part in group["parts"]], ENGINEERING_PARTS)
+        for group in groups:
+            link = re.search(rf'<a\b[^>]*data-engineering-group="{group["id"]}"[^>]*>', page)
+            self.assertIsNotNone(link)
+            self.assertIn(f'href="#{group["parts"][0]["id"]}-cycle-01"', link.group(0))
         leaf_parts = [part for part in ENGINEERING_PARTS if part not in {"deliver", "measure"}]
         self.assertCountEqual(re.findall(r'\bdata-engineering-part="([^"]+)"', page), leaf_parts)
-        for direct in ["deliver", "measure"]:
-            button = re.search(rf'<button\b[^>]*data-engineering-group="{direct}"[^>]*>', page)
-            self.assertIsNotNone(button)
-            self.assertIn('aria-controls="engineering-map-cycle-picker"', button.group(0))
-        self.assertEqual(re.findall(r'\bdata-map-cycle="([^"]+)"', page), ["01", "02"])
-        cycle_links = re.findall(r'<a\b[^>]*data-map-cycle="[^"]+"[^>]*>(.*?)</a>', page, re.S)
-        self.assertEqual([" ".join(re.sub(r'<[^>]+>', '', label).split()) for label in cycle_links],
-                         ["Cycle 01", "Cycle 02"])
-        for label in cycle_links:
-            self.assertRegex(label, r'<(span|strong)\b[^>]*class="map-label"[^>]*>Cycle 0[12]</\1>')
+        # Both views derive their variable-length cycle navigation from the
+        # authored headings after loading, rather than a fixed two-link list.
+        self.assertNotRegex(page, r'\bdata-map-cycle="')
         self.assertIn('id="engineering-map-cycle-picker" aria-label="Engineering cycles"', page)
-        self.assertEqual(re.findall(r'\bdata-engineering-cycle="([^"]+)"', page), ["01", "02"])
+        self.assertNotRegex(page, r'\bdata-engineering-cycle="')
+        self.assertLess(page.index('/static/engineering-structure.js'), page.index('/static/engineering-map.js'))
         self.assertEqual(len(re.findall(r'\bdata-engineering-map-back(?=[\s>])', page)), 1)
         self.assertGreater(page.index("data-engineering-cycles"), page.index("data-dbtl-wheel"))
         self.assertNotIn("engineering-module-nav", page)
         self.assertNotIn("data-reading-orbit", page)
         self.assertNotRegex(page, r"<footer\b")
 
-    def test_engineering_parts_have_two_cycles_and_distinct_portraits(self):
+    def test_engineering_parts_have_complete_authored_cycles_and_portrait_pool(self):
         page = self.get_text("/engineering")
         article = re.search(r'<article\b[^>]*class="markdown-content"[^>]*>(.*?)</article>', page, re.S)
         self.assertIsNotNone(article)
         ids = re.findall(r'\bid="([^"]+)"', article.group(1))
         self.assertEqual(len(ids), len(set(ids)))
-        cycles = [f"{part}-cycle-{number}" for part in ENGINEERING_PARTS for number in ["01", "02"]]
+        counts = dict(zip(ENGINEERING_PARTS, [2] * 9 + [5, 6, 5, 5, 5]))
+        cycles = [f"{part}-cycle-{number:02d}" for part, count in counts.items() for number in range(1, count + 1)]
+        self.assertEqual(len(cycles), 44)
         self.assertCountEqual([anchor for anchor in ids if re.fullmatch(r".+-cycle-\d{2}", anchor)], cycles)
         for cycle in cycles:
             with self.subTest(cycle=cycle):
@@ -306,17 +307,38 @@ class WikiRoutesTest(unittest.TestCase):
         for part in ENGINEERING_PARTS[9:]:
             self.assertRegex(article.group(1), rf'<h3\b[^>]*id="{part}"')
         portraits = re.findall(r'<svg\b[^>]*\bdata-dbtl-portrait="[^"]+"[^>]*>.*?</svg>', page, re.S)
-        self.assertEqual(len(portraits), 28)
+        self.assertEqual(len(portraits), len(cycles))
         self.assertCountEqual([re.search(r'\bdata-dbtl-cycle="([^"]+)"', portrait).group(1)
-                               for portrait in portraits], cycles)
+                               for portrait in portraits],
+                              cycles)
         sources = [re.search(r'<image\b[^>]*\bhref="([^"]+)"', portrait).group(1)
                    for portrait in portraits]
-        self.assertEqual(len(set(sources)), 28)
+        self.assertEqual(len(set(sources)), len(cycles))
+        self.assertEqual(len({Path(source.lstrip('/')).read_bytes() for source in sources}), len(cycles))
+
+    def test_engineering_import_preserves_math_annotations_and_assets(self):
+        page = self.get_text("/engineering")
+        source = Path("docs/project/engineering.md").read_text()
+        annotation = r'<annotation\b[^>]*encoding="application/x-tex"[^>]*>(.*?)</annotation>'
+        expected = [html.unescape(value) for value in re.findall(annotation, source, re.S)]
+        rendered = [html.unescape(value) for value in re.findall(annotation, page, re.S)]
+        self.assertEqual(len(expected), 110)
+        self.assertEqual(rendered, expected)
+        self.assertEqual(page.count('class="engineering-equation"'), 34)
+        self.assertEqual(page.count('class="engineering-math"'), 76)
+        for formula in re.findall(r'<math\b.*?</math>', page, re.S):
+            self.assertNotRegex(formula, r'<em\b')
+        imported_images = re.findall(r'<img\b[^>]*src="(/assets/images/engineering-dry-dbtl/[^\"]+)"', page)
+        self.assertEqual(len(imported_images), 19)
+        for image in imported_images:
+            response = self.client.get(image)
+            self.assertEqual(response.status_code, 200, image)
+            response.close()
 
     def test_markdown_image_is_resolved_through_assets_route(self):
         page = self.get_text("/description")
-        self.assertIn("/assets/figures/three-cell-clearance-mechanism.webp", page)
-        response = self.client.get("/assets/figures/three-cell-clearance-mechanism.webp")
+        self.assertIn("/assets/images/description/alzheimers-pathology.png", page)
+        response = self.client.get("/assets/images/description/alzheimers-pathology.png")
         self.assertEqual(response.status_code, 200)
         response.close()
 

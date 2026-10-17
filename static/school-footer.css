@@ -1,57 +1,98 @@
-/* University/team identity layout inspired by the 2025 SUSTech-BIO footer. */
+/* Adapted from the official SUSTech-BIO 2025 FooterSection (CC BY 4.0).
+   Original: https://2025.igem.wiki/sustech-bio/assets/index.css
+   Source and media inventory: assets/brand/footer-2025-provenance.json. */
+@font-face {
+  font-family: 'SUSTech Footer Afacad';
+  src: url('https://static.igem.wiki/teams/5873/fonts/afacad-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SUSTech Footer Afacad';
+  src: url('https://static.igem.wiki/teams/5873/fonts/afacad-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 .site-footer--school {
   position: relative;
   z-index: 12;
-  padding: 76px 0 28px;
-  color: #fff;
-  background: linear-gradient(155deg, #7563ab 0%, #62549a 50%, #494274 100%);
-  border: 0;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-}
-.school-footer__identities {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 48px;
-}
-.school-footer__university, .school-footer__team {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
+  gap: 50px;
+  padding: 40px 93px;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+  background: linear-gradient(to bottom, #6d51a4 48.56%, #48366b);
+  color: #fff;
+  font-family: 'SUSTech Footer Afacad', sans-serif;
 }
-.school-footer__university img { flex: 0 0 auto; width: 86px; height: 86px; object-fit: contain; }
-.school-footer__university p { margin: 0; font-size: clamp(20px, 2vw, 29px); font-weight: 600; line-height: 1.3; letter-spacing: -.03em; }
-.school-footer__team { color: #fff; text-decoration: none; }
-.school-footer__team img { width: 138px; height: auto; flex: 0 0 auto; }
-.school-footer__team strong { display: block; font-size: clamp(26px, 2.8vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -.035em; }
-.school-footer__team small { display: block; margin-top: 12px; font-size: 11px; letter-spacing: .17em; color: #e2def3; }
-.school-footer__team:hover { color: #fff; }
-.school-footer__team:hover strong { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
-.school-footer__team:focus-visible { outline: 2px solid #fff; outline-offset: 10px; border-radius: 4px; }
-.school-footer__purpose {
-  margin: 48px auto 56px;
-  text-align: center;
-  color: #f1eefb;
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: clamp(20px, 2vw, 26px);
-  font-style: italic;
-  line-height: 1.45;
+.site-footer--school *, .site-footer--school *::before, .site-footer--school *::after { box-sizing: border-box; }
+.site-footer--school .footer-content { display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 15px; width: 100%; min-width: 0; }
+.site-footer--school .footer-nav { display: flex; flex-direction: row; justify-content: space-between; width: 100%; gap: 20px; padding: 5px 0; }
+.site-footer--school .footer-nav-column { display: flex; flex-direction: column; gap: 10px; }
+.site-footer--school .footer-nav-column h3 { font-family: 'Microsoft YaHei UI', sans-serif; font-weight: 700; font-size: 25px; line-height: 1.2; margin: 0 0 5px; color: #fff; }
+.site-footer--school .footer-nav-column a { font-family: 'SUSTech Footer Afacad', sans-serif; font-weight: 400; font-size: 20px; line-height: 1.5; color: #fff; text-decoration: none; }
+.site-footer--school .footer-nav-column a:hover { text-decoration: underline; }
+.site-footer--school .footer-logos { display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 49px; padding: 0 10px; width: 1123px; max-width: 100%; border-radius: 10px; margin-top: 15px; }
+.site-footer--school .logo-container { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 0; }
+.site-footer--school .footer-image-button { display: block; flex: 0 0 auto; padding: 0; margin: 0; border: 0; border-radius: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; line-height: 0; }
+.site-footer--school .logo-image { display: block; width: 90px; height: 90px; object-fit: contain; transition: transform .2s ease, box-shadow .2s ease; }
+.site-footer--school .bio-logo { width: 128px; height: 90px; }
+.site-footer--school .logo-text { font-family: 'Microsoft YaHei UI', sans-serif; font-weight: 700; font-size: 30px; line-height: 1.33; display: flex; flex-direction: column; color: #fff; }
+.site-footer--school .bio-name { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; font-weight: 500; font-size: 42px; line-height: .71; width: 277px; }
+.site-footer--school .footer-contact, .site-footer--school .footer-sponsors { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; max-width: 100%; min-width: 0; margin-top: 15px; padding: 0; }
+.site-footer--school .footer-contact h4, .site-footer--school .footer-sponsors h4 { font-family: 'Microsoft YaHei UI', sans-serif; font-weight: 290; font-size: 18px; line-height: 1.67; text-align: center; width: 100%; margin: 0; color: #fff; }
+.site-footer--school .qr-codes { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px; width: 521px; max-width: 100%; }
+.site-footer--school .qr-code-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.site-footer--school .qr-code { display: block; width: 80px; height: 80px; object-fit: contain; transition: transform .2s ease, box-shadow .2s ease; }
+.site-footer--school .qr-code-label { font-family: 'SUSTech Footer Afacad', sans-serif; font-weight: 400; font-size: 14px; line-height: 1.2; color: #fff; text-align: center; }
+.site-footer--school .sponsor-logos-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; }
+.site-footer--school .sponsor-logos-scroll::-webkit-scrollbar { display: none; }
+.site-footer--school .sponsor-logos-track { display: flex; align-items: center; width: max-content; }
+.site-footer--school .sponsor-logos-group { display: flex; align-items: center; gap: 30px; padding-right: 30px; flex: 0 0 auto; }
+.site-footer--school .sponsor-logos-group[hidden] { display: none; }
+.site-footer--school .sponsor-logo { display: block; height: 80px; width: auto; max-width: none; object-fit: contain; flex-shrink: 0; background-color: #fff; padding: 5px 10px; border-radius: 5px; transition: transform .2s ease, box-shadow .2s ease; }
+.site-footer--school .footer-image-button:hover img { transform: scale(1.01); box-shadow: 0 4px 12px #00000026; }
+.site-footer--school .footer-copyright { margin-top: 15px; }
+.site-footer--school .footer-copyright p { margin: 0; font-family: 'SUSTech Footer Afacad', sans-serif; font-weight: 700; font-size: 10px; line-height: 3; text-align: center; color: #fff; }
+.site-footer--school .footer-copyright a { color: #fff; text-underline-offset: 2px; }
+.site-footer--school :is(a, button, [tabindex]):focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 3px; }
+.site-footer--school .footer-lightbox { padding: 44px 16px 16px; border: 0; border-radius: 12px; width: max-content; max-width: min(94vw, 1100px); max-height: 90dvh; overflow: auto; background: #fff; box-shadow: 0 12px 60px #0008; }
+.site-footer--school .footer-lightbox::backdrop { background: #000b; }
+.site-footer--school .footer-lightbox img { display: block; width: auto; height: auto; max-width: 86vw; max-height: 75dvh; object-fit: contain; margin: auto; }
+.site-footer--school .footer-lightbox-close { position: absolute; right: 5px; top: 0; padding: 0; border: 0; width: 44px; height: 44px; color: #48366b; background: transparent; font: 32px/1 sans-serif; cursor: pointer; }
+.site-footer--school .footer-lightbox-close:focus-visible { outline-color: #48366b; outline-offset: -5px; }
+@media (max-width: 1200px) {
+  .site-footer--school { padding: 20px 40px; }
+  .site-footer--school .footer-logos, .site-footer--school .footer-contact, .site-footer--school .footer-sponsors { width: 100%; }
 }
-.school-footer__legal { padding-top: 23px; border-top: 1px solid #ffffff24; text-align: center; }
-.school-footer__legal p { margin: 7px 0; color: #e4e0f2; font-size: 11px; line-height: 1.7; }
-.school-footer__legal a { color: #fff; text-decoration-color: #ffffff70; text-underline-offset: 3px; }
-.school-footer__legal a:hover { text-decoration-color: #fff; }
-@media (max-width: 760px) {
-  .site-footer--school { padding: 48px 0 76px; }
-  .school-footer__identities { grid-template-columns: 1fr; gap: 38px; }
-  .school-footer__university { flex-direction: column; gap: 20px; text-align: center; }
-  .school-footer__university img { width: 72px; height: 72px; }
-  .school-footer__university p { font-size: 22px; }
-  .school-footer__team { gap: 16px; }
-  .school-footer__team img { width: 104px; }
-  .school-footer__team strong { font-size: 28px; }
-  .school-footer__team small { font-size: 9px; }
-  .school-footer__purpose { margin-block: 34px 38px; }
-  .school-footer__legal p { font-size: 10px; }
+@media (max-width: 992px) {
+  .site-footer--school .footer-nav { flex-wrap: wrap; justify-content: center; }
+  .site-footer--school .footer-nav-column { width: 30%; margin-bottom: 20px; }
+  .site-footer--school .footer-logos { flex-direction: column; gap: 30px; }
+  .site-footer--school .bio-name { line-height: 1.1; }
+}
+@media (max-width: 768px) {
+  .site-footer--school { padding: 20px; }
+  .site-footer--school .qr-codes { flex-wrap: wrap; justify-content: center; }
+  .site-footer--school .footer-nav-column { width: 45%; }
+  .site-footer--school .sponsor-logo { height: 60px; }
+  .site-footer--school .sponsor-logos-group { gap: 20px; padding-right: 20px; }
+}
+@media (max-width: 576px) {
+  .site-footer--school .footer-nav-column { width: 100%; text-align: center; }
+  .site-footer--school .logo-container { flex-direction: column; text-align: center; }
+  .site-footer--school .logo-text { align-items: center; }
+  .site-footer--school .sponsor-logo { height: 50px; }
+  .site-footer--school .sponsor-logos-group { gap: 15px; padding-right: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-footer--school *, .site-footer--school *::before, .site-footer--school *::after { transition: none !important; scroll-behavior: auto !important; }
 }

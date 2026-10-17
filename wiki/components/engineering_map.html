@@ -26,21 +26,22 @@
     </div>
     <nav class="engineering-map-groups" aria-label="Engineering parts">
       {% for group in engineering_groups %}
-      <button type="button" class="engineering-map-group" data-engineering-group="{{ group.id }}" aria-expanded="false" aria-controls="{{ 'engineering-map-' + group.id if group.parts | length > 1 else 'engineering-map-cycle-picker' }}"><span class="map-label">{{ group.label }}</span></button>
+      <div class="engineering-map-group-row" style="--map-row: {{ loop.index + 1 }}">
+        <a class="engineering-map-group" data-engineering-group="{{ group.id }}" href="#{{ group.parts[0].id }}-cycle-01" aria-label="{{ group.label }}, open {{ group.parts[0].label }} Cycle 01"><span class="map-label">{{ group.label }}</span></a>
+      </div>
       {% endfor %}
     </nav>
     <div class="engineering-map-branches">
-      {% for group in engineering_groups if group.parts | length > 1 %}
-      <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" role="group" aria-label="{{ group.label }} branches" hidden>
+      {% for group in engineering_groups %}
+      {% if group.parts | length > 1 %}
+      <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" style="--map-row: {{ loop.index + 1 }}" role="group" aria-label="{{ group.label }} branches" hidden>
         {% for part in group.parts %}
-        <button type="button" class="engineering-map-leaf" data-engineering-part="{{ part.id }}" aria-pressed="false" aria-controls="engineering-map-cycle-picker"><span class="map-label">{{ part.label }}</span></button>
+        <a class="engineering-map-leaf" data-engineering-part="{{ part.id }}" href="#{{ part.id }}-cycle-01" aria-label="{{ part.label }}, open Cycle 01"><span class="map-label">{{ part.label }}</span></a>
         {% endfor %}
       </div>
+      {% endif %}
       {% endfor %}
     </div>
-    <nav class="engineering-map-cycles" id="engineering-map-cycle-picker" aria-label="Engineering cycles" hidden>
-      <a class="engineering-map-cycle" data-map-cycle="01" href="#pod-cycle-01"><strong class="map-label">Cycle 01</strong></a>
-      <a class="engineering-map-cycle" data-map-cycle="02" href="#pod-cycle-02"><strong class="map-label">Cycle 02</strong></a>
-    </nav>
+    <nav class="engineering-map-cycles" id="engineering-map-cycle-picker" aria-label="Engineering cycles" hidden></nav>
   </div>
 </section>

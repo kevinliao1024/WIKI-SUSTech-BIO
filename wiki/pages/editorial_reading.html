@@ -29,14 +29,13 @@
 {% block page_content %}
 {% if reading_toc.items %}
 <details class="mobile-toc shell">
-  <summary>On this page</summary>
+  {% include 'components/page_sections_control.html' %}
   <ol>{{ toc_links() }}</ol>
 </details>
 {% endif %}
 <div class="shell markdown-page{% if not reading_toc.items %} markdown-page--without-toc{% endif %}" data-content-source="{{ content.source_label }}">
   {% if reading_toc.items %}
-  <aside class="side-index markdown-toc" aria-label="On this page">
-    <span>On this page</span>
+  <aside class="side-index markdown-toc" aria-label="Page sections">
     <ol>{{ toc_links() }}</ol>
   </aside>
   {% endif %}

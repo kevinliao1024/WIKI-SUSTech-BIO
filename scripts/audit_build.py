@@ -89,8 +89,9 @@ def audit_document(name: str, document: str) -> list[str]:
 
     lowered = document.lower()
     for term in EXCLUDED_TERMS:
-        # The Software page includes the user-requested archived PhysiCell viewer.
-        if term == "physicell" and name in {"software", "software.html"}:
+        # User-supplied Engineering DBTL text describes the same spatial model
+        # whose archived viewer is retained on Software.
+        if term == "physicell" and name in {"software", "software.html", "engineering", "engineering.html"}:
             continue
         if term in lowered:
             issues.append(f"{name}: excluded term found: {term}")

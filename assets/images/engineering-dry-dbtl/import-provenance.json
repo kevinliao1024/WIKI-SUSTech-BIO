@@ -1,0 +1,332 @@
+{
+  "source_archive": "dry-dbtl-wiki-en-v6(1).zip",
+  "source_archive_sha256": "3cb6a1eed352b33eec0f6dc2717cb121dd25bbaf8a136c6776a9d46909f6ee36",
+  "source_markdown": "dry-dbtl-wiki-en-v6.md",
+  "source_markdown_sha256": "46dece056350e0f3b967f93db67aee51b017ce542c02d10a3ecbaf841edfcd6f",
+  "imported_on": "2026-10-17",
+  "destination_markdown": "docs/project/engineering.md",
+  "source_role": "Team-supplied content; source text was treated as material, not execution instructions.",
+  "source_asset_license": "No separate image-license statement was supplied in this archive; attribution and publication review remain with the team.",
+  "modules": [
+    {
+      "source_module": 1,
+      "id": "model-rna-seq",
+      "cycles": 5
+    },
+    {
+      "source_module": 2,
+      "id": "model-puf",
+      "cycles": 6
+    },
+    {
+      "source_module": 3,
+      "id": "model-apobec",
+      "cycles": 5
+    },
+    {
+      "source_module": 4,
+      "id": "model-lamar",
+      "cycles": 5
+    },
+    {
+      "source_module": 5,
+      "id": "model-whole-body",
+      "cycles": 5
+    }
+  ],
+  "counts": {
+    "cycles": 26,
+    "dbtl_stage_headings": 104,
+    "figures": 19,
+    "pngs": 13,
+    "svgs": 6,
+    "tables": 3,
+    "display_math_blocks": 34,
+    "references": 40,
+    "inline_math": 76,
+    "native_mathml_expressions": 110
+  },
+  "structural_adaptations": [
+    "Replaced the five Model placeholder modules only; preserved all nine non-Model parts and their text.",
+    "Preserved supplied prose, numeric values, scientific claims, table content, equations, figure captions, alt text, and link URLs in source order. Adjusted heading depths and assigned stable module/cycle/stage IDs.",
+    "Preserved source Cycle 1.1 through 5.5 titles (including Module 2 Cycle 2.6); IDs use the existing model-*-cycle-NN format.",
+    "Kept the source overall overview inside the first Model panel and source references inside the last Model panel. Removed the repeated overview/references shortcut links at the team's request; each module's Cycle 01 entry now starts at its own supplied Overview.",
+    "Preserved the old references anchor beside the imported references; removed the superseded empty reference prompt.",
+    "Corrected only the page introductory cycle-count description; retained existing front matter and pending-review status unchanged.",
+    "Rewrote relative figure paths to the dedicated local image directory; all image files remain byte-for-byte identical to the archive.",
+    "Kept the five supplied GitHub full-model URLs unchanged. External reference identity and scientific claims were not independently validated during this content import.",
+    "Compiled supplied TeX expressions to native MathML for browser presentation without changing their source annotations or adding a runtime dependency."
+  ],
+  "verification": {
+    "canonical_source_text_exact_match": true,
+    "non_model_parts_exact_match": true,
+    "image_sha256_exact_match": true,
+    "svg_active_content_scan_passed": true,
+    "mathml_reverses_to_exact_source_tokens": true,
+    "rendered_mathml_annotations_exact_match": true,
+    "rendered_mathml_emphasis_pollution": 0
+  },
+  "assets": [
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-1-image-01.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-1-image-01.png",
+      "sha256": "59e3eaa6362aa939072d6f218344d35d4461d1c17d40feb9fb28f34b2ed40585",
+      "bytes": 74744,
+      "alt_text": "Candidate-site counts for six editors after a common filtering workflow.",
+      "dimensions_px": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-1-image-02.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-1-image-02.svg",
+      "sha256": "6cc1c09f583bb9e853a2fae242917165090eee8461e8cb30d782c3e6b8d376ef",
+      "bytes": 70124,
+      "alt_text": "Paired PUF10 and PUF12 editing rates at 2,221 shared candidate sites.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [
+          {
+            "media_type": "image/png",
+            "bytes": 1888,
+            "sha256": "3108319e01d6ea592ace253e509b42de171d13b9b21b051c9059d33b06dd05a6"
+          }
+        ],
+        "viewBox": "0 0 720 450",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-1-image-03.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-1-image-03.png",
+      "sha256": "debd1a8d50fc64d11055757e763b41a32e97cb61a013696d6a33914d08a8ffc8",
+      "bytes": 51365,
+      "alt_text": "Local sequence logos around retained cytosines.",
+      "dimensions_px": [
+        1800,
+        450
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-1-image-04.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-1-image-04.png",
+      "sha256": "8884410fdf7ad38012c9a150a39ccd57b8f47c8924759453b4f53662c0994803",
+      "bytes": 295470,
+      "alt_text": "Chromosome candidate densities normalized by a shared callable-cytosine reference.",
+      "dimensions_px": [
+        1920,
+        2112
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-2-image-01.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-2-image-01.png",
+      "sha256": "58fad9d0c5540ee364c3de0f90938d89a2b3349b272b84f97c4367932076d8d9",
+      "bytes": 92785,
+      "alt_text": "Spearman correlations for the five feature models, led by the combined model at 0.405.",
+      "dimensions_px": [
+        1919,
+        1221
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-2-image-02.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-2-image-02.png",
+      "sha256": "6af2fc0c7494e7d3f68021fd6464a6dda57ae434840d6ee784d6a01afc83de8d",
+      "bytes": 90780,
+      "alt_text": "Top5, Top15 and Top30 recovery of 1, 6 and 20 compared with random selection.",
+      "dimensions_px": [
+        1920,
+        1200
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-2-image-03.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-2-image-03.png",
+      "sha256": "361cb7ee391a8f9552d3f0b42f7b90401aeb99d1c225f993736e09119f1fa204",
+      "bytes": 142327,
+      "alt_text": "Fixed-layer correlations across twelve ESM-2 layers, with layer 4 at 0.515 and nested layer selection at 0.323.",
+      "dimensions_px": [
+        1920,
+        1632
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-2-image-04.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-2-image-04.png",
+      "sha256": "094716e3eea3975560efd0279a5fbd66f7fcca0e9fc68bc18b71f80a2b84810b",
+      "bytes": 103717,
+      "alt_text": "Reference-background single-substitution score changes, with nine positive in both models and E292Q negative in both.",
+      "dimensions_px": [
+        1920,
+        1344
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-2-image-05.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-2-image-05.png",
+      "sha256": "78ec179a7098adb19098df28d497aeaa374f7f38c9ebebfa20818dc1903cc1bb",
+      "bytes": 81826,
+      "alt_text": "Scaffold screening expanded from 81 substitutions and 17 consensus nominations to 128 substitutions at 125 positions and 46 consensus nominations.",
+      "dimensions_px": [
+        1920,
+        1056
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-3-image-01.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-3-image-01.png",
+      "sha256": "2ddbc86a5c48f6fc3ba0cfdcdfc6fc311fe6057117b4cdae3e373007fc98e068",
+      "bytes": 1437506,
+      "alt_text": "Parent-corrected contact-probability differences across 22 residues and 21 constructs.",
+      "dimensions_px": [
+        4740,
+        6600
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-3-image-02.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-3-image-02.svg",
+      "sha256": "869ca63ca3f6f4064b7b6474edb4fa72c61afd7f029bef1e805d5a7f9719e6e6",
+      "bytes": 41235,
+      "alt_text": "Normalized parental distances for ten constructs in RNA-containing complexes and protein-only models.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [],
+        "viewBox": "0 0 1137.6 720",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-3-image-03.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-3-image-03.svg",
+      "sha256": "280742003f9a8011bc39a57e91a1944483d5fb0eea29941c44be4867bc9307d2",
+      "bytes": 46709,
+      "alt_text": "Exact partition recurrence for all-variable spectral, top-77 spectral and confidence-filtered Ward clustering, with contact counts, group counts and original-space silhouette.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [],
+        "viewBox": "0 0 720 450",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-4-image-01.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-4-image-01.png",
+      "sha256": "3cd3cb6bf3ad8b8cfb8e74a9ef6e3010aed3b8c983920a71629b12526dbaf626",
+      "bytes": 206662,
+      "alt_text": "Training loss and validation masked nucleotide accuracy during continued pretraining on human transcripts.",
+      "dimensions_px": [
+        1560,
+        1440
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-4-image-02.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-4-image-02.png",
+      "sha256": "6a6b4bafa0c041cebe0be30932e2b1bc51955f79cde5299b44ffd52d21418f03",
+      "bytes": 141246,
+      "alt_text": "Stage I training loss across pretraining, encoder-freezing and random-initialization configurations.",
+      "dimensions_px": [
+        1560,
+        840
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-4-image-03.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-4-image-03.png",
+      "sha256": "a708c1e5f4ef92001b3941fe6e6a4edd0dd33040c88f6dc9bb0e2b9ef59f3129",
+      "bytes": 191567,
+      "alt_text": "Early Stage I validation average-precision trajectories across encoder configurations.",
+      "dimensions_px": [
+        1560,
+        840
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-4-image-04.png",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-4-image-04.png",
+      "sha256": "5ce3a1f5a48298bddf7ebfcd5242b930052ce4642d950a12f323c7e72d65a063",
+      "bytes": 174577,
+      "alt_text": "Candidate ranking in 140 positive test windows, with top-ten and top-twenty hit rates of 77.9% and 92.1%.",
+      "dimensions_px": [
+        2984,
+        1514
+      ]
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-5-image-01.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-5-image-01.svg",
+      "sha256": "ba4a65195eb4be83ba1b8dadfbec8d7f469e4302fdd6557b02d6c77f8f241ae5",
+      "bytes": 108170,
+      "alt_text": "Multisite dose simulations separating intended product retention from combined editing and unwanted products.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [],
+        "viewBox": "0 0 972 716.4",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-5-image-02.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-5-image-02.svg",
+      "sha256": "d84901078544172e0c9dc6654a80b5f969647a86df6cd9302ae9bdfb64e68a55",
+      "bytes": 101460,
+      "alt_text": "Product and specificity distributions across 200 sampled parameter sets.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [],
+        "viewBox": "0 0 972 716.4",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    },
+    {
+      "source_path": "dry-dbtl-wiki-en-v6-assets/module-5-image-03.svg",
+      "destination_path": "assets/images/engineering-dry-dbtl/module-5-image-03.svg",
+      "sha256": "ca1fb841ece29552277d6e2a7ec3c215b6994c2c0295131ad5632a47eeff2f10",
+      "bytes": 115287,
+      "alt_text": "Spatial outputs by vessel distance and cell type, alongside sensitivity and design comparisons.",
+      "svg_audit": {
+        "active_content": false,
+        "external_resource_references": [],
+        "embedded_pngs": [],
+        "viewBox": "0 0 972 716.4",
+        "doctype_declarations": [
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">"
+        ],
+        "doctype_note": "Standard W3C SVG 1.1 public DTD declaration retained from the original Matplotlib output; no custom entity declaration or external drawing resource is present."
+      }
+    }
+  ],
+  "math_conversion": {
+    "converter": "Pandoc",
+    "version": "3.10.2",
+    "helper": "scripts/render_engineering_math.py",
+    "display_expressions": 34,
+    "inline_expressions": 76,
+    "original_tex_retained": "Every MathML semantics element includes an application/x-tex annotation preserving the exact original TeX, including whitespace; character entities protect it from Markdown parsing.",
+    "runtime_dependency": "None; formulas use native MathML.",
+    "verification": "Every generated formula reverses to its exact original $ or $$ token; the full Markdown is identical before and after this reversal."
+  }
+}
