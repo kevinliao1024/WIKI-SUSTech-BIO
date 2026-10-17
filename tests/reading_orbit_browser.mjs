@@ -33,7 +33,8 @@ const engineeringGroups = {
   model:['model-rna-seq','model-puf','model-apobec','model-lamar','model-whole-body']
 };
 const engineeringParts = Object.values(engineeringGroups).flat();
-const cycleNumbers = part => Array.from({length: part === 'model-puf' ? 6 : part.startsWith('model-') ? 5 : 2}, (_, index) => String(index + 1).padStart(2, '0'));
+const wetCycleCounts = {pod:3,cetus:6,'integrated-orca':1,gfa:2,mre:3,aso:6,'cre-loxp':0,deliver:3,measure:10};
+const cycleNumbers = part => Array.from({length: wetCycleCounts[part] ?? (part === 'model-puf' ? 6 : 5)}, (_, index) => String(index + 1).padStart(2, '0'));
 const cycleIds = part => cycleNumbers(part).map(number => `${part}-cycle-${number}`);
 const engineeringReadingTarget = id => /^model-.+-cycle-01$/.test(id) ? id.replace(/-cycle-01$/, '-overview') : id;
 async function engineeringState() {
@@ -41,7 +42,8 @@ async function engineeringState() {
     const scroller = document.querySelector('[data-engineering-scroll]');
     const controls = document.querySelector('.engineering-controls').getBoundingClientRect();
     const paper = document.querySelector('.engineering-paper').getBoundingClientRect();
-    return {windowScroll:scrollY, scroll:scroller.scrollTop, maxScroll:scroller.scrollHeight-scroller.clientHeight,
+    return {windowScroll:scrollY, part:document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePanel,
+      scroll:scroller.scrollTop, maxScroll:scroller.scrollHeight-scroller.clientHeight,
       controls:{x:controls.x,y:controls.y,width:controls.width,height:controls.height},
       paper:{x:paper.x,y:paper.y,width:paper.width,height:paper.height}};
   });
@@ -51,10 +53,17 @@ async function assertEngineeringFixed(before) {
   assert.equal(after.windowScroll,0,'Engineering must scroll its article, not the window.');
   for (const area of ['controls','paper']) {
     for (const key of ['x','y','width','height']) {
+      // Mobile record navigation may need another row for a different module.
+      // Within one article all geometry stays fixed; across modules the paper
+      // may resize vertically while retaining its bottom and horizontal bounds.
+      if (before.part !== after.part && page.viewportSize().width <= 760 &&
+          (key === 'height' || (area === 'paper' && key === 'y'))) continue;
       assert.ok(Math.abs(after[area][key]-before[area][key])<1,
         `Engineering ${area} moved: ${JSON.stringify({before:before[area],after:after[area]})}`);
     }
   }
+  assert.ok(Math.abs(after.paper.y+after.paper.height-before.paper.y-before.paper.height)<1,
+    'Engineering paper bottom must stay within the same viewport boundary.');
 }
 async function assertEngineeringView(view) {
   await page.waitForFunction(view=>document.querySelector('[data-engineering-workspace]').dataset.engineeringView===view,view);
@@ -76,7 +85,7 @@ async function assertEngineeringShell(view='map') {
   await assertEngineeringView(view);
   const sources = await page.locator('svg[data-dbtl-portrait] image').evaluateAll(images=>images.map(image=>image.getAttribute('href')));
   assert.equal(sources.length,44);
-  assert.equal(new Set(sources).size,44,'Every cycle uses its own supplied portrait.');
+  assert.equal(new Set(sources).size,44,'The original supplied portrait pool is retained.');
   if (view==='map') {
     assert.deepEqual(await page.locator('[data-engineering-group]').evaluateAll(elements=>elements.map(el=>el.dataset.engineeringGroup)),Object.keys(engineeringGroups));
     const groups = await page.locator('[data-engineering-map-data]').evaluate(el=>JSON.parse(el.textContent));
@@ -175,7 +184,7 @@ async function engineeringPortrait() {
       sources:portraits.map(el=>el.querySelector('image').getAttribute('href')),
       visible:visible.map(el=>({name:el.dataset.dbtlPortrait,source:el.querySelector('image').getAttribute('href')}))};
   });
-  assert.equal(portrait.total,44,'Every authored cycle must have a portrait SVG.');
+  assert.equal(portrait.total,44,'The existing portrait pool remains available for new cycles.');
   assert.equal(new Set(portrait.sources).size,44,'Cycle portraits must use forty-four distinct image assets.');
   assert.equal(portrait.visible.length,1,'Exactly one portrait SVG must be visible.');
   assert.equal(portrait.visible[0].name,portrait.selected,'The visible portrait must match the wheel state.');
@@ -198,7 +207,7 @@ async function assertEngineeringInstant(id) {
   assert.equal(state.focus,id);
   assert.equal(state.windowScroll,0);
 }
-async function assertEngineeringContext(part,number) {
+async function assertEngineeringContext(part,number,{overview=false}={}) {
   await assertEngineeringView('reader');
   await page.waitForFunction(({part,number}) => {
     const wheel = document.querySelector('[data-dbtl-wheel]');
@@ -217,7 +226,8 @@ async function assertEngineeringContext(part,number) {
     'Every other part and supplementary panel must remain hidden.');
   assert.deepEqual(await page.locator('[data-engineering-cycle]').evaluateAll(elements=>elements.map(el=>el.getAttribute('href'))),
     cycleIds(part).map(id=>`#${id}`));
-  assert.equal(await page.locator('[data-engineering-cycle][aria-current]').getAttribute('data-engineering-cycle'),number);
+  if (overview) assert.equal(await page.locator('[data-engineering-overview][aria-current]').count(),1);
+  else assert.equal(await page.locator('[data-engineering-cycle][aria-current]').getAttribute('data-engineering-cycle'),number);
   for (const name of ['design','build','test','learn']) {
     assert.equal(await page.locator(`[data-dbtl-stage="${name}"]`).getAttribute('href'),`#${part}-cycle-${number}-${name}`);
   }
@@ -256,9 +266,17 @@ async function openEngineeringPart(part,number='01',interaction=page.viewportSiz
   await assertEngineeringView('map');
   if (engineeringGroups[group].length>1) {
     const leaf = page.locator(`[data-engineering-map] [data-engineering-part="${part}"]`);
-    // Direct label clicks now enter Cycle 01; focus/hover still explore the
+    // Direct label clicks enter the overview; focus/hover still explore the
     // optional cycle chooser without entering the article.
     await leaf[interaction==='click' ? 'focus' : 'hover']();
+  }
+  if (!cycleNumbers(part).length) {
+    await page.locator(`[data-engineering-map] [data-engineering-part="${part}"]`).click();
+    await assertEngineeringView('reader');
+    assert.equal(await page.locator(`[data-engineering-panel="${part}"]`).isVisible(),true);
+    assert.equal(await page.locator('[data-engineering-cycle]').count(),0);
+    assert.equal(await page.locator('[data-dbtl-wheel]').isVisible(),false);
+    return;
   }
   await page.waitForFunction(part=>document.querySelector('[data-map-cycle="01"]').getAttribute('href')===`#${part}-cycle-01` && !document.querySelector('#engineering-map-cycle-picker').hidden,part);
   await assertEngineeringView('map');
@@ -267,7 +285,7 @@ async function openEngineeringPart(part,number='01',interaction=page.viewportSiz
   assert.deepEqual(await cycles.evaluateAll(elements=>elements.map(el=>el.getAttribute('href'))),
     cycleIds(part).map(id=>`#${id}`));
   assert.equal(await page.locator('[data-map-cycle="01"]').isVisible(),true);
-  assert.equal(await page.locator('[data-map-cycle="02"]').isVisible(),true);
+  assert.equal(await page.locator('[data-map-cycle="02"]').isVisible(),cycleNumbers(part).length>1);
   await assertEngineeringStreams();
   await page.locator(`[data-map-cycle="${number}"]`).click();
   await assertEngineeringInstant(`${part}-cycle-${number}`);
@@ -303,16 +321,19 @@ async function engineeringKeyboardMap() {
 async function engineeringModules() {
   for (const part of engineeringParts) {
     await openEngineeringPart(part);
+    if (!cycleNumbers(part).length) continue;
     await assertEngineeringShell('reader');
     const before = await engineeringState();
     const firstPortrait = await engineeringPortrait();
-    await page.locator('[data-engineering-cycle="02"]').click();
-    await assertEngineeringInstant(`${part}-cycle-02`);
-    await assertEngineeringContext(part,'02');
-    const secondPortrait = await engineeringPortrait();
-    assert.notEqual(secondPortrait.name,firstPortrait.name,'Cycle 02 must display a different portrait from Cycle 01.');
-    assert.notEqual(secondPortrait.source,firstPortrait.source,'The cycle change must replace the actual portrait image.');
-    await stage('build',`${part}-cycle-02`);
+    if (cycleNumbers(part).length>1) {
+      await page.locator('[data-engineering-cycle="02"]').click();
+      await assertEngineeringInstant(`${part}-cycle-02`);
+      await assertEngineeringContext(part,'02');
+      const secondPortrait = await engineeringPortrait();
+      assert.notEqual(secondPortrait.name,firstPortrait.name,'Cycle 02 must display a different portrait from Cycle 01.');
+      assert.notEqual(secondPortrait.source,firstPortrait.source,'The cycle change must replace the actual portrait image.');
+      await stage('build',`${part}-cycle-02`);
+    }
     await assertEngineeringFixed(before);
     await page.locator('[data-engineering-map-back]').click();
     await assertEngineeringView('map');
@@ -345,21 +366,21 @@ async function engineeringBoundaryNavigation() {
   await reader.focus();
   await reader.evaluate(el=>el.scrollTo({top:el.scrollHeight,behavior:'instant'}));
   await page.keyboard.press('PageDown');
-  await assertEngineeringContext('cetus','01');
+  await assertEngineeringContext('cetus','01',{overview:true});
   assert.equal((await engineeringState()).scroll,0,'Boundary navigation refreshes the complete article from its top.');
   assert.equal(await page.evaluate(()=>document.activeElement.id),'engineering-reading');
-  await assertEngineeringContext('cetus','01');
+  await assertEngineeringContext('cetus','01',{overview:true});
   assert.equal(new URL(page.url()).hash,'#cetus');
 
   await reader.focus();
   await reader.evaluate(el=>el.scrollTo({top:0,behavior:'instant'}));
   await page.keyboard.press('PageUp');
-  await assertEngineeringContext('pod','02');
+  await assertEngineeringContext('pod','03');
   const previousEnd = await engineeringState();
   assert.ok(Math.abs(previousEnd.scroll-previousEnd.maxScroll)<3,
     'PageUp at the article start must return to the previous part at its bottom.');
   assert.equal(await page.locator('[data-dbtl-stage][aria-current]').getAttribute('data-dbtl-stage'),'learn');
-  assert.equal(new URL(page.url()).hash,'#pod-cycle-02-learn');
+  assert.equal(new URL(page.url()).hash,await page.locator('[data-engineering-panel="pod"] :is(h2,h3,h4,h5,h6)[id]').last().evaluate(el=>'#'+el.id));
 
   await openEngineeringPart('model-whole-body');
   const finalHash = new URL(page.url()).hash;
@@ -398,7 +419,7 @@ async function engineeringBoundaryNavigation() {
   assert.ok(burst.tailPrevented.every(Boolean),'Inertial wheel events must not scroll or skip the next article.');
   assert.ok(Math.abs(burst.end-burst.start)<1,'The current article must remain stable while the picker is receiving input.');
   assert.equal(burst.windowScroll,0);
-  await assertEngineeringContext('cetus','01');
+  await assertEngineeringContext('cetus','01',{overview:true});
   assert.equal((await engineeringState()).scroll,0,'After the title animation, the next article begins at its top.');
   await assertEngineeringFixed(before);
   await openEngineeringPart('pod');
@@ -485,7 +506,7 @@ try {
       const canonical = `model-rna-seq${suffix}`;
       await page.goto(`${base}/engineering#${legacy}${suffix}`,{waitUntil:'networkidle'});
       await waitForEngineeringTarget(canonical,{focus:false});
-      await assertEngineeringContext('model-rna-seq',suffix ? '02' : '01');
+      await assertEngineeringContext('model-rna-seq',suffix ? '02' : '01',{overview:!suffix});
       assert.equal(new URL(page.url()).hash,`#${legacy}${suffix}`,'Legacy Program/Model links must retain their shareable hash.');
     }
   }

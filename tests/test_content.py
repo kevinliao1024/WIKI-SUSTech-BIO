@@ -74,6 +74,8 @@ subtitle: Test content
 ## Figure
 
 ![Alt text](/assets/images/example.webp)
+
+[Supplementary figure](/assets/images/supplement.png)
 """
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -84,6 +86,7 @@ subtitle: Test content
                 )
 
         self.assertIn('src="../assets/images/example.webp"', content.html)
+        self.assertIn('href="../assets/images/supplement.png"', content.html)
 
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@
     <nav class="engineering-map-groups" aria-label="Engineering parts">
       {% for group in engineering_groups %}
       <div class="engineering-map-group-row" style="--map-row: {{ loop.index + 1 }}">
-        <a class="engineering-map-group" data-engineering-group="{{ group.id }}" href="#{{ group.parts[0].id }}-cycle-01" aria-label="{{ group.label }}, open {{ group.parts[0].label }} Cycle 01"><span class="map-label">{{ group.label }}</span></a>
+        <a class="engineering-map-group" data-engineering-group="{{ group.id }}" href="#{{ group.parts[0].id }}" aria-label="{{ group.label }}, open {{ group.parts[0].label }} overview"><span class="map-label">{{ group.label }}</span></a>
       </div>
       {% endfor %}
     </nav>
@@ -36,7 +36,7 @@
       {% if group.parts | length > 1 %}
       <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" style="--map-row: {{ loop.index + 1 }}" role="group" aria-label="{{ group.label }} branches" hidden>
         {% for part in group.parts %}
-        <a class="engineering-map-leaf" data-engineering-part="{{ part.id }}" href="#{{ part.id }}-cycle-01" aria-label="{{ part.label }}, open Cycle 01"><span class="map-label">{{ part.label }}</span></a>
+        <a class="engineering-map-leaf" data-engineering-part="{{ part.id }}" href="#{{ part.id }}" aria-label="{{ part.label }}, open overview"><span class="map-label">{{ part.label }}</span></a>
         {% endfor %}
       </div>
       {% endif %}

@@ -79,6 +79,8 @@
 .engineering-map-cycle:nth-child(2) .map-label { animation-delay: -7s; }
 .engineering-map-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) { gap: 8px; }
 .engineering-map-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) .engineering-map-cycle { min-height: 44px; padding-block: 10px; }
+.engineering-map-cycles[data-many-cycles='true'] { gap: 4px; }
+.engineering-map-cycles[data-many-cycles='true'] .engineering-map-cycle { min-height: 36px; padding-block: 6px; }
 .engineering-map :is(button,a):hover { color: #40557e; }
 .engineering-map :is(button,a):focus-visible { outline: none; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
 @keyframes map-node-float { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }

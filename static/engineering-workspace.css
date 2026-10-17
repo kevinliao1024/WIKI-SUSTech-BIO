@@ -55,9 +55,15 @@ body.engineering-workspace-page {
 .engineering-heading-part[hidden] { display: none; }
 .engineering-controls h1 { margin: 0; color: #334071; text-align: center; font: 800 clamp(28px, 3vw, 42px)/1.1 "Avenir Next", "Segoe UI", sans-serif; letter-spacing: -.045em; }
 .engineering-controls .dbtl-directory { display: grid; place-items: center; min-height: 0; }
+.engineering-controls .dbtl-directory[hidden] { display: none !important; }
+.engineering-controls .dbtl-wheel__stage[aria-disabled='true'] { opacity: .35; cursor: default; }
 .engineering-controls .dbtl-wheel { width: 100%; --dbtl-size: min(100%, 320px); }
 .engineering-cycles { display: grid; grid-template-columns: repeat(var(--cycle-count, 2), minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 330px; align-self: center; padding-inline: 14px; }
 .engineering-cycles a { position: relative; display: flex; align-items: center; justify-content: center; min-height: 44px; border-top: 3px solid #b5bade; padding: 10px 0 4px; color: #69749a; text-decoration: none; text-align: center; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.engineering-cycles [data-engineering-overview] { grid-column: 1 / -1; min-height: 30px; border-top: 0; padding-top: 0; }
+.engineering-cycles [data-engineering-overview]::before { display: none; }
+.engineering-cycles[data-many-cycles='true'] { gap: 5px; padding-inline: 0; }
+.engineering-cycles[data-many-cycles='true'] a:not([data-engineering-overview]) { font-size: 10px; }
 .engineering-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) { gap: 4px; padding-inline: 0; }
 .engineering-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) a { font-size: 10px; }
 .engineering-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) span { width: 32px; max-width: 100%; white-space: normal; line-height: 1.1; }
@@ -93,7 +99,8 @@ body.engineering-workspace-page {
 .engineering-copy .markdown-content h2 { padding: 34px 0 0; margin: 34px 0 22px; border-top: 1px solid #d2dcec; font: 700 32px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
 .engineering-copy .markdown-content h3 { margin: 30px 0 15px; font: 700 23px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
 .engineering-copy .markdown-content h4,
-.engineering-copy .markdown-content h5 { margin: 28px 0 12px; font: 700 19px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
+.engineering-copy .markdown-content h5,
+.engineering-copy .markdown-content h6 { margin: 28px 0 12px; font: 700 19px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
 .engineering-copy .markdown-content :is(h3, h4)[id*="-cycle-"]:not([id$="-design"], [id$="-build"], [id$="-test"], [id$="-learn"]) { border-top: 2px solid #b5bade; margin-top: 40px; padding-top: 15px; color: #334071; font-size: 23px; }
 .engineering-copy .markdown-content p:has(> span[id^="cycle-"]:only-child) { margin: 0; height: 0; }
 .engineering-copy .markdown-content a { color: #6765aa; text-decoration-thickness: 1px; text-underline-offset: 3px; }

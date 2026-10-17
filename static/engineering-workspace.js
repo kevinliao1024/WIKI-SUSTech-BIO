@@ -19,6 +19,7 @@
   const stages = stageLinks.map(link => link.dataset.dbtlStage);
   const cyclePattern = /^(.+)-cycle-(\d{2})(?:-(design|build|test|learn))?$/;
   const parts = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.label])));
+  const partRecords = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part])));
   const partOrder = [...parts.keys()];
   const groupForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, group])));
   const cyclesForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.cycles])));
@@ -106,7 +107,11 @@
         id = id.replace(/^(program|model)/, 'model-rna-seq');
       }
       const target = document.getElementById(id);
-      return target && reader.contains(target) ? target : null;
+      if (target && reader.contains(target)) return target;
+      // Earlier placeholder cycles may no longer exist in the supplied record.
+      // Their links still open the module, without inventing an extra cycle.
+      const legacyCycle = id.match(cyclePattern);
+      return legacyCycle && parts.has(legacyCycle[1]) ? document.getElementById(legacyCycle[1]) : null;
     } catch { return null; }
   }
 
@@ -123,9 +128,15 @@
 
   function contextFor(id) {
     const cycle = id.match(cyclePattern);
-    if (cycle && parts.has(cycle[1])) return { part: cycle[1], number: cycle[2], stage: cycle[3] || 'design' };
+    if (cycle && parts.has(cycle[1])) {
+      const available = partRecords.get(cycle[1]).stages[cycle[2]];
+      if (available) return { part: cycle[1], number: cycle[2], stage: cycle[3] || available[0] };
+    }
     const part = partAlias(id);
-    return parts.has(part) ? { part, number: '01', stage: 'design' } : null;
+    if (!parts.has(part)) return null;
+    const record = partRecords.get(part);
+    const number = record.cycles[0] || null;
+    return { part, number, stage: record.stages[number]?.[0] || null, overview: true };
   }
 
   function contextForTarget(target) {
@@ -141,48 +152,66 @@
     return context;
   }
 
-  function selectStage({ part, number, stage }) {
+  function selectStage({ part, number, stage, overview = false }) {
+    const record = partRecords.get(part);
     const index = stages.indexOf(stage);
-    if (index < 0) return;
-    const cycle = `${part}-cycle-${number}`;
+    const cycle = number ? `${part}-cycle-${number}` : '';
     wheel.dataset.part = part;
     wheel.dataset.cycle = cycle;
-    wheel.dataset.stage = stage;
-    const portrait = portraits.get(cycle);
+    wheel.dataset.stage = stage || '';
+    wheel.closest('.dbtl-directory').hidden = !number;
+    const portrait = portraits.get(cycle) || portraits.get(`${part}-cycle-01`) || portraits.values().next().value;
     if (portrait && selectedPortrait !== portrait) {
       portraits.forEach(image => image.classList.toggle('is-hidden', image !== portrait));
       wheel.dataset.portrait = portrait.dataset.dbtlPortrait;
       selectedPortrait = portrait;
     }
-    cycleNav.setAttribute('aria-label', `${parts.get(part)} cycles`);
+    cycleNav.setAttribute('aria-label', `${parts.get(part)} overview and engineering records`);
     if (cycleNav.dataset.part !== part) {
+      const overviewLink = document.createElement('a');
+      overviewLink.dataset.engineeringOverview = '';
+      overviewLink.href = `#${part}`;
+      overviewLink.textContent = record.cycles.length ? 'Overview' : 'Proposed design';
       cycleLinks = cyclesForPart.get(part).map(number => {
         const link = document.createElement('a');
         link.dataset.engineeringCycle = number;
         const label = document.createElement('span');
-        label.textContent = `Cycle ${number}`;
+        label.textContent = record.cycleLabels[number];
         link.append(label);
         return link;
       });
-      cycleNav.replaceChildren(...cycleLinks);
+      cycleNav.replaceChildren(overviewLink, ...cycleLinks);
       cycleNav.dataset.part = part;
       cycleNav.dataset.cycleCount = String(cycleLinks.length);
-      cycleNav.style.setProperty('--cycle-count', cycleLinks.length);
+      cycleNav.dataset.manyCycles = String(cycleLinks.length > 6);
+      cycleNav.style.setProperty('--cycle-count', cycleLinks.length > 6 ? 5 : Math.max(1, cycleLinks.length));
     }
+    const overviewLink = cycleNav.querySelector('[data-engineering-overview]');
+    if (overview) overviewLink.setAttribute('aria-current', 'location');
+    else overviewLink.removeAttribute('aria-current');
     cycleLinks.forEach(link => {
       link.href = `#${part}-cycle-${link.dataset.engineeringCycle}`;
-      link.setAttribute('aria-label', `${parts.get(part)}, Cycle ${link.dataset.engineeringCycle}`);
-      if (link.dataset.engineeringCycle === number) link.setAttribute('aria-current', 'location');
+      link.setAttribute('aria-label', `${parts.get(part)}, ${record.cycleLabels[link.dataset.engineeringCycle]}`);
+      if (!overview && link.dataset.engineeringCycle === number) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
     stageLinks.forEach(link => {
       const id = `${cycle}-${link.dataset.dbtlStage}`;
-      link.href = `#${id}`;
-      link.setAttribute('aria-label', `${link.querySelector('span').textContent}, ${parts.get(part)}, Cycle ${number}`);
-      if (link.dataset.dbtlStage === stage) link.setAttribute('aria-current', 'location');
+      const available = Boolean(number && document.getElementById(id));
+      if (available) {
+        link.href = `#${id}`;
+        link.removeAttribute('aria-disabled');
+        link.removeAttribute('tabindex');
+      } else {
+        link.removeAttribute('href');
+        link.setAttribute('aria-disabled', 'true');
+        link.tabIndex = -1;
+      }
+      link.setAttribute('aria-label', `${link.querySelector('span').textContent}, ${parts.get(part)}${number ? `, ${record.cycleLabels[number]}` : ''}${available ? '' : ', not included in this record'}`);
+      if (available && !overview && link.dataset.dbtlStage === stage) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
-    if (selectedStage !== stage) {
+    if (index >= 0 && selectedStage !== stage) {
       const delta = ((index * 90 - angle) % 360 + 540) % 360 - 180;
       angle += delta === -180 ? 180 : delta;
       wheel.style.setProperty('--dbtl-angle', `${angle}deg`);
@@ -286,7 +315,8 @@
     }
     turn.direction = slot;
     const part = partOrder[turn.index + slot];
-    turn.target = document.getElementById(slot > 0 ? part : `${part}-cycle-${cyclesForPart.get(part).at(-1)}-learn`);
+    turn.target = slot > 0 ? document.getElementById(part)
+      : [...panels.get(part).querySelectorAll(':is(h2,h3,h4,h5,h6)[id]')].at(-1) || document.getElementById(part);
     commitTurn(turn);
   }
 
@@ -336,6 +366,7 @@
   }
 
   function go(target, { historyEntry = true, focus = true, instant = false } = {}) {
+    if (!target) return;
     cancelTurn();
     const wasMap = workspace.dataset.engineeringView === 'map';
     showReader();
