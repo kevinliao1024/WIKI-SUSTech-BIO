@@ -150,7 +150,7 @@ body .whale-navigation .rna-menu.is-gathering {
 }
 body:not(.ot) .whale-navigation .rna-menu,
 body:not(.ot) .whale-navigation .rna-menu.is-gathering {
-  background:rgba(240,246,253,.84);
+  background:rgba(240,246,253,.96);
   border-color:rgba(145,177,214,.32);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.8), 0 16px 36px rgba(37,49,76,.1);
 }
@@ -183,4 +183,208 @@ body:not(.ot) .whale-navigation .rna-menu.is-gathering {
 }
 @media (prefers-reduced-motion:reduce) {
   body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] { animation:none; }
+}
+
+
+/* Shared bioluminescent palette for dark Home and light reading menus.
+   Labels and geometry stay unchanged. */
+body .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] {
+  --node-fill:255,143,163;
+  --node-edge:255,192,203;
+  --node-glow:255,140,160;
+  --node-sheen:255,190,105;
+  --node-surface:.46;
+  --node-near-glow:.50;
+  --node-far-glow:.28;
+  border:1.5px solid rgba(var(--node-edge),1);
+  background:
+    radial-gradient(circle at 24% 20%,rgba(255,250,239,.72),transparent 38%),
+    radial-gradient(circle at 78% 80%,rgba(var(--node-sheen),.58),transparent 65%),
+    linear-gradient(140deg,rgba(var(--node-fill),var(--node-surface)),rgba(var(--node-glow),.24));
+  box-shadow:0 0 0 1px rgba(var(--node-edge),.18),
+    0 0 10px rgba(var(--node-glow),var(--node-near-glow)),
+    0 0 26px rgba(var(--node-glow),var(--node-far-glow)),
+    inset 1px 1px 5px rgba(var(--node-edge),.45),
+    inset -2px -2px 8px rgba(var(--node-sheen),.30);
+  animation:none;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/attributions"] .rna-branch__base[data-base] {
+  --node-fill:192,132,252;
+  --node-edge:233,184,255;
+  --node-glow:190,120,255;
+  --node-sheen:255,129,213;
+}
+body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Project"]) .rna-branch__base[data-base] {
+  --node-fill:99,215,248;
+  --node-edge:165,243,252;
+  --node-glow:70,197,244;
+  --node-sheen:100,168,255;
+}
+body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Wet Lab"]) .rna-branch__base[data-base] {
+  --node-fill:116,226,187;
+  --node-edge:167,243,208;
+  --node-glow:52,211,153;
+  --node-sheen:116,216,221;
+}
+body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Dry Lab"]) .rna-branch__base[data-base] {
+  --node-fill:233,202,130;
+  --node-edge:255,231,163;
+  --node-glow:235,191,100;
+  --node-sheen:255,210,144;
+}
+body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Human Practices"]) .rna-branch__base[data-base] {
+  --node-fill:232,137,181;
+  --node-edge:255,199,222;
+  --node-glow:225,112,172;
+  --node-sheen:246,158,167;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/safety-and-security"] .rna-branch__base[data-base] {
+  --node-fill:88,197,202;
+  --node-edge:194,248,245;
+  --node-glow:65,190,198;
+  --node-sheen:115,215,231;
+}
+/* Neighboring hues within each chapter; route keys stay stable if rows move. */
+body .whale-navigation .rna-menu .rna-branch[href$="/engineering"] .rna-branch__base[data-base] {
+  --node-fill:79,169,245;
+  --node-edge:170,219,255;
+  --node-glow:73,157,244;
+  --node-sheen:115,192,255;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/contribution"] .rna-branch__base[data-base] {
+  --node-fill:137,149,245;
+  --node-edge:206,209,255;
+  --node-glow:120,132,243;
+  --node-sheen:159,182,255;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/parts"] .rna-branch__base[data-base] {
+  --node-fill:180,155,245;
+  --node-edge:229,213,255;
+  --node-glow:171,137,244;
+  --node-sheen:202,174,255;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/results"] .rna-branch__base[data-base] {
+  --node-fill:53,201,145;
+  --node-edge:167,243,208;
+  --node-glow:43,195,136;
+  --node-sheen:100,221,173;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/notebook"] .rna-branch__base[data-base] {
+  --node-fill:68,203,179;
+  --node-edge:174,241,225;
+  --node-glow:52,198,172;
+  --node-sheen:110,220,204;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/measurement"] .rna-branch__base[data-base] {
+  --node-fill:89,206,211;
+  --node-edge:183,242,244;
+  --node-glow:68,197,204;
+  --node-sheen:128,225,220;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/alternative-platform"] .rna-branch__base[data-base] {
+  --node-fill:96,189,176;
+  --node-edge:190,234,222;
+  --node-glow:75,185,166;
+  --node-sheen:137,216,189;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/software"] .rna-branch__base[data-base] {
+  --node-fill:242,173,121;
+  --node-edge:255,222,187;
+  --node-glow:240,161,103;
+  --node-sheen:255,202,149;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/education"] .rna-branch__base[data-base] {
+  --node-fill:216,130,186;
+  --node-edge:250,197,226;
+  --node-glow:211,113,177;
+  --node-sheen:239,162,211;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/entrepreneurship"] .rna-branch__base[data-base] {
+  --node-fill:191,130,202;
+  --node-edge:236,201,245;
+  --node-glow:182,113,197;
+  --node-sheen:221,167,233;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/inclusivity"] .rna-branch__base[data-base] {
+  --node-fill:173,136,220;
+  --node-edge:226,210,253;
+  --node-glow:160,119,213;
+  --node-sheen:202,176,241;
+}
+body .whale-navigation .rna-menu .rna-branch[href$="/sustainability"] .rna-branch__base[data-base] {
+  --node-fill:162,152,226;
+  --node-edge:223,218,255;
+  --node-glow:148,136,220;
+  --node-sheen:191,183,246;
+}
+body .whale-navigation .rna-menu .rna-branches .rna-branch:is(:focus-visible,.active,.is-editing) .rna-branch__base[data-base] {
+  --node-surface:.62;
+  --node-near-glow:.80;
+  --node-far-glow:.44;
+}
+@media (hover:hover) {
+  body .whale-navigation .rna-menu .rna-branches .rna-branch:hover .rna-branch__base[data-base] {
+    --node-surface:.62;
+    --node-near-glow:.80;
+    --node-far-glow:.44;
+  }
+}
+
+/* Matte champagne-gold strand, shared by Home and reading pages. */
+body .whale-navigation .rna-menu__backbone .rna-chain-line {
+  stroke:#f0dcb5;
+  stroke-width:1.5;
+  opacity:.78;
+  filter:blur(.15px);
+}
+body .whale-navigation .rna-menu__backbone .rna-chain-halo {
+  stroke:#f3dfb7;
+  stroke-width:5;
+  opacity:.26;
+  filter:blur(1.5px);
+}
+body .whale-navigation .rna-branch__bond {
+  background:linear-gradient(90deg,rgba(240,220,181,.72),rgba(243,223,183,.38));
+  box-shadow:0 0 6px rgba(243,223,183,.28);
+}
+
+
+/* Light reading menus: milkier pastels derived from the shared chapter hues.
+   Only the surface treatment changes; Home retains its vivid glass palette. */
+body:not(.ot) .whale-navigation .rna-menu .rna-branches .rna-branch__base[data-base] {
+  --pastel-fill:color-mix(in srgb,rgb(var(--node-fill)) 32%,#fffefc);
+  --pastel-sheen:color-mix(in srgb,rgb(var(--node-sheen)) 22%,#fffefc);
+  color:#39435b;
+  border-color:color-mix(in srgb,rgb(var(--node-glow)) 44%,#fffefc);
+  background:
+    radial-gradient(circle at 25% 18%,rgba(255,255,255,.88),transparent 55%),
+    linear-gradient(145deg,var(--pastel-fill),var(--pastel-sheen));
+  box-shadow:0 0 8px rgba(var(--node-glow),.10),
+    inset 0 1px 3px rgba(255,255,255,.85);
+}
+body:not(.ot) .whale-navigation .rna-menu .rna-branches .rna-branch:is(:focus-visible,.active,.is-editing) .rna-branch__base[data-base] {
+  --pastel-fill:color-mix(in srgb,rgb(var(--node-fill)) 42%,#fffefc);
+  border-color:color-mix(in srgb,rgb(var(--node-glow)) 58%,#fffefc);
+  box-shadow:0 0 12px rgba(var(--node-glow),.20),
+    inset 0 1px 3px rgba(255,255,255,.85);
+}
+@media (hover:hover) {
+  body:not(.ot) .whale-navigation .rna-menu .rna-branches .rna-branch:hover .rna-branch__base[data-base] {
+    --pastel-fill:color-mix(in srgb,rgb(var(--node-fill)) 42%,#fffefc);
+    border-color:color-mix(in srgb,rgb(var(--node-glow)) 58%,#fffefc);
+    box-shadow:0 0 12px rgba(var(--node-glow),.20),
+      inset 0 1px 3px rgba(255,255,255,.85);
+  }
+}
+body:not(.ot) .whale-navigation .rna-menu__backbone .rna-chain-line {
+  stroke:#aaa9c8;
+  opacity:.90;
+}
+body:not(.ot) .whale-navigation .rna-menu__backbone .rna-chain-halo {
+  stroke:#ebeaf8;
+  opacity:.60;
+}
+body:not(.ot) .whale-navigation .rna-branch__bond {
+  background:linear-gradient(90deg,rgba(170,169,200,.80),rgba(210,208,232,.45));
+  box-shadow:0 0 4px rgba(235,234,248,.60);
 }
