@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='experiments/experiments.css') }}">{% endblock %}
+{% set groups = content.metadata.protocol_groups %}
+{% block main %}
+<main id="main-content" class="experiments-page" data-experiments data-content-source="{{ content.source_label }}">
+  <header class="exp-intro">
+    <p class="exp-eyebrow">WET LAB / EXPERIMENT LIBRARY</p>
+    <h1>{{ content.title }}<span>.</span></h1>
+    <div class="exp-intro-bottom">
+      <div class="exp-intro-copy">{{ rendered_markdown }}</div>
+      <a class="exp-notebook" href="{{ url_for('pages', page='notebook') }}">Follow the research timeline <span aria-hidden="true">↗</span><small>Explore our Notebook</small></a>
+    </div>
+  </header>
+  {% include 'components/experiments/how-to-read.html' %}
+
+  <div class="exp-layout" id="experiment-workspace">
+    <aside class="exp-sidebar">
+      <p class="exp-eyebrow">BROWSE BY METHOD</p>
+      <nav aria-label="Experiment categories">
+        <a class="exp-category" href="#protocol-library" data-route data-category="all"><span class="exp-category-code">00</span><span>All experiments</span><small>{{ groups | map(attribute='protocols') | map('length') | sum }}</small></a>
+        {% for group in groups %}
+        <a class="exp-category" href="#category-{{ group.code }}" data-route data-category="{{ group.code }}" style="--category-color:{{ group.color }}"><span class="exp-category-code">{{ group.code }}</span><span>{{ group.title }}</span><small>{{ group.protocols | length }}</small></a>
+        {% endfor %}
+      </nav>
+      <p class="exp-sidebar-note">A shared set of methods.<br>One connected research journey.</p>
+    </aside>
+
+    <div class="exp-content">
+    <section class="exp-library" id="protocol-library" aria-label="Experiment library">
+      <div class="exp-toolbar" data-search-tools hidden>
+        <label class="exp-search"><span class="exp-search-label">Find an experiment</span><input type="search" data-search placeholder="Search by name, ID, or keyword…" autocomplete="off" aria-controls="protocol-results"></label>
+        <button type="button" class="exp-reset" data-reset>Reset filters <span aria-hidden="true">↺</span></button>
+      </div>
+      <div class="exp-results-bar"><p data-result-count role="status" aria-live="polite">{{ groups | map(attribute='protocols') | map('length') | sum }} experiments · {{ groups | length }} categories</p><span>EXPERIMENT LIBRARY</span></div>
+      <div id="protocol-results">
+      {% for group in groups %}
+        <section class="exp-group" id="category-{{ group.code }}" data-group="{{ group.code }}" style="--category-color:{{ group.color }}" aria-labelledby="heading-{{ group.code }}">
+          <header class="exp-group-heading"><span class="exp-group-code" aria-hidden="true">{{ group.code }}</span><div><p class="exp-family">{{ group.family }}</p><h2 id="heading-{{ group.code }}">{{ group.title }}</h2><p>{{ group.description }}</p></div><span class="exp-group-count" data-group-count>{{ group.protocols | length }}</span></header>
+          <div class="exp-protocols">
+          {% for protocol in group.protocols %}
+            <a class="exp-protocol" id="{{ protocol.id }}" data-protocol data-category-code="{{ group.code }}" data-search-text="{{ protocol.id }} {{ protocol.title }} {{ group.title }} {{ protocol.keywords }}" data-reader-url="{{ url_for('static', filename=protocol.reader) }}" data-title="{{ protocol.title }}" data-version="{{ protocol.version }}" href="{{ url_for('static', filename=protocol.file) }}" target="_blank" rel="noopener">
+              <span class="exp-id">{{ protocol.id }}</span><h3>{{ protocol.title }}</h3>
+            </a>
+          {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+      </div>
+      <div class="exp-empty" data-empty hidden><h2>No matching experiments.</h2><p>Try an ID such as M01, or a method such as PCR or transfection.</p><button class="exp-reset" type="button" data-clear>Show all experiments ↗</button></div>
+      <footer class="exp-library-note"><span>Methods to build on.</span><p>Use the protocol IDs to connect methods with our <a href="{{ url_for('pages', page='notebook') }}">Notebook</a>. For SONAR readout and interpretation, visit <a href="{{ url_for('pages', page='measurement') }}">Measurement</a>.</p></footer>
+    </section>
+    </div>
+  </div>
+  <dialog class="exp-reader" data-reader aria-labelledby="reader-title">
+    <header class="exp-reader-heading"><div><p data-reader-meta></p><h2 id="reader-title" data-reader-title></h2></div><button type="button" data-reader-close aria-label="Close experiment reader">Close ×</button></header>
+    <div class="exp-reader-actions"><a data-reader-original target="_blank" rel="noopener">Open original PDF ↗</a><a data-reader-download download>Download PDF ↓</a><a href="{{ url_for('pages', page='notebook') }}">Notebook ↗</a><a data-reader-measurement href="{{ url_for('pages', page='measurement') }}" hidden>SONAR Measurement ↗</a></div>
+    <div class="exp-pdf-host" data-reader-host></div>
+    <p class="exp-pdf-help">Use the section links to explore this procedure, or consult the original PDF above.</p>
+  </dialog>
+  <noscript><style>.experiments-page [data-panel][hidden]{display:block!important}.exp-reader{display:none}</style></noscript>
+</main>
+{% endblock %}
+{% block page_scripts %}<script type="module" src="{{ url_for('static', filename='experiments/experiments.mjs') }}"></script>{% endblock %}

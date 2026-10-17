@@ -1,0 +1,11 @@
+<section class="exp-overview" id="overview" data-panel="home" aria-labelledby="overview-title">
+  <div class="exp-section-heading"><p class="exp-eyebrow">START HERE</p><h2 id="overview-title">Inside our laboratory.</h2><p>One library, from core techniques to complete workflows. Explore the methods used to build, deliver and evaluate ORCA.</p></div>
+  <a class="exp-guide-entry" href="#how-to-read" data-route><div><span class="exp-eyebrow">NEW TO THE LIBRARY?</span><h3>How to read</h3><p>Understand the numbering, choose a starting point and follow the connections between protocols.</p></div><span aria-hidden="true">↗</span></a>
+  <div class="exp-overview-heading"><h3>Explore the methods</h3><a href="#protocol-library" data-route>View all {{ groups | map(attribute="protocols") | map("length") | sum }} protocols ↗</a></div>
+  <div class="exp-home-grid">
+    {% for group in groups %}
+    <a href="#category-{{ group.code }}" data-route class="exp-home-card" style="--category-color:{{ group.color }}"><span>{{ group.code }}</span><h3>{{ group.title }}</h3></a>
+    {% endfor %}
+  </div>
+  <div class="exp-overview-footer"><p><strong>Looking for the experimental record?</strong><br>Find dates, observations and original records in our Notebook.</p><a href="{{ url_for('pages', page='notebook') }}">Visit Notebook ↗</a></div>
+</section>

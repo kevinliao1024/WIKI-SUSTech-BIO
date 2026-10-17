@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AS01 · ASO Treatment</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> AS01 · <strong>Category:</strong> ASO Control</p>
+<p>AS01 | ver 1.1 | Revised 2026-10-03</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Deliver antisense oligonucleotides (ASOs) into adherent cells by reverse transfection with Lipofectamine RNAiMAX. Place ASO-lipid complexes in empty culture wells before adding a freshly prepared cell suspension.</p>
+<p>The reference formulation uses 30 nM ASO in HEK293T cells. It is an adapted starting condition, not an optimized dose: 30 nM is the upper end of IDT’s general 1-30 nM starting range for lipid-mediated ASO delivery. RNAiMAX handling is adapted from its small-RNA protocol. [1, 2]</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier / identifier</th>
+<th>Use / specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target ASO and non-targeting control (NC)</td>
+<td>GenePharma; custom ASO / NC, batch certificate</td>
+<td>Verified stocks; 20 µM in the reference formulation</td>
+</tr>
+<tr>
+<td>Lipofectamine RNAiMAX</td>
+<td>Invitrogen; RNAiMAX product family</td>
+<td>Store at 4°C; do not freeze [1]</td>
+</tr>
+<tr>
+<td>Opti-MEM Reduced Serum Medium</td>
+<td>Gibco</td>
+<td>Serum-free medium for complex preparation [1]</td>
+</tr>
+<tr>
+<td>Oligonucleotide diluent</td>
+<td>ASO supplier-recommended sterile diluent</td>
+<td>Reconstitution and working-stock preparation</td>
+</tr>
+<tr>
+<td>HEK293T growth medium</td>
+<td>Gibco DMEM + Cellmax FBS; C01</td>
+<td>Prepare without added antibiotics for this workflow</td>
+</tr>
+<tr>
+<td>PBS; 0.25% Trypsin-EDTA</td>
+<td>Cell culture reagents in C01</td>
+<td>Cell detachment and resuspension</td>
+</tr>
+<tr>
+<td>Culture plates; tubes; tips</td>
+<td>Laboratory cultureware</td>
+<td>24- or 12-well plates; sterile, nuclease-free liquid handling</td>
+</tr>
+<tr>
+<td>Pipettes; cell counter; microscope</td>
+<td>Laboratory equipment</td>
+<td>Accurate volumes, viable-cell count and morphology checks</td>
+</tr>
+<tr>
+<td>Cell culture cabinet; CO2 incubator</td>
+<td>Laboratory equipment</td>
+<td>Aseptic handling; 37°C, 5% CO2 for HEK293T</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Assign target-ASO and NC wells at equal oligonucleotide and lipid doses. Select an NC with comparable length and modification chemistry; document any mismatch. Include reagent-only mock and untreated cells to distinguish treatment effects from baseline culture changes.</p>
+<p>Use healthy cultures and an established seeding density for the cell line. As an initial RNAiMAX reverse-transfection benchmark, select a viable-cell input expected to give 30-50% confluence 24 h after plating. Reassess this benchmark for the ASO chemistry and assay duration; suspension volume alone does not define cell number. [3]</p>
+<p>For cells previously transfected with an expression plasmid, keep construct identity and the interval before ASO treatment consistent across groups. Passage using C01 and redistribute equal viable-cell inputs. ASO delivery here is a separate treatment; no plasmid or P3000 is included in its complex mixture.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-prepare-stocks-and-calculate-the-formulation">A. Prepare stocks and calculate the formulation</h3>
+<ol>
+<li>Briefly centrifuge lyophilized ASO tubes before opening. Dissolve target ASO and NC separately in the supplier-recommended diluent, using the batch-specific molar amount. Prepare labeled 20 µM working stocks for the table below; aliquot and store according to the supplied product instructions.</li>
+</ol>
+<p>For a 20 µM stock, diluent volume (µL) = amount (nmol) × 1000 / 20. For an existing stock, use C1V1 = C2V2. Do not apply a generic OD-to-nmol conversion to a modified ASO.</p>
+<ol start="2">
+<li>Calculate each target or NC formulation from the same number of well-equivalents. The table is a reference recipe at 30 nM; all Opti-MEM entries are actual added volumes, and each A or B mixture has the indicated total.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component / stage</th>
+<th>One 24-well well</th>
+<th>One 12-well well</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: 20 µM ASO or NC</td>
+<td>0.75 µL (15 pmol)</td>
+<td>1.5 µL (30 pmol)</td>
+</tr>
+<tr>
+<td>A: Opti-MEM</td>
+<td>24.25 µL</td>
+<td>48.5 µL</td>
+</tr>
+<tr>
+<td>A: total</td>
+<td>25 µL</td>
+<td>50 µL</td>
+</tr>
+<tr>
+<td>B: RNAiMAX</td>
+<td>1.5 µL</td>
+<td>3.0 µL</td>
+</tr>
+<tr>
+<td>B: Opti-MEM</td>
+<td>23.5 µL</td>
+<td>47.0 µL</td>
+</tr>
+<tr>
+<td>B: total</td>
+<td>25 µL</td>
+<td>50 µL</td>
+</tr>
+<tr>
+<td>A + B complex mixture per well</td>
+<td>50 µL</td>
+<td>100 µL</td>
+</tr>
+<tr>
+<td>Counted cell suspension per well</td>
+<td>450 µL</td>
+<td>900 µL</td>
+</tr>
+<tr>
+<td>Final culture volume / ASO</td>
+<td>500 µL / 30 nM</td>
+<td>1,000 µL / 30 nM</td>
+</tr>
+</tbody>
+</table>
+<p>The 24-well lipid amount follows the RNAiMAX starting amount; the 12-well recipe is a twofold adaptation. [1] Multiply every complex ingredient by N × 1.10 for N wells plus 10% handling excess. Prepare target and NC mixtures separately. For other doses: stock volume (µL) = final dose (nM) × final culture volume (µL) / stock concentration (nM); adjust Opti-MEM to preserve the A total.</p>
+<h3 id="b-prepare-cells-and-form-complexes">B. Prepare cells and form complexes</h3>
+<ol start="3">
+<li>
+<p>Detach cells using C01, neutralize the dissociation reagent and prepare a uniform suspension in growth medium without added antibiotics. Count viable cells and adjust the concentration so that 450 µL or 900 µL contains the selected cell input. Keep the suspension ready for prompt dispensing.</p>
+</li>
+<li>
+<p>Prepare mixture A by diluting ASO or NC in serum-free Opti-MEM. Gently mix RNAiMAX before preparing mixture B in a separate tube. [1]</p>
+</li>
+<li>
+<p>Combine equal volumes of A and B, mix gently, and dispense 50 µL per 24-well well or 100 µL per 12-well well into the empty plate. Allow 5 min at room temperature from the time A and B are combined. This timing follows MAN0007825; use small batches to keep timing comparable. [1]</p>
+</li>
+</ol>
+<p>For the mock, replace the ASO stock volume with its diluent while retaining the lipid dose and total complex volume. Prepare untreated wells at the same final volume and viable-cell input, without ASO or lipid.</p>
+<h3 id="c-add-cells-and-assess-the-response">C. Add cells and assess the response</h3>
+<ol start="6">
+<li>
+<p>Gently resuspend settled cells, then add 450 µL cell suspension to each 24-well complex or 900 µL to each 12-well complex. Rock the plate forward-backward and left-right to distribute cells evenly. The cells are added after complex formation. [3]</p>
+</li>
+<li>
+<p>Incubate HEK293T cells at 37°C and 5% CO2. Inspect attachment, morphology and growth at approximately 24 h. No routine immediate medium change is required; keep any later medium replacement consistent across groups. [1]</p>
+</li>
+<li>
+<p>Collect the planned readout at a matched time within an initial 24-72 h assessment window. [3] Measure target RNA and, where relevant, protein or reporter output. Record viability alongside these measurements; retain raw images or data and the treatment-to-readout interval.</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>Count complexes within the final culture volume. The 450 µL or 900 µL addition is the cell suspension, not extra medium to add after plating cells.</p>
+<p>Pool well-equivalents when 0.75 µL ASO cannot be dispensed reliably. Prepare only the required working mixture and distribute equal complex volumes; do not add a second dose of neat ASO or RNAiMAX.</p>
+<p>Keep ASO dose, lipid dose and cell input independently adjustable. When comparing ASO doses, hold lipid amount constant initially rather than increasing both together. [4]</p>
+<p>For tag-dependent regulation, compare constructs with and without the ASO recognition tag under the same ASO/NC schedule. A decrease in total reporter signal alone cannot distinguish regulation from cell loss.</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Cells should attach and remain suitable for the selected assay. An active ASO may reduce target RNA or its downstream output relative to NC, with cell health assessed in parallel. No fixed knockdown percentage is assumed. Preserve ASO/NC identities, stock concentrations, cell inputs, lipid amounts, treatment times and raw readouts.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poor attachment or marked cell loss</td>
+<td>Untreated, mock and NC cells; dissociation and input density</td>
+<td>If mock is affected, review lipid amount and handling. If toxicity tracks ASO, reduce its dose and reassess target-dependent effects. [4]</td>
+</tr>
+<tr>
+<td>Little or no target response</td>
+<td>Stock calculation, target-site presence, timing and cell health</td>
+<td>Verify sequence compatibility and a responsive assay. Reassess delivery and dose; do not infer failed uptake solely from a protein or fluorescence endpoint.</td>
+</tr>
+<tr>
+<td>Large variation between wells</td>
+<td>Settling cells, pipetting range and complex timing</td>
+<td>Resuspend between dispensing batches; pool small-volume ingredients and standardize mixing and timing.</td>
+</tr>
+<tr>
+<td>RNA and reporter/protein results disagree</td>
+<td>Readout timing, cell number and qPCR assay position</td>
+<td>Allow for different readout kinetics. Check RNA with a second assay at a separated transcript position to assess ASO-related RT/qPCR interference. [2, 4]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Thermo Fisher Scientific. Lipofectamine RNAiMAX Reagent, MAN0007825 Rev.1.0, pp. 1-2: handling, per-well amounts, complex formation and reverse-transfection order. Small-RNA instructions adapted here for ASO delivery. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf">Open source</a></p>
+<p>[2] IDT. Antisense Oligonucleotides (ASOs) for Gene Silencing: dose-range and gene-expression measurement FAQs. General ASO guidance; not validation of this formulation. Accessed 2026-10-03. <a href="https://www.idtdna.com/pages/products/functional-genomics/antisense-oligos">Open source</a></p>
+<p>[3] Thermo Fisher Scientific. Transfecting Stealth using Lipofectamine RNAiMAX, 13778.PPS, 4-Aug-2006: reverse transfection and scaling. Used for cell-density benchmark and assay window; its older complex volumes and 10-20 min timing are not combined with the MAN0007825 recipe. Accessed 2026-10-03. <a href="https://www.thermofisher.com/us/en/home/references/protocols/rnai-epigenetics-and-gene-regulation/rnai-protocol/lipofectamine-rnaimax.html">Open source</a></p>
+<p>[4] IDT. RNA knockdown using gapmer Antisense Oligonucleotides (ASOs), RUO22-1578_001.1, 10/24; pp. 2, 5-6 and 8-9. Gapmer controls, dose optimization and interpretation. Demonstrated in HeLa with Lipofectamine 2000; its lipid dose is not transferred here. Accessed 2026-10-03. <a href="https://sfvideo.blob.core.windows.net/sitefinity/docs/default-source/protocol/rna-knockdown-using-gapmer-antisense-oligonucleotides_asos-demonstrated-protocol.pdf?sfvrsn=ed76f607_6">Open source</a></p></main>
+  </div>
+</body>
+</html>

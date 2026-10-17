@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RP02 · Target Reporter Construction by Golden Gate Assembly</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> RP02 · <strong>Category:</strong> Reporter System</p>
+<p>RP02 | ver 1.0 | Revised 2026-10-13</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Insert a target-site recognition window into a compatible universal reporter by annealing the synthetic DNA oligos designed in RP01 and performing a one-pot BsaI digestion-ligation reaction. Construct WT, AC, and INAC separately, then identify clones by sequence analysis.</p>
+<p>This guide uses Invitrogen GeneArt Type IIs Assembly Kit, Bsa I (A15917). The direct short-oligo route and the reporter's custom stuffer are adaptations; the manufacturer's published fragment-size ranges and performance claims do not establish efficiency for this reporter. The quantities below are starting conditions for method establishment, not a reported team optimization. [1,2]</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Provider / Identifier</th>
+<th>Specification / Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Universal reporter acceptor</td>
+<td>Full-length sequence and physical plasmid</td>
+<td>Only the two intended BsaI sites remain; reference interface CAGC / GGCA. A revised 4,669-bp design copy is retained with the sequence evidence. [3]</td>
+</tr>
+<tr>
+<td>WT, AC, and INAC DNA oligos</td>
+<td>Reader's RP01 designs</td>
+<td>A forward/reverse pair per construct; both strands 5'-phosphorylated, with free 3'-OH; PAGE purification recommended. [3,4]</td>
+</tr>
+<tr>
+<td>GeneArt Type IIs Assembly Kit, Bsa I</td>
+<td>Invitrogen / Thermo Fisher; A15917</td>
+<td>Use the supplied 2x BsaI Enzyme Mix. It supplies the assembly components; separate BsaI, ligase, and ligase buffer are unnecessary. Store at -80°C. [1,2]</td>
+</tr>
+<tr>
+<td>Oligo annealing buffer</td>
+<td>Nuclease-free prepared or supplied buffer</td>
+<td>30 mM HEPES, pH 7.5; 100 mM potassium acetate. [4]</td>
+</tr>
+<tr>
+<td>Dilution buffer and water</td>
+<td>Laboratory supplies</td>
+<td>10 mM Tris-HCl, pH 8.0, without EDTA; sterile deionized water for assembly. [1]</td>
+</tr>
+<tr>
+<td>Competent E. coli and selective plates</td>
+<td>M05</td>
+<td>Host and antibiotic matched to the actual vector; the revised reference carries AmpR.</td>
+</tr>
+<tr>
+<td>PCR tubes, pipettes, filter tips, mini-centrifuge, thermal cycler</td>
+<td>Laboratory equipment</td>
+<td>Annealing, assembly, mixing, and brief centrifugation.</td>
+</tr>
+<tr>
+<td>Sequencing service and construct-specific primers</td>
+<td>M06</td>
+<td>Read the insert, both junctions, and any backbone sites repaired during preparation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Use the oligos designed by the reader in RP01, rather than treating the APOE4 example as a universal target. Check the ordered sequences and modifications against the design file. For the reference acceptor, the forward strand starts CAGC and the reverse strand starts TGCC; neither oligo needs an added BsaI recognition site. [3]</p>
+<p>Scan the complete physical acceptor's reference for GGTCTC and GAGACC, including the circular origin. Confirm that extra retained sites have been removed in the actual plasmid. The 2,027-bp cassette alone cannot certify a whole plasmid; the revised 4,669-bp file is a computational design, not sequencing evidence for a repaired clone. [3]</p>
+<p>Prepare separate labeled tubes and expected assembled references for WT, AC, and INAC. Include a backbone-only assembly control when establishing the method. A known plasmid transformation control helps distinguish assembly failure from poor cell competency.</p>
+<p>This acceptor replaces a custom stuffer and has no ccdB counter-selection. Screen resulting colonies by sequence; the kit's control-vector color selection does not apply to the reporter. The Thermo manual specifies pre-cloned inserts from 25 bp and direct PCR/synthetic fragments from 250 bp; it does not validate the RP01 example's 15-nt core as a directly annealed insert. [1]</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-anneal-each-oligo-pair">A. Anneal each oligo pair</h3>
+<ol>
+<li>
+<p>Resuspend each strand to 100 µM in the annealing buffer. Calculate the required volume from the provider's stated amount: volume in µL = 1,000 x amount in nmol / concentration in µM. Prepare equal molar concentrations for the paired strands. [4]</p>
+</li>
+<li>
+<p>For each variant, mix 1 µL forward oligo, 1 µL reverse oligo, and 18 µL annealing buffer. The 20-µL mixture contains 100 pmol of each strand and can yield a nominal 5 µM duplex stock. This is a preparation scale, not a measured annealing yield.</p>
+</li>
+<li>
+<p>Heat to 94°C for 2 minutes, then allow gradual cooling to room temperature in a switched-off heat block. Keep the paired tube in the block during cooling rather than transferring it directly to ice. [4]</p>
+</li>
+<li>
+<p>Dilute 2 µL of the annealed stock with 98 µL of EDTA-free 10 mM Tris-HCl, pH 8.0, to make a nominal 100 nM working solution. Keep unused annealed stock in small aliquots at -20°C. [1,4]</p>
+</li>
+</ol>
+<h3 id="b-set-up-the-one-pot-assembly">B. Set up the one-pot assembly</h3>
+<ol start="5">
+<li>
+<p>Prepare the sequence-compatible acceptor at 75 ng/µL in water or EDTA-free 10 mM Tris-HCl, pH 8.0. Thaw the required enzyme mix, mix gently, and keep it on ice. [1,2]</p>
+</li>
+<li>
+<p>Use the following 20-µL starting reaction for each oligo duplex. The illustrative insert amount, approximately 114 fmol, is derived from Thermo's 75-ng, 1-kb reference amount: 75 x 1,000 / (660 x 1,000) = 113.6 fmol. Applying that reference amount to a directly annealed short duplex is an adaptation. For the 4,669-bp acceptor, 75 ng is approximately 24.3 fmol, giving about 4.7 inserts per vector molecule. [1,2]</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Stock</th>
+<th>Volume / Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sequence-compatible reporter acceptor</td>
+<td>75 ng/µL</td>
+<td>1.00 µL; 75 ng</td>
+</tr>
+<tr>
+<td>Annealed WT, AC, or INAC duplex</td>
+<td>100 nM</td>
+<td>1.14 µL; approximately 114 fmol</td>
+</tr>
+<tr>
+<td>GeneArt BsaI Enzyme Mix</td>
+<td>2x</td>
+<td>10.00 µL; 1x final</td>
+</tr>
+<tr>
+<td>Sterile deionized water</td>
+<td>-</td>
+<td>7.86 µL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>-</td>
+<td>20.00 µL</td>
+</tr>
+</tbody>
+</table>
+<p>If concentrations differ, vector volume = 75 / vector concentration in ng/µL, and duplex volume = 113.6 / duplex concentration in nM, because 1 nM = 1 fmol/µL. Add water to 20 µL while retaining 10 µL of 2x mix. Dilute stocks to avoid subµL DNA additions; concentrate DNA if the components exceed the available volume.</p>
+<ol start="7">
+<li>
+<p>Set up a backbone-only control with the same acceptor and enzyme-mix amounts, replacing the duplex volume with water. Mix each tube thoroughly by gentle pipetting and briefly centrifuge.</p>
+</li>
+<li>
+<p>Run 30 cycles of 37°C for 1 minute and 16°C for 1 minute, followed by a 4°C hold. This takes about 60 minutes plus temperature transitions. These are Thermo's BsaI pre-cloned-insert cycling conditions, adopted here as a starting program for the short duplex; they are not a manufacturer-specified annealed-oligo program. [2]</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Temperature</th>
+<th>Time</th>
+<th>Repeat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digestion</td>
+<td>37°C</td>
+<td>1 minute</td>
+<td>30 paired cycles</td>
+</tr>
+<tr>
+<td>Ligation</td>
+<td>16°C</td>
+<td>1 minute</td>
+<td>30 paired cycles</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>4°C</td>
+<td>Until transfer</td>
+<td>Once</td>
+</tr>
+</tbody>
+</table>
+<ol start="9">
+<li>Place completed reactions on ice and proceed to transformation. This adapted cycling route does not add the separate 55°C treatment from the manufacturer's PCR-insert program. [2]</li>
+</ol>
+<h3 id="c-transform-and-verify-the-reporter-clones">C. Transform and verify the reporter clones</h3>
+<ol start="10">
+<li>
+<p>Use 3 µL of the assembly to transform chemically competent E. coli by the conventional route in M05, subject to any stricter input limit of the selected competent cells. Transform the backbone-only control in parallel and plate on the antibiotic appropriate to the actual acceptor. [2]</p>
+</li>
+<li>
+<p>Follow M06 for separate colony picking and sequencing. Initially submit 2-4 independent colonies per construct under the team's existing screening workflow; retain unique clone IDs and request both base-called reads and raw chromatograms. Screen further candidates if none passes.</p>
+</li>
+<li>
+<p>Align each clone to its intended assembled reference and inspect readable chromatograms across the entire insert and both junctions. Confirm orientation, stuffer removal, the RP01 target/control bases, and the reading frame. Sequence all modified backbone sites if the acceptor was newly domesticated. Do not accept mixed or ambiguous critical positions. [3,5]</p>
+</li>
+<li>
+<p>Select the matching culture by clone ID, propagate it according to M06, and prepare plasmid DNA by M07. Preserve the annotated reference, colony identity, primer names, raw reads, and verified coordinates together. Sequence coverage defines what has been confirmed. [5]</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>The assembly kit does not phosphorylate synthetic DNA ends. Both ordered strands must already carry the RP01 5' phosphate; unmodified oligos require a separate phosphorylation step before entering this route. [4]</p>
+<p>Dilute short duplexes by molarity. Adding the same mass of a short insert and a several-kilobase vector can create a large insert excess.</p>
+<p>Keep WT, AC, and INAC separate through annealing, assembly, transformation, and sequencing. Their small sequence differences can be missed if tube names or clone IDs are exchanged.</p>
+<p>Use sequencing to discriminate short target inserts. The RP01 example differs only slightly in length from the acceptor stuffer; routine agarose sizing alone is not an adequate identity check.</p>
+<p>A revised sequence file does not modify a stored plasmid. Obtain a physical acceptor carrying the intended synonymous substitutions and verify those sites before using it in a BsaI reaction. [3]</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Obtain separately identified WT, AC, and INAC clones with the intended insert and both junctions supported by readable sequence data. For the revised 4,669-bp design and the original RP01 15-nt cores, simulated products are 4,645 bp and contain no BsaI recognition sites; recalculate for the reader's own designs. [3]</p>
+<p>The backbone-only control indicates cloning background. Colony growth or sequence correctness does not establish fluorescence behavior or RNA-editing activity, which require downstream experiments.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No colonies, including the transformation control</td>
+<td>Competent-cell condition, selection antibiotic, and the M05 transformation steps</td>
+<td>Correct the transformation or selection problem before changing the assembly.</td>
+</tr>
+<tr>
+<td>Transformation control works; reporter assembly yields few or no colonies</td>
+<td>Oligo pair identity, both 5' phosphates, duplex dilution, full-vector BsaI scan, and kit identity</td>
+<td>Correct an identified input defect. If the inputs pass, compare a small range around the starting duplex amount; this short-insert adaptation has no guaranteed yield.</td>
+</tr>
+<tr>
+<td>Many colonies retain the stuffer</td>
+<td>Sequence the backbone-only control; compare acceptor sites and enzyme-mix handling</td>
+<td>Confirm that the physical acceptor has the intended sites and that both digestion and ligation stages ran. Repeat with corrected inputs and screen further colonies.</td>
+</tr>
+<tr>
+<td>Unexpected backbone rearrangement</td>
+<td>Actual retained BsaI sites, repaired-site sequence reads, and the submitted reference</td>
+<td>Resolve additional sites or clone heterogeneity before repeating. A design copy is not proof that the physical vector was repaired.</td>
+</tr>
+<tr>
+<td>Wrong variant, junction, or reading frame</td>
+<td>Tube/clone IDs, RP01 ordered sequences, cohesive ends, and complete junction translation</td>
+<td>Reject the mismatched clone; correct the source of the sequence error and reassemble if it recurs. [3]</td>
+</tr>
+<tr>
+<td>Mixed peaks or an unreadable critical base</td>
+<td>Clone separation, primer uniqueness, read orientation, and trace quality</td>
+<td>Obtain another independent clone or an overlapping read. Keep the region unconfirmed until clear evidence is available. [5]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Thermo Fisher Scientific. GeneArt Type IIs Assembly Kits User Guide, MAN0009114, Revision A.0. Printed pp. 1, 10-11, 19-20: kit selection, insert-size ranges, recipient-vector requirements, and DNA input reference. Accessed 2026-10-13. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/geneart_type_IIs_assembly_kits_man.pdf">Open source</a></p>
+<p>[2] Thermo Fisher Scientific. GeneArt Type IIs Assembly Kits product sheet, MAN0009604, Revision 2.0, 24 October 2013. pp. 1 and 3-4: 2x mix, 20-µL setup, enzyme-specific programs, and transformation input. A15917 identity also checked on the current official product page. Accessed 2026-10-13. <a href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/geneart_typeIIs_enzyme_mix_pps.pdf">Open source</a></p>
+<p>[3] SUSTech-BIO. RP01, Custom Oligo Design for Target-Site Recognition Window, ver 1.0, 2026-10-13. Local Universal sources and the new reporter_universal_BsaI_domesticated_design.dna computational copy. Restriction scans, synonymous substitutions, source hashes, and three simulated assemblies are retained in RP02/sources/universal_domestication_verification.json.</p>
+<p>[4] Integrated DNA Technologies. Annealing oligos protocol, updated 25 March 2024, RUO23-1663_001.2. Buffer, equal-molar mixing, 94°C denaturation, gradual cooling, storage, synthesis phosphorylation, and PAGE guidance. Accessed 2026-10-13. <a href="https://www.idtdna.com/page/support-and-education/decoded-plus/annealing-oligonucleotides/">Open source</a></p>
+<p>[5] Addgene. Sequence Analysis of a Plasmid. Reference alignment, read quality, sequencing coverage, and interpretation of ambiguous bases. Accessed 2026-10-13. Transformation, colony handling, and plasmid extraction are maintained separately in M05-M07. <a href="https://www.addgene.org/protocols/sequence-analysis/">Open source</a></p></main>
+  </div>
+</body>
+</html>

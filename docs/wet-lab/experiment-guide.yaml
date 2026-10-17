@@ -1,0 +1,59 @@
+title: How to Use / Read
+subtitle: A quick guide to finding experiments and understanding each entry.
+opening: This library brings together the experimental procedures used throughout ORCA. Browse by category, search for a specific
+  method, and open an entry to explore the details needed to understand and reproduce the workflow.
+find_title: How to Find an Experiment
+find_intro: Start with a category or go straight to a method you know.
+find_steps:
+- title: Browse by Category
+  text: Select a category to explore experiments from a specific area of our work. Molecular Biology and Cell Biology contain
+    general techniques; the other categories follow distinct ORCA experimental lines.
+- title: Search by Name or ID
+  text: Use the search bar to find an experiment by its title, identifier, or related keywords. Search and category filters
+    work together.
+- title: Open and Navigate
+  text: Select an experiment card to read the full procedure. Use the section navigation to jump directly to materials, steps,
+    notes, or other available sections.
+- title: Follow the Connections
+  text: Related links connect an experiment to the corresponding work elsewhere in the Wiki. When available, source files
+    and references provide additional detail.
+read_title: How to Read an Experiment
+read_intro: Each entry is organized into practical sections so you can quickly locate the information you need. The sections
+  below explain what each part contributes.
+read_modules:
+- title: Experiment Information
+  lead: Identify the experiment at a glance.
+  text: Find its ID, category, and any documented details about the experimental system, relevant materials, or instruments.
+- title: Purpose
+  lead: Understand what the method is for.
+  text: This section briefly explains the task the experiment is intended to accomplish and where the procedure fits into
+    our work.
+- title: Materials & Equipment
+  lead: Check what you need before starting.
+  text: Find the required reagents, consumables, equipment, and — when documented — suppliers, catalog numbers, and specifications.
+- title: Before You Start
+  lead: Prepare the experiment correctly.
+  text: Review prerequisites, sample preparation, setup requirements, and other essential considerations before beginning
+    the procedure.
+- title: Workflow
+  lead: See the overall sequence first.
+  text: For longer procedures, a concise workflow overview maps the major stages before you read each step in detail.
+- title: Procedure
+  lead: Follow the method step by step.
+  text: Numbered instructions provide the experimental sequence and the documented conditions, quantities, timings, and settings
+    needed to carry it out.
+- title: Expected Outcome
+  lead: Know what to look for.
+  text: Where the source material supports it, this section describes the expected product, observable outcome, or practical
+    checkpoint of the procedure.
+- title: Notes & Troubleshooting
+  lead: Learn from practical details.
+  text: Find source-supported precautions, useful handling notes, and troubleshooting guidance that may help avoid common
+    problems.
+- title: Related Work & References
+  lead: Trace the experiment in context.
+  text: Follow links to relevant ORCA Wiki sections and, when available, consult references or the original procedure files.
+clarification_lead: Not every experiment needs every section.
+clarification: Short, routine procedures stay concise, while more involved workflows include additional preparation, overview,
+  or troubleshooting information where available.
+closing: Ready to explore? Choose a category or search for an experiment below.

@@ -1,0 +1,21 @@
+{% set guide = content.metadata.guide %}
+<details class="exp-guide" id="how-to-read">
+  <summary><span><strong>{{ guide.title }}</strong><small>{{ guide.subtitle }}</small></span><span class="exp-chevron" aria-hidden="true">⌄</span></summary>
+  <div class="exp-guide-body">
+    <p class="exp-guide-opening">{{ guide.opening }}</p>
+    <section aria-labelledby="guide-find-title">
+      <h2 id="guide-find-title">{{ guide.find_title }}</h2><p>{{ guide.find_intro }}</p>
+      <ol class="exp-find-steps">
+        {% for step in guide.find_steps %}<li><span class="exp-step-number">{{ '%02d' | format(loop.index) }}</span><h3>{{ step.title }}</h3><p>{{ step.text }}</p></li>{% endfor %}
+      </ol>
+    </section>
+    <section class="exp-read-guide" aria-labelledby="guide-read-title">
+      <h2 id="guide-read-title">{{ guide.read_title }}</h2><p>{{ guide.read_intro }}</p>
+      <ol class="exp-read-modules">
+        {% for module in guide.read_modules %}<li{% if module.title == 'Procedure' %} class="exp-procedure-guide"{% endif %}><div><span class="exp-step-number">{{ '%02d' | format(loop.index) }}</span><h3>{{ module.title }}</h3></div><p><strong>{{ module.lead }}</strong> {{ module.text }}</p></li>{% endfor %}
+      </ol>
+      <p class="exp-guide-clarification"><strong>{{ guide.clarification_lead }}</strong> {{ guide.clarification }}</p>
+    </section>
+    <p class="exp-guide-closing">{{ guide.closing }}</p>
+  </div>
+</details>

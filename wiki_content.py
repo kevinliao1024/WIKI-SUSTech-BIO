@@ -54,7 +54,7 @@ CONTENT_PAGES: dict[str, PageConfig] = {
     "project-contribution-sonar": PageConfig("project/contribution-sonar.md", "pages/contribution-sonar.html"),
     "future": PageConfig("project/future.md"),
     "parts": PageConfig("project/parts.md"),
-    "experiments": PageConfig("wet-lab/experiments.md"),
+    "experiments": PageConfig("wet-lab/experiments.md", "pages/experiments.html"),
     "notebook": PageConfig("wet-lab/notebook.md", "pages/notebook.html"),
     "measurement": PageConfig("wet-lab/measurement.md"),
     "alternative-platform": PageConfig("wet-lab/alternative-platform.md"),

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FV01 · Neon Electroporation Transfection</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> FV01 · <strong>Category:</strong> Functional Validation</p>
+<p>FV01 | ver 1.1 | Revised 2026-10-03</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Electroporate CCF-STTG1 cells using the Neon system at 1350 V, 20 ms and 2 pulses, with 200,000 cells per 10 µL reaction. The cell input and pulse program are the team-specified working conditions. The plasmid preparation and recovery guidance below use the manufacturer's general recommendations.</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier / model</th>
+<th>Use / specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CCF-STTG1 cells</td>
+<td>Laboratory culture</td>
+<td>200,000 cells per loaded 10 µL reaction</td>
+</tr>
+<tr>
+<td>Electroporation system</td>
+<td>Invitrogen Neon</td>
+<td>Original Neon device, pipette and pipette station</td>
+</tr>
+<tr>
+<td>10 µL tips and Neon tubes</td>
+<td>Invitrogen Neon 10 µL kit</td>
+<td>Compatible kit options: MPK1025 or MPK1096 [1]</td>
+</tr>
+<tr>
+<td>Resuspension Buffer R</td>
+<td>Supplied Neon reagent</td>
+<td>Cell suspension inside the 10 µL tip [2]</td>
+</tr>
+<tr>
+<td>Electrolytic Buffer E</td>
+<td>Supplied Neon reagent</td>
+<td>3 mL in the external Neon tube; separate from the cell mixture [1,2]</td>
+</tr>
+<tr>
+<td>Plasmid DNA</td>
+<td>Purified experimental / control construct</td>
+<td>Manufacturer reference: 0.5-3 µg per reaction for the 12-well setup; stock 1-5 µg/µL; DNA solution ≤1 µL per 10 µL reaction [1]</td>
+</tr>
+<tr>
+<td>PBS; 0.25% Trypsin-EDTA</td>
+<td>Gibco / laboratory stocks</td>
+<td>Ca2+/Mg2+-free PBS; adherent-cell preparation as in C01</td>
+</tr>
+<tr>
+<td>Recovery medium; 12-well plate</td>
+<td>Gibco RPMI 1640 + Cellmax FBS</td>
+<td>C01 formulation without penicillin-streptomycin: 500 mL RPMI 1640 + 50 mL FBS; reference recovery volume 1 mL/well [1]</td>
+</tr>
+<tr>
+<td>Counter, centrifuge, microscope; sterile tubes and pipettes</td>
+<td>Laboratory equipment</td>
+<td>Cell counting, harvest and recovery assessment</td>
+</tr>
+<tr>
+<td>Cell culture cabinet; humidified incubator</td>
+<td>Laboratory equipment</td>
+<td>Aseptic work; 37°C, 5% CO2 as in C01</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Prepare healthy CCF-STTG1 cultures using C01. Prewarm antibiotic-free recovery medium and prepare one labeled 12-well well containing 1 mL per electroporation. This is the manufacturer-based reference format for 200,000 adherent cells, not a claim about a previously performed run. [1]</p>
+<p>Program the Neon device to 1350 V, 20 ms, 2 pulses. Use Buffer R for this workflow. The pulse settings were supplied by the team; they are not presented as a manufacturer-validated CCF-STTG1 optimum.</p>
+<p>For plasmid delivery, select a dose within the 0.5-3 µg reference range according to the construct and endpoint. Use measured stock concentration to calculate volume; keep the combined volume of all DNA stocks ≤1 µL. For co-transfection, apply the selected construct ratio within the total dose. [1]</p>
+<p>Include untreated cells, a pulse-only control and a suitable delivery-positive control when establishing the method. Add an empty-vector or non-targeting control appropriate to the functional comparison. Select the readout time for the expressed product and downstream assay.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-define-the-10-l-reaction">A. Define the 10 µL reaction</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Per electroporation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loaded cell number</td>
+<td>200,000 cells</td>
+</tr>
+<tr>
+<td>Loaded mixture / tip size</td>
+<td>10 µL / 10 µL Neon tip</td>
+</tr>
+<tr>
+<td>Final cell density</td>
+<td>20,000 cells/µL = 2 × 10^7 cells/mL</td>
+</tr>
+<tr>
+<td>Plasmid DNA</td>
+<td>0.5-3 µg reference range; VDNA = dose (µg) / stock concentration (µg/µL); VDNA ≤1 µL [1]</td>
+</tr>
+<tr>
+<td>Cells in Buffer R + DNA</td>
+<td>Vcells + VDNA = 10 µL</td>
+</tr>
+<tr>
+<td>Required cell-stock density</td>
+<td>200,000 / Vcells cells/µL</td>
+</tr>
+<tr>
+<td>Pulse program</td>
+<td>1350 V / 20 ms / 2 pulses</td>
+</tr>
+<tr>
+<td>Recovery reference</td>
+<td>One 12-well well containing 1 mL antibiotic-free medium [1]</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Calculate VDNA from the selected dose and measured stock concentration. Prepare the cell suspension in Buffer R at 200,000 / (10 - VDNA) cells/µL. Scale both cells and DNA proportionally for any pipetting excess; each loaded 10 µL must contain 200,000 cells.</li>
+</ol>
+<p>Calculation example: 1 µg DNA at 1 µg/µL occupies 1 µL. Combine it with 9 µL of cells in Buffer R at approximately 22,222 cells/µL. This gives 200,000 cells in 10 µL. The example is not a measured optimum.</p>
+<h3 id="b-prepare-cells-and-the-station">B. Prepare cells and the station</h3>
+<ol start="2">
+<li>
+<p>Detach CCF-STTG1 cells using C01 and count them. Pellet at 100-400 × g for 5 min at room temperature; wash once with Ca2+/Mg2+-free PBS using the same centrifugation conditions. [1]</p>
+</li>
+<li>
+<p>Remove PBS and gently resuspend the pellet in Buffer R at the calculated cell-stock concentration. Keep the suspension uniform for dispensing. [2]</p>
+</li>
+<li>
+<p>Add 3 mL Buffer E to a Neon tube and seat it in the station. Verify 1350 V, 20 ms and 2 pulses on the display. [1]</p>
+</li>
+</ol>
+<h3 id="c-load-pulse-and-recover">C. Load, pulse and recover</h3>
+<ol start="5">
+<li>
+<p>Mix the calculated DNA and cell-suspension volumes. Attach a 10 µL Neon tip securely and slowly aspirate 10 µL without bubbles. [1]</p>
+</li>
+<li>
+<p>Seat the pipette vertically in the station and run the program. Once complete, immediately transfer the cells into the prepared well containing 1 mL prewarmed antibiotic-free medium. [1]</p>
+</li>
+<li>
+<p>Distribute cells gently and incubate at 37°C with 5% CO2. Record construct identity, total DNA dose, actual pulse program, cell input, recovery well and any arcing.</p>
+</li>
+<li>
+<p>At the predefined endpoint, assess delivery and viability separately; compare the experimental and control groups before interpreting downstream functional changes.</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>Buffer R belongs in the cell mixture; Buffer E belongs in the external Neon tube. Do not replace one with the other. [2]</p>
+<p>Process small batches; avoid holding cells in resuspension buffer beyond 15-30 min. [1]</p>
+<p>Discard a bubble-containing load and reload fresh mixture before pulsing. [1]</p>
+<p>Use a new tip and tube for each different plasmid sample; maximum reuse is two runs per tip and ten per tube. [1]</p>
+<p>Adding material to an already prepared 10 µL cell aliquot dilutes the cell input in the portion actually loaded. Use the final-mixture calculation above.</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Assess plasmid delivery and viable-cell recovery separately, then evaluate the intended biological endpoint at the selected time. Compare with the relevant controls before interpreting functional changes; this protocol does not prescribe a universal efficiency or viability threshold.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arcing / sparks</td>
+<td>Bubbles, buffer choice and loading [1]</td>
+<td>Flag the affected sample. Correct loading and buffer compatibility before repeating with fresh cells.</td>
+</tr>
+<tr>
+<td>Low cell recovery</td>
+<td>Starting viability; actual pulse program; handling times; pulse-only control</td>
+<td>Identify whether loss also occurs without material. Reassess cell preparation and recovery conditions before changing the material dose.</td>
+</tr>
+<tr>
+<td>Low delivery with acceptable recovery</td>
+<td>Material identity, concentration, dose and positive-control result</td>
+<td>Verify material quality and assay timing, then evaluate a cell-specific pulse optimization plan.</td>
+</tr>
+<tr>
+<td>Unequal cell input across samples</td>
+<td>Count, mixture volume and settling during preparation</td>
+<td>Recalculate final density and gently remix before each load; scale all components together.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Thermo Fisher Scientific / Invitrogen. Neon Electroporation System User Guide, MAN0001557, Rev. D, 27 June 2024. Kit contents, DNA preparation and electroporation, pp. 8, 23-32. Accessed 2026-10-03. Original Neon system. <a href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/neon_device_man.pdf">Open source</a></p>
+<p>[2] Thermo Fisher Scientific / Invitrogen. Neon Transfection System 10 µL Kit, MPK1025, product FAQs: resuspension versus electrolytic buffers. Accessed 2026-10-03. <a href="https://www.thermofisher.com/order/catalog/product/MPK1025/faqs">Open source</a></p></main>
+  </div>
+</body>
+</html>
