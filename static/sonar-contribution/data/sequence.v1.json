@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0",
+  "status": "Software design example; not a sequence-confirmed physical clone",
+  "input": {
+    "text": "GACATGGAGGACGTGCGC",
+    "target": 16,
+    "footprint": 12,
+    "spacer": 2,
+    "name": "SAP software example"
+  },
+  "prepared": {
+    "name": "SAP software example",
+    "input": {
+      "sequence": "GACATGGAGGACGTGCGC",
+      "name": "",
+      "rna": false,
+      "length": 18
+    },
+    "target": 16,
+    "footprint": 12,
+    "spacer": 2,
+    "padding": 1,
+    "start": 1,
+    "end": 18,
+    "recognitionStart": 2,
+    "recognitionEnd": 13,
+    "original": "GACATGGAGGACGTGCGC",
+    "triplet": "CGC",
+    "targetOffset": 15,
+    "candidates": [
+      {
+        "codon": "CGA",
+        "amino": "R",
+        "edited": "TGA",
+        "changes": 1,
+        "sameAmino": true
+      },
+      {
+        "codon": "CAA",
+        "amino": "Q",
+        "edited": "TAA",
+        "changes": 2,
+        "sameAmino": false
+      },
+      {
+        "codon": "CAG",
+        "amino": "Q",
+        "edited": "TAG",
+        "changes": 2,
+        "sameAmino": false
+      }
+    ]
+  },
+  "core": "GACATGGAGGACGTGCGA",
+  "editedCore": "GACATGGAGGACGTGTGA",
+  "oligos": [
+    {
+      "name": "SAP software example-WT-F",
+      "sequence": "CAGCGACATGGAGGACGTGCGA"
+    },
+    {
+      "name": "SAP software example-WT-R",
+      "sequence": "TGCCTCGCACGTCCTCCATGTC"
+    }
+  ],
+  "changes": [
+    {
+      "input_position": 18,
+      "from": "C",
+      "to": "A"
+    }
+  ],
+  "sourceVersion": "1.3.1",
+  "engineSha256": "252ae276561d232145a0ea4f8add496fc489e3f4ce388d26a2de8c84321a9633"
+}

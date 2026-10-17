@@ -1,0 +1,82 @@
+[
+  {
+    "group": "design",
+    "file": "./media/sap-design-input.png",
+    "alt": "1. Enter the transcript-sense sequence and select target C16.",
+    "caption": "1. Enter the transcript-sense sequence and select target C16.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "design",
+    "file": "./media/sap-design-review.png",
+    "alt": "2. Inspect the proposed CGC \u2192 CGA reporter adaptation; the input sequence is unchanged.",
+    "caption": "2. Inspect the proposed CGC \u2192 CGA reporter adaptation; the input sequence is unchanged.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "design",
+    "file": "./media/sap-design-output.png",
+    "alt": "3. Confirm and inspect the generated WT oligo pair. Software example, not a physical clone.",
+    "caption": "3. Confirm and inspect the generated WT oligo pair. Software example, not a physical clone.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "analysis",
+    "file": "./media/sap-analysis-init.png",
+    "alt": "1. Initialize an experiment and choose a save folder. The local path is masked.",
+    "caption": "1. Initialize an experiment and choose a save folder. The local path is masked.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "analysis",
+    "file": "./media/sap-analysis-controls.png",
+    "alt": "2. Load matched Mock controls. These are actual S7 example files.",
+    "caption": "2. Load matched Mock controls. These are actual S7 example files.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "analysis",
+    "file": "./media/sap-analysis-theta.png",
+    "alt": "3. Review \u0398: control gates, backgrounds and thresholds.",
+    "caption": "3. Review \u0398: control gates, backgrounds and thresholds.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "analysis",
+    "file": "./media/sap-analysis-samples.png",
+    "alt": "4. Add the actual S7_90B example (corrected 75% AC DNA mass).",
+    "caption": "4. Add the actual S7_90B example (corrected 75% AC DNA mass).",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  },
+  {
+    "group": "analysis",
+    "file": "./media/sap-analysis-results.png",
+    "alt": "5. Inspect RAS 0.95626 and RES 74.55% AC DNA mass equivalent. The app marks reference transfer as unvalidated; this is not an RNA editing percentage.",
+    "caption": "5. Inspect RAS 0.95626 and RES 74.55% AC DNA mass equivalent. The app marks reference transfer as unvalidated; this is not an RNA editing percentage.",
+    "width": 1440,
+    "height": 1000,
+    "igem_url": null,
+    "hosting_status": "repository review asset; migrate to static.igem.wiki before final deployment"
+  }
+]

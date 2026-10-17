@@ -1,0 +1,218 @@
+[
+  {
+    "path": "static/sonar-contribution/data/flow.v1.json",
+    "sha256": "283df00b91e07badb3151f3ccc6be126c72edf98e5eccebb8c1974fe8d8f3a88",
+    "bytes": 390764,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/data/provenance.json",
+    "sha256": "b81303503eade20c9f2396acd6795c964ede4ca741115c575f63bed53eed4e72",
+    "bytes": 11571,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/data/screenshots.json",
+    "sha256": "816dd5dbd61e2017e0c6db84349427855259e32726f98c49da084a98c5c1388a",
+    "bytes": 3523,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/data/sequence.v1.json",
+    "sha256": "a5fefeda5fc3a32fff241bf50a47ca56bc433011b85a8e17f8e1258362283039",
+    "bytes": 1599,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/index.mjs",
+    "sha256": "0c4f6898f4e0d93882249ea449b3e2db5addbaa6a330bec2cf0404d9817824d3",
+    "bytes": 2102,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-analysis-controls.png",
+    "sha256": "2083ce55eecaafb06b0c99279e0e01da0d38bfd8cebeccfb8e16c086368d2eff",
+    "bytes": 90725,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-analysis-init.png",
+    "sha256": "6008c6a47d34f6140603d05d9228e3ba896b4ec53828251dcc2c254b6bd8d629",
+    "bytes": 63860,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-analysis-results.png",
+    "sha256": "dd13ffa8d85f9cb5fb91d5bac01e4e7cf412dab81d25e1c4f15133ef11a242ff",
+    "bytes": 100593,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-analysis-samples.png",
+    "sha256": "bd5fdf2073a84f357966656bc525427765220523929eb2bb5340b20ef41cf93e",
+    "bytes": 90682,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-analysis-theta.png",
+    "sha256": "84c48eaa12bbbe14bd2d36450d6e3022b0fa72377a79e68092322cd6f89ca736",
+    "bytes": 143789,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-design-input.png",
+    "sha256": "3570a5d704be546d88b8a48ef5715ce48c74d136b09b937bc63809d1a4f148f9",
+    "bytes": 85682,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-design-output.png",
+    "sha256": "4ac6b55548f733abdef593d56defdf2978c6ec29ef36065e1549f2d8020e2a38",
+    "bytes": 86874,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/media/sap-design-review.png",
+    "sha256": "0c4afbf96ceb6ee90074c562346a176a089e339882839e5b905ab9c3e0a6c3f2",
+    "bytes": 103477,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/modules/fit.mjs",
+    "sha256": "b7ee0f2255b039273cb6d3aeedb5cbb41cf519260dfb087aa3353e4a3e3f4a36",
+    "bytes": 3267,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/modules/flow.mjs",
+    "sha256": "a91b93485df17467968e4c6a89c785c88f44bf8cad35043f36b324651bd6445d",
+    "bytes": 8818,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/modules/layers.mjs",
+    "sha256": "d8877412f67b8bc15d6c733eb9234264ae6a68410dc893e29f947982347c5bdb",
+    "bytes": 6896,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/modules/reporter.mjs",
+    "sha256": "5b56ee3a92c505e175f07d525437480fd456ae13d53ca348abb4a73004f40914",
+    "bytes": 2966,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/modules/sequence.mjs",
+    "sha256": "ca748d69225a1da303868c75443c87318492a3aad7bc177d443f40816a39b0e0",
+    "bytes": 3437,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/C04.md",
+    "sha256": "733e88ea8941937a55be02cde451128b150aa1dc7e054bb97abe0a57c45051dd",
+    "bytes": 13785,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/C04.pdf",
+    "sha256": "d3304fd6ea2ae68cd0f60f476afcc5031161174f9404639d77b8392507377b3c",
+    "bytes": 84684,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP01.md",
+    "sha256": "12f93e5db98083761875ee14bffc028adee08cbc5facae47e1843d201fd748f8",
+    "bytes": 12322,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP01.pdf",
+    "sha256": "d247d916da6bc55831ac3ad18d37f9aaf479cd4841e362f3ebdab1b7864f7fae",
+    "bytes": 50161,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP02.md",
+    "sha256": "b19e69f0bb890a2c43db50657ba642f02922105003bd4e31c7d263911fe70a75",
+    "bytes": 12974,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP02.pdf",
+    "sha256": "1a7bd2cc7f3e478de85eda387fe87e563f608b08852ff16a055e7143e98a8f7b",
+    "bytes": 50799,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP06.md",
+    "sha256": "fed72a6065bc253b66255a470ac1654704ca129571e888bd82466c8b78c06e22",
+    "bytes": 32920,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/RP06.pdf",
+    "sha256": "11dcc723580b2efe1666042ba5737624ea5572eeaa189078c4433d68e988e880",
+    "bytes": 1207800,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/Universal_Reporter_Plasmid.gb",
+    "sha256": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+    "bytes": 16700,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/cytexpert_03_viewport.svg",
+    "sha256": "86764a3cfe64912c55d0f6e7c64f5d1d9bbcf1e9a5dc6e482353320fb843a179",
+    "bytes": 62376,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/cytexpert_05_viewport.svg",
+    "sha256": "71768f33220658408b3980dc169c13796e6f3bd8b57a832dc4937ba8c19cc10d",
+    "bytes": 21339,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/cytexpert_06_viewport.svg",
+    "sha256": "d52e26ce8ad554ce4bc7fc1dbce272a946afbc4ce9faceebac526923b77f4027",
+    "bytes": 55829,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/cytexpert_07_viewport.svg",
+    "sha256": "544a5f5340da09499ab8cb767d797967d90291811ef47598a201c37d0e507d32",
+    "bytes": 104454,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/teaching_fluorescence_gain_viewport.svg",
+    "sha256": "06eae10e13711b8562919ba188243a2c5b6febc991d77f13da8a7fea8cae332f",
+    "bytes": 137988,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/teaching_gates_viewport.svg",
+    "sha256": "424e77faebd348b1434ddfd1999c60dd4c93f3e28e3291dce126d0af0af9363c",
+    "bytes": 624946,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/teaching_negative_boundary_viewport.svg",
+    "sha256": "a9c4a0749f9d82337d0787523e3b966fcb670bde2d57d7a9408a84f6a6bf52c2",
+    "bytes": 111487,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/resources/assets/teaching_scatter_gain_viewport.svg",
+    "sha256": "19578cde1dd9113fa98f3e392e416541741da881356c2aa56fef69fcd7557ce3",
+    "bytes": 299658,
+    "publication_status": "user_authorized_2026-10-17"
+  },
+  {
+    "path": "static/sonar-contribution/sonar.css",
+    "sha256": "5d045fc1012c0545a2df200544583e87cd07e1b9a36146c741d97ea9c009fcfe",
+    "bytes": 6916,
+    "publication_status": "user_authorized_2026-10-17"
+  }
+]
