@@ -1,10 +1,7 @@
 ---
 title: Blueprint
-subtitle: Map the project structure and connect each module to its supporting records.
+subtitle: From an APOE4-targeting editor to the ORCA editing system.
 eyebrow: Project
-status: pending
-status_label: Content pending team review
-status_message: Replace this navigation framework with a team-reviewed design overview and verified source links.
 ---
 
 # Blueprint
@@ -37,7 +34,7 @@ More importantly, unwanted edits often occurred **on the same reads as the desir
 
 Cycle 1 established a highly active APOE4 editor, but also revealed the central constraint for the next iteration: **target efficiency had to be evaluated together with the integrity of the edited RNA**.
 
-[![Five-panel portrait. A spans the full width and shows a straight ten-repeat PUF array with real repeat names and recognition-residue codes aligned to the APOE RNA sequence; a non-circular APOBEC shape directly engages C388. B shows the source PowerPoint FLAG Western blot and C shows C388 editing with three biological observations per group. D shows 63 APOE bystander sites and explains synonymous, missense and stop-gained symbols. E shows conditional same-read co-occurrence: 70.72 ± 2.37% for C295 and 93.97 ± 0.39% for C871 among C388-edited callable reads.](/assets/images/blueprint/core-editor-cycle-1.png)](/assets/images/blueprint/core-editor-cycle-1.png)
+![Five-panel portrait. A spans the full width and shows a straight ten-repeat PUF array with real repeat names and recognition-residue codes aligned to the APOE RNA sequence; a non-circular APOBEC shape directly engages C388. B shows the source PowerPoint FLAG Western blot and C shows C388 editing with three biological observations per group. D shows 63 APOE bystander sites and explains synonymous, missense and stop-gained symbols. E shows conditional same-read co-occurrence: 70.72 ± 2.37% for C295 and 93.97 ± 0.39% for C871 among C388-edited callable reads.](/assets/images/submission-20261017/blueprint/core-editor-cycle-1.png)
 
 **Figure 1 | Establishing the first APOE4-targeting 10R editor.**<br>
 **(A)** PUF10R–XTEN–APOBEC architecture, recognition site, UG spacer, and intended C388 edit. **(B)** FLAG Western blot of PUF10R-only, APOBEC-only, and complete 10R constructs; β-actin loading control. **(C)** C388 editing in the complete-editor and control groups (mean ± SD; *n* = 3 biological replicates). **(D)** Editing landscape across the sequenced APOE region, highlighting 63 elevated bystander sites and their predicted coding consequences. **(E)** Same-read co-editing of C388 with the predicted stop-gained sites C295 and C871.
@@ -83,7 +80,7 @@ Longer recognition was not automatically better. **13R** lowered mean bystander 
 
 We therefore selected **PUF12 as ORCA's working recognition backbone**: it retained substantial target activity, improved key read-level outcomes relative to 10R, and left room for further PUF and APOBEC engineering. This was a practical balance between activity and bystander editing—not a claim that 12R was optimal by every measure.
 
-[![Portrait A–E figure. A aligns PUF recognition sequences. B retains the original three scatter plots of C388 editing against mean bystander editing, with distinct mean shapes, direct labels, biological replicate dots, SD and 10R-to-12R arrows. C retains original three-color 100% stacked bars for C388/C871 paired-read outcomes with a shorter legend, TC replicate points and SD, and amber numerical TC means. D and the original WB in E are unchanged.](/assets/images/blueprint/core-editor-cycle-2.png)](/assets/images/blueprint/core-editor-cycle-2.png)
+![Portrait A–E figure. A aligns PUF recognition sequences. B retains the original three scatter plots of C388 editing against mean bystander editing, with distinct mean shapes, direct labels, biological replicate dots, SD and 10R-to-12R arrows. C retains original three-color 100% stacked bars for C388/C871 paired-read outcomes with a shorter legend, TC replicate points and SD, and amber numerical TC means. D and the original WB in E are unchanged.](/assets/images/submission-20261017/blueprint/core-editor-cycle-2.png)
 
 **Figure 2 | Recognition length shapes the activity–bystander trade-off.**<br>
 **(A)** 10R, 12R, 13R, and 15R recognition spans and the three experimental contexts. **(B)** C388 editing plotted against mean editing across the same 290 non-target APOE cytidines. **(C)** Read-level classification at C388 and C871, highlighting edited-C388/unedited-C871 reads. **(D)** Conditional co-editing of C295 and C871 among C388-edited reads. **(E)** Qualitative APOE/APOE4-labelled Western blot with β-actin; the E72A lane is labelled PUF12-E72A in this blot, distinct from the PUF10-E72A sequencing control. Protein signals were not quantitatively normalized or assigned to a matched sequencing context.
@@ -94,7 +91,7 @@ We therefore selected **PUF12 as ORCA's working recognition backbone**: it retai
 
 Selecting PUF12 established a working recognition backbone, but optimizing the editor alone could not address every requirement of programmable RNA editing. We also needed strategies to regulate activity, deliver the editor, measure its effects, and support systematic target design.
 
-We organized the next stage of ORCA engineering into **five connected routes: EDIT, CONTROL, DELIVER, MEASURE, and PROGRAM**. Each addresses a distinct system-level challenge.
+We organized the next stage of ORCA engineering into **five connected routes: EDIT, CONTROL, DELIVER, MEASURE, and MODEL**. Each addresses a distinct system-level challenge.
 
 ### 01. EDIT — Refining the Molecular Editor
 
@@ -126,12 +123,15 @@ We constructed AAV-compatible vectors and carried out two packaging rounds, prog
 
 We redesigned a fluorescence-based editing reporter and developed **SONAR (System for Optical Normalization and Analysis of RNA Editing)**, a multilayer framework spanning flow-cytometry processing, normalized fluorescence readouts, empirical calibration, and exploratory sequencing-linked editing estimates.
 
-### 05. MODEL — Guiding Editor Design through Computational Modelling
-We developed an integrated modelling workflow to guide editor design and evaluation. Our models combine RNA-seq analysis, PUF variant ranking, APOBEC structural modelling, RNA editing-site prioritization, and whole-body delivery simulations. Together, they identify editing patterns, prioritize candidate variants and target sites, and evaluate how delivery and competing reactions shape the intended RNA product. Iterative model refinement turns these findings into focused questions for experimental follow-up.
+### 05. MODEL — Connecting Editing Evidence, Editor Design and Delivery
+
+Our [Model](/model) workflow connects experimental editing profiles with computational design to improve specificity while preserving useful target activity. **RNA-seq analysis** establishes candidate editing evidence under a common screening procedure. **PUF modeling** ranks recognition-domain variants and explores additional sequence designs, while **APOBEC modeling** connects structural hypotheses with experimental evaluation of catalytic-domain variants. **LAMAR** uses RNA-seq-derived labels to prioritize RNA regions and cytidines for further testing.
+
+At the system scale, the [Whole-body Delivery Model](/software#rewire) connects delivery, tissue distribution, cellular expression and multisite RNA editing. Parameter scans, uncertainty analysis and complementary spatial simulations examine how these processes shape intended RNA products, unwanted editing and tissue coverage. Together, these models guide experimental choices and help evaluate trade-offs across the complete delivery and editing strategy.
 
 ### Bringing the Routes Together
 
-The five routes extend ORCA beyond the editing reaction itself, providing a coordinated framework for **molecular optimization, biological regulation, delivery, measurement, and programmable design**.
+The five routes extend ORCA beyond the editing reaction itself, providing a coordinated framework for **molecular optimization, biological regulation, delivery, measurement, and modeling**.
 
 ---
 

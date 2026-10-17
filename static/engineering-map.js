@@ -127,7 +127,7 @@
     selectedPart = id;
     const part = group.parts.find(item => item.id === id);
     leafButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringPart === id));
-    cycles.hidden = false;
+    cycles.hidden = part.cycles.length === 0;
     cycles.setAttribute('aria-label', `${part.label} cycles`);
     if (cycles.dataset.part !== id) {
       cycleLinks = part.cycles.map(number => {
@@ -136,17 +136,18 @@
         link.dataset.mapCycle = number;
         const label = document.createElement('strong');
         label.className = 'map-label';
-        label.textContent = `Cycle ${number}`;
+        label.textContent = part.cycleLabels[number];
         link.append(label);
         return link;
       });
       cycles.replaceChildren(...cycleLinks);
       cycles.dataset.part = id;
       cycles.dataset.cycleCount = String(cycleLinks.length);
+      cycles.dataset.manyCycles = String(cycleLinks.length > 6);
     }
     cycleLinks.forEach(link => {
       link.href = `#${id}-cycle-${link.dataset.mapCycle}`;
-      link.setAttribute('aria-label', `${part.label}, Cycle ${link.dataset.mapCycle}`);
+      link.setAttribute('aria-label', `${part.label}, ${part.cycleLabels[link.dataset.mapCycle]}`);
     });
     if (focus) {
       const target = leafButtons.find(button => button.dataset.engineeringPart === id) || groupButton();
@@ -215,10 +216,10 @@
     if (event.key === 'ArrowRight') {
       if (group) {
         chooseGroup(group.dataset.engineeringGroup);
-        (visibleLeaves().find(button => button.closest('[data-map-branch-group]').dataset.mapBranchGroup === selectedGroup) || cycleLinks[0]).focus();
+        (visibleLeaves().find(button => button.closest('[data-map-branch-group]').dataset.mapBranchGroup === selectedGroup) || cycleLinks[0])?.focus();
       } else if (leaf) {
         choosePart(leaf.dataset.engineeringPart);
-        cycleLinks[0].focus();
+        cycleLinks[0]?.focus();
       }
     } else if (cycle) {
       (visibleLeaves().find(button => button.dataset.engineeringPart === selectedPart) || groupButton()).focus();

@@ -1,5 +1,14 @@
 @import url('reading-back-to-top.css');
 
+/* Supplied manuscript equations retain native MathML and their source TeX. */
+.markdown-content .submission-equation {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+  padding-block: 6px;
+}
+.markdown-content .submission-equation math { min-width: max-content; }
+
 /* Team, Project, Wet Lab and Human Practices share Model's reading geometry
    and the requested return-to-top mascot. Keep their existing page headers. */
 .content-reading-page .markdown-page {

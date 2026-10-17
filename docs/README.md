@@ -27,7 +27,7 @@
 | Parts（保留直接入口） | `docs/project/parts.md` |
 | Experiment | `docs/wet-lab/experiments.md` |
 | Notebook | `docs/wet-lab/notebook.md` |
-| Measure | `docs/wet-lab/measurement.md` |
+| Measurement | `docs/wet-lab/measurement.md` |
 | Alternative Platform（保留直接入口） | `docs/wet-lab/alternative-platform.md` |
 | Safety & Security | `docs/wet-lab/safety-and-security.md` |
 | Dry Lab Overview | `docs/dry-lab/dry-lab.md` |
@@ -43,11 +43,11 @@
 Homepage 是特殊动画页面，仍由 Wiki 开发者维护，不在这张表里。
 
 Project 导航顺序为 Description → Blueprint → Engineering → Results → Contribution → Future。
-Engineering 先展示 Edit、Control、Deliver、Measure、Model 思维导图；悬停展开分支，选择 Cycle 进入正文，Back 返回导图。每个分支保留两轮 DBTL 记录，旧锚点继续可用。
-Results 分为 Key Findings、Functional Validation 和 Integrated Conclusions；Contribution 分为 SONAR 和 Puffer。
-Future 区分 Short-Term: Platform Optimization 与 Long-Term: Therapeutic Translation。
+Engineering 先展示 Edit、Control、Deliver、Measure、Model 思维导图；选择模块可阅读概述，选择 Cycle 可进入相应正文，Back 返回导图。轮次按供稿实际内容生成；Cre–loxP 为尚未实验验证的设计方案，不显示虚构的 DBTL 轮次。
+Results 使用第 10 份供稿；Contribution 分为 SONAR 和 Puffer。
+Future 使用第 11 份供稿，仅包含 Short-Term: Platform Optimization 与 Long-Term: Therapeutic Translation；Results 独立保留在 Results 页面。Blueprint 和 Results 的第五条路线统一为 MODEL，依据现有 Model 正文介绍各模块与全身递送模型。
 
-Wet Lab 只显示 Experiment、Notebook、Measure、Safety & Security。导航名称简化后，原路径
+Wet Lab 只显示 Experiment、Notebook、Measurement、Safety & Security。导航名称简化后，原路径
 `/experiments`、`/measurement` 与 `/safety-and-security` 仍保留；`/parts` 与
 `/alternative-platform` 也继续可访问，并从相关 Project 章节链接进入。
 

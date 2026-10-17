@@ -91,7 +91,7 @@ NAVIGATION = (
         "items": (
             ("experiments", "Experiment"),
             ("notebook", "Notebook"),
-            ("measurement", "Measure"),
+            ("measurement", "Measurement"),
             ("safety-and-security", "Safety & Security"),
         ),
     },
@@ -118,6 +118,7 @@ NAVIGATION = (
 FRONT_MATTER = re.compile(r"\A---[ \t]*\r?\n(.*?)\r?\n---[ \t]*(?:\r?\n|\Z)", re.DOTALL)
 LEADING_H1 = re.compile(r"\A\s*#\s+(.+?)\s*(?:\r?\n|\Z)")
 MARKDOWN_IMAGE = re.compile(r'(<img\b[^>]*\bsrc=")(/assets/)([^"?#]+)([^" ]*)(")', re.IGNORECASE)
+MARKDOWN_ASSET_LINK = re.compile(r'(<a\b[^>]*\bhref=")(/assets/)([^"?#]+)([^" ]*)(")', re.IGNORECASE)
 
 
 def _parse_front_matter(source: str, source_path: Path) -> tuple[dict[str, object], str]:
@@ -156,7 +157,9 @@ def _rewrite_asset_urls(html: str, asset_url: Callable[[str], str] | None) -> st
         resolved = asset_url(match.group(3))
         return f"{match.group(1)}{resolved}{match.group(4)}{match.group(5)}"
 
-    return MARKDOWN_IMAGE.sub(replace, html)
+    # Linked supplementary figures must also be registered through url_for so
+    # Frozen-Flask includes them even when they are not embedded as images.
+    return MARKDOWN_ASSET_LINK.sub(replace, MARKDOWN_IMAGE.sub(replace, html))
 
 
 def load_markdown_content(

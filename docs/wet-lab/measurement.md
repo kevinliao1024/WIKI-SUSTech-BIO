@@ -1,38 +1,341 @@
 ---
-title: Measure
-subtitle: Define how every readout is acquired, normalized, quality-controlled and interpreted.
+title: Measurement
+subtitle: Beyond Brightness — Making RNA-Editing Reporter Signals Measurable
 eyebrow: Wet Lab
-status: pending
-status_label: Content pending team review
-status_message: Add only reviewed measurement procedures, calibration records and analysis criteria.
 ---
 
-# Measure
+# SONAR Measurement
 
-## Measurement goals
+*Beyond Brightness: Making RNA-Editing Reporter Signals Measurable*
 
-Define each quantity, why it matters and the decision it informs.
+## 1. The Measurement Challenge — Beyond Brightness
 
-See [Engineering — Measure](/engineering#measure) for its place in the project design.
-Link reusable measurement resources to [Contribution — SONAR](/contribution#sonar)
-and [Contribution — Puffer](/contribution#puffer) once their scope and evidence are reviewed.
+Our editing-responsive reporter made ORCA activity visible through EGFP fluorescence. Yet visibility raised a harder question: **does a brighter green signal indicate more RNA editing, or simply more reporter expression?** Transfection efficiency, reporter abundance, cell-population composition, fluorophore maturation, and protein stability can all affect the observed signal. Neither mean EGFP intensity nor the fraction of EGFP-positive cells can, by itself, resolve these contributions.
 
-## Assays
+SONAR therefore extends the engineered reporter into a **measurement system**. Rather than assigning an editing percentage directly to fluorescence, we establish a defined measurement context, normalize the optical response, calibrate it against experimentally measured reporter references, and test its relationship with an independent molecular readout. Each stage answers a different question—and produces a result with a different meaning.
 
-Describe instruments, reagents, sampling, replicates and readout methods.
+![Figure 1. The ambiguity of fluorescence and the SONAR measurement architecture.](/assets/images/submission-20261017/measurement/measurement-figure1-beyond-brightness.png)
 
-## Calibration
+*Figure 1. Fluorescence alone cannot distinguish reporter abundance from activation; SONAR connects complementary fluorescent signals to four analytical layers.*
 
-Record standards, blank corrections, calibration ranges and acceptance criteria.
+## 2. SONAR Architecture — Three Signals, Four Layers
 
-## Quality control
+**SONAR (System for Optical Normalization and Analysis of RNA Editing)** integrates two expression constructs: an editing-responsive **mCherry–P2A–EGFP switch–ecDHFR-DD reporter** and **ORCA–P2A–BFP**. Their signals play distinct roles. **mCherry** tracks reporter-associated expression, **EGFP** reports the optical response of the editing switch, and **BFP** marks detectable editor-associated expression. BFP is not a direct count of active ORCA molecules.
 
-Explain exclusions, detection limits, controls and checks for batch effects.
+We organize their interpretation into four layers:
 
-## Data analysis
+| Layer | Measurement question | Main output |
+|---|---|---|
+| **0 — Context Calibration** | Which events and fluorescence values are suitable for comparison? | A versioned **Context Profile** |
+| **1 — Flow Quantification** | How strongly does the reporter respond relative to its expression? | **RAS**, the Reporter Activity Score |
+| **2 — Reporter Calibration** | What experimentally measured reference input gives an equivalent response? | **RES**, the Relative Editing Score |
+| **3 — Molecular Evaluation** | What molecular signal accompanies the optical response, and can it be predicted? | A validated *relative* molecular analysis and a pathway toward **PER**, Predicted Editing Rate |
 
-State normalization, statistics, software versions and uncertainty reporting.
+This hierarchy is deliberate: **RAS is a normalized fluorescence ratio; RES is an AC/INAC DNA-input reference equivalent; PER would be a predicted fraction of edited reporter RNA only after independent molecular calibration.** The three quantities are not interchangeable.
+
+## 3. Layer 0 — Establishing a Reliable Measurement Context
+
+### 3.1 From raw events to a fixed analysis population
+
+We began with raw FCS files from the S7 reference experiment and the S10 editor-dose experiment, acquired on a CytoFLEX S. The fluorescence-area channels were **FL1-A (EGFP)**, **FL11-A (mCherry)**, and **FL6-A (BFP)**. We retained *linear* detector intensities for subtraction and quantitative aggregation, using transformed values only for visualization or gating.
+
+To prevent each experimental condition from defining its own favorable population, SONAR derives the scatter gates from the matched **Mock1** control and applies the resulting parameters uniformly:
+
+1. **Acquisition QC:** detect anomalous event-rate intervals using 1-s windows and a six-robust-scale cutoff.
+2. **Cell gate:** fit a Minimum Covariance Determinant (MCD) model to log-transformed FSC-A/SSC-A and accept events with squared Mahalanobis distance <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msubsup><mi>d</mi><mi>i</mi><mn>2</mn></msubsup><mo>≤</mo><mn>9.21034</mn></mrow><annotation encoding="application/x-tex">&#100;&#95;&#105;&#94;&#50;&#92;&#108;&#101;&#113;&#57;&#46;&#50;&#49;&#48;&#51;&#52;</annotation></semantics></math></span> (the two-dimensional 99% chi-square boundary).
+3. **Singlet gate:** retain events whose <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><mn>10</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mrow><mi mathvariant="normal">F</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">C</mi><mspace width="-0.167em" /><mo mathvariant="normal">−</mo><mspace width="-0.167em" /><mi mathvariant="normal">A</mi></mrow><mi>i</mi></msub><mi>/</mi><msub><mrow><mi mathvariant="normal">F</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">C</mi><mspace width="-0.167em" /><mo mathvariant="normal">−</mo><mspace width="-0.167em" /><mi mathvariant="normal">H</mi></mrow><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">&#113;&#95;&#105;&#61;&#92;&#108;&#111;&#103;&#95;&#123;&#49;&#48;&#125;&#40;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#70;&#83;&#67;&#92;&#33;&#45;&#92;&#33;&#65;&#125;&#95;&#105;&#47;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#70;&#83;&#67;&#92;&#33;&#45;&#92;&#33;&#72;&#125;&#95;&#105;&#41;</annotation></semantics></math></span> lies within three normalized median absolute deviations of the Mock1 reference; here, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mn>0.2339</mn><mo>≤</mo><msub><mi>q</mi><mi>i</mi></msub><mo>≤</mo><mn>0.4687</mn></mrow><annotation encoding="application/x-tex">&#48;&#46;&#50;&#51;&#51;&#57;&#92;&#108;&#101;&#113;&#32;&#113;&#95;&#105;&#92;&#108;&#101;&#113;&#48;&#46;&#52;&#54;&#56;&#55;</annotation></semantics></math></span>**.
+
+The resulting set, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi mathvariant="script">𝒱</mi><mi>s</mi></msub><annotation encoding="application/x-tex">&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#86;&#95;&#115;</annotation></semantics></math></span>, contains the acquisition-qualified, cell-like, singlet-like events used by subsequent layers. For the example sample `S10_1_1_B`, the successive counts were **100,000 → 95,680 → 74,290 → 68,986**. The same rules, not sample-specific hand-drawn gates, determine every step.
+
+![Figure 2. Acquisition QC and reference-based cell selection.](/assets/images/submission-20261017/measurement/measurement-figure2-event-selection.png)
+
+*Figure 2. Fixed acquisition, scatter, and pulse-geometry rules reduce one S10 acquisition to a reproducibly defined analysis population.*
+
+### 3.2 Separating fluorescence background from detection thresholds
+
+Background subtraction and positivity classification serve different purposes. We estimated each channel's additive background as the **equal-weight average of the two Mock means**, then subtracted it from the corresponding *linear* intensity:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover><mi>b</mi><mo accent="true">̂</mo></mover><mi>c</mi></msub><mo>=</mo><mfrac><mrow><msub><mover><mi>X</mi><mo accent="true">¯</mo></mover><mrow><mi>c</mi><mo>,</mo><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mn mathvariant="normal">1</mn></mrow></mrow></msub><mo>+</mo><msub><mover><mi>X</mi><mo accent="true">¯</mo></mover><mrow><mi>c</mi><mo>,</mo><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mn mathvariant="normal">2</mn></mrow></mrow></msub></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="2.0em" /><msubsup><mi>x</mi><mrow><mi>c</mi><mo>,</mo><mi>i</mi></mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">r</mi></mrow></msubsup><mo>=</mo><msub><mi>X</mi><mrow><mi>c</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>−</mo><msub><mover><mi>b</mi><mo accent="true">̂</mo></mover><mi>c</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#98;&#95;&#99;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#111;&#118;&#101;&#114;&#108;&#105;&#110;&#101;&#32;&#88;&#95;&#123;&#99;&#44;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#111;&#99;&#107;&#49;&#125;&#125;&#43;&#92;&#111;&#118;&#101;&#114;&#108;&#105;&#110;&#101;&#32;&#88;&#95;&#123;&#99;&#44;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#111;&#99;&#107;&#50;&#125;&#125;&#125;&#123;&#50;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#32;&#120;&#95;&#123;&#99;&#44;&#105;&#125;&#94;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#99;&#111;&#114;&#114;&#125;&#125;&#61;&#88;&#95;&#123;&#99;&#44;&#105;&#125;&#45;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#98;&#95;&#99;&#46;&#10;</annotation></semantics></math></div>
+
+Negative corrected values remain in the analysis; setting every weak green signal to zero would artificially elevate a low-response population. To classify fluorescence-positive events, we instead used the larger of the two Mock **99.5th percentiles**, on the *uncorrected* linear scale:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>T</mi><mi>c</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mspace width="-0.167em" /><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>Q</mi><mn>0.995</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><mi>c</mi><mo>,</mo><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mn mathvariant="normal">1</mn></mrow></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="0.278em" /><msub><mi>Q</mi><mn>0.995</mn></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mrow><mi>c</mi><mo>,</mo><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mn mathvariant="normal">2</mn></mrow></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#84;&#95;&#99;&#61;&#92;&#109;&#97;&#120;&#92;&#33;&#92;&#108;&#101;&#102;&#116;&#91;&#81;&#95;&#123;&#48;&#46;&#57;&#57;&#53;&#125;&#40;&#88;&#95;&#123;&#99;&#44;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#111;&#99;&#107;&#49;&#125;&#125;&#41;&#44;&#92;&#59;&#81;&#95;&#123;&#48;&#46;&#57;&#57;&#53;&#125;&#40;&#88;&#95;&#123;&#99;&#44;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#111;&#99;&#107;&#50;&#125;&#125;&#41;&#92;&#114;&#105;&#103;&#104;&#116;&#93;&#46;&#10;</annotation></semantics></math></div>
+
+| Channel | Additive background (a.u.) | Positivity threshold (a.u.) |
+|---|---:|---:|
+| EGFP | 2,999.9 | 9,295.0 |
+| mCherry | 1,149.5 | 3,395.7 |
+| BFP | 196.5 | 985.9 |
+
+Because mCherry later appears in the denominator of RAS, we also defined a red quantification boundary <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>R</mi><mi>q</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>T</mi><mi>R</mi></msub><mo>,</mo><msub><mover><mi>b</mi><mo accent="true">̂</mo></mover><mi>R</mi></msub><mo>+</mo><mn>3</mn><msub><mi>σ</mi><mrow><mi>R</mi><mo>,</mo><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi></mrow></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">&#82;&#95;&#113;&#61;&#92;&#109;&#97;&#120;&#40;&#84;&#95;&#82;&#44;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#98;&#95;&#82;&#43;&#51;&#92;&#115;&#105;&#103;&#109;&#97;&#95;&#123;&#82;&#44;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#111;&#99;&#107;&#125;&#125;&#41;</annotation></semantics></math></span>. Under these conditions, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>R</mi><mi>q</mi></msub><mo>=</mo><mn>3</mn><mo>,</mo><mn>395.7</mn></mrow><annotation encoding="application/x-tex">&#82;&#95;&#113;&#61;&#51;&#44;&#51;&#57;&#53;&#46;&#55;</annotation></semantics></math></span> a.u.**, numerically identical to the red positivity threshold. This is an *operational event-selection boundary*, not an independently validated limit of quantification.
+
+![Figure 3. Negative-control fluorescence references.](/assets/images/submission-20261017/measurement/measurement-figure3-fluorescence-references.png)
+
+*Figure 3. Two Mock controls establish distinct additive backgrounds and detection thresholds for all three fluorescence channels.*
+
+### 3.3 A reusable Context Profile
+
+We froze the channel mapping, acquisition rule, scatter and singlet gates, background estimates, thresholds, and their source records as a versioned **Context Profile**, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi mathvariant="normal">Ω</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">t</mi></mrow></msub><annotation encoding="application/x-tex">&#92;&#79;&#109;&#101;&#103;&#97;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#99;&#111;&#110;&#116;&#101;&#120;&#116;&#125;&#125;</annotation></semantics></math></span>. Across **34 unique FCS acquisitions**—32 independent transfection wells and two Mock controls—the final event-retention range for experimental wells was **66.48%–77.08%**. Transferring Mock-derived thresholds to the other Mock gave negative-tail fractions of **0.424%–0.602%**, and all **204 stored event-selection masks** were reconstructed exactly from the original files and frozen parameters.
+
+For a new instrument, experiment, or reporter condition, the *rules* can be reused while the fluorescence parameters must be re-estimated from matched controls. Current measurements remain detector-scale, exploratory measurements: independent single-color compensation and viability staining were not available. Thus, retained events are **singlet-like by scatter and pulse geometry**, not independently confirmed viable cells.
+
+## 4. Layer 1 — Quantifying Reporter Activity with RAS
+
+### 4.1 Defining what is measured
+
+From the Layer 0 event set, we select the **Reporter Population** using the red quantification boundary:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">𝒫</mi><mi>R</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>i</mi><mo>∈</mo><msub><mi mathvariant="script">𝒱</mi><mi>s</mi></msub><mo>:</mo><msub><mi>R</mi><mi>i</mi></msub><mo>&gt;</mo><msub><mi>R</mi><mi>q</mi></msub><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#95;&#82;&#61;&#92;&#123;&#105;&#92;&#105;&#110;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#86;&#95;&#115;&#58;&#82;&#95;&#105;&#62;&#82;&#95;&#113;&#92;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+Crucially, **EGFP positivity is not a condition for entry**: dim and background-corrected negative green values remain, so the score describes the *whole measurable reporter population*, not only its brightest subset.
+
+SONAR's **Reporter Activity Score (RAS)** is the ratio of the *sums* of paired, background-corrected green and red intensities within exactly the same selected population <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mi mathvariant="script">𝒫</mi><annotation encoding="application/x-tex">&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;</annotation></semantics></math></span>:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><menclose notation="box"><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mi mathvariant="script">𝒫</mi></msub><mo>=</mo><mfrac><mrow><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi mathvariant="script">𝒫</mi></mrow></munder><mo stretchy="false" form="prefix">(</mo><msub><mi>G</mi><mi>i</mi></msub><mo>−</mo><msub><mover><mi>b</mi><mo accent="true">̂</mo></mover><mi>G</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mrow><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi mathvariant="script">𝒫</mi></mrow></munder><mo stretchy="false" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo>−</mo><msub><mover><mi>b</mi><mo accent="true">̂</mo></mover><mi>R</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><msub><mover><mi>g</mi><mo accent="true">¯</mo></mover><mi mathvariant="script">𝒫</mi></msub><msub><mover><mi>r</mi><mo accent="true">¯</mo></mover><mi mathvariant="script">𝒫</mi></msub></mfrac><mi>.</mi></mrow></menclose><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#92;&#100;&#105;&#115;&#112;&#108;&#97;&#121;&#115;&#116;&#121;&#108;&#101;&#10;&#82;&#65;&#83;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#125;&#61;&#10;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#115;&#117;&#109;&#95;&#123;&#105;&#92;&#105;&#110;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#125;&#40;&#71;&#95;&#105;&#45;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#98;&#95;&#71;&#41;&#125;&#10;&#123;&#92;&#115;&#117;&#109;&#95;&#123;&#105;&#92;&#105;&#110;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#125;&#40;&#82;&#95;&#105;&#45;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#98;&#95;&#82;&#41;&#125;&#10;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#111;&#118;&#101;&#114;&#108;&#105;&#110;&#101;&#32;&#103;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#125;&#125;&#123;&#92;&#111;&#118;&#101;&#114;&#108;&#105;&#110;&#101;&#32;&#114;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#125;&#125;&#46;&#125;&#10;</annotation></semantics></math></div>
+
+This is **not** the arithmetic mean of single-cell <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mi>/</mi><msub><mi>r</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">&#103;&#95;&#105;&#47;&#114;&#95;&#105;</annotation></semantics></math></span> ratios. Small red denominators can destabilize those per-cell ratios; the ratio of sums instead weights each cell by its contribution to the total corrected red signal. That improves the score's numerical definition without making it independent of reporter-expression heterogeneity.
+
+In `S10_1_1_B`, **18,290** of the 68,986 Layer 0 events satisfied the reporter criterion. Their mean corrected intensities yielded **RAS = 0.5571**, whereas averaging single-cell ratios yielded **0.6399**. The highest red-expression quartile contributed **88.08%** of the red signal despite containing only one-quarter of the cells—a reason to report the estimator explicitly.
+
+![Figure 4. Construction and interpretation of RAS.](/assets/images/submission-20261017/measurement/measurement-figure4-ras-construction.png)
+
+*Figure 4. RAS aggregates paired fluorescence as a ratio of sums, retaining low-green events and accounting for unequal red-signal contributions.*
+
+### 4.2 Does normalization improve repeatability?
+
+We compared raw mean EGFP with RAS **within the same Reporter Population** in A/B independent-transfection pairs. The comparison uses the corrected S7 reference labels, including the 15% condition and the exchanged 75%/90% labels.
+
+| Experiment | Conditions (two wells each) | Median CV, raw EGFP | Median CV, RAS | Conditions improved |
+|---|---:|---:|---:|---:|
+| **S7 — AC/INAC** | 10 | 4.697% | **1.767%** | **8/10** |
+| **S10 — editor dose** | 6 | 6.711% | **5.142%** | **5/6** |
+
+Normalization reduced between-well variability for most tested conditions, though **not all**: two S7 conditions and one S10 condition had higher CV after normalization. These are within-experiment, two-well comparisons—not evidence of cross-day precision or RNA-editing accuracy.
+
+![Figure 5. Between-well repeatability before and after normalization.](/assets/images/submission-20261017/measurement/measurement-figure5-normalization-repeatability.png)
+
+*Figure 5. Matched-well comparisons show reduced RAS variability in 8/10 S7 and 5/6 S10 conditions, with the exceptions retained.*
+
+### 4.3 Using BFP to define co-expression
+
+mCherry reports reporter-associated expression but cannot identify whether the same cell also carries detectable editor-associated signal. For S10, we therefore define a second population:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">𝒫</mi><mrow><mi>R</mi><mi>B</mi></mrow></msub><mo>=</mo><msub><mi mathvariant="script">𝒫</mi><mi>R</mi></msub><mo>∩</mo><mo stretchy="false" form="prefix">{</mo><mi>i</mi><mo>:</mo><msub><mi>B</mi><mi>i</mi></msub><mo>&gt;</mo><msub><mi>T</mi><mi>B</mi></msub><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em" /><menclose notation="box"><mrow><mi>C</mi><mi>E</mi><mi>F</mi><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="script">𝒫</mi><mrow><mi>R</mi><mi>B</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi mathvariant="script">𝒫</mi><mi>R</mi></msub><mo stretchy="false" form="prefix">|</mo></mrow></mfrac></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#95;&#123;&#82;&#66;&#125;&#61;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#95;&#82;&#92;&#99;&#97;&#112;&#92;&#123;&#105;&#58;&#66;&#95;&#105;&#62;&#84;&#95;&#66;&#92;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#67;&#69;&#70;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#124;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#95;&#123;&#82;&#66;&#125;&#124;&#125;&#123;&#124;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#80;&#95;&#82;&#124;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+Here **CEF** is the fraction of reporter-selected events classified as BFP-positive; it is neither the fraction of edited cells nor a measurement of active ORCA abundance. The same ratio-of-sums formula yields <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#95;&#82;</annotation></semantics></math></span> for all reporter cells and <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mrow><mi>R</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#95;&#123;&#82;&#66;&#125;</annotation></semantics></math></span> for the detectable reporter–editor co-expression subset. These two population modes must be distinguished when comparing scores.
+
+With 100 ng reporter DNA and 0–800 ng ORCA–P2A–BFP per 1,000 ng total DNA, the mean BFP-positive fraction increased from **1.22%** at zero editor to **40.21%** at the highest dose. The zero-editor threshold tail is diagnostic, not genuine editor co-expression. At a reporter:editor ratio of **1:1**, mean <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mi>R</mi></msub><mo>=</mo><mn>0.5857</mn></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#95;&#82;&#61;&#48;&#46;&#53;&#56;&#53;&#55;</annotation></semantics></math></span> and <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mrow><mi>R</mi><mi>B</mi></mrow></msub><mo>=</mo><mn>0.6360</mn></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#95;&#123;&#82;&#66;&#125;&#61;&#48;&#46;&#54;&#51;&#54;&#48;</annotation></semantics></math></span>: selecting a different population can change the measured response even within the same condition.
+
+![Figure 6. BFP-associated co-expression and population-specific RAS.](/assets/images/submission-20261017/measurement/measurement-figure6-bfp-coexpression.png)
+
+*Figure 6. BFP resolves detectable reporter–editor co-expression and distinguishes whole-reporter from co-expression-specific RAS.*
+
+### 4.4 Precision—and the limits of normalization
+
+A reportable RAS requires **at least 100 selected events**, a positive sum of corrected red intensity, and a red-denominator relative standard error **≤10%**. All **32 Reporter Populations** met these computational checks, as did the ten S10 co-expression populations from editor-containing conditions. To characterize uncertainty, we used **2,000 paired-event bootstrap resamples** and separately propagated shared Mock-background uncertainty; these are not substitutes for independent-well replication.
+
+The score remains sensitive to the distribution of reporter expression. We quantified this concentration with the effective red-weight event count,
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>N</mi><mrow><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">f</mi></mrow><mo>,</mo><mi>R</mi></mrow></msub><mo>=</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>r</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mrow><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>r</mi><mi>i</mi><mn>2</mn></msubsup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#78;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#101;&#102;&#102;&#125;&#44;&#82;&#125;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#108;&#101;&#102;&#116;&#40;&#92;&#115;&#117;&#109;&#95;&#105;&#32;&#114;&#95;&#105;&#92;&#114;&#105;&#103;&#104;&#116;&#41;&#94;&#50;&#125;&#123;&#92;&#115;&#117;&#109;&#95;&#105;&#32;&#114;&#95;&#105;&#94;&#50;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+Across the 32 reporter samples, this diagnostic yielded only **1,225–4,553** effective red-weight events, while the brightest **1%** of red events contributed **16.78%–30.78%** of total corrected red signal. Within a common mCherry-intensity range, all 32 samples had lower RAS in the highest than in the lowest expression bin. These high-expression events were retained in the primary analysis: excluding real cells would conceal, rather than resolve, the dependence.
+
+![Figure 7. RAS precision and expression dependence.](/assets/images/submission-20261017/measurement/measurement-figure7-ras-robustness.png)
+
+*Figure 7. Event-resampling precision improves with sample size, while RAS remains systematically associated with reporter-expression intensity.*
+
+Layer 1 therefore yields a defined, often more repeatable **reporter-normalized optical response**, together with the population mode, quality status, and uncertainty. **RAS = 0.6 does not mean 60% of reporter RNAs were edited.** To give this optical number an experimental reference scale, we next calibrate the reporter itself.
+
+## 5. Layer 2 — Calibrating Reporter Response with RES
+
+### 5.1 Why a fluorescence ratio needs its own reference
+
+mCherry and EGFP are encoded within one reporter expression unit, but their fluorescence does not have to accumulate in a fixed proportion. **P2A-mediated ribosomal skipping** may yield incompletely separated products or unequal downstream protein output. If red mCherry remains fused to an EGFP–DD product, its stability could also be affected; incomplete downstream production could conversely leave red protein without the expected green output. Meanwhile, **ecDHFR-DD** makes the unedited, DD-bearing EGFP product relatively unstable, but degradation need not be complete; residual protein can mature and fluoresce. TMP can further stabilize DD-containing products [1–3]. These are plausible features of the reporter's transfer function, **not separately measured efficiencies in our experiments**.
+
+Consequently, correcting EGFP by mCherry does not reveal the fraction of edited RNA. Rather than assigning assumed efficiencies to P2A cleavage, fluorophore maturation, or DD degradation, we measured the **combined response of the complete reporter** using two predefined translation states.
+
+**AC (Activated Control)** contains a DNA-encoded `TGA` stop codon before the DD, producing EGFP without that degradation domain. **INAC (Inactive Control)** permits translation into the DD and represents the low-output state. Both retain the same central mCherry–P2A–EGFP architecture; their measured signals therefore provide an empirical comparison under matched conditions.
+
+![Figure 8. Reporter-specific transfer function and AC/INAC states.](/assets/images/submission-20261017/measurement/measurement-figure8-reporter-transfer-function.png)
+
+*Figure 8. AC/INAC reference states capture the reporter's combined optical behavior without assuming ideal P2A separation or complete DD degradation.*
+
+### 5.2 Building and fitting the AC/INAC response ladder
+
+In S7, we co-transfected AC and INAC at **ten corrected DNA mass fractions**, each with two independent transfection wells:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>A</mi><mo>=</mo><mfrac><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mrow><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>I</mi><mi>N</mi><mi>A</mi><mi>C</mi></mrow></msub></mrow></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><mi>A</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>0.05</mn><mo>,</mo><mn>0.15</mn><mo>,</mo><mn>0.20</mn><mo>,</mo><mn>0.30</mn><mo>,</mo><mn>0.40</mn><mo>,</mo><mn>0.50</mn><mo>,</mo><mn>0.75</mn><mo>,</mo><mn>0.90</mn><mo>,</mo><mn>1.00</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#65;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#125;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#43;&#109;&#95;&#123;&#73;&#78;&#65;&#67;&#125;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#65;&#92;&#105;&#110;&#92;&#123;&#48;&#44;&#48;&#46;&#48;&#53;&#44;&#48;&#46;&#49;&#53;&#44;&#48;&#46;&#50;&#48;&#44;&#48;&#46;&#51;&#48;&#44;&#48;&#46;&#52;&#48;&#44;&#48;&#46;&#53;&#48;&#44;&#48;&#46;&#55;&#53;&#44;&#48;&#46;&#57;&#48;&#44;&#49;&#46;&#48;&#48;&#92;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+All **20 wells** passed through the same Layer 0 context and Layer 1 RAS calculation. Mean RAS increased across the ladder—approximately **0.5337** at 0% AC, **0.7444** at 50%, **0.9787** at 75%, and **1.1304** at 100%—but neighboring reference inputs sometimes produced overlapping responses. Importantly, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">&#65;</annotation></semantics></math></span> is the nominal AC *DNA mass fraction***, not a measured fraction of activated RNA, edited RNA, or AC-expressing cells.
+
+We fitted the empirical function <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><mi>S</mi><mo>=</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#61;&#103;&#40;&#65;&#41;</annotation></semantics></math></span> using three prespecified alternatives: an affine line, isotonic regression, and a continuous **monotone hinge** with a fixed knot at <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">&#65;&#61;&#48;&#46;&#53;</annotation></semantics></math></span>. The hinge model allows a change in slope while enforcing a nondecreasing response:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>α</mi><mo>+</mo><mi>β</mi><mi>A</mi><mo>+</mo><mi>γ</mi><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>−</mo><mn>0.5</mn><mo stretchy="false" form="postfix">)</mo></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#103;&#40;&#65;&#41;&#61;&#92;&#97;&#108;&#112;&#104;&#97;&#43;&#92;&#98;&#101;&#116;&#97;&#32;&#65;&#43;&#92;&#103;&#97;&#109;&#109;&#97;&#92;&#109;&#97;&#120;&#40;&#48;&#44;&#65;&#45;&#48;&#46;&#53;&#41;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+The knot is a modeling choice, **not** evidence that a molecular mechanism changes at 50% AC. Using equal weight for each independent well and nonnegative slopes, the frozen fit was:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.500091</mn><mo>+</mo><mn>0.491369</mn><mi>A</mi><mo>+</mo><mn>0.366037</mn><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>−</mo><mn>0.5</mn><mo stretchy="false" form="postfix">)</mo></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#103;&#40;&#65;&#41;&#61;&#48;&#46;&#53;&#48;&#48;&#48;&#57;&#49;&#43;&#48;&#46;&#52;&#57;&#49;&#51;&#54;&#57;&#65;&#43;&#48;&#46;&#51;&#54;&#54;&#48;&#51;&#55;&#92;&#109;&#97;&#120;&#40;&#48;&#44;&#65;&#45;&#48;&#46;&#53;&#41;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+We assessed the models by **leaving out both wells at one reference fraction** and refitting on the remaining levels. For the 16 test wells inside each corresponding training-input range, forward RAS prediction errors were:
+
+| Model | Held-out forward RMSE (RAS) |
+|---|---:|
+| Affine | 0.0497 |
+| Isotonic | 0.0400 |
+| **Monotone hinge** | **0.0364** |
+
+The hinge model also yielded unique inversions in **19/20** held-out cases. Its compact, explicitly invertible form was therefore selected as the primary reference model; affine and isotonic fits remain useful sensitivity baselines.
+
+![Figure 9. Empirical calibration against AC DNA input.](/assets/images/submission-20261017/measurement/measurement-figure9-reference-calibration.png)
+
+*Figure 9. Twenty AC/INAC reference wells define the frozen monotone response curve, compared with alternative calibration models under reference-level holdout.*
+
+### 5.3 From RAS to Relative Editing Score
+
+We define **Relative Editing Score (RES)** by inverting the experimentally fitted response:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mi>A</mi><mi>S</mi><mo stretchy="false" form="postfix">)</mo></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#82;&#69;&#83;&#61;&#103;&#94;&#123;&#45;&#49;&#125;&#40;&#82;&#65;&#83;&#41;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+For the frozen two-slope hinge, the explicit inverse is:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><menclose notation="box"><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mstyle displaystyle="true"><mfrac><mrow><mi>R</mi><mi>A</mi><mi>S</mi><mo>−</mo><mn>0.500091</mn></mrow><mn>0.491369</mn></mfrac></mstyle><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0.500091</mn><mo>≤</mo><mi>R</mi><mi>A</mi><mi>S</mi><mo>≤</mo><mn>0.745776</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0.5</mn><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>R</mi><mi>A</mi><mi>S</mi><mo>−</mo><mn>0.745776</mn></mrow><mn>0.857406</mn></mfrac></mstyle><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>0.745776</mn><mo>&lt;</mo><mi>R</mi><mi>A</mi><mi>S</mi><mo>≤</mo><mn>1.174479</mn><mi>.</mi></mtd></mtr></mtable></mrow></mrow></menclose><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#10;&#82;&#69;&#83;&#61;&#92;&#98;&#101;&#103;&#105;&#110;&#123;&#99;&#97;&#115;&#101;&#115;&#125;&#10;&#92;&#100;&#102;&#114;&#97;&#99;&#123;&#82;&#65;&#83;&#45;&#48;&#46;&#53;&#48;&#48;&#48;&#57;&#49;&#125;&#123;&#48;&#46;&#52;&#57;&#49;&#51;&#54;&#57;&#125;&#44;&#38;&#48;&#46;&#53;&#48;&#48;&#48;&#57;&#49;&#92;&#108;&#101;&#32;&#82;&#65;&#83;&#92;&#108;&#101;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#44;&#92;&#92;&#91;&#56;&#112;&#116;&#93;&#10;&#48;&#46;&#53;&#43;&#92;&#100;&#102;&#114;&#97;&#99;&#123;&#82;&#65;&#83;&#45;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#125;&#123;&#48;&#46;&#56;&#53;&#55;&#52;&#48;&#54;&#125;&#44;&#38;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#60;&#82;&#65;&#83;&#92;&#108;&#101;&#49;&#46;&#49;&#55;&#52;&#52;&#55;&#57;&#46;&#10;&#92;&#101;&#110;&#100;&#123;&#99;&#97;&#115;&#101;&#115;&#125;&#125;&#10;</annotation></semantics></math></div>
+
+The result is expressed as an **AC DNA mass-equivalent reference fraction**. For example, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">&#82;&#69;&#83;&#61;&#48;&#46;&#55;&#53;</annotation></semantics></math></span> means that the calibrated AC/INAC mixture with a nominal 75% AC DNA input produces a comparable RAS—not that 75% of reporter RNA is edited. The model's response range is **RAS = 0.500091–1.174479**; values outside it are flagged rather than silently clipped to 0 or 100%.
+
+An inverse requires stronger validation than a smooth-looking forward curve. We therefore tested recovery of known reference inputs:
+
+| Inverse-validation scheme | Unique inversions | MAE | RMSE |
+|---|---:|---:|---:|
+| Leave one well out | 20/20 | 5.38 percentage points | 6.10 pp |
+| **Leave one reference level out** | **19/20** | **6.15 pp** | **7.08 pp** |
+
+The one failed reference-level inversion lay outside that fold's fitted response range. These errors describe **AC-input reference fractions**, not RNA-editing-rate accuracy.
+
+We also separated two kinds of uncertainty. A **conditional bootstrap interval** propagates paired event variation, shared Mock-background uncertainty, and reference-model refitting. A broader **compatibility interval** additionally accounts for observed held-out calibration residuals by expanding the forward-response band before identifying compatible input fractions. In leave-one-reference-level validation, the conditional intervals covered only **5/20** known inputs, whereas compatibility intervals covered **16/20**; the latter covered **16/16** inputs that lay inside the respective training-input ranges. Compatibility intervals are empirically derived *model-compatibility ranges*, not independently certified confidence intervals.
+
+![Figure 10. Inverse prediction and interval validation.](/assets/images/submission-20261017/measurement/measurement-figure10-inverse-validation.png)
+
+*Figure 10. Reference-level holdout quantifies inversion error and exposes the limited coverage of conditional bootstrap intervals.*
+
+### 5.4 A worked example—and the calibration boundary
+
+The original file `S7_90B` corresponds to **75% AC after correction of the experimental labels**. Its **32,207** reporter-selected events yielded **RAS = 0.956260**; applying the upper branch of the frozen inverse gives:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><mn>0.5</mn><mo>+</mo><mfrac><mrow><mn>0.956260</mn><mo>−</mo><mn>0.745776</mn></mrow><mn>0.857406</mn></mfrac><mo>=</mo><menclose notation="box"><mrow><mn>0.74549</mn><mspace width="0.278em" /><mtext mathvariant="normal">(74.55%AC DNA mass-equivalent)</mtext></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#82;&#69;&#83;&#61;&#48;&#46;&#53;&#43;&#92;&#102;&#114;&#97;&#99;&#123;&#48;&#46;&#57;&#53;&#54;&#50;&#54;&#48;&#45;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#125;&#123;&#48;&#46;&#56;&#53;&#55;&#52;&#48;&#54;&#125;&#10;&#61;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#48;&#46;&#55;&#52;&#53;&#52;&#57;&#92;&#59;&#92;&#116;&#101;&#120;&#116;&#123;&#40;&#55;&#52;&#46;&#53;&#53;&#92;&#37;&#32;&#65;&#67;&#32;&#68;&#78;&#65;&#32;&#109;&#97;&#115;&#115;&#45;&#101;&#113;&#117;&#105;&#118;&#97;&#108;&#101;&#110;&#116;&#41;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+The conditional bootstrap interval was **73.27%–75.85%**, while the compatibility interval was **65.2%–84.1%**. The reference input was 75%; however, this worked example used the *full fitted model*, so its agreement is an illustration of computation, **not an independent prediction test**.
+
+![Figure 11. A complete RAS-to-RES example.](/assets/images/submission-20261017/measurement/measurement-figure11-res-worked-examples.png)
+
+*Figure 11. The frozen calibration converts a real S7 RAS into an AC DNA-input equivalent with separately reported uncertainty ranges.*
+
+Layer 2 thus turns a reporter-normalized optical signal into a **measured reference equivalent with explicit inverse error and scope**. The stored model also records its population definition, Context Profile, input labels, version, and uncertainty data. Those checks matter when applying it: **the S7 AC/INAC curve is not automatically a valid RES calibration for the S10 OpenA-1 editor-dose experiment**, which uses a different reporter and experimental context. A numerical inverse and a scientifically qualified interpretation are reported as separate statuses.
+
+## 6. Layer 3 — Connecting Optical Signals to Molecular Evidence
+
+### 6.1 What PER would—and would not—mean
+
+A reporter-specific editing estimate could still be valuable even though it would **not** measure editing of endogenous APOE RNA. We therefore define a future **Predicted Editing Rate (PER)** as the predicted proportion of **the specified SONAR reporter RNA molecules** bearing the target-site edit:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><msub><mi>E</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>N</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mspace width="0.222em" /><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mspace width="0.222em" /><mi mathvariant="normal">R</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">A</mi><mspace width="0.222em" /><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mspace width="0.222em" /><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow></msub><msub><mi>N</mi><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mspace width="0.222em" /><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mspace width="0.222em" /><mi mathvariant="normal">R</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">A</mi><mspace width="0.222em" /><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mspace width="0.222em" /><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow></msub></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><mi>P</mi><mi>E</mi><mi>R</mi><mo>=</mo><mn>100</mn><mspace width="0.167em" /><msub><mover><mi>E</mi><mo accent="true">̂</mo></mover><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></msub><mi>%</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#69;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#114;&#101;&#112;&#111;&#114;&#116;&#101;&#114;&#125;&#125;&#61;&#10;&#92;&#102;&#114;&#97;&#99;&#123;&#78;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#101;&#100;&#105;&#116;&#101;&#100;&#92;&#32;&#114;&#101;&#112;&#111;&#114;&#116;&#101;&#114;&#92;&#32;&#82;&#78;&#65;&#92;&#32;&#97;&#116;&#92;&#32;&#116;&#97;&#114;&#103;&#101;&#116;&#125;&#125;&#125;&#10;&#123;&#78;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#100;&#101;&#116;&#101;&#99;&#116;&#97;&#98;&#108;&#101;&#92;&#32;&#114;&#101;&#112;&#111;&#114;&#116;&#101;&#114;&#92;&#32;&#82;&#78;&#65;&#92;&#32;&#97;&#116;&#92;&#32;&#116;&#97;&#114;&#103;&#101;&#116;&#125;&#125;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#32;&#80;&#69;&#82;&#61;&#49;&#48;&#48;&#92;&#44;&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#69;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#114;&#101;&#112;&#111;&#114;&#116;&#101;&#114;&#125;&#125;&#92;&#37;&#46;&#10;</annotation></semantics></math></div>
+
+Reaching this endpoint would require a separately established molecular mapping <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mover><mi>E</mi><mo accent="true">̂</mo></mover><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></msub><mo>=</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mi>E</mi><mi>S</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">&#92;&#119;&#105;&#100;&#101;&#104;&#97;&#116;&#32;&#69;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#114;&#101;&#112;&#111;&#114;&#116;&#101;&#114;&#125;&#125;&#61;&#104;&#40;&#82;&#69;&#83;&#41;</annotation></semantics></math></span> under *compatible* calibration conditions. Unlike the Layer 2 inverse <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">&#103;&#94;&#123;&#45;&#49;&#125;</annotation></semantics></math></span>, this new mapping must be grounded in RNA molecules with independently known editing fractions. **The available S10 data do not yet provide that absolute calibration.** What they do provide is an experimentally tested optical–molecular association and prediction framework.
+
+### 6.2 Reconstructing the OpenA-1 molecular target
+
+S10 used the sequence-verified **RepOpen-A-1 (OpenA-1) reporter** with an ORCA–P2A–BFP dose series in HEK293T cells. Using recorded PCR primers and no-editor forward/reverse chromatograms, we reconstructed a **523-bp candidate reporter amplicon**. Of its positions, **393** had Q20 support from both directions, **101** from one direction, and **29** were primer-anchored without qualifying Q20 read support. We retained these evidence categories rather than implying uniform confidence across the entire sequence.
+
+The sequence context identified **C280**, the first base of the in-frame **`CGA`** codon between the EGFP-associated region and ecDHFR-DD, as the editing-switch candidate:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">A</mi><mo mathvariant="normal">:</mo></mrow><mspace width="1.0em" /><mi>C</mi><mi>G</mi><mi>A</mi><mover><mo>→</mo><mrow><mi>C</mi><mo>→</mo><mi>U</mi></mrow></mover><mi>U</mi><mi>G</mi><mi>A</mi></mrow></menclose><mspace width="2.0em" /><menclose notation="box"><mrow><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">A</mi><mo mathvariant="normal">:</mo></mrow><mspace width="1.0em" /><mi>C</mi><mi>G</mi><mi>A</mi><mover><mo>→</mo><mrow><mi>C</mi><mo>→</mo><mi>T</mi></mrow></mover><mi>T</mi><mi>G</mi><mi>A</mi></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#82;&#78;&#65;&#58;&#125;&#92;&#113;&#117;&#97;&#100;&#32;&#67;&#71;&#65;&#92;&#120;&#114;&#105;&#103;&#104;&#116;&#97;&#114;&#114;&#111;&#119;&#123;&#67;&#92;&#116;&#111;&#32;&#85;&#125;&#85;&#71;&#65;&#125;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#99;&#68;&#78;&#65;&#58;&#125;&#92;&#113;&#117;&#97;&#100;&#32;&#67;&#71;&#65;&#92;&#120;&#114;&#105;&#103;&#104;&#116;&#97;&#114;&#114;&#111;&#119;&#123;&#67;&#92;&#116;&#111;&#32;&#84;&#125;&#84;&#71;&#65;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+This places a possible stop codon **before the DD**, as intended by the reporter design. We use **1-based coordinates on the reconstructed OpenA amplicon**, not coordinates on the full plasmid or endogenous APOE transcript. The target was selected from its sequence and coding consequence—not by retrospectively choosing the largest secondary Sanger peak.
+
+![Figure 12. OpenA-1 amplicon and candidate C280 editing switch.](/assets/images/submission-20261017/measurement/measurement-figure12-molecular-reference.png)
+
+*Figure 12. Bidirectional sequence evidence establishes the 523-bp candidate amplicon and locates the C280 stop-generating site.*
+
+### 6.3 From bidirectional Sanger peaks to a molecular index
+
+Rather than reducing chromatograms to a single base call, we extracted the original AB1 channel intensities at the *aligned C280 scan position*. A forward read measures **C/T** signal, and its reverse complement measures **G/A**. We required consistent coordinate mapping under three alignment penalties, at least **90%** matching and median **Q20** in the flanking sequence, and no more than **20%** unrelated-base intensity at the target peak. The potentially mixed target base itself was not required to have a high single-base quality score.
+
+**47 of 48 AB1 reads** passed this site-level QC. The failed forward read, `1-8-2.F`, had only **60%** local flank matching; it remained in the audit record but was excluded from the principal paired-direction calculation.
+
+For an accepted sequencing label <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mi>ℓ</mi><annotation encoding="application/x-tex">&#92;&#101;&#108;&#108;</annotation></semantics></math></span>, we defined direction-specific alternate-base peak fractions:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><msub><mi>p</mi><mrow><mi>F</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>I</mi><mrow><mi>T</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mrow><msub><mi>I</mi><mrow><mi>C</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>+</mo><msub><mi>I</mi><mrow><mi>T</mi><mo>,</mo><mi>ℓ</mi></mrow></msub></mrow></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><menclose notation="box"><mrow><msub><mi>p</mi><mrow><mi>R</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>I</mi><mrow><mi>A</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mrow><msub><mi>I</mi><mrow><mi>G</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>+</mo><msub><mi>I</mi><mrow><mi>A</mi><mo>,</mo><mi>ℓ</mi></mrow></msub></mrow></mfrac></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#112;&#95;&#123;&#70;&#44;&#92;&#101;&#108;&#108;&#125;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#73;&#95;&#123;&#84;&#44;&#92;&#101;&#108;&#108;&#125;&#125;&#123;&#73;&#95;&#123;&#67;&#44;&#92;&#101;&#108;&#108;&#125;&#43;&#73;&#95;&#123;&#84;&#44;&#92;&#101;&#108;&#108;&#125;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#112;&#95;&#123;&#82;&#44;&#92;&#101;&#108;&#108;&#125;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#73;&#95;&#123;&#65;&#44;&#92;&#101;&#108;&#108;&#125;&#125;&#123;&#73;&#95;&#123;&#71;&#44;&#92;&#101;&#108;&#108;&#125;&#43;&#73;&#95;&#123;&#65;&#44;&#92;&#101;&#108;&#108;&#125;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+No-editor controls provided separate directional backgrounds, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>b</mi><mi>F</mi></msub><mo>=</mo><mn>0.044926</mn></mrow><annotation encoding="application/x-tex">&#98;&#95;&#70;&#61;&#48;&#46;&#48;&#52;&#52;&#57;&#50;&#54;</annotation></semantics></math></span>** and **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>b</mi><mi>R</mi></msub><mo>=</mo><mn>0.015840</mn></mrow><annotation encoding="application/x-tex">&#98;&#95;&#82;&#61;&#48;&#46;&#48;&#49;&#53;&#56;&#52;&#48;</annotation></semantics></math></span>**. The background-corrected **Relative C280 Molecular Index** was then calculated for each complete forward/reverse label, and technical labels were averaged within their corresponding independent transfection well:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><msub><mi>M</mi><mi>ℓ</mi></msub><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>F</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>−</mo><msub><mi>b</mi><mi>F</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>R</mi><mo>,</mo><mi>ℓ</mi></mrow></msub><mo>−</mo><msub><mi>b</mi><mi>R</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><mn>2</mn></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><menclose notation="box"><mrow><msub><mi>M</mi><mi>w</mi></msub><mo>=</mo><mfrac><mn>1</mn><msub><mi>n</mi><mi>w</mi></msub></mfrac><munder><mo>∑</mo><mrow><mi>ℓ</mi><mo>∈</mo><msub><mi mathvariant="script">ℒ</mi><mi>w</mi></msub></mrow></munder><msub><mi>M</mi><mi>ℓ</mi></msub></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#77;&#95;&#92;&#101;&#108;&#108;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#40;&#112;&#95;&#123;&#70;&#44;&#92;&#101;&#108;&#108;&#125;&#45;&#98;&#95;&#70;&#41;&#43;&#40;&#112;&#95;&#123;&#82;&#44;&#92;&#101;&#108;&#108;&#125;&#45;&#98;&#95;&#82;&#41;&#125;&#123;&#50;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#77;&#95;&#119;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#110;&#95;&#119;&#125;&#92;&#115;&#117;&#109;&#95;&#123;&#92;&#101;&#108;&#108;&#92;&#105;&#110;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#76;&#95;&#119;&#125;&#77;&#95;&#92;&#101;&#108;&#108;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+For the real high-dose label `1-8-1`, the observed peaks gave **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>p</mi><mi>F</mi></msub><mo>=</mo><mn>0.156655</mn></mrow><annotation encoding="application/x-tex">&#112;&#95;&#70;&#61;&#48;&#46;&#49;&#53;&#54;&#54;&#53;&#53;</annotation></semantics></math></span>**, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>p</mi><mi>R</mi></msub><mo>=</mo><mn>0.322422</mn></mrow><annotation encoding="application/x-tex">&#112;&#95;&#82;&#61;&#48;&#46;&#51;&#50;&#50;&#52;&#50;&#50;</annotation></semantics></math></span>**, and **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>M</mi><mi>ℓ</mi></msub><mo>=</mo><mn>0.209156</mn></mrow><annotation encoding="application/x-tex">&#77;&#95;&#92;&#101;&#108;&#108;&#61;&#48;&#46;&#50;&#48;&#57;&#49;&#53;&#54;</annotation></semantics></math></span>**. Across S10, the aggregation was **48 AB1 files → 47 passing reads → 23 complete bidirectional labels → 12 independent transfection wells**. Technical labels are not additional biological replicates, and background-corrected values are not artificially forced to zero.
+
+![Figure 13. Relative C280 index from real Sanger chromatograms.](/assets/images/submission-20261017/measurement/measurement-figure13-sanger-quantification.png)
+
+*Figure 13. Authentic forward/reverse C280 chromatograms support a background-corrected, well-level relative molecular index.*
+
+**<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>M</mi><mi>w</mi></msub><annotation encoding="application/x-tex">&#77;&#95;&#119;</annotation></semantics></math></span> is a relative chromatogram signal, not the edited-RNA fraction.** In particular, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>M</mi><mo>=</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">&#77;&#61;&#48;&#46;&#50;&#48;</annotation></semantics></math></span> must not be reported as 20% RNA editing without a validated molecular calibration.
+
+### 6.4 Pairing flow cytometry with independent molecular measurements
+
+The S10 design held **OpenA-1 reporter DNA at 100 ng/well**, varied ORCA–P2A–BFP DNA across **0, 50, 100, 200, 400, and 800 ng/well**, and kept total DNA at **1,000 ng/well**. Each dose had two independent transfection wells (A/B), giving **12 matched flow–molecular observations**. From each well, we paired its relative C280 index <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>M</mi><mi>w</mi></msub><annotation encoding="application/x-tex">&#77;&#95;&#119;</annotation></semantics></math></span> with whole-Reporter-Population <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>R</mi><mi>A</mi><msub><mi>S</mi><mrow><mi>R</mi><mo>,</mo><mi>w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">&#82;&#65;&#83;&#95;&#123;&#82;&#44;&#119;&#125;</annotation></semantics></math></span>, BFP-positive fraction <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>C</mi><mi>E</mi><msub><mi>F</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">&#67;&#69;&#70;&#95;&#119;</annotation></semantics></math></span>, and the known editor DNA input <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>D</mi><mi>w</mi></msub><annotation encoding="application/x-tex">&#68;&#95;&#119;</annotation></semantics></math></span>. Using the whole reporter population keeps the optical predictor defined consistently, including the no-editor wells.
+
+The background-corrected C280 index rose overall with editor input, reaching a two-well mean of **0.2017** at 800 ng. Yet the optical predictors behaved differently across the 12 independent wells:
+
+<div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>R</mi><mi>A</mi><msub><mi>S</mi><mi>R</mi></msub><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mn>0.288</mn></mrow></menclose><mo>,</mo><mspace width="2.0em" /><menclose notation="box"><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mi>E</mi><mi>F</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.976</mn></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#114;&#40;&#82;&#65;&#83;&#95;&#82;&#44;&#77;&#41;&#61;&#45;&#48;&#46;&#50;&#56;&#56;&#125;&#44;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#114;&#40;&#67;&#69;&#70;&#44;&#77;&#41;&#61;&#48;&#46;&#57;&#55;&#54;&#125;&#46;&#10;</annotation></semantics></math></div>
+
+Thus, the normalized EGFP response **did not show a consistent positive association** with the molecular index in this experiment, whereas the detectable editor-associated BFP fraction tracked it closely. However, **<span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mi>E</mi><mi>F</mi><mo>,</mo><mi>D</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.983</mn></mrow><annotation encoding="application/x-tex">&#114;&#40;&#67;&#69;&#70;&#44;&#68;&#41;&#61;&#48;&#46;&#57;&#56;&#51;</annotation></semantics></math></span>**: BFP and the molecular index may largely share a dependence on editor dose. This is evidence of association, not proof that BFP independently measures editing.
+
+![Figure 14. Optical–molecular relationships across editor doses.](/assets/images/submission-20261017/measurement/measurement-figure14-optical-molecular-association.png)
+
+*Figure 14. Across 12 matched S10 wells, the C280 molecular index tracks editor dose and BFP-positive fraction more closely than reporter RAS.*
+
+### 6.5 Can those signals predict held-out molecular observations?
+
+To move beyond a correlation plot, we fitted six simple, prespecified models: a training-mean baseline; RAS alone; BFP-positive fraction alone; linear editor dose alone; RAS plus BFP; and editor dose plus BFP. For prediction, the endpoint was the **Raw C280 Peak Index**, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>Y</mi><mi>w</mi></msub><mo>=</mo><msub><mi>M</mi><mi>w</mi></msub><mo>+</mo><mn>0.0303829</mn></mrow><annotation encoding="application/x-tex">&#89;&#95;&#119;&#61;&#77;&#95;&#119;&#43;&#48;&#46;&#48;&#51;&#48;&#51;&#56;&#50;&#57;</annotation></semantics></math></span>, rather than an index background-corrected using no-editor wells that could themselves be held out. This distinction avoids carrying test-well information into training through the background calculation.
+
+The principal evaluation was **leave-one-dose-out**: for each of six folds, *both* wells at one editor dose were held out, and the model trained on the other ten wells. This is stricter than leaving out only one well, which would leave its same-dose partner in training. All errors below are **raw peak-index units**, not editing-percentage points.
+
+| Held-out prediction model | RMSE |
+|---|---:|
+| Training mean | 0.08380 |
+| Reporter RAS | 0.09015 |
+| **BFP-positive fraction** | **0.01922** |
+| Linear editor dose | 0.01988 |
+| RAS + BFP fraction | 0.01981 |
+| **Editor dose + BFP fraction** | **0.01779** |
+
+**RAS alone performed worse than the training-mean baseline**. BFP fraction and known editor input offered much better prediction *within this particular dose series*, and their combination improved RMSE only modestly. Some held-out predictor values lay outside the respective training ranges; these extrapolations were retained in the evaluation. With only two wells per dose, the current data also cannot establish whether BFP contributes a reproducible dose-independent predictive signal.
+
+![Figure 15. Held-out prediction of the C280 molecular signal.](/assets/images/submission-20261017/measurement/measurement-figure15-prediction-validation.png)
+
+*Figure 15. Leave-one-dose-out validation compares six models and shows that BFP-based relative prediction outperforms RAS-only prediction in S10.*
+
+### 6.6 What remains before PER can be reported
+
+Layer 3 has now established a candidate molecular reference, a quality-controlled relative chromatogram readout, well-level optical pairing, and genuine dose-level holdout tests. **It has not established an absolute reporter-RNA editing percentage.** That would require reporter RNA samples with independently known edited fractions, a calibrated relationship between those fractions and molecular assay response, a compatible optical-to-molecular mapping, and validation on independent samples or experimental conditions.
+
+For that reason, SONAR currently reports **relative molecular prediction**, while the absolute **PER output remains *not calibrated***. We also do not transfer the S7 AC/INAC-derived RES curve directly to S10; doing so would assume an untested equivalence between artificial DNA-reference mixtures and the OpenA-1 editor-dose experiment. Keeping these outputs distinct is part of the measurement result, not an omission to hide.
+
+## 7. Beyond APOE4 — Making SONAR Reusable
+
+SONAR was developed around APOE4, but its central contribution is a **transferable measurement strategy**. The recognition/editing window can be redesigned for another RNA target, while the fluorescence-reference architecture and four-layer analysis remain a starting framework. A new reporter or experimental context would, however, need matched background controls, its own reference calibration, and molecular validation; the numerical constants from our S7/S10 experiments are **not** universal settings.
+
+Our modular reporter design, analysis workflow, and reusable resources are introduced on the [Contribution page](/contribution).
+
+## 8. Conclusion — From Fluorescence to Evidence
+
+A green reporter signal makes RNA editing visible. **SONAR asks what that signal can justifiably mean.** Layer 0 defines the events and background; Layer 1 turns paired fluorescence into a transparent, expression-normalized RAS; Layer 2 maps RAS onto an empirically measured AC/INAC reference equivalent, RES; and Layer 3 tests how optical signals relate to an independent reporter-RNA molecular readout.
+
+Together, these layers turn fluorescence from an isolated observation into a **traceable measurement process** with defined inputs, uncertainty, experimental references, and explicit boundaries. The current evidence supports normalized optical comparison, reference-equivalent calibration within its tested context, and exploratory relative molecular prediction—not an absolute PER. That distinction is central to our goal: **SEE THE EDIT** means not only seeing a signal, but understanding the evidence behind it.
+
+---
 
 ## References
 
-Add verified methods and standards.
+1. Kim JH et al. *High Cleavage Efficiency of a 2A Peptide Derived from Porcine Teschovirus-1 in Human Cell Lines, Zebrafish and Mice.* PLOS ONE (2011). [doi:10.1371/journal.pone.0018556](https://doi.org/10.1371/journal.pone.0018556).
+2. Liu Z et al. *Systematic comparison of 2A peptides for cloning multi-genes in a polycistronic vector.* Scientific Reports (2017). [doi:10.1038/s41598-017-02460-2](https://doi.org/10.1038/s41598-017-02460-2).
+3. Iwamoto M et al. *A General Chemical Method to Regulate Protein Stability in the Mammalian Central Nervous System.* Chemistry & Biology (2010). [doi:10.1016/j.chembiol.2010.07.009](https://doi.org/10.1016/j.chembiol.2010.07.009).
+4. Applied Biosystems. *ABIF File Format* (2006), pp. 52–53. [Technical specification](https://archive.gfjc.fiu.edu/workshops/resources/literature/ABIF_File_Format.pdf).
+5. Kluesner MG et al. *EditR: A Method to Quantify Base Editing from Sanger Sequencing.* The CRISPR Journal (2018). [doi:10.1089/crispr.2018.0014](https://doi.org/10.1089/crispr.2018.0014). Included as methodological context; our site-specific peak-ratio analysis did not run EditR.
