@@ -90,12 +90,18 @@
         if (pixels[(y * width + x) * 4 + 3] > 80) targets.push({ x, y, color: '#9fd0ff' });
       }
     }
+    const cutouts = [...panel.querySelectorAll('.rna-branch__base')].map(base => {
+      const r = base.getBoundingClientRect();
+      return { x:r.left + r.width / 2, y:r.top + r.height / 2, radius:r.width / 2 + 1.5 };
+    });
     for (const path of panel.querySelectorAll('.rna-menu__lead path, .rna-menu__backbone path')) {
       const matrix = path.getScreenCTM();
       if (!matrix) continue;
+      const strandColor = document.body.classList.contains('ot') ? '#e5d4af' : getComputedStyle(path).stroke;
       for (let d = 0, length = path.getTotalLength(); d <= length; d += 5) {
         const point = path.getPointAtLength(d).matrixTransform(matrix);
-        targets.push({ x: point.x - box.left, y: point.y - box.top, color: '#5cffb8' });
+        if (cutouts.some(hole => Math.hypot(point.x - hole.x, point.y - hole.y) <= hole.radius)) continue;
+        targets.push({ x: point.x - box.left, y: point.y - box.top, color: strandColor });
       }
     }
     for (const base of panel.querySelectorAll('.rna-branch__base')) {
@@ -179,6 +185,39 @@
     }
     svg.setAttribute('viewBox', `0 0 ${parseFloat(getComputedStyle(svg).width)} ${origin.height}`);
     svg.querySelectorAll('path').forEach(path => path.setAttribute('d', d));
+    // Keep the glass nodes translucent while removing the strand beneath them.
+    // ResizeObserver repositions these cutouts when labels wrap or fonts load.
+    if (bases.length) {
+      const ns = 'http://www.w3.org/2000/svg';
+      let mask = svg.querySelector('mask');
+      if (!mask) {
+        const defs = document.createElementNS(ns, 'defs');
+        mask = document.createElementNS(ns, 'mask');
+        mask.id = `${panel.id}-node-cutouts`;
+        mask.setAttribute('maskUnits', 'userSpaceOnUse');
+        defs.append(mask);
+        svg.prepend(defs);
+      }
+      const width = parseFloat(getComputedStyle(svg).width);
+      mask.setAttribute('x', '0');
+      mask.setAttribute('y', '0');
+      mask.setAttribute('width', width);
+      mask.setAttribute('height', origin.height);
+      const surface = document.createElementNS(ns, 'rect');
+      surface.setAttribute('width', width);
+      surface.setAttribute('height', origin.height);
+      surface.setAttribute('fill', 'white');
+      mask.replaceChildren(surface);
+      bases.forEach((base, i) => {
+        const hole = document.createElementNS(ns, 'circle');
+        hole.setAttribute('cx', points[i].x);
+        hole.setAttribute('cy', points[i].y);
+        hole.setAttribute('r', base.getBoundingClientRect().width / 2 + 1.5);
+        hole.setAttribute('fill', 'black');
+        mask.append(hole);
+      });
+      svg.querySelectorAll('path').forEach(path => path.setAttribute('mask', `url(#${mask.id})`));
+    }
   }
   const strandObserver = new ResizeObserver(entries => {
     entries.forEach(({ target }) => drawStrand(target.closest('.rna-menu')));
