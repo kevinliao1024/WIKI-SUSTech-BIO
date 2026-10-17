@@ -9,23 +9,35 @@ status_message: Document only materials that are complete, accessible and approv
 
 # Contribution
 
-## Contribution summary
+## SONAR
+
+Pending team review: define what SONAR refers to in this project and document its approved contribution, evidence and access links. Do not infer a function from the name.
+
+## Puffer
+
+Pending team review: define what Puffer refers to in this project and document its approved contribution, evidence and access links. Do not infer a function from the name.
+
+## Contribution record
+
+Use the shared checklist below to document each reviewed contribution. Where relevant, connect reusable resources to the supporting [Measure](/measurement) documentation. Existing resources remain accessible under [Parts](/parts) and [Alternative Platform](/alternative-platform).
+
+### Contribution summary {#contribution-summary}
 
 State the reusable contribution and the problem it helps another team solve.
 
-## Reusable materials
+### Reusable materials {#reusable-materials}
 
 List parts, protocols, code, datasets, educational resources or design assets with stable access links.
 
-## How to reproduce
+### How to reproduce {#how-to-reproduce}
 
 Give the minimum inputs, steps, environment and expected outputs.
 
-## Troubleshooting
+### Troubleshooting {#troubleshooting}
 
 Record known failure modes, limitations and practical fixes.
 
-## License & access
+### License & access {#license-access}
 
 Specify licenses, third-party restrictions and contact or repository information.
 

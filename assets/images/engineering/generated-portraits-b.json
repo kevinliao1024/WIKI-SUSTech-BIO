@@ -1,0 +1,65 @@
+[
+  {
+    "mood": "focussed",
+    "filename": "mascot-focussed.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Intent concentration: both eyebrows sharply angled slightly downward toward the nose, narrowed alert oval eyes looking straight ahead, a small firm straight mouth. Both white-gloved hands are held together just below the chin, fingertips touching in a focused pose. Calm determination rather than anger.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e44e7aa1fcb291026c535ee867ccae038acebc29cb7125bfcd5fa01222731618"
+  },
+  {
+    "mood": "excited",
+    "filename": "mascot-excited.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Bright surprise and anticipation: eyebrows lifted high, very wide round eyes with small white highlights, a joyful small open O-shaped smile, both white-gloved hands pressing lightly to the cheeks. This expression should be instantly readable as excited and eager.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "144e56640e1680b34c8f7bf0b3bcb3562b32e7e75c0e3c0bbf382cfa5e3cfa96"
+  },
+  {
+    "mood": "relieved",
+    "filename": "mascot-relieved.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Visible relief after tension: softly closed crescent eyes, eyebrows relaxed and gently lifted in the middle, a small relaxed curved smile with an open side as if quietly exhaling, one white-gloved hand resting over the upper chest and the other relaxed at the shoulder line. Warm, peaceful relief, not sleeping.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "ea02b0bcd84bbf890e07fce150ef1dac0eeff57c951e24b61fc5738b3a71e49a"
+  },
+  {
+    "mood": "cheering",
+    "filename": "mascot-cheering.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Energetic encouragement: both eyebrows raised with determination, open bright oval eyes looking forward, a broad open cheering smile. One white-gloved fist is raised next to the cheek and the other held near the chest. Keep both hands compact within the silhouette. An encouraging 'you can do it' gesture, with no actual text.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "491678efcda256940d0dec1c9c6e06c1f9b8c1a25cc4960bdbeb17ae3882c707"
+  },
+  {
+    "mood": "skeptical",
+    "filename": "mascot-skeptical.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Clearly skeptical and unconvinced: one eyebrow raised high and the other flat, eyes half-lidded with pupils glancing sideways, a tiny slanted closed mouth. White-gloved arms folded compactly beneath the face, no hand touching the chin. A dry quizzical expression, distinct from concentration or anger.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "5715a359086ee27556afcca4693022cc16fb2f2f09eac418ec1a7e73991bc382"
+  },
+  {
+    "mood": "embarrassed",
+    "filename": "mascot-embarrassed.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Shy embarrassment: eyebrows tilted upward toward the middle, eyes looking slightly downward to one side, a tiny crooked nervous smile, strong pink blush on both cheeks. One white-gloved hand shyly touches the cheek and the other hand is tucked close to the upper chest. No sweat symbols, tears, extra symbols or props.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "02969ae79c2a26a43f35fa33a34aa21685421269d6e2942773990ccd3cc4db4b"
+  },
+  {
+    "mood": "celebrating",
+    "filename": "mascot-celebrating.png",
+    "generation_method": "built-in image_gen",
+    "prompt": "Use case: illustration-story.\nAsset type: one independent square transparent PNG portrait for a small circular website avatar.\nReference image: the supplied image is ONLY a character identity and art-style reference, not an edit target. Create a NEW expression portrait of that same mascot. Preserve its deep navy-purple orca hood, white whale eye patch and white inner brow band, pink face and blush, dark blue outlines, and white gloves.\nStyle: clean flat-color cartoon, simple smooth bold linework, matching the reference, no realistic shading or textures.\nComposition: head and shoulders only, face centered and large; all of the hood, whale features, hands and shoulders remain inside a centered circle of diameter 80% of the square canvas, leaving transparent padding on every side. Avoid tiny detached details. One character only, readable at avatar size.\nBackground: genuinely transparent alpha, no colored or white rectangle and no checkerboard baked into the image.\nNo text, letters, caption, arrows, badges, frames, watermarks or props. Do not include the reference caption.\nExpression: Joyful celebration of a success: both eyes squeezed shut as upside-down crescent smiles, eyebrows lifted softly, a very wide delighted laughing mouth, both white-gloved hands raised close beside the face making small V-for-victory gestures. Keep the fingers and the complete orca hood within the same compact circular silhouette. The expression is triumphant laughter, clearly distinct from open-eyed excitement or a clenched-fist cheering pose. No confetti, trophies or added decoration.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "0f8c14a5c2e40dfc1286f729d9b6a082912c82ee59e0dead1827e4cc293160fa"
+  }
+]

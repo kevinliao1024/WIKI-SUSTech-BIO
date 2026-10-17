@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block body_class %}inner-page engineering-workspace-page{% endblock %}
+{% block reading_navigation %}{% endblock %}
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='reading-orbit/dbtl-wheel.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='reading-back-to-top.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='engineering-workspace.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='engineering-map.css') }}">
+{% endblock %}
+{% block main %}
+<main id="main-content" class="engineering-workspace" data-engineering-workspace data-engineering-view="map" data-content-source="{{ content.source_label }}">
+  {% include 'components/engineering_map.html' %}
+  <aside class="engineering-controls" aria-label="Engineering navigation" hidden>
+    <h1 id="engineering-title">Engineering</h1>
+    <div class="dbtl-directory">{% include 'components/dbtl_wheel.html' %}</div>
+    <nav class="engineering-cycles" aria-label="POD cycles" data-engineering-cycles>
+      <a href="#pod-cycle-01" data-engineering-cycle="01" aria-current="location"><span>Cycle 01</span></a>
+      <a href="#pod-cycle-02" data-engineering-cycle="02"><span>Cycle 02</span></a>
+    </nav>
+  </aside>
+  <section class="engineering-paper" aria-labelledby="engineering-title" hidden>
+    <div class="engineering-scroll" id="engineering-reading" data-engineering-scroll tabindex="0" role="region" aria-label="Engineering article, scroll to read">
+      <div class="engineering-copy">
+        {% if content.metadata.get('status') %}
+        <div class="content-status" data-content-status="{{ content.metadata.status }}">
+          <strong>{{ content.metadata.get('status_label', 'Content status') }}</strong>
+          <p>{{ content.metadata.get('status_message', '') }}</p>
+        </div>
+        {% endif %}
+        <article class="markdown-content">{{ rendered_markdown }}</article>
+      </div>
+    </div>
+  </section>
+  {% include 'components/engineering_map_back.html' %}
+</main>
+<noscript><style>.engineering-map { display: none !important; } .engineering-workspace { position: static; display: block; } .engineering-paper[hidden] { display: block !important; } body.engineering-workspace-page { height: auto; overflow: auto; }</style></noscript>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='engineering-map.js') }}" defer></script>
+<script src="{{ url_for('static', filename='engineering-workspace.js') }}" defer></script>
+{% endblock %}

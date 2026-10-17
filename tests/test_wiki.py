@@ -15,9 +15,11 @@ PUBLIC_ROUTES = [
     "/team",
     "/attributions",
     "/description",
+    "/blueprint",
     "/engineering",
     "/results",
     "/contribution",
+    "/future",
     "/parts",
     "/experiments",
     "/notebook",
@@ -41,9 +43,11 @@ PLACEHOLDER_ROUTES = [
     "/team",
     "/attributions",
     "/description",
+    "/blueprint",
     "/engineering",
     "/results",
     "/contribution",
+    "/future",
     "/parts",
     "/experiments",
     "/notebook",
@@ -56,6 +60,12 @@ PLACEHOLDER_ROUTES = [
     "/education",
     "/inclusivity",
     "/sustainability",
+]
+
+ENGINEERING_PARTS = [
+    "pod", "cetus", "integrated-orca", "gfa", "mre", "aso", "cre-loxp",
+    "deliver", "measure", "model-rna-seq", "model-puf", "model-apobec",
+    "model-lamar", "model-whole-body",
 ]
 
 
@@ -238,6 +248,75 @@ class WikiRoutesTest(unittest.TestCase):
                 page = self.get_text(route)
                 self.assertIn(f'data-content-source="{source}"', page)
                 self.assertIn('class="markdown-content"', page)
+
+    def test_engineering_map_and_reader_navigation_contract(self):
+        page = self.get_text("/engineering")
+        self.assertIn('data-engineering-view="map"', page)
+        self.assertEqual(len(re.findall(r'\bdata-engineering-map(?=[\s>])', page)), 1)
+        self.assertEqual(re.findall(r'\bdata-engineering-group="([^"]+)"', page),
+                         ["edit", "control", "deliver", "measure", "model"])
+        self.assertIn('data-selected-group=""', page)
+        buttons = re.findall(r'<button\b[^>]*data-engineering-group="[^"]+"[^>]*>', page)
+        self.assertTrue(all('aria-expanded="false"' in button for button in buttons))
+        branches = re.findall(r'<div\b[^>]*data-map-branch-group="[^"]+"[^>]*>', page)
+        self.assertEqual(len(branches), 3)
+        self.assertTrue(all(re.search(r'\bhidden(?=[\s>])', branch) for branch in branches))
+        map_section = re.search(r'<section\b[^>]*data-engineering-map\s[^>]*>(.*?)</section>', page, re.S)
+        self.assertIsNotNone(map_section)
+        self.assertNotRegex(map_section.group(1), r'<(?:img|image|defs)\b')
+        self.assertNotIn('engineering-map-water-art', map_section.group(1))
+        self.assertRegex(map_section.group(1), r'<h1\b[^>]*id="engineering-map-title"[^>]*>Engineering</h1>')
+        visible_copy = re.sub(r'<[^>]+>', '', map_section.group(1))
+        for removed in ["Ideas in motion", "Choose a cycle", "Choose a branch, then a cycle."]:
+            self.assertNotIn(removed, visible_copy)
+        self.assertNotIn("data-map-hint", page)
+        self.assertNotIn("data-map-cycle-title", page)
+        self.assertRegex(page, r'<svg\b[^>]*data-map-lines(?=[\s>])')
+        config = re.search(r'<script\b[^>]*data-engineering-map-data[^>]*>(.*?)</script>', page, re.S)
+        self.assertIsNotNone(config)
+        groups = json.loads(config.group(1))
+        self.assertEqual([part["id"] for group in groups for part in group["parts"]], ENGINEERING_PARTS)
+        leaf_parts = [part for part in ENGINEERING_PARTS if part not in {"deliver", "measure"}]
+        self.assertCountEqual(re.findall(r'\bdata-engineering-part="([^"]+)"', page), leaf_parts)
+        for direct in ["deliver", "measure"]:
+            button = re.search(rf'<button\b[^>]*data-engineering-group="{direct}"[^>]*>', page)
+            self.assertIsNotNone(button)
+            self.assertIn('aria-controls="engineering-map-cycle-picker"', button.group(0))
+        self.assertEqual(re.findall(r'\bdata-map-cycle="([^"]+)"', page), ["01", "02"])
+        cycle_links = re.findall(r'<a\b[^>]*data-map-cycle="[^"]+"[^>]*>(.*?)</a>', page, re.S)
+        self.assertEqual([" ".join(re.sub(r'<[^>]+>', '', label).split()) for label in cycle_links],
+                         ["Cycle 01", "Cycle 02"])
+        for label in cycle_links:
+            self.assertRegex(label, r'<(span|strong)\b[^>]*class="map-label"[^>]*>Cycle 0[12]</\1>')
+        self.assertIn('id="engineering-map-cycle-picker" aria-label="Engineering cycles"', page)
+        self.assertEqual(re.findall(r'\bdata-engineering-cycle="([^"]+)"', page), ["01", "02"])
+        self.assertEqual(len(re.findall(r'\bdata-engineering-map-back(?=[\s>])', page)), 1)
+        self.assertGreater(page.index("data-engineering-cycles"), page.index("data-dbtl-wheel"))
+        self.assertNotIn("engineering-module-nav", page)
+        self.assertNotIn("data-reading-orbit", page)
+        self.assertNotRegex(page, r"<footer\b")
+
+    def test_engineering_parts_have_two_cycles_and_distinct_portraits(self):
+        page = self.get_text("/engineering")
+        article = re.search(r'<article\b[^>]*class="markdown-content"[^>]*>(.*?)</article>', page, re.S)
+        self.assertIsNotNone(article)
+        ids = re.findall(r'\bid="([^"]+)"', article.group(1))
+        self.assertEqual(len(ids), len(set(ids)))
+        cycles = [f"{part}-cycle-{number}" for part in ENGINEERING_PARTS for number in ["01", "02"]]
+        self.assertCountEqual([anchor for anchor in ids if re.fullmatch(r".+-cycle-\d{2}", anchor)], cycles)
+        for cycle in cycles:
+            with self.subTest(cycle=cycle):
+                for stage in ["design", "build", "test", "learn"]:
+                    self.assertIn(f"{cycle}-{stage}", ids)
+        for part in ENGINEERING_PARTS[9:]:
+            self.assertRegex(article.group(1), rf'<h3\b[^>]*id="{part}"')
+        portraits = re.findall(r'<svg\b[^>]*\bdata-dbtl-portrait="[^"]+"[^>]*>.*?</svg>', page, re.S)
+        self.assertEqual(len(portraits), 28)
+        self.assertCountEqual([re.search(r'\bdata-dbtl-cycle="([^"]+)"', portrait).group(1)
+                               for portrait in portraits], cycles)
+        sources = [re.search(r'<image\b[^>]*\bhref="([^"]+)"', portrait).group(1)
+                   for portrait in portraits]
+        self.assertEqual(len(set(sources)), 28)
 
     def test_markdown_image_is_resolved_through_assets_route(self):
         page = self.get_text("/description")

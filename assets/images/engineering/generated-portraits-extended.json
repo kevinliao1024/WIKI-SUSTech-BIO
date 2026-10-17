@@ -1,0 +1,80 @@
+[
+  {
+    "mood": "patient",
+    "filename": "mascot-patient.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: PATIENT AND SERENE. Both eyes softly half-open, looking directly ahead with calm relaxed eyelids, eyebrows low and gently curved, a tiny warm closed smile. Head upright with a slight restful tilt, shoulders relaxed. Both white-gloved hands loosely folded one over the other at the lower center of the chest, fingers relaxed. This is quietly waiting patiently, not proud with hands on hips, not sleepy with closed eyes, not listening with hand near ear, no yawn and no cheek-touch.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "09b4dc1462609ed31cc3394ffd75829eb749f5956c6dca5f4cc22e46e2cccf83",
+    "alpha": true,
+    "bytes": 1162855
+  },
+  {
+    "mood": "calculating",
+    "filename": "mascot-calculating.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: CALCULATING IN HER HEAD. Both eyes open and looking strongly upward to one side, one eyebrow raised, the other slightly pinched, small pursed side-mouth. She visibly counts on her fingers in front of her chest: one hand held palm-inward with three fingers partly extended, the other index finger touches one of those fingers. Both hands stay low enough not to obscure the face. No glasses, no raised aha index beside face, no chin-touch, no objects, no numbers, no equations. Clearly a finger-counting pose rather than a generic thinking face.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "eabc7f6bfe59ddb4b65b3335b7c9744b427a26399a63bdb2dc70afe79679390b",
+    "alpha": true,
+    "bytes": 1081483
+  },
+  {
+    "mood": "hopeful",
+    "filename": "mascot-hopeful.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: HOPEFUL. Both very large open eyes look slightly upward with bright gentle white glints, inner eyebrows lifted into a tender yearning arch, cheeks pink, tiny tentative closed smile. Both white-gloved hands are clasped with fingers interlaced at the upper chest in a wishing gesture. Lean forward slightly with hopeful anticipation. Eyes MUST be open, mouth small and closed, so it is visibly different from laughing delighted eyes and a broad happy mouth. No tears, no hearts, no stars, no symbols.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "a41f7f4b567b4a5b90c191f833fcec2adb5093d2d9ab50c99c774676b66c8579",
+    "alpha": true,
+    "bytes": 1094272
+  },
+  {
+    "mood": "puzzled",
+    "filename": "mascot-puzzled.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: PUZZLED SHRUG. Both eyes open with slightly mismatched eyelids looking sideways, one eyebrow high and the other low. A tiny sideways diamond-shaped open mouth. Both shoulders raised into a clear shrug, both white-gloved hands held palms-up, one at each side below cheek level, elbows close to torso. This is a questioning palms-up shrug; absolutely no scratching the head, no touching chin, no hands cupping ears, no glasses, no question marks or symbols. Make the shrug unmistakable and keep the hands visible inside the square.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "113427f7f7cf32e30f179b0d1d8033c1e95efd317626c73a426b5c6d966da45f",
+    "alpha": true,
+    "bytes": 1079018
+  },
+  {
+    "mood": "friendly",
+    "filename": "mascot-friendly.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: FRIENDLY HELLO. Head straight toward viewer, both eyes open and relaxed with soft smiling lower eyelids, eyebrows gently raised, warm small open smile. One white-gloved hand is lifted beside the hood in a welcoming open-palm wave, with four fingers and thumb naturally spread, palm facing the viewer. Other hand stays out of view. No wink, no V gesture, no thumbs-up, no clenched fist, no raised single finger. Welcoming eye contact, friendly gentle greeting.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "1a140670c5d821b8b8bd88d1433156c171c92e9f551c6730dc0eed3a8ee07cc7",
+    "alpha": true,
+    "bytes": 1184308
+  },
+  {
+    "mood": "amazed",
+    "filename": "mascot-amazed.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-inspired.png",
+    "prompt": "Use case: stylized-concept. Asset type: one standalone transparent PNG portrait for a small circular website avatar. Input image is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Create a brand-new square head-and-shoulders/chest-up portrait of exactly the same cute chibi orca-hood mascot girl: rounded human-like pale pink face, big rosy cheeks, dark navy eyes and thick clean navy outlines, navy-purple orca hood with a clean large white orca spot plus the white forehead band, matching purple outfit and white gloves. Keep the same recognizable character and navy-purple/pink/white palette. Flat crisp cartoon color with subtle simple cel shading. Face centered and large, not a full body. Keep hood and gesture inside the central 80% of the square, with transparent margins. Genuinely transparent background with alpha, never a painted white/black/checkerboard backdrop. No text in any language, no letters, no captions, no arrows, no badges, no logos, no background objects, no decorative punctuation. One portrait only, no contact sheet. Make the specific expression and pose very clear even at small size. Expression and pose: AMAZED WITH WONDER. Both eyes open exceptionally wide with star-shaped white glints INSIDE the dark pupils, eyebrows arched high, head leaning back slightly. One white-gloved hand lightly covers a small astonished open mouth, with fingertips visible over the lower face; the other hand lies flat on the chest. Expression of breathless wonder. This must not use both palms on cheeks (already a different portrait), must not show both hands raised or a laughing mouth, and must not have any stars or sparkles outside the eyes. No symbols or punctuation.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "55e74dcfe67fac39a68ac2d55ddece8429b17b214b908f2339b8fc735031a385",
+    "alpha": true,
+    "bytes": 1148394
+  }
+]

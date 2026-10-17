@@ -19,14 +19,16 @@
 | Team | `docs/team/team.md` |
 | Attributions | `docs/team/attributions.md` |
 | Description | `docs/project/description.md` |
+| Blueprint | `docs/project/blueprint.md` |
 | Engineering | `docs/project/engineering.md` |
 | Results | `docs/project/results.md` |
 | Contribution | `docs/project/contribution.md` |
-| Parts | `docs/project/parts.md` |
-| Experiments | `docs/wet-lab/experiments.md` |
+| Future | `docs/project/future.md` |
+| Parts（保留直接入口） | `docs/project/parts.md` |
+| Experiment | `docs/wet-lab/experiments.md` |
 | Notebook | `docs/wet-lab/notebook.md` |
-| Measurement | `docs/wet-lab/measurement.md` |
-| Alternative Platform | `docs/wet-lab/alternative-platform.md` |
+| Measure | `docs/wet-lab/measurement.md` |
+| Alternative Platform（保留直接入口） | `docs/wet-lab/alternative-platform.md` |
 | Safety & Security | `docs/wet-lab/safety-and-security.md` |
 | Dry Lab Overview | `docs/dry-lab/dry-lab.md` |
 | Model | `docs/dry-lab/model.md` |
@@ -41,6 +43,15 @@
 | Sustainability | `docs/human-practices/sustainability.md` |
 
 Homepage 是特殊动画页面，仍由 Wiki 开发者维护，不在这张表里。
+
+Project 导航顺序为 Description → Blueprint → Engineering → Results → Contribution → Future。
+Engineering 先展示 Edit、Control、Deliver、Measure、Model 思维导图；悬停展开分支，选择 Cycle 进入正文，Back 返回导图。每个分支保留两轮 DBTL 记录，旧锚点继续可用。
+Results 分为 Key Findings、Functional Validation 和 Integrated Conclusions；Contribution 分为 SONAR 和 Puffer。
+Future 区分 Short-Term: Platform Optimization 与 Long-Term: Therapeutic Translation。
+
+Wet Lab 只显示 Experiment、Notebook、Measure、Safety & Security。导航名称简化后，原路径
+`/experiments`、`/measurement` 与 `/safety-and-security` 仍保留；`/parts` 与
+`/alternative-platform` 也继续可访问，并从相关 Project 章节链接进入。
 
 ## 文件开头怎么写
 

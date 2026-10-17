@@ -23,7 +23,7 @@
   <body class="{% block body_class %}inner-page{% endblock %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
     {% block navigation %}{% include 'menu.html' %}{% endblock %}
-    {% if request.endpoint != 'home' %}{% include 'components/reading_orbit.html' %}{% endif %}
+    {% block reading_navigation %}{% if request.endpoint != 'home' %}{% include 'components/reading_orbit.html' %}{% endif %}{% endblock %}
 
     {% block main %}
     <main id="main-content">

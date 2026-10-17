@@ -1,31 +1,67 @@
-<nav class="dbtl-wheel" data-dbtl-wheel aria-label="Design Build Test Learn stages">
-  <div class="dbtl-wheel__eyebrow">THE ENGINEERING LOOP</div>
-  <label class="dbtl-wheel__cycle">Iteration
-    <select data-dbtl-cycle aria-label="Engineering iteration">
-      <option value="cycle-01">Cycle 01</option>
-      <option value="cycle-02">Cycle 02</option>
-    </select>
-  </label>
+<nav class="dbtl-wheel" data-dbtl-wheel data-part="pod" data-cycle="pod-cycle-01" data-stage="design" aria-label="Engineering cycle: Design, Build, Test, Learn">
   <div class="dbtl-wheel__dial">
-    <svg class="dbtl-wheel__orbit" viewBox="0 0 220 220" fill="none" aria-hidden="true">
-      <circle class="dbtl-wheel__guide" cx="110" cy="110" r="69"/>
-      <circle class="dbtl-wheel__guide" cx="110" cy="110" r="56"/>
-      <g class="dbtl-wheel__rotor">
-        <path class="dbtl-wheel__arc" d="M61 62A69 69 0 0 1 159 62"/>
-        <path class="dbtl-wheel__ribbon" d="M110 45C156 45 180 88 153 128S79 171 69 133 105 75 131 94 133 132 110 132"/>
-        <ellipse class="dbtl-wheel__ribbon dbtl-wheel__ribbon--fine" cx="110" cy="110" rx="43" ry="19" transform="rotate(-42 110 110)"/>
-        <path class="dbtl-wheel__pointer" d="m110 32 5 9h-10z"/>
+    <svg class="dbtl-wheel__orbit" viewBox="0 0 320 320" fill="none" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="dbtl-mascot-face"><circle cx="160" cy="160" r="59"/></clipPath>
+      </defs>
+      <path class="dbtl-wheel__shadow" d="M160 45C194 43 214 59 236 81C263 106 279 130 275 164C274 198 257 219 233 240C210 263 185 279 153 273C120 273 95 259 76 234C51 212 41 187 45 153C42 121 61 95 83 75C107 51 132 43 160 45Z" transform="translate(0 7)"/>
+      <g class="dbtl-wheel__spin dbtl-wheel__spin--outer">
+        <path class="dbtl-wheel__rim" d="M160 45C194 43 214 59 236 81C263 106 279 130 275 164C274 198 257 219 233 240C210 263 185 279 153 273C120 273 95 259 76 234C51 212 41 187 45 153C42 121 61 95 83 75C107 51 132 43 160 45Z"/>
+        <path class="dbtl-wheel__shine" d="M79 113Q88 94 106 83M113 79L119 76M223 222Q205 239 185 244"/>
+        <path class="dbtl-wheel__ink" d="M73 186Q77 202 87 212M235 108L241 121M127 255L143 257"/>
+        <circle class="dbtl-wheel__bubble" cx="231" cy="184" r="5"/>
+        <circle class="dbtl-wheel__bubble dbtl-wheel__bubble--small" cx="111" cy="102" r="3"/>
       </g>
-      <circle class="dbtl-wheel__nucleus" cx="110" cy="110" r="5"/>
+      <path class="dbtl-wheel__inner-field" d="M159 83C182 80 206 94 221 112C239 134 241 155 234 179C229 203 208 222 183 234C156 242 132 235 111 222C90 208 80 183 83 156C79 132 94 109 114 95C129 86 145 82 159 83Z"/>
+      <circle class="dbtl-wheel__core" cx="160" cy="160" r="62"/>
+      <g class="dbtl-wheel__mascot" clip-path="url(#dbtl-mascot-face)">
+        {% set cycle_portraits = [
+          ('pod-cycle-01', 'thinking', '125 140 460 460', 652, 1024),
+          ('pod-cycle-02', 'listening', '460 100 480 480', 1024, 971),
+          ('cetus-cycle-01', 'sleepy', '195 100 470 470', 871, 1024),
+          ('cetus-cycle-02', 'standing', '1600 475 790 790', 3952, 2773),
+          ('integrated-orca-cycle-01', 'playful', '1430 530 900 900', 3952, 2773),
+          ('integrated-orca-cycle-02', 'curious', '0 0 1254 1254', 1254, 1254),
+          ('gfa-cycle-01', 'delighted', '0 0 1254 1254', 1254, 1254),
+          ('gfa-cycle-02', 'winking', '0 0 1254 1254', 1254, 1254),
+          ('mre-cycle-01', 'surprised', '0 0 1254 1254', 1254, 1254),
+          ('mre-cycle-02', 'determined', '0 0 1254 1254', 1254, 1254),
+          ('aso-cycle-01', 'proud', '0 0 1254 1254', 1254, 1254),
+          ('aso-cycle-02', 'confused', '0 0 1254 1254', 1254, 1254),
+          ('cre-loxp-cycle-01', 'inspired', '0 0 1254 1254', 1254, 1254),
+          ('cre-loxp-cycle-02', 'focussed', '0 0 1254 1254', 1254, 1254),
+          ('deliver-cycle-01', 'excited', '0 0 1254 1254', 1254, 1254),
+          ('deliver-cycle-02', 'relieved', '0 0 1254 1254', 1254, 1254),
+          ('measure-cycle-01', 'cheering', '0 0 1254 1254', 1254, 1254),
+          ('measure-cycle-02', 'skeptical', '0 0 1254 1254', 1254, 1254),
+          ('model-rna-seq-cycle-01', 'embarrassed', '0 0 1254 1254', 1254, 1254),
+          ('model-rna-seq-cycle-02', 'celebrating', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-01', 'analytical', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-02', 'triumphant', '0 0 1254 1254', 1254, 1254),
+          ('model-apobec-cycle-01', 'patient', '0 0 1254 1254', 1254, 1254),
+          ('model-apobec-cycle-02', 'calculating', '0 0 1254 1254', 1254, 1254),
+          ('model-lamar-cycle-01', 'hopeful', '0 0 1254 1254', 1254, 1254),
+          ('model-lamar-cycle-02', 'puzzled', '0 0 1254 1254', 1254, 1254),
+          ('model-whole-body-cycle-01', 'friendly', '0 0 1254 1254', 1254, 1254),
+          ('model-whole-body-cycle-02', 'amazed', '0 0 1254 1254', 1254, 1254)
+        ] %}
+        {% for cycle, mood, crop, width, height in cycle_portraits %}
+        <svg x="100" y="100" width="120" height="120" viewBox="{{ crop }}" data-dbtl-cycle="{{ cycle }}" data-dbtl-portrait="{{ mood }}"{% if not loop.first %} class="is-hidden"{% endif %}>
+          <image href="{{ url_for('assets', filename='images/engineering/mascot-' + mood + '.png') }}" width="{{ width }}" height="{{ height }}"/>
+        </svg>
+        {% endfor %}
+      </g>
+      <g class="dbtl-wheel__rotor">
+        <path class="dbtl-wheel__arc-outline" d="M91 88C125 55 181 50 218 76"/>
+        <path class="dbtl-wheel__arc" d="M91 88C125 55 181 50 218 76"/>
+        <path class="dbtl-wheel__pointer" d="m215 61 16 25-29-3 11-8Z"/>
+        <path class="dbtl-wheel__spark" d="m235 48 5-8m6 20 10-3m-28-18 1-9"/>
+        <path class="dbtl-wheel__spark-trail" d="m83 79-6 6m12-13-3 3"/>
+      </g>
     </svg>
-    <a class="dbtl-wheel__stage dbtl-wheel__stage--design" href="#cycle-01-design" data-dbtl-stage="design"><b>D</b><span>Design</span></a>
-    <a class="dbtl-wheel__stage dbtl-wheel__stage--build" href="#cycle-01-build" data-dbtl-stage="build"><b>B</b><span>Build</span></a>
-    <a class="dbtl-wheel__stage dbtl-wheel__stage--test" href="#cycle-01-test" data-dbtl-stage="test"><b>T</b><span>Test</span></a>
-    <a class="dbtl-wheel__stage dbtl-wheel__stage--learn" href="#cycle-01-learn" data-dbtl-stage="learn"><b>L</b><span>Learn</span></a>
-  </div>
-  <p class="dbtl-wheel__readout"><span data-dbtl-number>01 / 04</span><strong data-dbtl-current>Design</strong></p>
-  <p class="dbtl-wheel__hint">Choose a stage to follow the cycle.</p>
-  <div class="dbtl-wheel__overview">
-    {% for item in content.toc if item.level == 2 %}<a href="#{{ item.id }}">{{ item.name }}</a>{% endfor %}
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--design" href="#pod-cycle-01-design" data-dbtl-stage="design" aria-label="Design, POD, Cycle 01" aria-current="location"><span>Design</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--build" href="#pod-cycle-01-build" data-dbtl-stage="build" aria-label="Build, POD, Cycle 01"><span>Build</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--test" href="#pod-cycle-01-test" data-dbtl-stage="test" aria-label="Test, POD, Cycle 01"><span>Test</span></a>
+    <a class="dbtl-wheel__stage dbtl-wheel__stage--learn" href="#pod-cycle-01-learn" data-dbtl-stage="learn" aria-label="Learn, POD, Cycle 01"><span>Learn</span></a>
   </div>
 </nav>
