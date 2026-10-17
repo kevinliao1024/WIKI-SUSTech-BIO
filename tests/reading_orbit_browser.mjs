@@ -33,6 +33,8 @@ const engineeringGroups = {
   model:['model-rna-seq','model-puf','model-apobec','model-lamar','model-whole-body']
 };
 const engineeringParts = Object.values(engineeringGroups).flat();
+const cycleNumbers = part => Array.from({length: part === 'model-puf' ? 6 : part.startsWith('model-') ? 5 : 2}, (_, index) => String(index + 1).padStart(2, '0'));
+const cycleIds = part => cycleNumbers(part).map(number => `${part}-cycle-${number}`);
 async function engineeringState() {
   return page.evaluate(() => {
     const scroller = document.querySelector('[data-engineering-scroll]');
@@ -68,12 +70,12 @@ async function assertEngineeringShell(view='map') {
   assert.equal(await page.locator('[data-engineering-map]').count(),1);
   assert.equal(await page.locator('[data-engineering-map-back]').count(),1);
   assert.equal(await page.locator('.engineering-module-nav').count(),0,'The former bottom navigation must be removed.');
-  assert.equal(await page.locator('[data-engineering-cycle]').count(),2);
+  if (view==='map') assert.equal(await page.locator('[data-engineering-cycle]').count(),0);
   assert.equal(await page.locator('[data-dbtl-wheel] [class*="inner-arrow"], [data-dbtl-wheel] .dbtl-wheel__thread').count(),0);
   await assertEngineeringView(view);
   const sources = await page.locator('svg[data-dbtl-portrait] image').evaluateAll(images=>images.map(image=>image.getAttribute('href')));
-  assert.equal(sources.length,28);
-  assert.equal(new Set(sources).size,28,'Each cycle must have a distinct portrait source.');
+  assert.equal(sources.length,44);
+  assert.equal(new Set(sources).size,28,'Added records reuse the supplied portrait artwork.');
   if (view==='map') {
     assert.deepEqual(await page.locator('[data-engineering-group]').evaluateAll(elements=>elements.map(el=>el.dataset.engineeringGroup)),Object.keys(engineeringGroups));
     const groups = await page.locator('[data-engineering-map-data]').evaluate(el=>JSON.parse(el.textContent));
@@ -83,8 +85,8 @@ async function assertEngineeringShell(view='map') {
     assert.doesNotMatch(await page.locator('[data-engineering-map]').innerText(),/Ideas in motion|Choose a cycle|Choose a branch, then a cycle\./i);
     assert.equal(await page.locator('[data-map-hint], [data-map-cycle-title]').count(),0);
     assert.equal(await page.locator('[data-engineering-map] img, [data-engineering-map] image, [data-map-lines] defs, .engineering-map-water-art, .stream-droplet').count(),0);
-    assert.deepEqual(await page.locator('[data-map-cycle]').evaluateAll(elements=>elements.map(el=>el.textContent.trim().replace(/\s+/g,' '))),['Cycle 01','Cycle 02']);
-    assert.equal(await page.locator('[data-map-cycle] > .map-label').count(),2);
+    assert.equal(await page.locator('[data-map-cycle]').count(),0,'Cycle links are generated for the selected module.');
+    assert.equal(await page.locator('[data-map-cycle] > .map-label').count(),0);
     return;
   }
   await engineeringPortrait();
@@ -102,7 +104,7 @@ async function assertEngineeringShell(view='map') {
 }
 async function assertEngineeringMapCollapsed() {
   assert.equal(await page.locator('[data-engineering-map]').getAttribute('data-selected-group'),'');
-  assert.deepEqual(await page.locator('[data-engineering-group]').evaluateAll(elements=>elements.map(el=>el.getAttribute('aria-expanded'))),Array(5).fill('false'));
+  assert.deepEqual(await page.locator('[data-engineering-expand]').evaluateAll(elements=>elements.map(el=>el.getAttribute('aria-expanded'))),Array(5).fill('false'));
   assert.equal(await page.locator('[data-map-branch-group]:visible, [data-map-cycle]:visible').count(),0);
   await assertEngineeringStreams(false);
 }
@@ -169,7 +171,7 @@ async function engineeringPortrait() {
       sources:portraits.map(el=>el.querySelector('image').getAttribute('href')),
       visible:visible.map(el=>({name:el.dataset.dbtlPortrait,source:el.querySelector('image').getAttribute('href')}))};
   });
-  assert.equal(portrait.total,28,'Each of the twenty-eight cycles must have its own portrait.');
+  assert.equal(portrait.total,44,'Every authored cycle must have a portrait SVG.');
   assert.equal(new Set(portrait.sources).size,28,'Cycle portraits must use twenty-eight distinct image assets.');
   assert.equal(portrait.visible.length,1,'Exactly one portrait SVG must be visible.');
   assert.equal(portrait.visible[0].name,portrait.selected,'The visible portrait must match the wheel state.');
@@ -204,12 +206,12 @@ async function assertEngineeringContext(part,number) {
   })));
   const visiblePanels = panels.filter(panel=>panel.visible);
   assert.deepEqual(visiblePanels.map(panel=>panel.part),[part],'Only the selected part may display its article panel.');
-  assert.deepEqual(visiblePanels[0].cycles,[`${part}-cycle-01`,`${part}-cycle-02`],
-    'The selected part panel must contain exactly its own two cycle headings.');
+  assert.deepEqual(visiblePanels[0].cycles,cycleIds(part),
+    'The selected part panel must contain all and only its authored cycle headings.');
   assert.ok(panels.every(panel=>panel.part===part ? !panel.hidden : panel.hidden),
     'Every other part and supplementary panel must remain hidden.');
   assert.deepEqual(await page.locator('[data-engineering-cycle]').evaluateAll(elements=>elements.map(el=>el.getAttribute('href'))),
-    [`#${part}-cycle-01`,`#${part}-cycle-02`]);
+    cycleIds(part).map(id=>`#${id}`));
   assert.equal(await page.locator('[data-engineering-cycle][aria-current]').getAttribute('data-engineering-cycle'),number);
   for (const name of ['design','build','test','learn']) {
     assert.equal(await page.locator(`[data-dbtl-stage="${name}"]`).getAttribute('href'),`#${part}-cycle-${number}-${name}`);
@@ -242,20 +244,22 @@ async function openEngineeringPart(part,number='01',interaction=page.viewportSiz
   await assertEngineeringView('map');
   const mapHash = new URL(page.url()).hash;
   const group = Object.keys(engineeringGroups).find(group=>engineeringGroups[group].includes(part));
-  const parent = page.locator(`[data-engineering-group="${group}"]`);
+  const parent = page.locator(`[data-engineering-${interaction==='click' ? 'expand' : 'group'}="${group}"]`);
   await parent[interaction]();
   await page.waitForFunction(group=>document.querySelector('[data-engineering-map]').dataset.selectedGroup===group,group);
   await assertEngineeringView('map');
   if (engineeringGroups[group].length>1) {
     const leaf = page.locator(`[data-engineering-map] [data-engineering-part="${part}"]`);
-    await leaf[interaction]();
+    // Direct label clicks now enter Cycle 01; focus/hover still explore the
+    // optional cycle chooser without entering the article.
+    await leaf[interaction==='click' ? 'focus' : 'hover']();
   }
   await page.waitForFunction(part=>document.querySelector('[data-map-cycle="01"]').getAttribute('href')===`#${part}-cycle-01` && !document.querySelector('#engineering-map-cycle-picker').hidden,part);
   await assertEngineeringView('map');
   assert.equal(new URL(page.url()).hash,mapHash,'Expanding a part must not enter or navigate the reader.');
   const cycles = page.locator('[data-map-cycle]');
   assert.deepEqual(await cycles.evaluateAll(elements=>elements.map(el=>el.getAttribute('href'))),
-    [`#${part}-cycle-01`,`#${part}-cycle-02`]);
+    cycleIds(part).map(id=>`#${id}`));
   assert.equal(await page.locator('[data-map-cycle="01"]').isVisible(),true);
   assert.equal(await page.locator('[data-map-cycle="02"]').isVisible(),true);
   await assertEngineeringStreams();
@@ -333,7 +337,9 @@ async function engineeringBoundaryNavigation() {
   await reader.focus();
   await reader.evaluate(el=>el.scrollTo({top:el.scrollHeight,behavior:'instant'}));
   await page.keyboard.press('PageDown');
-  await assertEngineeringInstant('cetus');
+  await assertEngineeringContext('cetus','01');
+  assert.equal((await engineeringState()).scroll,0,'Boundary navigation refreshes the complete article from its top.');
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'engineering-reading');
   await assertEngineeringContext('cetus','01');
   assert.equal(new URL(page.url()).hash,'#cetus');
 
@@ -352,7 +358,7 @@ async function engineeringBoundaryNavigation() {
   await reader.focus();
   await reader.evaluate(el=>el.scrollTo({top:el.scrollHeight,behavior:'instant'}));
   await page.keyboard.press('PageDown');
-  await assertEngineeringContext('model-whole-body','02');
+  await assertEngineeringContext('model-whole-body','05');
   const finalEnd = await engineeringState();
   assert.ok(Math.abs(finalEnd.scroll-finalEnd.maxScroll)<3,'Model must remain at the final article boundary.');
   assert.equal(new URL(page.url()).hash,finalHash,'PageDown at the final Model part must not wrap to POD.');
@@ -373,16 +379,17 @@ async function engineeringBoundaryNavigation() {
     const start = el.scrollTop;
     const firstPart = document.querySelector('[data-dbtl-wheel]').dataset.part;
     const tailPrevented = Array.from({length:8},send);
-    return {firstPrevented,firstPart,tailPrevented,start,end:el.scrollTop,
+    return {reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,firstPrevented,firstPart,tailPrevented,start,end:el.scrollTop,
       finalPart:document.querySelector('[data-dbtl-wheel]').dataset.part,windowScroll:scrollY};
   });
-  assert.equal(burst.firstPart,'cetus');
-  assert.equal(burst.finalPart,'cetus','One wheel gesture must not cross multiple parts.');
+  assert.equal(burst.firstPart,'pod');
+  assert.equal(burst.finalPart,burst.firstPart,'The article remains stable through the initial wheel burst.');
   assert.equal(burst.firstPrevented,true);
   assert.ok(burst.tailPrevented.every(Boolean),'Inertial wheel events must not scroll or skip the next article.');
-  assert.ok(Math.abs(burst.end-burst.start)<1,'The new article must remain at its opening during the inertial tail.');
+  assert.ok(Math.abs(burst.end-burst.start)<1,'The current article must remain stable while the picker is receiving input.');
   assert.equal(burst.windowScroll,0);
   await assertEngineeringContext('cetus','01');
+  assert.equal((await engineeringState()).scroll,0,'After the title animation, the next article begins at its top.');
   await assertEngineeringFixed(before);
   await openEngineeringPart('pod');
 }
@@ -440,8 +447,8 @@ try {
   for (const part of engineeringParts) {
     const cycleId = new RegExp(`^${part}-cycle-\\d{2}$`);
     assert.deepEqual(engineeringIds.filter(id=>cycleId.test(id)),
-      [`${part}-cycle-01`,`${part}-cycle-02`]);
-    for (const number of ['01','02']) {
+      cycleIds(part));
+    for (const number of cycleNumbers(part)) {
       assert.deepEqual(engineeringIds.filter(id=>id.startsWith(`${part}-cycle-${number}-`)),
         ['design','build','test','learn'].map(name=>`${part}-cycle-${number}-${name}`));
     }
@@ -495,7 +502,7 @@ try {
   await waitForEngineeringTarget('aso-cycle-01-learn');
   await assertEngineeringContext('aso','01');
   await engineeringBoundaryNavigation();
-  console.log('Engineering: two-step map entry, fourteen part panels, twenty-eight distinct portrait sources, reader/map return, history and deep links, boundary keyboard turns, wheel inertia guard and article scroll tracking passed.');
+  console.log('Engineering: optional map cycle chooser, fourteen part panels, forty-four cycle portraits using twenty-eight supplied sources, reader/map return, history and deep links, boundary keyboard turns, wheel inertia guard and article scroll tracking passed.');
   await page.setViewportSize({width:390,height:844});
   await page.mouse.move(0,0);
   await page.goto(`${base}/engineering`,{waitUntil:'networkidle'});

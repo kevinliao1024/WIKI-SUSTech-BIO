@@ -1,19 +1,151 @@
-<footer class="site-footer site-footer--school">
-  <div class="shell">
-    <div class="school-footer__identities">
-      <div class="school-footer__university">
-        <img src="{{ url_for('static', filename='assets/brand/sustech-seal.webp') }}" alt="SUSTech university seal" width="90" height="90" loading="lazy">
-        <p>Southern University<br>of Science and Technology</p>
+{# Footer layout and original media: https://2025.igem.wiki/sustech-bio/ (CC BY 4.0).
+   Source inventory and local adaptations: static/assets/brand/footer-2025-provenance.json. #}
+<footer class="site-footer site-footer--school" data-school-footer>
+  <div class="footer-content">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      {% for group in navigation_groups %}
+      <div class="footer-nav-column">
+        <h3>{{ group.label }}</h3>
+        {% for page, title in group['items'] %}
+        {% if group.label != 'Human Practices' or page in ['human-practices', 'inclusivity'] %}
+        <a href="{{ url_for('pages', page=page) }}">{{ title }}</a>
+        {% endif %}
+        {% endfor %}
       </div>
-      <a class="school-footer__team" href="{{ url_for('pages', page='team') }}" aria-label="Meet the SUSTech-BIO team">
-        <img src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="" width="1498" height="1050" loading="lazy">
-        <span><strong>SUSTech-BIO</strong><small>ORCA · iGEM 2026</small></span>
-      </a>
+      {% endfor %}
+    </nav>
+    <div class="footer-logos">
+      <div class="logo-container">
+        <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge SUSTech university seal">
+          <img src="https://static.igem.wiki/teams/5873/images/footer/sustech.webp" alt="SUSTech university seal" class="logo-image sustech-logo" width="90" height="90" loading="lazy">
+        </button>
+        <div class="logo-text"><span>Southern University</span><span>of Science and Technology</span></div>
+      </div>
+      <div class="logo-container">
+        <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge SUSTech-BIO team logo">
+          <img src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO team logo" class="logo-image bio-logo" width="128" height="90" loading="lazy">
+        </button>
+        <div class="logo-text bio-name">SUSTech-BIO</div>
+      </div>
     </div>
-    <p class="school-footer__purpose">On-target RNA Correction<br>for Alzheimer’s Disease.</p>
-    <div class="school-footer__legal">
-      <p>© 2026 SUSTech. Content is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.</p>
-      <p>The source repository for this wiki is available at <a href="https://gitlab.igem.org/2026/sustech">gitlab.igem.org/2026/sustech</a>. See the <a href="{{ url_for('pages', page='attributions') }}">Attributions</a> page for credit information.</p>
-    </div>
+    <section class="footer-contact" aria-labelledby="footer-contact-title">
+      <h4 id="footer-contact-title">CONTACT WITH US !</h4>
+      <div class="qr-codes">
+        <div class="qr-code-item">
+          <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge Instagram QR code">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp" alt="Instagram QR code" class="qr-code" width="80" height="80" loading="lazy">
+          </button>
+          <span class="qr-code-label">Instagram</span>
+        </div>
+        <div class="qr-code-item">
+          <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge RedNote QR code">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/contactus/rednote.webp" alt="RedNote QR code" class="qr-code" width="80" height="80" loading="lazy">
+          </button>
+          <span class="qr-code-label">RedNote</span>
+        </div>
+        <div class="qr-code-item">
+          <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge Wechat QR code">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/contactus/wechat.webp" alt="Wechat QR code" class="qr-code" width="80" height="80" loading="lazy">
+          </button>
+          <span class="qr-code-label">Wechat</span>
+        </div>
+      </div>
+    </section>
+    <section class="footer-sponsors" aria-labelledby="footer-sponsors-title">
+      <h4 id="footer-sponsors-title">SPONSORS &amp; COOPERATORS</h4>
+      <div class="sponsor-logos-scroll" data-footer-sponsor-scroll tabindex="0" aria-label="Sponsors and cooperators. Scroll horizontally to see all logos.">
+        <div class="sponsor-logos-track" data-footer-sponsor-track>
+          <div class="sponsor-logos-group" data-footer-sponsor-group>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 1">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/1-nankeda.webp" alt="Sponsor and cooperator logo 1: 1 nankeda" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 2">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/2-shengkeyuan.webp" alt="Sponsor and cooperator logo 2: 2 shengkeyuan" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 3">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/3-nankedatuanwei.webp" alt="Sponsor and cooperator logo 3: 3 nankedatuanwei" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 4">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bgi.webp" alt="Sponsor and cooperator logo 4: bgi" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 5">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bnuzh-china.webp" alt="Sponsor and cooperator logo 5: bnuzh china" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 6">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/cau-china.webp" alt="Sponsor and cooperator logo 6: cau china" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 7">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/chuangxinchuangxixueyuan.webp" alt="Sponsor and cooperator logo 7: chuangxinchuangxixueyuan" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 8">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/dikongxi.webp" alt="Sponsor and cooperator logo 8: dikongxi" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 9">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/fluidiclab-logo-cn.webp" alt="Sponsor and cooperator logo 9: fluidiclab logo cn" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 10">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hechengshegnwuxueyushengwugongchengshe.webp" alt="Sponsor and cooperator logo 10: hechengshegnwuxueyushengwugongchengshe" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 11">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hku-hongkong.webp" alt="Sponsor and cooperator logo 11: hku hongkong" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 12">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust-gz.webp" alt="Sponsor and cooperator logo 12: hkust gz" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 13">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust.webp" alt="Sponsor and cooperator logo 13: hkust" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 14">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hongxun.webp" alt="Sponsor and cooperator logo 14: hongxun" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 15">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/huaxuexi.webp" alt="Sponsor and cooperator logo 15: huaxuexi" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 16">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/igba.webp" alt="Sponsor and cooperator logo 16: igba" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 17">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/jisuanjixi.webp" alt="Sponsor and cooperator logo 17: jisuanjixi" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 18">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/ju-yuan-bio-chem.webp" alt="Sponsor and cooperator logo 18: ju yuan bio chem" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 19">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/minghang.webp" alt="Sponsor and cooperator logo 19: minghang" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 20">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/shengyigong.webp" alt="Sponsor and cooperator logo 20: shengyigong" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 21">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustech-med.webp" alt="Sponsor and cooperator logo 21: sustech med" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 22">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustechocean.webp" alt="Sponsor and cooperator logo 22: sustechocean" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 23">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/szu-china.webp" alt="Sponsor and cooperator logo 23: szu china" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 24">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongji-china.webp" alt="Sponsor and cooperator logo 24: tongji china" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 25">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongjishuke.webp" alt="Sponsor and cooperator logo 25: tongjishuke" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          <button class="footer-image-button sponsor-image-button" type="button" data-footer-image aria-label="Enlarge sponsor and cooperator logo 26">
+            <img src="https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/yixueyuan.webp" alt="Sponsor and cooperator logo 26: yixueyuan" class="sponsor-logo" height="80" loading="lazy">
+          </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+  <div class="footer-copyright">
+    <p>© 2026 SUSTech. Content is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.<br>
+      The source repository for this wiki is available at <a href="https://gitlab.igem.org/2026/sustech">gitlab.igem.org/2026/sustech</a>. See the <a href="{{ url_for('pages', page='attributions') }}">Attributions</a> page for credit information.</p>
+  </div>
+  <dialog class="footer-lightbox" data-footer-lightbox aria-label="Enlarged footer image">
+    <button class="footer-lightbox-close" type="button" data-footer-lightbox-close aria-label="Close enlarged image">×</button>
+    <img alt="" data-footer-lightbox-image>
+  </dialog>
 </footer>
+<script src="{{ url_for('static', filename='school-footer.js') }}" defer></script>

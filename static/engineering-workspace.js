@@ -5,20 +5,39 @@
   const wheel = workspace.querySelector('[data-dbtl-wheel]');
   const stageLinks = [...wheel.querySelectorAll('[data-dbtl-stage]')];
   const cycleNav = workspace.querySelector('[data-engineering-cycles]');
-  const cycleLinks = [...cycleNav.querySelectorAll('[data-engineering-cycle]')];
+  let cycleLinks = [];
   const map = workspace.querySelector('[data-engineering-map]');
   const controls = workspace.querySelector('.engineering-controls');
+  const headingGroup = workspace.querySelector('[data-engineering-heading-group]');
+  const headingPart = workspace.querySelector('[data-engineering-heading-part]');
+  const headingRows = [...workspace.querySelectorAll('[data-engineering-heading-row]')];
   const paper = workspace.querySelector('.engineering-paper');
   const back = workspace.querySelector('[data-engineering-map-back]');
-  const groups = JSON.parse(workspace.querySelector('[data-engineering-map-data]').textContent);
+  const { groups } = window.ORCAEngineering;
   const article = reader.querySelector('.markdown-content');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const stages = stageLinks.map(link => link.dataset.dbtlStage);
   const cyclePattern = /^(.+)-cycle-(\d{2})(?:-(design|build|test|learn))?$/;
   const parts = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.label])));
   const partOrder = [...parts.keys()];
+  const groupForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, group])));
+  const cyclesForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.cycles])));
   const portraits = new Map([...wheel.querySelectorAll('[data-dbtl-portrait]')]
     .map(image => [image.dataset.dbtlCycle, image]));
+  // Reuse the supplied artwork for added records, with a dedicated SVG per
+  // cycle. Adjacent cycles alternate their own module's original portraits.
+  for (const [part, numbers] of cyclesForPart) {
+    const originals = [...portraits].filter(([cycle]) => cycle.startsWith(`${part}-cycle-`)).map(([, image]) => image);
+    numbers.forEach((number, index) => {
+      const cycle = `${part}-cycle-${number}`;
+      if (portraits.has(cycle) || !originals.length) return;
+      const portrait = originals[index % originals.length].cloneNode(true);
+      portrait.dataset.dbtlCycle = cycle;
+      portrait.classList.add('is-hidden');
+      originals[0].parentElement.append(portrait);
+      portraits.set(cycle, portrait);
+    });
+  }
   let angle = 0;
   let selectedStage;
   let selectedPortrait;
@@ -27,13 +46,16 @@
   let anchoredTarget;
   let queued = false;
   let mapPart;
+  let turning;
+  let paperEntrance;
+  const pickerIdle = 140;
 
   function partAlias(id) {
     return ({ edit: 'pod', control: 'gfa', program: 'model-rna-seq', model: 'model-rna-seq' })[id] || id;
   }
 
   // Keep the authored Markdown intact, but give each part its own reading
-  // panel. Both cycles stay together, as on the 2025 Engineering reference.
+  // panel. Every authored cycle stays together in its module's article.
   const panels = new Map();
   function panelFor(id) {
     if (!panels.has(id)) {
@@ -65,6 +87,7 @@
   }
 
   function showMap({ historyEntry = false, focus = false } = {}) {
+    cancelTurn();
     workspace.dataset.engineeringView = 'map';
     map.hidden = false;
     controls.hidden = true;
@@ -113,6 +136,19 @@
     return parts.has(part) ? { part, number: '01', stage: 'design' } : null;
   }
 
+  function contextForTarget(target) {
+    const explicit = contextFor(target.id);
+    if (explicit) return explicit;
+    const panel = target.closest('[data-engineering-panel]');
+    if (!panel) return null;
+    let context = contextFor(panel.dataset.engineeringPanel);
+    for (const heading of panel.querySelectorAll(':is(h2,h3,h4,h5,h6)[id]')) {
+      if (heading === target || !(heading.compareDocumentPosition(target) & Node.DOCUMENT_POSITION_FOLLOWING)) break;
+      context = contextFor(heading.id) || context;
+    }
+    return context;
+  }
+
   function selectStage({ part, number, stage }) {
     const index = stages.indexOf(stage);
     if (index < 0) return;
@@ -127,6 +163,20 @@
       selectedPortrait = portrait;
     }
     cycleNav.setAttribute('aria-label', `${parts.get(part)} cycles`);
+    if (cycleNav.dataset.part !== part) {
+      cycleLinks = cyclesForPart.get(part).map(number => {
+        const link = document.createElement('a');
+        link.dataset.engineeringCycle = number;
+        const label = document.createElement('span');
+        label.textContent = `Cycle ${number}`;
+        link.append(label);
+        return link;
+      });
+      cycleNav.replaceChildren(...cycleLinks);
+      cycleNav.dataset.part = part;
+      cycleNav.dataset.cycleCount = String(cycleLinks.length);
+      cycleNav.style.setProperty('--cycle-count', cycleLinks.length);
+    }
     cycleLinks.forEach(link => {
       link.href = `#${part}-cycle-${link.dataset.engineeringCycle}`;
       link.setAttribute('aria-label', `${parts.get(part)}, Cycle ${link.dataset.engineeringCycle}`);
@@ -153,8 +203,138 @@
     if (!context || mapPart === context.part) return;
     mapPart = context.part;
     workspace.dataset.engineeringActivePart = mapPart;
+    renderHeading(mapPart);
     document.dispatchEvent(new CustomEvent('engineering:map-select', { detail: { part: mapPart } }));
   }
+
+  function headingLabels(part) {
+    const group = groupForPart.get(part);
+    return group ? { group: group.label, part: group.label === parts.get(part) ? '' : parts.get(part) } : { group: '', part: '' };
+  }
+
+  function renderHeading(part) {
+    const index = partOrder.indexOf(part);
+    const current = headingLabels(part);
+    headingGroup.textContent = current.group;
+    headingPart.textContent = current.part;
+    // Keep both tracks mounted so one-part groups and long names never move
+    // the reader or the DBTL controls as their neighbors change.
+    headingPart.hidden = false;
+    headingRows.forEach(row => {
+      const level = row.dataset.engineeringHeadingRow;
+      for (const [side, offset] of [['previous', -1], ['next', 1]]) {
+        const neighbor = headingLabels(partOrder[index + offset]);
+        row.querySelector(`[data-engineering-preview="${side}"]`).textContent =
+          level === 'group' && neighbor.group === current.group ? '' : neighbor[level];
+      }
+    });
+  }
+
+  function cancelTurn() {
+    if (turning) {
+      const cancelled = turning;
+      turning = null;
+      clearTimeout(cancelled.timer);
+      cancelAnimationFrame(cancelled.frame);
+    }
+    paperEntrance?.cancel();
+    paperEntrance = null;
+    workspace.removeAttribute('data-engineering-turning');
+    workspace.removeAttribute('data-engineering-turn-progress');
+    headingRows.forEach(row => [...row.children].forEach(slot => {
+      for (const property of ['transform', 'opacity', 'filter', 'clip-path']) slot.style.removeProperty(property);
+    }));
+    reader.removeAttribute('aria-busy');
+  }
+
+  function renderPicker(turn, progress) {
+    const neighbor = partOrder[turn.index + Math.sign(progress)];
+    const acrossGroup = groupForPart.get(mapPart) !== groupForPart.get(neighbor);
+    turn.progress = progress;
+    workspace.dataset.engineeringTurning = turn.phase;
+    workspace.dataset.engineeringTurnProgress = progress.toFixed(4);
+    headingRows.forEach(row => {
+      const offset = row.dataset.engineeringHeadingRow === 'group' && !acrossGroup ? 0 : progress;
+      const distance = row.clientWidth * .42;
+      const sideClip = matchMedia('(max-width: 760px)').matches ? 32 : 26;
+      [...row.children].forEach((slot, index) => {
+        const position = index - 1 - offset;
+        const amount = Math.min(1, Math.abs(position));
+        const clip = sideClip * amount;
+        Object.assign(slot.style, {
+          transform: `translateX(calc(-50% + ${position * distance}px)) scale(${1 - .26 * amount})`,
+          opacity: String(Math.max(0, 1 - Math.abs(position) * .54)),
+          filter: `blur(${amount * 1.1}px)`,
+          clipPath: position < 0 ? `inset(0 ${clip}% 0 0)` : `inset(0 0 0 ${clip}%)`,
+        });
+      });
+    });
+  }
+
+  function beginPicker(mode, direction) {
+    if (workspace.dataset.engineeringView !== 'reader' || !activePanel || turning) return null;
+    const index = partOrder.indexOf(activePanel.dataset.engineeringPanel);
+    if (!partOrder[index + direction]) return null;
+    paperEntrance?.cancel();
+    cancelPending();
+    const turn = { mode, phase: 'dragging', index, progress: 0, scrollTop: reader.scrollTop, timer: null, frame: null };
+    turning = turn;
+    reader.setAttribute('aria-busy', 'true');
+    renderPicker(turn, 0);
+    return turn;
+  }
+
+  function finishPicker(turn, slot) {
+    if (turning !== turn) return;
+    if (!slot) {
+      // A partial push returns to the current item without a navigation lock.
+      cancelTurn();
+      schedule();
+      return;
+    }
+    turn.direction = slot;
+    const part = partOrder[turn.index + slot];
+    turn.target = document.getElementById(slot > 0 ? part : `${part}-cycle-${cyclesForPart.get(part).at(-1)}-learn`);
+    commitTurn(turn);
+  }
+
+  function settlePicker(turn, forcedSlot = null, instant = false) {
+    if (turning !== turn) return;
+    clearTimeout(turn.timer);
+    cancelAnimationFrame(turn.frame);
+    const slot = forcedSlot ?? (Math.abs(turn.progress) >= .5 ? Math.sign(turn.progress) : 0);
+    const from = turn.progress;
+    turn.phase = 'settling';
+    turn.slot = slot;
+    if (motion.matches || instant || document.hidden) {
+      finishPicker(turn, slot);
+      return;
+    }
+    const duration = forcedSlot === null ? 180 : 260;
+    const started = performance.now();
+    const tick = now => {
+      if (turning !== turn) return;
+      const fraction = Math.min(1, (now - started) / duration);
+      const eased = 1 - (1 - fraction) ** 3;
+      renderPicker(turn, from + (slot - from) * eased);
+      if (fraction < 1) turn.frame = requestAnimationFrame(tick);
+      else finishPicker(turn, slot);
+    };
+    renderPicker(turn, from);
+    turn.frame = requestAnimationFrame(tick);
+  }
+
+  function movePicker(turn, progress) {
+    clearTimeout(turn.timer);
+    cancelAnimationFrame(turn.frame);
+    turn.phase = 'dragging';
+    const low = turn.index > 0 ? -1 : 0;
+    const high = turn.index < partOrder.length - 1 ? 1 : 0;
+    renderPicker(turn, Math.max(low, Math.min(high, progress)));
+    if (turn.mode === 'wheel') turn.timer = setTimeout(() => settlePicker(turn), pickerIdle);
+  }
+
+  function pickerTravel() { return Math.max(72, Math.min(130, headingRows[1].clientWidth * .42)); }
 
   function focusTarget(target) {
     const temporary = !target.hasAttribute('tabindex');
@@ -164,12 +344,13 @@
   }
 
   function go(target, { historyEntry = true, focus = true, instant = false } = {}) {
+    cancelTurn();
     const wasMap = workspace.dataset.engineeringView === 'map';
     showReader();
     const changedPanel = showPanel(target.closest('[data-engineering-panel]'));
-    const context = contextFor(target.id);
+    const context = contextForTarget(target);
     if (context) selectStage(context);
-    selectModule(context && cyclePattern.test(target.id) ? document.getElementById(context.part) : target);
+    selectModule(context ? document.getElementById(context.part) : target);
     pending = { target, expires: performance.now() + 2500 };
     anchoredTarget = target;
     if (historyEntry && location.hash !== `#${target.id}`) history.pushState(history.state, '', `#${target.id}`);
@@ -181,7 +362,7 @@
 
   function update() {
     queued = false;
-    if (workspace.dataset.engineeringView !== 'reader' || !activePanel) return;
+    if (workspace.dataset.engineeringView !== 'reader' || !activePanel || turning) return;
     if (pending) {
       if (Math.abs(reader.scrollTop - destination(pending.target)) < 3 || performance.now() > pending.expires) pending = null;
       else return;
@@ -221,7 +402,7 @@
     event.preventDefault();
     // A cycle or part change is a direct jump. Only the four nearby DBTL
     // stages use smooth scrolling within their current record.
-    go(target, { instant: link.hasAttribute('data-engineering-cycle') || link.hasAttribute('data-map-cycle') });
+    go(target, { instant: link.hasAttribute('data-engineering-cycle') || link.hasAttribute('data-map-cycle') || link.hasAttribute('data-engineering-group') || link.hasAttribute('data-engineering-part') });
   });
 
   function syncHash() {
@@ -244,77 +425,139 @@
       : reader.scrollTop <= 2;
   }
 
-  function turnPart(direction) {
-    const index = partOrder.indexOf(activePanel.dataset.engineeringPanel);
-    const part = partOrder[index + direction];
-    if (index < 0 || !part) return false;
-    const target = document.getElementById(direction > 0 ? part : `${part}-cycle-02-learn`);
-    go(target, { historyEntry: false, instant: true });
-    if (direction < 0) {
-      reader.scrollTo({ top: reader.scrollHeight - reader.clientHeight, behavior: 'instant' });
-      pending = null;
-      anchoredTarget = null;
-      schedule();
-    }
-    // Natural reading updates the shareable location without adding a history
-    // entry for every part crossed. Explicit navigation still uses pushState.
+  function commitTurn(turn) {
+    if (turning !== turn) return;
+    // The article, selection, portrait and shareable location commit together
+    // only after the incoming title has reached the center slot.
+    const { target, direction } = turn;
+    const animatePaper = !motion.matches && !document.hidden;
+    cancelTurn();
+    go(target, { historyEntry: false, focus: false, instant: true });
+    reader.scrollTo({ top: direction > 0 ? 0 : reader.scrollHeight - reader.clientHeight, behavior: 'instant' });
+    reader.focus({ preventScroll: true });
+    pending = null;
+    anchoredTarget = null;
+    schedule();
     history.replaceState(history.state, '', `#${target.id}`);
+    wheelTurned = true;
+    wheelLockedUntil = performance.now() + 220;
+    if (animatePaper) paperEntrance = article.animate([
+      { opacity: .15, transform: `translateY(${direction * 7}px)` },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 180, easing: 'ease-out' });
+  }
+
+  function turnPart(direction) {
+    const turn = beginPicker('key', direction);
+    if (!turn) return false;
+    settlePicker(turn, direction);
     return true;
   }
 
   let lastWheelAt = -Infinity;
   let wheelTurned = false;
+  let wheelLockedUntil = 0;
   reader.addEventListener('wheel', event => {
     if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
     const now = performance.now();
-    const newGesture = now - lastWheelAt > 180;
+    const newGesture = now - lastWheelAt > 220;
     lastWheelAt = now;
-    if (newGesture) wheelTurned = false;
-    // Consume the tail of the gesture that changed part, so trackpad inertia
-    // cannot skip the beginning of the new article or jump several parts.
-    if (wheelTurned) { event.preventDefault(); return; }
-    cancelPending();
-    const direction = Math.sign(event.deltaY);
-    if (newGesture && atEdge(direction) && turnPart(direction)) {
+    if (newGesture && now >= wheelLockedUntil && !turning) wheelTurned = false;
+    if (wheelTurned || (turning && turning.mode !== 'wheel')) {
       wheelTurned = true;
       event.preventDefault();
+      return;
     }
+    const direction = Math.sign(event.deltaY);
+    const turn = turning || (atEdge(direction) ? beginPicker('wheel', direction) : null);
+    if (!turn) { cancelPending(); return; }
+    event.preventDefault();
+    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? reader.clientHeight : 1);
+    // One large mouse notch still shows an intermediate choice. Continuous
+    // input accumulates, and reversing during a snap resumes its visible state.
+    const step = Math.sign(delta) * Math.min(.6, Math.abs(delta) / pickerTravel());
+    movePicker(turn, turn.progress + step);
   }, { passive: false });
 
   let swipe;
   reader.addEventListener('touchstart', event => {
     cancelPending();
-    if (event.touches.length !== 1) { swipe = null; return; }
+    if (event.touches.length !== 1) {
+      if (turning?.mode === 'touch') cancelTurn();
+      swipe = null;
+      return;
+    }
     const touch = event.touches[0];
-    swipe = { x: touch.clientX, y: touch.clientY, top: atEdge(-1), bottom: atEdge(1) };
+    // Catching a moving picker freezes its visible position until release.
+    if (turning?.mode === 'touch') movePicker(turning, turning.progress);
+    swipe = { x: touch.clientX, y: touch.clientY, top: atEdge(-1), bottom: atEdge(1), origin: turning?.mode === 'touch' ? turning.progress : 0 };
   }, { passive: true });
-  reader.addEventListener('touchend', event => {
-    if (!swipe || !event.changedTouches.length) return;
-    const touch = event.changedTouches[0];
+  reader.addEventListener('touchmove', event => {
+    if (!swipe || event.touches.length !== 1 || !event.cancelable) { swipe = null; return; }
+    const touch = event.touches[0];
     const dy = swipe.y - touch.clientY;
     const dx = swipe.x - touch.clientX;
     const direction = Math.sign(dy);
-    if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx) &&
-        (direction > 0 ? swipe.bottom : swipe.top) && atEdge(direction)) turnPart(direction);
+    if (turning && turning.mode !== 'touch') { event.preventDefault(); return; }
+    if (turning?.mode === 'touch') {
+      event.preventDefault();
+      movePicker(turning, swipe.origin + dy / pickerTravel());
+      return;
+    }
+    if (Math.abs(dy) <= Math.abs(dx) || !(direction > 0 ? swipe.bottom : swipe.top)) return;
+    if (!atEdge(direction)) {
+      if (direction > 0) swipe.bottom = false;
+      else swipe.top = false;
+      return;
+    }
+    // Cancel the first outward movement before native momentum is committed.
+    event.preventDefault();
+    const turn = beginPicker('touch', direction);
+    if (turn) movePicker(turn, dy / pickerTravel());
+  }, { passive: false });
+  reader.addEventListener('touchend', () => {
+    if (turning?.mode === 'touch' && turning.phase === 'dragging') settlePicker(turning);
     swipe = null;
   }, { passive: true });
-  reader.addEventListener('touchcancel', () => { swipe = null; }, { passive: true });
-  reader.addEventListener('scroll', schedule, { passive: true });
+  reader.addEventListener('touchcancel', () => {
+    if (turning?.mode === 'touch') cancelTurn();
+    swipe = null;
+  }, { passive: true });
+  reader.addEventListener('scroll', () => {
+    if (turning && reader.scrollTop !== turning.scrollTop) reader.scrollTop = turning.scrollTop;
+    schedule();
+  }, { passive: true });
+  let keyTurned = false;
+  reader.addEventListener('keyup', () => { keyTurned = false; });
+  reader.addEventListener('blur', () => { keyTurned = false; });
   reader.addEventListener('keydown', event => {
     if (event.target.closest('input, textarea, select, button, [contenteditable="true"]') || event.altKey || event.ctrlKey || event.metaKey) return;
-    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Escape', ' '].includes(event.key)) cancelPending();
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Escape', ' '].includes(event.key)) {
+      if (turning || (event.repeat && keyTurned)) { keyTurned = true; event.preventDefault(); return; }
+      cancelPending();
+    }
     const direction = ['ArrowDown', 'PageDown'].includes(event.key) ? 1
       : ['ArrowUp', 'PageUp'].includes(event.key) ? -1
       : event.key === ' ' ? (event.shiftKey ? -1 : 1) : 0;
-    if (direction && !event.repeat && atEdge(direction) && turnPart(direction)) event.preventDefault();
+    if (!direction) return;
+    if (!event.repeat) keyTurned = false;
+    if (keyTurned) { event.preventDefault(); return; }
+    if (!event.repeat && atEdge(direction) && turnPart(direction)) {
+      keyTurned = true;
+      event.preventDefault();
+    }
   });
   back.addEventListener('click', () => showMap({ historyEntry: true, focus: true }));
   addEventListener('hashchange', syncHash);
   addEventListener('popstate', syncHash);
   addEventListener('resize', resize);
   addEventListener('load', () => { resize(); syncHash(); });
-  document.addEventListener('visibilitychange', pauseAnimation);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && turning) settlePicker(turning, turning.phase === 'settling' ? turning.slot : null, true);
+    pauseAnimation();
+  });
   motion.addEventListener('change', () => {
+    if (motion.matches && turning && turning.phase === 'settling') settlePicker(turning, turning.slot, true);
     if (motion.matches && pending) reader.scrollTo({ top: destination(pending.target), behavior: 'instant' });
     schedule();
   });

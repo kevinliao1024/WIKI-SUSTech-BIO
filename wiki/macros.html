@@ -18,8 +18,7 @@
 {%- endmacro %}
 
 {% macro section_nav(items) -%}
-<nav class="on-this-page shell reveal" aria-label="On this page">
-  <span>On this page</span>
+<nav class="on-this-page shell reveal" aria-label="Page sections">
   <ol>
     {% for item in items %}
     <li><a href="#{{ item[0] }}">{{ item[1] }}</a></li>

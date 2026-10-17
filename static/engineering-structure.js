@@ -1,0 +1,13 @@
+(() => {
+  const workspace = document.querySelector('[data-engineering-workspace]');
+  if (!workspace) return;
+  const groups = JSON.parse(workspace.querySelector('[data-engineering-map-data]').textContent);
+  const headings = [...workspace.querySelectorAll('.markdown-content :is(h2,h3,h4,h5,h6)[id]')];
+  // The authored cycle headings are the single source for both navigation views.
+  for (const part of groups.flatMap(group => group.parts)) {
+    const prefix = `${part.id}-cycle-`;
+    part.cycles = headings.filter(heading => heading.id.startsWith(prefix) && /^\d{2}$/.test(heading.id.slice(prefix.length)))
+      .map(heading => heading.id.slice(prefix.length));
+  }
+  window.ORCAEngineering = Object.freeze({ groups });
+})();

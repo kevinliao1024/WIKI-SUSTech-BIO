@@ -1,0 +1,71 @@
+{
+  "source_page": "https://2025.igem.wiki/sustech-bio/",
+  "source_component": "FooterSection; Vue scope data-v-ff12b2bc",
+  "accessed_on": "2026-10-17",
+  "attribution": "SUSTech-BIO 2025",
+  "license_statement": "The original footer states Creative Commons Attribution 4.0 International. Third-party logos retain their respective owners.",
+  "source_bundles": [
+    {
+      "url": "https://2025.igem.wiki/sustech-bio/assets/index.js",
+      "sha256": "ffa123f476f736e00028db091f94558768e5a5fd35b7e2fd0ef6a063fbaa07b2"
+    },
+    {
+      "url": "https://2025.igem.wiki/sustech-bio/assets/index.css",
+      "sha256": "4e1d36f6b85d6dc733b482f8d7ae432eee4c8aecdb6be34bce7d8f95c0e93b37"
+    }
+  ],
+  "image_urls": [
+    "https://static.igem.wiki/teams/5873/images/footer/sustech.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/contactus/rednote.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/contactus/wechat.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/1-nankeda.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/2-shengkeyuan.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/3-nankedatuanwei.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bgi.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bnuzh-china.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/cau-china.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/chuangxinchuangxixueyuan.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/dikongxi.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/fluidiclab-logo-cn.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hechengshegnwuxueyushengwugongchengshe.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hku-hongkong.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust-gz.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hongxun.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/huaxuexi.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/igba.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/jisuanjixi.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/ju-yuan-bio-chem.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/minghang.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/shengyigong.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustech-med.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustechocean.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/szu-china.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongji-china.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongjishuke.webp",
+    "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/yixueyuan.webp"
+  ],
+  "local_image_paths": [
+    "static/assets/brand/sustech-bio-logo.png"
+  ],
+  "font_urls": [
+    "https://static.igem.wiki/teams/5873/fonts/afacad-regular.ttf",
+    "https://static.igem.wiki/teams/5873/fonts/afacad-bold.ttf"
+  ],
+  "adaptations": [
+    "Preserved the five-column layout; footer links and labels now use the current site's shared navigation registry. The Human Practices footer column is limited to Human Practices and Inclusivity at the user's request.",
+    "Preserved 30 original image URLs and pixels, purple gradient, desktop spacing, logo and QR structure, and 26-logo order. Per the user's explicit request, the team mark uses the existing unmodified local SUSTech-BIO logo instead of the 2025 rocket mark, displayed at 128 by 90 pixels to preserve its proportions.",
+    "Stacked the brand rows at the 992px breakpoint and increased the wrapped team-name line height to prevent overlap at tablet widths.",
+    "Kept the current 2026 copyright, CC BY 4.0 hyperlink and GitLab source hyperlink.",
+    "Ported the Vue carousel and image preview into dependency-free native browser code. Carousel pauses on hover, keyboard focus, hidden document, offscreen footer, and reduced-motion preference.",
+    "Native dialog supports Escape, close button, backdrop dismissal and focus restoration; background scrolling is locked while open, and the original body styles and scroll position are restored on close.",
+    "Scoped all styles and fonts to the footer to avoid changing page content.",
+    "Removed the visible Footer design and media line at the user's request; source attribution and license information remain recorded in this provenance file and the template source comment."
+  ],
+  "output_files": [
+    "wiki/footer.html",
+    "static/school-footer.css",
+    "static/school-footer.js"
+  ]
+}

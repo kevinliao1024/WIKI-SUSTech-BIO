@@ -45,9 +45,9 @@ class BuildAuditTest(unittest.TestCase):
         issues = audit_document("index.html", VALID_DOCUMENT.replace("Repository", "ParaView"))
         self.assertTrue(any("excluded term" in issue for issue in issues))
 
-    def test_archived_physicell_viewer_is_allowed_only_on_software(self):
+    def test_requested_physicell_content_is_allowed_on_software_and_engineering(self):
         document = VALID_DOCUMENT.replace("Repository", "PhysiCell")
-        for name in ("software", "software.html"):
+        for name in ("software", "software.html", "engineering", "engineering.html"):
             self.assertEqual(audit_document(name, document), [])
         self.assertTrue(any("excluded term" in issue for issue in audit_document("model", document)))
         document = VALID_DOCUMENT.replace("Repository", "ParaView")

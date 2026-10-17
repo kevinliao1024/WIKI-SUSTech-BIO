@@ -1,6 +1,5 @@
 {% macro content_directory(groups, prefix) -%}
-<nav class="content-directory" data-content-directory aria-label="On this page">
-  <span class="content-directory__label">On this page</span>
+<nav class="content-directory" data-content-directory aria-label="Page sections">
   <ol>
     {% for group in groups %}
     <li data-content-group="{{ group.heading.id }}">

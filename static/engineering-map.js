@@ -1,13 +1,14 @@
 (() => {
   const map = document.querySelector('[data-engineering-map]');
   if (!map) return;
-  const groups = JSON.parse(document.querySelector('[data-engineering-map-data]').textContent);
+  const { groups } = window.ORCAEngineering;
   const groupButtons = [...map.querySelectorAll('[data-engineering-group]')];
+  const expandButtons = [...map.querySelectorAll('[data-engineering-expand]')];
   const leafButtons = [...map.querySelectorAll('.engineering-map-leaf[data-engineering-part]')];
   const branchGroups = [...map.querySelectorAll('[data-map-branch-group]')];
   const branches = map.querySelector('.engineering-map-branches');
   const cycles = map.querySelector('.engineering-map-cycles');
-  const cycleLinks = [...cycles.querySelectorAll('[data-map-cycle]')];
+  let cycleLinks = [];
   const canvas = map.querySelector('[data-map-canvas]');
   const lines = map.querySelector('[data-map-lines]');
   const root = map.querySelector('.engineering-map-root');
@@ -122,9 +123,24 @@
     if (selectedGroup !== group.id) chooseGroup(group.id);
     selectedPart = id;
     const part = group.parts.find(item => item.id === id);
-    leafButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.engineeringPart === id)));
+    leafButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringPart === id));
     cycles.hidden = false;
     cycles.setAttribute('aria-label', `${part.label} cycles`);
+    if (cycles.dataset.part !== id) {
+      cycleLinks = part.cycles.map(number => {
+        const link = document.createElement('a');
+        link.className = 'engineering-map-cycle';
+        link.dataset.mapCycle = number;
+        const label = document.createElement('strong');
+        label.className = 'map-label';
+        label.textContent = `Cycle ${number}`;
+        link.append(label);
+        return link;
+      });
+      cycles.replaceChildren(...cycleLinks);
+      cycles.dataset.part = id;
+      cycles.dataset.cycleCount = String(cycleLinks.length);
+    }
     cycleLinks.forEach(link => {
       link.href = `#${id}-cycle-${link.dataset.mapCycle}`;
       link.setAttribute('aria-label', `${part.label}, Cycle ${link.dataset.mapCycle}`);
@@ -145,9 +161,10 @@
     selectedPart = null;
     map.dataset.selectedGroup = id;
     map.dataset.simple = String(group.parts.length === 1);
-    groupButtons.forEach(button => button.setAttribute('aria-expanded', String(button.dataset.engineeringGroup === id)));
+    groupButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringGroup === id));
+    expandButtons.forEach(button => button.setAttribute('aria-expanded', String(button.dataset.engineeringExpand === id)));
     branchGroups.forEach(section => { section.hidden = section.dataset.mapBranchGroup !== id; });
-    leafButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
+    leafButtons.forEach(button => button.classList.remove('is-selected'));
     cycles.hidden = true;
     if (group.parts.length === 1) choosePart(group.parts[0].id);
     schedule();
@@ -155,14 +172,14 @@
 
   function hoverNode(button) {
     if (!hover.matches || map.hidden) return;
-    if (button.dataset.engineeringGroup) chooseGroup(button.dataset.engineeringGroup);
+    if (button.dataset.engineeringGroup || button.dataset.engineeringExpand) chooseGroup(button.dataset.engineeringGroup || button.dataset.engineeringExpand);
     else if (button.dataset.engineeringPart !== selectedPart) choosePart(button.dataset.engineeringPart);
   }
-  [...groupButtons, ...leafButtons].forEach(button => {
+  [...groupButtons, ...expandButtons, ...leafButtons].forEach(button => {
     button.addEventListener('mousemove', event => {
       // Revealing or resizing a branch must not select a different node under
       // a stationary pointer, especially while navigating with the keyboard.
-      if (performance.now() < keyboardSettlingUntil || (keyboardNavigation && !event.movementX && !event.movementY)) return;
+      if ((performance.now() < keyboardSettlingUntil || keyboardNavigation) && !event.movementX && !event.movementY) return;
       const position = `${event.clientX}:${event.clientY}`;
       if (pointerPosition === position) return;
       pointerPosition = position;
@@ -176,6 +193,11 @@
   }));
 
   map.addEventListener('click', event => {
+    const expand = event.target.closest('[data-engineering-expand]');
+    if (expand) {
+      chooseGroup(expand.dataset.engineeringExpand);
+      return;
+    }
     const group = event.target.closest('[data-engineering-group]');
     const leaf = event.target.closest('.engineering-map-leaf[data-engineering-part]');
     if (group) chooseGroup(group.dataset.engineeringGroup);
@@ -185,14 +207,14 @@
     keyboardNavigation = true;
     keyboardSettlingUntil = performance.now() + 300;
     if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
-    const group = event.target.closest('[data-engineering-group]');
+    const group = event.target.closest('[data-engineering-group], [data-engineering-expand]');
     const leaf = event.target.closest('.engineering-map-leaf[data-engineering-part]');
     const cycle = event.target.closest('[data-map-cycle]');
     if (!group && !leaf && !cycle) return;
     event.preventDefault();
     if (event.key === 'ArrowRight') {
       if (group) {
-        chooseGroup(group.dataset.engineeringGroup);
+        chooseGroup(group.dataset.engineeringGroup || group.dataset.engineeringExpand);
         (visibleLeaves()[0] || cycleLinks[0]).focus();
       } else if (leaf) {
         choosePart(leaf.dataset.engineeringPart);
