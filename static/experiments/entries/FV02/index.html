@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FV02 · BODIPY Lipid Staining and Confocal Imaging</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> FV02 · <strong>Category:</strong> Functional Validation</p>
+<p>FV02 | ver 1.0 | Revised 2026-10-13</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Stain neutral lipid droplets with BODIPY 493/503 and counterstain nuclei with DAPI in electroporated CCF-STTG1 cells, then mount removable glass coverslips for observation on a ZEISS LSM 800 confocal microscope. The workflow combines the team-specified culture and washing conditions with the previously selected staining regimen; it does not establish an optimized condition or a biological rescue result.</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier / identity</th>
+<th>Working specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CCF-STTG1 cells</td>
+<td>Laboratory culture</td>
+<td>100,000 electroporated cells per 24-well well; 500 µL medium</td>
+</tr>
+<tr>
+<td>Recovery / culture medium</td>
+<td>Gibco RPMI 1640 + Cellmax FBS</td>
+<td>Use the maintained C01 formulation; immediate post-electroporation recovery is antibiotic-free as in FV01</td>
+</tr>
+<tr>
+<td>BODIPY 493/503</td>
+<td>Reference product: Invitrogen D3922 [2]</td>
+<td>5 mM DMSO stock; 2 µM working solution in the designated culture medium; match the laboratory bottle label</td>
+</tr>
+<tr>
+<td>High-quality anhydrous DMSO</td>
+<td>Yeasen</td>
+<td>Solvent for BODIPY stock preparation [2]</td>
+</tr>
+<tr>
+<td>4% paraformaldehyde (PFA)</td>
+<td>Servicebio; G1101 is the reviewed reference family [5]</td>
+<td>Ready-to-use 4% fixative; exact bottle pack size not specified</td>
+</tr>
+<tr>
+<td>DAPI, separate dye</td>
+<td>Thermo Fisher Scientific; bottle-specific catalogue</td>
+<td>0.2 µg/mL in PBS; calculate from the labelled stock concentration</td>
+</tr>
+<tr>
+<td>PBS</td>
+<td>Gibco</td>
+<td>1×, without detergent; 3 washes of 3 min at each specified transition</td>
+</tr>
+<tr>
+<td>ProLong Gold Antifade Mountant</td>
+<td>Thermo Fisher Scientific / Invitrogen</td>
+<td>Use the version without DAPI; reference options P10144 / P36930 / P36934 [6]</td>
+</tr>
+<tr>
+<td>24-well plate; round glass coverslips</td>
+<td>Laboratory consumables</td>
+<td>One sterile, removable coverslip per well; size fits the well and thickness suits the objective</td>
+</tr>
+<tr>
+<td>Glass slides; fine forceps; wipes; dark slide box</td>
+<td>Laboratory consumables</td>
+<td>Transfer coverslips and mount cell-side down; store flat and protected from light</td>
+</tr>
+<tr>
+<td>Incubator; refrigerator</td>
+<td>Laboratory equipment</td>
+<td>37°C, 5% CO2; 4°C dark holding</td>
+</tr>
+<tr>
+<td>Confocal microscope; acquisition software</td>
+<td>ZEISS LSM 800; ZEN</td>
+<td>40× objective; 405 nm for DAPI and 488 nm for BODIPY [8]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Prepare sterile coverslips lying flat in the wells without trapped air underneath. Use removable coverslips, because the cell-bearing glass will later be lifted and inverted onto a microscope slide.</p>
+<p>Use FV01 for electroporation and C01 for cell culture. This protocol specifies the downstream 24-well format: 100,000 cells in 500 µL per well. Prepare matching experimental controls and an unstained coverslip; include BODIPY-only and DAPI-only controls when establishing channel settings.</p>
+<p>Label slides and prepare PBS, fixative, fresh staining solutions and the microscope booking before starting. Keep samples protected from light from BODIPY staining onward. Use 500 µL per well as the reference liquid volume for staining, fixation and each wash, increasing it only if needed to cover the coverslip fully.</p>
+<p>The selected route has no separate detergent-permeabilization step. DAPI at 0.2 µg/mL for 30 min was selected in the later CCF-STTG1 protocol discussion, replacing the earlier short generic DAPI stain. Its published precedent used human podocytes, PFA/sucrose fixation and mixed staining; this sequential CCF-STTG1 adaptation requires clear, uniform nuclear staining as a local QC check. [4]</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-prepare-staining-solutions">A. Prepare staining solutions</h3>
+<ol>
+<li>
+<p>Prepare or retrieve 5 mM BODIPY 493/503 in anhydrous DMSO. For a full 10 mg powder vial, dissolve and bring to a final total volume of approximately 7.63 mL, calculated using MW 262.11 g/mol. Label the concentration, aliquot in light-protected containers and store at -20°C. If an existing stock has a different concentration, recalculate the dilution. [1,2,3]</p>
+</li>
+<li>
+<p>Prepare fresh 2 µM BODIPY in the designated prewarmed culture medium. For 5 mL final volume, mix 2 µL of 5 mM stock with 4998 µL medium; final DMSO is 0.04% v/v. Prepare a bulk solution instead of pipetting 0.2 µL stock separately into each 500 µL well. Mix the cell-free solution thoroughly and dispense promptly.</p>
+</li>
+</ol>
+<p>The medium-based replacement and omission of a pre-stain PBS wash are the team-specified adaptations. The cited microscopy method instead stains in PBS; the 2 µM concentration is a reference working condition, not a demonstrated CCF-STTG1 optimum. [1]</p>
+<ol start="3">
+<li>Prepare fresh DAPI at 0.2 µg/mL in PBS from the labelled stock. Example for a 1 mg/mL stock: mix 10 µL stock with 990 µL PBS to obtain 10 µg/mL intermediate solution, then mix 100 µL intermediate with 4900 µL PBS to obtain 5 mL working solution. This stock concentration is an example, not an assumed bottle specification. [4]</li>
+</ol>
+<p>For either stain, use Vstock = Cworking × Vfinal / Cstock, with concentration units matched. A practical batch allowance is 500 µL × number of coverslips × 1.1; the extra 10% is a preparation allowance.</p>
+<h3 id="b-plate-electroporated-cells-and-culture">B. Plate electroporated cells and culture</h3>
+<ol start="4">
+<li>
+<p>Immediately after electroporation, distribute 100,000 CCF-STTG1 cells into each prepared 24-well well in a final 500 µL of prewarmed recovery medium. Gently move the plate in two perpendicular directions to distribute cells over the coverslip.</p>
+</li>
+<li>
+<p>Culture at 37°C and 5% CO2 for 72 h after electroporation. Inspect attachment and morphology before staining. Keep the post-electroporation interval and medium composition consistent across groups.</p>
+</li>
+</ol>
+<h3 id="c-stain-live-cells-with-bodipy">C. Stain live cells with BODIPY</h3>
+<ol start="6">
+<li>
+<p>At 72 h, remove the existing culture medium and immediately replace it with 500 µL of the fresh 2 µM BODIPY-containing medium. Do not insert a PBS prewash.</p>
+</li>
+<li>
+<p>Return the plate to the 37°C, 5% CO2 incubator for 15 min, protected from light.</p>
+</li>
+<li>
+<p>Remove staining medium and wash with fresh PBS 3 times, 3 min per wash. Add and aspirate gently along the well wall; avoid directing the liquid stream onto cells. Replace all PBS between washes.</p>
+</li>
+</ol>
+<h3 id="d-fix-and-counterstain-nuclei">D. Fix and counterstain nuclei</h3>
+<ol start="9">
+<li>
+<p>Remove the last PBS wash and add 500 µL of 4% Servicebio PFA. Fix at room temperature for 30 min, retaining the fixation time from the previously selected BODIPY protocol. This is a documented adaptation: the reviewed G1101 page advises 15 min or less for cultured-cell coverslips, whereas the BODIPY reference uses 30 min. Apply one fixation regimen to all comparison groups and review it against the actual bottle instructions before a new batch. [1,5]</p>
+</li>
+<li>
+<p>Remove PFA into the designated fixative-waste container. Wash with fresh PBS 3 times, 3 min per wash.</p>
+</li>
+<li>
+<p>Add 500 µL of 0.2 µg/mL DAPI/PBS and incubate for 30 min at room temperature, protected from light. Do not add Triton X-100, Tween-20 or another permeabilization reagent to this selected route. [4]</p>
+</li>
+<li>
+<p>Remove DAPI and wash with fresh PBS 3 times, 3 min per wash. Leave the coverslips in the final PBS until each one is ready for mounting.</p>
+</li>
+</ol>
+<h3 id="e-mount-and-hold-the-slides">E. Mount and hold the slides</h3>
+<ol start="13">
+<li>
+<p>Place one drop, or an amount sufficient for the coverslip area, of room-temperature ProLong Gold without DAPI onto a labelled glass slide. [6]</p>
+</li>
+<li>
+<p>Lift the coverslip by its edge with forceps. Wick excess PBS from the edge onto a clean laboratory wipe, keeping the cell-bearing surface moist and untouched.</p>
+</li>
+<li>
+<p>Lower the coverslip cell-side down onto the mountant, allowing it to spread without trapping bubbles. Do not press the coverslip or wash after mounting. No additional edge seal is used for this short-term workflow. [6,7]</p>
+</li>
+<li>
+<p>For the team-described handling route, place the mounted slides flat in a dark slide box at 4°C for 24 h before confocal observation. Record this as cold holding rather than completed room-temperature curing.</p>
+</li>
+</ol>
+<p>ProLong Gold requires 24 h at room temperature in the dark for the recommended curing procedure. For a new preparation following the manufacturer, cure flat at room temperature first, then store at 4°C. A 24 h cold hold alone is not evidence of full curing; if the coverslip remains mobile or the mountant is fluid, complete room-temperature curing before routine imaging. Keep the same handling route and delay across comparison groups. [6,7]</p>
+<h3 id="f-observe-on-the-zeiss-lsm-800">F. Observe on the ZEISS LSM 800</h3>
+<ol start="17">
+<li>
+<p>Bring the closed slide box to room temperature before opening, then place a slide in the correct holder. Select the 40× objective and check its numerical aperture, immersion requirement and coverslip specification; use only the immersion medium required by that installed objective. [8]</p>
+</li>
+<li>
+<p>Locate a representative field and focus on the cell layer. Confirm that BODIPY puncta are in focus rather than relying only on sharp DAPI nuclei. Use brief, low-intensity previews to limit bleaching.</p>
+</li>
+<li>
+<p>Configure separate DAPI and BODIPY channels in ZEN using the table below. Acquire sequential tracks when needed to control cross-excitation. Check unstained and single-stain specimens before locking the settings. [2,8,9]</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Excitation</th>
+<th>Initial emission window</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAPI</td>
+<td>405 nm</td>
+<td>Approximately 410-480 nm</td>
+<td>Blue nuclear signal</td>
+</tr>
+<tr>
+<td>BODIPY 493/503</td>
+<td>488 nm</td>
+<td>Approximately 500-550 nm</td>
+<td>Green lipid-droplet signal</td>
+</tr>
+</tbody>
+</table>
+<p>These emission windows are practical starting settings based on the dye spectra, not recovered historical detector settings. Adjust the installed detection configuration using the single-stain controls. Choose a pinhole, pixel sampling and scan settings suited to the installed 40× lens and intended optical section; record them.</p>
+<ol start="20">
+<li>
+<p>Set laser power, detector gain and scan speed using representative bright and dim samples, avoiding saturated pixels. Hold settings, zoom, image dimensions and the optical-section strategy constant across groups. Do not use per-field automatic brightness changes for quantitative comparisons.</p>
+</li>
+<li>
+<p>Acquire fields using a predefined sampling pattern independent of green brightness. For a single optical section, apply the same focus rule to every sample; if droplets occupy multiple planes, acquire a z-stack spanning the cell layer with consistent z-spacing and analysis rules.</p>
+</li>
+<li>
+<p>Save the native CZI files with acquisition metadata and export original single-channel images plus a merged view as TIFF. Retain pixel calibration, field and coverslip identifiers, and a calibrated scale bar for display images. Return slides to 4°C protected from light after observation.</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>Each specified transition uses a new set of PBS washes: after BODIPY, after PFA and after DAPI, each 3 × 3 min. There is no PBS wash before BODIPY and no wash after mountant is added.</p>
+<p>Keep coverslips wet through fixation and staining. Handle one coverslip at a time during mounting so the remaining specimens stay in PBS; do not wipe the cell surface.</p>
+<p>Compare groups with matched seeding, medium, staining order, fixation, slide handling and acquisition settings. Multiple images from one coverslip are within-sample observations, not independent biological replicates.</p>
+<p>If cells express GFP or EGFP, resolve its overlap with BODIPY before assigning the green signal to lipid droplets. Sequential acquisition does not separate fluorophores with strongly overlapping spectra.</p>
+<p>This guide stains the existing lipid phenotype; it does not add an oleic-acid induction step. DAPI labels nuclei rather than complete cell borders, so reliable per-cell droplet assignment needs a justified segmentation method. [4]</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Usable preparations show attached cells, distinct blue nuclei and green puncta compatible with neutral lipid droplets, with limited background, no major bubbles and nonsaturated images. Lipid-poor samples may have few visible droplets; abundance is an experimental readout rather than a staining-success threshold.</p>
+<p>Unstained and single-stain controls support channel/background checks. Preserve raw CZI files and calibration for traceable observation. A change in BODIPY signal alone does not demonstrate RNA editing or functional rescue.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Suggested action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cells detach during washing</td>
+<td>Attachment before staining; liquid stream; exposed/dry coverslip</td>
+<td>Inspect before processing. Exchange liquid slowly at the well edge, keep the cell layer covered and assess adhesion on a spare coverslip before repeating.</td>
+</tr>
+<tr>
+<td>Weak or uneven DAPI nuclei</td>
+<td>Labelled DAPI stock; dilution and 30 min timing; blue channel</td>
+<td>Verify the 0.2 µg/mL calculation and image a spare specimen. Confirm uniform nuclei before batch acquisition; re-evaluate a weak stain without adding detergent to all formal samples.</td>
+</tr>
+<tr>
+<td>Diffuse green background or dye specks</td>
+<td>Working-solution dispersion; three complete PBS exchanges; unstained control</td>
+<td>Use freshly mixed working solution and complete all washes. Check background at the same detector settings before interpreting puncta.</td>
+</tr>
+<tr>
+<td>Weak green signal or rapid fading</td>
+<td>Focus; 488 nm channel; stock concentration; light history</td>
+<td>Confirm the correct optical plane and controls. Limit previews and repeated scanning. Do not increase staining time or laser power as the first response.</td>
+</tr>
+<tr>
+<td>Bubbles, shifting coverslip or variable focus</td>
+<td>Mounting orientation; residual PBS; curing history</td>
+<td>Avoid imaging the defective region. Keep the slide flat and complete the recommended room-temperature curing if mountant remains fluid after cold holding. [6]</td>
+</tr>
+<tr>
+<td>Droplets merge or signal is clipped</td>
+<td>Saturation; pixel sampling; optical plane; z-overlap</td>
+<td>Reduce acquisition saturation before locking settings. Use suitable sampling and z-sections when needed; do not count unresolved clusters as individual droplets.</td>
+</tr>
+<tr>
+<td>Apparent differences vary with the field</td>
+<td>Cell density; field selection; storage delay; acquisition metadata</td>
+<td>Apply a predefined field pattern and matched timing/settings. Retain field-level observations and summarize by the actual independent well or coverslip.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Qiu B and Simon MC. BODIPY 493/503 Staining of Neutral Lipid Droplets for Microscopy and Quantification by Flow Cytometry. Bio-protocol 6(17):e1912, 2016. DOI: 10.21769/BioProtoc.1912. Microscopy steps B.10-B.19 and Recipes, pp. 4-5; A498 reference method. Accessed 2026-10-13. <a href="https://en.bio-protocol.org/pdf/Bio-protocol1912.pdf">Open source</a></p>
+<p>[2] Thermo Fisher Scientific / Invitrogen. BODIPY 493/503, D3922: product specifications and stock-solvent guidance. Accessed 2026-10-13. <a href="https://www.thermofisher.com/order/catalog/product/D3922">Open source</a></p>
+<p>[3] Thermo Fisher Scientific. D3922 certificate of analysis, lot 2040725, 13 September 2017: molecular weight 262.11 g/mol. Reference chemistry only; not the laboratory batch certificate. Accessed 2026-10-13. <a href="https://documents.thermofisher.com/TFS-Assets/BID/certificate/Certificates-of-Analysis/D3922%20Lot%202040725%20CofA.pdf">Open source</a></p>
+<p>[4] Mallela SK et al. Detection and Quantification of Lipid Droplets in Differentiated Human Podocytes. Methods Mol Biol. 1996:199-206, 2019. DOI: 10.1007/978-1-4939-9488-5_17. Sections 2.1 and 3.3-3.4: DAPI stock, dilution and 30-minute staining without a listed detergent step. Accessed 2026-10-13. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7941729/">Open source</a></p>
+<p>[5] Servicebio. Paraformaldehyde Fixative (Neutral), G1101 family: 4% formulation and cultured-cell coverslip guidance. Current page advises 15 min or less for cultured-cell coverslips. Accessed 2026-10-13. <a href="https://www.whservicebio.com/pathological-reagent/fixatives/paraformaldehyde-fixative-neutral.html">Open source</a></p>
+<p>[6] Thermo Fisher Scientific. ProLong Gold and Diamond Antifade Mountants Product Information Sheet, MAN0002469 F.0, 16 April 2020, pp. 2-3: mounting, room-temperature curing and storage. Accessed 2026-10-13. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/MAN0002469_ProLong_SlowFade_Antifade_Mountants_PI.pdf">Open source</a></p>
+<p>[7] Thermo Fisher Scientific / Invitrogen. ProLong Gold Antifade Mountant, P36930: product FAQs on curing and coverslip-edge sealing for short-term observation. Accessed 2026-10-13. <a href="https://www.thermofisher.com/order/catalog/product/P36930">Open source</a></p>
+<p>[8] ZEISS. LSM 800 with Airyscan: Your Compact Confocal Power Pack. Manufacturer brochure, p. 16: laser lines, objective options and ZEN software. Institutional mirror of the ZEISS document. Accessed 2026-10-13. <a href="https://bpb-us-e1.wpmucdn.com/sites.northeastern.edu/dist/8/650/files/2020/09/LSM_800_Confocal_Power_Pack.pdf">Open source</a></p>
+<p>[9] Thermo Fisher Scientific. DAPI Protocol for Fluorescence Imaging: dye spectrum and general fixed-cell guidance. Its 300 nM, 1-5 min permeabilized-cell method is not the DAPI regimen used here. Accessed 2026-10-13. <a href="https://www.thermofisher.com/us/en/home/references/protocols/cell-and-tissue-analysis/protocols/dapi-imaging-protocol.html">Open source</a></p></main>
+  </div>
+</body>
+</html>

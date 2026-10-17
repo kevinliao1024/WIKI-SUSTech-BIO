@@ -2,6 +2,9 @@
 import hashlib
 from pathlib import Path
 import unittest
+from html.parser import HTMLParser
+from urllib.parse import urlsplit
+import yaml
 
 from app import app
 from wiki_content import CONTENT_PAGES, NAVIGATION, load_markdown_content
@@ -14,7 +17,8 @@ class ExperimentsTest(unittest.TestCase):
         content = load_markdown_content('wet-lab/experiments.md')
         groups = content.metadata['protocol_groups']
         records = [p for g in groups for p in g['protocols']]
-        self.assertEqual(len(groups), 8)
+        self.assertEqual([g['code'] for g in groups], ['M', 'C', 'MR', 'RP', 'AS', 'AA', 'FV'])
+        self.assertEqual(len(groups[0]['protocols']), 15)
         self.assertEqual(len(records), 36)
         self.assertEqual(len({p['id'] for p in records}), len(records))
         with app.test_client() as client:
@@ -34,6 +38,48 @@ class ExperimentsTest(unittest.TestCase):
                     self.assertEqual(source.status_code, 200)
                     self.assertEqual(source.mimetype, 'application/pdf')
                     source.close()
+
+    def test_guide_copy_and_reader_sections(self):
+        guide = yaml.safe_load((ROOT / 'docs/wet-lab/experiment-guide.yaml').read_text())
+        content = load_markdown_content('wet-lab/experiments.md')
+        self.assertEqual(content.title, 'Experiment')
+        self.assertEqual(content.metadata['guide'], guide)
+        self.assertEqual(len(guide['find_steps']), 4)
+        self.assertEqual(len(guide['read_modules']), 9)
+        class Document(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.ids, self.links, self.images, self.styles = [], [], [], []
+            def handle_starttag(self, tag, attrs):
+                a = dict(attrs)
+                if 'id' in a: self.ids.append(a['id'])
+                if tag == 'a': self.links.append(a.get('href', ''))
+                if tag == 'img': self.images.append(a['src'])
+                if tag == 'link': self.styles.append(a['href'])
+        for group in content.metadata['protocol_groups']:
+            for record in group['protocols']:
+                path = ROOT / 'static' / record['reader']
+                reader = path.read_text()
+                parser = Document()
+                parser.feed(reader)
+                with self.subTest(entry=record['id']):
+                    self.assertEqual(len(parser.ids), len(set(parser.ids)))
+                    self.assertIn('experiment-information', parser.ids)
+                    self.assertIn('procedure', parser.ids)
+                    self.assertNotIn('/Users/', reader)
+                    for link in parser.links:
+                        if link.startswith('#'): self.assertIn(link[1:], parser.ids)
+                    for asset in parser.images + parser.styles:
+                        self.assertFalse(urlsplit(asset).scheme, 'Reader media is served locally')
+                        self.assertTrue((path.parent / asset).is_file(), asset)
+        with app.test_client() as client:
+            html = client.get('/experiments').get_data(as_text=True)
+            self.assertIn('<details class="exp-guide" id="how-to-read">', html)
+            self.assertEqual(html.count('class="exp-step-number"'), 13)
+            for item in guide['find_steps'] + guide['read_modules']:
+                from html import escape
+                self.assertIn(escape(item['text'], quote=False), html)
+            self.assertIn(guide['clarification_lead'], html)
 
     def test_existing_wet_lab_route_uses_catalog_template(self):
         self.assertEqual(CONTENT_PAGES['experiments'].template, 'pages/experiments.html')

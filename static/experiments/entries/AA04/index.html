@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AA04 · AAV Transduction</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> AA04 · <strong>Category:</strong> AAV Delivery</p>
+<p>AA04 | ver 1.0 | Revised 2026-10-13</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Introduce self-prepared recombinant AAV9 into adherent HEK293T (293T) or CCF-STTG1 cultures using AAV-containing complete growth medium. Use AA01-AA03 for packaging, purification and vector-genome titration; use C01/C04 for routine cell preparation. This protocol ends at the handoff for passage or cell collection. [4]</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Source / specification</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>293T or CCF-STTG1 cells</td>
+<td>Healthy adherent cultures maintained under C01</td>
+<td>Prepare and assess each cell line separately</td>
+</tr>
+<tr>
+<td>Purified recombinant AAV9</td>
+<td>Self-prepared under AA01/AA02; genome titer from AA03</td>
+<td>Use the identified construct and batch; titer in vg/mL</td>
+</tr>
+<tr>
+<td>Complete growth medium</td>
+<td>C01: DMEM-based for 293T; RPMI 1640-based for CCF-STTG1</td>
+<td>Use the established cell-line-specific formulation</td>
+</tr>
+<tr>
+<td>Culture vessels; tubes; pipettes and sterile tips</td>
+<td>Existing C04 format; low-binding tubes for virus aliquots when available</td>
+<td>Medium exchange, virus dilution and dose delivery</td>
+</tr>
+<tr>
+<td>Cell counter; microscope; culture cabinet; incubator</td>
+<td>Existing cell-culture equipment; 37°C, 5% CO2</td>
+<td>Cell-number estimate, culture inspection and incubation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Prepare cells and complete medium using C01/C04. Plan AAV addition approximately 24 h after seeding or at approximately 70% confluence, with healthy, evenly attached cells.</p>
+<p>Identify the AAV construct, promoter, batch and original-stock titer from AA03, including all dilution factors. A provisional titer gives an approximate vg/cell input. Include a mock-treated culture and controls appropriate to the intended experiment. [4]</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-check-cultures-and-estimate-cells-per-well">A. Check cultures and estimate cells per well</h3>
+<ol>
+<li>
+<p>Inspect cultures at the intended addition time. Proceed with healthy, attached cells; allow recovery or adjust the seeding setup if cells are sparse, crowded or unhealthy.</p>
+</li>
+<li>
+<p>Estimate viable cells per well N at AAV addition using a representative, identically seeded parallel well or an established estimate for the same line, format and timing. Record whether N was counted or estimated. Confluence does not specify cell number, and growth after seeding changes the dose denominator.</p>
+</li>
+</ol>
+<h3 id="b-select-a-trial-dose-and-calculate-virus-volume">B. Select a trial dose and calculate virus volume</h3>
+<ol start="3">
+<li>Consider the following exploratory panel, adapted from the general 10,000-500,000 genome-copy/cell range in [1]. Optimize 293T and CCF-STTG1 separately for each construct; the panel is not validated for these cultures.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Candidate dose</th>
+<th>Role in the initial trial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 × 10^4 vg/cell</td>
+<td>Lower-dose starting condition</td>
+</tr>
+<tr>
+<td>1 × 10^5 vg/cell</td>
+<td>Intermediate condition</td>
+</tr>
+<tr>
+<td>5 × 10^5 vg/cell</td>
+<td>Higher-dose condition, if stock availability and culture condition permit</td>
+</tr>
+</tbody>
+</table>
+<p>vg/cell describes nominal physical genome input, sometimes called a genome-based MOI. It does not measure infectious units or predict the fraction expressing the transgene. [4]</p>
+<ol start="4">
+<li>Calculate stock volume from dose q (vg/cell), cells per well N, and stock titer C (vg/mL). Recalculate for each construct or batch.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vector genomes required per well</td>
+<td>G = q × N</td>
+</tr>
+<tr>
+<td>Stock volume per well (µL)</td>
+<td>Vstock = 1,000 × q × N / C</td>
+</tr>
+<tr>
+<td>Final genome concentration in medium (vg/mL)</td>
+<td>Cmedium = q × N / Vfinal, with Vfinal in mL</td>
+</tr>
+</tbody>
+</table>
+<p>Calculation example: N = 300,000 cells at addition, C = 1 × 10^12 vg/mL, and final medium = 1.0 mL/well. These are hypothetical inputs for illustration.</p>
+<table>
+<thead>
+<tr>
+<th>Dose (vg/cell)</th>
+<th>Stock (µL/well)</th>
+<th>Final medium (vg/mL)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 × 10^4</td>
+<td>3</td>
+<td>3 × 10^9</td>
+</tr>
+<tr>
+<td>1 × 10^5</td>
+<td>30</td>
+<td>3 × 10^10</td>
+</tr>
+<tr>
+<td>5 × 10^5</td>
+<td>150</td>
+<td>1.5 × 10^11</td>
+</tr>
+</tbody>
+</table>
+<p>The 150 µL result would contribute 15% stock buffer to the final medium. Check medium compatibility before using such a volume; it is an arithmetic example, not an endorsed formulation.</p>
+<ol start="5">
+<li>Use a fixed volume only for wells sharing the stock, selected dose and similar estimated cell number. Record approximate vg/cell. For n equivalent wells, prepare n well-equivalents plus a calculated transfer-loss allowance, then dispense one-well volumes.</li>
+</ol>
+<h3 id="c-prepare-aav-containing-medium-and-replace-medium-once">C. Prepare AAV-containing medium and replace medium once</h3>
+<ol start="6">
+<li>
+<p>Thaw the working AAV aliquot on ice if frozen. Mix gently by pipetting without frothing, and keep repeated freeze-thaw cycles to a minimum. [2]</p>
+</li>
+<li>
+<p>Mix AAV into fresh complete medium for the receiving cells and bring to the established final culture volume, including virus volume. Use promptly. Retain the serum-containing formulation; no transduction enhancer is used. [1, 4]</p>
+</li>
+<li>
+<p>Gently aspirate the original medium and replace it with AAV-containing medium, adding along the wall without directing a jet onto cells. Give mock wells the same final volume; use a matched stock-buffer control where required. [1]</p>
+</li>
+<li>
+<p>Distribute the medium with gentle forward-backward and side-to-side movements. Return the cultures to 37°C with 5% CO2 and record medium replacement as t = 0. [1]</p>
+</li>
+</ol>
+<h3 id="d-continue-culture-to-passage-or-collection">D. Continue culture to passage or collection</h3>
+<ol start="10">
+<li>
+<p>Continue without a scheduled post-transduction medium exchange until passage or cell collection is needed. Inspect morphology, confluence and medium daily. If medium is depleted or cells deteriorate earlier, take the appropriate culture-maintenance action. [1]</p>
+</li>
+<li>
+<p>Hand the culture to C01 for passage or to the selected collection procedure. Record time since AAV addition, any medium change, and any passage/split ratio. Choose downstream evaluation separately.</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>For stock volumes below reliable pipetting range, prepare a fresh working dilution in complete medium and use its reduced titer in the calculation. A gently mixed master mixture can simplify equivalent-well dosing. [2]</p>
+<p>If stock buffer would substantially dilute normal medium, use a suitable, characterized concentrated preparation or test a lower candidate dose. Preserve suitable medium composition and final culture volume.</p>
+<p>Equal vg/cell does not guarantee equal expression across cell lines, constructs or batches. Consider capsid compatibility and promoter activity when interpreting the downstream endpoint. [1]</p>
+<p>Keep collection intervals comparable between groups. Proliferation and passage can dilute nonintegrated AAV genomes, so expression may change through repeated passages. [3]</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Obtain cultures treated with a documented nominal genome dose and maintained to the intended passage or collection endpoint. Cells should retain suitable attachment and morphology. Normal appearance and an input titer alone do not establish successful transduction or expression; evaluate those outcomes using the method selected for the experiment.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observation</th>
+<th>Check first</th>
+<th>Suggested action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cells detach during medium replacement</td>
+<td>Starting attachment; aspiration position; speed and direction of medium addition</td>
+<td>Add along the wall and avoid direct flow onto cells. Reassess damaged wells and allow better attachment in the next setup.</td>
+</tr>
+<tr>
+<td>Cells round up or deteriorate after addition</td>
+<td>Mock culture; stock-buffer fraction; dose; preparation handling; medium composition</td>
+<td>If limited to treated wells, compare a lower dose and an appropriate buffer control. Check stock quality and preserve the normal culture medium before attributing the change to the transgene.</td>
+</tr>
+<tr>
+<td>Nominal doses differ between apparently similar wells</td>
+<td>Cells at addition; stock identity and titer; unit conversion; mixture preparation</td>
+<td>Recalculate using cells at addition and that stock's vg/mL. Keep cell-number estimates and aliquot mixing consistent; a fixed volume is only an approximate dose.</td>
+</tr>
+<tr>
+<td>Calculated volume is impractical to dispense</td>
+<td>Titer units; dilution factors; cells per well; stock fraction in final medium</td>
+<td>For tiny volumes, prepare a fresh calculated working dilution or master mixture. For excessive volumes, use a suitable concentrated preparation or a lower candidate dose.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] OriGene Technologies. AAV Infection Protocol: general dose range, volume calculation and medium handling. Official webpage and linked one-page PDF; accessed 2026-10-13. <a href="https://www.origene.com/support/learning-resources/protocols/aav-infection-protocol">Open source</a></p>
+<p>[2] GeneMedi. AAV User Manual, Storage and Dilution of AAV (PDF p. 2) and Cell Infection Test of AAV (PDF p. 16). Accessed 2026-10-13. <a href="https://www.genemedi.net/pdf/Genemedi-AAV%28adeno%20associated%20virus%29%20User%20Manual.pdf">Open source</a></p>
+<p>[3] Rogers GL et al. Homologous Recombination-Based Genome Editing by Clade F AAVs Is Inefficient in the Absence of a Targeted DNA Break. Molecular Therapy 27(10):1726-1736 (2019). doi:10.1016/j.ymthe.2019.08.019. Results/Figure 1C; accessed 2026-10-13. <a href="https://www.cell.com/molecular-therapy-family/molecular-therapy/fulltext/S1525-0016(19)30405-8">Open source</a></p>
+<p>[4] SUSTech-BIO 2026 iGEM Team. Local AA01-AA03 and C01/C04 protocols; current files reviewed and transduction workflow confirmed 2026-10-13.</p></main>
+  </div>
+</body>
+</html>

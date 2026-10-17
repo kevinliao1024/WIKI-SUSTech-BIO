@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M13 · DNA Ligation Using T4 DNA Ligase</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> M13 · <strong>Category:</strong> Molecular Biology</p>
+<p>M13 | ver 1.1 | Revised 2026-10-03</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Join a prepared DNA insert to a linearized plasmid vector using Takara T4 DNA Ligase, then recover and verify recombinant clones. This protocol covers conventional cohesive-end and blunt-end ligation with separately supplied enzyme and 10× buffer. [1, 2]</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier / identifier</th>
+<th>Specification / use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T4 DNA Ligase</td>
+<td>Takara / 2011A or 2011B</td>
+<td>350 U/µL; conventional enzyme</td>
+</tr>
+<tr>
+<td>10× T4 DNA Ligase Buffer</td>
+<td>Takara / supplied with enzyme</td>
+<td>ATP-containing buffer; use at 1×</td>
+</tr>
+<tr>
+<td>Linearized vector and insert DNA</td>
+<td>Prepared samples</td>
+<td>Compatible ends; known lengths and concentrations</td>
+</tr>
+<tr>
+<td>DEPC-treated water</td>
+<td>Sangon Biotech / B501005</td>
+<td>Laboratory water for reaction preparation [6]</td>
+</tr>
+<tr>
+<td>Tubes and tips</td>
+<td>Axygen tips; laboratory tubes</td>
+<td>Reaction setup</td>
+</tr>
+<tr>
+<td>Pipettes, ice rack, microcentrifuge</td>
+<td>Eppendorf centrifuge; laboratory pipettes and ice rack</td>
+<td>Dispensing and brief collection</td>
+</tr>
+<tr>
+<td>Thermal cycler or temperature-controlled block</td>
+<td>Laboratory equipment</td>
+<td>Stable 16°C incubation</td>
+</tr>
+<tr>
+<td>Competent cells and selection plates</td>
+<td>See M05</td>
+<td>Transformation; antibiotic matched to vector</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Check that the vial is conventional T4 DNA Ligase with a separate 10× buffer. A DNA Ligation Kit or Mighty Mix requires its own formulation and instructions.</p>
+<p>Prepare restriction-digested DNA using M03 and purify as needed using M02. Check the intended junctions, end compatibility and fragment sizes. Measure DNA after purification.</p>
+<p>Ligation requires a 5′ phosphate and a 3′ hydroxyl at the bond being sealed. With a dephosphorylated vector, provide a phosphorylated insert. Undigested PCR products and synthetic oligonucleotides may lack 5′ phosphates; arrange phosphorylation when needed and anneal complementary oligos before use. [2, 3]</p>
+<p>Remove or appropriately inactivate upstream phosphatase before ligation. Keep enzyme stocks at -20°C between uses. Thaw and mix the buffer completely, briefly spin, and keep the enzyme on ice during setup. [2, 3]</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-calculate-dna-inputs">A. Calculate DNA inputs</h3>
+<ol>
+<li>Use 50 ng vector and an insert:vector molar ratio of 3:1 as the initial manufacturer example. Optimize within 1:1 to 10:1 when end type, fragment size or vector dephosphorylation warrants it. [1]</li>
+</ol>
+<p>Insert mass (ng) = vector mass (ng) × insert length (bp) / vector length (bp) × desired insert:vector molar ratio. For each DNA, volume (µL) = mass (ng) / concentration (ng/µL).</p>
+<p>Calculation example only: a 5,000 bp vector (50 ng) and a 1,000 bp insert at 3:1 require 30 ng insert. Use the purified backbone length, not the length of the original uncut plasmid.</p>
+<h3 id="b-assemble-the-reaction">B. Assemble the reaction</h3>
+<ol start="2">
+<li>Combine water, buffer and DNA on ice using the following 20 µL reference reaction; add ligase last. [1]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Volume / amount</th>
+<th>Final condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10× T4 DNA Ligase Buffer</td>
+<td>2 µL</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Linearized vector</td>
+<td>50 ng; calculated volume</td>
+<td>Reference DNA input</td>
+</tr>
+<tr>
+<td>Insert</td>
+<td>Calculated volume</td>
+<td>3:1 molar ratio initially</td>
+</tr>
+<tr>
+<td>T4 DNA Ligase (350 U/µL)</td>
+<td>1 µL</td>
+<td>350 U per reaction</td>
+</tr>
+<tr>
+<td>Nuclease-free water</td>
+<td>To 20 µL</td>
+<td>17 µL minus total DNA volume</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>20 µL</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>If combined DNA volume exceeds 17 µL, concentrate and remeasure the DNA. For an impractically small transfer, prepare a measured working dilution and use its concentration in the calculation.</p>
+<ol start="3">
+<li>
+<p>Prepare a vector-only control with the same vector input, buffer and ligase; replace insert volume with water. When investigating background, also prepare vector without insert or ligase, replacing both with water. [4]</p>
+</li>
+<li>
+<p>Mix gently by pipetting and briefly centrifuge to collect the reaction at the bottom of the tube.</p>
+</li>
+</ol>
+<h3 id="c-incubate-and-recover-clones">C. Incubate and recover clones</h3>
+<ol start="5">
+<li>Incubate according to DNA end type. Use the shorter end of the range first for a new cohesive-end reaction; extend within the stated range if recovery is poor after checking controls. [1]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>End type</th>
+<th>Temperature</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compatible cohesive ends</td>
+<td>16°C</td>
+<td>1-5 h</td>
+</tr>
+<tr>
+<td>Blunt ends</td>
+<td>16°C</td>
+<td>1-24 h</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Use an aliquot for transformation following M05, preferably its conventional route for a new ligation. At the M05 reference scale, use 1-5 µL reaction per 50 µL chemically competent cells. Include a known plasmid control and a no-DNA control when establishing or troubleshooting the workflow. [5]</li>
+</ol>
+<p>Takara's standard workflow proceeds directly to transformation without a specified heat-inactivation step. For a pause, store the reaction at -20°C. Remove salts before electroporation using a compatible DNA-cleanup method. [1, 3]</p>
+<ol start="7">
+<li>Compare sample and control plates. Pick isolated colonies according to M06 and verify the insert, its orientation and both junctions by sequencing; use colony PCR or diagnostic digestion as preliminary screens where useful. [5]</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>Use molar ratios rather than equal DNA masses. A short annealed oligo can require very little mass; dilute it to a pipettable concentration instead of adding an arbitrary volume.</p>
+<p>Use the matching ATP-containing buffer. If a previously reliable ligation fails, try a fresh buffer aliquot before increasing enzyme input; ATP deterioration can limit activity. [3]</p>
+<p>After vector dephosphorylation, confirm insert phosphorylation and removal of active phosphatase. Leaving both partners without a usable 5′ phosphate prevents the required joining reaction. [3]</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Successful ligation yields transformants from which sequence-verified recombinant clones can be recovered. More colonies than the vector-only control supports enrichment but does not prove correct assembly. Colony count, gel migration or a positive colony PCR alone cannot establish the complete intended sequence. Retain sample identities, reaction inputs, control observations and verification results.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Suggested action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Few or no colonies, including plasmid control</td>
+<td>Cell competence, selection and transformation handling</td>
+<td>Troubleshoot M05 first; a failed transformation control cannot diagnose the ligation.</td>
+</tr>
+<tr>
+<td>Few or no colonies, but plasmid control works</td>
+<td>End compatibility, 5′ phosphates, buffer condition and DNA purity</td>
+<td>Correct end preparation; use fresh buffer and clean DNA. If those checks pass, extend within the applicable incubation range. [1, 3]</td>
+</tr>
+<tr>
+<td>Many colonies in vector-only control</td>
+<td>Compare vector with and without ligase</td>
+<td>High no-ligase background suggests uncut plasmid: revisit M03. Background mainly with ligase suggests vector reclosure; consider dephosphorylation for compatible vector ends. [4]</td>
+</tr>
+<tr>
+<td>Insert-containing clones have wrong orientation or junctions</td>
+<td>End design, expected construct map and sequence data</td>
+<td>For nondirectional ends, screen both orientations. Compare both junctions with the intended sequence and select a verified clone.</td>
+</tr>
+<tr>
+<td>Electroporation arcs or gives poor recovery</td>
+<td>Salt carryover and cell/electroporator requirements</td>
+<td>Desalt the completed reaction before retrying with an appropriate aliquot; follow the cell-specific electroporation procedure. [3]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Takara Bio. T4 DNA Ligase: ligation of foreign DNA into plasmid vectors, product 2011A/B; procedure and footnotes. Accessed 2026-10-03. <a href="https://catalog.takara-bio.co.jp/com/tech_info_detail.php?masterid=M100004631&amp;mode=2&amp;unitid=U100003489">Open source</a></p>
+<p>[2] Takara Bio. T4 DNA Ligase, 2011A, product data sheet v201312Da, p. 1: description, storage and supplied buffer. Accessed 2026-10-03. <a href="https://catalog.takara-bio.co.jp/PDFS/2011A_DS_j.pdf">Open source</a></p>
+<p>[3] New England Biolabs. Causes of ligation reaction failure leading to transformation failure. General biochemical and cleanup guidance only; Takara reaction parameters are taken from [1]. Accessed 2026-10-03. <a href="https://www.neb.com/en-gb/faqs/what-are-some-causes-of-ligation-reaction-failure-that-can-lead-to-transformation-failure">Open source</a></p>
+<p>[4] New England Biolabs. Cloning Problem: Too much background in the transformation step. Control interpretation and phosphatase removal. Accessed 2026-10-03. <a href="https://www.neb.com/en-au/faqs/cloning-problem-too-much-background-in-the-transformation-step">Open source</a></p>
+<p>[5] SUSTech-BIO 2026 iGEM Team. Maintained protocol library: M02 (DNA purification), M03 (digestion), M05 v1.0 (transformation) and M06 (colony handling and verification). Read 2026-10-03.</p>
+<p>[6] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed 2026-10-03. <a href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf">Open source</a></p></main>
+  </div>
+</body>
+</html>

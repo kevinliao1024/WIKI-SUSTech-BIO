@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MX02 · Target Transcript RT-PCR and Sequencing Readout</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> MX02 · <strong>Category:</strong> Molecular Biology</p>
+<p>MX02 | ver 1.2 | Revised 2026-10-14</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>This integrated workflow combines the core molecular biology protocols to amplify a defined target-transcript region from purified RNA and obtain bidirectional Sanger traces or reference-based Nanopore amplicon data.</p>
+<p>It links M08 or M09 (RNA extraction), M10 (DNA removal and reverse transcription), M01 (endpoint PCR of cDNA) and M02 (gel analysis and conditional product recovery), with MR01 available as an alternative RNA-extraction route.</p>
+<p>MX02 explains the handoffs between these modules and the requirements for sequencing submission and initial readout, using APOE4 and OpenA-1 as examples; sequence signals require suitable controls and analysis before they can support an RNA-editing claim.</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier / identifier</th>
+<th>Specification / use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purified total RNA</td>
+<td>Prepared sample; M08/M09/MR01 as applicable</td>
+<td>Measured concentration; suitable for RT</td>
+</tr>
+<tr>
+<td>PrimeScript RT reagent Kit with gDNA Eraser</td>
+<td>Takara / RR047A</td>
+<td>DNA removal and 20 µL RT; supplied RNase-free water [1]</td>
+</tr>
+<tr>
+<td>Gloria Nova HS 2X Master Mix V2</td>
+<td>ABclonal / RK20731</td>
+<td>25 µL endpoint PCR; use at 1× [2]</td>
+</tr>
+<tr>
+<td>Target-specific F/R primers</td>
+<td>Custom oligos; sequences below</td>
+<td>Separate 10 µM working solutions; 0.2 µM each in PCR</td>
+</tr>
+<tr>
+<td>Sterilized Type II water</td>
+<td>Laboratory-prepared</td>
+<td>PCR setup and primer working dilutions; RNase-free water for RT</td>
+</tr>
+<tr>
+<td>RNA-safe and PCR tubes; filter tips</td>
+<td>Laboratory tubes; Axygen tips</td>
+<td>Sample tracking and reaction setup</td>
+</tr>
+<tr>
+<td>Pipettes, ice rack and microcentrifuge</td>
+<td>Laboratory equipment; Eppendorf centrifuge</td>
+<td>Dispensing and brief spin-down</td>
+</tr>
+<tr>
+<td>Thermal cycler</td>
+<td>Laboratory instrument</td>
+<td>RT and PCR programs with heated lid</td>
+</tr>
+<tr>
+<td>Gel system, ladder, stain and imaging system</td>
+<td>See M02</td>
+<td>Analytical product check; selective recovery if necessary</td>
+</tr>
+<tr>
+<td>Sanger or Nanopore sequencing service</td>
+<td>GENEWIZ / CWBIO respectively</td>
+<td>Unpurified-PCR submission route; provider cleanup [3, 4]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>Record a unique culture-sample ID, RNA/RT ID, PCR ID, target reference and chosen sequencing branch. Keep independent culture samples separate; F/R reads and repeated PCR tubes do not increase the biological replicate count.</p>
+<p>Match both primers to the actual sample construct or transcript. Record the primer-bounded product length and the target coordinate. A shared coding sequence can occur in both residual plasmid and cDNA, so product identity alone does not establish RNA origin.</p>
+<table>
+<thead>
+<tr>
+<th>Primer name</th>
+<th>Sequence, 5′ to 3′</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APOE-ATG-F</td>
+<td>ATGAAGGTTCTGTGGGCTGCG</td>
+<td>APOE4; 21 nt</td>
+</tr>
+<tr>
+<td>APOE-TGA-R</td>
+<td>GTGATTGTCGCTGGGCACAG</td>
+<td>APOE4; 20 nt</td>
+</tr>
+<tr>
+<td>OpenA1-edit523-F</td>
+<td>ATGGCCGATAAGCAGAAGAACG</td>
+<td>OpenA-1; 22 nt</td>
+</tr>
+<tr>
+<td>OpenA1-edit523-R</td>
+<td>CCACACTTTTCACCCAGGTCAC</td>
+<td>OpenA-1; 22 nt</td>
+</tr>
+</tbody>
+</table>
+<p>The ordered APOE-ATG-F sequence above is 21 nt; an earlier APOBEC text lists a 20-nt version without the terminal G. The current guide follows the actual ordering/submission tables. In the local pCDH and pcDNA5 APOE4 references, this pair spans 951 bp and contains APOE CDS c.388. OpenA1-edit523 spans 523 bp in the local OpenA-1 reference, with candidate C280 in the linker. These references cover a local assay region, not the complete transcript or full plasmid. [5, 6]</p>
+<p>Prepare separate 10 µM primer working solutions; for a 100 µM stock, combine 10 µL stock with 90 µL water. Keep RT/PCR preparation away from amplified products and concentrated plasmid controls. Use the selected target pair for every condition in a comparison.</p>
+<p>Plan enough PCR volume for the gel check, a retained backup and the chosen service. The local GFA/MRE Sanger form requests at least 50 µL unpurified product. Three matching 25 µL reactions provide 75 µL before aliquoting; this is a planning example, not a recorded historical tube count. Provider requirements depend on service and submission format. [3, 6]</p>
+<h3 id="controls-for-a-new-run">Controls for a new run</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Preparation</th>
+<th>What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Matched no-RT</td>
+<td>Treat the same RNA with gDNA Eraser; replace RT enzyme with 1 µL water. Use 1.2 µL in target PCR.</td>
+<td>DNA contribution to the same target assay</td>
+</tr>
+<tr>
+<td>PCR NTC</td>
+<td>Replace the 1.2 µL cDNA with 1.2 µL water; keep other components unchanged.</td>
+<td>Contamination or reagent-associated background</td>
+</tr>
+<tr>
+<td>Known positive template, when establishing the assay</td>
+<td>Use known amplifiable target cDNA; a matching plasmid may separately test primers/PCR.</td>
+<td>PCR competence; plasmid positivity does not establish RNA origin</td>
+</tr>
+<tr>
+<td>Biological comparator</td>
+<td>Use a matched no-editor or appropriate inactive-editor culture, processed with samples.</td>
+<td>Condition-dependent background at the target</td>
+</tr>
+</tbody>
+</table>
+<p>The team could not confirm that these technical controls were used in the earlier sequencing experiments. The table is guidance for new runs, not a reconstruction of historical controls. Historical RNA-origin and quantitative limitations remain explicit.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="a-prepare-rna-and-cdna">A. Prepare RNA and cDNA</h3>
+<ol>
+<li>
+<p>Extract total RNA by the appropriate upstream route in M08, M09 or MR01. Keep each culture sample separate and measure its RNA concentration. Use a method compatible with the sample; a kit number in one module is not interchangeable with another kit.</p>
+</li>
+<li>
+<p>Calculate the volume containing 850 ng RNA: V (µL) = 850 / concentration (ng/µL). Assemble the following 10 µL DNA-removal reaction on ice. V must not exceed 7 µL; if it does, concentrate or re-extract the RNA and remeasure. [1, 5]</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>DNA-removal component</th>
+<th>Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5× gDNA Eraser Buffer</td>
+<td>2 µL</td>
+</tr>
+<tr>
+<td>gDNA Eraser</td>
+<td>1 µL</td>
+</tr>
+<tr>
+<td>Total RNA, 850 ng</td>
+<td>V µL</td>
+</tr>
+<tr>
+<td>RNase-free water</td>
+<td>7 - V µL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>10 µL</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Incubate at 42°C for 2 min, then hold at 4°C while preparing the RT additions. Add the following components to the complete DNA-removal reaction. For the matched no-RT, replace the RT enzyme with water. [1]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>RT component</th>
+<th>Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complete DNA-removal reaction</td>
+<td>10 µL</td>
+</tr>
+<tr>
+<td>5× PrimeScript Buffer 2 (for Real Time)</td>
+<td>4 µL</td>
+</tr>
+<tr>
+<td>PrimeScript RT Enzyme Mix I</td>
+<td>1 µL</td>
+</tr>
+<tr>
+<td>RT Primer Mix</td>
+<td>1 µL</td>
+</tr>
+<tr>
+<td>RNase-free water</td>
+<td>4 µL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>20 µL</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>Run 37°C for 15 min, then 85°C for 5 sec and a 4°C hold. Use the resulting RT product undiluted for the PCR below. Store retained cDNA at or below -20°C. M10 gives the detailed handling notes. [1, 5]</li>
+</ol>
+<h3 id="b-amplify-the-target-region">B. Amplify the target region</h3>
+<ol start="5">
+<li>Select the APOE4 or OpenA-1 primer pair. Assemble the confirmed 25 µL reaction on ice, preparing a shared mix without template where appropriate. Add each sample's undiluted RT product last; prepare the NTC separately. [2, 5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>PCR component</th>
+<th>Volume</th>
+<th>Final condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gloria Nova HS 2X Master Mix V2</td>
+<td>12.5 µL</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Forward primer, 10 µM</td>
+<td>0.5 µL</td>
+<td>0.2 µM</td>
+</tr>
+<tr>
+<td>Reverse primer, 10 µM</td>
+<td>0.5 µL</td>
+<td>0.2 µM</td>
+</tr>
+<tr>
+<td>Undiluted cDNA</td>
+<td>1.2 µL</td>
+<td>4.8% RT-reaction carryover</td>
+</tr>
+<tr>
+<td>Sterilized Type II water</td>
+<td>10.3 µL</td>
+<td>To volume</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>25 µL</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Transfer reactions to a cycler preheated to 95°C and run the following program. The 60°C annealing and 26 cycles are the confirmed team workflow; a new primer pair requires its own assessment. [2, 5]</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Temperature</th>
+<th>Time</th>
+<th>Repetitions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial denaturation</td>
+<td>95°C</td>
+<td>3 min</td>
+<td>Once</td>
+</tr>
+<tr>
+<td>Denaturation</td>
+<td>95°C</td>
+<td>15 sec</td>
+<td>26 cycles</td>
+</tr>
+<tr>
+<td>Annealing</td>
+<td>60°C</td>
+<td>30 sec</td>
+<td>Within cycle</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>72°C</td>
+<td>10 sec/kb</td>
+<td>Within cycle</td>
+</tr>
+<tr>
+<td>Final extension</td>
+<td>72°C</td>
+<td>5 min</td>
+<td>Once</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>4-12°C</td>
+<td>Until removal</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>At 10 sec/kb, 951 bp and 523 bp correspond to 9.51 and 5.23 sec, respectively. A 10 sec extension is a practical rounded starting setting for these short products; it is derived from the length rule, not a recovered historical extension-time measurement. If product formation is inadequate, use the selected enzyme guidance and M01 PCR Optimization rather than transferring another polymerase's program. [2]</p>
+<h3 id="c-check-the-product-and-retain-the-submission-sample">C. Check the product and retain the submission sample</h3>
+<ol start="7">
+<li>
+<p>Run a small aliquot on an analytical agarose gel using M02. Compare the sample with the correct product length and the available no-RT/NTC. Record the image, lane identities and observed bands; retain the bulk PCR reaction in its original labeled tube.</p>
+</li>
+<li>
+<p>Use the unpurified-PCR route when a distinct, correctly sized target band is present without substantial competing products. If multiple products, strong short by-products or smearing prevent confident submission, first check shared gel issues in M02, then use M01 Optimization as appropriate. Recover the intended band with M02 only when size selection is necessary; update the submission type if the product is purified.</p>
+</li>
+<li>
+<p>If more volume is required, perform additional matching PCRs and pool only products from the same cDNA sample, primer pair and program. Preserve their relationship to the parent sample. Do not pool different biological samples or add cycles solely to satisfy a volume requirement.</p>
+</li>
+</ol>
+<h3 id="d-submit-for-the-selected-sequencing-branch">D. Submit for the selected sequencing branch</h3>
+<ol start="10">
+<li>
+<p>For Sanger, submit the unpurified product as a PCR sample and request separate forward and reverse reads. Provide each custom primer separately, labeled with its name and 5′ to 3′ sequence; the working concentration is 10 µM. For each sequencing reaction use one primer, not an F/R mixture. Supply the gel image, sample sheet and expected fragment length, allowing for provider cleanup and the local order's volume requirement. [3, 6]</p>
+</li>
+<li>
+<p>For CWBIO Nanopore, select reference-based PCR-fragment sequencing and declare whether the sample is unpurified PCR, purified product or a gel slice. Supply the exact expected amplicon FASTA, target coordinate and sample identities. No separate sequencing primer is required for this service; PCR primers remain documented in the sample sheet. Match the provider's current volume/quality requirements to the selected sample type, retain a backup and arrange sealed tubes with local collection or ice-pack shipment. [4]</p>
+</li>
+</ol>
+<p>Keep the provider's order-to-sample mapping with the experiment. The team generally submits unpurified PCR products. Any provider cleanup or library preparation belongs to the commissioned service; it is not a separately documented team laboratory step.</p>
+<h3 id="e-receive-data-and-perform-the-initial-readout">E. Receive data and perform the initial readout</h3>
+<ol start="12">
+<li>
+<p>Archive original Sanger AB1 files and sequence calls, or Nanopore reference FASTA, reads/alignment files, variant tables and fragment-length outputs. Preserve the submitted reference, primer sequences, order mapping and processing software/settings alongside these files. Do not overwrite original files with edited sequences.</p>
+</li>
+<li>
+<p>Align the sequence data to the sample-specific amplicon reference and orient both directions consistently. Verify the target coordinate and flanking sequence before interpreting a secondary base. A C-to-U RNA change appears as C-to-T in forward cDNA data or G-to-A in a reverse trace.</p>
+</li>
+<li>
+<p>For Sanger, inspect target-region trace quality and the matched background in both directions. If reporting a peak-composition index, identify the extraction method and report F T/(C+T) and R A/(G+A) separately. Directional disagreement and failed site quality must remain visible; these indices are not automatically calibrated RNA-edited fractions.</p>
+</li>
+<li>
+<p>For Nanopore, evaluate quality-filtered reads aligned at the specified target, with mapping/base-quality filters and the usable depth recorded. A C/T composition can be summarized as T/(C+T), explicitly stating that A/G calls are outside this denominator. Keep raw and comparator values; do not turn low coverage or failed assay checks into zero editing. Consensus sequence or a simulated AB1 alone cannot quantify an edited fraction.</p>
+</li>
+</ol>
+<p>The initial readout establishes product identity and a candidate target signal. Without suitable RNA-origin controls and assay qualification, report a sequence/peak signal or apparent C/T read composition with its limitations. Native or other allele contributions, PCR bias and sequencing error may affect interpretation. Detailed validated fraction estimation belongs to a separately specified analysis method.</p>
+<h2 id="ps">p.s.</h2>
+<p>Use the actual ordered primer sequence, not only a reused primer name. The APOE forward-primer length difference and the OpenA-1 redesign show why the name alone is insufficient.</p>
+<p>The 1.2 µL cDNA input is 4.8% of the 25 µL reaction, within the PCR reagent's less-than-10% carryover guidance. Do not substitute the 1:5 cDNA dilution used in a separate qPCR plan. [2]</p>
+<p>GENEWIZ's Sanger AB1 and a Nanopore provider's simulated AB1 are different data products. Use real Sanger traces for chromatogram-based indices, and read/alignment evidence for Nanopore composition. [3, 4]</p>
+<p>DNA removal is part of the RT workflow, but it does not demonstrate that a particular sample is free of residual plasmid. Keep no-RT evidence when making an RNA-origin claim; do not substitute cloning DpnI treatment as proof.</p>
+<p>Keep culture-well IDs through RNA, RT, PCR and sequencing. Technical PCRs, molecular labels and F/R directions should remain nested under their actual parent sample.</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>A distinct product at the sample-reference size, with usable sequence covering the target and the expected flanking region. APOE4 and OpenA-1 references predict 951 bp and 523 bp respectively; a band alone is not sequence confirmation.</p>
+<p>For a newly controlled run, no-RT and NTC should not show a target-sized product. A positive assay control helps interpret a sample without amplification. Retain the original gel and sequencing data even when a sample fails these checks.</p>
+<p>Obtain bidirectional Sanger traces or Nanopore read/alignment evidence suitable for an explicitly defined initial target readout. Missing historical controls and uncalibrated peak ratios remain limitations, not evidence of RNA-only origin or exact editing efficiency.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No or weak target product</td>
+<td>Use M02 first to check loading, separation and imaging. Then check actual primer identity and whether a known positive amplifies.</td>
+<td>Refer to M01 Optimization O1 and M10. An old-reference primer mismatch or failed RT/PCR cannot be interpreted as no editing.</td>
+</tr>
+<tr>
+<td>Extra bands or short by-products</td>
+<td>Use M02 to exclude shared gel defects and compare the expected fragment map.</td>
+<td>Refer to M01 Optimization O2. Submit the resolved target only; use M02 size selection if necessary rather than treating a mixed product as one transcript.</td>
+</tr>
+<tr>
+<td>Target-sized band in no-RT or NTC</td>
+<td>Check control labeling, gDNA Eraser/RT setup and handling of plasmid or amplified products.</td>
+<td>Investigate DNA carryover or contamination and repeat affected preparations. Do not attribute the sample signal exclusively to RNA.</td>
+</tr>
+<tr>
+<td>Weak or failed Sanger result</td>
+<td>Check the submitted gel, volume, service type, and single sequencing-primer identity/concentration.</td>
+<td>Resolve sample/primer problems with the provider. Prepare additional matching PCRs or purify a well-separated target when required.</td>
+</tr>
+<tr>
+<td>Forward/reverse target signals disagree</td>
+<td>Check alignment, reverse-complement mapping, read-end quality, overlapping peaks and site coordinates.</td>
+<td>Preserve both directions and their QC. Repeat or use orthogonal sequencing; do not hide disagreement by calling their average a validated fraction.</td>
+</tr>
+<tr>
+<td>Nanopore consensus looks correct but mixed-base evidence is unclear</td>
+<td>Check usable read depth, alignment/variant outputs and whether the AB1 is simulated.</td>
+<td>Use read-level evidence and documented filters. Report the fraction as unavailable if the necessary evidence is missing.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] Takara Bio. PrimeScript RT reagent Kit with gDNA Eraser, RR047A. Product Manual v202202Da, pp. 5-7. Accessed 2026-10-14. <a href="https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf">Open source</a></p>
+<p>[2] ABclonal. Gloria Nova HS 2X Master Mix V2, RK20731. Datasheet M19B05V1.1, pp. 1-2. Reaction, cDNA input and thermal program. Accessed 2026-10-14. <a href="https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf">Open source</a></p>
+<p>[3] GENEWIZ from Azenta, China. Sanger sequencing sample preparation and sample-type requirements. Match the local order format. Accessed 2026-10-14. <a href="https://www.genewiz.com.cn/public/resources/sample-submission-guidelines/sanger-sequencing-sample-submission-guidelines/ypzb">Open source</a></p>
+<p>[4] CWBIO. PCR product sequencing service. Nanopore service scope, submission categories and delivered files. Accessed 2026-10-14. <a href="https://www.cwbio.com/archives/id/1773.html">Open source</a></p>
+<p>[5] SUSTech-BIO 2026. Yunxiang Zhang's REWIRE Pro.hA1 / APOE4 experimental record, sections 3.6-3.7; maintained Notebook. User clarification on 2026-10-14: shared PCR workflow, undiluted cDNA, generally unpurified submission; prior technical controls not confirmed. Local records.</p>
+<p>[6] SUSTech-BIO 2026. apoe4oligo.xlsx; GFA/MRE rep gib sequencing form; 523RepEdit.xlsx; OpenA-1 primer/reference review and local APOE4 construct references. Primer sequences, submission fields and reference-bounded sizes. Local records reviewed 2026-10-14.</p></main>
+  </div>
+</body>
+</html>

@@ -1,14 +1,21 @@
-<section class="exp-guide" id="how-to-read" data-panel="guide" aria-labelledby="guide-title" hidden>
-  <div class="exp-section-heading"><p class="exp-eyebrow">A GUIDE TO THE PROTOCOL LIBRARY</p><h2 id="guide-title">How to read.</h2><p>Start with your experimental goal, then follow the protocol IDs to the methods you need.</p></div>
-  <section class="exp-guide-section"><span class="exp-step">01</span><div><h3>Read the protocol ID</h3><p>The letters identify a method family; the two digits identify a protocol within it. For example, <a href="#M01" data-route>M01</a> is PCR in Molecular Biology. The number identifies the document, not an obligatory step in every experiment.</p><div class="exp-id-example" aria-label="MX01: MX is the method family; 01 is the protocol number"><div><strong>MX</strong><span>Method family</span></div><div><strong>01</strong><span>Protocol number</span></div></div></div></section>
-  <section class="exp-guide-section"><span class="exp-step">02</span><div><h3>Choose the right level</h3><dl class="exp-guide-levels"><div><dt>M · C — Core methods</dt><dd>Individual molecular biology and cell culture techniques used across the project.</dd></div><div><dt>MX — Integrated workflows</dt><dd>Complete workflows that connect core methods, including sample handoffs and verification. Start here for mutagenesis or target-transcript RT-PCR and sequencing.</dd></div><div><dt>MR · RP · AS · AA · FV — Project methods</dt><dd>Methods for miRNA regulation, reporter construction and measurement, ASO control, AAV delivery and functional validation.</dd></div></dl></div></section>
-  <section class="exp-guide-section"><span class="exp-step">03</span><div><h3>Find a starting point</h3><div class="exp-reading-routes">
-    <article><h4>Cloning &amp; plasmid construction</h4><p>Use M01–M07 and M13 for individual methods. <a href="#MX01" data-route>MX01</a> connects the mutagenesis workflow; <a href="#RP01" data-route>RP01</a> and <a href="#RP02" data-route>RP02</a> cover reporter insert design and assembly.</p></article>
-    <article><h4>RNA &amp; expression readouts</h4><p>Use M08–M11 for RNA extraction, reverse transcription and qPCR. Start with <a href="#MX02" data-route>MX02</a> for target-transcript amplification and sequencing, or MR01–MR02 for miRNA methods.</p></article>
-    <article><h4>Cells &amp; delivery</h4><p>Use C01–C04 for routine cell culture and plasmid transfection. Mimic, ASO and AAV delivery are covered by <a href="#MR03" data-route>MR03</a>, <a href="#AS01" data-route>AS01</a> and AA01–AA04. Electroporation is in <a href="#FV01" data-route>FV01</a>.</p></article>
-    <article><h4>Fluorescence &amp; functional readouts</h4><p>Use RP03–RP06 for TMP treatment and fluorescence acquisition. <a href="#FV02" data-route>FV02</a> covers lipid imaging; <a href="#FV03" data-route>FV03</a> covers Aβ42 exposure and supernatant ELISA.</p></article>
-  </div></div></section>
-  <section class="exp-guide-section"><span class="exp-step">04</span><div><h3>Read the whole protocol</h3><p>Select a numbered card to open its PDF. Check the purpose and scope first, then materials, procedure, controls, expected outcomes and troubleshooting where provided. Follow referenced protocol IDs for the connected methods, and consult the references for the original sources.</p><p>The viewer provides the version and links to open or download the complete PDF. Retain the protocol ID and version when recording which method you used.</p></div></section>
-  <section class="exp-guide-section"><span class="exp-step">05</span><div><h3>Connect methods with evidence</h3><p>Protocols describe how a method is performed. The <a href="{{ url_for('pages', page='notebook') }}">Notebook</a> records what happened in individual experiments; <a href="{{ url_for('pages', page='measurement') }}">Measurement</a> explains the SONAR readout. Consult the controls and interpretation limits in each PDF when using its results.</p></div></section>
-  <a class="exp-guide-start" href="#protocol-library" data-route>Browse the protocol cards ↗</a>
-</section>
+{% set guide = content.metadata.guide %}
+<details class="exp-guide" id="how-to-read">
+  <summary><span><strong>{{ guide.title }}</strong><small>{{ guide.subtitle }}</small></span><span class="exp-chevron" aria-hidden="true">⌄</span></summary>
+  <div class="exp-guide-body">
+    <p class="exp-guide-opening">{{ guide.opening }}</p>
+    <section aria-labelledby="guide-find-title">
+      <h2 id="guide-find-title">{{ guide.find_title }}</h2><p>{{ guide.find_intro }}</p>
+      <ol class="exp-find-steps">
+        {% for step in guide.find_steps %}<li><span class="exp-step-number">{{ '%02d' | format(loop.index) }}</span><h3>{{ step.title }}</h3><p>{{ step.text }}</p></li>{% endfor %}
+      </ol>
+    </section>
+    <section class="exp-read-guide" aria-labelledby="guide-read-title">
+      <h2 id="guide-read-title">{{ guide.read_title }}</h2><p>{{ guide.read_intro }}</p>
+      <ol class="exp-read-modules">
+        {% for module in guide.read_modules %}<li{% if module.title == 'Procedure' %} class="exp-procedure-guide"{% endif %}><div><span class="exp-step-number">{{ '%02d' | format(loop.index) }}</span><h3>{{ module.title }}</h3></div><p><strong>{{ module.lead }}</strong> {{ module.text }}</p></li>{% endfor %}
+      </ol>
+      <p class="exp-guide-clarification"><strong>{{ guide.clarification_lead }}</strong> {{ guide.clarification }}</p>
+    </section>
+    <p class="exp-guide-closing">{{ guide.closing }}</p>
+  </div>
+</details>

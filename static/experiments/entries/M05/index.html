@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M05 · Transformation &amp; Plating</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
+    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
+<p><strong>ID:</strong> M05 · <strong>Category:</strong> Molecular Biology</p>
+<p>M05 | ver 1.1 | Revised 2026-10-03</p>
+<p>SUSTech-BIO 2026 iGEM Team</p>
+<h2 id="purpose">Purpose</h2>
+<p>Introduce plasmid DNA into TransGen DH5α-type (Trans5α) or TransStbl3 chemically competent E. coli and obtain isolated colonies for screening. Choose conventional heat-shock transformation or the rapid thermocycler route restricted to ampicillin-resistant, high-copy, non-large plasmids.</p>
+<h2 id="materials-equipment">Materials &amp; Equipment</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Manufacturer</th>
+<th>Identifier / specification</th>
+<th>Use / Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DH5α-type cells: Trans5α Chemically Competent Cell</td>
+<td>TransGen</td>
+<td>CD201</td>
+<td>Routine cloning; 50 µL per transformation in the reference setup [1]</td>
+</tr>
+<tr>
+<td>TransStbl3 Chemically Competent Cell</td>
+<td>TransGen</td>
+<td>CD521</td>
+<td>Host for constructs prone to unwanted recombination; 50 µL per reference setup [2]</td>
+</tr>
+<tr>
+<td>Plasmid DNA or completed assembly reaction</td>
+<td>Prepared sample</td>
+<td>M04, where applicable</td>
+<td>Resistance marker, plasmid size and replication origin known</td>
+</tr>
+<tr>
+<td>Sterile LB broth</td>
+<td>Solarbio</td>
+<td>Liquid bacterial growth medium</td>
+<td>Antibiotic-free recovery medium for Route A</td>
+</tr>
+<tr>
+<td>LB agar selection plates</td>
+<td>As available</td>
+<td>Antibiotic matched to plasmid</td>
+<td>For Amp selection: 100 µg/mL final ampicillin is a standard working concentration [5]</td>
+</tr>
+<tr>
+<td>Control plasmid</td>
+<td>Prepared sample</td>
+<td>Known compatible plasmid</td>
+<td>Positive transformation control</td>
+</tr>
+<tr>
+<td>DEPC-treated water</td>
+<td>Sangon Biotech</td>
+<td>B501005</td>
+<td>No-DNA control [6]</td>
+</tr>
+<tr>
+<td>Sterile tubes, PCR tubes, tips and spreaders</td>
+<td>Axygen tips; laboratory equipment</td>
+<td>Compatible sizes</td>
+<td>PCR tubes must fit the thermocycler and hold the selected volume</td>
+</tr>
+<tr>
+<td>Crushed ice; water bath; shaker; plate incubator</td>
+<td>Laboratory ice maker and equipment</td>
+<td>42°C bath; 37°C incubation</td>
+<td>Cooling, conventional heat shock, recovery and colony growth</td>
+</tr>
+<tr>
+<td>Thermocycler</td>
+<td>Same laboratory thermal cycler as M01</td>
+<td>42°C and 0°C program</td>
+<td>Route B; verify the instrument can reach the specified low temperature</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<h3 id="choose-the-host-and-route">Choose the host and route</h3>
+<p>Use Trans5α for routine cloning and TransStbl3 for constructs prone to unwanted recombination. Stbl3 host choice does not make a large or unstable construct eligible for Route B. [1, 2]</p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Choose when</th>
+<th>Key sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Conventional</td>
+<td>Default for new assemblies, low-copy or large plasmids, non-Amp selection, or when colony recovery is important</td>
+<td>DNA addition → ice incubation → 42°C heat shock → ice → recovery → plating</td>
+</tr>
+<tr>
+<td>B. Rapid</td>
+<td>Amp resistance AND high copy number AND a non-large plasmid; a familiar, readily transformed construct</td>
+<td>DNA addition → 42°C, 2 min → 0°C, 3 min → direct plating</td>
+</tr>
+</tbody>
+</table>
+<p>Route B is a laboratory-adapted shortcut; its exact program and efficiency are not established by the cited manuals. Choose Route A if plasmid size, copy number or rapid-route suitability is uncertain. [3]</p>
+<h3 id="prepare-dna-plates-and-equipment">Prepare DNA, plates and equipment</h3>
+<p>Per 50 µL cells, start with 1-5 µL containing 1-10 ng purified plasmid, or 1-5 µL completed assembly reaction. Apply any stricter assembly-kit input limit; avoid adding excess reaction mixture. [3]</p>
+<p>Warm selection plates to room temperature and remove condensation. For Amp plates, use 100 µg/mL final (1:1000 from 100 mg/mL stock). Prepare antibiotic-free medium and a 42°C water bath for Route A. [5]</p>
+<p>For Route B, program 42°C for 2 min, then 0°C for 3 min, once, without a high-temperature lid setting. If the instrument cannot reach 0°C, transfer immediately after heat shock to an ice-water bath for 3 min; record this substitution rather than replacing 0°C with 4°C.</p>
+<p>When establishing the method or troubleshooting, include a compatible control plasmid and a no-DNA control. An assembly backbone-only control helps identify cloning background.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="common-setup">Common setup</h3>
+<ol>
+<li>
+<p>Thaw the required competent-cell aliquots on ice. Use 50 µL per transformation as the reference scale and handle gently without vortexing or repeated pipetting. [1, 2]</p>
+</li>
+<li>
+<p>Add the selected DNA input to the cells and mix by gentle tapping. Use a prechilled PCR tube for Route B. Continue with either A or B below, then complete the common plating stage.</p>
+</li>
+</ol>
+<h3 id="route-a-conventional-heat-shock-transformation">Route A. Conventional heat-shock transformation</h3>
+<ol start="3">
+<li>
+<p>Keep the DNA-cell mixture on ice for 30 min with Trans5α or 20-30 min with TransStbl3. [1, 2]</p>
+</li>
+<li>
+<p>Heat-shock in a 42°C water bath for 45 s, then transfer immediately to ice for 2 min. Keep the tube still during heat shock and cooling. [1, 2]</p>
+</li>
+<li>
+<p>Add 500 µL sterile, antibiotic-free LB. Recover at 37°C, 200 rpm for 1 h, then proceed to plating. [1, 2]</p>
+</li>
+</ol>
+<h3 id="route-b-rapid-transformation-for-eligible-amp-plasmids">Route B. Rapid transformation for eligible Amp plasmids</h3>
+<ol start="6">
+<li>Immediately after DNA addition, run the thermocycler program below. Omit the prolonged pre-heat-shock ice incubation.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Temperature</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heat shock</td>
+<td>42°C</td>
+<td>2 min</td>
+</tr>
+<tr>
+<td>Cooling</td>
+<td>0°C</td>
+<td>3 min</td>
+</tr>
+</tbody>
+</table>
+<ol start="7">
+<li>After cooling, proceed directly to the Amp plate. Do not add a liquid recovery incubation. Plate the approximately 50 µL cell-DNA mixture, or a smaller portion if dense growth is expected. This route is limited to Amp-resistant, high-copy, non-large plasmids.</li>
+</ol>
+<h3 id="common-plating-and-incubation">Common plating and incubation</h3>
+<ol start="8">
+<li>
+<p>For Route A, plate 50-100 µL recovered culture on a labeled selection plate; use an additional plate for more culture if colony yield may be low. For Route B, use the direct-plating amount above. Spread evenly with a sterile spreader, avoiding damage to the agar. [3]</p>
+</li>
+<li>
+<p>Allow the liquid to absorb, invert the plates and incubate at 37°C overnight. If the specific construct has a documented lower-temperature propagation requirement, follow that requirement instead and allow sufficient time for colonies to appear. [1, 2]</p>
+</li>
+<li>
+<p>Inspect the sample and control plates together. Select well-isolated colonies for M06 and subsequent construct verification; colony growth alone does not establish the correct insert or sequence.</p>
+</li>
+</ol>
+<h2 id="ps">p.s.</h2>
+<p>Ampicillin is a bactericidal β-lactam. Omitting liquid recovery for suitable Amp-resistant transformants does not mean Amp is non-killing and should not be generalized to other antibiotics. [3, 4]</p>
+<p>Use freshly thawed cells and avoid repeated freeze-thaw cycles. Keep the cell-DNA mixture cold until its selected heat-shock step. [1, 2]</p>
+<p>Keep each route's heat-shock device, timing, tube geometry and volume consistent. Do not substitute Route B's 2 min thermocycler step for Route A's 45 s water-bath step alone.</p>
+<p>Plate a dilution or use another plate if colonies would be crowded. Avoid prolonged incubation: tiny colonies around larger Amp colonies may be satellites, not independent clones. [5]</p>
+<h2 id="expected-outcome">Expected Outcome</h2>
+<p>Expect isolated sample colonies, positive-control growth and little or no no-DNA-control growth. Yield varies with DNA, cells and route; equivalent efficiency is not assumed.</p>
+<p>Record the host, route, DNA input, antibiotic and temperature substitutions. Screen and sequence candidate colonies before confirming construct identity.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Check first</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No colonies, including the positive control</td>
+<td>Plate identity and antibiotic activity; thaw history; heat-shock setup</td>
+<td>Repeat with fresh cells and a known compatible plasmid using Route A. Check actual bath temperature and timing before changing DNA input.</td>
+</tr>
+<tr>
+<td>Few or no sample colonies; positive control grows</td>
+<td>DNA quality, assembly success, selection marker and rapid-route eligibility</td>
+<td>For a rapid attempt, repeat with Route A. For an assembly, inspect the upstream reaction and its controls; reduce inhibitory reaction carryover rather than simply adding more mixture.</td>
+</tr>
+<tr>
+<td>Colonies on the no-DNA control</td>
+<td>Plate labeling, missing/inactive antibiotic, or contamination</td>
+<td>Test fresh selection plates and repeat the control with clean consumables. Do not interpret the sample colonies as selected transformants until background is resolved.</td>
+</tr>
+<tr>
+<td>Confluent growth or spreading patches</td>
+<td>Plating density and residual surface liquid</td>
+<td>Plate a dilution on a dry plate and allow absorption before inversion. Pick only well-separated colonies.</td>
+</tr>
+<tr>
+<td>Tiny colonies around larger Amp colonies</td>
+<td>Prolonged incubation and local loss of selection</td>
+<td>Treat these as possible satellites. Pick an isolated primary colony; re-streak on fresh selective agar if identity is uncertain.</td>
+</tr>
+<tr>
+<td>Colonies grow, but screened constructs are wrong</td>
+<td>Backbone-only background, parental plasmid carryover and rearrangement</td>
+<td>Review M03/M04 and screen independent colonies. For suspected rearrangement, use the appropriate stable host and construct-specific propagation conditions; increasing colony count alone will not fix the construct.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<p>[1] TransGen Biotech. Trans5α Chemically Competent Cell, CD201, Version 1.1 (footer V1.1-202512), p. 1: features, procedure and precautions. Accessed 2026-09-19. <a href="https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf">Open source</a></p>
+<p>[2] TransGen Biotech. TransStbl3 Chemically Competent Cell, CD521, Version 1.1 (footer V1.1-202512), p. 1: features, procedure and precautions. Accessed 2026-09-19. <a href="https://www.transgen.com/download/pdf/1/CD521_213/CD521.pdf">Open source</a></p>
+<p>[3] Addgene. Bacterial Transformation, updated November 13, 2017: DNA input, plating and recovery guidance. Accessed 2026-09-19. <a href="https://www.addgene.org/protocols/bacterial-transformation/">Open source</a></p>
+<p>[4] Thermo Fisher Scientific. Ampicillin J66972: General Description and Application (mechanism reference). Accessed 2026-09-19. <a href="https://www.thermofisher.com/order/catalog/product/J66972.AC">Open source</a></p>
+<p>[5] Addgene. Pouring LB Agar Plates: antibiotic concentrations and selection notes; last upload September 14, 2016. Accessed 2026-09-19. <a href="https://www.addgene.org/protocols/pouring-lb-agar-plates/">Open source</a></p>
+<p>[6] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed 2026-10-03. <a href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf">Open source</a></p></main>
+  </div>
+</body>
+</html>

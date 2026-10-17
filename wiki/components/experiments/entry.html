@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ entry.id }} · {{ entry.title }}</title><link rel="stylesheet" href="../../reader.css"></head>
+<body>
+  <a class="skip" href="#entry-content">Skip section navigation</a>
+  <div class="reader-layout">
+    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p>{% for section in toc %}<a href="#{{ section.id }}">{{ section.name }}</a>{% endfor %}</nav>
+    <main id="entry-content" tabindex="-1">{{ body | safe }}</main>
+  </div>
+</body>
+</html>

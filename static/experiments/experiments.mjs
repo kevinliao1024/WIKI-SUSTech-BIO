@@ -4,12 +4,10 @@ if (root) {
   const categories = [...root.querySelectorAll('[data-category]')];
   const groups = [...root.querySelectorAll('[data-group]')];
   const protocols = [...root.querySelectorAll('[data-protocol]')];
-  const panels = [...root.querySelectorAll('[data-panel]')];
   const dialog = root.querySelector('[data-reader]');
   const host = root.querySelector('[data-reader-host]');
   let category = 'all';
-  let view = 'home';
-  let returnHash = '#overview';
+  let returnHash = '#protocol-library';
   let trigger = null;
   const normalize = text => text.toLowerCase().normalize('NFKD').replace(/β/g, 'beta').replace(/[\u0300-\u036f]/g, '');
   function filter() {
@@ -27,14 +25,13 @@ if (root) {
       group.querySelector('[data-group-count]').textContent = count;
       if (count) groupCount++;
     }
-    for (const panel of panels) panel.hidden = panel.dataset.panel !== view;
     for (const link of categories) {
-      const active = link.dataset.category === (view === 'library' ? category : view);
+      const active = link.dataset.category === category;
       link.classList.toggle('is-active', active);
       if (active) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     }
-    root.querySelector('[data-result-count]').textContent = `${total} ${total === 1 ? 'protocol' : 'protocols'} · ${groupCount} ${groupCount === 1 ? 'category' : 'categories'}`;
+    root.querySelector('[data-result-count]').textContent = `${total} ${total === 1 ? 'experiment' : 'experiments'} · ${groupCount} ${groupCount === 1 ? 'category' : 'categories'}`;
     root.querySelector('[data-empty]').hidden = total !== 0;
   }
   function releaseReader() {
@@ -46,9 +43,10 @@ if (root) {
     root.querySelector('[data-reader-title]').textContent = protocol.dataset.title;
     root.querySelector('[data-reader-meta]').textContent = `${protocol.id} · Version ${protocol.dataset.version}`;
     for (const a of root.querySelectorAll('[data-reader-original], [data-reader-download]')) a.href = protocol.href;
+    root.querySelector('[data-reader-measurement]').hidden = protocol.dataset.categoryCode !== 'RP';
     host.replaceChildren();
     const frame = document.createElement('iframe');
-    frame.src = `${protocol.href}#view=FitH`;
+    frame.src = protocol.dataset.readerUrl;
     frame.title = `${protocol.id} — ${protocol.dataset.title}`;
     host.append(frame);
     document.body.classList.add('exp-reader-open');
@@ -57,12 +55,11 @@ if (root) {
   }
   function showRoute(hash) {
     const group = groups.find(g => `#category-${g.dataset.group}` === hash);
-    view = hash === '#how-to-read' ? 'guide' : (hash === '#protocol-library' || group ? 'library' : 'home');
     category = group?.dataset.group || 'all';
     filter();
   }
   function applyHash(scroll = false) {
-    const hash = location.hash || '#overview';
+    const hash = location.hash || '#protocol-library';
     const protocol = protocols.find(p => `#${p.id}` === hash);
     if (protocol) {
       returnHash = history.state?.experimentReturnHash || `#category-${protocol.dataset.categoryCode}`;
@@ -70,11 +67,11 @@ if (root) {
       openReader(protocol);
     } else {
       releaseReader();
-      search.value = '';
       showRoute(hash);
-      if (scroll) {
+      if (hash === '#how-to-read') root.querySelector('.exp-guide').open = true;
+      if (scroll && hash !== '#how-to-read') {
         const navBottom = document.querySelector('.site-nav')?.getBoundingClientRect().bottom || 100;
-        const top = view === 'home' ? 0 : window.scrollY + root.querySelector('#experiment-workspace').getBoundingClientRect().top - navBottom - 24;
+        const top = window.scrollY + root.querySelector('#experiment-workspace').getBoundingClientRect().top - navBottom - 24;
         window.scrollTo({top, behavior:'instant'});
       }
     }
@@ -85,14 +82,14 @@ if (root) {
   }
   function selectProtocol(protocol, source) {
     trigger = source;
-    returnHash = location.hash || '#overview';
+    returnHash = location.hash || '#protocol-library';
     history.pushState({experimentReturnHash:returnHash}, '', `#${protocol.id}`);
     openReader(protocol);
   }
   function closeReader() {
     history.replaceState(null, '', returnHash);
     releaseReader();
-    // Keep the search and its result cards intact when returning from a PDF.
+    // Keep the query and cards intact when returning from an experiment.
     if (trigger?.isConnected && !trigger.closest('[hidden]')) trigger.focus({preventScroll:true});
     trigger = null;
   }
@@ -113,7 +110,7 @@ if (root) {
   root.querySelector('[data-reader-close]').addEventListener('click', closeReader);
   dialog.addEventListener('cancel', e => { e.preventDefault(); closeReader(); });
   search.addEventListener('input', filter);
-  const reset = () => { navigate('#protocol-library'); search.focus({preventScroll:true}); };
+  const reset = () => { search.value = ''; navigate('#protocol-library'); search.focus({preventScroll:true}); };
   root.querySelector('[data-reset]').addEventListener('click', reset);
   root.querySelector('[data-clear]').addEventListener('click', reset);
   window.addEventListener('hashchange', () => applyHash(true));
