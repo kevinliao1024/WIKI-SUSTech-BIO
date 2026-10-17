@@ -47,7 +47,8 @@ assets or dependencies are needed.
 
 Focus now displays only the selected experimental lane; the other lanes are
 hidden from both sight and keyboard navigation. Track switching remains in the
-toolbar. Record headings use simple divider rows, and original pages are limited
+toolbar. Each record uses a continuous rounded frame with explicit View record / Close
+record controls, and original pages are limited
 to a 500px outer width while retaining full-size and PDF links. The reviewed MRE
 preview rendered at 498 × 707px.
 
@@ -57,3 +58,8 @@ visible and that the two-page QX01 preview stays within the reading-width limit.
 
 - [Single-track record list](qa/reader-list.png)
 - [Compact original-page reader](qa/reader-original.png)
+
+The enclosing-frame revision also passed the Chrome suite, including desktop
+and 834/390/320px layouts, opening/closing multipage records, measured node
+alignment and PDF fallback. Review screenshots above show the final framed
+reader with the 500px page limit retained.

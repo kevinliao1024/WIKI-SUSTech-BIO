@@ -121,7 +121,9 @@ are removed from the DOM on collapse or track change and re-created on demand.
 No PDF renderer, iframe, canvas or image is loaded in Overview. Expanded records
 load only their indexed previews, with explicit dimensions and browser lazy
 loading. Previews use a maximum 500px reading width and shrink to fit mobile
-screens. Record titles use flat dividers rather than speech-bubble boxes. Each preview has a full-size link and a direct original PDF link with
+screens. Each record has a plain rounded frame that encloses its title and expands to
+contain the centered original pages. Explicit View record / Close record
+controls and direction arrows show the current action. Each preview has a full-size link and a direct original PDF link with
 `#page=N`. Failed previews retain a source-file fallback. `catalog.html` lists
 all originals when JavaScript or the manifest is unavailable.
 

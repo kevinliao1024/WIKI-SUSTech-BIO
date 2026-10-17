@@ -223,9 +223,12 @@ function makeCard(record) {
   const card=el('article','nb-card');card.id=`record-${record.id}`;card.dataset.track=record.trackId;
   const button=el('button','nb-card-toggle');button.type='button';button.setAttribute('aria-controls',`pages-${record.id}`);
   const title=el('span');title.append(el('span','nb-card-title',record.title),el('span','nb-card-meta',`${record.experimenter} · ${record.pageCount} ${record.pageCount===1?'page':'pages'}`));
-  const arrow=el('span','nb-chevron','+');arrow.setAttribute('aria-hidden','true');button.append(title,arrow);
+  const arrow=el('span','nb-chevron'), actionLabel=el('span','','View record');
+  const chevron=svg('svg',{viewBox:'0 0 16 16','aria-hidden':'true',focusable:'false'});
+  chevron.append(svg('path',{d:'m4 6 4 4 4-4',fill:'none',stroke:'currentColor','stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  arrow.append(actionLabel,chevron);button.append(title,arrow);
   const body=el('div','nb-card-body');body.id=`pages-${record.id}`;
-  const update=()=>{const isOpen=expanded.has(record.id);arrow.textContent=isOpen?'−':'+';button.setAttribute('aria-expanded',String(isOpen));body.hidden=!isOpen;if(isOpen)makePages(record,body);else body.replaceChildren();scheduleLayout();};
+  const update=()=>{const isOpen=expanded.has(record.id);actionLabel.textContent=isOpen?'Close record':'View record';card.classList.toggle('is-open',isOpen);button.setAttribute('aria-expanded',String(isOpen));body.hidden=!isOpen;if(isOpen)makePages(record,body);else body.replaceChildren();scheduleLayout();};
   button.addEventListener('click',()=>{if(expanded.has(record.id))expanded.delete(record.id);else expanded.add(record.id);update();});
   card.append(button,body);update();return card;
 }
