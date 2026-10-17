@@ -15,7 +15,8 @@ class ReferenceArtTest(unittest.TestCase):
 
     def test_home_preserves_qualified_who_statistics(self):
         page = app.test_client().get('/').get_data(as_text=True)
-        self.assertIn('57 million people · WHO 2021 estimate', page)
+        self.assertIn('57 million people lived with dementia in 2021, according to the WHO estimate', page)
+        self.assertNotIn('class="burden__source"', page)
         self.assertIn('60–70%', page)
         self.assertIn('57 million people lived with dementia in 2021', page)
         self.assertIn('Alzheimer’s disease accounts for an estimated', page)

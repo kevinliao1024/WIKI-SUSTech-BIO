@@ -39,7 +39,7 @@ class ExperimentsTest(unittest.TestCase):
                     self.assertEqual(source.mimetype, 'application/pdf')
                     source.close()
 
-    def test_guide_copy_and_reader_sections(self):
+    def test_minimal_library_and_reader_sections(self):
         guide = yaml.safe_load((ROOT / 'docs/wet-lab/experiment-guide.yaml').read_text())
         content = load_markdown_content('wet-lab/experiments.md')
         self.assertEqual(content.title, 'Experiment')
@@ -74,12 +74,15 @@ class ExperimentsTest(unittest.TestCase):
                         self.assertTrue((path.parent / asset).is_file(), asset)
         with app.test_client() as client:
             html = client.get('/experiments').get_data(as_text=True)
-            self.assertIn('<details class="exp-guide" id="how-to-read">', html)
-            self.assertEqual(html.count('class="exp-step-number"'), 13)
-            for item in guide['find_steps'] + guide['read_modules']:
-                from html import escape
-                self.assertIn(escape(item['text'], quote=False), html)
-            self.assertIn(guide['clarification_lead'], html)
+            for removed in ('How to Use / Read', 'WET LAB / EXPERIMENT LIBRARY',
+                            'BROWSE BY METHOD', 'Follow the research timeline',
+                            'One connected research journey.', 'Methods to build on.',
+                            'class="exp-family"', 'class="exp-group-count"'):
+                self.assertNotIn(removed, html)
+            from html import escape
+            for group in content.metadata['protocol_groups']:
+                self.assertIn(escape(group['title']), html)
+            self.assertIn('data-category-indicator', html)
 
     def test_existing_wet_lab_route_uses_catalog_template(self):
         self.assertEqual(CONTENT_PAGES['experiments'].template, 'pages/experiments.html')

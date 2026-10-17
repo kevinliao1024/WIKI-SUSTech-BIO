@@ -102,6 +102,23 @@ class WikiRoutesTest(unittest.TestCase):
                 self.assertIn(f'href="{route}"', menu.group(1))
                 self.assertIn(f'href="{route}"', index.group(1))
         self.assertRegex(page, r'<footer\b[^>]*\bsite-footer\b')
+        self.assertNotIn('data-school-footer', page)
+        self.assertNotIn('data-edit-start', page)
+        for marker in ['explore-slide__serial', 'explore-slide__count', 'explore-slides__eyebrow']:
+            self.assertNotIn(marker, index.group(1))
+        self.assertNotIn('↗', index.group(1))
+        for text in ['Conceptual editing mechanism', 'Explore ORCA', '>POD<', '>CETUS<']:
+            self.assertNotIn(text, page)
+        self.assertIn('Recognizes and binds the target RNA.', page)
+        self.assertIn('Converts the target C to U.', page)
+        self.assertNotIn('data-bio-label="nucleus"', page)
+        self.assertNotIn('We want to know whether this RNA edit changes how astrocytes take up', page)
+        self.assertIn('>APOE4 RNA</span>', page)
+        self.assertNotIn('ot-residue-arrow', page)
+        self.assertNotIn('class="burden__source"', page)
+        self.assertIn('class="burden__source"', self.get_text('/next'))
+        self.assertLess(page.index('onetake/home-entry.js'), page.index('ot-hero-title'))
+        self.assertIn('data-school-footer', self.get_text('/model'))
 
     def test_particle_structure_preview_keeps_home_story(self):
         # /next now adds the separately reviewed residue-112 structure section.
@@ -110,7 +127,7 @@ class WikiRoutesTest(unittest.TestCase):
             for marker in ['data-ot-canvas', 'data-ot-story', 'data-bio-handle="pod"',
                            'data-bio-handle="cetus"', 'What if we can']:
                 self.assertIn(marker, page)
-        self.assertIn('href="#ot-index-title"', home)
+        self.assertIn('id="ot-index-title"', home)
         self.assertIn('href="#apoe112"', preview)
 
     def test_journey_preserves_biology_and_removes_crt(self):
@@ -122,10 +139,16 @@ class WikiRoutesTest(unittest.TestCase):
                        'data-burden', 'ot-index-title', 'data-journey-station="home"',
                        'data-journey-station="bridge"', 'data-journey-station="road"']:
             self.assertIn(marker, journey)
-        # Compare the copied post-opening chapter markup, not only its markers.
+        # The two independent previews retain their original biology copy.
+        # Home now has its own explanatory copy and system-optimization ending.
+        preview = self.get_text('/next')
         start = '<div class="ot-ch ot-ch--left" data-ot-chapter data-in="0.11"'
-        self.assertEqual(home[home.index(start):home.index("</main>")],
-                         journey[journey.index(start):journey.index("</main>")])
+        preview_story = preview[preview.index(start):preview.index('<section class="apoe112')]
+        journey_story = journey[journey.index(start):journey.index('<section class="ot-index')]
+        self.assertEqual(preview_story.replace('href="#apoe112"', 'href="#ot-index-title"').strip(),
+                         journey_story.strip())
+        self.assertIn('explore-slide__serial', journey)
+        self.assertIn('data-edit-start', journey)
 
     def test_visible_brand_is_orca(self):
         home = self.get_text("/")

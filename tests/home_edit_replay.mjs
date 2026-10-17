@@ -79,3 +79,33 @@ assert.notEqual(root.dataset.editSession,session,'manual re-entry resets the pro
 events.get('wheel')({deltaY:100,preventDefault(){}});
 assert.equal(direct.update(.55,.05).phase,'placement','old readiness cannot begin a new edit');
 console.log('Passed edit order, forward wheel/touch/key continuity, readable hold, real rewind, placement pause, one-gesture playback, interruption, direct project entry, session reset and reduced-motion checks.');
+
+// Home holds the completed edit indefinitely; only native scroll moves the
+// camera toward the conclusion. Other previews keep their existing timing.
+const controlled = createEditReplay({ root, story, toProgress: x => x, enabled: true, scrollReturn: true });
+controlled.update(.8, .05);
+for (let i = 0; i < 250; i++) controlled.update(.8, .05);
+assert.equal(root.dataset.editReplay, 'placement');
+controlled.setReady(true);
+events.get('wheel')({ deltaY: 100, preventDefault() {} });
+let held;
+for (let i = 0; i < 180; i++) held = controlled.update(.89, .05);
+assert.equal(held.phase, 'return');
+assert.equal(held.cameraBlend, 0);
+assert.equal(held.edit, 1);
+assert.equal(button.hidden, true, 'animation control disappears when the edit is complete');
+const heldScrolls = scrolls.length;
+for (let i = 0; i < 300; i++) assert.equal(controlled.update(.89, .05).cameraBlend, 0);
+assert.equal(scrolls.length, heldScrolls, 'waiting does not move the document');
+let blocked = false;
+events.get('wheel')({ deltaY: 100, preventDefault() { blocked = true; } });
+events.get('touchstart')({ touches: [{ clientY: 700 }] });
+events.get('touchmove')({ target: { closest() { return null; } }, touches: [{ clientY: 500 }], preventDefault() { blocked = true; } });
+events.get('keydown')({ key: 'PageDown', preventDefault() { blocked = true; } });
+assert.equal(blocked, false, 'wheel, touch and keyboard continue native scrolling');
+const middle = controlled.update(.9225, .05);
+assert.ok(Math.abs(middle.cameraBlend - .5) < 1e-8);
+assert.ok(controlled.update(.91, .05).cameraBlend < middle.cameraBlend, 'scrolling back reverses the transition');
+assert.equal(controlled.update(.956, .05).cameraBlend, 1);
+assert.equal(controlled.update(.956, .05), null);
+console.log('Passed completed-edit hold, hidden animation control, scroll-only reversible return, and wheel/touch/keyboard continuity.');

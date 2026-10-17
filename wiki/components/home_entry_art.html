@@ -1,0 +1,45 @@
+{# Abstract chapter illustrations; decorative, not experimental figures. #}
+<svg class="explore-slide__specimen chapter-art chapter-art--{{ chapter_number }}" viewBox="0 0 160 200" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="chapter-halo-{{ chapter_number }}"><stop stop-color="currentColor" stop-opacity=".24"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></radialGradient>
+    <radialGradient id="chapter-node-{{ chapter_number }}" cx="35%" cy="30%"><stop stop-color="#f3f7ff"/><stop offset=".25" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity=".08"/></radialGradient>
+    <linearGradient id="chapter-glass-{{ chapter_number }}" x2=".9" y2="1"><stop stop-color="currentColor" stop-opacity=".18"/><stop offset="1" stop-color="currentColor" stop-opacity=".02"/></linearGradient>
+  </defs>
+  <circle cx="80" cy="100" r="76" fill="url(#chapter-halo-{{ chapter_number }})"/>
+  <g class="chapter-art__orbit"><circle cx="80" cy="100" r="65"/><circle cx="80" cy="100" r="54" stroke-dasharray="1 7"/></g>
+  {% if chapter_number == 1 %}
+  <g class="chapter-art__line chapter-art__soft"><path d="m80 51 42 29-7 51-51 14-31-42ZM80 51l35 80M122 80l-58 65M33 103l89-23M64 145l16-94M33 103l82 28"/></g>
+  <g class="chapter-art__line"><path d="m80 51 0 48 42-19M80 99l35 32M80 99l-16 46M80 99l-47 4"/></g>
+  {% for x,y,r in [(80,51,10),(122,80,9),(115,131,11),(64,145,9),(33,103,10),(80,99,16)] %}
+  <circle class="chapter-art__ring" cx="{{ x }}" cy="{{ y }}" r="{{ r+4 }}"/>
+  <circle cx="{{ x }}" cy="{{ y }}" r="{{ r }}" fill="url(#chapter-node-{{ chapter_number }})"/>
+  {% endfor %}
+  {% elif chapter_number == 2 %}
+  <g class="chapter-art__line" fill="url(#chapter-glass-{{ chapter_number }})">
+    <path d="m80 97 52 29-52 30-52-30Z"/><path d="m80 76 52 29-52 30-52-30Z"/><path d="m80 54 52 29-52 30-52-30Z"/>
+  </g>
+  <g class="chapter-art__line chapter-art__soft"><path d="M28 83v43M132 83v43M80 113v43M48 94l52-29M61 101l52-29M48 72l52 29M61 65l52 29"/></g>
+  <path class="chapter-art__line" d="m54 83 26 15 26-15-26-15Z"/>
+  <circle cx="80" cy="83" r="7" fill="url(#chapter-node-{{ chapter_number }})"/>
+  {% elif chapter_number == 3 %}
+  <path class="chapter-art__vessel" fill="url(#chapter-glass-{{ chapter_number }})" d="M65 47h30v41l29 51q8 16-9 17H45q-17-1-9-17l29-51Z"/>
+  <path class="chapter-art__line" d="M60 47h40M65 56h30M53 113q15-7 28 0t28 0"/>
+  <path class="chapter-art__line chapter-art__soft" d="M47 125h23M44 135h19M46 145h22M71 63v25l-27 51"/>
+  {% for x,y,r in [(82,133,8),(103,141,5),(77,108,4),(87,90,3),(77,73,2)] %}
+  <circle cx="{{ x }}" cy="{{ y }}" r="{{ r }}" fill="url(#chapter-node-{{ chapter_number }})"/>
+  {% endfor %}
+  {% elif chapter_number == 4 %}
+  <g class="chapter-art__line chapter-art__soft"><path d="M27 62h106M27 87h106M27 112h106M27 137h106M42 48v104M67 48v104M92 48v104M117 48v104"/></g>
+  <path class="chapter-art__area" fill="url(#chapter-glass-{{ chapter_number }})" d="M28 139C42 139 42 119 55 117S65 130 78 103 90 99 103 74s22-25 30-27v99H28Z"/>
+  <path class="chapter-art__line" d="M28 139C42 139 42 119 55 117S65 130 78 103 90 99 103 74s22-25 30-27"/>
+  <path class="chapter-art__line chapter-art__soft" d="m29 123 26-21 23 20 25-37 29-14"/>
+  {% for x,y in [(28,139),(55,117),(78,103),(103,74),(132,47)] %}
+  <circle cx="{{ x }}" cy="{{ y }}" r="5" fill="url(#chapter-node-{{ chapter_number }})"/>
+  {% endfor %}
+  {% else %}
+  <path class="chapter-art__vessel" fill="url(#chapter-glass-{{ chapter_number }})" d="M81 58H44a19 19 0 0 0-19 19v19a19 19 0 0 0 19 19h4l16 14v-14h17a19 19 0 0 0 19-19V77a19 19 0 0 0-19-19Z"/>
+  <path class="chapter-art__line" d="M107 87h9a19 19 0 0 1 19 19v17a19 19 0 0 1-19 19h-5l-14 13v-13H81a19 19 0 0 1-17-10"/>
+  <path class="chapter-art__line chapter-art__soft" d="M96 117h21M88 127h29"/>
+  {% for x in [46,63,80] %}<circle cx="{{ x }}" cy="87" r="5" fill="url(#chapter-node-{{ chapter_number }})"/>{% endfor %}
+  {% endif %}
+</svg>
