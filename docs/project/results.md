@@ -9,23 +9,29 @@ status_message: Publish only reviewed results with controls, units, uncertainty,
 
 # Results
 
-## Key findings
+## Key Findings {#key-findings}
 
 Summarize only findings supported by the evidence presented on this page.
 
-## Wet-lab results
+## Functional Validation
+
+Organize reviewed evidence by source. Use [Measure](/measurement) for the measurement documentation and [Engineering](/engineering) for the decisions associated with each record.
+
+### Wet-lab results {#wet-lab-results}
 
 Present measured data with sample sizes, controls, units and analysis methods.
 
-## Dry-lab results
+### Dry-lab results {#dry-lab-results}
 
 Label simulations and heuristic rankings clearly. Link every displayed value to a reproducible run.
 
-## Integrated interpretation
+## Integrated Conclusions
+
+### Integrated interpretation {#integrated-interpretation}
 
 Explain where computational and experimental evidence agree, disagree or remain incomparable.
 
-## Limitations
+### Limitations {#limitations}
 
 State technical limits, uncertainty and experiments still required.
 

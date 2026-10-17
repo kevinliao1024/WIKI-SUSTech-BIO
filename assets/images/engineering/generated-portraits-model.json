@@ -1,0 +1,28 @@
+[
+  {
+    "mood": "analytical",
+    "filename": "mascot-analytical.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-thinking.png",
+    "prompt": "Use case: stylized-concept. Asset type: a standalone transparent PNG portrait for a small circular website avatar. Input image 1 is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Draw a brand-new square head-and-shoulders portrait of exactly this same cute mascot: rounded human-like pink face with rosy cheeks, large dark navy eyes and dark navy outlines, navy-purple orca/whale hood with a large clean white orca spot and white forehead band, small white-gloved hands, flat crisp cartoon fills with only subtle simple cel shading. The face is centered and dominates the portrait, shoulders visible, no full body. Keep the hood and gesture inside a centered circular safe area roughly 80% of the square, with transparent outer margins. Keep the character recognizable and use the reference's navy-purple/pink/white palette. Background must be genuinely transparent with alpha, not black, not white and not a checkerboard illustration. No text in any language, no captions, no letters, no arrows, no labels, no badges, no decorative icons, no surrounding objects. Produce exactly one single portrait, never a contact sheet. Expression: ANALYTICAL, thoughtfully checking a model. Add thin perfectly round navy-rimmed eyeglasses over both eyes. The eyes are open, focused downward through the glasses, eyebrows gently drawn inward in serious concentration. A tiny serious closed mouth, neither smile nor frown. One white-gloved index finger delicately lifts the outer corner of the glasses frame by the temple. This is a studious focused glasses-adjusting gesture, not the original chin-touching skeptical pose. Keep the glasses crisp and legible at small avatar size. No written equations or other objects.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "7c44165be0170938142b50539f3df88076b1f5dcc6181b0a6f0270a794bc9151",
+    "alpha": true,
+    "bytes": 1231435
+  },
+  {
+    "mood": "triumphant",
+    "filename": "mascot-triumphant.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-thinking.png",
+    "prompt": "Use case: stylized-concept. Asset type: a standalone transparent PNG portrait for a small circular website avatar. Input image 1 is a CHARACTER IDENTITY AND STYLE REFERENCE ONLY, not an edit target. Draw a brand-new square head-and-shoulders portrait of exactly this same cute mascot: rounded human-like pink face with rosy cheeks, large dark navy eyes and dark navy outlines, navy-purple orca/whale hood with a large clean white orca spot and white forehead band, small white-gloved hands, flat crisp cartoon fills with only subtle simple cel shading. The face is centered and dominates the portrait, shoulders visible, no full body. Keep the hood and gesture inside a centered circular safe area roughly 80% of the square, with transparent outer margins. Keep the character recognizable and use the reference's navy-purple/pink/white palette. Background must be genuinely transparent with alpha, not black, not white and not a checkerboard illustration. No text in any language, no captions, no letters, no arrows, no labels, no badges, no decorative icons, no surrounding objects. Produce exactly one single portrait, never a contact sheet. Expression: TRIUMPHANT. One eye open with a confident bright gaze toward the viewer and the other eye closed in an unmistakable wink. A broad self-assured toothy grin displaying one clean white band of upper teeth. One white-gloved hand makes a clear single THUMBS-UP close beside the lower cheek, with the four other fingers curled naturally. The other hand is out of frame. Head upright with cheerful success and confidence. This MUST have a thumbs-up, NEVER a V-sign, peace sign, two-finger sign, raised fist, or both hands. Distinguish from a closed-mouth winking portrait and from closed-eye double-V celebration.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "81424d216cd4276818451f39934b105cbae23b856b749794cc138c9ec4fed86c",
+    "alpha": true,
+    "bytes": 1197169
+  }
+]

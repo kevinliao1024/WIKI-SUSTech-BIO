@@ -1,0 +1,131 @@
+/* Engineering is a fixed studio: its article owns the scroll, controls stay put. */
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('fonts/source-sans-3-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('fonts/source-sans-3-variable-italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+}
+body.engineering-workspace-page {
+  --engineering-ink: #334071;
+  --engineering-paper: #fffefb;
+  height: 100dvh;
+  overflow: hidden;
+  background: #f4f3fc;
+  color: var(--engineering-ink);
+}
+.engineering-workspace {
+  position: fixed;
+  inset: var(--engineering-nav-height, 112px) 0 0;
+  display: grid;
+  grid-template-columns: minmax(250px, 330px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0 56px;
+  padding: 20px clamp(24px, 4.5vw, 88px) 24px;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+.engineering-map { grid-column: 1 / -1; grid-row: 1; }
+.engineering-map[hidden], .engineering-controls[hidden], .engineering-paper[hidden], .engineering-map-back[hidden] { display: none !important; }
+.engineering-workspace :is(.engineering-controls, .engineering-paper, .engineering-scroll) { min-width: 0; min-height: 0; }
+.engineering-controls { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 2vh, 24px); }
+.engineering-controls h1 { margin: 0 0 12px; color: #334071; text-align: center; font: 800 clamp(28px, 3vw, 42px)/1.1 "Avenir Next", "Segoe UI", sans-serif; letter-spacing: -.045em; }
+.engineering-controls .dbtl-directory { display: grid; place-items: center; min-height: 0; }
+.engineering-controls .dbtl-wheel { width: 100%; --dbtl-size: min(100%, 320px); }
+.engineering-cycles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 330px; align-self: center; padding-inline: 14px; }
+.engineering-cycles a { position: relative; border-top: 3px solid #b5bade; padding: 10px 0 4px; color: #69749a; text-decoration: none; text-align: center; font-size: 13px; font-weight: 700; }
+.engineering-cycles a::before { content: ''; position: absolute; top: -6px; left: calc(50% - 4px); width: 8px; height: 8px; border: 2px solid #9ca5ce; border-radius: 50%; background: #f4f3fc; }
+.engineering-cycles a[aria-current] { border-color: #334071; color: #334071; }
+.engineering-cycles a[aria-current]::before { border-color: #334071; background: #f6becd; }
+.engineering-cycles a:focus-visible { outline: 3px solid #a94d70; outline-offset: 3px; }
+.engineering-paper {
+  --engineering-surface-feather: 22px;
+  grid-column: 2; grid-row: 1;
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  margin-right: 64px;
+  border: 1px solid #e0e3e8;
+  border-radius: 28px;
+  background: linear-gradient(90deg, #f3f4f5, #fff var(--engineering-surface-feather), #fff calc(100% - var(--engineering-surface-feather)), #f3f4f5);
+  box-shadow: 0 0 28px 2px #5f667526;
+  overflow: hidden;
+}
+.engineering-scroll { overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #959fce #efeffa; scroll-padding: 24px; }
+.engineering-scroll:focus-visible { outline: 3px solid #989fd3; outline-offset: -5px; }
+/* Match Model's paper insets while the fixed studio owns the outer height. */
+.engineering-copy { padding: 12px clamp(30px, 4vw, 56px) 40px; }
+.engineering-copy .content-status { margin: 0 0 26px; padding: 13px 16px; background: #f2f3fc; border: 0; border-left: 3px solid #c38a9a; border-radius: 0 10px 10px 0; }
+.engineering-copy .content-status strong { display: block; color: #8f596c; font: 700 10px/1.5 "Avenir Next", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.engineering-copy .content-status p { margin: 5px 0 0; color: #68708f; font-size: 12px; line-height: 1.6; }
+.engineering-copy .markdown-content { max-width: none; color: #25314c; font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif; font-size: 20px; line-height: 1.75; overflow-wrap: anywhere; }
+.engineering-part-panel { display: flow-root; }
+.engineering-part-panel[hidden] { display: none; }
+.engineering-copy .markdown-content :is(p, li) { font: inherit; }
+.engineering-copy .markdown-content :is(h2, h3, h4, h5, h6)[id] { scroll-margin-top: 0; }
+.engineering-copy .markdown-content h2 { padding: 34px 0 0; margin: 34px 0 22px; border-top: 1px solid #d2dcec; font: 700 32px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
+.engineering-copy .markdown-content h3 { margin: 30px 0 15px; font: 700 23px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
+.engineering-copy .markdown-content h4,
+.engineering-copy .markdown-content h5 { margin: 28px 0 12px; font: 700 19px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
+.engineering-copy .markdown-content :is(h3, h4)[id*="-cycle-"]:is([id$="-01"], [id$="-02"]) { border-top: 2px solid #b5bade; margin-top: 40px; padding-top: 15px; color: #334071; font-size: 23px; }
+.engineering-copy .markdown-content p:has(> span[id^="cycle-"]:only-child) { margin: 0; height: 0; }
+.engineering-copy .markdown-content a { color: #6765aa; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.engineering-copy .markdown-content img { max-width: 100%; height: auto; }
+.engineering-copy .markdown-content :is(pre, table) { max-width: 100%; overflow-x: auto; }
+@media (max-height: 800px) and (min-width: 761px) {
+  .engineering-controls { gap: 10px; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: min(100%, 300px); }
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .engineering-workspace { grid-template-columns: 252px minmax(0, 1fr); gap: 0 28px; }
+  .engineering-paper { --engineering-surface-feather: 16px; }
+  .engineering-copy { padding-inline: 28px; }
+}
+@media (max-width: 760px) {
+  .engineering-workspace { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 10px; padding: 10px 14px 14px; }
+  .engineering-workspace[data-engineering-view="map"] { grid-template-rows: minmax(0, 1fr); }
+  .engineering-workspace[data-engineering-view="reader"] { padding-bottom: 78px; }
+  .engineering-controls { grid-column: 1; grid-row: 1; display: grid; grid-template-columns: minmax(0, 1fr) 140px; align-items: center; gap: 8px 16px; padding-inline: 12px; }
+  .engineering-controls h1 { grid-column: 1; grid-row: 1; align-self: end; font-size: 25px; margin: 0; }
+  .engineering-controls .engineering-cycles { grid-column: 1 / -1; grid-row: 3; align-self: start; justify-self: center; }
+  .engineering-controls .dbtl-directory { grid-column: 2; grid-row: 1 / 3; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: 130px; }
+  .engineering-cycles { padding-inline: 0; gap: 10px; }
+  .engineering-cycles a { font-size: 11px; }
+  .engineering-paper { --engineering-surface-feather: 10px; grid-column: 1; grid-row: 2; margin-right: 0; border-radius: 20px; }
+  .engineering-copy { padding: 0 24px 40px 20px; }
+  .engineering-copy .markdown-content { font-size: 18px; }
+  .engineering-copy .markdown-content h2 { font-size: 28px; }
+  .engineering-copy .markdown-content h3 { font-size: 21px; }
+  .engineering-copy .markdown-content :is(h4, h5) { font-size: 18px; }
+}
+@media (max-width: 380px) { .engineering-copy { padding-left: 14px; } }
+@media (max-height: 610px) {
+  .engineering-workspace { padding-block: 10px; }
+  .engineering-controls { gap: 6px; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: 100px; }
+  .engineering-cycles a { padding-top: 5px; font-size: 10px; }
+  .engineering-controls h1 { font-size: 24px; margin-bottom: 0; }
+}
+@media (max-height: 700px) and (min-width: 761px) {
+  .engineering-controls { justify-content: flex-start; overflow-y: auto; overscroll-behavior: contain; }
+}
+@media print {
+  body.engineering-workspace-page { height: auto; overflow: visible; padding: 0; }
+  .engineering-workspace { position: static; display: block; padding: 0; }
+  .engineering-controls { display: block; }
+  .engineering-controls :is(.engineering-cycles, .dbtl-directory), .engineering-map, .engineering-map-back { display: none !important; }
+  .engineering-paper, .engineering-paper[hidden] { display: block !important; overflow: visible; margin-right: 0; border: 0; box-shadow: none; }
+  .engineering-scroll { overflow: visible; height: auto; }
+  .engineering-copy { padding: 20px 0; }
+  .engineering-part-panel[hidden] { display: block; }
+}
+
+.engineering-map-back { z-index: 35; }

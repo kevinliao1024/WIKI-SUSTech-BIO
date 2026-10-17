@@ -1,5 +1,5 @@
 ---
-title: Measurement
+title: Measure
 subtitle: Define how every readout is acquired, normalized, quality-controlled and interpreted.
 eyebrow: Wet Lab
 status: pending
@@ -7,11 +7,15 @@ status_label: Content pending team review
 status_message: Add only reviewed measurement procedures, calibration records and analysis criteria.
 ---
 
-# Measurement
+# Measure
 
 ## Measurement goals
 
 Define each quantity, why it matters and the decision it informs.
+
+See [Engineering — Measure](/engineering#measure) for its place in the project design.
+Link reusable measurement resources to [Contribution — SONAR](/contribution#sonar)
+and [Contribution — Puffer](/contribution#puffer) once their scope and evidence are reviewed.
 
 ## Assays
 

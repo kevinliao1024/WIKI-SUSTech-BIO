@@ -1,0 +1,32 @@
+{
+  "mascot-thinking.png": {
+    "source": "User-supplied artwork, 2026-10-17",
+    "original_filename": "853414b6713ed3e8dd919aedcdb3d745.png",
+    "sha256": "4aba87eae108984149a222f5f2953d5245d19682b4b1a70a1761c1493d76d3e3",
+    "pixel_edits": false
+  },
+  "mascot-listening.png": {
+    "source": "User-supplied artwork, 2026-10-17",
+    "original_filename": "65fbd90c8cffdde96508e00c3497f9b3.png",
+    "sha256": "6859f96bdea5bf0711e99543c834f7f295863fb8f5db178e9e6ba3be19c0d7c6",
+    "pixel_edits": false
+  },
+  "mascot-sleepy.png": {
+    "source": "User-supplied artwork, 2026-10-17",
+    "original_filename": "5d98799fde188878efef5ea2fea10e79.png",
+    "sha256": "39d2d5bb205787f38a0f27cbf0106c4c9a045b006729480c1474332798f32bc7",
+    "pixel_edits": false
+  },
+  "mascot-standing.png": {
+    "source": "User-supplied artwork, 2026-10-17",
+    "original_filename": "7acf0019f5105d1bfa17394a0e9f68b6.png",
+    "sha256": "315bd14c4bcd7e44666b877b05a3934248af050cf2a071db67429f09afb47830",
+    "pixel_edits": false
+  },
+  "mascot-playful.png": {
+    "source": "User-supplied artwork, 2026-10-17",
+    "original_filename": "07b161983b9de36ef95b141fd8f383ee.png",
+    "sha256": "a320c8972b03fe87a7c046b171b21b7ea4bd25b430e1f30f0d4dfff06e277da1",
+    "pixel_edits": false
+  }
+}

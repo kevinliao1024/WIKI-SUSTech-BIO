@@ -1,5 +1,5 @@
 ---
-title: Experiments
+title: Experiment
 subtitle: Record protocols, controls and decision points so another team can reproduce the work.
 eyebrow: Wet Lab
 status: pending
@@ -7,7 +7,7 @@ status_label: Content pending team review
 status_message: Replace the prompts with approved protocols and link every method to its notebook record.
 ---
 
-# Experiments
+# Experiment
 
 ## Experimental overview
 

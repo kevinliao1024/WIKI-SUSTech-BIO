@@ -65,7 +65,7 @@ try {
   results.push('Project → Home: navy shield and particle unfold; completes and frees GPU');
 
   await menu(page, 'Project', 'Description'); await page.waitForURL('**/description'); await idle(page);
-  await menu(page, 'Wet Lab', 'Experiments'); await page.waitForURL('**/experiments');
+  await menu(page, 'Wet Lab', 'Experiment'); await page.waitForURL('**/experiments');
   await idle(page);
   assert.deepEqual(await page.evaluate(() => window.whEvents), []);
   assert.deepEqual(await page.evaluate(() => window.whShields), []);
@@ -104,7 +104,7 @@ try {
   // Requests that fail or remain pending must release the current page.
   await page.goto(base); await idle(page);
   await page.route('**/experiments', route => route.abort());
-  await menu(page, 'Wet Lab', 'Experiments'); await idle(page);
+  await menu(page, 'Wet Lab', 'Experiment'); await idle(page);
   assert.equal(page.url(), `${base}/`);
   assert.equal(await page.locator('.wh-notice').count(), 1);
   await page.unroute('**/experiments');
@@ -149,7 +149,7 @@ try {
   await menu(mobile, 'Project', 'Description'); await mobile.waitForURL('**/description'); await idle(mobile);
   const mobileNav = mobile.getByRole('navigation', { name: 'Primary navigation' });
   await mobileNav.getByRole('button', { name: 'Wet Lab', exact: true }).click();
-  const experimentLink = mobileNav.getByRole('link', { name: 'Experiments', exact: true });
+  const experimentLink = mobileNav.getByRole('link', { name: 'Experiment', exact: true });
   await experimentLink.locator('.rna-base-flip').click();
   assert.equal(await mobile.evaluate(() => window.ORCAWhiteHole.busy), false);
   assert.ok(mobile.url().endsWith('/description'));

@@ -1,0 +1,46 @@
+{% set engineering_groups = [
+  {'id': 'edit', 'label': 'Edit', 'parts': [
+    {'id': 'pod', 'label': 'POD'},
+    {'id': 'cetus', 'label': 'CETUS'},
+    {'id': 'integrated-orca', 'label': 'Integrated ORCA'}]},
+  {'id': 'control', 'label': 'Control', 'parts': [
+    {'id': 'gfa', 'label': 'GFA'},
+    {'id': 'mre', 'label': 'MRE'},
+    {'id': 'aso', 'label': 'ASO'},
+    {'id': 'cre-loxp', 'label': 'Cre-loxP'}]},
+  {'id': 'deliver', 'label': 'Deliver', 'parts': [{'id': 'deliver', 'label': 'Deliver'}]},
+  {'id': 'measure', 'label': 'Measure', 'parts': [{'id': 'measure', 'label': 'Measure'}]},
+  {'id': 'model', 'label': 'Model', 'parts': [
+    {'id': 'model-rna-seq', 'label': 'RNA-seq Off-target Analysis'},
+    {'id': 'model-puf', 'label': 'PUF Specificity Design'},
+    {'id': 'model-apobec', 'label': 'APOBEC Engineering'},
+    {'id': 'model-lamar', 'label': 'LAMAR Prioritization'},
+    {'id': 'model-whole-body', 'label': 'Whole-body Delivery Model'}]}
+] %}
+<script type="application/json" data-engineering-map-data>{{ engineering_groups | tojson }}</script>
+<section class="engineering-map" data-engineering-map data-selected-group="" aria-labelledby="engineering-map-title">
+  <div class="engineering-map-canvas" data-map-canvas>
+    <svg class="engineering-map-lines" data-map-lines aria-hidden="true" focusable="false"></svg>
+    <div class="engineering-map-root">
+      <h1 id="engineering-map-title">Engineering</h1>
+    </div>
+    <nav class="engineering-map-groups" aria-label="Engineering parts">
+      {% for group in engineering_groups %}
+      <button type="button" class="engineering-map-group" data-engineering-group="{{ group.id }}" aria-expanded="false" aria-controls="{{ 'engineering-map-' + group.id if group.parts | length > 1 else 'engineering-map-cycle-picker' }}"><span class="map-label">{{ group.label }}</span></button>
+      {% endfor %}
+    </nav>
+    <div class="engineering-map-branches">
+      {% for group in engineering_groups if group.parts | length > 1 %}
+      <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" role="group" aria-label="{{ group.label }} branches" hidden>
+        {% for part in group.parts %}
+        <button type="button" class="engineering-map-leaf" data-engineering-part="{{ part.id }}" aria-pressed="false" aria-controls="engineering-map-cycle-picker"><span class="map-label">{{ part.label }}</span></button>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <nav class="engineering-map-cycles" id="engineering-map-cycle-picker" aria-label="Engineering cycles" hidden>
+      <a class="engineering-map-cycle" data-map-cycle="01" href="#pod-cycle-01"><strong class="map-label">Cycle 01</strong></a>
+      <a class="engineering-map-cycle" data-map-cycle="02" href="#pod-cycle-02"><strong class="map-label">Cycle 02</strong></a>
+    </nav>
+  </div>
+</section>
