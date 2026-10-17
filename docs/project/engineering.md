@@ -455,8 +455,6 @@ Across the five models, Design–Build–Test–Learn cycles make the computatio
 
 ### Module 1 | RNA-seq editing-site analysis {#model-rna-seq}
 
-[Dry lab overview](#dry-dbtl-overview) · [References](#dry-dbtl-references)
-
 #### Overview {#model-rna-seq-overview}
 
 Module 1 turns RNA sequencing (RNA-seq) into candidate editing sites and comparative profiles for editor design. The wet-lab team supplied paired-end sequencing from six editor groups and three control groups, with four biological replicates each, giving 36 libraries.
@@ -614,8 +612,6 @@ Callable-site density replaced counts as the basis for chromosome comparisons. W
 ---
 
 ### Module 2 | PUF specificity ranking and structure-conditioned design {#model-puf}
-
-[Dry lab overview](#dry-dbtl-overview) · [References](#dry-dbtl-references)
 
 #### Overview {#model-puf-overview}
 
@@ -813,8 +809,6 @@ The final workflow combined a supervised ranker with structure-conditioned explo
 
 ### Module 3 | Refining structural models of the APOBEC catalytic module {#model-apobec}
 
-[Dry lab overview](#dry-dbtl-overview) · [References](#dry-dbtl-references)
-
 #### Overview {#model-apobec-overview}
 
 Module 3 used structural modelling to organize APOBEC variants for matched comparisons of substrate preference and activity. Published PUF–APOBEC fusion designs provide the platform context for examining recognition and catalytic domains together (Han et al., 2025). Wet-lab inputs included parent and variant sequences, functional labels, and requests for same-site, combination and sequence-background controls. These inputs defined the comparisons returned by the model.
@@ -979,8 +973,6 @@ We selected **spectral clustering on the 77 highest-variance contact pairs** as 
 
 ### Module 4 | Learning to prioritize RNA editing candidates {#model-lamar}
 
-[Dry lab overview](#dry-dbtl-overview) · [References](#dry-dbtl-references)
-
 #### Overview {#model-lamar-overview}
 
 RNA sequencing from the wet-lab team supplied editing-site labels and their surrounding sequences. We extended the RNA language model LAMAR through human-transcript adaptation, regional prediction and cytidine ranking. The workflow separates sequence learning, region selection and local prioritization, with a ranking objective matched to the number of candidates the team can examine. Its ordered shortlists guide follow-up site selection, and new site labels provide feedback for further model development.
@@ -1139,8 +1131,6 @@ The model now returned ordered cytidine candidates for the experimental team to 
 ---
 
 ### Module 5 | Whole-body delivery and multisite editing {#model-whole-body}
-
-[Dry lab overview](#dry-dbtl-overview) · [References](#dry-dbtl-references)
 
 #### Overview {#model-whole-body-overview}
 

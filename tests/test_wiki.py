@@ -256,9 +256,8 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertEqual(re.findall(r'\bdata-engineering-group="([^"]+)"', page),
                          ["edit", "control", "deliver", "measure", "model"])
         self.assertIn('data-selected-group=""', page)
-        buttons = re.findall(r'<button\b[^>]*data-engineering-expand="[^"]+"[^>]*>', page)
-        self.assertEqual(len(buttons), 5)
-        self.assertTrue(all('aria-expanded="false"' in button for button in buttons))
+        self.assertNotIn('data-engineering-expand', page)
+        self.assertNotIn('engineering-map-expand', page)
         branches = re.findall(r'<div\b[^>]*data-map-branch-group="[^"]+"[^>]*>', page)
         self.assertEqual(len(branches), 3)
         self.assertTrue(all(re.search(r'\bhidden(?=[\s>])', branch) for branch in branches))
@@ -283,10 +282,6 @@ class WikiRoutesTest(unittest.TestCase):
             self.assertIn(f'href="#{group["parts"][0]["id"]}-cycle-01"', link.group(0))
         leaf_parts = [part for part in ENGINEERING_PARTS if part not in {"deliver", "measure"}]
         self.assertCountEqual(re.findall(r'\bdata-engineering-part="([^"]+)"', page), leaf_parts)
-        for direct in ["deliver", "measure"]:
-            button = re.search(rf'<button\b[^>]*data-engineering-expand="{direct}"[^>]*>', page)
-            self.assertIsNotNone(button)
-            self.assertIn('aria-controls="engineering-map-cycle-picker"', button.group(0))
         # Both views derive their variable-length cycle navigation from the
         # authored headings after loading, rather than a fixed two-link list.
         self.assertNotRegex(page, r'\bdata-map-cycle="')
@@ -316,13 +311,14 @@ class WikiRoutesTest(unittest.TestCase):
         for part in ENGINEERING_PARTS[9:]:
             self.assertRegex(article.group(1), rf'<h3\b[^>]*id="{part}"')
         portraits = re.findall(r'<svg\b[^>]*\bdata-dbtl-portrait="[^"]+"[^>]*>.*?</svg>', page, re.S)
-        self.assertEqual(len(portraits), 28)
+        self.assertEqual(len(portraits), len(cycles))
         self.assertCountEqual([re.search(r'\bdata-dbtl-cycle="([^"]+)"', portrait).group(1)
                                for portrait in portraits],
-                              [f"{part}-cycle-{number}" for part in ENGINEERING_PARTS for number in ["01", "02"]])
+                              cycles)
         sources = [re.search(r'<image\b[^>]*\bhref="([^"]+)"', portrait).group(1)
                    for portrait in portraits]
-        self.assertEqual(len(set(sources)), 28)
+        self.assertEqual(len(set(sources)), len(cycles))
+        self.assertEqual(len({Path(source.lstrip('/')).read_bytes() for source in sources}), len(cycles))
 
     def test_engineering_import_preserves_math_annotations_and_assets(self):
         page = self.get_text("/engineering")

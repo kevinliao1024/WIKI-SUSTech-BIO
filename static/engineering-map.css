@@ -58,10 +58,7 @@
 .engineering-map-root h1 { margin: 0; color: #29354a; font: 600 clamp(28px, 3.1vw, 46px)/1.15 'Source Sans 3', 'Segoe UI', sans-serif; letter-spacing: -.025em; animation: map-node-float 9s ease-in-out infinite; }
 .map-label { display: block; font-weight: 550; line-height: 1.3; animation: map-node-float 9s ease-in-out infinite; }
 .engineering-map-groups { grid-column: 2; grid-row: 1; display: grid; gap: clamp(16px, 3.2vh, 34px); align-content: center; min-width: 0; }
-.engineering-map-group-row { position: relative; min-width: 0; padding-right: 28px; }
-.engineering-map-expand { position: absolute; z-index: 2; top: 50%; right: -6px; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: #8b97af; font: 400 24px/1 'Source Sans 3', sans-serif; transform: translateY(-50%); cursor: pointer; }
-.engineering-map-expand span { transition: transform .2s ease; }
-.engineering-map-expand[aria-expanded='true'] span { transform: rotate(90deg); }
+.engineering-map-group-row { position: relative; min-width: 0; }
 .engineering-map-group { height: 64px; font-size: clamp(18px, 1.7vw, 25px); cursor: pointer; transition: color .2s; }
 .engineering-map-group-row:nth-child(2n) .engineering-map-group .map-label { animation-delay: -3s; }
 .engineering-map-group-row:nth-child(3n) .engineering-map-group .map-label { animation-delay: -5s; }
@@ -116,8 +113,6 @@
   .engineering-map-root { grid-column:1/-1; min-height:86px; }
   .engineering-map-root h1 { font-size:34px; }
   .engineering-map-groups { grid-column:1; grid-row:2; gap:12px; }
-  .engineering-map-group-row { padding-right:22px; }
-  .engineering-map-expand { right:-10px; font-size:22px; }
   .engineering-map-group { height:48px; font-size:16px; padding:10px 8px; }
   .engineering-map-branches { grid-column:2; grid-row:2; }
   .engineering-map-leaves { gap:12px; }
@@ -128,6 +123,16 @@
   .engineering-map[data-simple='true'] .engineering-map-branches { display:none; }
   .engineering-map[data-simple='true'] .engineering-map-cycles { grid-column:2; grid-row:2; width:100%; grid-template-columns:1fr; }
 }
+/* Touch and narrow screens expose every existing module link in one scrollable
+   tree. Labels keep their direct-entry meaning without an extra toggle target. */
+.engineering-map[data-overview='true'] .engineering-map-canvas { grid-template-columns:minmax(80px,.55fr) minmax(0,1.45fr); align-content:start; gap:28px clamp(16px,4vw,40px); width:100%; max-width:800px; min-height:0; margin-inline:auto; padding:14px 12px 24px; }
+.engineering-map[data-overview='true'] .engineering-map-root { grid-column:1/-1; grid-row:1; min-height:86px; }
+.engineering-map[data-overview='true'] :is(.engineering-map-groups,.engineering-map-branches) { display:contents; visibility:visible; }
+.engineering-map[data-overview='true'] .engineering-map-group-row { grid-column:1; grid-row:var(--map-row); }
+.engineering-map[data-overview='true'] .engineering-map-group { height:auto; min-height:48px; padding:10px 4px; font-size:clamp(16px,2.3vw,20px); }
+.engineering-map[data-overview='true'] .engineering-map-leaves { grid-column:2; grid-row:var(--map-row); gap:8px; }
+.engineering-map[data-overview='true'] .engineering-map-leaf { min-height:56px; padding:12px 6px; font-size:clamp(15px,2vw,19px); }
+.engineering-map[data-overview='true'] .engineering-map-cycles { grid-column:1/-1; grid-row:7; position:static; width:100%; max-width:none; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
 .engineering-map[data-flow-paused='true'] *, .engineering-map[data-flow-paused='true'] *::before, .engineering-map[data-flow-paused='true'] *::after { animation-play-state:paused !important; }
 @media (prefers-reduced-motion:reduce) {
   .engineering-map *, .engineering-map *::before, .engineering-map *::after { animation:none !important; transition:none !important; }

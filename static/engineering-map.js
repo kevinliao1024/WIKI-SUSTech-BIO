@@ -3,7 +3,6 @@
   if (!map) return;
   const { groups } = window.ORCAEngineering;
   const groupButtons = [...map.querySelectorAll('[data-engineering-group]')];
-  const expandButtons = [...map.querySelectorAll('[data-engineering-expand]')];
   const leafButtons = [...map.querySelectorAll('.engineering-map-leaf[data-engineering-part]')];
   const branchGroups = [...map.querySelectorAll('[data-map-branch-group]')];
   const branches = map.querySelector('.engineering-map-branches');
@@ -14,6 +13,7 @@
   const root = map.querySelector('.engineering-map-root');
   const desktop = matchMedia('(min-width: 901px)');
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
+  const overview = () => !desktop.matches || !hover.matches;
   const namespace = 'http://www.w3.org/2000/svg';
   const streams = new Map();
   let selectedGroup;
@@ -32,7 +32,7 @@
   // Only layout changes measure nodes; animation itself runs in CSS, without a frame loop.
   function placeCluster(cluster, parent, property, bounds) {
     cluster.style.setProperty(property, '0px');
-    if (!desktop.matches || !parent || cluster.hidden) return;
+    if (overview() || !parent || cluster.hidden) return;
     const box = cluster.getBoundingClientRect();
     const origin = box.top - bounds.top;
     const parentBox = parent.getBoundingClientRect();
@@ -75,9 +75,9 @@
       if (!from) return;
       const a = (from.querySelector('.map-label, h1') || from).getBoundingClientRect();
       const b = (to.querySelector('.map-label') || to).getBoundingClientRect();
-      const rootAbove = !desktop.matches && from === root;
-      const cyclesBelow = !desktop.matches && to.dataset.mapCycle && map.dataset.simple !== 'true';
-      const horizontal = desktop.matches || (!cyclesBelow && b.left >= a.right + 8);
+      const rootAbove = overview() && from === root;
+      const cyclesBelow = overview() && to.dataset.mapCycle;
+      const horizontal = !overview() || (!cyclesBelow && b.left >= a.right + 8);
       const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
       const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
       const x1 = start[0] - bounds.left, y1 = start[1] - bounds.top;
@@ -106,7 +106,10 @@
       }
     }
     groupButtons.forEach(button => connect(root, button, button.dataset.engineeringGroup === selectedGroup));
-    leaves.forEach(button => connect(currentGroup, button, button.dataset.engineeringPart === selectedPart));
+    leaves.forEach(button => {
+      const groupId = button.closest('[data-map-branch-group]').dataset.mapBranchGroup;
+      connect(groupButtons.find(group => group.dataset.engineeringGroup === groupId), button, button.dataset.engineeringPart === selectedPart);
+    });
     if (!cycles.hidden) cycleLinks.forEach(link => connect(currentLeaf || currentGroup, link, true));
     streams.forEach((stream, key) => {
       if (!retained.has(key)) { stream.remove(); streams.delete(key); }
@@ -162,8 +165,7 @@
     map.dataset.selectedGroup = id;
     map.dataset.simple = String(group.parts.length === 1);
     groupButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringGroup === id));
-    expandButtons.forEach(button => button.setAttribute('aria-expanded', String(button.dataset.engineeringExpand === id)));
-    branchGroups.forEach(section => { section.hidden = section.dataset.mapBranchGroup !== id; });
+    branchGroups.forEach(section => { section.hidden = !overview() && section.dataset.mapBranchGroup !== id; });
     leafButtons.forEach(button => button.classList.remove('is-selected'));
     cycles.hidden = true;
     if (group.parts.length === 1) choosePart(group.parts[0].id);
@@ -172,10 +174,10 @@
 
   function hoverNode(button) {
     if (!hover.matches || map.hidden) return;
-    if (button.dataset.engineeringGroup || button.dataset.engineeringExpand) chooseGroup(button.dataset.engineeringGroup || button.dataset.engineeringExpand);
+    if (button.dataset.engineeringGroup) chooseGroup(button.dataset.engineeringGroup);
     else if (button.dataset.engineeringPart !== selectedPart) choosePart(button.dataset.engineeringPart);
   }
-  [...groupButtons, ...expandButtons, ...leafButtons].forEach(button => {
+  [...groupButtons, ...leafButtons].forEach(button => {
     button.addEventListener('mousemove', event => {
       // Revealing or resizing a branch must not select a different node under
       // a stationary pointer, especially while navigating with the keyboard.
@@ -188,16 +190,14 @@
     });
     // Keep the expanded subtree open while the pointer crosses the space between nodes.
   });
+  groupButtons.forEach(button => button.addEventListener('focus', () => {
+    if (!map.hidden) chooseGroup(button.dataset.engineeringGroup);
+  }));
   leafButtons.forEach(button => button.addEventListener('focus', () => {
     if (!map.hidden) choosePart(button.dataset.engineeringPart);
   }));
 
   map.addEventListener('click', event => {
-    const expand = event.target.closest('[data-engineering-expand]');
-    if (expand) {
-      chooseGroup(expand.dataset.engineeringExpand);
-      return;
-    }
     const group = event.target.closest('[data-engineering-group]');
     const leaf = event.target.closest('.engineering-map-leaf[data-engineering-part]');
     if (group) chooseGroup(group.dataset.engineeringGroup);
@@ -207,15 +207,15 @@
     keyboardNavigation = true;
     keyboardSettlingUntil = performance.now() + 300;
     if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
-    const group = event.target.closest('[data-engineering-group], [data-engineering-expand]');
+    const group = event.target.closest('[data-engineering-group]');
     const leaf = event.target.closest('.engineering-map-leaf[data-engineering-part]');
     const cycle = event.target.closest('[data-map-cycle]');
     if (!group && !leaf && !cycle) return;
     event.preventDefault();
     if (event.key === 'ArrowRight') {
       if (group) {
-        chooseGroup(group.dataset.engineeringGroup || group.dataset.engineeringExpand);
-        (visibleLeaves()[0] || cycleLinks[0]).focus();
+        chooseGroup(group.dataset.engineeringGroup);
+        (visibleLeaves().find(button => button.closest('[data-map-branch-group]').dataset.mapBranchGroup === selectedGroup) || cycleLinks[0]).focus();
       } else if (leaf) {
         choosePart(leaf.dataset.engineeringPart);
         cycleLinks[0].focus();
@@ -237,11 +237,18 @@
     map.dataset.flowPaused = String(map.hidden || document.hidden);
     if (!map.hidden) schedule();
   }
+  function updateLayout() {
+    map.dataset.overview = String(overview());
+    branchGroups.forEach(section => { section.hidden = !overview() && section.dataset.mapBranchGroup !== selectedGroup; });
+    schedule();
+  }
   new MutationObserver(updateMotion).observe(map, { attributes: true, attributeFilter: ['hidden'] });
   document.addEventListener('visibilitychange', updateMotion);
-  addEventListener('resize', schedule);
+  addEventListener('resize', updateLayout);
+  hover.addEventListener('change', updateLayout);
   addEventListener('load', schedule);
   if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(canvas);
   document.fonts?.ready.then(schedule);
+  updateLayout();
   updateMotion();
 })();

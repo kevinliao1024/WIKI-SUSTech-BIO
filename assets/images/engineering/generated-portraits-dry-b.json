@@ -1,0 +1,146 @@
+[
+  {
+    "mood": "unimpressed",
+    "filename": "mascot-unimpressed.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: unimpressed and languid. Both eyes have distinctly half-lowered eyelids, relaxed flat eyebrows, and a short perfectly flat mouth. Shoulders relaxed. No hands in view. The mood is bored and unamused, not sad or sleepy.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "0487eb9c6a4ab4469935835674a7b60286302b8f125a1d9634085e6ec2046a12",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1129374,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "concentrating",
+    "filename": "mascot-concentrating.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: intensely concentrating. One eye is narrowed into a deliberate squint while the other focuses forward; eyebrows drawn together in concentration; the tiny tip of the tongue sticks out from one corner of the closed mouth. No extra objects; hands do not need to appear.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "f3cfd9c8cf61c1cd0aab9f0ac525db37d1130191d639ace535d2bd00355e59e6",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1150820,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "adoring",
+    "filename": "mascot-adoring.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: adoring. Two clearly heart-shaped pupils inside the eyes, a soft gentle smile, and both white-gloved hands cupping the cheeks. The heart shapes are pupils only, with no floating hearts. Show both complete hands within the safe area.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "e31dcb2f6345dd4200c426f03fe72fcc5c6bf7565cd3e42cf4c3d2c21aec663d",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1218311,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "shushing",
+    "filename": "mascot-shushing.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: shushing. Round wide-open attentive eyes and a small pursed mouth. Exactly one white-gloved index finger is held vertically directly in front of the lips in a clear shh gesture, with the other fingers naturally curled. Show the complete gesture within the safe area; no text.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "97c2b7c50e361cacef6758628b4471f065e92f86a7dbb6ffe3d58940a6930693",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1133403,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "whistling",
+    "filename": "mascot-whistling.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: whistling quietly. Small puckered lips directed to one side, eyes glancing upward, raised relaxed eyebrows. Both hands are out of frame; no musical notes, sound marks or other objects.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "91f43ac4fe8cfdf3b28ed3aeb54bf409a638fa47ccec0fdea1848450015b46e0",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1133680,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "sneezing",
+    "filename": "mascot-sneezing.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: in the instant of a sneeze. Both eyes squeezed tightly shut, nose scrunched, eyebrows compressed, small sneeze mouth. One white-gloved hand covers beside the nose in a natural sneeze-covering gesture, with fingers clear and complete. No droplets, spray, text, motion icons or extra objects.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "364bacfca7ebcb6152288984f497091a77a5346057c5bf8fbd715c08ac74045a",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1195574,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "mischievous",
+    "filename": "mascot-mischievous.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: mischievous. Eyes looking sideways, one eyebrow raised distinctly higher than the other, and an asymmetric sly impish smirk. Hands out of view. Keep the same cute friendly character rather than scary or aggressive.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "84d062b0c9cab6c08f731f9103da7bb56a4a85ca170cd92f8df667fce6b72daa",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1137761,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  },
+  {
+    "mood": "serene",
+    "filename": "mascot-serene.png",
+    "width": 1254,
+    "height": 1254,
+    "method": "built-in image_gen",
+    "reference": "mascot-curious.png",
+    "prompt": "Use case: illustration-story. Asset type: a single square transparent PNG avatar for the ORCA Engineering cycle interface.\nInput image: mascot-curious.png is a reference for character identity and illustration style only. Create a new expression/pose of this same cute mascot, not a copy of the existing curious pose.\nIdentity/style: rounded pink face, coral blush circles, deep ocean navy whale/orca hood with white oval patch and broad white brow band, deep navy clean outlines, white gloves where hands appear, subtle soft painted shading and the same friendly polished cartoon proportions.\nComposition: one centered head-and-shoulders portrait on a square canvas, full hood/head/shoulders and any specified hands entirely inside a central circular safe area. Leave about 12% genuinely transparent empty margin on every side. Preserve actual PNG alpha; no solid or checkerboard background and no drawn circular frame.\nAvoid: text, letters, numbers, labels, watermarks, extra objects, floating icons, multiple portraits, cropped head or cropped hands. Keep the existing character identity, clothing, colors and visual style.\nExpression: serene and peaceful. Both eyes are gently closed as soft curved arcs, eyebrows relaxed and open, and a small calm smile. White-gloved palms pressed together near the chest with a gentle peaceful gesture; show both complete hands within the safe area.",
+    "viewBox": "0 0 1254 1254",
+    "sha256": "d808edc73a17e16a2c906221d250f54a5924c753349d8fdc9475a62576d65bc4",
+    "alpha": true,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "bytes": 1161317,
+    "visual_review": "Distinct requested expression with the same reference mascot identity and illustration style; no text or extra objects."
+  }
+]

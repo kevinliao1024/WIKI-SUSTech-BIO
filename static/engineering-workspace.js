@@ -24,20 +24,6 @@
   const cyclesForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.cycles])));
   const portraits = new Map([...wheel.querySelectorAll('[data-dbtl-portrait]')]
     .map(image => [image.dataset.dbtlCycle, image]));
-  // Reuse the supplied artwork for added records, with a dedicated SVG per
-  // cycle. Adjacent cycles alternate their own module's original portraits.
-  for (const [part, numbers] of cyclesForPart) {
-    const originals = [...portraits].filter(([cycle]) => cycle.startsWith(`${part}-cycle-`)).map(([, image]) => image);
-    numbers.forEach((number, index) => {
-      const cycle = `${part}-cycle-${number}`;
-      if (portraits.has(cycle) || !originals.length) return;
-      const portrait = originals[index % originals.length].cloneNode(true);
-      portrait.dataset.dbtlCycle = cycle;
-      portrait.classList.add('is-hidden');
-      originals[0].parentElement.append(portrait);
-      portraits.set(cycle, portrait);
-    });
-  }
   let angle = 0;
   let selectedStage;
   let selectedPortrait;
@@ -124,7 +110,13 @@
     } catch { return null; }
   }
 
+  function readingTarget(target) {
+    const firstModelCycle = target.id.match(/^(model-.+)-cycle-01$/);
+    return firstModelCycle ? document.getElementById(`${firstModelCycle[1]}-overview`) || target : target;
+  }
+
   function destination(target) {
+    target = readingTarget(target);
     return Math.max(0, Math.min(reader.scrollHeight - reader.clientHeight,
       reader.scrollTop + target.getBoundingClientRect().top - reader.getBoundingClientRect().top - 24));
   }
@@ -354,7 +346,7 @@
     pending = { target, expires: performance.now() + 2500 };
     anchoredTarget = target;
     if (historyEntry && location.hash !== `#${target.id}`) history.pushState(history.state, '', `#${target.id}`);
-    if (focus) focusTarget(target);
+    if (focus) focusTarget(readingTarget(target));
     reader.scrollTo({ top: destination(target), behavior: instant || changedPanel || wasMap || motion.matches ? 'instant' : 'smooth' });
     pauseAnimation();
     schedule();

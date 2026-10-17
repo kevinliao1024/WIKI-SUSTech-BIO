@@ -45,6 +45,7 @@ async function screenshot(name) {
 try {
   await page.goto(`${base}/engineering`, { waitUntil: 'networkidle' });
   assert.equal(await page.locator('[data-content-status]').count(), 0, 'The generic review-status box is omitted.');
+  assert.equal(await page.locator('[data-engineering-map] button').count(), 0, 'The removed arrows must not leave empty controls.');
   const groups = await page.locator('[data-engineering-map-data]').evaluate(node => JSON.parse(node.textContent));
   for (const group of groups) {
     await page.locator(`[data-engineering-group="${group.id}"]`).click();
@@ -55,7 +56,7 @@ try {
     await page.locator('[data-engineering-map-back]').click();
   }
   for (const group of groups.filter(group => group.parts.length > 1)) {
-    await page.locator(`[data-engineering-expand="${group.id}"]`).click();
+    await page.locator(`[data-engineering-group="${group.id}"]`).focus();
     for (const part of group.parts) {
       await page.locator(`[data-engineering-part="${part.id}"]`).click();
       await expectPart(part.id);
@@ -64,6 +65,14 @@ try {
     }
   }
   console.log('All five category labels and twelve branch labels enter their first cycle directly.');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.waitForFunction(() => document.querySelector('[data-engineering-map]').dataset.overview === 'true');
+  assert.equal(await page.locator('[data-map-branch-group]:visible').count(), 3);
+  assert.equal(await page.locator('[data-engineering-part]:visible').count(), 12);
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.waitForFunction(() => document.querySelector('[data-engineering-map]').dataset.overview === 'false');
+  assert.equal(await page.locator('[data-map-branch-group]:visible').count(), 1);
+  assert.equal(await page.locator('[data-map-branch-group]:visible').getAttribute('data-map-branch-group'), 'model');
 
   await page.locator('[data-engineering-group="edit"]').focus();
   await page.keyboard.press('ArrowRight');
@@ -81,7 +90,7 @@ try {
   await expectPart('gfa');
   console.log('Keyboard branch exploration, direct Enter navigation, and existing Cycle 02 navigation work.');
   await page.locator('[data-engineering-map-back]').click();
-  await page.locator('[data-engineering-expand="edit"]').click();
+  await page.locator('[data-engineering-group="edit"]').focus();
   await page.locator('[data-engineering-part="pod"]').focus();
   await screenshot('engineering-map-desktop.png');
 
@@ -165,7 +174,14 @@ try {
   const touchPage = await mobile.newPage();
   touchPage.on('pageerror', error => errors.push(error.message));
   await touchPage.goto(`${base}/engineering`, { waitUntil: 'networkidle' });
-  await touchPage.locator('[data-engineering-expand="edit"]').tap();
+  assert.equal(await touchPage.locator('[data-engineering-part]:visible').count(), 12);
+  for (const part of parts) {
+    const link = touchPage.locator(`[data-engineering-${['deliver', 'measure'].includes(part) ? 'group' : 'part'}="${part}"]`);
+    await link.tap();
+    await touchPage.waitForFunction(part => document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePart === part, part);
+    await touchPage.locator('[data-engineering-map-back]').tap();
+  }
+  console.log('Touch screens expose all fourteen module entries without expand arrows.');
   await touchPage.locator('[data-engineering-part="cetus"]').tap();
   await touchPage.waitForFunction(() => document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePart === 'cetus');
   await touchPage.locator('[data-engineering-map-back]').tap();

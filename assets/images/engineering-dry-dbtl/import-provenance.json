@@ -50,7 +50,7 @@
     "Replaced the five Model placeholder modules only; preserved all nine non-Model parts and their text.",
     "Preserved supplied prose, numeric values, scientific claims, table content, equations, figure captions, alt text, and link URLs in source order. Adjusted heading depths and assigned stable module/cycle/stage IDs.",
     "Preserved source Cycle 1.1 through 5.5 titles (including Module 2 Cycle 2.6); IDs use the existing model-*-cycle-NN format.",
-    "Kept the source overall overview inside the first Model panel and source references inside the last Model panel, with overview/references links in every Model module.",
+    "Kept the source overall overview inside the first Model panel and source references inside the last Model panel. Removed the repeated overview/references shortcut links at the team's request; each module's Cycle 01 entry now starts at its own supplied Overview.",
     "Preserved the old references anchor beside the imported references; removed the superseded empty reference prompt.",
     "Corrected only the page introductory cycle-count description; retained existing front matter and pending-review status unchanged.",
     "Rewrote relative figure paths to the dedicated local image directory; all image files remain byte-for-byte identical to the archive.",

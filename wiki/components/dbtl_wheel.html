@@ -36,14 +36,30 @@
           ('measure-cycle-02', 'skeptical', '0 0 1254 1254', 1254, 1254),
           ('model-rna-seq-cycle-01', 'embarrassed', '0 0 1254 1254', 1254, 1254),
           ('model-rna-seq-cycle-02', 'celebrating', '0 0 1254 1254', 1254, 1254),
+          ('model-rna-seq-cycle-03', 'laughing', '0 0 1254 1254', 1254, 1254),
+          ('model-rna-seq-cycle-04', 'worried', '0 0 1254 1254', 1254, 1254),
+          ('model-rna-seq-cycle-05', 'tearful', '0 0 1254 1254', 1254, 1254),
           ('model-puf-cycle-01', 'analytical', '0 0 1254 1254', 1254, 1254),
           ('model-puf-cycle-02', 'triumphant', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-03', 'pouting', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-04', 'dazzled', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-05', 'dizzy', '0 0 1254 1254', 1254, 1254),
+          ('model-puf-cycle-06', 'yawning', '0 0 1254 1254', 1254, 1254),
           ('model-apobec-cycle-01', 'patient', '0 0 1254 1254', 1254, 1254),
           ('model-apobec-cycle-02', 'calculating', '0 0 1254 1254', 1254, 1254),
+          ('model-apobec-cycle-03', 'unimpressed', '0 0 1254 1254', 1254, 1254),
+          ('model-apobec-cycle-04', 'concentrating', '0 0 1254 1254', 1254, 1254),
+          ('model-apobec-cycle-05', 'adoring', '0 0 1254 1254', 1254, 1254),
           ('model-lamar-cycle-01', 'hopeful', '0 0 1254 1254', 1254, 1254),
           ('model-lamar-cycle-02', 'puzzled', '0 0 1254 1254', 1254, 1254),
+          ('model-lamar-cycle-03', 'shushing', '0 0 1254 1254', 1254, 1254),
+          ('model-lamar-cycle-04', 'whistling', '0 0 1254 1254', 1254, 1254),
+          ('model-lamar-cycle-05', 'sneezing', '0 0 1254 1254', 1254, 1254),
           ('model-whole-body-cycle-01', 'friendly', '0 0 1254 1254', 1254, 1254),
-          ('model-whole-body-cycle-02', 'amazed', '0 0 1254 1254', 1254, 1254)
+          ('model-whole-body-cycle-02', 'amazed', '0 0 1254 1254', 1254, 1254),
+          ('model-whole-body-cycle-03', 'mischievous', '0 0 1254 1254', 1254, 1254),
+          ('model-whole-body-cycle-04', 'apologetic', '0 0 1254 1254', 1254, 1254),
+          ('model-whole-body-cycle-05', 'serene', '0 0 1254 1254', 1254, 1254)
         ] %}
         {% for cycle, mood, crop, width, height in cycle_portraits %}
         <svg x="100" y="100" width="120" height="120" viewBox="{{ crop }}" data-dbtl-cycle="{{ cycle }}" data-dbtl-portrait="{{ mood }}"{% if not loop.first %} class="is-hidden"{% endif %}>

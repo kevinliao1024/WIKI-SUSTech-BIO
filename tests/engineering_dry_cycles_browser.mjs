@@ -26,6 +26,18 @@ async function expectCycle(part, number) {
     assert.equal(await page.locator(`[data-dbtl-stage="${stage}"]`).getAttribute('href'), `#${part}-cycle-${number}-${stage}`);
   }
 }
+async function expectOverview(part, focus = false) {
+  await expectCycle(part, '01');
+  const state = await page.locator(`#${part}-overview`).evaluate(node => {
+    const reader = document.querySelector('[data-engineering-scroll]');
+    return { gap: node.getBoundingClientRect().top - reader.getBoundingClientRect().top,
+      focus: document.activeElement.id, stage: document.querySelector('[data-dbtl-wheel]').dataset.stage };
+  });
+  assert.ok(Math.abs(state.gap - 24) < 2, `Cycle 01 must start at its own module overview: ${JSON.stringify({ part, state })}`);
+  assert.equal(state.stage, 'design');
+  if (focus) assert.equal(state.focus, `${part}-overview`);
+  assert.equal(new URL(page.url()).hash, `#${part}-cycle-01`);
+}
 try {
   await page.goto(`${base}/engineering#model-puf-cycle-06`, { waitUntil: 'networkidle' });
   await expectCycle('model-puf', '06');
@@ -33,18 +45,36 @@ try {
   assert.equal(authored.length, 44);
   assert.equal(new Set(authored).size, 44);
   assert.equal(await page.locator('[data-dbtl-portrait]').count(), 44);
-  assert.equal(await page.locator('[data-dbtl-portrait] image').evaluateAll(nodes => new Set(nodes.map(node => node.getAttribute('href'))).size), 28);
+  assert.equal(await page.locator('[data-dbtl-portrait] image').evaluateAll(nodes => new Set(nodes.map(node => node.getAttribute('href'))).size), 44);
+  const loadedPortraits = await page.locator('[data-dbtl-portrait] image').evaluateAll(nodes => Promise.all(nodes.map(node => new Promise(resolve => {
+    const image = new Image();
+    image.onload = () => resolve(image.naturalWidth > 0 && image.naturalHeight > 0);
+    image.onerror = () => resolve(false);
+    image.src = node.getAttribute('href');
+  }))));
+  assert.ok(loadedPortraits.every(Boolean), 'Every cycle portrait must load successfully in the browser.');
+  assert.equal(await page.locator('.markdown-content a[href="#dry-dbtl-overview"], .markdown-content a[href="#dry-dbtl-references"]').count(), 0);
   for (const [part, count] of Object.entries(counts)) {
-    await page.evaluate(part => { location.hash = `#${part}-cycle-01`; }, part);
-    await expectCycle(part, '01');
+    await page.goto(`${base}/engineering?overview-entry=${part}#${part}-cycle-01`, { waitUntil: 'networkidle' });
+    await expectOverview(part);
     assert.equal(await page.locator('[data-engineering-cycle]').count(), count);
     for (let index = 1; index <= count; index++) {
       const number = String(index).padStart(2, '0');
       await page.locator(`[data-engineering-cycle="${number}"]`).click();
       await expectCycle(part, number);
+      if (number === '01') await expectOverview(part, true);
       await page.locator('[data-dbtl-stage="learn"]').click();
       assert.equal(new URL(page.url()).hash, `#${part}-cycle-${number}-learn`);
     }
+    await page.locator('[data-engineering-map-back]').click();
+    await page.locator(`[data-engineering-part="${part}"]`).click();
+    await expectOverview(part, true);
+    await page.locator('[data-engineering-map-back]').click();
+    await page.locator('[data-map-cycle="01"]').click();
+    await expectOverview(part, true);
+    await page.locator('[data-dbtl-stage="design"]').click();
+    assert.equal(new URL(page.url()).hash, `#${part}-cycle-01-design`);
+    assert.equal(await page.evaluate(() => document.activeElement.id), `${part}-cycle-01-design`);
   }
   for (const [from, previous] of [['model-puf', 'model-rna-seq'], ['model-apobec', 'model-puf'], ['model-lamar', 'model-apobec'], ['model-whole-body', 'model-lamar']]) {
     await page.evaluate(part => { location.hash = `#${part}-cycle-01`; }, from);
@@ -64,11 +94,7 @@ try {
     if (id !== 'references') assert.equal(await page.locator(`#${id}`).isVisible(), true);
     assert.equal(await page.locator('[data-dbtl-wheel]').getAttribute('data-part'), part);
   }
-  await page.locator('.engineering-part-panel:not([hidden]) a[href="#dry-dbtl-overview"]').click();
-  await page.waitForFunction(() => document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePart === 'model-rna-seq');
-  await page.locator('.engineering-part-panel:not([hidden]) a[href="#dry-dbtl-references"]').click();
-  await page.waitForFunction(() => document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePart === 'model-whole-body');
-  console.log('44 authored cycles, all 26 Model cycle buttons and DBTL targets, direct Cycle 06, last-cycle reverse navigation and cross-module overview/references pass.');
+  console.log('44 authored cycles/portraits, all 26 Model cycle buttons and DBTL targets, Cycle 01 overview via every entry, direct Cycle 06, last-cycle reverse navigation and legacy overview/reference deep links pass.');
 
   for (const viewport of [{ width: 1440, height: 1000 }, { width: 769, height: 900 }, { width: 390, height: 844 }, { width: 320, height: 640 }, { width: 1280, height: 500 }]) {
     await page.setViewportSize(viewport);

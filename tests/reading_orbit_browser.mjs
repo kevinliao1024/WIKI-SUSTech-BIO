@@ -35,6 +35,7 @@ const engineeringGroups = {
 const engineeringParts = Object.values(engineeringGroups).flat();
 const cycleNumbers = part => Array.from({length: part === 'model-puf' ? 6 : part.startsWith('model-') ? 5 : 2}, (_, index) => String(index + 1).padStart(2, '0'));
 const cycleIds = part => cycleNumbers(part).map(number => `${part}-cycle-${number}`);
+const engineeringReadingTarget = id => /^model-.+-cycle-01$/.test(id) ? id.replace(/-cycle-01$/, '-overview') : id;
 async function engineeringState() {
   return page.evaluate(() => {
     const scroller = document.querySelector('[data-engineering-scroll]');
@@ -75,7 +76,7 @@ async function assertEngineeringShell(view='map') {
   await assertEngineeringView(view);
   const sources = await page.locator('svg[data-dbtl-portrait] image').evaluateAll(images=>images.map(image=>image.getAttribute('href')));
   assert.equal(sources.length,44);
-  assert.equal(new Set(sources).size,28,'Added records reuse the supplied portrait artwork.');
+  assert.equal(new Set(sources).size,44,'Every cycle uses its own supplied portrait.');
   if (view==='map') {
     assert.deepEqual(await page.locator('[data-engineering-group]').evaluateAll(elements=>elements.map(el=>el.dataset.engineeringGroup)),Object.keys(engineeringGroups));
     const groups = await page.locator('[data-engineering-map-data]').evaluate(el=>JSON.parse(el.textContent));
@@ -104,8 +105,10 @@ async function assertEngineeringShell(view='map') {
 }
 async function assertEngineeringMapCollapsed() {
   assert.equal(await page.locator('[data-engineering-map]').getAttribute('data-selected-group'),'');
-  assert.deepEqual(await page.locator('[data-engineering-expand]').evaluateAll(elements=>elements.map(el=>el.getAttribute('aria-expanded'))),Array(5).fill('false'));
-  assert.equal(await page.locator('[data-map-branch-group]:visible, [data-map-cycle]:visible').count(),0);
+  assert.equal(await page.locator('[data-engineering-map] button').count(),0,'No visible or invisible arrow toggle remains.');
+  const overview = await page.locator('[data-engineering-map]').getAttribute('data-overview')==='true';
+  assert.equal(await page.locator('[data-map-branch-group]:visible').count(),overview ? 3 : 0);
+  assert.equal(await page.locator('[data-map-cycle]:visible').count(),0);
   await assertEngineeringStreams(false);
 }
 async function assertEngineeringStreams(expectActive=true) {
@@ -114,7 +117,8 @@ async function assertEngineeringStreams(expectActive=true) {
     const groups = JSON.parse(document.querySelector('[data-engineering-map-data]').textContent);
     const expected = groups.map(group=>`engineering>${group.id}`);
     const selected = groups.find(group=>group.id===map.dataset.selectedGroup);
-    if (selected?.parts.length>1) expected.push(...selected.parts.map(part=>`${selected.id}>${part.id}`));
+    const visibleGroups = map.dataset.overview==='true' ? groups.filter(group=>group.parts.length>1) : selected?.parts.length>1 ? [selected] : [];
+    for (const group of visibleGroups) expected.push(...group.parts.map(part=>`${group.id}>${part.id}`));
     if (!map.querySelector('#engineering-map-cycle-picker').hidden) {
       const links = [...map.querySelectorAll('[data-map-cycle]')];
       const part = links[0].hash.slice(1).replace(/-cycle-01$/,'');
@@ -172,12 +176,13 @@ async function engineeringPortrait() {
       visible:visible.map(el=>({name:el.dataset.dbtlPortrait,source:el.querySelector('image').getAttribute('href')}))};
   });
   assert.equal(portrait.total,44,'Every authored cycle must have a portrait SVG.');
-  assert.equal(new Set(portrait.sources).size,28,'Cycle portraits must use twenty-eight distinct image assets.');
+  assert.equal(new Set(portrait.sources).size,44,'Cycle portraits must use forty-four distinct image assets.');
   assert.equal(portrait.visible.length,1,'Exactly one portrait SVG must be visible.');
   assert.equal(portrait.visible[0].name,portrait.selected,'The visible portrait must match the wheel state.');
   return portrait.visible[0];
 }
 async function assertEngineeringInstant(id) {
+  id = engineeringReadingTarget(id);
   // Read once immediately after the click; no polling or animation wait may mask a smooth-scroll regression.
   const state = await page.evaluate(id => {
     const reader = document.querySelector('[data-engineering-scroll]');
@@ -218,6 +223,7 @@ async function assertEngineeringContext(part,number) {
   }
 }
 async function waitForEngineeringTarget(id,{focus=true}={}) {
+  id = engineeringReadingTarget(id);
   await page.waitForFunction(({id,focus}) => {
     const scroller = document.querySelector('[data-engineering-scroll]');
     const target = document.getElementById(id);
@@ -244,8 +250,8 @@ async function openEngineeringPart(part,number='01',interaction=page.viewportSiz
   await assertEngineeringView('map');
   const mapHash = new URL(page.url()).hash;
   const group = Object.keys(engineeringGroups).find(group=>engineeringGroups[group].includes(part));
-  const parent = page.locator(`[data-engineering-${interaction==='click' ? 'expand' : 'group'}="${group}"]`);
-  await parent[interaction]();
+  const parent = page.locator(`[data-engineering-group="${group}"]`);
+  await parent[interaction==='click' ? 'focus' : interaction]();
   await page.waitForFunction(group=>document.querySelector('[data-engineering-map]').dataset.selectedGroup===group,group);
   await assertEngineeringView('map');
   if (engineeringGroups[group].length>1) {
@@ -271,7 +277,9 @@ async function openEngineeringPart(part,number='01',interaction=page.viewportSiz
 async function engineeringKeyboardMap() {
   const group = page.locator('[data-engineering-group="control"]');
   await group.focus();
-  await assertEngineeringMapCollapsed();
+  await assertEngineeringView('map');
+  assert.equal(await page.locator('[data-engineering-map]').getAttribute('data-selected-group'),'control');
+  await assertEngineeringStreams();
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.evaluate(()=>document.activeElement.dataset.engineeringPart),'gfa');
   await assertEngineeringView('map');
@@ -367,7 +375,7 @@ async function engineeringBoundaryNavigation() {
   // Start a fresh document so the first event is unambiguously a new gesture.
   // Dispatch its inertial tail synchronously, avoiding timing-dependent gaps
   // between browser commands. Every tail event must cancel native scrolling.
-  await page.goto(`${base}/engineering#pod-cycle-01`,{waitUntil:'networkidle'});
+  await page.goto(`${base}/engineering?wheel-check=${Date.now()}#pod-cycle-01`,{waitUntil:'networkidle'});
   const burst = await reader.evaluate(el => {
     el.scrollTo({top:el.scrollHeight,behavior:'instant'});
     const send = () => {
@@ -380,9 +388,11 @@ async function engineeringBoundaryNavigation() {
     const firstPart = document.querySelector('[data-dbtl-wheel]').dataset.part;
     const tailPrevented = Array.from({length:8},send);
     return {reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,firstPrevented,firstPart,tailPrevented,start,end:el.scrollTop,
-      finalPart:document.querySelector('[data-dbtl-wheel]').dataset.part,windowScroll:scrollY};
+      finalPart:document.querySelector('[data-dbtl-wheel]').dataset.part,
+      progress:Number(document.querySelector('[data-engineering-workspace]').dataset.engineeringTurnProgress),windowScroll:scrollY};
   });
   assert.equal(burst.firstPart,'pod');
+  assert.equal(burst.progress,1,'The fresh gesture must actually advance the picker, not hit an earlier navigation lock.');
   assert.equal(burst.finalPart,burst.firstPart,'The article remains stable through the initial wheel burst.');
   assert.equal(burst.firstPrevented,true);
   assert.ok(burst.tailPrevented.every(Boolean),'Inertial wheel events must not scroll or skip the next article.');
@@ -502,7 +512,7 @@ try {
   await waitForEngineeringTarget('aso-cycle-01-learn');
   await assertEngineeringContext('aso','01');
   await engineeringBoundaryNavigation();
-  console.log('Engineering: optional map cycle chooser, fourteen part panels, forty-four cycle portraits using twenty-eight supplied sources, reader/map return, history and deep links, boundary keyboard turns, wheel inertia guard and article scroll tracking passed.');
+  console.log('Engineering: optional map cycle chooser, fourteen part panels, forty-four distinct cycle portraits, reader/map return, history and deep links, boundary keyboard turns, wheel inertia guard and article scroll tracking passed.');
   await page.setViewportSize({width:390,height:844});
   await page.mouse.move(0,0);
   await page.goto(`${base}/engineering`,{waitUntil:'networkidle'});
