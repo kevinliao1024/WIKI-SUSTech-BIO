@@ -6,19 +6,15 @@
   <header class="nb-intro">
     <p class="nb-eyebrow">WET LAB / THE EXPERIMENTAL RECORD</p>
     <h1>{{ content.title }}<span>.</span></h1>
-    <div class="nb-intro-bottom">
-      <div class="nb-intro-copy">{{ rendered_markdown }}</div>
-      <p class="nb-season">SUSTech–BIO<br><strong>2026</strong></p>
-    </div>
   </header>
   <section class="nb-app" data-notebook data-index="{{ url_for('static', filename='notebook/index.json') }}" aria-label="Interactive research notebook" aria-busy="true">
+    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <div class="nb-toolbar">
       <div class="nb-view-label"><button class="nb-back" type="button" data-back hidden aria-label="Return to timeline overview">← <span>Overview</span></button><span data-view-label>Research timeline</span></div>
       <p data-coverage class="nb-coverage">Loading the source index…</p>
       <label class="nb-track-switch" hidden data-switch-label>Track <select data-switch aria-label="Switch experimental track"></select></label>
       <label class="nb-jump" hidden data-jump-label>Jump to date <select data-jump aria-label="Jump to a recorded date"></select></label>
     </div>
-    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <div class="nb-caption"><p data-instruction>Select a line to follow its experiments.</p><span data-date-range></span></div>
     <div class="nb-focus-heading" data-focus-heading hidden tabindex="-1"></div>
     <div class="nb-viewport" data-viewport tabindex="0" aria-label="Timeline; scroll horizontally on small screens">

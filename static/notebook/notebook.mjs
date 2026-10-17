@@ -1,4 +1,5 @@
 import {DAY, dayNumber, isoDay, formatDate, dateBounds, groupTrack, overviewY, focusY, validateIndex} from './notebook-core.mjs';
+import {createTrackIcon} from './notebook-icons.mjs';
 
 const app = document.querySelector('[data-notebook]');
 app.classList.add('is-initializing');
@@ -8,9 +9,15 @@ const svg = (tag, attrs = {}, text) => { const node = document.createElementNS('
 const attr = (node, values) => {for (const [key,value] of Object.entries(values)) node.setAttribute(key,value);};
 const baseURL = new URL(app.dataset.index, location.href);
 const sourceURL = path => new URL(path, baseURL).href;
-const overviewLanes = [-320,-256,-192,-128,-64,64,128,192,256];
+const OVERVIEW_SCALE = 14;
+// Lane centers use the available width, with a clear central calendar column.
+function overviewLaneX(i, width) {
+  const side = (width - 200) / 2;
+  return i < 5 ? -width / 2 + 20 + side * (i + .5) / 5 : 80 + side * (i - 5 + .5) / 4;
+}
+const shortDate = iso => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(iso)*DAY));
 let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0;
-let ticks = [], lanes = [], milestones = [], rowElements = [], pendingLayout = 0;
+let ticks = [], lanes = [], months = [], milestones = [], rowElements = [], pendingLayout = 0;
 const expanded = new Set();
 let dateObserver;
 const resizeObserver = new ResizeObserver(() => scheduleLayout());
@@ -64,20 +71,32 @@ function navigate(track, date, record) {
   }
   if(track && !date) {
     if(selected) date=activeDate;
-    else date=isoDay(Math.min(bounds.end, Math.max(bounds.start, bounds.start + Math.round((-$('stage').getBoundingClientRect().top + innerHeight*.45 - 70)/20))));
+    else date=isoDay(Math.min(bounds.end, Math.max(bounds.start, bounds.start + Math.round((-$('stage').getBoundingClientRect().top + innerHeight*.45 - 70)/OVERVIEW_SCALE))));
   }
   writeURL(track,date,record);
   renderState({track,date,record},true);
 }
 function buildMap() {
   const map=$('map-group');
+  const bands=svg('g',{class:'nb-calendar-bands','aria-hidden':'true'});map.append(bands);
+  map.append(svg('rect',{class:'nb-axis-panel',x:-54,width:108,rx:24,'data-axis-panel':''}));
   map.append(svg('line',{class:'nb-axis','data-axis':'',x1:0,x2:0}));
   for(let n=bounds.start;n<=bounds.end;n++) {
     const date=isoDay(n), d=new Date(n*DAY), major=d.getUTCDate()===1 || n===bounds.start, week=d.getUTCDay()===1;
     const node=svg('g',{class:`nb-tick${major?' is-month':''}`,'data-date':date});
     const line=svg('line',{class:'nb-tick-line',x1:major?-16:week?-9:-4,x2:major?16:week?9:4});
     const label=svg('text',{x:0,y:-10,'text-anchor':'middle'},major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(d):week?String(d.getUTCDate()):'');
-    node.append(line,label); map.append(node);ticks.push({node,label,date,major,week});
+    const guide=svg('line',{class:'nb-week-guide'});
+    const badge=svg('rect',{class:'nb-month-badge',x:-51,y:-25,width:102,height:51,rx:12});
+    const count=svg('text',{class:'nb-month-count',x:0,y:16,'text-anchor':'middle'});
+    if(major) {
+      const records=index.records.filter(r=>r.date.slice(0,7)===date.slice(0,7));
+      count.textContent=`${records.length} records`;
+      const band=svg('rect',{class:`nb-month-band${months.length%2?' is-alternate':''}`});
+      bands.append(band);months.push({date,band});
+    }
+    node.append(guide,line,...(major?[badge]:[]),label,...(major?[count]:[]));
+    map.append(node);ticks.push({node,line,guide,badge,count,label,date,major,week});
   }
   for(const [i,track] of index.tracks.entries()) {
     const records=index.records.filter(r => r.trackId===track.id);
@@ -86,13 +105,19 @@ function buildMap() {
     const g=svg('g',{class:'nb-lane',role:'button',tabindex:0,'aria-label':`${track.label}: ${formatDate(isoDay(range.start))} to ${formatDate(isoDay(range.end))}, ${records.length} records`,'data-track':track.id});
     g.style.color=track.color;
     const title=svg('title',{},g.getAttribute('aria-label'));
+    const wash=svg('path',{class:'nb-track-wash',stroke:'currentColor'});
     const hit=svg('path',{class:'nb-lane-hit'}), path=svg('path',{class:'nb-track-line',stroke:'currentColor'});
     const label=svg('text',{class:'nb-line-label','text-anchor':'middle',y:-18},track.label);
-    const start=svg('circle',{class:'nb-terminal',r:6}), end=svg('circle',{class:'nb-terminal',r:6});
-    g.append(title,hit,path,label,start,end);
+    const labelWidth=Math.max(68,track.label.length*9+18);
+    const labelPanel=svg('rect',{class:'nb-line-label-panel',x:-labelWidth/2,width:labelWidth,height:30,rx:9,fill:track.color});
+    const start=svg('circle',{class:'nb-terminal',r:8}), end=svg('circle',{class:'nb-terminal',r:8});
+    g.append(title,hit,wash,path,labelPanel,label,start,end);
     const events=dates.map(date=>{
       const target=svg('g',{class:'nb-date-target',role:'button',tabindex:-1,'aria-label':`${track.label}, ${formatDate(date)}`,'data-date':date});
-      target.append(svg('title',{},`${track.label} · ${formatDate(date)}`),svg('circle',{r:13,fill:'transparent'}),svg('circle',{class:'nb-event',r:4}));
+      const entries=records.filter(r=>r.date===date);
+      target.setAttribute('aria-label',`${track.label}, ${formatDate(date)}: ${entries.length} records`);
+      target.append(svg('title',{},`${track.label} · ${formatDate(date)}\n${entries.map(r=>r.title).join('\n')}`),svg('circle',{r:13,fill:'transparent'}),svg('circle',{class:'nb-event',r:entries.length>1?6:5.5}));
+      if(entries.length>1)target.append(svg('text',{class:'nb-event-count',x:14,y:4},String(entries.length)));
       target.addEventListener('click',e=>{e.stopPropagation();if(selected===track.id){writeURL(selected,date);jumpTo(date,null,true);}else navigate(track.id,date);});
       target.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
       g.append(target);return {date,node:target};
@@ -101,7 +126,7 @@ function buildMap() {
     g.addEventListener('keydown',e=>{if(e.target===g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(track.id);}});
     g.addEventListener('pointerenter',()=>highlight(track.id));g.addEventListener('pointerleave',()=>highlight(null));
     g.addEventListener('focusin',()=>highlight(track.id));g.addEventListener('focusout',()=>highlight(null));
-    map.append(g);lanes.push({track,range,g,hit,path,label,start,end,events,index:i});
+    map.append(g);lanes.push({track,range,g,hit,wash,path,label,labelPanel,start,end,events,index:i});
   }
   for (const milestone of index.milestones || []) {
     const node=svg('g',{class:'nb-milestone',role:'button',tabindex:0,'aria-label':milestone.label});
@@ -121,33 +146,45 @@ function highlight(id) {
 function layoutMap() {
   if(!bounds) return;
   const stage=$('stage'), width=stage.clientWidth, small=innerWidth<=600;
-  const height=selected?Math.max(240,$('records').offsetHeight):140+(bounds.end-bounds.start)*20;
+  const height=selected?Math.max(240,$('records').offsetHeight):140+(bounds.end-bounds.start)*OVERVIEW_SCALE;
   stage.style.height=`${height}px`;
   const axisX=selected?(small?12:innerWidth<=1000?80:126):width/2;
   $('map-group').style.transform=`translateX(${axisX}px)`;
   const rows=rowElements.map(row=>({day:dayNumber(row.dataset.date),y:row.offsetTop + row.querySelector('.nb-card').offsetTop + 25}));
-  const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.start);
+  const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.start,OVERVIEW_SCALE);
   attr(app.querySelector('[data-axis]'),{y1:24,y2:height-28});
+  attr(app.querySelector('[data-axis-panel]'),{y:14,height:height-28});
+  for(const [i,month] of months.entries()) {
+    const top=i?y(month.date):14;
+    const bottom=months[i+1]?y(months[i+1].date):height-14;
+    attr(month.band,{x:-axisX+1,y:top,width:width-2,height:Math.max(0,bottom-top)});
+  }
   for(const tick of ticks) {
     const inFocus=groups.some(g=>g.date===tick.date);
     tick.node.style.display=selected&&!inFocus?'none':'';
     tick.node.setAttribute('transform',`translate(0 ${y(tick.date)})`);
     tick.label.textContent=selected?new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)):tick.major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)):tick.week?String(new Date(dayNumber(tick.date)*DAY).getUTCDate()):'';
-    attr(tick.label,{x:selected?(small?0:-18):0,y:selected?4:-10,'text-anchor':selected?'end':'middle'});
+    const nearMonth=ticks.some(t=>t.major&&Math.abs(dayNumber(t.date)-dayNumber(tick.date))<3);
+    tick.label.style.display=!selected&&!tick.major&&nearMonth?'none':'';
+    if(!selected&&tick.major)tick.label.textContent=new Intl.DateTimeFormat('en-GB',{month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)).toUpperCase();
+    else if(!selected&&tick.week)tick.label.textContent=shortDate(tick.date);
+    attr(tick.label,{x:selected?(small?0:innerWidth<=1000?-58:-66):0,y:selected?4:tick.major?-4:-9,'text-anchor':selected?'end':'middle'});
+    attr(tick.guide,{x1:-axisX+1,x2:width-axisX-1});
+    tick.guide.style.display=!selected&&(tick.week||tick.major)?'':'none';
   }
   for(const lane of lanes) {
-    const laneX=selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLanes[lane.index];
+    const laneX=selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLaneX(lane.index,width);
     lane.g.style.transform=`translateX(${laneX}px)`;
     const startY=y(isoDay(lane.range.start)),endY=y(isoDay(lane.range.end));
     const d=`M 0 ${startY} L 0 ${Math.max(endY,startY+1)}`;
-    attr(lane.hit,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:startY-18});
+    attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:startY-24});attr(lane.labelPanel,{y:startY-45});
     lane.g.classList.toggle('is-selected',lane.track.id===selected);
     lane.g.setAttribute('aria-pressed',String(lane.track.id===selected));
     for(const event of lane.events) {event.node.setAttribute('transform',`translate(0 ${y(event.date)})`);event.node.setAttribute('tabindex',selected===lane.track.id?'0':'-1');}
   }
   for(const {node,data} of milestones) {
     const lane=lanes.find(l=>l.track.id===data.trackId);
-    const x=lane?(selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLanes[lane.index]):0;
+    const x=lane?(selected?(small?(lane.track.id===selected?4:(lane.index-4)*2):(lane.index-4)*11):overviewLaneX(lane.index,width)):0;
     node.setAttribute('transform',`translate(${x} ${y(data.date)})`);
     node.style.display=selected&&data.trackId&&data.trackId!==selected?'none':'';
   }
@@ -251,7 +288,13 @@ async function init() {
     for(const track of index.tracks) {
       const records=index.records.filter(r=>r.trackId===track.id),range=dateBounds(records);if(!range)continue;
       const button=el('button','nb-track-chip');button.type='button';button.dataset.track=track.id;button.style.setProperty('--track',track.color);button.setAttribute('aria-pressed','false');button.title=`${track.description} · ${formatDate(isoDay(range.start))} – ${formatDate(isoDay(range.end))}`;
-      button.append(el('span','',track.label),el('small','',String(records.length)));button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
+      const icon=el('span','nb-track-icon');icon.append(createTrackIcon(track.id));
+      const title=el('span','nb-track-title',track.label);
+      const description=el('span','nb-track-description',track.description);
+      const dates=el('span','nb-track-dates',`${shortDate(isoDay(range.start))} — ${shortDate(isoDay(range.end))}`);
+      const total=el('span','nb-track-total');total.append(el('strong','',String(records.length)),el('small','','records'));
+      const arrow=el('span','nb-track-arrow','↗');arrow.setAttribute('aria-hidden','true');
+      button.append(icon,title,description,dates,total,arrow);button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
     }
     $('switch').replaceChildren(...index.tracks.filter(t=>index.records.some(r=>r.trackId===t.id)).map(t=>{const option=el('option','',t.label);option.value=t.id;return option;}));
     $('switch').addEventListener('change',()=>navigate($('switch').value,activeDate));

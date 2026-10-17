@@ -29,3 +29,16 @@ or that the 181 page-preview images have been uploaded to iGEM's media service.
 Engineering links remain empty because there are no corresponding verified
 module destinations in the current repository. The source index supports adding
 those links after the module pages exist.
+
+## Visual revision verification
+
+After the track-card and calendar redesign, all 83 Python tests and the Node
+core checks passed again. The frozen build passed `audit_build`; the complete
+Chrome interaction suite passed against the live page and the frozen `/sustech/`
+build. Visual inspection covered the desktop card grid, full-width parallel
+tracks, focused date labels, and 320px/390px mobile cards and source previews.
+The nine decorative navigation icons are original inline SVGs; no new external
+assets or dependencies are needed.
+
+- [Track selector at 1280px](qa/track-cards.png)
+- [Parallel calendar at 1280px](qa/parallel-timeline.png)

@@ -74,8 +74,8 @@ explicit `sourceNote` describing the shared source.
 3. For a new branch, add its metadata to `track_specs` in the importer and rerun.
    For a curated index not generated from this archive, edit `index.json` with
    the same schema, copy its original PDFs, and render the indexed pages.
-4. The current nine-track lane layout is explicit in `overviewLanes` in
-   `notebook.mjs`; extend the lane positions and minimum map width when adding
+4. The current nine-track lane layout is computed by `overviewLaneX` in
+   `notebook.mjs`; extend the left/right lane counts and minimum map width when adding
    more than nine tracks. Dates and cards never require changes to animation code.
 5. Add verified Engineering links as `{ "label": "POD Engineering", "route":
    "engineering#verified-section-id" }` only after that section actually exists
@@ -91,7 +91,7 @@ It intentionally does not delete arbitrary existing assets.
 
 ## Interaction and accessibility
 
-Overview uses UTC calendar-day arithmetic at **20 CSS pixels per day** for all
+Overview uses UTC calendar-day arithmetic at **14 CSS pixels per day** for all
 tracks, including days without records. Month, Monday and day ticks share the
 same scale. The minimum and maximum real dates determine track terminals.
 
@@ -146,3 +146,15 @@ No third-party CDN or external PDF runtime is used. In the final iGEM media
 publication step, follow the repository's requirement to upload media to
 `static.igem.wiki`. The committed local assets provide an operational repository
 preview and static build; they are not a claim of an iGEM media upload.
+
+## Visual hierarchy revision — 2026-10-17
+
+The title leads directly into a nine-card track selector, with one original SVG
+navigation icon per track on a common 48px grid. Each card shows the indexed
+record count and actual date range. The redundant introductory copy is omitted.
+The shared calendar uses responsive lane positions across the available width,
+stronger lines and labels, alternating monthly bands, weekly guides and monthly
+record totals calculated from the index. Counts beside a date node indicate
+multiple separate records on that date. No dates, milestones or source files
+were added or altered. On narrow screens, the track cards use two columns and
+the calendar remains horizontally scrollable at a readable minimum width.
