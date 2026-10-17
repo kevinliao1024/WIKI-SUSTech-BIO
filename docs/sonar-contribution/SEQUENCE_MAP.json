@@ -1,0 +1,8 @@
+{
+  "publication_authorization": "explicit user approval 2026-10-17",
+  "resources": [
+    "Universal_Reporter_Plasmid.gb"
+  ],
+  "payload_copied": true,
+  "source_manifest": "static/sonar-contribution/data/provenance.json"
+}

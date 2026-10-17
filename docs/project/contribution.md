@@ -11,7 +11,11 @@ status_message: Document only materials that are complete, accessible and approv
 
 ## SONAR
 
-Pending team review: define what SONAR refers to in this project and document its approved contribution, evidence and access links. Do not infer a function from the name.
+SONAR connects a modular fluorescence reporter to a controlled measurement workflow. Learn how to design a reporter, collect fluorescence and interpret a context-qualified result.
+
+[Explore the SONAR tutorial →](/project-contribution-sonar)
+
+The tutorial is available as a review edition; scientific resources and media await team publication review.
 
 ## Puffer
 

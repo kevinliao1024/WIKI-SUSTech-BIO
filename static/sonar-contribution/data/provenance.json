@@ -1,0 +1,227 @@
+[
+  {
+    "file": "static/sonar-contribution/resources/RP01.md",
+    "source": "Protocols/RP01/RP01_Custom_Oligo_Design_for_Target_Site_Recognition_Window.md",
+    "sha256": "12f93e5db98083761875ee14bffc028adee08cbc5facae47e1843d201fd748f8",
+    "bytes": 12322,
+    "kind": "protocol source snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/RP01.pdf",
+    "source": "Protocols/RP01/RP01_Custom_Oligo_Design_for_Target_Site_Recognition_Window.pdf",
+    "sha256": "d247d916da6bc55831ac3ad18d37f9aaf479cd4841e362f3ebdab1b7864f7fae",
+    "bytes": 50161,
+    "kind": "protocol PDF snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/RP02.md",
+    "source": "Protocols/RP02/RP02_Target_Reporter_Construction_by_Golden_Gate_Assembly.md",
+    "sha256": "b19e69f0bb890a2c43db50657ba642f02922105003bd4e31c7d263911fe70a75",
+    "bytes": 12974,
+    "kind": "protocol source snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/RP02.pdf",
+    "source": "Protocols/RP02/RP02_Target_Reporter_Construction_by_Golden_Gate_Assembly.pdf",
+    "sha256": "1a7bd2cc7f3e478de85eda387fe87e563f608b08852ff16a055e7143e98a8f7b",
+    "bytes": 50799,
+    "kind": "protocol PDF snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/C04.md",
+    "source": "Protocols/C04/C04_Cell_Seeding_and_Transfection.md",
+    "sha256": "733e88ea8941937a55be02cde451128b150aa1dc7e054bb97abe0a57c45051dd",
+    "bytes": 13785,
+    "kind": "protocol source snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/C04.pdf",
+    "source": "Protocols/C04/C04_Cell_Seeding_and_Transfection.pdf",
+    "sha256": "d3304fd6ea2ae68cd0f60f476afcc5031161174f9404639d77b8392507377b3c",
+    "bytes": 84684,
+    "kind": "protocol PDF snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/RP06.md",
+    "source": "Protocols/RP06/RP06_Flow_Cytometry_Measurement.md",
+    "sha256": "fed72a6065bc253b66255a470ac1654704ca129571e888bd82466c8b78c06e22",
+    "bytes": 32920,
+    "kind": "protocol source snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/RP06.pdf",
+    "source": "Protocols/RP06/RP06_Flow_Cytometry_Measurement.pdf",
+    "sha256": "11dcc723580b2efe1666042ba5737624ea5572eeaa189078c4433d68e988e880",
+    "bytes": 1207800,
+    "kind": "protocol PDF snapshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/cytexpert_03_viewport.svg",
+    "source": "Protocols/RP06/assets/cytexpert_03_viewport.svg",
+    "sha256": "86764a3cfe64912c55d0f6e7c64f5d1d9bbcf1e9a5dc6e482353320fb843a179",
+    "bytes": 62376,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/cytexpert_05_viewport.svg",
+    "source": "Protocols/RP06/assets/cytexpert_05_viewport.svg",
+    "sha256": "71768f33220658408b3980dc169c13796e6f3bd8b57a832dc4937ba8c19cc10d",
+    "bytes": 21339,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/teaching_scatter_gain_viewport.svg",
+    "source": "Protocols/RP06/assets/teaching_scatter_gain_viewport.svg",
+    "sha256": "19578cde1dd9113fa98f3e392e416541741da881356c2aa56fef69fcd7557ce3",
+    "bytes": 299658,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/teaching_fluorescence_gain_viewport.svg",
+    "source": "Protocols/RP06/assets/teaching_fluorescence_gain_viewport.svg",
+    "sha256": "06eae10e13711b8562919ba188243a2c5b6febc991d77f13da8a7fea8cae332f",
+    "bytes": 137988,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/teaching_gates_viewport.svg",
+    "source": "Protocols/RP06/assets/teaching_gates_viewport.svg",
+    "sha256": "424e77faebd348b1434ddfd1999c60dd4c93f3e28e3291dce126d0af0af9363c",
+    "bytes": 624946,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/cytexpert_07_viewport.svg",
+    "source": "Protocols/RP06/assets/cytexpert_07_viewport.svg",
+    "sha256": "544a5f5340da09499ab8cb767d797967d90291811ef47598a201c37d0e507d32",
+    "bytes": 104454,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/teaching_negative_boundary_viewport.svg",
+    "source": "Protocols/RP06/assets/teaching_negative_boundary_viewport.svg",
+    "sha256": "a9c4a0749f9d82337d0787523e3b966fcb670bde2d57d7a9408a84f6a6bf52c2",
+    "bytes": 111487,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/assets/cytexpert_06_viewport.svg",
+    "source": "Protocols/RP06/assets/cytexpert_06_viewport.svg",
+    "sha256": "d52e26ce8ad554ce4bc7fc1dbce272a946afbc4ce9faceebac526923b77f4027",
+    "bytes": 55829,
+    "kind": "protocol figure",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/resources/Universal_Reporter_Plasmid.gb",
+    "source": "SAP 1.3.1 construction download mirror; computational design, not a physical clone",
+    "sha256": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+    "bytes": 16700,
+    "kind": "GenBank",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-design-input.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "3570a5d704be546d88b8a48ef5715ce48c74d136b09b937bc63809d1a4f148f9",
+    "bytes": 85682,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-design-review.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "0c4afbf96ceb6ee90074c562346a176a089e339882839e5b905ab9c3e0a6c3f2",
+    "bytes": 103477,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-design-output.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "4ac6b55548f733abdef593d56defdf2978c6ec29ef36065e1549f2d8020e2a38",
+    "bytes": 86874,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-analysis-init.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "6008c6a47d34f6140603d05d9228e3ba896b4ec53828251dcc2c254b6bd8d629",
+    "bytes": 63860,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-analysis-controls.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "2083ce55eecaafb06b0c99279e0e01da0d38bfd8cebeccfb8e16c086368d2eff",
+    "bytes": 90725,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-analysis-theta.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "84c48eaa12bbbe14bd2d36450d6e3022b0fa72377a79e68092322cd6f89ca736",
+    "bytes": 143789,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-analysis-samples.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "bd5fdf2073a84f357966656bc525427765220523929eb2bb5340b20ef41cf93e",
+    "bytes": 90682,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  },
+  {
+    "file": "static/sonar-contribution/media/sap-analysis-results.png",
+    "source": "Actual local SAP 1.3.1 Chrome capture on 2026-10-17",
+    "sha256": "dd13ffa8d85f9cb5fb91d5bac01e4e7cf412dab81d25e1c4f15133ef11a242ff",
+    "bytes": 100593,
+    "kind": "SAP screenshot",
+    "publication_authorization": "explicit user approval 2026-10-17",
+    "license": "team-supplied resource; CC BY 4.0 Wiki distribution, upstream attributions retained"
+  }
+]
