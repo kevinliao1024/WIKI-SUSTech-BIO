@@ -39,9 +39,9 @@
     frame = 0;
     if (!canAnimate()) { previous = 0; return; }
     if (previous) {
-      // Decreasing scrollLeft moves the logos right; wrapping to the identical
+      // Increasing scrollLeft brings logos in from the right; the identical
       // copy preserves their on-screen positions without reversing direction.
-      position = (position - Math.min(now - previous, 64) * .06 + cycleWidth) % cycleWidth;
+      position = (position + Math.min(now - previous, 64) * .06) % cycleWidth;
       scroller.scrollLeft = position;
     }
     previous = now;

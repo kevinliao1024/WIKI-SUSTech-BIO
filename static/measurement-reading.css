@@ -77,6 +77,18 @@
   color: #56547b;
   font: italic 400 24px/1.5 Georgia, 'Times New Roman', serif;
 }
+/* Match Model's desktop directory typography without changing the mobile accordion. */
+@media (min-width: 761px) {
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] > .content-directory .content-group__head > a {
+    font: 650 20px/1.3 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] > .content-directory .content-subnav a {
+    font: 400 15px/1.35 var(--sans);
+  }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] > .content-directory .content-subnav a[aria-current] {
+    font-weight: 600;
+  }
+}
 @media (max-width: 760px) {
   .measurement-overview { grid-template-columns: 1fr; gap: 14px; margin: -8px 24px 28px 0; padding: 22px; border-radius: 16px; }
   .measurement-overview p { font-size: 17px; }
