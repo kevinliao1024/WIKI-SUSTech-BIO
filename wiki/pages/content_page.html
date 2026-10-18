@@ -35,6 +35,7 @@
 {% if content.source_label == 'docs/project/description.md' %}
 <link rel="stylesheet" href="{{ url_for('static', filename='description-stats.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='description-navigation.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='description-typography.css') }}">
 {% endif %}
 {% if content.source_label == 'docs/wet-lab/measurement.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='measurement-reading.css') }}">{% endif %}
 {% if content.source_label in ['docs/project/blueprint.md', 'docs/project/results.md'] %}<link rel="stylesheet" href="{{ url_for('static', filename='experiment-prose.css') }}">{% endif %}

@@ -1,0 +1,24 @@
+/* Description's title continuations and workstream labels. */
+.markdown-content .description-heading-line {
+  display: block;
+}
+
+.markdown-content .description-heading-subtitle {
+  display: block;
+  margin-top: 10px;
+  color: #464786;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.content-page--model-reading .markdown-content .description-workstream-title {
+  margin: 30px 0 6px;
+  line-height: 1.45;
+}
+
+.markdown-content .description-workstream-title + p {
+  margin-top: 0;
+}
