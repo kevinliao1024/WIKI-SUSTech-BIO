@@ -11,8 +11,6 @@ status_message: This overview is prepared for team review. Individual resources 
 
 ## <span class="sap-logo-label">SONAR</span>![SONAR — SAP logo](/assets/images/sonar/sap-logo.svg){.sap-logo width="485" height="165"} {#sonar data-toc-label="SONAR"}
 
-[Open the standalone SONAR tutorial](/project-contribution-sonar).
-
 <!-- SONAR_TUTORIAL: rendered from contribution-sonar.md, with headings nested under SONAR. -->
 
 ## PUFFER {#puffer}

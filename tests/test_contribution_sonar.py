@@ -9,7 +9,7 @@ class SonarContributionTest(unittest.TestCase):
         self.assertIn('project-contribution-sonar',CONTENT_PAGES)
         for route in ['/project-contribution-sonar','/project-contribution-SONAR']:
             self.assertEqual(self.client.get(route).status_code,200)
-        self.assertIn(b'/project-contribution-sonar',self.client.get('/contribution').data)
+        self.assertIn(b'id="sonar-sequence-playground"',self.client.get('/contribution').data)
     def test_fallbacks_and_anchors(self):
         html=self.client.get('/project-contribution-sonar').get_data(as_text=True)
         for anchor in ['intro','getting-started','step-1','oligo-design','reporter-construction','step-2','transfection-editing','flow-cytometry','data-analysis','going-further','adapting-sonar','resources','sonar-sequence-playground','sonar-reporter-explorer','sonar-flow-playground','sonar-layer-explorer','sonar-fit-guide']:
