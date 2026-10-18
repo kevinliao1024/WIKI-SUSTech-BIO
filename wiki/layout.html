@@ -19,6 +19,9 @@
     <link href="{{ url_for('static', filename='school-footer.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='reading-orbit/reading-orbit.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='cursor/orca-cursor.css') }}" rel="stylesheet">
+    {% if content is defined and content.source_label in ['docs/project/engineering.md', 'docs/wet-lab/measurement.md', 'docs/project/contribution.md', 'docs/project/contribution-sonar.md'] %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='sonar-connections.css') }}">
+    {% endif %}
     <title>{% block title %}{% endblock %} | ORCA · SUSTech iGEM 2026</title>
   </head>
   <body class="{% block body_class %}inner-page{% endblock %}">

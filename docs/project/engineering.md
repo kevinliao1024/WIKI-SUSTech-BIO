@@ -1547,7 +1547,9 @@ The **SONAR Measurement Pipeline** follows four layers. **Layer 0** establishes 
 
 A crucial distinction guided the next experiments: **the AC fraction of mixed reporter DNA is not the fraction of edited RNA**. A reference series can characterize how the optical system responds to known input mixtures, but it cannot be presumed to measure an absolute editing percentage or to be invertible at every point.
 
-[Explore SONAR Measurement →](/measurement){.engineering-measurement-link}
+<nav class="sonar-connections" aria-label="Explore connected SONAR chapters">
+<a class="sonar-connection-card" href="/measurement"><span class="sonar-connection-label"><i class="sonar-connection-symbol" aria-hidden="true"></i>SONAR / Measurement</span><strong>Understand what the signal means</strong><span class="sonar-connection-description">Explore population selection, RAS and reference-calibrated RES, and the molecular evidence still needed for PER.</span><span class="sonar-connection-action">Explore Measurement<span aria-hidden="true"> →</span></span></a>
+</nav>
 
 </section>
 
