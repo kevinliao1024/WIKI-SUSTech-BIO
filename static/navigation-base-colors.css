@@ -1,0 +1,142 @@
+/* Base identity palette; load after menu-refinements.css. Dark glass pastels and vivid, translucent reef colors for light pages. */
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="C"] {
+  --node-fill:99,215,248;
+  --node-edge:165,243,252;
+  --node-glow:70,197,244;
+  --node-sheen:100,168,255;
+}
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="A"] {
+  --node-fill:232,137,181;
+  --node-edge:255,199,222;
+  --node-glow:225,112,172;
+  --node-sheen:246,158,167;
+}
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="U"] {
+  --node-fill:233,202,130;
+  --node-edge:255,231,163;
+  --node-glow:235,191,100;
+  --node-sheen:255,210,144;
+}
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="G"] {
+  --node-fill:116,226,187;
+  --node-edge:167,243,208;
+  --node-glow:52,211,153;
+  --node-sheen:116,216,221;
+}
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:is(:focus-visible,.is-editing) .rna-base-flip[data-base="C"] {
+  --node-fill:233,202,130;
+  --node-edge:255,231,163;
+  --node-glow:235,191,100;
+  --node-sheen:255,210,144;
+}
+
+@media (hover:hover) {
+  body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:hover .rna-base-flip[data-base="C"] {
+  --node-fill:233,202,130;
+  --node-edge:255,231,163;
+  --node-glow:235,191,100;
+  --node-sheen:255,210,144;
+  }
+}
+
+@property --rna-fill { syntax:"<color>"; inherits:false; initial-value:transparent; }
+
+@property --rna-edge { syntax:"<color>"; inherits:false; initial-value:transparent; }
+
+@property --rna-glow { syntax:"<color>"; inherits:false; initial-value:transparent; }
+
+@property --rna-sheen { syntax:"<color>"; inherits:false; initial-value:transparent; }
+
+body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base] {
+  --rna-fill:rgb(var(--node-fill));
+  --rna-edge:rgb(var(--node-edge));
+  --rna-glow:rgb(var(--node-glow));
+  --rna-sheen:rgb(var(--node-sheen));
+  border-color:var(--rna-edge);
+  background:
+    radial-gradient(circle at 24% 20%,rgba(255,250,239,.72),transparent 38%),
+    radial-gradient(circle at 78% 80%,color-mix(in srgb,var(--rna-sheen) 58%,transparent),transparent 65%),
+    linear-gradient(140deg,color-mix(in srgb,var(--rna-fill) calc(var(--node-surface) * 100%),transparent),color-mix(in srgb,var(--rna-glow) 24%,transparent));
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--rna-edge) 18%,transparent),
+    0 0 10px color-mix(in srgb,var(--rna-glow) calc(var(--node-near-glow) * 100%),transparent),
+    0 0 26px color-mix(in srgb,var(--rna-glow) calc(var(--node-far-glow) * 100%),transparent),
+    inset 1px 1px 5px color-mix(in srgb,var(--rna-edge) 45%,transparent),
+    inset -2px -2px 8px color-mix(in srgb,var(--rna-sheen) 30%,transparent);
+  transition:--rna-fill .38s ease,--rna-edge .38s ease,--rna-glow .38s ease,--rna-sheen .38s ease,border-color .38s ease,box-shadow .38s ease;
+}
+
+@media (prefers-reduced-motion:reduce) { body.ot .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base] { transition:none; } }
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="C"] {
+  --node-fill:0,163,255;
+  --node-edge:69,210,255;
+  --node-glow:0,174,255;
+  --node-sheen:0,208,255;
+}
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="A"] {
+  --node-fill:255,101,20;
+  --node-edge:255,173,65;
+  --node-glow:255,124,0;
+  --node-sheen:255,151,0;
+}
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="U"] {
+  --node-fill:255,202,0;
+  --node-edge:255,226,65;
+  --node-glow:255,204,0;
+  --node-sheen:255,222,0;
+}
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base="G"] {
+  --node-fill:0,196,143;
+  --node-edge:63,237,180;
+  --node-glow:0,214,151;
+  --node-sheen:0,228,181;
+}
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:is(:focus-visible,.is-editing) .rna-base-flip[data-base="C"] {
+  --node-fill:255,202,0;
+  --node-edge:255,226,65;
+  --node-glow:255,204,0;
+  --node-sheen:255,222,0;
+}
+@media (hover:hover) {
+  body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:hover .rna-base-flip[data-base="C"] {
+  --node-fill:255,202,0;
+  --node-edge:255,226,65;
+  --node-glow:255,204,0;
+  --node-sheen:255,222,0;
+  }
+}
+
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base] {
+  --rna-fill:rgb(var(--node-fill));
+  --rna-edge:rgb(var(--node-edge));
+  --rna-glow:rgb(var(--node-glow));
+  --rna-sheen:rgb(var(--node-sheen));
+  color:#fff;
+  font-weight:600;
+  text-shadow:0 1px 1px color-mix(in srgb,var(--rna-fill) 75%,#684000);
+  border-color:var(--rna-edge);
+  background:
+    radial-gradient(ellipse at 24% 12%,rgba(255,255,255,.48),transparent 27%),
+    linear-gradient(145deg,var(--rna-fill),var(--rna-sheen));
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.48);
+  animation:none;
+  transition:--rna-fill .38s ease,--rna-edge .38s ease,--rna-glow .38s ease,--rna-sheen .38s ease,border-color .38s ease,box-shadow .38s ease;
+}
+
+/* Crisp edges on interaction; no dark cast or blurred drop shadows. */
+body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:is(:focus-visible,.is-editing,.active) .rna-branch__base[data-base] {
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--rna-edge) 24%,transparent),inset 0 1px 1px rgba(255,255,255,.55);
+}
+@media (hover:hover) { body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch:hover .rna-branch__base[data-base] {
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--rna-edge) 24%,transparent),inset 0 1px 1px rgba(255,255,255,.55);
+} }
+@media (prefers-reduced-motion:reduce) { body:not(.ot) .whale-navigation .rna-menu.rna-menu .rna-branches .rna-branch__base[data-base] { transition:none; } }

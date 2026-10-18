@@ -24,7 +24,7 @@
             <svg class="rna-menu__backbone" viewBox="0 0 72 1" aria-hidden="true" focusable="false" preserveAspectRatio="xMinYMin meet"><path class="rna-chain-halo"/><path class="rna-chain-line"/></svg>
           <ul class="rna-branches">
           {% for page, title in group['items'] %}
-            {% set base = ['C','A','T','G'][loop.index0 % 4] %}
+            {% set base = ['C','A','U','G'][loop.index0 % 4] %}
             <li style="--branch:{{ loop.index0 }}"><a class="rna-branch{% if request.path == '/' ~ page %} active{% endif %}" href="{{ url_for('pages', page=page) }}"{% if request.path == '/' ~ page %} aria-current="page"{% endif %}>
               <span class="rna-branch__base{% if base == 'C' %} rna-base-flip{% endif %}" data-base="{{ base }}" aria-hidden="true">{% if base == 'C' %}<span class="rna-base-flip__turn"><span class="rna-base-flip__front" data-rna-glyph>C</span><span class="rna-base-flip__back">U</span></span>{% else %}<span data-rna-glyph>{{ base }}</span>{% endif %}</span><span class="rna-branch__bond" aria-hidden="true"></span><span class="rna-branch__label">{{ title }}</span>
             </a></li>
