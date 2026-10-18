@@ -106,3 +106,43 @@ and mobile behavior is also covered by the browser suite.
 
 The same checks passed after rebasing onto current main, preserving its Source
 Sans typography, grey canvas, white cards and removal of count annotations.
+
+
+## Horizontal calendar and rail transition — 2026-10-18
+
+This revision supersedes the descending overview above. The nine rows fit in the
+reviewed 1176×772 and 1280×900 desktop entry viewports; months run left to right
+from June to October. The focused reader and its date picker remain chronological.
+
+Passed: three Notebook Python checks (including all 168 PDF and 171 preview
+hashes), Node core date-scale checks, final frozen build/link audit, and Chrome
+interaction checks at 1440, 834, 390 and 320px widths. Browser checks verify shared
+x-coordinates for concurrent dates, exact selection of adjacent July dates,
+intermediate rail rotation, transient-layer cleanup after rapid return, saved
+scroll restoration, keyboard navigation, two-page source expansion and node/card
+alignment. Reduced motion skips scene and rail layers. Missing-preview and empty
+index fallbacks still work. Small-screen charts retain horizontal scrolling;
+there is no document-wide overflow.
+
+Visual review included the opening chart, a transition midpoint, focused reading,
+return to overview, and the track directory. No source records or attachments changed.
+
+- [Horizontal overview](qa/overview-entry.png)
+- [Rail rotating into the reader](qa/rail-transition.png)
+- [Focused chronological records](qa/reader-list.png)
+- [Track directory](qa/track-cards.png)
+
+
+## Horizontal zoom — 2026-10-18
+
+Chrome assertions passed for keyboard slider changes, proportional date spacing
+at 200%, unchanged label size, pinned labels during pan, mouse dragging without
+accidental record navigation, exact date selection while zoomed, and zoom/pan
+restoration after returning from the reader. Fit and both zoom bounds are checked.
+Existing responsive, rail-motion, source-preview, history and fallback checks
+also passed. Visual review covered 1176×772 at 100% and 200%, and 390px at 200%.
+Notebook Python inventory/hash checks, Node date-scale checks and the frozen
+build/link audit passed. No record metadata or source attachments changed.
+
+- [Fit overview](qa/overview-entry.png)
+- [Zoomed timeline](qa/zoomed-timeline.png)

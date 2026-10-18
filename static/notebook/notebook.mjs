@@ -1,6 +1,7 @@
-import {DAY, dayNumber, isoDay, formatDate, dateBounds, groupTrack, overviewY, focusY, validateIndex} from './notebook-core.mjs';
+import {DAY, dayNumber, isoDay, formatDate, dateBounds, groupTrack, overviewX as calendarX, focusY, validateIndex} from './notebook-core.mjs';
 import {createTrackIcon} from './notebook-icons.mjs';
 import {recordActivities} from './notebook-activities.mjs';
+import {captureRail, captureScene, morphRail, cancelRailMotion} from './notebook-motion.mjs';
 
 const app = document.querySelector('[data-notebook]');
 app.classList.add('is-initializing');
@@ -10,14 +11,9 @@ const svg = (tag, attrs = {}, text) => { const node = document.createElementNS('
 const attr = (node, values) => {for (const [key,value] of Object.entries(values)) node.setAttribute(key,value);};
 const baseURL = new URL(app.dataset.index, location.href);
 const sourceURL = path => new URL(path, baseURL).href;
-const OVERVIEW_SCALE = 14;
-// Lane centers use the available width, with a clear central calendar column.
-function overviewLaneX(i, width) {
-  const side = (width - 200) / 2;
-  return i < 5 ? -width / 2 + 20 + side * (i + .5) / 5 : 80 + side * (i - 5 + .5) / 4;
-}
 const shortDate = iso => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(iso)*DAY));
-let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0;
+let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0, overviewZoom = 100;
+let labelLayer;
 let ticks = [], lanes = [], months = [], milestones = [], rowElements = [], pendingLayout = 0;
 const expanded = new Set();
 let dateObserver;
@@ -25,6 +21,53 @@ const resizeObserver = new ResizeObserver(() => scheduleLayout());
 
 function link(text, href) { const a = el('a', '', text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; }
 function scheduleLayout() { cancelAnimationFrame(pendingLayout); pendingLayout = requestAnimationFrame(layoutMap); }
+const clampZoom=value=>Math.max(100,Math.min(300,Number(value)||100));
+function pinLabels(){
+  if(!labelLayer)return;
+  labelLayer.style.display=selected?'none':'';
+  labelLayer.setAttribute('transform',`translate(${$('viewport').scrollLeft} 0)`);
+}
+function changeZoom(value,fit=false){
+  if(selected||!bounds)return;
+  cancelRailMotion();
+  const viewport=$('viewport'),anchor=176+(viewport.clientWidth-176)/2;
+  const fraction=(viewport.scrollLeft+anchor-176)/($('stage').clientWidth-208);
+  overviewZoom=clampZoom(value);
+  layoutMap();
+  viewport.scrollLeft=fit?0:176+fraction*($('stage').clientWidth-208)-anchor;
+  overviewX=viewport.scrollLeft;pinLabels();
+  history.replaceState({...history.state,notebook:true,overviewZoom,overviewX,overviewScroll:scrollY},'');
+}
+function bindZoom(){
+  $('zoom').addEventListener('input',()=>changeZoom($('zoom').value));
+  $('zoom-out').addEventListener('click',()=>changeZoom(overviewZoom-25));
+  $('zoom-in').addEventListener('click',()=>changeZoom(overviewZoom+25));
+  $('zoom-fit').addEventListener('click',()=>changeZoom(100,true));
+  const viewport=$('viewport');
+  viewport.addEventListener('scroll',pinLabels,{passive:true});
+  let pan=null,dragged=false;
+  viewport.addEventListener('pointerdown',e=>{
+    dragged=false;
+    if(selected||e.pointerType!=='mouse'||e.button!==0||viewport.scrollWidth<=viewport.clientWidth)return;
+    pan={id:e.pointerId,x:e.clientX,scroll:viewport.scrollLeft};
+  });
+  viewport.addEventListener('pointermove',e=>{
+    if(!pan||e.pointerId!==pan.id)return;
+    if(!(e.buttons&1)){pan=null;dragged=false;return;}
+    const distance=e.clientX-pan.x;
+    if(!dragged&&Math.abs(distance)<5)return;
+    dragged=true;viewport.setPointerCapture(e.pointerId);viewport.classList.add('is-panning');
+    viewport.scrollLeft=pan.scroll-distance;e.preventDefault();
+  });
+  const end=e=>{
+    if(pan&&viewport.hasPointerCapture(pan.id))viewport.releasePointerCapture(pan.id);
+    pan=null;viewport.classList.remove('is-panning');
+    if(e.type==='pointercancel')dragged=false;
+  };
+  viewport.addEventListener('pointerup',end);viewport.addEventListener('pointercancel',end);
+  viewport.addEventListener('lostpointercapture',()=>{pan=null;viewport.classList.remove('is-panning');});
+  viewport.addEventListener('click',e=>{if(dragged){e.preventDefault();e.stopImmediatePropagation();dragged=false;}},true);
+}
 function nearestDate(date) {
   if (!groups.length) return null;
   const target = date ? dayNumber(date) : dayNumber(groups[0].date);
@@ -55,7 +98,7 @@ function writeURL(track, date, record, replace = false) {
   if(track) url.searchParams.set('track',track);
   if(date) url.searchParams.set('date',date);
   if(record) url.searchParams.set('record',record);
-  history[replace ? 'replaceState' : 'pushState']({notebook:true, overviewScroll, overviewX},'',url);
+  history[replace ? 'replaceState' : 'pushState']({notebook:true, overviewScroll, overviewX, overviewZoom},'',url);
 }
 function readURL() {
   const query = new URL(location.href).searchParams;
@@ -68,22 +111,25 @@ function readURL() {
 function navigate(track, date, record) {
   if(!selected && track) {
     overviewScroll=scrollY;overviewX=$('viewport').scrollLeft;
-    history.replaceState({...history.state, notebook:true, overviewScroll,overviewX},'');
+    history.replaceState({...history.state, notebook:true, overviewScroll,overviewX,overviewZoom},'');
   }
   if(track && !date) {
     if(selected) date=activeDate;
-    else date=isoDay(Math.min(bounds.end, Math.max(bounds.start, bounds.end - Math.round((-$('stage').getBoundingClientRect().top + innerHeight*.45 - 70)/OVERVIEW_SCALE))));
+    // A track opens at its beginning; a dated node opens exactly that day.
+    else date=null;
   }
   writeURL(track,date,record);
   renderState({track,date,record},true);
 }
 function buildMap() {
   const map=$('map-group');
+  labelLayer=svg('g',{class:'nb-label-layer'});
+  labelLayer.append(svg('rect',{class:'nb-label-gutter',x:0,y:0,width:166,'data-label-gutter':''}));
   const bands=svg('g',{class:'nb-calendar-bands','aria-hidden':'true'});map.append(bands);
   map.append(svg('rect',{class:'nb-axis-panel',x:-54,width:108,rx:24,'data-axis-panel':''}));
   map.append(svg('line',{class:'nb-axis','data-axis':'',x1:0,x2:0}));
-  for(let n=bounds.end;n>=bounds.start;n--) {
-    const date=isoDay(n), d=new Date(n*DAY), major=new Date((n+1)*DAY).getUTCMonth()!==d.getUTCMonth() || n===bounds.end, week=d.getUTCDay()===1;
+  for(let n=bounds.start;n<=bounds.end;n++) {
+    const date=isoDay(n), d=new Date(n*DAY), major=d.getUTCDate()===1 || n===bounds.start, week=d.getUTCDay()===1;
     const node=svg('g',{class:`nb-tick${major?' is-month':''}`,'data-date':date});
     const line=svg('line',{class:'nb-tick-line',x1:major?-16:week?-9:-4,x2:major?16:week?9:4});
     const label=svg('text',{x:0,y:-10,'text-anchor':'middle'},major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(d):week?String(d.getUTCDate()):'');
@@ -108,13 +154,14 @@ function buildMap() {
     const label=svg('text',{class:'nb-line-label','text-anchor':'middle',y:-18},track.label);
     const labelWidth=Math.max(68,track.label.length*9+18);
     const labelPanel=svg('rect',{class:'nb-line-label-panel',x:-labelWidth/2,width:labelWidth,height:30,rx:9,fill:track.color});
+    const row=svg('path',{class:'nb-lane-row',stroke:'currentColor',fill:'none'});
     const start=svg('circle',{class:'nb-terminal',r:8}), end=svg('circle',{class:'nb-terminal',r:8});
-    g.append(title,hit,wash,path,labelPanel,label,start,end);
+    g.append(title,row,hit,wash,path,labelPanel,label,start,end);
     const events=dates.map(date=>{
       const target=svg('g',{class:'nb-date-target',role:'button',tabindex:-1,'aria-label':`${track.label}, ${formatDate(date)}`,'data-date':date});
       const entries=records.filter(r=>r.date===date);
       target.setAttribute('aria-label',`${track.label}, ${formatDate(date)}: ${entries.length} ${entries.length===1?'record':'records'}`);
-      target.append(svg('title',{},`${track.label} · ${formatDate(date)}\n${entries.map(r=>r.title).join('\n')}`),svg('circle',{r:13,fill:'transparent'}),svg('circle',{class:'nb-event',r:entries.length>1?6:5.5}));
+      target.append(svg('title',{},`${track.label} · ${formatDate(date)}\n${entries.map(r=>r.title).join('\n')}`),svg('rect',{class:'nb-date-hit',x:-13,y:-13,width:26,height:26,fill:'transparent'}),svg('circle',{class:'nb-event',r:entries.length>1?6:5.5}));
       target.addEventListener('click',e=>{e.stopPropagation();if(selected===track.id){writeURL(selected,date);jumpTo(date,null,true);}else navigate(track.id,date);});
       target.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
       g.append(target);return {date,node:target};
@@ -123,7 +170,11 @@ function buildMap() {
     g.addEventListener('keydown',e=>{if(e.target===g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(track.id);}});
     g.addEventListener('pointerenter',()=>highlight(track.id));g.addEventListener('pointerleave',()=>highlight(null));
     g.addEventListener('focusin',()=>highlight(track.id));g.addEventListener('focusout',()=>highlight(null));
-    map.append(g);lanes.push({track,range,g,hit,wash,path,label,labelPanel,start,end,events,index:i});
+    const heading=svg('g',{class:'nb-lane-heading','data-label-track':track.id});heading.style.color=track.color;
+    heading.append(labelPanel,label);labelLayer.append(heading);
+    heading.addEventListener('click',()=>navigate(track.id));
+    heading.addEventListener('pointerenter',()=>highlight(track.id));heading.addEventListener('pointerleave',()=>highlight(null));
+    map.append(g);lanes.push({track,range,g,row,hit,wash,path,label,labelPanel,heading,start,end,events,index:i});
   }
   for (const milestone of index.milestones || []) {
     const node=svg('g',{class:'nb-milestone',role:'button',tabindex:0,'aria-label':milestone.label});
@@ -132,66 +183,85 @@ function buildMap() {
     node.addEventListener('click',open);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
     map.append(node);milestones.push({node,data:milestone});
   }
+  map.append(labelLayer);
 }
 function highlight(id) {
-  for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
+  for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.heading.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
 }
 function layoutMap() {
   if(!bounds) return;
-  const stage=$('stage'), width=stage.clientWidth, small=innerWidth<=600;
-  const height=selected?Math.max(240,$('records').offsetHeight):140+(bounds.end-bounds.start)*OVERVIEW_SCALE;
+  const stage=$('stage'),small=innerWidth<=600;
+  const base=Math.max($('viewport').clientWidth,small?800:900);
+  stage.style.width=selected?'100%':`${208+(base-208)*overviewZoom/100}px`;
+  const width=stage.clientWidth;
+  $('zoom').value=overviewZoom;$('zoom').setAttribute('aria-valuetext',`${overviewZoom} percent`);
+  $('zoom-value').textContent=`${overviewZoom}%`;$('zoom-out').disabled=overviewZoom<=100;$('zoom-in').disabled=overviewZoom>=300;
+  $('viewport').classList.toggle('can-pan',!selected&&width>$('viewport').clientWidth);
+  // A compact overview exposes every track at once, without compressing calendar dates.
+  const height=selected?Math.max(240,$('records').offsetHeight):Math.max(340,Math.min(530,innerHeight-stage.getBoundingClientRect().top-scrollY-20));
   stage.style.height=`${height}px`;
-  const axisX=selected?(small?10:innerWidth<=1000?70:100):width/2;
+  attr(labelLayer.querySelector('[data-label-gutter]'),{height});pinLabels();
+  const axisX=selected?(small?10:innerWidth<=1000?70:100):0;
   $('map-group').style.transform=`translateX(${axisX}px)`;
-  const rows=rowElements.map(row=>({day:dayNumber(row.dataset.date),y:row.offsetTop + row.querySelector('.nb-card').offsetTop + 25}));
-  const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.end,OVERVIEW_SCALE);
-  attr(app.querySelector('[data-axis]'),{y1:24,y2:height-28});
-  attr(app.querySelector('[data-axis-panel]'),{y:14,height:height-28});
+  const left=176, right=width-32, scale=(right-left)/(bounds.end-bounds.start || 1);
+  const x=date=>left+calendarX(date,bounds.start,scale);
+  const rows=rowElements.map(row=>({day:dayNumber(row.dataset.date),y:row.offsetTop+row.querySelector('.nb-card').offsetTop+25}));
+  const y=date=>focusY(date,rows,height);
+  const laneY=lane=>68+lane.index*(height-102)/Math.max(1,lanes.length-1);
+  attr(app.querySelector('[data-axis]'),selected?{x1:0,x2:0,y1:24,y2:height-28}:{x1:left,x2:right,y1:43,y2:43});
+  app.querySelector('[data-axis-panel]').style.display='none';
   for(const [i,month] of months.entries()) {
-    const top=i?y(month.date):14;
-    const bottom=months[i+1]?y(months[i+1].date):height-14;
-    attr(month.band,{x:-axisX+1,y:top,width:width-2,height:Math.max(0,bottom-top)});
+    const start=x(month.date),end=months[i+1]?x(months[i+1].date):right;
+    attr(month.band,{x:start,y:44,width:Math.max(0,end-start),height:height-60});
   }
   for(const tick of ticks) {
     const inFocus=groups.some(g=>g.date===tick.date);
     tick.node.style.display=selected&&!inFocus?'none':'';
-    tick.node.setAttribute('transform',`translate(0 ${y(tick.date)})`);
-    tick.label.textContent=selected?new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)):tick.major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)):tick.week?String(new Date(dayNumber(tick.date)*DAY).getUTCDate()):'';
-    const nearMonth=ticks.some(t=>t.major&&Math.abs(dayNumber(t.date)-dayNumber(tick.date))<3);
-    tick.label.style.display=!selected&&!tick.major&&nearMonth?'none':'';
-    if(!selected&&tick.major)tick.label.textContent=new Intl.DateTimeFormat('en-GB',{month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)).toUpperCase();
-    else if(!selected&&tick.week)tick.label.textContent=shortDate(tick.date);
-    attr(tick.label,{x:selected?(small?0:-20):0,y:selected?4:tick.major?-4:-9,'text-anchor':selected?'end':'middle'});
-    attr(tick.guide,{x1:-axisX+1,x2:width-axisX-1});
-    tick.guide.style.display=!selected&&(tick.week||tick.major)?'':'none';
+    tick.node.setAttribute('transform',selected?`translate(0 ${y(tick.date)})`:`translate(${x(tick.date)} 43)`);
+    tick.label.textContent=selected?shortDate(tick.date):tick.major?new Intl.DateTimeFormat('en-GB',{month:'short',timeZone:'UTC'}).format(new Date(dayNumber(tick.date)*DAY)).toUpperCase():'';
+    if(selected) {
+      attr(tick.line,{x1:-8,x2:8,y1:0,y2:0});
+      attr(tick.label,{x:small?0:-20,y:4,'text-anchor':'end'});
+    } else {
+      const monthIndex=months.findIndex(m=>m.date===tick.date);
+      const end=monthIndex>=0&&months[monthIndex+1]?x(months[monthIndex+1].date):right;
+      attr(tick.label,{x:tick.major?(end-x(tick.date))/2:0,y:-18,'text-anchor':'middle'});
+      attr(tick.line,{x1:0,x2:0,y1:0,y2:tick.major?8:tick.week?5:2});
+    }
+    tick.badge.style.display='none';
+    attr(tick.guide,{x1:0,x2:0,y1:0,y2:height-60});
+    tick.guide.style.display=!selected&&tick.major?'':'none';
   }
   for(const lane of lanes) {
-    const laneX=selected?0:overviewLaneX(lane.index,width);
-    lane.g.style.transform=`translateX(${laneX}px)`;
-    const startY=y(isoDay(lane.range.start)),endY=y(isoDay(lane.range.end));
-    const topY=Math.min(startY,endY), bottomY=Math.max(startY,endY);
-    const d=`M 0 ${topY} L 0 ${Math.max(bottomY,topY+1)}`;
-    attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:topY-24});attr(lane.labelPanel,{y:topY-45});
+    const rowY=laneY(lane), startDate=isoDay(lane.range.start),endDate=isoDay(lane.range.end);
+    lane.g.style.transform='none';
+    const start=selected?{x:0,y:y(startDate)}:{x:x(startDate),y:rowY};
+    const end=selected?{x:0,y:y(endDate)}:{x:x(endDate),y:rowY};
+    const d=`M ${start.x} ${start.y} L ${end.x} ${end.y}`;
+    attr(lane.row,{d:`M ${left} ${rowY} H ${right}`});
+    attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});
+    attr(lane.start,{cx:start.x,cy:start.y});attr(lane.end,{cx:end.x,cy:end.y});
+    attr(lane.label,{x:30,y:rowY+5,'text-anchor':'start'});
+    attr(lane.labelPanel,{x:18,y:rowY-16,width:142,height:32,rx:9});
     const hidden=!!selected&&lane.track.id!==selected;
     lane.g.style.display=hidden?'none':'';
-    lane.g.setAttribute('aria-hidden',String(hidden));
-    lane.g.setAttribute('tabindex',hidden?'-1':'0');
+    lane.g.setAttribute('aria-hidden',String(hidden));lane.g.setAttribute('tabindex',hidden?'-1':'0');
     lane.g.classList.toggle('is-selected',lane.track.id===selected);
     lane.g.setAttribute('aria-pressed',String(lane.track.id===selected));
-    for(const event of lane.events) {event.node.setAttribute('transform',`translate(0 ${y(event.date)})`);event.node.setAttribute('tabindex',selected===lane.track.id?'0':'-1');}
+    for(const event of lane.events) {
+      event.node.setAttribute('transform',selected?`translate(0 ${y(event.date)})`:`translate(${x(event.date)} ${rowY})`);
+      event.node.setAttribute('tabindex',selected===lane.track.id?'0':'-1');
+      const hitWidth=selected?26:Math.max(3,scale);
+      attr(event.node.querySelector('.nb-date-hit'),{x:-hitWidth/2,width:hitWidth});
+    }
   }
   for(const {node,data} of milestones) {
     const lane=lanes.find(l=>l.track.id===data.trackId);
-    const x=lane?(selected?0:overviewLaneX(lane.index,width)):0;
-    node.setAttribute('transform',`translate(${x} ${y(data.date)})`);
+    node.setAttribute('transform',selected?`translate(0 ${y(data.date)})`:`translate(${x(data.date)} ${lane?laneY(lane):43})`);
     node.style.display=selected&&data.trackId&&data.trackId!==selected?'none':'';
   }
-  // Connectors share the very same measured row positions as the active date nodes.
   for(const node of app.querySelectorAll('.nb-connector')) node.remove();
-  if(selected) {
-    const laneX=0;
-    for(const row of rows) $('map-group').prepend(svg('line',{class:'nb-connector',x1:laneX,x2:$('records').offsetLeft-axisX-8,y1:row.y,y2:row.y}));
-  }
+  if(selected)for(const row of rows)$('map-group').prepend(svg('line',{class:'nb-connector',x1:0,x2:$('records').offsetLeft-axisX-8,y1:row.y,y2:row.y}));
 }
 function makePages(record,body) {
   body.replaceChildren();
@@ -242,13 +312,15 @@ function renderRecords(track) {
   rowElements.forEach(row=>dateObserver.observe(row));
 }
 function renderState(state,userAction=false) {
+  cancelRailMotion();
   const track=index.tracks.find(t=>t.id===state.track), previous=selected;
+  const movingLane=lanes.find(l=>l.track.id===(previous||track?.id));
+  const from=previous!== (track?.id||null)?captureRail(movingLane):null;
+  const scene=from?captureScene(app):null;
   selected=track?.id||null;groups=selected?groupTrack(index.records,selected):[];
   if(state.record)expanded.add(state.record);
   app.classList.toggle('is-focus',!!selected);app.dataset.mode=selected?'focus':'overview';
-  // Move the same navigation nodes so visual and keyboard order stay together.
-  if(selected)app.insertBefore($('tracks'),app.querySelector('.nb-toolbar'));
-  else $('end').after($('tracks'));
+  // The track directory stays below the overview; the focused reader uses its switcher.
   app.style.setProperty('--track',track?.color||'#3d409b');
   $('back').hidden=!selected;$('jump-label').hidden=!selected;$('switch-label').hidden=!selected;if(selected)$('switch').value=selected;$('focus-heading').hidden=!selected;$('end').hidden=!selected;
   for(const button of $('tracks').children) button.setAttribute('aria-pressed',String(button.dataset.track===selected));
@@ -269,17 +341,24 @@ function renderState(state,userAction=false) {
     highlight(null);resizeObserver.observe($('viewport'));
   }
   layoutMap();
-  requestAnimationFrame(()=>{
+  const finish=()=>{
     layoutMap();
     if(selected) {
       setActive(state.date||groups[0].date);
-      if(userAction||state.date||state.record)jumpTo(state.date||groups[0].date,state.record);
+      if(state.date||state.record)jumpTo(state.date||groups[0].date,state.record);
+      else if(userAction) {
+        const nav=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||100;
+        window.scrollTo({top:$('focus-heading').getBoundingClientRect().top+scrollY-nav-app.querySelector('.nb-toolbar').offsetHeight-12,behavior:'instant'});
+      }
       if(userAction)$('focus-heading').focus({preventScroll:true});
     } else if(previous || history.state?.notebook) {
-      window.scrollTo({top:overviewScroll,behavior:'instant'});$('viewport').scrollLeft=overviewX;
-      if(userAction)$('tracks').querySelector(`[data-track="${previous}"]`)?.focus({preventScroll:true});
+      window.scrollTo({top:overviewScroll,behavior:'instant'});$('viewport').scrollLeft=overviewX;pinLabels();
+      if(userAction)lanes.find(l=>l.track.id===previous)?.g.focus({preventScroll:true});
     }
-  });
+    if(from && movingLane && (!selected||selected===movingLane.track.id))morphRail(from,captureRail(movingLane),movingLane,app,scene);
+  };
+  // Commit geometry and scrolling together before painting the moving rail.
+  finish();
 }
 async function init() {
   try {
@@ -292,15 +371,15 @@ async function init() {
       const title=el('span','nb-track-title',track.label);
       const description=el('span','nb-track-description',track.description);
       const dates=el('span','nb-track-dates',`${shortDate(isoDay(range.start))} — ${shortDate(isoDay(range.end))}`);
-      button.append(icon,title,description,dates);button.addEventListener('click',()=>navigate(track.id,isoDay(range.start)));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
+      button.append(icon,title,description,dates);button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
     }
     $('switch').replaceChildren(...index.tracks.filter(t=>index.records.some(r=>r.trackId===t.id)).map(t=>{const option=el('option','',t.label);option.value=t.id;return option;}));
     $('switch').addEventListener('change',()=>navigate($('switch').value,activeDate));
-    buildMap();
-    if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;}
+    buildMap();bindZoom();
+    if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;overviewZoom=clampZoom(history.state.overviewZoom);}
     $('back').addEventListener('click',()=>navigate(null));
     $('jump').addEventListener('change',()=>{writeURL(selected,$('jump').value);jumpTo($('jump').value,null,true);});
-    window.addEventListener('popstate',()=>{if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;}renderState(readURL());});
+    window.addEventListener('popstate',()=>{if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;overviewZoom=clampZoom(history.state.overviewZoom);}renderState(readURL());});
     window.addEventListener('resize',scheduleLayout);
     renderState(readURL());
   } catch(error) {

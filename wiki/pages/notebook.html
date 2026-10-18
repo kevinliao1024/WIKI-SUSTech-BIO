@@ -14,7 +14,16 @@
     </div>
     <div class="nb-focus-heading" data-focus-heading hidden tabindex="-1"></div>
     <div class="nb-timeline">
-      <h2 class="nb-timeline-title">Research timeline</h2>
+      <div class="nb-timeline-header">
+        <h2 class="nb-timeline-title">Research timeline</h2>
+        <div class="nb-zoom" role="group" aria-label="Timeline zoom">
+          <button type="button" data-zoom-out aria-label="Zoom out timeline">−</button>
+          <input type="range" data-zoom min="100" max="300" step="25" value="100" aria-label="Timeline horizontal zoom" aria-valuetext="100 percent">
+          <button type="button" data-zoom-in aria-label="Zoom in timeline">+</button>
+          <output data-zoom-value aria-live="polite">100%</output>
+          <button type="button" class="nb-zoom-fit" data-zoom-fit>Fit</button>
+        </div>
+      </div>
       <div class="nb-viewport" data-viewport tabindex="0" aria-label="Timeline; scroll horizontally on small screens">
         <div class="nb-stage" data-stage>
           <svg class="nb-map" data-map aria-label="Calendar and experimental tracks" role="group"><g data-map-group></g></svg>
