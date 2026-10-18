@@ -2,6 +2,7 @@
 .hp-manuscript {
   min-width: 0;
   overflow-wrap: anywhere;
+  container-type: inline-size;
 }
 .hp-manuscript .hp-subtitle { margin: 0 0 24px; }
 .hp-manuscript > p > img,
@@ -19,6 +20,49 @@
   margin: 28px 0;
   overflow-wrap: normal;
 }
+
+/* Each portrait stays with its selected source paragraphs, even without JS. */
+.hp-manuscript .hp-media-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+  margin-block: 32px;
+}
+.hp-manuscript .hp-media-copy { min-width: 0; }
+.hp-manuscript .hp-media-copy > :first-child { margin-top: 0; }
+.hp-manuscript .hp-media-copy > :last-child { margin-bottom: 0; }
+.hp-manuscript .hp-media-row > .hp-figure {
+  width: 100%;
+  min-width: 0;
+  max-width: 360px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.hp-manuscript .hp-media-row > .hp-figure > img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.hp-manuscript .hp-media-row figcaption { padding-inline: 4px; }
+@container (min-width: 560px) {
+  .hp-manuscript .hp-media-row {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 40%);
+  }
+}
+
+/* The same portrait column hosts the optional 3D view and original image. */
+.hp-manuscript .hp-media-row .hp-model-header { padding: 12px; flex-wrap: wrap; gap: 8px; }
+.hp-manuscript .hp-media-row .hp-model-viewer .hp-model-heading strong { font-size: 20px; }
+.hp-manuscript .hp-media-row .hp-model-badge { font-size: 12px; }
+.hp-manuscript .hp-media-row .hp-model-stage { height: 340px; }
+.hp-manuscript .hp-media-row .hp-model-stage > img.hp-model-poster { padding: 12px 12px 66px; }
+.hp-manuscript .hp-media-row .hp-model-toolbar { padding: 12px 8px 0; gap: 6px; }
+.hp-manuscript .hp-media-row .hp-model-button { font-size: 14px; padding-inline: 10px; }
+.hp-manuscript .hp-media-row .hp-model-activate { padding-inline: 16px; }
+.hp-manuscript .hp-media-row .hp-model-viewer p.hp-model-status,
+.hp-manuscript .hp-media-row .hp-model-viewer p.hp-model-note { padding-inline: 12px; font-size: 14px; }
 @media (max-width: 760px) {
   .hp-manuscript .hp-figure > figcaption { padding: 12px 7px 6px; }
 }
