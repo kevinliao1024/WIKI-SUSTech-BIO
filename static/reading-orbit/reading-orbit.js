@@ -2,9 +2,11 @@
   const orbit = document.querySelector('[data-reading-orbit]');
   const traveler = orbit?.querySelector('[data-orbit-traveler]');
   const value = orbit?.querySelector('[data-orbit-value]');
+  const progress = orbit?.querySelector('[data-orbit-progress]');
+  const tip = orbit?.querySelector('[data-orbit-tip]');
   const footer = document.querySelector('footer');
   if (!orbit || !traveler) return;
-  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const pathLength = progress?.getTotalLength() || 0;
   let queued = false;
   let drag = null;
   const clamp = value => Math.max(0, Math.min(1, value));
@@ -40,7 +42,14 @@
     if (disabled) endDrag();
     rebaseDrag(metrics);
     orbit.style.setProperty('--orbit-y', `${(ratio * travel).toFixed(2)}px`);
-    orbit.style.setProperty('--orbit-turn', `${motion.matches ? 0 : (ratio * 720).toFixed(2)}deg`);
+    // Keep the start at the top while the drawn line follows reading progress.
+    orbit.style.setProperty('--orbit-turn', '0deg');
+    if (progress && tip && pathLength) {
+      progress.style.strokeDashoffset = (100 * (1 - ratio)).toFixed(3);
+      const point = progress.getPointAtLength(pathLength * ratio);
+      tip.setAttribute('cx', point.x.toFixed(3));
+      tip.setAttribute('cy', point.y.toFixed(3));
+    }
     orbit.classList.toggle('is-over-footer', !!footer && footer.getBoundingClientRect().top < traveler.getBoundingClientRect().bottom);
     const percent = String(Math.round(ratio * 100));
     orbit.setAttribute('aria-valuenow', percent);
@@ -109,7 +118,6 @@
   addEventListener('resize', schedule);
   addEventListener('load', schedule);
   addEventListener('pageshow', schedule);
-  motion.addEventListener('change', schedule);
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(schedule);
     observer.observe(document.body);
