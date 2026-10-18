@@ -9,16 +9,6 @@
   "team_emblem": "The SUSTech-BIO emblem is already displayed in the main footer brand area.",
   "entries": [
     {
-      "name": "Southern University of Science and Technology",
-      "logo": "part1-sustech-seal.png",
-      "detail": "SUSTech",
-      "background": "light",
-      "mark": "organization",
-      "covers": [
-        "Southern University of Science and Technology"
-      ]
-    },
-    {
       "name": "School of Life Sciences, SUSTech",
       "logo": "part1-sustech-life-sciences.png",
       "detail": "Department of Systems Biology",
@@ -70,26 +60,6 @@
       ]
     },
     {
-      "name": "Taoyuan Subdistrict Elderly Service Center",
-      "logo": "",
-      "detail": "",
-      "background": "light",
-      "mark": "name-only",
-      "covers": [
-        "Taoyuan Subdistrict Elderly Service Center"
-      ]
-    },
-    {
-      "name": "Shahe Subdistrict Elderly Service Center",
-      "logo": "",
-      "detail": "",
-      "background": "light",
-      "mark": "name-only",
-      "covers": [
-        "Shahe Subdistrict Elderly Service Center"
-      ]
-    },
-    {
       "name": "Shokz",
       "logo": "part1-shokz.png",
       "detail": "",
@@ -107,26 +77,6 @@
       "mark": "organization",
       "covers": [
         "Pearson Edexcel"
-      ]
-    },
-    {
-      "name": "SUSTech 3D Printing Club",
-      "logo": "part1-sustech-seal.png",
-      "detail": "",
-      "background": "light",
-      "mark": "parent-institution",
-      "covers": [
-        "SUSTech 3D Printing Club"
-      ]
-    },
-    {
-      "name": "SUSTech Kindergarten",
-      "logo": "part1-sustech-seal.png",
-      "detail": "",
-      "background": "light",
-      "mark": "parent-institution",
-      "covers": [
-        "SUSTech Kindergarten"
       ]
     },
     {
@@ -226,16 +176,7 @@
       "background": "light",
       "mark": "organization",
       "covers": [
-        "The Chinese University of Hong Kong"
-      ]
-    },
-    {
-      "name": "CUHK-HongKong-SBS",
-      "logo": "cuhk.png",
-      "detail": "iGEM team",
-      "background": "light",
-      "mark": "parent-institution",
-      "covers": [
+        "The Chinese University of Hong Kong",
         "CUHK-HongKong-SBS"
       ]
     },
@@ -319,5 +260,15 @@
         "Rice University"
       ]
     }
+  ],
+  "display_policy": "Show each available logo once, without visible name captions. Omit organizations without a logo. Keep the SUSTech seal and SUSTech-BIO emblem in the main footer brand area only.",
+  "omitted_without_logo": [
+    "Taoyuan Subdistrict Elderly Service Center",
+    "Shahe Subdistrict Elderly Service Center"
+  ],
+  "main_footer_seal_covers": [
+    "Southern University of Science and Technology",
+    "SUSTech 3D Printing Club",
+    "SUSTech Kindergarten"
   ]
 }

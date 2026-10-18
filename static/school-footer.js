@@ -4,7 +4,6 @@
   const footer = document.querySelector('[data-school-footer]');
   if (!footer) return;
   const scroller = footer.querySelector('[data-footer-sponsor-scroll]');
-  const track = footer.querySelector('[data-footer-sponsor-track]');
   const group = footer.querySelector('[data-footer-sponsor-group]');
   const dialog = footer.querySelector('[data-footer-lightbox]');
   const enlarged = dialog.querySelector('[data-footer-lightbox-image]');
@@ -18,36 +17,30 @@
   let frame = 0;
   let previous = 0;
   let position = 0;
-  let cycleWidth = 0;
-
-  // One copy creates a seamless visual loop. Only the original group is in the
-  // accessibility tree and keyboard order; all original logos remain scrollable.
-  const copy = group.cloneNode(true);
-  copy.removeAttribute('data-footer-sponsor-group');
-  copy.setAttribute('aria-hidden', 'true');
-  copy.querySelectorAll('button').forEach(button => { button.tabIndex = -1; });
-  track.append(copy);
+  let maxScroll = 0;
+  let direction = 1;
 
   function measure() {
-    cycleWidth = group.getBoundingClientRect().width;
+    maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
     position = scroller.scrollLeft;
   }
   function canAnimate() {
-    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && cycleWidth > 0;
+    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && maxScroll > 0;
   }
   function tick(now) {
     frame = 0;
     if (!canAnimate()) { previous = 0; return; }
     if (previous) {
-      position += Math.min(now - previous, 64) * .06;
-      if (position >= cycleWidth) position %= cycleWidth;
+      // Reverse at each end so every emblem appears only once in the strip.
+      position += Math.min(now - previous, 64) * .06 * direction;
+      if (position >= maxScroll) { position = maxScroll; direction = -1; }
+      if (position <= 0) { position = 0; direction = 1; }
       scroller.scrollLeft = position;
     }
     previous = now;
     frame = requestAnimationFrame(tick);
   }
   function sync() {
-    copy.hidden = reduced.matches;
     if (canAnimate()) {
       if (!frame) { position = scroller.scrollLeft; previous = 0; frame = requestAnimationFrame(tick); }
     } else if (frame) {
@@ -64,7 +57,11 @@
   scroller.addEventListener('touchend', () => { hovering = false; sync(); }, { passive: true });
   scroller.addEventListener('touchcancel', () => { hovering = false; sync(); }, { passive: true });
   group.querySelectorAll('img').forEach(image => image.addEventListener('load', measure));
-  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(group);
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(() => { measure(); sync(); });
+    observer.observe(group);
+    observer.observe(scroller);
+  }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => { visible = entries.some(entry => entry.isIntersecting); sync(); }).observe(scroller);
   } else { visible = true; }

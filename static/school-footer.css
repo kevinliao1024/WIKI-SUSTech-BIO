@@ -56,17 +56,13 @@
 .site-footer--school .sponsor-logos-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; }
 .site-footer--school .sponsor-logos-scroll::-webkit-scrollbar { display: none; }
 .site-footer--school .sponsor-logos-track { display: flex; align-items: center; width: max-content; }
-.site-footer--school .sponsor-logos-group { display: flex; align-items: center; gap: 30px; padding-right: 30px; flex: 0 0 auto; }
-.site-footer--school .sponsor-logos-group[hidden] { display: none; }
+.site-footer--school .sponsor-logos-group { display: flex; align-items: center; gap: 18px; padding: 6px 3px; flex: 0 0 auto; }
 .site-footer--school .sponsor-logo { display: block; height: 80px; width: auto; max-width: none; object-fit: contain; flex-shrink: 0; background-color: #fff; padding: 5px 10px; border-radius: 5px; transition: transform .2s ease, box-shadow .2s ease; }
-.site-footer--school .community-logo-card { flex: 0 0 220px; width: 220px; min-height: 168px; text-align: center; }
+.site-footer--school .community-logo-card { flex: 0 0 140px; width: 140px; text-align: center; }
 .site-footer--school .community-logo-button { width: 100%; }
-.site-footer--school .community-logo-surface { display: flex; align-items: center; justify-content: center; min-height: 108px; padding: 10px; border-radius: 10px; background: #fff; }
+.site-footer--school .community-logo-surface { display: flex; align-items: center; justify-content: center; height: 72px; padding: 8px; border-radius: 7px; background: #fff; }
 .site-footer--school .community-logo-surface--dark { background: #25304f; }
-.site-footer--school .community-logo-surface .sponsor-logo { width: 196px; height: 88px; max-width: 100%; padding: 4px; background: transparent; border-radius: 0; }
-.site-footer--school .community-logo-name { display: block; margin-top: 10px; color: #fff; font: 500 13px/1.4 'Source Sans 3', 'Segoe UI', sans-serif; }
-.site-footer--school .community-logo-detail { display: block; margin-top: 3px; color: #e7e3f5; font: 400 12px/1.4 'Source Sans 3', 'Segoe UI', sans-serif; }
-.site-footer--school .community-name-card { display: grid; place-items: center; min-height: 150px; padding: 20px; border: 1px solid #ffffff55; border-radius: 10px; background: #ffffff0d; color: #fff; font: 500 17px/1.5 'Source Sans 3', 'Segoe UI', sans-serif; }
+.site-footer--school .community-logo-surface .sponsor-logo { width: 124px; height: 56px; max-width: 100%; padding: 2px; background: transparent; border-radius: 0; }
 .site-footer--school .footer-image-button:hover img { transform: scale(1.01); box-shadow: 0 4px 12px #00000026; }
 .site-footer--school .footer-copyright { margin-top: 15px; }
 .site-footer--school .footer-copyright p { margin: 0; font-family: 'SUSTech Footer Afacad', sans-serif; font-weight: 700; font-size: 10px; line-height: 3; text-align: center; color: #fff; }
@@ -95,16 +91,16 @@
   .site-footer--school .qr-codes { flex-wrap: wrap; justify-content: center; }
   .site-footer--school .footer-nav-column { width: 45%; }
   .site-footer--school .sponsor-logo { height: 60px; }
-  .site-footer--school .sponsor-logos-group { gap: 20px; padding-right: 20px; }
-  .site-footer--school .community-logo-card { flex-basis: 188px; width: 188px; }
-  .site-footer--school .community-logo-surface .sponsor-logo { height: 76px; }
+  .site-footer--school .sponsor-logos-group { gap: 12px; }
+  .site-footer--school .community-logo-card { flex-basis: 112px; width: 112px; }
+  .site-footer--school .community-logo-surface { height: 60px; padding: 6px; }
+  .site-footer--school .community-logo-surface .sponsor-logo { width: 100px; height: 48px; }
 }
 @media (max-width: 576px) {
   .site-footer--school .footer-nav-column { width: 100%; text-align: center; }
   .site-footer--school .logo-container { flex-direction: column; text-align: center; }
   .site-footer--school .logo-text { align-items: center; }
   .site-footer--school .sponsor-logo { height: 50px; }
-  .site-footer--school .sponsor-logos-group { gap: 15px; padding-right: 15px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-footer--school *, .site-footer--school *::before, .site-footer--school *::after { transition: none !important; scroll-behavior: auto !important; }
