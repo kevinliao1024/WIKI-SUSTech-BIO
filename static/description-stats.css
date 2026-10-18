@@ -1,0 +1,145 @@
+/* Native, static-first statistics. Only this Description component is scoped. */
+.content-page--model-reading .description-intro {
+  display: block;
+}
+
+.description-stats {
+  --stats-ink: #303c62;
+  --stats-accent: #927039;
+  margin: 32px 0 36px;
+  color: var(--stats-ink);
+  font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  container-type: inline-size;
+}
+
+.description-stats__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.description-stats__metric { min-width: 0; }
+.description-stats__metric--share {
+  padding-left: 24px;
+  border-left: 1px solid #d9dee8;
+  --stats-ink: #927039;
+}
+
+.description-stats__context {
+  margin-bottom: 12px;
+  color: #626b7c;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.description-stats__number {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  color: var(--stats-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(34px, 9.8cqi, 80px);
+  font-weight: 400;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.055em;
+  line-height: 1.12;
+  white-space: nowrap;
+}
+
+.description-stats__unit {
+  font-size: max(14px, .28em);
+  letter-spacing: -.02em;
+}
+
+.description-stats__metric--share .description-stats__unit { font-size: .43em; }
+.description-stats__label {
+  margin-top: 10px;
+  color: #303c62;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.description-stats__qualifier {
+  margin-top: 5px;
+  color: #626b7c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.description-stats__scale { margin-top: 30px; }
+.description-stats__scale-caption {
+  margin-bottom: 10px;
+  color: #626b7c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.description-stats__ticks {
+  height: 22px;
+  background: linear-gradient(90deg, #927039 0 60%, #d2ba8d 60% 70%, #e0e4ed 70% 100%);
+  mask-image: repeating-linear-gradient(90deg, #000 0 2px, transparent 2px 1%);
+}
+
+.description-stats__axis {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
+  color: #626b7c;
+  font-size: 11px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.description-stats__interval {
+  position: absolute;
+  left: 60%;
+  width: 10%;
+  padding-top: 5px;
+  border-top: 1px solid var(--stats-accent);
+  color: #775922;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.description-stats__source {
+  margin-top: 28px;
+  color: #626b7c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.description-stats__source a { color: inherit; text-underline-offset: 3px; }
+
+/* One quiet focus-in; the numbers never change, spin, or count up. */
+@media (prefers-reduced-motion: no-preference) {
+  .description-stats.is-revealed .description-stats__number {
+    animation: description-stat-focus 850ms cubic-bezier(.2, .65, .25, 1) both;
+  }
+  .description-stats.is-revealed .description-stats__metric--share .description-stats__number {
+    animation-delay: 130ms;
+  }
+  .description-stats.is-revealed .description-stats__ticks {
+    animation: description-stat-unfold 1000ms cubic-bezier(.22, 1, .36, 1) 180ms both;
+  }
+}
+
+@keyframes description-stat-focus {
+  from { opacity: .35; filter: blur(3px); transform: translateY(7px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes description-stat-unfold {
+  from { clip-path: inset(0 50%); opacity: .3; }
+  to { clip-path: inset(0 0); opacity: 1; }
+}
+
+@container (max-width: 440px) {
+  .description-stats__pair { gap: 12px; }
+  .description-stats__metric--share { padding-left: 12px; }
+  .description-stats__context { font-size: 12px; }
+  .description-stats__label { font-size: 14px; }
+  .description-stats__qualifier { font-size: 11px; }
+  .description-stats__number { gap: 4px; }
+  .description-stats__interval { font-size: 10px; }
+}

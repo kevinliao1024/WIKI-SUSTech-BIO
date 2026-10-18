@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">
 {% if has_model_reading %}<link rel="stylesheet" href="{{ url_for('static', filename='content-model-reading.css') }}">{% endif %}
+{% if content.source_label == 'docs/project/description.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='description-stats.css') }}">{% endif %}
 {% if content.source_label == 'docs/wet-lab/measurement.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='measurement-reading.css') }}">{% endif %}
 {% if content.source_label in ['docs/project/blueprint.md', 'docs/project/results.md'] %}<link rel="stylesheet" href="{{ url_for('static', filename='experiment-prose.css') }}">{% endif %}
 {% endblock %}
@@ -30,6 +31,7 @@
 {% if has_dbtl %}<script src="{{ url_for('static', filename='reading-orbit/dbtl-wheel.js') }}" defer></script>{% endif %}
 <script src="{{ url_for('static', filename='content-reading.js') }}" defer></script>
 <script src="{{ url_for('static', filename='content-back-to-top.js') }}" defer></script>
+{% if content.source_label == 'docs/project/description.md' %}<script src="{{ url_for('static', filename='description-stats.js') }}" defer></script>{% endif %}
 {% if content.source_label in ['docs/project/blueprint.md', 'docs/project/results.md'] %}<script src="{{ url_for('static', filename='experiment-prose.js') }}" defer></script>{% endif %}
 {% endblock %}
 

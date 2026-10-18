@@ -13,7 +13,28 @@ status_message: Scientific content, references and media attribution await team 
 
 <div class="description-intro">
   <p>Alzheimer’s disease (AD) is the most common cause of dementia, accounting for an estimated 60–70% of cases. In 2021, around 57 million people worldwide were living with dementia, creating a growing burden for patients, families, and healthcare systems. [4]</p>
-  <img src="/assets/images/description/dementia-burden.png" alt="Worldwide dementia burden in 2021 and the estimated share of Alzheimer’s disease" width="605" height="641">
+  <div class="description-stats" data-description-stats role="group" aria-label="Global dementia burden">
+    <div class="description-stats__pair">
+      <div class="description-stats__metric">
+        <div class="description-stats__context">Worldwide · 2021</div>
+        <div class="description-stats__number">57<span class="description-stats__unit">million</span></div>
+        <div class="description-stats__label">people living with dementia</div>
+        <div class="description-stats__qualifier">Estimated global prevalence</div>
+      </div>
+      <div class="description-stats__metric description-stats__metric--share">
+        <div class="description-stats__context">Alzheimer’s disease</div>
+        <div class="description-stats__number">60–70<span class="description-stats__unit">%</span></div>
+        <div class="description-stats__label">of all dementia cases</div>
+        <div class="description-stats__qualifier">Estimated proportion</div>
+      </div>
+    </div>
+    <div class="description-stats__scale" aria-hidden="true">
+      <div class="description-stats__scale-caption">Alzheimer’s share of dementia cases</div>
+      <div class="description-stats__ticks"></div>
+      <div class="description-stats__axis"><span>0</span><span class="description-stats__interval">60–70%</span><span>100%</span></div>
+    </div>
+    <div class="description-stats__source">Source: <a href="https://www.who.int/news-room/fact-sheets/detail/dementia">World Health Organization</a> · [4]</div>
+  </div>
 </div>
 
 AD is classically characterized by amyloid-β plaques and tau neurofibrillary tangles, but its pathology extends far beyond these hallmarks. Synaptic loss, glial dysfunction, inflammation, metabolic disturbance, and vascular changes all contribute to a complex disease process that can begin years before cognitive symptoms become apparent.
