@@ -18,6 +18,7 @@
   {% endif %}
 {% endfor %}
 {% block page_styles %}
+{% if content.source_label == 'docs/project/blueprint.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='control-milestones.css') }}">{% endif %}
 {% if has_dbtl %}<link rel="stylesheet" href="{{ url_for('static', filename='reading-orbit/dbtl-wheel.css') }}">{% endif %}
 <link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">

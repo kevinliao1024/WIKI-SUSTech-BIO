@@ -107,13 +107,34 @@ We pursued three complementary approaches to the PUF–APOBEC machinery:
 
 Our **G.M.A.C.** framework explored four regulatory strategies:
 
-**GFA — Transcriptional Control.** Investigated the gfaABC1D promoter for astrocyte-oriented expression [6].
+<p class="control-milestone-legend">Milestones accumulate: Designed → Built → Validated. Validation refers to the function stated for each module.</p>
 
-**MRE — Post-Transcriptional Regulation.** Tested a 4×6T miRNA response-element architecture and a reduced 2× configuration (background on miRNA-mediated transgene regulation: [7]).
-
-**ASO — Reversible Suppression.** Developed an antisense oligonucleotide approach for externally induced suppression of editor expression (background on antisense-mediated RNA suppression: [8]).
-
-**Cre–loxP — Permanent Shutdown.** Designed a recombinase-mediated excision strategy to permanently terminate editor expression [9].
+<div class="control-overview-grid">
+<article class="control-overview-card" aria-labelledby="control-summary-gfa">
+<h4 id="control-summary-gfa"><a href="/engineering#gfa">GFA</a></h4>
+<p class="control-overview-role">Transcriptional control [6]</p>
+<div class="control-milestones" data-control-module="gfa" role="group" aria-label="GFA: milestones achieved"><span class="control-milestone control-milestone--designed"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15v5Z"/></svg>Designed</span><span class="control-milestone control-milestone--built"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm-9 5 9 5 9-5M12 13v8M7.5 5.5l9 5"/></svg>Built</span><span class="control-milestone control-milestone--validated"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg>Validated</span></div>
+<p class="control-evidence-note">Cell-context-dependent transcriptional regulation demonstrated; universal astrocyte specificity not established.</p>
+</article>
+<article class="control-overview-card" aria-labelledby="control-summary-mre">
+<h4 id="control-summary-mre"><a href="/engineering#mre">MRE</a></h4>
+<p class="control-overview-role">Post-transcriptional regulation [7]</p>
+<div class="control-milestones" data-control-module="mre" role="group" aria-label="MRE: milestones achieved"><span class="control-milestone control-milestone--designed"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15v5Z"/></svg>Designed</span><span class="control-milestone control-milestone--built"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm-9 5 9 5 9-5M12 13v8M7.5 5.5l9 5"/></svg>Built</span></div>
+<p class="control-evidence-note">Constructed and tested; miRNA-specific suppression not established. Excluded from the final ORCA design.</p>
+</article>
+<article class="control-overview-card" aria-labelledby="control-summary-aso">
+<h4 id="control-summary-aso"><a href="/engineering#aso">ASO</a></h4>
+<p class="control-overview-role">Externally induced suppression [8]</p>
+<div class="control-milestones" data-control-module="aso" role="group" aria-label="ASO: milestones achieved"><span class="control-milestone control-milestone--designed"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15v5Z"/></svg>Designed</span><span class="control-milestone control-milestone--built"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm-9 5 9 5 9-5M12 13v8M7.5 5.5l9 5"/></svg>Built</span><span class="control-milestone control-milestone--validated"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg>Validated</span></div>
+<p class="control-evidence-note">Tag-dependent suppression of editing demonstrated; recovery after ASO withdrawal remains unverified.</p>
+</article>
+<article class="control-overview-card" aria-labelledby="control-summary-cre-loxp">
+<h4 id="control-summary-cre-loxp"><a href="/engineering#cre-loxp">Cre–loxP</a></h4>
+<p class="control-overview-role">Proposed permanent shutdown [9]</p>
+<div class="control-milestones" data-control-module="cre-loxp" role="group" aria-label="Cre–loxP: milestones achieved"><span class="control-milestone control-milestone--designed"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15v5Z"/></svg>Designed</span></div>
+<p class="control-evidence-note">DNA-level shutdown strategy designed; excision and permanent shutdown remain experimentally unverified.</p>
+</article>
+</div>
 
 ### 03. DELIVER — Developing an AAV9 Delivery Strategy
 

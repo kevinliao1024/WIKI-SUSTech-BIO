@@ -20,6 +20,11 @@ Beyond Brightness: Making RNA-Editing Reporter Signals Measurable
 
 </blockquote>
 
+<nav class="sonar-connections" aria-label="Explore connected SONAR chapters">
+<a class="sonar-connection-card" href="/engineering#measure"><span class="sonar-connection-label"><i class="sonar-connection-symbol" aria-hidden="true"></i>SONAR / Engineering</span><strong>Follow the reporter’s development</strong><span class="sonar-connection-description">Trace the design decisions and experiments that shaped SONAR across ten engineering cycles.</span><span class="sonar-connection-action">Explore Engineering<span aria-hidden="true"> →</span></span></a>
+<a class="sonar-connection-card" href="/contribution#sonar"><span class="sonar-connection-label"><i class="sonar-connection-symbol" aria-hidden="true"></i>SONAR / Contribution</span><strong>Use SONAR in your next experiment</strong><span class="sonar-connection-description">Follow the design and analysis tutorial, try interactive examples, and inspect the resources for adapting SONAR.</span><span class="sonar-connection-action">Explore Contribution<span aria-hidden="true"> →</span></span></a>
+</nav>
+
 ## 1. The Measurement Challenge — Beyond Brightness
 
 Our editing-responsive reporter made ORCA activity visible through EGFP fluorescence. Yet visibility raised a harder question: **does a brighter green signal indicate more RNA editing, or simply more reporter expression?** Transfection efficiency, reporter abundance, cell-population composition, fluorophore maturation [6], and protein stability can all affect the observed signal. Neither mean EGFP intensity nor the fraction of EGFP-positive cells can, by itself, resolve these contributions.
@@ -172,6 +177,8 @@ Consequently, correcting EGFP by mCherry does not reveal the fraction of edited 
 
 *Figure 8. AC/INAC reference states capture the reporter's combined optical behavior without assuming ideal P2A separation or complete DD degradation.*
 
+<a class="sonar-evidence-link" href="/engineering#measure-cycle-06"><i class="sonar-connection-symbol" aria-hidden="true"></i><span><span class="sonar-evidence-label">Engineering · Cycle 6</span><span class="sonar-evidence-title">How the first AC/INAC reference experiment was designed</span></span><span class="sonar-evidence-arrow" aria-hidden="true">→</span></a>
+
 ### 5.2 Building and fitting the AC/INAC response ladder
 
 In S7, we co-transfected AC and INAC at **ten DNA mass fractions**, each with two independent transfection wells:
@@ -201,6 +208,8 @@ The hinge model also yielded unique inversions in **19/20** held-out cases. Its 
 ![Figure 9. Empirical calibration against AC DNA input.](/assets/images/submission-20261017/measurement/measurement-figure9-reference-calibration.png)
 
 *Figure 9. Twenty AC/INAC reference wells define the frozen monotone response curve, compared with alternative calibration models under reference-level holdout.*
+
+<a class="sonar-evidence-link" href="/engineering#measure-cycle-07"><i class="sonar-connection-symbol" aria-hidden="true"></i><span><span class="sonar-evidence-label">Engineering · Cycle 7</span><span class="sonar-evidence-title">How the reference experiment was refined</span></span><span class="sonar-evidence-arrow" aria-hidden="true">→</span></a>
 
 ### 5.3 From RAS to Relative Editing Score
 
@@ -303,6 +312,8 @@ Thus, the normalized EGFP response **did not show a consistent positive associat
 
 *Figure 14. Across 12 matched S10 wells, the C280 molecular index tracks editor dose and BFP-positive fraction more closely than reporter RAS.*
 
+<a class="sonar-evidence-link" href="/engineering#measure-cycle-10"><i class="sonar-connection-symbol" aria-hidden="true"></i><span><span class="sonar-evidence-label">Engineering · Cycle 10</span><span class="sonar-evidence-title">The experiment linking fluorescence and reporter-RNA changes</span></span><span class="sonar-evidence-arrow" aria-hidden="true">→</span></a>
+
 ### 6.5 Can those signals predict held-out molecular observations?
 
 To move beyond a correlation plot, we fitted six simple, prespecified models: a training-mean baseline; RAS alone; BFP-positive fraction alone; linear editor dose alone; RAS plus BFP; and editor dose plus BFP. For prediction, the endpoint was the **Raw C280 Peak Index**, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><msub><mi>Y</mi><mi>w</mi></msub><mo>=</mo><msub><mi>M</mi><mi>w</mi></msub><mo>+</mo><mn>0.0303829</mn></mrow><annotation encoding="application/x-tex">&#89;&#95;&#119;&#61;&#77;&#95;&#119;&#43;&#48;&#46;&#48;&#51;&#48;&#51;&#56;&#50;&#57;</annotation></semantics></math></span>, rather than an index background-corrected using no-editor wells that could themselves be held out. This distinction avoids carrying test-well information into training through the background calculation.
@@ -334,7 +345,7 @@ For that reason, SONAR currently reports **relative molecular prediction**, whil
 
 SONAR was developed around APOE4, but its central contribution is a **transferable measurement strategy**. The recognition/editing window can be redesigned for another RNA target, while the fluorescence-reference architecture and four-layer analysis remain a starting framework. A new reporter or experimental context would, however, need matched background controls, its own reference calibration, and molecular validation; the numerical constants from our S7/S10 experiments are **not** universal settings.
 
-Our modular reporter design, analysis workflow, and reusable resources are introduced on the [Contribution page](/contribution).
+Our modular reporter design, analysis workflow, and reusable resources are introduced on the [SONAR tutorial and resources](/contribution#sonar).
 
 ## 8. Conclusion — From Fluorescence to Evidence
 

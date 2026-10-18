@@ -12,6 +12,11 @@ eyebrow: Project / Contribution
 <p class="sonar-review-note">Review edition · supplied resources are authorized for sharing; final Wiki publication review is ongoing.</p>
 </div>
 
+<nav class="sonar-connections" aria-label="Explore connected SONAR chapters">
+<a class="sonar-connection-card" href="/engineering#measure"><span class="sonar-connection-label"><i class="sonar-connection-symbol" aria-hidden="true"></i>SONAR / Engineering</span><strong>Follow the reporter’s development</strong><span class="sonar-connection-description">Trace the design decisions and experiments that shaped SONAR across ten engineering cycles.</span><span class="sonar-connection-action">Explore Engineering<span aria-hidden="true"> →</span></span></a>
+<a class="sonar-connection-card" href="/measurement"><span class="sonar-connection-label"><i class="sonar-connection-symbol" aria-hidden="true"></i>SONAR / Measurement</span><strong>Understand what the signal means</strong><span class="sonar-connection-description">Explore population selection, RAS and reference-calibrated RES, and the molecular evidence still needed for PER.</span><span class="sonar-connection-action">Explore Measurement<span aria-hidden="true"> →</span></span></a>
+</nav>
+
 ## Getting Started {#getting-started}
 
 <div class="sonar-path"><a href="#step-1"><b>01</b><span>Build your reporter<small>Sequence → construct</small></span></a><a href="#step-2"><b>02</b><span>Read the response<small>Experiment → flow → analysis</small></span></a></div>
