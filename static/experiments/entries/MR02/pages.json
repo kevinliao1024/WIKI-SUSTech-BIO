@@ -1,0 +1,154 @@
+{
+  "source_sha256": "a94873d244ae9081d588336a03001debbdbedfcd14db87991d2d86a7ce8880a1",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 8,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "137b27649e8efb2381684882930567ee8e14d3000a4cc2b23be1961aff9f626b",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 37.66751
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "917080f3bfb24e066f91d740e22a147571d1404ab1f53e0561a558cee811f395",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "3b304e9f2c767d0743c828f0d8ca750b31fd2766334ebe6817ba446799ad9944",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 3,
+          "top": 22.16667
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "db5b6096f01b46e487812caa189d5770220a93d861da80c0e106365f35747caf",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8266dcc6dd9cea192c138f53731f55375797d31e7562d69b6c4123027e7efbd8",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "348858895a71ec5312b42f47f6b44ae941e48e52cbb2cd3b73920ab753579145",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "80fc50f842cb40dba38850c408ce507ae4cec5728bdb5b294c4a259709365547",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 7,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 7,
+          "top": 39.74616
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 8,
+      "image": "page-008.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "6e08a1a2bb704824c5b7464fdde10c767b4587d7a4791964a07bbcab2e9000ed",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 8,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 8,
+          "top": 64.92761
+        }
+      ],
+      "links": [
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf",
+          "left": 49.96177,
+          "top": 69.13019,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980",
+          "left": 61.72923,
+          "top": 72.6936,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2225395/",
+          "left": 46.76668,
+          "top": 77.74177,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "source_sha256": "ba41c2f7ba4ad7d3b60c0b2e347f53e660baab745821b59423a9f655191943c8",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c845bd17d3bc4dab3099f77004d43bf63a5739d67d5dfc6c91885e9cc85c8dbf",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 76.44931
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ee5eb0d1298be6758206958174b6bf346c48f09b83b23ec6f795a8c7925d14a3",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 20.32557
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f3d9107e7c3637078b5acfdf71666a001b33f031ae1fc8a99585947a13f2355a",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "3a656ddf82f3ec18d48d9e95011afca1f66435a613bc195449a4d1c8de66393a",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 18.72204
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 43.48775
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 55.60335
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d1886804b3f58fa81adc4e12319fe7a446b7aae3d585489a5c73952a8dc6c22f",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 6.78461
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf",
+          "left": 43.17148,
+          "top": 10.98719,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf",
+          "left": 39.34299,
+          "top": 14.5506,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/112865/",
+          "left": 19.13603,
+          "top": 18.11401,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/112867/",
+          "left": 19.13603,
+          "top": 21.67742,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/protocols/aav-production-hek293-cells/",
+          "left": 54.77801,
+          "top": 25.24083,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430599",
+          "left": 25.96987,
+          "top": 28.80425,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430167",
+          "left": 19.13603,
+          "top": 32.36766,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.qiyunbio.com/productinfo/1742283.html",
+          "left": 52.07237,
+          "top": 35.93107,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.qiyunbio.com/productinfo/2381513.html",
+          "left": 52.07237,
+          "top": 39.49448,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.qiyunbio.com/productinfo/1186825.html",
+          "left": 24.59306,
+          "top": 43.05789,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.qiyunbio.com/productinfo/5988947.html",
+          "left": 61.12903,
+          "top": 46.6213,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

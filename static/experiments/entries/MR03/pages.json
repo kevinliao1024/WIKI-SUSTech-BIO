@@ -1,0 +1,117 @@
+{
+  "source_sha256": "3391fe7d5370850e227e8e5d94e4a5113b25ef44b285b45e479c63e4852303e2",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d0ce2592c508972c8853e950e5c8bbbc43480cb6f43a0136d29cd61428490fb2",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 32.38178
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 76.68687
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "48ca7a469b8dea9c08fd42aed572d4f22e312497511efaf1c1fbee5c7c6454c9",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 20.32557
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "72d95c1cd707f46322398efe676a592986c127ced61562f5de1e2f72b8270f95",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 59.10737
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "b1ce003ba23184fcce59e143cb17f38492bf041a40a5dc6280b7a7ca6643af33",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 25.25496
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 71.22297
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf",
+          "left": 78.16897,
+          "top": 78.98896,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.genepharma.com/public/upload/1744183177_1214846978.pdf",
+          "left": 58.96158,
+          "top": 82.55237,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.genepharma.com/en/miRNA-mimics/usage/",
+          "left": 62.43277,
+          "top": 86.11579,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

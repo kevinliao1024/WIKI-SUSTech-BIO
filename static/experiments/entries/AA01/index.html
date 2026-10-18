@@ -2,243 +2,349 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AA01 · Co-transfection for AAV Packaging</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> AA01 · <strong>Category:</strong> AAV Delivery</p>
-<p>AA01 | ver 1.2 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Prepare AAV9 packaging cultures by co-transfecting adherent HEK293T cells with pAAV2/9n, pAdDeltaF6 and one transfer plasmid: MCS-ORCA or MCS-mCherry. Use two 15 cm dishes per AAV preparation. This protocol ends at the harvest handoff to AA02.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Full name / construct</th>
-<th>Supplier / catalog no.</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEK293T cells</td>
-<td>Healthy adherent culture</td>
-<td>Two 15 cm tissue-culture dishes per AAV preparation</td>
-</tr>
-<tr>
-<td>pAAV2/9n</td>
-<td>Qiyunbio, China; QP1113</td>
-<td>Rep2/Cap9 packaging plasmid [3, 8]</td>
-</tr>
-<tr>
-<td>pAdDeltaF6</td>
-<td>Qiyunbio, China; QP1939</td>
-<td>Adenoviral helper plasmid [4, 9]</td>
-</tr>
-<tr>
-<td>MCS-ORCA (pAAV-MCS-derived)</td>
-<td>Qiyunbio, China; QP1174 (pAAV-MCS backbone)</td>
-<td>ORCA transfer construct built on pAAV-MCS; QP1174 identifies the source backbone [10]</td>
-</tr>
-<tr>
-<td>pAAV-MCS-mCherry-T2A-Luc</td>
-<td>Qiyunbio, China; QP3064</td>
-<td>mCherry transfer plasmid; abbreviated MCS-mCherry below [11]</td>
-</tr>
-<tr>
-<td>Lipofectamine 3000 + P3000</td>
-<td>Invitrogen; L3000001 / L3000008 / L3000015</td>
-<td>Matched lipid and enhancer; store at 4°C, do not freeze [1]</td>
-</tr>
-<tr>
-<td>Opti-MEM; complete 293T medium</td>
-<td>Gibco Opti-MEM; C01 growth-medium formulation</td>
-<td>Serum-free Opti-MEM for complexes; prewarmed complete DMEM for culture</td>
-</tr>
-<tr>
-<td>Culture and measurement equipment</td>
-<td>Laboratory supplies</td>
-<td>Culture cabinet, 37°C / 5% CO2 incubator, microscope, cell counter, DNA quantification instrument, pipettes and sterile tubes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use M07 for plasmid preparation and C01/C04 for cell handling. Check the transfer cassette, promoter and ITR-containing map against the actual stock; quantify each purified, low-endotoxin DNA preparation. Record complete plasmid lengths and concentrations. Here, MCS-mCherry denotes pAAV-MCS-mCherry-T2A-Luc (QP3064); MCS-ORCA denotes the ORCA construct derived from pAAV-MCS (QP1174).</p>
-<p>Label each preparation and its two dishes separately. ORCA and mCherry require separate DNA mixtures; packaging both requires four dishes. Two dishes pooled into one preparation constitute one production batch, not two independent biological replicates.</p>
-<p>The dose below is an adapted starting condition, not a validated optimum for these AAV constructs. It uses the lower Lipofectamine 3000 dose from the manufacturer scaling approach. Assess cell health and delivery before treating it as an established production recipe. [1, 2]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-the-two-packaging-dishes">A. Prepare the two packaging dishes</h3>
-<ol>
-<li>
-<p>Seed two 15 cm dishes of healthy 293T cells per AAV preparation, aiming for 70-90% confluence at transfection. Use approximately 30 mL complete medium per dish before transfection and incubate at 37°C with 5% CO2. Adjust the seeding number from observed growth in this format. [1, 6]</p>
-</li>
-<li>
-<p>Check even attachment and morphology on the transfection day. Proceed when both dishes are healthy and within the intended confluence range. Keep approximately 30 mL growth medium in each receiving dish before adding complexes.</p>
-</li>
-</ol>
-<h3 id="b-calculate-the-three-plasmid-mixture">B. Calculate the three-plasmid mixture</h3>
-<ol start="3">
-<li>Allocate 40 µg total DNA per dish using a starting molar ratio of pAAV2/9n : pAdDeltaF6 : transfer plasmid = 1:1:1. The equal-molar approach is adapted from Addgene AAV production; it is not a supplier-validated optimum for this Lipofectamine workflow. [5]</li>
-</ol>
-<p>Let L_R, L_H and L_T be the complete lengths (bp) of the packaging, helper and transfer plasmids. Set S = L_R + L_H + L_T. Calculate masses per dish as shown below; recalculate when switching transfer constructs.</p>
-<table>
-<thead>
-<tr>
-<th>Plasmid</th>
-<th>DNA per dish (µg)</th>
-<th>DNA for two dishes (µg)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pAAV2/9n</td>
-<td>40 × L_R / S</td>
-<td>80 × L_R / S</td>
-</tr>
-<tr>
-<td>pAdDeltaF6</td>
-<td>40 × L_H / S</td>
-<td>80 × L_H / S</td>
-</tr>
-<tr>
-<td>MCS-ORCA OR MCS-mCherry</td>
-<td>40 × L_T / S</td>
-<td>80 × L_T / S</td>
-</tr>
-<tr>
-<td>Total DNA</td>
-<td>40</td>
-<td>80</td>
-</tr>
-</tbody>
-</table>
-<ol start="4">
-<li>Convert each DNA mass to a stock volume: volume (µL) = mass (µg) / concentration (µg/µL). Divide ng/µL by 1,000 before using this equation. Use full plasmid lengths, including backbone, rather than insert or packaged-genome lengths.</li>
-</ol>
-<h3 id="c-prepare-lipofectamine-3000-complexes">C. Prepare Lipofectamine 3000 complexes</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>One 15 cm dish</th>
-<th>Two dishes / one AAV</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A: Opti-MEM to add</td>
-<td>1.35 mL</td>
-<td>2.70 mL</td>
-</tr>
-<tr>
-<td>A: total DNA</td>
-<td>40 µg</td>
-<td>80 µg</td>
-</tr>
-<tr>
-<td>A: P3000</td>
-<td>80 µL</td>
-<td>160 µL</td>
-</tr>
-<tr>
-<td>B: Opti-MEM to add</td>
-<td>1.35 mL</td>
-<td>2.70 mL</td>
-</tr>
-<tr>
-<td>B: Lipofectamine 3000</td>
-<td>60 µL</td>
-<td>120 µL</td>
-</tr>
-</tbody>
-</table>
-<p>Scaling basis: a reference 148 cm² dish gives a factor of 148/55 versus a 55 cm², 10 cm dish. The manufacturer lower DNA and lipid inputs scale to approximately 37.7 µg and 58.4 µL, rounded here to 40 µg and 60 µL; each 0.5 mL Opti-MEM portion scales to 1.35 mL. P3000 is 2 µL per µg DNA. Check the actual dish growth area. [1, 2, 6, 7]</p>
-<ol start="5">
-<li>
-<p>Prepare tube A with the stated Opti-MEM, all three calculated DNA volumes and P3000. Mix gently. Prepare tube B separately with Opti-MEM and Lipofectamine 3000; mix the diluted lipid with a brief 2-3 s vortex. [1]</p>
-</li>
-<li>
-<p>Add A to B, mix gently by pipetting and incubate for 10-15 min at room temperature. Keep preparation and addition times consistent. [1]</p>
-</li>
-</ol>
-<p>The table specifies Opti-MEM added, not final tube volume. DNA, P3000 and lipid add further volume. For a two-dish mixture, divide the entire combined mixture equally between the two dishes; each half contains one full dish dose. No extra pipetting allowance is included.</p>
-<h3 id="d-add-complexes-and-replace-medium">D. Add complexes and replace medium</h3>
-<ol start="7">
-<li>
-<p>Add one dish-equivalent of complexes slowly along the inner wall, distributing additions around the dish without directing a jet onto the monolayer. Immediately mix by gentle forward-backward and left-right movement. Return both dishes to the incubator and record addition as t = 0.</p>
-</li>
-<li>
-<p>At 18 h after transfection, gently remove the spent medium and replace it with 20 mL prewarmed fresh complete medium per dish. Add against the wall and retain the attached monolayer. Two dishes require 40 mL fresh medium in total.</p>
-</li>
-</ol>
-<p>The 18 h exchange and 20 mL replacement volume are the team-specified workflow. They are not requirements of the Lipofectamine instructions. At this reduced culture volume, maintain even coverage and inspect pH, evaporation and cell condition.</p>
-<h3 id="e-continue-culture-to-the-harvest-handoff">E. Continue culture to the harvest handoff</h3>
-<ol start="9">
-<li>
-<p>Continue incubation at 37°C with 5% CO2 and inspect morphology and medium appearance daily. For MCS-mCherry, document fluorescence if the construct expresses mCherry in 293T cells; fluorescence alone does not establish packaged-vector yield.</p>
-</li>
-<li>
-<p>Proceed to AA02 at 72 h after transfection, equivalent to 54 h after the medium exchange. Keep the two dishes of each preparation identified together and separate from other constructs. Retain culture material until the cell/supernatant collection route in AA02 is defined.</p>
-</li>
-</ol>
-<p>Timing: count all intervals from complex addition (t = 0). Replace medium at t = 18 h and harvest at t = 72 h, leaving 54 h of culture after the exchange. This is the team-specified schedule.</p>
-<h2 id="ps">p.s.</h2>
-<p>Equal molar input does not mean equal DNA mass. A larger helper plasmid requires more mass than a shorter transfer plasmid to supply the same number of molecules.</p>
-<p>QP1174 is the catalog number of the pAAV-MCS source backbone, not of the completed ORCA construct. For QP3064, retain the full name pAAV-MCS-mCherry-T2A-Luc, including T2A-Luc, in material and sample records.</p>
-<p>Keep both dishes of one preparation on the same recipe. If comparing reagent doses, identify the conditions separately rather than pooling them as one uniform preparation.</p>
-<p>Use slow wall-directed liquid addition and thorough gentle cross mixing during transfection and medium exchange; 293T monolayers detach easily.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain two identifiable transfected cultures per AAV preparation, with documented cell condition, DNA inputs, reagent doses and timing. mCherry fluorescence can support expression in producer cells. Packaging success, vector-genome titer and functional transduction require the downstream AA02-AA04 workflow; no yield or efficiency is assumed.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cells detach during addition or exchange</td>
-<td>Initial attachment, pipette direction and liquid flow</td>
-<td>Add against the wall more slowly; avoid direct jets and vigorous dish movement.</td>
-</tr>
-<tr>
-<td>Marked rounding or death after transfection</td>
-<td>Untreated culture, DNA purity and dose calculations</td>
-<td>Check for culture problems first. If toxicity is treatment-specific, assess a lower lipid dose at fixed DNA in a separate pilot.</td>
-</tr>
-<tr>
-<td>Weak mCherry signal with healthy cells</td>
-<td>Transfer identity, promoter, concentration and complex preparation</td>
-<td>Verify the expression readout and plasmid first; assess delivery in a separate matched pilot. Do not infer AAV titer from fluorescence.</td>
-</tr>
-<tr>
-<td>Different appearance between the two dishes</td>
-<td>Confluence, equal mixture division and addition timing</td>
-<td>Standardize seeding, mixing and dosing; record discordance before pooling.</td>
-</tr>
-<tr>
-<td>Rapid medium yellowing or loss of coverage</td>
-<td>Culture density, contamination, evaporation and dish level</td>
-<td>Check the cause and cell condition promptly. Record any necessary departure from the 20 mL schedule.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Thermo Fisher Scientific / Invitrogen. Lipofectamine 3000 Reagent Protocol, MAN0009872 Rev. C.0, 10 February 2016, pp. 1-2. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf">Open source</a></p>
-<p>[2] Thermo Fisher Scientific. Scaling Up or Down Lipofectamine 3000 Reagent Transfections, one-page table; revision not stated. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf">Open source</a></p>
-<p>[3] Addgene. pAAV2/9n, #112865; Rep2/Cap9 identity reference. Actual project source: Qiyun Bio. Accessed 2026-10-03. <a href="https://www.addgene.org/112865/">Open source</a></p>
-<p>[4] Addgene. pAdDeltaF6, #112867; helper-gene identity reference. Actual project source: Qiyun Bio. Accessed 2026-10-03. <a href="https://www.addgene.org/112867/">Open source</a></p>
-<p>[5] Addgene. AAV Production, Transfection section. Used for equal-molar calculation logic, not as an exact Lipofectamine recipe or harvest schedule. Accessed 2026-10-03. <a href="https://www.addgene.org/protocols/aav-production-hek293-cells/">Open source</a></p>
-<p>[6] Corning. 150 mm TC-treated Culture Dish, 430599, Product Information: 148 cm². Reference vessel only. Accessed 2026-10-03. <a href="https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430599">Open source</a></p>
-<p>[7] Corning. 100 mm TC-treated Culture Dish, 430167, growth area 55 cm². Reference vessel only. Accessed 2026-10-03. <a href="https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430167">Open source</a></p>
-<p>[8] Qiyunbio, China. pAAV2/9n, catalog no. QP1113. Supplier page archived in the project on 2026-09-17, reviewed 2026-10-03; live web-reader retrieval unavailable. <a href="https://www.qiyunbio.com/productinfo/1742283.html">Open source</a></p>
-<p>[9] Qiyunbio, China. pAdDeltaF6, catalog no. QP1939. Supplier page archived in the project on 2026-09-17, reviewed 2026-10-03; live web-reader retrieval unavailable. <a href="https://www.qiyunbio.com/productinfo/2381513.html">Open source</a></p>
-<p>[10] Qiyunbio, China. pAAV-MCS, catalog no. QP1174. Live product page checked 2026-10-03; archived supplier page also reviewed. <a href="https://www.qiyunbio.com/productinfo/1186825.html">Open source</a></p>
-<p>[11] Qiyunbio, China. pAAV-MCS-mCherry-T2A-Luc, catalog no. QP3064. Supplier page archived in the project on 2026-09-17, reviewed 2026-10-03; live web-reader retrieval unavailable. <a href="https://www.qiyunbio.com/productinfo/5988947.html">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original AA01 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:27.86813%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:76.44931%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Co-transfection for AAV Packaging
+
+ AA01 | ver 1.2 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Prepare AAV9 packaging cultures by co-transfecting adherent HEK293T cells with pAAV2/9n,
+ pAdDeltaF6 and one transfer plasmid: MCS-ORCA or MCS-mCherry. Use two 15 cm dishes per
+ AAV preparation. This protocol ends at the harvest handoff to AA02.
+
+ Materials &amp; Equipment
+
+
+    Full name / construct                  Supplier / catalog no.       Use / specification
+
+
+   HEK293T cells                       Healthy adherent culture     Two 15 cm tissue-culture dishes per AAV
+                                                                     preparation
+
+
+  pAAV2/9n                          Qiyunbio, China; QP1113   Rep2/Cap9 packaging plasmid [3, 8]
+
+
+   pAdDeltaF6                         Qiyunbio, China; QP1939    Adenoviral helper plasmid [4, 9]
+
+
+  MCS-ORCA (pAAV-MCS-derived)     Qiyunbio, China; QP1174   ORCA transfer construct built on
+                                (pAAV-MCS backbone)     pAAV-MCS; QP1174 identifies the source
+                                                            backbone [10]
+
+
+   pAAV-MCS-mCherry-T2A-Luc          Qiyunbio, China; QP3064    mCherry transfer plasmid; abbreviated
+                                                          MCS-mCherry below [11]
+
+
+   Lipofectamine 3000 + P3000           Invitrogen; L3000001 /      Matched lipid and enhancer; store at 4°C,
+                                 L3000008 / L3000015      do not freeze [1]
+
+
+   Opti-MEM; complete 293T medium    Gibco Opti-MEM; C01        Serum-free Opti-MEM for complexes;
+                                     growth-medium            prewarmed complete DMEM for culture
+                                          formulation
+
+
+   Culture and measurement             Laboratory supplies           Culture cabinet, 37°C / 5% CO2 incubator,
+   equipment                                                       microscope, cell counter, DNA quantification
+                                                                            instrument, pipettes and sterile tubes
+
+
+ Before You Start
+
+ Use M07 for plasmid preparation and C01/C04 for cell handling. Check the transfer cassette,
+ promoter and ITR-containing map against the actual stock; quantify each purified, low-endotoxin
+ DNA preparation. Record complete plasmid lengths and concentrations. Here, MCS-mCherry
+ denotes pAAV-MCS-mCherry-T2A-Luc (QP3064); MCS-ORCA denotes the ORCA construct derived
+ from pAAV-MCS (QP1174).
+
+
+
+
+
+AA01 | v1.2                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original AA01 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:20.32557%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Label each preparation and its two dishes separately. ORCA and mCherry require separate DNA
+ mixtures; packaging both requires four dishes. Two dishes pooled into one preparation constitute
+ one production batch, not two independent biological replicates.
+
+ The dose below is an adapted starting condition, not a validated optimum for these AAV constructs.
+  It uses the lower Lipofectamine 3000 dose from the manufacturer scaling approach. Assess cell
+ health and delivery before treating it as an established production recipe. [1, 2]
+
+ Procedure
+
+ A. Prepare the two packaging dishes
+
+ 1. Seed two 15 cm dishes of healthy 293T cells per AAV preparation, aiming for 70-90%
+     confluence at transfection. Use approximately 30 mL complete medium per dish before
+      transfection and incubate at 37°C with 5% CO2. Adjust the seeding number from observed
+     growth in this format. [1, 6]
+
+ 2. Check even attachment and morphology on the transfection day. Proceed when both dishes are
+     healthy and within the intended confluence range. Keep approximately 30 mL growth medium
+      in each receiving dish before adding complexes.
+
+ B. Calculate the three-plasmid mixture
+
+ 3. Allocate 40 µg total DNA per dish using a starting molar ratio of pAAV2/9n : pAdDeltaF6 :
+      transfer plasmid = 1:1:1. The equal-molar approach is adapted from Addgene AAV production;
+         it is not a supplier-validated optimum for this Lipofectamine workflow. [5]
+
+ Let L_R, L_H and L_T be the complete lengths (bp) of the packaging, helper and transfer plasmids.
+ Set S = L_R + L_H + L_T. Calculate masses per dish as shown below; recalculate when switching
+ transfer constructs.
+
+
+   Plasmid                          DNA per dish (µg)         DNA for two dishes (µg)
+
+
+  pAAV2/9n                             40 × L_R / S                80 × L_R / S
+
+
+   pAdDeltaF6                             40 × L_H / S               80 × L_H / S
+
+
+  MCS-ORCA OR MCS-mCherry               40 × L_T / S                80 × L_T / S
+
+
+    Total DNA                              40                       80
+
+
+ 4. Convert each DNA mass to a stock volume: volume (µL) = mass (µg) / concentration (µg/µL).
+     Divide ng/µL by 1,000 before using this equation. Use full plasmid lengths, including backbone,
+     rather than insert or packaged-genome lengths.
+
+
+
+
+
+AA01 | v1.2                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original AA01 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> C. Prepare Lipofectamine 3000 complexes
+
+
+   Component                         One 15 cm dish            Two dishes / one AAV
+
+
+   A: Opti-MEM to add                       1.35 mL                    2.70 mL
+
+
+   A: total DNA                          40 µg                   80 µg
+
+
+   A: P3000                            80 µL                    160 µL
+
+
+   B: Opti-MEM to add                        1.35 mL                    2.70 mL
+
+
+   B: Lipofectamine 3000                   60 µL                    120 µL
+
+
+ Scaling basis: a reference 148 cm² dish gives a factor of 148/55 versus a 55 cm², 10 cm dish. The
+ manufacturer lower DNA and lipid inputs scale to approximately 37.7 µg and 58.4 µL, rounded
+ here to 40 µg and 60 µL; each 0.5 mL Opti-MEM portion scales to 1.35 mL. P3000 is 2 µL per µg
+ DNA. Check the actual dish growth area. [1, 2, 6, 7]
+
+ 5. Prepare tube A with the stated Opti-MEM, all three calculated DNA volumes and P3000. Mix
+      gently. Prepare tube B separately with Opti-MEM and Lipofectamine 3000; mix the diluted lipid
+     with a brief 2-3 s vortex. [1]
+
+ 6. Add A to B, mix gently by pipetting and incubate for 10-15 min at room temperature. Keep
+     preparation and addition times consistent. [1]
+
+ The table specifies Opti-MEM added, not final tube volume. DNA, P3000 and lipid add further
+ volume. For a two-dish mixture, divide the entire combined mixture equally between the two dishes;
+ each half contains one full dish dose. No extra pipetting allowance is included.
+
+ D. Add complexes and replace medium
+
+ 7. Add one dish-equivalent of complexes slowly along the inner wall, distributing additions around
+     the dish without directing a jet onto the monolayer. Immediately mix by gentle
+     forward-backward and left-right movement. Return both dishes to the incubator and record
+     addition as t = 0.
+
+ 8. At 18 h after transfection, gently remove the spent medium and replace it with 20 mL prewarmed
+      fresh complete medium per dish. Add against the wall and retain the attached monolayer. Two
+     dishes require 40 mL fresh medium in total.
+
+ The 18 h exchange and 20 mL replacement volume are the team-specified workflow. They are not
+ requirements of the Lipofectamine instructions. At this reduced culture volume, maintain even
+ coverage and inspect pH, evaporation and cell condition.
+
+ E. Continue culture to the harvest handoff
+
+ 9. Continue incubation at 37°C with 5% CO2 and inspect morphology and medium appearance
+      daily. For MCS-mCherry, document fluorescence if the construct expresses mCherry in 293T
+       cells; fluorescence alone does not establish packaged-vector yield.
+
+
+
+
+
+AA01 | v1.2                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original AA01 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:18.72204%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:43.48775%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:55.60335%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> 10. Proceed to AA02 at 72 h after transfection, equivalent to 54 h after the medium exchange.
+    Keep the two dishes of each preparation identified together and separate from other constructs.
+     Retain culture material until the cell/supernatant collection route in AA02 is defined.
+
+ Timing: count all intervals from complex addition (t = 0). Replace medium at t = 18 h and harvest at
+  t = 72 h, leaving 54 h of culture after the exchange. This is the team-specified schedule.
+
+ p.s.
+
+
+ Equal molar input does not mean equal DNA mass. A larger helper plasmid requires more mass
+ than a shorter transfer plasmid to supply the same number of molecules.
+
+ QP1174 is the catalog number of the pAAV-MCS source backbone, not of the completed ORCA
+ construct. For QP3064, retain the full name pAAV-MCS-mCherry-T2A-Luc, including T2A-Luc, in
+ material and sample records.
+
+ Keep both dishes of one preparation on the same recipe. If comparing reagent doses, identify the
+ conditions separately rather than pooling them as one uniform preparation.
+
+ Use slow wall-directed liquid addition and thorough gentle cross mixing during transfection and
+ medium exchange; 293T monolayers detach easily.
+
+ Expected Outcome
+
+ Obtain two identifiable transfected cultures per AAV preparation, with documented cell condition,
+ DNA inputs, reagent doses and timing. mCherry fluorescence can support expression in producer
+  cells. Packaging success, vector-genome titer and functional transduction require the downstream
+ AA02-AA04 workflow; no yield or efficiency is assumed.
+
+ Troubleshooting
+
+
+   Observed problem         Check first                            Action
+
+
+    Cells detach during              Initial attachment, pipette direction    Add against the wall more slowly; avoid
+   addition or exchange      and liquid flow                           direct jets and vigorous dish movement.
+
+
+   Marked rounding or         Untreated culture, DNA purity and     Check for culture problems first. If toxicity is
+   death after transfection      dose calculations                         treatment-specific, assess a lower lipid dose
+                                                                            at fixed DNA in a separate pilot.
+
+
+  Weak mCherry signal        Transfer identity, promoter,             Verify the expression readout and plasmid
+   with healthy cells            concentration and complex                   first; assess delivery in a separate matched
+                               preparation                                  pilot. Do not infer AAV titer from
+                                                                         fluorescence.
+
+
+    Different appearance        Confluence, equal mixture division     Standardize seeding, mixing and dosing;
+   between the two dishes     and addition timing                   record discordance before pooling.
+
+
+   Rapid medium yellowing     Culture density, contamination,        Check the cause and cell condition promptly.
+   or loss of coverage          evaporation and dish level            Record any necessary departure from the 20
+                                                      mL schedule.
+
+
+
+AA01 | v1.2                                                                             4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original AA01 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="reference" style="top:6.78461%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf" style="left:43.17148%;top:10.98719%;width:8.85807%;height:1.28283%"></a><a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf" style="left:39.34299%;top:14.5506%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.addgene.org/112865/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/112865/" style="left:19.13603%;top:18.11401%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.addgene.org/112867/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/112867/" style="left:19.13603%;top:21.67742%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.addgene.org/protocols/aav-production-hek293-cells/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/protocols/aav-production-hek293-cells/" style="left:54.77801%;top:25.24083%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430599" target="_blank" rel="noopener" aria-label="Original PDF reference: https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430599" style="left:25.96987%;top:28.80425%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430167" target="_blank" rel="noopener" aria-label="Original PDF reference: https://ecatalog.corning.com/life-sciences/b2b/us/en/Surfaces/Advanced-Cell-Culture-Surfaces/Corning%C2%AE-Treated-Culture-Dishes/p/430167" style="left:19.13603%;top:32.36766%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.qiyunbio.com/productinfo/1742283.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.qiyunbio.com/productinfo/1742283.html" style="left:52.07237%;top:35.93107%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.qiyunbio.com/productinfo/2381513.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.qiyunbio.com/productinfo/2381513.html" style="left:52.07237%;top:39.49448%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.qiyunbio.com/productinfo/1186825.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.qiyunbio.com/productinfo/1186825.html" style="left:24.59306%;top:43.05789%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.qiyunbio.com/productinfo/5988947.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.qiyunbio.com/productinfo/5988947.html" style="left:61.12903%;top:46.6213%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Reference
+
+  [1] Thermo Fisher Scientific / Invitrogen. Lipofectamine 3000 Reagent Protocol, MAN0009872 Rev. C.0, 10
+ February 2016, pp. 1-2. Accessed 2026-10-03. Open source
+
+  [2] Thermo Fisher Scientific. Scaling Up or Down Lipofectamine 3000 Reagent Transfections, one-page table;
+  revision not stated. Accessed 2026-10-03. Open source
+
+  [3] Addgene. pAAV2/9n, #112865; Rep2/Cap9 identity reference. Actual project source: Qiyun Bio. Accessed
+ 2026-10-03. Open source
+
+  [4] Addgene. pAdDeltaF6, #112867; helper-gene identity reference. Actual project source: Qiyun Bio. Accessed
+ 2026-10-03. Open source
+
+  [5] Addgene. AAV Production, Transfection section. Used for equal-molar calculation logic, not as an exact
+ Lipofectamine recipe or harvest schedule. Accessed 2026-10-03. Open source
+
+  [6] Corning. 150 mm TC-treated Culture Dish, 430599, Product Information: 148 cm². Reference vessel only.
+ Accessed 2026-10-03. Open source
+
+  [7] Corning. 100 mm TC-treated Culture Dish, 430167, growth area 55 cm². Reference vessel only. Accessed
+ 2026-10-03. Open source
+
+  [8] Qiyunbio, China. pAAV2/9n, catalog no. QP1113. Supplier page archived in the project on 2026-09-17,
+ reviewed 2026-10-03; live web-reader retrieval unavailable. Open source
+
+  [9] Qiyunbio, China. pAdDeltaF6, catalog no. QP1939. Supplier page archived in the project on 2026-09-17,
+ reviewed 2026-10-03; live web-reader retrieval unavailable. Open source
+
+ [10] Qiyunbio, China. pAAV-MCS, catalog no. QP1174. Live product page checked 2026-10-03; archived supplier
+ page also reviewed. Open source
+
+ [11] Qiyunbio, China. pAAV-MCS-mCherry-T2A-Luc, catalog no. QP3064. Supplier page archived in the project on
+ 2026-09-17, reviewed 2026-10-03; live web-reader retrieval unavailable. Open source
+
+
+
+
+
+AA01 | v1.2                                                                             5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

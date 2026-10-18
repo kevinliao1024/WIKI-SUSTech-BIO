@@ -1,0 +1,194 @@
+{
+  "source_sha256": "631d246239b9fa17b76c31e64b0685af1d656f4bd4eeed1bd927d9e8aba3d558",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 7,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "67666e741b16839d1d40e1257edc3ad4bb4ff3c165d7fef099bf48eec51d8bd1",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 44.02226
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "1553eab14952ec6520365e6244f86ef161cb3df768ba5d31aac425bcc4023c98",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 39.15226
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a098afce54529a5cc8916986f30f44e17e3e4683aaa81fb4649ac055efebd70e",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 3,
+          "top": 12.12973
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d292f32c6ce453c5fdaf3e4b619128ae40cb770c132f92738afd25263a86d167",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8d26854ea4839b3e27129705dd488ab37a23952864cc28ff8a935bf1e0e6d2ba",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "880e90cb72dd0833787a625b40d92caf2a4b90ca4fa45d4c3f803fd510aa6374",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 6,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 6,
+          "top": 29.70922
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 6,
+          "top": 44.49738
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "50eb5bf76550c28dc719fd23f81660d70daf6e8fd66698d9aeabcf12d660cbfd",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 7,
+          "top": 6.78461
+        }
+      ],
+      "links": [
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf",
+          "left": 19.13603,
+          "top": 16.03535,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf",
+          "left": 19.13603,
+          "top": 19.59877,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf",
+          "left": 81.54566,
+          "top": 21.67742,
+          "width": 3.92297,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf",
+          "left": 10.07937,
+          "top": 23.16218,
+          "width": 4.46854,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/FD1703/faqs",
+          "left": 53.884,
+          "top": 26.72559,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/",
+          "left": 39.42272,
+          "top": 30.289,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf",
+          "left": 39.11044,
+          "top": 33.85241,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/protocols/sequence-analysis/",
+          "left": 84.28673,
+          "top": 35.93107,
+          "width": 3.92297,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/protocols/sequence-analysis/",
+          "left": 10.07937,
+          "top": 37.41582,
+          "width": 4.46854,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128",
+          "left": 33.84315,
+          "top": 42.46399,
+          "width": 8.85806,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

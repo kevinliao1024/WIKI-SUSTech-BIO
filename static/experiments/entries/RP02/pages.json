@@ -1,0 +1,133 @@
+{
+  "source_sha256": "1a7bd2cc7f3e478de85eda387fe87e563f608b08852ff16a055e7143e98a8f7b",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "fc9bb5def45073f0822b43031b1e8d17888c948e2c30ba982657c6c57ec5d08b",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 39.5086
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f3fe581f02179f6425b340efede6735f57de2300dba76818bbd63b55851bfa8c",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 16.70277
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 51.56481
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7f5d36ff353d2c9f3c99bac253d936c910553ec437bb185ba6e273784305c963",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "de6fe78e2f46ec7a0ea12bc15d1d56e2d1fb22e6d294321fd5a8b5cb0fde4027",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 27.15544
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 56.43481
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 74.90516
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c68c35ef35fbb8a47dbe1a5b8d037366c04f2ac26e8b03750c1867cce3d4cf60",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 48.06079
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/geneart_type_IIs_assembly_kits_man.pdf",
+          "left": 19.13603,
+          "top": 53.74813,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/manuals/geneart_typeIIs_enzyme_mix_pps.pdf",
+          "left": 57.23855,
+          "top": 58.79629,
+          "width": 8.85806,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.idtdna.com/page/support-and-education/decoded-plus/annealing-oligonucleotides/",
+          "left": 33.20753,
+          "top": 70.37738,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/protocols/sequence-analysis/",
+          "left": 38.12122,
+          "top": 75.42555,
+          "width": 8.85806,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

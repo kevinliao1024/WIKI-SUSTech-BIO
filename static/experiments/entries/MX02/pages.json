@@ -1,0 +1,162 @@
+{
+  "source_sha256": "16482f4d4679648366a34f2c7553c748a9ec382f56e735b2adf684e8a07946f3",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 8,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "08e1b81a6977fc708b2d36bacc2c2a2dee1ea8371b404dda380cd059bbfa5964",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 44.02226
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e58f12c88023e064bb2f1d5b75beef372820af2332bfbf076b2421e25fb8bba5",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 21.57277
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "13934dc03ae8dae88ea6fc6283c3acdde4120580f5604b7af9c4d05354df8202",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 3,
+          "top": 43.13141
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "5d48aa19eb88a33b2331d25289c287c1efa780f010d07c278df73f3dac2278c6",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "cdd58a658ee6b9d5d28bfc0dff03a20e7654498faedb18c80c49ea8ffd00d301",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "2f8576d4be4f5c0033b9e7942f7e3fb7bfd4926230fdcd026160763bb5d3445a",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 6,
+          "top": 62.07688
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "688982b2dde2edf709c4728607f84eba6fc615ff0b49239496954e0bbc7215e1",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 7,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 7,
+          "top": 29.76861
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 7,
+          "top": 83.45735
+        }
+      ],
+      "links": [
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf",
+          "left": 25.96987,
+          "top": 87.65993,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf",
+          "left": 45.37142,
+          "top": 91.22334,
+          "width": 8.85807,
+          "height": 1.28283
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "image": "page-008.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "65d6fbf6f549c533018f6ca4c8b37ea513445737173bcc4b6be3fd9d9af972ad",
+      "anchors": [],
+      "links": [
+        {
+          "url": "https://www.genewiz.com.cn/public/resources/sample-submission-guidelines/sanger-sequencing-sample-submission-guidelines/ypzb",
+          "left": 41.89211,
+          "top": 7.8989,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.cwbio.com/archives/id/1773.html",
+          "left": 25.96987,
+          "top": 11.46231,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

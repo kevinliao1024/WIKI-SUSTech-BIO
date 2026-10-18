@@ -2,339 +2,428 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C04 · Cell Seeding &amp; Transfection</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> C04 · <strong>Category:</strong> Cell Biology</p>
-<p>C04 | ver 1.1 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Seed adherent cells at a defined density and deliver plasmid DNA using Lipofectamine 3000 and P3000. Our 293T reference is 300,000 cells per 12-well plate well, usually reaching approximately 70% confluence after 18 h. The plate conversions and reagent recipes below provide starting conditions for systematic setup.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEK293T (293T) cells</td>
-<td>Healthy adherent culture</td>
-<td>Count viable cells after preparation using C01</td>
-</tr>
-<tr>
-<td>Complete growth medium</td>
-<td>Gibco DMEM + Cellmax FBS</td>
-<td>Established 293T formulation in C01; use matching medium for other cell lines</td>
-</tr>
-<tr>
-<td>Lipofectamine 3000 + P3000</td>
-<td>Invitrogen; L3000001 / L3000008 / L3000015 [1]</td>
-<td>Pack sizes: 0.1 / 0.75 / 1.5 mL lipid, respectively; supplied P3000; store at 4°C</td>
-</tr>
-<tr>
-<td>Opti-MEM Reduced Serum Medium</td>
-<td>Gibco</td>
-<td>Use without added serum for complex preparation</td>
-</tr>
-<tr>
-<td>Plasmid DNA</td>
-<td>Sequence-verified preparation</td>
-<td>Measured concentration; purified, low-endotoxin DNA suitable for transfection</td>
-</tr>
-<tr>
-<td>Culture plates; sterile tubes and tips</td>
-<td>Axygen tips; laboratory supplies</td>
-<td>Flat-bottom, tissue-culture-treated plates; pipettes appropriate for calculated volumes</td>
-</tr>
-<tr>
-<td>Cell counter; inverted microscope</td>
-<td>Laboratory equipment</td>
-<td>Viable-cell count, attachment and confluence checks</td>
-</tr>
-<tr>
-<td>Cell culture cabinet; incubator</td>
-<td>Laboratory equipment</td>
-<td>Aseptic work; 37°C and 5% CO2 for routine 293T culture</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Prepare a plate map with plasmid identities, total DNA per well, lipid dose and replicates. Include untransfected cells and an appropriate positive transfection control; include an empty-vector or other matched experimental control when the assay requires it.</p>
-<p>Check healthy growth, morphology and attachment before plating. Record the plate manufacturer and growth area. The 18 h interval and 70% target describe our 293T workflow; other cell lines require separate optimization of seeding number, attachment time, confluence, DNA dose and lipid dose.</p>
-<p>Prewarm the culture medium. Opti-MEM is used to prepare complexes, not to replace all of the growth medium. Keep medium composition consistent across groups. The product permits serum and antibiotics in the receiving culture medium; it does not require an automatic medium change after addition. [1]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-calculate-the-seeding-number">A. Calculate the seeding number</h3>
-<ol>
-<li>Use 300,000 viable 293T cells per well of a 12-well plate as the reference. For another format, calculate cells per well = 300,000 × (target well growth area / reference 12-well growth area).</li>
-</ol>
-<p>The example below uses Corning reference areas: 3.8 cm² for a 12-well well. Replace both areas with the specifications of the plates actually used. These are area-scaled starting cell numbers, not measured outcomes for every format. [3]</p>
-<table>
-<thead>
-<tr>
-<th>Plate</th>
-<th>Area / well<br>(cm²)</th>
-<th>Factor vs.<br>12-well</th>
-<th>293T cells<br>to seed / well</th>
-<th>Medium /<br>well (mL)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6-well</td>
-<td>9.5</td>
-<td>2.50</td>
-<td>750,000</td>
-<td>2.0</td>
-</tr>
-<tr>
-<td>12-well</td>
-<td>3.8</td>
-<td>1.00</td>
-<td>300,000</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>24-well</td>
-<td>1.9</td>
-<td>0.50</td>
-<td>150,000</td>
-<td>0.50</td>
-</tr>
-<tr>
-<td>48-well</td>
-<td>0.95</td>
-<td>0.25</td>
-<td>75,000</td>
-<td>0.25</td>
-</tr>
-<tr>
-<td>96-well</td>
-<td>0.32</td>
-<td>0.084</td>
-<td>Approximately 25,000</td>
-<td>0.10</td>
-</tr>
-</tbody>
-</table>
-<p>Medium volumes are practical starting volumes before adding complexes, taken from the transfection scaling guide. [2] Equal cell numbers per cm² do not guarantee equal confluence after 18 h; inspect each format before transfection.</p>
-<ol start="2">
-<li>Prepare a well-dispersed cell suspension using C01 and determine its viable-cell concentration C (cells/mL). Calculate suspension volume per well = required cells / C. Add medium to reach the selected plating volume; the cell suspension is included in this volume.</li>
-</ol>
-<p>Example: at C = 1,000,000 viable cells/mL, a 12-well well needs 0.30 mL suspension plus 0.70 mL medium for 1.0 mL total. For multiple wells, prepare the required total plus a modest, explicitly calculated pipetting allowance.</p>
-<h3 id="b-seed-and-check-the-culture">B. Seed and check the culture</h3>
-<ol start="3">
-<li>
-<p>Remix the cell suspension gently before dispensing, as cells settle during plating. Seed the calculated number into each well, then distribute cells by gentle forward-backward and left-right movement. Avoid circular swirling that concentrates cells unevenly.</p>
-</li>
-<li>
-<p>Incubate 293T cells at 37°C with 5% CO2 for approximately 18 h. Inspect several fields per well: cells should be attached, evenly distributed and approximately 70% confluent in our routine setup. Use actual cell condition to decide readiness; do not transfect solely because 18 h has elapsed.</p>
-</li>
-</ol>
-<p>For other cell lines, establish a small seeding-density pilot at the intended transfection time and select a density from observed attachment and confluence. The general manufacturer target is 70-90% at transfection. [1] Do not assume the 293T cell number or timing transfers directly.</p>
-<h3 id="c-calculate-dna-opti-mem-p3000-and-lipid">C. Calculate DNA, Opti-MEM, P3000 and lipid</h3>
-<ol start="5">
-<li>Set the total plasmid DNA mass D per well. For co-transfection, D is the sum of all plasmids. Calculate each plasmid volume as mass (µg) / stock concentration (µg/µL); if concentration is reported in ng/µL, divide it by 1,000 first. Keep total DNA comparable between experimental groups. [4]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Quantity</th>
-<th>Calculation / selection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Each plasmid stock volume</td>
-<td>Vᵢ (µL) = mᵢ (µg) / cᵢ (µg/µL); total DNA volume = sum of Vᵢ</td>
-</tr>
-<tr>
-<td>P3000 volume</td>
-<td>2 × D µL, where D is the numerical DNA mass in µg [1]</td>
-</tr>
-<tr>
-<td>Lipofectamine 3000 volume</td>
-<td>At the table DNA doses: 1.5 × D or 3 × D µL. Test the two doses in separate wells for a new setup. [1, 2]</td>
-</tr>
-<tr>
-<td>Opti-MEM volume</td>
-<td>Use the format-specific A and B volumes below. In this table, each equals 50 × D µL. This is a recipe relationship at the listed DNA doses, not a rule for unlimited DNA escalation. [2]</td>
-</tr>
-</tbody>
-</table>
-<p>Use the following manufacturer starting recipes for one well. A is the DNA + P3000 solution; B is the lipid solution. Each row contains two alternative lipid doses, not two additions to the same well. [2]</p>
-<table>
-<thead>
-<tr>
-<th>Plate</th>
-<th>Total DNA<br>(µg)</th>
-<th>Opti-MEM<br>A + B (µL)</th>
-<th>P3000<br>(µL)</th>
-<th>Lipo 3000<br>low / high (µL)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6-well</td>
-<td>2.5</td>
-<td>125 + 125</td>
-<td>5</td>
-<td>3.75 / 7.5</td>
-</tr>
-<tr>
-<td>12-well</td>
-<td>1</td>
-<td>50 + 50</td>
-<td>2</td>
-<td>1.5 / 3</td>
-</tr>
-<tr>
-<td>24-well</td>
-<td>0.5</td>
-<td>25 + 25</td>
-<td>1</td>
-<td>0.75 / 1.5</td>
-</tr>
-<tr>
-<td>48-well</td>
-<td>0.25</td>
-<td>12.5 + 12.5</td>
-<td>0.5</td>
-<td>0.375 / 0.75</td>
-</tr>
-<tr>
-<td>96-well</td>
-<td>0.1</td>
-<td>5 + 5</td>
-<td>0.2</td>
-<td>0.15 / 0.3</td>
-</tr>
-</tbody>
-</table>
-<p>The 48-well low dose is calculated as 0.375 µL (rounded to 0.37 µL in [2]). The 96-well recipe follows the published reagent table, while its seeding count follows exact area scaling; these two factors should not be conflated.</p>
-<ol start="6">
-<li>Calculate master mixes separately for each DNA composition and lipid dose. For n identical wells and an allowance f, multiply each component by n × (1 + f), then dispense one-well equivalents. A 10% allowance means f = 0.10; it increases preparation volume, not the dose per well. For submicrolitre components, use enough identical reactions to bring transfers within the pipette's reliable range.</li>
-</ol>
-<h3 id="d-prepare-a-and-b-separately-then-combine">D. Prepare A and B separately, then combine</h3>
-<ol start="7">
-<li>
-<p>Prepare solution A by adding the required plasmid stock(s) to the stated Opti-MEM volume, then adding P3000. Mix gently by pipetting. Prepare one DNA composition per tube or master mix. [1]</p>
-</li>
-<li>
-<p>Prepare solution B in a separate tube: add the selected Lipofectamine 3000 dose to its stated Opti-MEM volume and mix. A brief 2-3 s vortex is specified for diluted lipid. [1] Do not add concentrated lipid directly to concentrated DNA.</p>
-</li>
-<li>
-<p>Add solution A to solution B and gently pipette to mix without frothing. Combine the complete per-well quantities; incubate for 10-15 min at room temperature, then add to cells. [1] Keep this interval consistent across conditions.</p>
-</li>
-</ol>
-<p>Volume convention: the table lists Opti-MEM to ADD to each tube. DNA, P3000 and lipid contribute additional volume. Equal Opti-MEM portions therefore do not produce exactly equal final A/B volumes. Transfer the whole prepared per-well mixture, rather than removing a nominal 100 µL and leaving part of a 12-well dose behind.</p>
-<h3 id="worked-example-one-12-well-well">Worked example: one 12-well well</h3>
-<table>
-<thead>
-<tr>
-<th>Tube / component</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Total DNA selected for this example</td>
-<td>1 µg from a 0.5 µg/µL stock = 2 µL DNA</td>
-</tr>
-<tr>
-<td>A: Opti-MEM + DNA + P3000</td>
-<td>50 + 2 + 2 µL = 54 µL</td>
-</tr>
-<tr>
-<td>B, low dose: Opti-MEM + lipid</td>
-<td>50 + 1.5 µL = 51.5 µL</td>
-</tr>
-<tr>
-<td>B, high dose: Opti-MEM + lipid</td>
-<td>50 + 3 µL = 53 µL</td>
-</tr>
-<tr>
-<td>Combined mixture for one well</td>
-<td>105.5 µL (low) OR 107 µL (high)</td>
-</tr>
-<tr>
-<td>Receiving growth medium</td>
-<td>1.0 mL already in the well; final volume is approximately 1.106 or 1.107 mL</td>
-</tr>
-</tbody>
-</table>
-<p>To compare both doses, use two separate wells, each receiving its own full 1 µg DNA dose. The example stock concentration is illustrative; recalculate DNA volume from the measured concentration. A two-plasmid mass ratio of 1:1 would allocate 0.5 µg to each, not 1 µg to each.</p>
-<h3 id="e-add-along-the-wall-and-mix-the-plate">E. Add along the wall and mix the plate</h3>
-<ol start="10">
-<li>
-<p>Slowly add the prepared complexes dropwise along the inner wall of each well, allowing the liquid to enter the culture medium gently. Distribute additions along the accessible wall rather than delivering one forceful bolus. Keep the tip away from the cell layer; do not jet liquid onto the monolayer.</p>
-</li>
-<li>
-<p>Immediately after addition, thoroughly but gently mix the plate in a cross pattern: move it forward and backward, then left and right, repeating until the liquid is evenly distributed. Keep the plate level enough to prevent spills. Do not substitute a single circular swirl, vigorous shaking or pipetting over the attached cells.</p>
-</li>
-<li>
-<p>Return the plate to the incubator. Record addition time, actual confluence, DNA mass, stock volumes, reagent doses and any detachment. Inspect morphology the next day and use the time point defined by the downstream assay for the readout. Assess transfection together with cell health.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>The 300,000-cell reference means cells seeded, not an inferred cell count at 70% confluence. Record the observed confluence after 18 h; do not calculate a doubling time from this single reference.</p>
-<p>Label tubes by contents: A = DNA + P3000; B = Lipofectamine 3000. The letters alone are not sufficient because other protocols may use the opposite convention.</p>
-<p>Do not double the DNA dose when reading the manufacturer's two-condition optimization scheme. Each test well receives the same DNA mass and one selected lipid dose.</p>
-<p>Keep the interval between mixing A/B and adding to cells consistent. Prepare manageable batches so later wells do not wait much longer than earlier wells.</p>
-<p>Slow wall-directed addition protects the monolayer, but still requires immediate, thorough cross mixing to distribute the complexes throughout the medium.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>In the routine 12-well 293T setup, expect approximately 70% confluence after 18 h, with attached cells distributed across the well. Area-scaled formats require visual confirmation. Successful delivery should produce the intended assay signal relative to controls while retaining acceptable cell morphology and survival; no fixed transfection-efficiency threshold is assumed.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Suggested action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Too sparse or crowded at 18 h</td>
-<td>Viable-cell count, area conversion, attachment and growth state</td>
-<td>Adjust the next seeding number from observed confluence. Let sparse, healthy cultures reach the intended state; reseed crowded cultures when needed. Optimize other cell lines separately.</td>
-</tr>
-<tr>
-<td>Cells accumulate in patches</td>
-<td>Clumps, settling during dispensing and plate movement</td>
-<td>Remix the suspension between aliquots and use gentle cross movement after plating. Avoid circular swirling.</td>
-</tr>
-<tr>
-<td>Cells detach during addition</td>
-<td>Fast delivery, tip position and attachment before dosing</td>
-<td>Slow the addition along the wall and keep the tip away from the monolayer. Use thorough but gentle cross mixing.</td>
-</tr>
-<tr>
-<td>Low signal despite healthy cells</td>
-<td>Positive control, DNA identity/concentration, A/B recipe and readout timing</td>
-<td>Verify the delivered DNA dose and assay first. Compare the two lipid doses at fixed DNA mass; change one variable at a time. [4]</td>
-</tr>
-<tr>
-<td>Rounding or death after transfection</td>
-<td>Untreated controls, DNA quality and lipid/DNA dose</td>
-<td>If controls remain healthy, evaluate a lower lipid dose and, separately, lower DNA input. Assess recovery after a gentle medium replacement when needed. [4]</td>
-</tr>
-<tr>
-<td>Large well-to-well differences</td>
-<td>Small-volume accuracy, mixing and complex incubation order</td>
-<td>Prepare appropriate master mixes, retain one-well aliquot size and standardize addition timing and cross mixing.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Thermo Fisher Scientific / Invitrogen. Lipofectamine 3000 Reagent Protocol. MAN0009872, Rev. C.0, 10 February 2016, pp. 1-2. Product handling and complex preparation. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf">Open source</a></p>
-<p>[2] Thermo Fisher Scientific / Invitrogen. Scaling Up or Down Lipofectamine 3000 Reagent Transfections. One-page scaling table; revision not stated. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf">Open source</a></p>
-<p>[3] Corning. Cell Culture Product Selection Guide, CLS-CC-010, pp. 11-12: growth areas of multiwell plates and flat-bottom 96-well microplates. Areas used as calculation examples, not confirmation of laboratory plate brand. Accessed 2026-10-03. <a href="https://www.corning.com/catalog/cls/documents/selection-guides/CLS-CC-010.pdf">Open source</a></p>
-<p>[4] Thermo Fisher Scientific. Lipofectamine 3000 Transfection Reagent FAQs, product family L3000008: co-transfection, DNA quality, optimization and cytotoxicity. Accessed 2026-10-03. <a href="https://www.thermofisher.com/order/catalog/product/L3000008/faqs">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original C04 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:29.70922%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:75.32089%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p> Cell Seeding &amp; Transfection
+
+ C04 | ver 1.1 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Seed adherent cells at a defined density and deliver plasmid DNA using Lipofectamine 3000 and
+ P3000. Our 293T reference is 300,000 cells per 12-well plate well, usually reaching approximately
+ 70% confluence after 18 h. The plate conversions and reagent recipes below provide starting
+ conditions for systematic setup.
+
+ Materials &amp; Equipment
+
+
+   Item                              Supplier / identifier          Use / specification
+
+
+   HEK293T (293T) cells            Healthy adherent culture       Count viable cells after preparation using C01
+
+
+   Complete growth medium        Gibco DMEM + Cellmax        Established 293T formulation in C01; use
+                               FBS                          matching medium for other cell lines
+
+
+   Lipofectamine 3000 + P3000      Invitrogen; L3000001 /        Pack sizes: 0.1 / 0.75 / 1.5 mL lipid,
+                             L3000008 / L3000015 [1]      respectively; supplied P3000; store at 4°C
+
+
+   Opti-MEM Reduced Serum       Gibco                     Use without added serum for complex
+   Medium                                                       preparation
+
+
+   Plasmid DNA                     Sequence-verified            Measured concentration; purified,
+                                    preparation                   low-endotoxin DNA suitable for transfection
+
+
+   Culture plates; sterile tubes and   Axygen tips; laboratory         Flat-bottom, tissue-culture-treated plates;
+    tips                                supplies                         pipettes appropriate for calculated volumes
+
+
+    Cell counter; inverted             Laboratory equipment           Viable-cell count, attachment and confluence
+   microscope                                                    checks
+
+
+    Cell culture cabinet; incubator     Laboratory equipment          Aseptic work; 37°C and 5% CO2 for routine
+                                                       293T culture
+
+
+ Before You Start
+
+ Prepare a plate map with plasmid identities, total DNA per well, lipid dose and replicates. Include
+ untransfected cells and an appropriate positive transfection control; include an empty-vector or
+ other matched experimental control when the assay requires it.
+
+ Check healthy growth, morphology and attachment before plating. Record the plate manufacturer
+ and growth area. The 18 h interval and 70% target describe our 293T workflow; other cell lines
+ require separate optimization of seeding number, attachment time, confluence, DNA dose and lipid
+ dose.
+
+
+
+C04 | v1.1                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original C04 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:15.81192%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Prewarm the culture medium. Opti-MEM is used to prepare complexes, not to replace all of the
+ growth medium. Keep medium composition consistent across groups. The product permits serum and
+ antibiotics in the receiving culture medium; it does not require an automatic medium change after
+ addition. [1]
+
+ Procedure
+
+ A. Calculate the seeding number
+
+ 1. Use 300,000 viable 293T cells per well of a 12-well plate as the reference. For another format,
+      calculate cells per well = 300,000 × (target well growth area / reference 12-well growth area).
+
+ The example below uses Corning reference areas: 3.8 cm² for a 12-well well. Replace both areas
+ with the specifications of the plates actually used. These are area-scaled starting cell numbers, not
+ measured outcomes for every format. [3]
+
+
+    Plate          Area / well         Factor vs.          293T cells                  Medium /
+                    (cm²)               12-well                to seed / well                     well (mL)
+
+
+    6-well          9.5               2.50              750,000                       2.0
+
+
+   12-well         3.8               1.00              300,000                       1.0
+
+
+   24-well         1.9               0.50              150,000                      0.50
+
+
+   48-well         0.95              0.25              75,000                       0.25
+
+
+   96-well         0.32             0.084              Approximately 25,000          0.10
+
+
+ Medium volumes are practical starting volumes before adding complexes, taken from the
+ transfection scaling guide. [2] Equal cell numbers per cm² do not guarantee equal confluence after
+ 18 h; inspect each format before transfection.
+
+ 2. Prepare a well-dispersed cell suspension using C01 and determine its viable-cell concentration C
+      (cells/mL). Calculate suspension volume per well = required cells / C. Add medium to reach the
+     selected plating volume; the cell suspension is included in this volume.
+
+ Example: at C = 1,000,000 viable cells/mL, a 12-well well needs 0.30 mL suspension plus 0.70 mL
+ medium for 1.0 mL total. For multiple wells, prepare the required total plus a modest, explicitly
+ calculated pipetting allowance.
+
+ B. Seed and check the culture
+
+ 3. Remix the cell suspension gently before dispensing, as cells settle during plating. Seed the
+     calculated number into each well, then distribute cells by gentle forward-backward and left-right
+     movement. Avoid circular swirling that concentrates cells unevenly.
+
+ 4. Incubate 293T cells at 37°C with 5% CO2 for approximately 18 h. Inspect several fields per
+      well: cells should be attached, evenly distributed and approximately 70% confluent in our
+      routine setup. Use actual cell condition to decide readiness; do not transfect solely because 18
+     h has elapsed.
+
+
+
+
+C04 | v1.1                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original C04 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> For other cell lines, establish a small seeding-density pilot at the intended transfection time and select
+ a density from observed attachment and confluence. The general manufacturer target is 70-90% at
+ transfection. [1] Do not assume the 293T cell number or timing transfers directly.
+
+ C. Calculate DNA, Opti-MEM, P3000 and lipid
+
+ 5. Set the total plasmid DNA mass D per well. For co-transfection, D is the sum of all plasmids.
+     Calculate each plasmid volume as mass (µg) / stock concentration (µg/µL); if concentration is
+     reported in ng/µL, divide it by 1,000 first. Keep total DNA comparable between experimental
+     groups. [4]
+
+
+   Quantity                       Calculation / selection
+
+
+   Each plasmid stock volume      Vᵢ (µL) = mᵢ (µg) / cᵢ (µg/µL); total DNA volume = sum of Vᵢ
+
+
+   P3000 volume             2 × D µL, where D is the numerical DNA mass in µg [1]
+
+
+   Lipofectamine 3000 volume    At the table DNA doses: 1.5 × D or 3 × D µL. Test the two doses in separate wells
+                                      for a new setup. [1, 2]
+
+
+   Opti-MEM volume           Use the format-specific A and B volumes below. In this table, each equals 50 × D
+                                     µL. This is a recipe relationship at the listed DNA doses, not a rule for unlimited
+                     DNA escalation. [2]
+
+
+ Use the following manufacturer starting recipes for one well. A is the DNA + P3000 solution; B is the
+ lipid solution. Each row contains two alternative lipid doses, not two additions to the same well. [2]
+
+
+    Plate            Total DNA       Opti-MEM              P3000           Lipo 3000
+                   (µg)         A + B (µL)                    (µL)            low / high (µL)
+
+
+    6-well         2.5            125 + 125              5              3.75 / 7.5
+
+
+   12-well       1             50 + 50                2               1.5 / 3
+
+
+   24-well        0.5            25 + 25                1              0.75 / 1.5
+
+
+   48-well        0.25            12.5 + 12.5               0.5            0.375 / 0.75
+
+
+   96-well        0.1            5 + 5                     0.2             0.15 / 0.3
+
+
+ The 48-well low dose is calculated as 0.375 µL (rounded to 0.37 µL in [2]). The 96-well recipe
+ follows the published reagent table, while its seeding count follows exact area scaling; these two
+ factors should not be conflated.
+
+ 6. Calculate master mixes separately for each DNA composition and lipid dose. For n identical wells
+    and an allowance f, multiply each component by n × (1 + f), then dispense one-well
+      equivalents. A 10% allowance means f = 0.10; it increases preparation volume, not the dose
+     per well. For submicrolitre components, use enough identical reactions to bring transfers within
+     the pipette&#39;s reliable range.
+
+
+
+
+
+C04 | v1.1                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original C04 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> D. Prepare A and B separately, then combine
+
+ 7. Prepare solution A by adding the required plasmid stock(s) to the stated Opti-MEM volume, then
+     adding P3000. Mix gently by pipetting. Prepare one DNA composition per tube or master mix.
+      [1]
+
+ 8. Prepare solution B in a separate tube: add the selected Lipofectamine 3000 dose to its stated
+    Opti-MEM volume and mix. A brief 2-3 s vortex is specified for diluted lipid. [1] Do not add
+     concentrated lipid directly to concentrated DNA.
+
+ 9. Add solution A to solution B and gently pipette to mix without frothing. Combine the complete
+      per-well quantities; incubate for 10-15 min at room temperature, then add to cells. [1] Keep this
+      interval consistent across conditions.
+
+ Volume convention: the table lists Opti-MEM to ADD to each tube. DNA, P3000 and lipid contribute
+ additional volume. Equal Opti-MEM portions therefore do not produce exactly equal final A/B
+ volumes. Transfer the whole prepared per-well mixture, rather than removing a nominal 100 µL and
+ leaving part of a 12-well dose behind.
+
+ Worked example: one 12-well well
+
+
+   Tube / component                       Amount
+
+
+    Total DNA selected for this example         1 µg from a 0.5 µg/µL stock = 2 µL DNA
+
+
+   A: Opti-MEM + DNA + P3000             50 + 2 + 2 µL = 54 µL
+
+
+   B, low dose: Opti-MEM + lipid             50 + 1.5 µL = 51.5 µL
+
+
+   B, high dose: Opti-MEM + lipid            50 + 3 µL = 53 µL
+
+
+   Combined mixture for one well              105.5 µL (low) OR 107 µL (high)
+
+
+   Receiving growth medium                   1.0 mL already in the well; final volume is approximately 1.106 or
+                                          1.107 mL
+
+
+ To compare both doses, use two separate wells, each receiving its own full 1 µg DNA dose. The
+ example stock concentration is illustrative; recalculate DNA volume from the measured
+ concentration. A two-plasmid mass ratio of 1:1 would allocate 0.5 µg to each, not 1 µg to each.
+
+
+
+
+
+C04 | v1.1                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original C04 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:35.17312%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:64.45249%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> E. Add along the wall and mix the plate
+
+ 10. Slowly add the prepared complexes dropwise along the inner wall of each well, allowing the
+      liquid to enter the culture medium gently. Distribute additions along the accessible wall rather
+     than delivering one forceful bolus. Keep the tip away from the cell layer; do not jet liquid onto
+     the monolayer.
+
+ 11. Immediately after addition, thoroughly but gently mix the plate in a cross pattern: move it
+     forward and backward, then left and right, repeating until the liquid is evenly distributed. Keep
+     the plate level enough to prevent spills. Do not substitute a single circular swirl, vigorous
+     shaking or pipetting over the attached cells.
+
+ 12. Return the plate to the incubator. Record addition time, actual confluence, DNA mass, stock
+     volumes, reagent doses and any detachment. Inspect morphology the next day and use the time
+     point defined by the downstream assay for the readout. Assess transfection together with cell
+      health.
+
+ p.s.
+
+
+ The 300,000-cell reference means cells seeded, not an inferred cell count at 70% confluence.
+ Record the observed confluence after 18 h; do not calculate a doubling time from this single
+ reference.
+
+ Label tubes by contents: A = DNA + P3000; B = Lipofectamine 3000. The letters alone are not
+ sufficient because other protocols may use the opposite convention.
+
+ Do not double the DNA dose when reading the manufacturer&#39;s two-condition optimization scheme.
+ Each test well receives the same DNA mass and one selected lipid dose.
+
+ Keep the interval between mixing A/B and adding to cells consistent. Prepare manageable batches
+ so later wells do not wait much longer than earlier wells.
+
+ Slow wall-directed addition protects the monolayer, but still requires immediate, thorough cross
+ mixing to distribute the complexes throughout the medium.
+
+ Expected Outcome
+
+ In the routine 12-well 293T setup, expect approximately 70% confluence after 18 h, with attached
+ cells distributed across the well. Area-scaled formats require visual confirmation. Successful delivery
+ should produce the intended assay signal relative to controls while retaining acceptable cell
+ morphology and survival; no fixed transfection-efficiency threshold is assumed.
+
+
+
+
+
+C04 | v1.1                                                                              5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original C04 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:56.01908%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf" style="left:73.63622%;top:60.22166%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf" style="left:48.90977%;top:63.78507%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.corning.com/catalog/cls/documents/selection-guides/CLS-CC-010.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.corning.com/catalog/cls/documents/selection-guides/CLS-CC-010.pdf" style="left:25.96987%;top:68.83324%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/order/catalog/product/L3000008/faqs" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/order/catalog/product/L3000008/faqs" style="left:66.9227%;top:72.39665%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> Troubleshooting
+
+
+   Observed problem         Check first                      Suggested action
+
+
+   Too sparse or crowded       Viable-cell count, area             Adjust the next seeding number from observed
+    at 18 h                      conversion, attachment and        confluence. Let sparse, healthy cultures reach the
+                            growth state                      intended state; reseed crowded cultures when
+                                                           needed. Optimize other cell lines separately.
+
+
+    Cells accumulate in         Clumps, settling during           Remix the suspension between aliquots and use
+   patches                     dispensing and plate movement     gentle cross movement after plating. Avoid
+                                                                           circular swirling.
+
+
+    Cells detach during          Fast delivery, tip position and      Slow the addition along the wall and keep the tip
+   addition                    attachment before dosing        away from the monolayer. Use thorough but
+                                                                    gentle cross mixing.
+
+
+   Low signal despite            Positive control, DNA               Verify the delivered DNA dose and assay first.
+   healthy cells                  identity/concentration, A/B       Compare the two lipid doses at fixed DNA mass;
+                                recipe and readout timing        change one variable at a time. [4]
+
+
+   Rounding or death after     Untreated controls, DNA quality      If controls remain healthy, evaluate a lower lipid
+    transfection              and lipid/DNA dose             dose and, separately, lower DNA input. Assess
+                                                               recovery after a gentle medium replacement
+                                                    when needed. [4]
+
+
+   Large well-to-well           Small-volume accuracy, mixing     Prepare appropriate master mixes, retain
+   differences               and complex incubation order      one-well aliquot size and standardize addition
+                                                                     timing and cross mixing.
+
+
+ Reference
+
+  [1] Thermo Fisher Scientific / Invitrogen. Lipofectamine 3000 Reagent Protocol. MAN0009872, Rev. C.0, 10
+ February 2016, pp. 1-2. Product handling and complex preparation. Accessed 2026-10-03. Open source
+
+  [2] Thermo Fisher Scientific / Invitrogen. Scaling Up or Down Lipofectamine 3000 Reagent Transfections. One-page
+ scaling table; revision not stated. Accessed 2026-10-03. Open source
+
+  [3] Corning. Cell Culture Product Selection Guide, CLS-CC-010, pp. 11-12: growth areas of multiwell plates and
+  flat-bottom 96-well microplates. Areas used as calculation examples, not confirmation of laboratory plate brand.
+ Accessed 2026-10-03. Open source
+
+  [4] Thermo Fisher Scientific. Lipofectamine 3000 Transfection Reagent FAQs, product family L3000008:
+  co-transfection, DNA quality, optimization and cytotoxicity. Accessed 2026-10-03. Open source
+
+
+
+
+
+C04 | v1.1                                                                              6</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

@@ -1,0 +1,177 @@
+{
+  "source_sha256": "8489f72ce10f5249a20ce385e48c20afb412beeb0d4fa65c7a5f23cbc89cd641",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 6,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e2bcfd7781211eb1ae7cff371b7f92cd5aeff843992a322be493e46d57991708",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 29.70922
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "14cf835f849169be9a11ef22c9187ccccd744438636358cd1872265b8657a435",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 24.24533
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c2c52e015da2fa74c04f3e87f4955954c0d84a1920ce22de5986fd813c4c1ea7",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "aae83b35af5a567811d745c10e0300757fde1cf44d8fb244437e9ddf425f6241",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 25.49252
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 43.90348
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 52.33689
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "6fd3273fbc7175eec57bcc9c4cdb80a09a31e6a3106924b70b94541b1eb859fc",
+      "anchors": [
+        {
+          "id": "pcr-optimization",
+          "title": "PCR Optimization",
+          "page": 5,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "be37dea724a663e61c9f06435cadb19d95eeddf3664eca87d29818759612372b",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 6,
+          "top": 6.78461
+        }
+      ],
+      "links": [
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf",
+          "left": 31.84475,
+          "top": 10.98719,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf",
+          "left": 19.13603,
+          "top": 14.5506,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://help.takarabio.com/36168/kb/article/110025/when-optimizing-pcr-conditions-which-conditions-are-particularly-important",
+          "left": 48.43066,
+          "top": 18.11401,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting",
+          "left": 83.1683,
+          "top": 21.67742,
+          "width": 3.92297,
+          "height": 1.28283
+        },
+        {
+          "url": "https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting",
+          "left": 10.07937,
+          "top": 23.16218,
+          "width": 4.46854,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.neb.com/en/products/r0176-dpni",
+          "left": 19.13603,
+          "top": 26.72559,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.gene-quantification.de/citri-et-al-single-neuronal-cells-2012.pdf",
+          "left": 58.98298,
+          "top": 31.77376,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_07512.pdf",
+          "left": 53.13764,
+          "top": 36.82192,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

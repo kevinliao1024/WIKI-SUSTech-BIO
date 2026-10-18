@@ -1,5 +1,6 @@
 """Check source PDF integrity, static links and Wet Lab integration."""
 import hashlib
+import json
 from pathlib import Path
 import unittest
 from html.parser import HTMLParser
@@ -64,9 +65,22 @@ class ExperimentsTest(unittest.TestCase):
                 parser.feed(reader)
                 with self.subTest(entry=record['id']):
                     self.assertEqual(len(parser.ids), len(set(parser.ids)))
-                    self.assertIn('experiment-information', parser.ids)
+                    self.assertIn('entry-content', parser.ids)
+                    self.assertNotIn('<table', reader)
+                    self.assertNotIn('<iframe', reader)
+                    self.assertNotIn('<embed', reader)
+                    self.assertNotIn('reader-layout', reader)
                     self.assertIn('procedure', parser.ids)
                     self.assertNotIn('/Users/', reader)
+                    manifest = json.loads(path.with_name('pages.json').read_text())
+                    self.assertEqual(manifest['source_sha256'], record['sha256'])
+                    self.assertEqual(manifest['page_count'], record['page_count'])
+                    self.assertEqual(len(parser.images), record['page_count'])
+                    for number, preview in enumerate(manifest['pages'], 1):
+                        self.assertEqual(preview['number'], number)
+                        self.assertEqual(preview['width'], 1800)
+                        self.assertGreater(preview['height'], 0)
+                        self.assertEqual(hashlib.sha256((path.parent / preview['image']).read_bytes()).hexdigest(), preview['sha256'])
                     for link in parser.links:
                         if link.startswith('#'): self.assertIn(link[1:], parser.ids)
                     for asset in parser.images + parser.styles:
@@ -74,12 +88,18 @@ class ExperimentsTest(unittest.TestCase):
                         self.assertTrue((path.parent / asset).is_file(), asset)
         with app.test_client() as client:
             html = client.get('/experiments').get_data(as_text=True)
-            for removed in ('How to Use / Read', 'WET LAB / EXPERIMENT LIBRARY',
+            for removed in ('WET LAB / EXPERIMENT LIBRARY',
                             'BROWSE BY METHOD', 'Follow the research timeline',
                             'One connected research journey.', 'Methods to build on.',
                             'class="exp-family"', 'class="exp-group-count"'):
                 self.assertNotIn(removed, html)
             from html import escape
+            self.assertIn('<details class="exp-guide" id="how-to-read">', html)
+            self.assertLess(html.index('id="how-to-read"'), html.index('id="experiment-workspace"'))
+            self.assertEqual(html.count('class="exp-step-number"'), 13)
+            for item in guide['find_steps'] + guide['read_modules']:
+                self.assertIn(escape(item['text'], quote=False), html)
+            self.assertIn(guide['clarification_lead'], html)
             for group in content.metadata['protocol_groups']:
                 self.assertIn(escape(group['title']), html)
             self.assertIn('data-category-indicator', html)

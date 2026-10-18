@@ -1,0 +1,93 @@
+{
+  "source_sha256": "b01badc53e7bdb0dc4524f505c958b03dccc2d34febb12d8c721baf51ef3e37d",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 3,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "2fe3560f529226222a50339811adc5f351b57025e156d186c2e4f6f2e8921cd0",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 26.02703
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 56.43481
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e22df744910d8204c586ca4269e50428a08578a55d3f5467b85d31413b9cfa99",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "226de210b6ec9682ea51410de2bf5ee7c9d939c4a70286bd64ab3ca149dfff26",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 32.38178
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 3,
+          "top": 44.49738
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 3,
+          "top": 76.56809
+        }
+      ],
+      "links": [
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf",
+          "left": 41.14059,
+          "top": 80.77067,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

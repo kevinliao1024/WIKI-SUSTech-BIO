@@ -1,0 +1,131 @@
+{
+  "source_sha256": "6e8f5c7d6fc7692ac4168909f5b9a37ac0a54b5ebdb92450a30f13688b78ae90",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f3facc0b74da6fec463ce2148ee97a7dc1a131affc5c29ca97b5cfd3abe1333c",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 31.55032
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 77.16199
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ba123ea2279e819bd4e2a9be43a1f38fb7166d5c14f609609982e3aa36525cc2",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 13.97082
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "78dd7cb7e00f417836d299d53730e10ea1d47d3ef1d78fd008d563c9da0d648b",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 13.97082
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 38.73653
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "401f31f19ffbd3e02098e82679765b7869ff6fd97611c8adee9b27897aa3d891",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 57.50383
+        }
+      ],
+      "links": [
+        {
+          "url": "https://web.genewiz.com/hubfs/2017-07%20GEN%20Sanger%20-%20Sanger%20Quick%20Tips/11024-M%26G-6%200322%20Sanger%20QuickTips%20Full%20Series.pdf",
+          "left": 25.96987,
+          "top": 61.70642,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.addgene.org/protocols/sequence-analysis/",
+          "left": 25.96987,
+          "top": 65.26983,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.addgene.org/protocols/inoculate-bacterial-culture/",
+          "left": 25.96987,
+          "top": 68.83324,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://blog.addgene.org/optimizing-plasmids-101-plasmid-yields",
+          "left": 25.96987,
+          "top": 72.39665,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://clims4.genewiz.com/Common/TroubleShooting/en-US/Non-specific.pdf",
+          "left": 33.40167,
+          "top": 75.96006,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

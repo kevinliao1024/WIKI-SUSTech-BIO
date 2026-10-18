@@ -2,281 +2,368 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M04 · Homologous Recombination</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M04 · <strong>Category:</strong> Molecular Biology</p>
-<p>M04 | ver 1.2 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Assemble DNA with matching terminal overlaps using Vazyme ClonExpress Ultra One Step Cloning Kit V3 (C117). Use the rapid route for gel-purified PCR product or the calculated route for multiple fragments, followed by transformation and sequence verification.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Manufacturer</th>
-<th>Identifier / specification</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ClonExpress Ultra One Step Cloning Kit V3</td>
-<td>Vazyme</td>
-<td>C117</td>
-<td>2× CE Mix V3; enzyme and buffer premix [1]</td>
-</tr>
-<tr>
-<td>Gel-purified PCR product; backbone and inserts for multi-fragment assembly</td>
-<td>Prepared sample</td>
-<td>M01 / M02 / M03</td>
-<td>Correct terminal overlaps; length and concentration known for calculated assembly</td>
-</tr>
-<tr>
-<td>DEPC-treated water</td>
-<td>Sangon Biotech</td>
-<td>B501005</td>
-<td>Dilution and volume adjustment [3]</td>
-</tr>
-<tr>
-<td>Crushed ice</td>
-<td>Laboratory ice maker</td>
-<td>Crushed ice bath</td>
-<td>Reagent cooling</td>
-</tr>
-<tr>
-<td>DNA quantification instrument</td>
-<td>As available</td>
-<td>DNA fluorometer / UV absorbance</td>
-<td>Measure each DNA stock separately</td>
-</tr>
-<tr>
-<td>PCR tubes, pipettes, filter tips; mini centrifuge</td>
-<td>Axygen tips; Eppendorf centrifuge; laboratory equipment</td>
-<td>Compatible sizes</td>
-<td>Accurate reaction setup</td>
-</tr>
-<tr>
-<td>Thermocycler</td>
-<td>Same laboratory thermal cycler as M01</td>
-<td>50°C incubation; 4°C hold</td>
-<td>Controlled recombination incubation</td>
-</tr>
-<tr>
-<td>Cloning competent cells and selection plates</td>
-<td>As available</td>
-<td>M05</td>
-<td>Downstream transformation; antibiotic matched to the backbone</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<h3 id="design-the-homology-arm-primers">Design the homology-arm primers</h3>
-<p>Write the desired circular construct in its final order before ordering primers. For the rapid single-fragment route, the recovered PCR product must contain the sequences and terminal overlaps required to form the intended construct. For one-insert cloning, check both backbone-insert junctions; for several inserts, check every internal junction and both backbone junctions.</p>
-<p>Use a 15-20 bp terminal overlap at each junction, preferably with 40-60% GC. A primer is written 5'-homology arm + optional retained restriction site + template-specific annealing sequence-3'. Do not count optional restriction-site or residual bases toward the recommended arm length. Calculate PCR-primer Tm from the template-specific part only; 60-65°C is a useful design target, with the PCR program selected for the polymerase in M01. [1]</p>
-<p>For the forward primer, take the overlap from the upstream neighbor. Write the reverse primer, including its downstream overlap, in the correct reverse-complement orientation. Simulate the PCR products and check matching ends on a common strand; a matching text string in two primer lists alone is not sufficient.</p>
-<p>For internal junctions, place an overlap from either neighboring fragment onto the other, or split the overlap across both. Avoid repeated junction sequences that could join the wrong partners. Verify orientation, reading frame, start/stop codons and intended linkers in the assembled sequence. Count each shared overlap only once in the final construct.</p>
-<p><a href="https://crm.vazyme.com/cetool/en-us/multifragment.html">Vazyme CE Design: choose C117 and the matching multi-fragment module [2]</a></p>
-<h3 id="prepare-the-dna-and-incubation-program">Prepare the DNA and incubation program</h3>
-<p>Prepare PCR fragments using M01, remove susceptible parental plasmid with the separate DpnI workflow in M03 when applicable, and recover the intended bands using M02. For restriction-linearized backbones, use M03. Any digestion extension must stay within the limit of the actual enzyme; do not extend FastDigest EcoRI overnight.</p>
-<p>Use clean eluates without visible gel debris or residual wash solution. Measure individual stocks before combining them for a calculated reaction; blank with the same eluent. Retain the sequence-derived length of each physical input fragment, including its primer-added ends.</p>
-<p>Keep C117 at -30 to -15°C for storage and assemble reactions on ice. Set 50°C incubation followed by immediate cooling to 4°C or ice. The 2× CE Mix V3 already supplies the reaction enzymes and buffer. [1]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-rapid-single-fragment-recombination">A. Rapid single-fragment recombination</h3>
-<ol>
-<li>
-<p>Take 10 µL of PCR product purified by agarose gel electrophoresis and gel extraction (M02). Use the recovered DNA eluate for the reaction.</p>
-</li>
-<li>
-<p>On ice, add 5 µL of 2× CE Mix V3 to the 10 µL DNA eluate, using the following 15 µL reaction.</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gel-purified PCR product</td>
-<td>10 µL</td>
-</tr>
-<tr>
-<td>2× CE Mix V3 (C117)</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>15 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="3">
-<li>
-<p>Gently pipette to mix, then briefly spin to collect the liquid at the bottom of the tube.</p>
-</li>
-<li>
-<p>Incubate at 50°C for 5 min, then immediately cool to 4°C or place on ice. Proceed to the controls and downstream handoff in section C.</p>
-</li>
-</ol>
-<p>This 10 + 5 µL setup is the laboratory-adapted rapid recipe. Its final CE Mix concentration is approximately 0.67×; the manufacturer reference uses 5 µL of 2× Mix in 10 µL total (1×). The rapid recipe is retained here as used; the calculated multi-fragment route below follows the 1× reference setup. [1]</p>
-<h3 id="b-multi-fragment-recombination-calculate-each-input">B. Multi-fragment recombination: calculate each input</h3>
-<ol start="5">
-<li>List the backbone and every insert in assembly order with length L (bp) and measured concentration C (ng/µL). Here, n is the number of inserts: C117 supports up to 10 inserts plus one backbone, or 11 DNA pieces in total. [1]</li>
-</ol>
-<p>For double-stranded DNA of length L, approximate molecular weight MW = 660 × L g/mol. Convert mass to molar amount q using q (pmol) = mass (ng) / (0.66 × L). Conversely, mass (ng) = 0.66 × L × q, and volume (µL) = mass / C. Equal masses of different-length fragments contain different numbers of molecules.</p>
-<ol start="6">
-<li>Start with approximately 0.03 pmol of each DNA piece, giving a backbone:each insert molar ratio of 1:1. The C117 shortcut is mass (ng) ≈ 0.02 × L (bp). If this falls outside 10-100 ng, use the corresponding 10 ng minimum or 100 ng maximum recommended by C117, then calculate and record the resulting pmol. Mass limits can make the final ratio depart from exact equimolarity. [1]</li>
-</ol>
-<p>Worked example only: a 4,000 bp backbone plus three inserts. The rounded 0.02 × L rule gives approximately 0.0303 pmol of each physical DNA piece.</p>
-<table>
-<thead>
-<tr>
-<th>DNA piece</th>
-<th>Length (bp)</th>
-<th>C (ng/µL)</th>
-<th>Mass (ng)</th>
-<th>Volume (µL)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Backbone</td>
-<td>4,000</td>
-<td>80</td>
-<td>80</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Insert A</td>
-<td>1,000</td>
-<td>20</td>
-<td>20</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Insert B</td>
-<td>1,500</td>
-<td>30</td>
-<td>30</td>
-<td>1.0</td>
-</tr>
-<tr>
-<td>Insert C</td>
-<td>500</td>
-<td>10</td>
-<td>10</td>
-<td>1.0</td>
-</tr>
-</tbody>
-</table>
-<ol start="7">
-<li>Sum all DNA volumes before adding Mix. For the 10 µL reference reaction, DNA plus water must total 5 µL. In the example, DNA totals 4 µL, leaving 1 µL water. Dilute an individual stock if a required addition is too small to pipette accurately, then recalculate the volume budget.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>10 µL reference reaction</th>
-<th>Worked example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linearized backbone</td>
-<td>Vbackbone µL</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>All inserts</td>
-<td>V1 + V2 + ... + Vn µL</td>
-<td>3 µL combined</td>
-</tr>
-<tr>
-<td>2× CE Mix V3</td>
-<td>5 µL</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>Nuclease-free water</td>
-<td>5 - total DNA volume (µL)</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>10 µL</td>
-<td>10 µL</td>
-</tr>
-</tbody>
-</table>
-<p>For this calculated 1× route, if DNA volumes exceed 5 µL, concentrate the stocks or lower inputs within C117's compatible 0.003-0.25 pmol range; keep the recommended mass range in view. For many pieces, a larger 1× reaction may be needed for accurate additions. Set Mix to half of the chosen total volume and document the scale adaptation. [1]</p>
-<ol start="8">
-<li>Combine the calculated DNA and water on ice, add 2× CE Mix V3, gently pipette and briefly spin. Incubate at 50°C for 15-30 min. Use 30 min when assembling more than five inserts; immediately cool to 4°C or ice. Do not extend beyond the C117 recommended window as a routine rescue. [1]</li>
-</ol>
-<h3 id="c-controls-and-downstream-handoff">C. Controls and downstream handoff</h3>
-<ol start="9">
-<li>
-<p>For the rapid route, prepare a control containing 10 µL of the same gel-purified PCR product and 5 µL water, without CE Mix. For multi-fragment assembly, prepare a backbone-only no-Mix control and, when an insert template carries the same resistance, an insert-only no-Mix control. Match DNA input and final volume to the test. These controls help detect residual circular plasmid; a kit positive control helps assess reagents and transformation. [1]</p>
-</li>
-<li>
-<p>Proceed to M05 for transformation using cloning competent cells and the backbone's selection marker. For chemical transformation, keep assembly-product volume at or below one-tenth of competent-cell volume. C117 products may be stored at -20°C for up to one week if transformation is deferred. [1]</p>
-</li>
-<li>
-<p>Screen individual colonies across the designed junctions, then sequence the junctions and PCR-derived regions needed to confirm the construct. Record the DNA stocks, lengths, masses, volumes, incubation and clone identities so that a successful assembly can be reproduced.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>A fixed eluate volume does not fix DNA mass. Check concentrations when a new DNA preparation replaces the previous stock.</p>
-<p>Review every internal overlap before repeating a multi-insert assembly; more enzyme cannot repair a missing or incorrectly oriented junction.</p>
-<p>For gel-observed defects, use M02 first. Refer amplification specificity to M01 PCR Optimization O2 and parental-template removal to the separate M03 DpnI workflow.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>The cooled reaction is ready for transformation. Successful clones should give the predicted junction-spanning PCR products and sequence agreement with the designed construct. Neither reaction appearance nor colony growth alone confirms complete, correctly ordered assembly; interpret test colonies alongside the controls.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>Resolve shared transformation or selection problems in M05 first when controls fail together. Use the cases below for assembly-specific follow-up.</p>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Few colonies; positive control grows</td>
-<td>DNA amounts, terminal overlaps, Mix dilution and cleanup</td>
-<td>Recalculate DNA inputs and inspect every junction. If the rapid route gives poor recovery, compare with the manufacturer's 1× setup using matched DNA amounts.</td>
-</tr>
-<tr>
-<td>Colonies in a no-Mix DNA control</td>
-<td>Residual circular backbone or insert template</td>
-<td>Use the separate controls to localize carryover; reprepare the affected DNA via M03 and M02. Respect enzyme-specific limits.</td>
-</tr>
-<tr>
-<td>Colonies lack an insert or contain the wrong order</td>
-<td>All junction sequences and the identity of input stocks</td>
-<td>Check orientation and repeated overlaps in silico; screen across internal junctions and sequence candidates.</td>
-</tr>
-<tr>
-<td>Colony PCR gives no expected product</td>
-<td>PCR controls and whether primers flank an informative junction</td>
-<td>Use at least one backbone primer where appropriate; test extracted plasmid or an informative digest before declaring assembly failure.</td>
-</tr>
-<tr>
-<td>Calculated DNA volumes do not fit</td>
-<td>Units, stock concentrations and total DNA volume</td>
-<td>Concentrate, adjust inputs within C117 guidance, or use a documented larger 1× setup. Recalculate water; do not omit Mix.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Vazyme. ClonExpress Ultra One Step Cloning Kit V3 (C117), Instruction for Use, Version 24.1. Sections 06-3, 07-1 to 07-3 and 08; printed pp. 4-10. Manufacturer manual hosted by Biorbyt; downloaded and checked 2026-09-16. <a href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128">Open source</a></p>
-<p>[2] Vazyme. CE Design, Multi-Fragment Assembly module; includes C117 product selection and vector-linearization inputs. Accessed 2026-09-16. <a href="https://crm.vazyme.com/cetool/en-us/multifragment.html">Open source</a></p>
-<p>[3] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed 2026-10-03. <a href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M04 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:27.86813%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Homologous Recombination
+
+ M04 | ver 1.2 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Assemble DNA with matching terminal overlaps using Vazyme ClonExpress Ultra One Step Cloning
+ Kit V3 (C117). Use the rapid route for gel-purified PCR product or the calculated route for multiple
+ fragments, followed by transformation and sequence verification.
+
+ Materials &amp; Equipment
+
+
+   Item                              Manufacturer     Identifier /        Use / Specification
+                                                               specification
+
+
+   ClonExpress Ultra One Step       Vazyme       C117           2× CE Mix V3; enzyme and buffer
+   Cloning Kit V3                                                      premix [1]
+
+
+    Gel-purified PCR product;           Prepared     M01 / M02 /      Correct terminal overlaps; length and
+   backbone and inserts for           sample       M03               concentration known for calculated
+   multi-fragment assembly                                              assembly
+
+
+   DEPC-treated water              Sangon        B501005            Dilution and volume adjustment [3]
+                                        Biotech
+
+
+   Crushed ice                        Laboratory      Crushed ice bath   Reagent cooling
+                                            ice maker
+
+
+  DNA quantification instrument      As available   DNA            Measure each DNA stock separately
+                                                         fluorometer /
+                                      UV absorbance
+
+
+   PCR tubes, pipettes, filter tips;      Axygen tips;     Compatible        Accurate reaction setup
+   mini centrifuge                    Eppendorf        sizes
+                                           centrifuge;
+                                       laboratory
+                                    equipment
+
+
+   Thermocycler                  Same         50°C              Controlled recombination incubation
+                                       laboratory       incubation; 4°C
+                                       thermal cycler    hold
+                                     as M01
+
+
+   Cloning competent cells and        As available   M05             Downstream transformation; antibiotic
+    selection plates                                                   matched to the backbone
+
+
+
+
+
+M04 | v1.2                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M04 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:73.53919%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://crm.vazyme.com/cetool/en-us/multifragment.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://crm.vazyme.com/cetool/en-us/multifragment.html" style="left:10.07937%;top:46.3392%;width:53.5604%;height:1.48475%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Before You Start
+
+ Design the homology-arm primers
+
+ Write the desired circular construct in its final order before ordering primers. For the rapid
+ single-fragment route, the recovered PCR product must contain the sequences and terminal overlaps
+ required to form the intended construct. For one-insert cloning, check both backbone-insert junctions;
+ for several inserts, check every internal junction and both backbone junctions.
+
+ Use a 15-20 bp terminal overlap at each junction, preferably with 40-60% GC. A primer is written
+ 5&#39;-homology arm + optional retained restriction site + template-specific annealing sequence-3&#39;. Do
+ not count optional restriction-site or residual bases toward the recommended arm length. Calculate
+ PCR-primer Tm from the template-specific part only; 60-65°C is a useful design target, with the PCR
+ program selected for the polymerase in M01. [1]
+
+ For the forward primer, take the overlap from the upstream neighbor. Write the reverse primer,
+ including its downstream overlap, in the correct reverse-complement orientation. Simulate the PCR
+ products and check matching ends on a common strand; a matching text string in two primer lists
+ alone is not sufficient.
+
+ For internal junctions, place an overlap from either neighboring fragment onto the other, or split the
+ overlap across both. Avoid repeated junction sequences that could join the wrong partners. Verify
+ orientation, reading frame, start/stop codons and intended linkers in the assembled sequence.
+ Count each shared overlap only once in the final construct.
+
+ Vazyme CE Design: choose C117 and the matching multi-fragment module [2]
+
+ Prepare the DNA and incubation program
+
+ Prepare PCR fragments using M01, remove susceptible parental plasmid with the separate DpnI
+ workflow in M03 when applicable, and recover the intended bands using M02. For
+ restriction-linearized backbones, use M03. Any digestion extension must stay within the limit of the
+ actual enzyme; do not extend FastDigest EcoRI overnight.
+
+ Use clean eluates without visible gel debris or residual wash solution. Measure individual stocks
+ before combining them for a calculated reaction; blank with the same eluent. Retain the
+ sequence-derived length of each physical input fragment, including its primer-added ends.
+
+ Keep C117 at -30 to -15°C for storage and assemble reactions on ice. Set 50°C incubation
+ followed by immediate cooling to 4°C or ice. The 2× CE Mix V3 already supplies the reaction
+ enzymes and buffer. [1]
+
+ Procedure
+
+ A. Rapid single-fragment recombination
+
+ 1. Take 10 µL of PCR product purified by agarose gel electrophoresis and gel extraction (M02).
+    Use the recovered DNA eluate for the reaction.
+
+ 2. On ice, add 5 µL of 2× CE Mix V3 to the 10 µL DNA eluate, using the following 15 µL reaction.
+
+
+
+
+
+M04 | v1.2                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M04 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p>   Component                                                         Volume
+
+
+    Gel-purified PCR product                                           10 µL
+
+
+   2× CE Mix V3 (C117)                                             5 µL
+
+
+    Total                                                          15 µL
+
+ 3. Gently pipette to mix, then briefly spin to collect the liquid at the bottom of the tube.
+
+ 4. Incubate at 50°C for 5 min, then immediately cool to 4°C or place on ice. Proceed to the
+      controls and downstream handoff in section C.
+
+ This 10 + 5 µL setup is the laboratory-adapted rapid recipe. Its final CE Mix concentration is
+ approximately 0.67×; the manufacturer reference uses 5 µL of 2× Mix in 10 µL total (1×). The rapid
+ recipe is retained here as used; the calculated multi-fragment route below follows the 1× reference
+ setup. [1]
+
+ B. Multi-fragment recombination: calculate each input
+
+ 5. List the backbone and every insert in assembly order with length L (bp) and measured
+     concentration C (ng/µL). Here, n is the number of inserts: C117 supports up to 10 inserts plus
+    one backbone, or 11 DNA pieces in total. [1]
+
+ For double-stranded DNA of length L, approximate molecular weight MW = 660 × L g/mol.
+ Convert mass to molar amount q using q (pmol) = mass (ng) / (0.66 × L). Conversely, mass (ng) =
+ 0.66 × L × q, and volume (µL) = mass / C. Equal masses of different-length fragments contain
+ different numbers of molecules.
+
+ 6. Start with approximately 0.03 pmol of each DNA piece, giving a backbone:each insert molar
+      ratio of 1:1. The C117 shortcut is mass (ng) ≈ 0.02 × L (bp). If this falls outside 10-100 ng, use
+     the corresponding 10 ng minimum or 100 ng maximum recommended by C117, then calculate
+    and record the resulting pmol. Mass limits can make the final ratio depart from exact
+     equimolarity. [1]
+
+ Worked example only: a 4,000 bp backbone plus three inserts. The rounded 0.02 × L rule gives
+ approximately 0.0303 pmol of each physical DNA piece.
+
+
+  DNA piece                Length (bp)       C (ng/µL)           Mass (ng)         Volume (µL)
+
+
+   Backbone               4,000           80                80                 1.0
+
+
+    Insert A                 1,000           20                20                 1.0
+
+
+    Insert B                 1,500           30                30                 1.0
+
+
+    Insert C               500             10                10                 1.0
+
+ 7. Sum all DNA volumes before adding Mix. For the 10 µL reference reaction, DNA plus water must
+      total 5 µL. In the example, DNA totals 4 µL, leaving 1 µL water. Dilute an individual stock if a
+     required addition is too small to pipette accurately, then recalculate the volume budget.
+
+
+
+
+
+M04 | v1.2                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M04 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:70.09456%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p>   Component              10 µL reference reaction                        Worked example
+
+
+   Linearized backbone        Vbackbone µL                                1 µL
+
+
+    All inserts               V1 + V2 + ... + Vn µL                           3 µL combined
+
+
+   2× CE Mix V3            5 µL                                       5 µL
+
+
+   Nuclease-free water        5 - total DNA volume (µL)                       1 µL
+
+
+    Total                   10 µL                                      10 µL
+
+ For this calculated 1× route, if DNA volumes exceed 5 µL, concentrate the stocks or lower inputs
+ within C117&#39;s compatible 0.003-0.25 pmol range; keep the recommended mass range in view. For
+ many pieces, a larger 1× reaction may be needed for accurate additions. Set Mix to half of the
+ chosen total volume and document the scale adaptation. [1]
+
+ 8. Combine the calculated DNA and water on ice, add 2× CE Mix V3, gently pipette and briefly
+      spin. Incubate at 50°C for 15-30 min. Use 30 min when assembling more than five inserts;
+     immediately cool to 4°C or ice. Do not extend beyond the C117 recommended window as a
+      routine rescue. [1]
+
+ C. Controls and downstream handoff
+
+ 9. For the rapid route, prepare a control containing 10 µL of the same gel-purified PCR product and
+    5 µL water, without CE Mix. For multi-fragment assembly, prepare a backbone-only no-Mix
+      control and, when an insert template carries the same resistance, an insert-only no-Mix control.
+    Match DNA input and final volume to the test. These controls help detect residual circular
+     plasmid; a kit positive control helps assess reagents and transformation. [1]
+
+ 10. Proceed to M05 for transformation using cloning competent cells and the backbone&#39;s selection
+     marker. For chemical transformation, keep assembly-product volume at or below one-tenth of
+     competent-cell volume. C117 products may be stored at -20°C for up to one week if
+     transformation is deferred. [1]
+
+ 11. Screen individual colonies across the designed junctions, then sequence the junctions and
+     PCR-derived regions needed to confirm the construct. Record the DNA stocks, lengths, masses,
+     volumes, incubation and clone identities so that a successful assembly can be reproduced.
+
+ p.s.
+
+
+ A fixed eluate volume does not fix DNA mass. Check concentrations when a new DNA preparation
+ replaces the previous stock.
+
+ Review every internal overlap before repeating a multi-insert assembly; more enzyme cannot repair
+ a missing or incorrectly oriented junction.
+
+ For gel-observed defects, use M02 first. Refer amplification specificity to M01 PCR Optimization O2
+ and parental-template removal to the separate M03 DpnI workflow.
+
+
+
+
+
+M04 | v1.2                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original M04 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="expected-outcome" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:18.90021%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:63.44285%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128" style="left:19.13603%;top:69.13019%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://crm.vazyme.com/cetool/en-us/multifragment.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://crm.vazyme.com/cetool/en-us/multifragment.html" style="left:30.86584%;top:72.6936%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" style="left:19.13603%;top:76.25701%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Expected Outcome
+
+ The cooled reaction is ready for transformation. Successful clones should give the predicted
+ junction-spanning PCR products and sequence agreement with the designed construct. Neither
+ reaction appearance nor colony growth alone confirms complete, correctly ordered assembly;
+ interpret test colonies alongside the controls.
+
+ Troubleshooting
+
+ Resolve shared transformation or selection problems in M05 first when controls fail together. Use
+ the cases below for assembly-specific follow-up.
+
+
+   Observed problem         Check first                           Action
+
+
+   Few colonies; positive    DNA amounts, terminal overlaps,      Recalculate DNA inputs and inspect every
+   control grows            Mix dilution and cleanup               junction. If the rapid route gives poor
+                                                                    recovery, compare with the manufacturer&#39;s 1×
+                                                                     setup using matched DNA amounts.
+
+
+   Colonies in a no-Mix        Residual circular backbone or       Use the separate controls to localize
+  DNA control                   insert template                        carryover; reprepare the affected DNA via
+                                             M03 and M02. Respect enzyme-specific limits.
+
+
+   Colonies lack an insert or    All junction sequences and the       Check orientation and repeated overlaps in
+   contain the wrong order      identity of input stocks                     silico; screen across internal junctions and
+                                                              sequence candidates.
+
+
+   Colony PCR gives no      PCR controls and whether primers    Use at least one backbone primer where
+   expected product            flank an informative junction          appropriate; test extracted plasmid or an
+                                                                       informative digest before declaring assembly
+                                                                                  failure.
+
+
+   Calculated DNA volumes    Units, stock concentrations and        Concentrate, adjust inputs within C117
+   do not fit                       total DNA volume                   guidance, or use a documented larger 1×
+                                                                         setup. Recalculate water; do not omit Mix.
+
+
+ Reference
+
+  [1] Vazyme. ClonExpress Ultra One Step Cloning Kit V3 (C117), Instruction for Use, Version 24.1. Sections 06-3,
+ 07-1 to 07-3 and 08; printed pp. 4-10. Manufacturer manual hosted by Biorbyt; downloaded and checked
+ 2026-09-16. Open source
+
+  [2] Vazyme. CE Design, Multi-Fragment Assembly module; includes C117 product selection and vector-linearization
+  inputs. Accessed 2026-09-16. Open source
+
+  [3] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed
+ 2026-10-03. Open source
+
+
+
+
+
+M04 | v1.2                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

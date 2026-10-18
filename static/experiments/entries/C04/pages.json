@@ -1,0 +1,142 @@
+{
+  "source_sha256": "d3304fd6ea2ae68cd0f60f476afcc5031161174f9404639d77b8392507377b3c",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 6,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ecee0dc49584e6ebd948e39787b9dafbfa865477002ffd7117bb0f5d22ceb0be",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 29.70922
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 75.32089
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e014d76df3fe6d178a31c80c3592f43d03279003898b0a40c82487fd1e652b9b",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 15.81192
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "9ce2189389ad69cdf55706d7573d499d327521c5d75e7c4d401af6c7fc4ebbca",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "1e3f55cc55361d8dcd1d117517005c5d367a37fa116956e74856c04365cb8017",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d3d43e86c2d3d9060e769e91e511a66d266dbcb478d6c5d7ce8d2015c5fae826",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 5,
+          "top": 35.17312
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 64.45249
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "3f67a57052759f2f1eae9208274a51b075daad6fd23c184971e11489b51b2815",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 6,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 6,
+          "top": 56.01908
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_protocol.pdf",
+          "left": 73.63622,
+          "top": 60.22166,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/lipofectamine3000_scaling.pdf",
+          "left": 48.90977,
+          "top": 63.78507,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.corning.com/catalog/cls/documents/selection-guides/CLS-CC-010.pdf",
+          "left": 25.96987,
+          "top": 68.83324,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/L3000008/faqs",
+          "left": 66.9227,
+          "top": 72.39665,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

@@ -2,346 +2,512 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FV03 · Aβ42 Uptake Assay with ELISA Quantification</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> FV03 · <strong>Category:</strong> Functional Validation</p>
-<p>FV03 | ver 1.0 | Revised 2026-10-13</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Compare cell-associated Aβ42 clearance in CCF-STTG1 cultures by exposing matched cultures to Aβ42 and measuring the remaining peptide in culture supernatants with Elabscience E-EL-H0543. This workflow covers peptide preparation, 6 h exposure, frozen sample handling, manual ELISA and concentration calculation.</p>
-<p>Supernatant depletion is an indirect uptake readout. Interpret it with matched cell-free controls; intracellular uptake and degradation require additional evidence.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Provider / identifier</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CCF-STTG1 cells; 12-well culture plates</td>
-<td>Laboratory cultures and supplies</td>
-<td>Matched experimental and control cultures; 1 mL treatment medium per well.</td>
-</tr>
-<tr>
-<td>Complete RPMI 1640 medium</td>
-<td>Gibco RPMI 1640; Cellmax FBS; laboratory formulation in C01</td>
-<td>Use the same established formulation and serum content across groups and cell-free controls.</td>
-</tr>
-<tr>
-<td>Aβ(1-42), lyophilized, 1 mg</td>
-<td>AnaSpec AS-20276</td>
-<td>MW 4514.1 g/mol; nominal stock 1 mg/mL. [2]</td>
-</tr>
-<tr>
-<td>Concentrated aqueous ammonia; sterile water; sterile 1× PBS</td>
-<td>Laboratory ammonia stock labelled 25-28%; laboratory supplies</td>
-<td>Ammonia stock diluted 100-fold by volume for the team's adapted reconstitution route; PBS for immediate dilution.</td>
-</tr>
-<tr>
-<td>Human Aβ1-42 ELISA kit</td>
-<td>Elabscience E-EL-H0543</td>
-<td>Coated plate, standard, diluents, 100× detection antibody, 100× HRP conjugate, 25× wash buffer, TMB and stop solution. [1]</td>
-</tr>
-<tr>
-<td>Distilled or deionized water</td>
-<td>Laboratory supply</td>
-<td>Prepare 1× ELISA wash buffer. [1]</td>
-</tr>
-<tr>
-<td>Single-channel and multichannel pipettes; fresh tips; reagent reservoirs</td>
-<td>Laboratory supplies</td>
-<td>Single-channel pipettes for stock and sample preparation; multichannel pipette required for ELISA plate loading and reagent dispensing.</td>
-</tr>
-<tr>
-<td>Low-binding collection tubes; absorbent paper; plate seals</td>
-<td>Laboratory supplies</td>
-<td>Separate samples; minimize transfers; manual washing and firm blotting.</td>
-</tr>
-<tr>
-<td>Microplate reader and software</td>
-<td>Thermo Scientific Varioskan LUX; SkanIt</td>
-<td>Absorbance at 450 nm using the actual ELISA plate template.</td>
-</tr>
-<tr>
-<td>CO2 incubator; 37°C incubator; refrigerated centrifuge; -80°C freezer</td>
-<td>Laboratory equipment</td>
-<td>Cells: 37°C, 5% CO2; ELISA: 37°C; clarification: 1000 × g at 2-8°C for 20 min. [1]</td>
-</tr>
-<tr>
-<td>Cell culture cabinet; chemical fume hood; appropriate PPE</td>
-<td>Laboratory facilities</td>
-<td>Aseptic cell work; handle concentrated ammonia in the chemical fume hood.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Prepare healthy CCF-STTG1 cultures using C01. If testing ORCA constructs, complete the experimental and comparator transfections using FV01 and allow the planned expression period and recovery before Aβ exposure. Match viable cell input and starting culture condition; the earlier working setup used approximately 50-60% confluence, which is a reference condition rather than an optimized density.</p>
-<p>Plan independent culture replicates and the controls below before preparing Aβ. Keep ELISA duplicate wells linked to their originating culture sample; duplicates are technical measurements, not additional independent cultures.</p>
-<p>Check peptide identity, label and batch CoA. Stock molarity calculated from nominal vial mass must remain labelled nominal unless the CoA confirms the peptide-mass basis; HPLC purity does not establish peptide content. Record the preparation route rather than assuming a defined monomer or oligomer population. [2]</p>
-<p>Prepare a culture/sample map and an ELISA plate map. Include a fresh standard curve and zero standard on every ELISA plate, preferably in duplicate along with samples. Prearrange standards and diluted samples so that the multichannel pipette can load them without changing sample order. [1]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-a42-and-matched-controls">A. Prepare Aβ42 and matched controls</h3>
-<ol>
-<li>
-<p>In a chemical fume hood, prepare the team's 100-fold volume dilution of concentrated ammonia: add 20 µL of the laboratory 25-28% stock to 1980 µL sterile water, then close and mix. This gives 1% (v/v) of that commercial stock. It is an adapted solvent definition, not a claim of equivalence to AnaSpec's unspecified '1% NH4OH'.</p>
-</li>
-<li>
-<p>Add 80 µL of the diluted ammonia to the 1 mg Aβ42 vial and mix gently to dissolve. Immediately add 920 µL sterile 1× PBS and mix gently, giving 1 mL of nominal 1 mg/mL stock, approximately 221.5 µM. If visible material remains or precipitation occurs, resolve it before using the nominal concentration. The initial solvent volume and immediate PBS dilution follow the manufacturer's handling route. [2]</p>
-</li>
-<li>
-<p>Keep the stock needed for immediate use and aliquot the remainder at -20°C or below. Avoid repeated freeze-thaw cycles. Label the nominal concentration, batch, preparation date and actual solvent composition. [2]</p>
-</li>
-<li>
-<p>Prepare fresh 200 nM Aβ42 treatment medium as a common batch, using Vstock = Cfinal × Vfinal / Cstock. For a 50 mL example, mix the quantities below; scale to the actual number of Aβ-treated wells and controls. The concentration is the team's working treatment condition and a literature-derived starting point, not a validated optimum for every culture density. [3]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>50 mL example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nominal 1 mg/mL Aβ42 stock</td>
-<td>45.1 µL</td>
-</tr>
-<tr>
-<td>Established complete treatment medium</td>
-<td>49.9549 mL</td>
-</tr>
-<tr>
-<td>Final mixture</td>
-<td>50.000 mL; approximately 200 nM Aβ42</td>
-</tr>
-</tbody>
-</table>
-<ol start="5">
-<li>Prepare a peptide-free vehicle stock with 80 µL of the same diluted ammonia plus 920 µL PBS. For each 10 mL final no-Aβ control medium, add 9.02 µL vehicle stock and make up to 10 mL with the same medium. This matches solvent carryover from the Aβ stock.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Culture / sample</th>
-<th>Contents and role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Experimental and comparator cultures</td>
-<td>Matched cells receiving 200 nM Aβ42; define construct identities in the experimental design.</td>
-</tr>
-<tr>
-<td>No-cell + Aβ42</td>
-<td>Same plate type, medium, volume and exposure time; estimates noncellular loss.</td>
-</tr>
-<tr>
-<td>Cells + vehicle, no added Aβ42</td>
-<td>Background for each relevant cell condition.</td>
-</tr>
-<tr>
-<td>No cells + vehicle, no added Aβ42</td>
-<td>Matched medium background for the cell-free control.</td>
-</tr>
-<tr>
-<td>T0 / input aliquot</td>
-<td>Same freshly mixed Aβ treatment medium, collected at the start and processed like endpoint samples.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="b-expose-cells-and-collect-supernatants">B. Expose cells and collect supernatants</h3>
-<ol start="6">
-<li>
-<p>Inspect attachment, morphology and confluence before treatment. Gently aspirate the old medium and promptly replace it with 1 mL freshly mixed Aβ42 treatment medium per 12-well well. Add the matched vehicle medium to no-Aβ wells. Prepare additional empty wells for cell-free controls if all experimental wells already contain cells.</p>
-</li>
-<li>
-<p>Collect the T0/input aliquot, record the actual addition time for each plate, and incubate all treatment and cell-free wells for 6 h at 37°C with 5% CO2. Keep the addition and collection order consistent; do not exchange medium or add further Aβ during exposure.</p>
-</li>
-<li>
-<p>At 6 h, inspect and record cell condition, then collect supernatant into labelled tubes before collecting cells for any separate RNA or cell-quantity assay. A partial-volume sample is sufficient; choose one fixed collection volume that allows clarification and repeat ELISA. Avoid touching the adherent layer and use the same sampling arrangement for controls.</p>
-</li>
-<li>
-<p>Aliquot the collected supernatants and freeze at -80°C for the later ELISA. The retained team workflow freezes after collection and clarifies after thawing. Use the same storage duration and freeze-thaw history for samples and controls; retain the collected volume and sample identity.</p>
-</li>
-</ol>
-<h3 id="c-thaw-clarify-and-dilute-samples">C. Thaw, clarify and dilute samples</h3>
-<ol start="10">
-<li>
-<p>On the ELISA day, thaw samples slowly under cold conditions and mix gently after complete thawing. Centrifuge the original thawed supernatants at 1000 × g, 2-8°C for 20 min. Transfer the clarified liquid without disturbing the pellet, then mix and equilibrate for the assay. Clarify before dilution. [1]</p>
-</li>
-<li>
-<p>Dilute each clarified sample 200-fold with the kit's Reference Standard &amp; Sample Diluent. The following two-stage example yields 250 µL, sufficient for two 100 µL wells plus transfer allowance; mix fully at each stage without foaming. Keep each individual dilution step at or below 100-fold. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Preparation</th>
-<th>Cumulative dilution</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10 µL clarified original sample + 190 µL kit diluent</td>
-<td>20-fold</td>
-</tr>
-<tr>
-<td>2</td>
-<td>25 µL stage-1 mixture + 225 µL kit diluent</td>
-<td>200-fold</td>
-</tr>
-</tbody>
-</table>
-<p>The team used 200-fold dilution. Verify that each diluted sample lies within the 15.63-1000 pg/mL curve. A nominal 200 nM input corresponds to approximately 902,820 pg/mL before dilution and 4514 pg/mL after 200-fold dilution, so input or high-residual controls may need greater dilution. For example, a further 10-fold dilution gives 2000-fold total and approximately 451 pg/mL for nominal input. Use the actual total dilution for every sample. [1,2]</p>
-<h3 id="d-prepare-elisa-reagents">D. Prepare ELISA reagents</h3>
-<ol start="12">
-<li>
-<p>Take out only the required kit strips and reagents about 20 min before use and equilibrate at 18-25°C. Prepare 1× wash buffer with one volume of 25× concentrate plus 24 volumes distilled or deionized water, for example 12 mL concentrate plus 288 mL water. The eight washes require 2.8 mL per used well plus handling allowance. Dissolve concentrate crystals by gentle warming at 40°C before dilution; use the working buffer that day. [1]</p>
-</li>
-<li>
-<p>Briefly centrifuge the lyophilized standard at 10,000 × g for 1 min. Add 1 mL Reference Standard &amp; Sample Diluent, wait 10 min and gently mix until dissolved to obtain 1000 pg/mL. Prepare the fresh twofold series below; keep the zero-standard tube free of peptide. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Standard</th>
-<th>Preparation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1000 pg/mL</td>
-<td>Reconstituted standard</td>
-</tr>
-<tr>
-<td>500, 250, 125, 62.5, 31.25 and 15.63 pg/mL</td>
-<td>For each successive tube, transfer 500 µL from the preceding concentration into 500 µL diluent; mix before the next transfer.</td>
-</tr>
-<tr>
-<td>0 pg/mL</td>
-<td>Diluent alone; do not transfer standard into this tube.</td>
-</tr>
-</tbody>
-</table>
-<ol start="14">
-<li>Prepare 1× detection antibody and 1× HRP conjugate shortly before their respective additions. Centrifuge each 100× concentrate at 800 × g for 1 min, then dilute one volume in 99 volumes of its designated diluent, for example 10 µL concentrate plus 990 µL diluent. Calculate 100 µL per used well plus 100-200 µL handling allowance; add any further measured reservoir allowance needed. Keep the two diluents separate and protect HRP from light. [1]</li>
-</ol>
-<h3 id="e-run-the-elisa-with-a-multichannel-pipette">E. Run the ELISA with a multichannel pipette</h3>
-<ol start="15">
-<li>
-<p>Use a multichannel pipette to load 100 µL of each standard, zero standard or diluted sample into the mapped wells, preferably in duplicate. Keep sample loading within about 10 min. Dispense toward the bottom without scraping the well and avoid bubbles. Seal and incubate at 37°C for 90 min. [1]</p>
-</li>
-<li>
-<p>Discard the liquid without washing. Use the multichannel pipette to add 100 µL 1× detection antibody per well, reseal and incubate at 37°C for 60 min. [1]</p>
-</li>
-<li>
-<p>Discard the liquid and firmly blot the inverted plate onto clean absorbent paper. Add 350 µL 1× wash buffer per well with the multichannel pipette, soak for 1 min, discard and blot firmly again. Perform three complete wash cycles. If the pipette holds at most 200 µL, dispense 175 µL twice to deliver 350 µL. Remove residual droplets while keeping the strips secured, then proceed immediately without allowing the wells to dry. [1]</p>
-</li>
-<li>
-<p>Add 100 µL 1× HRP conjugate per well with the multichannel pipette. Seal and incubate at 37°C for 30 min. [1]</p>
-</li>
-<li>
-<p>Discard the liquid and perform five complete washes using the same 350 µL/well, 1 min soak, discard and firm-blot sequence. Immediately continue to substrate addition. [1]</p>
-</li>
-<li>
-<p>Add 90 µL TMB per well with the multichannel pipette in a fixed order. Seal and incubate at 37°C protected from light for approximately 15 min; stop when the upper standards show a clear colour gradient, and do not exceed 30 min. Start the reader at least 15 min before reading. [1]</p>
-</li>
-<li>
-<p>Add 50 µL stop solution per well with the multichannel pipette, following the same order and pace as TMB addition. Check that the blue colour changes to yellow and inspect for bubbles. [1]</p>
-</li>
-<li>
-<p>In SkanIt, select the actual 96-well ELISA plate and mapped used wells, create an absorbance measurement at 450 nm, and confirm orientation. Read immediately after stopping. Retain the plate map, native session and original OD450 export before processing. [1]</p>
-</li>
-</ol>
-<h3 id="f-calculate-concentration-and-apparent-clearance">F. Calculate concentration and apparent clearance</h3>
-<ol start="23">
-<li>
-<p>Inspect duplicate agreement, the zero-standard background and the increasing standard response. Subtract the mean zero-standard OD from the standard and sample mean ODs and fit a four-parameter logistic (4PL) curve. If using logarithmic concentration axes, keep zero as the background control rather than taking log(0). [1]</p>
-</li>
-<li>
-<p>Interpolate only within the accepted curve and multiply by the actual cumulative dilution: Coriginal = Cinterpolated × Dtotal. For the base workflow Dtotal = 200. If a sample is above the curve, dilute further and rerun; if below the quantifiable range, use a lower dilution if feasible or report below range. Do not extrapolate, replace below-range values with zero or automatically assign every sample the same dilution. [1]</p>
-</li>
-<li>
-<p>For a control-adjusted endpoint, subtract the matched no-added-Aβ background after converting all samples to original concentration units: Ccell,net = Ccell+Aβ - Ccell+vehicle; Cno-cell,net = Cno-cell+Aβ - Cno-cell+vehicle. Then calculate apparent clearance (%) = 100 × (1 - Ccell,net / Cno-cell,net). Use the matched 6 h cell-free denominator; calculate this ratio only when both net values are supported by valid, quantifiable measurements and the denominator is positive.</p>
-</li>
-<li>
-<p>Summarize independent cultures separately from ELISA duplicate wells and retain the T0 result, dilution chain and endpoint cell-condition record. Describe the result as residual extracellular Aβ42 or apparent cell-associated clearance. Interpret differences alongside cell number or viability; an intracellular uptake claim requires a separate cell-associated assay that addresses surface-bound peptide.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Use a multichannel pipette throughout ELISA plate loading, washing and shared-reagent additions. Arrange the plate map, tubes and reservoirs beforehand; consistent channel order and timing reduce avoidable well-to-well differences.</p>
-<p>Blot firmly after discarding liquid, especially during manual washing: a weak tap can leave substantial droplets. Keep strips secured in the frame, use clean absorbent paper, and continue immediately so that thorough residual-liquid removal does not become drying of the wells.</p>
-<p>Collect the supernatant before disturbing or harvesting cells. Keep Aβ preparation-to-addition time, exposure duration, vessel material and freeze-thaw history comparable across groups and controls.</p>
-<p>Treat 200-fold dilution as the team's working setting and check every sample against the curve. T0 and cell-free controls can contain much more residual Aβ than treated cultures and may need a different dilution.</p>
-<p>Use matching addition order for TMB and stop solution. Prepare antibody and HRP working solutions fresh, use their designated diluents, and avoid carrying wash buffer into the next reagent. [1]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain an identifiable OD450 dataset, a usable standard curve and original-supernatant Aβ42 concentrations after applying sample-specific dilution factors. Standards should show increasing signal and a visible colour gradient; use technical duplicates and blanks to judge assay consistency.</p>
-<p>The endpoint can compare residual extracellular Aβ42 and apparent cell-associated clearance across culture conditions. The protocol does not predetermine which group should clear more peptide; lower supernatant signal alone does not establish intracellular uptake or degradation.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Aβ stock remains cloudy or precipitates</td>
-<td>Actual solvent recipe, vial mass and delay before PBS dilution</td>
-<td>Resolve the preparation before dosing. Record the route and use a fresh, consistently prepared batch; visible dissolution does not certify aggregation state.</td>
-</tr>
-<tr>
-<td>Cells detach or show poor condition during exposure</td>
-<td>Recovery, starting cell condition, medium and matched vehicle controls</td>
-<td>Flag affected cultures. Re-establish comparable healthy cultures and evaluate vehicle compatibility before interpreting clearance.</td>
-</tr>
-<tr>
-<td>High blank or uneven colour</td>
-<td>Wash count, soak time, residual liquid, multichannel delivery and timing</td>
-<td>Verify three and five washes at the correct stages. Blot firmly on clean paper and dispense the next reagent promptly. Repeat the assay if controls remain unsuitable.</td>
-</tr>
-<tr>
-<td>Large differences between ELISA duplicates</td>
-<td>Sample mixing, channel performance, bubbles and mapping</td>
-<td>Mix diluted samples again, check delivery from each channel, inspect bubbles and rerun affected samples. Retain both original readings.</td>
-</tr>
-<tr>
-<td>All standards are weak or lack a gradient</td>
-<td>Standard reconstitution, correct antibody/HRP diluents, reagent condition and incubations</td>
-<td>Prepare a new curve and fresh working solutions. Confirm 37°C incubation and 450 nm reading; do not calculate samples from a failed curve.</td>
-</tr>
-<tr>
-<td>Sample exceeds the top standard</td>
-<td>Actual dilution chain and OD relative to 1000 pg/mL standard</td>
-<td>Increase dilution and rerun. Record the new cumulative factor rather than extrapolating.</td>
-</tr>
-<tr>
-<td>Sample is near blank or below range</td>
-<td>No-added-Aβ background, sample dilution and curve lower end</td>
-<td>Repeat at a lower dilution where compatible; otherwise report below range. Do not assign zero concentration or a clearance percentage from an unquantifiable value.</td>
-</tr>
-<tr>
-<td>Large Aβ loss also occurs without cells</td>
-<td>Matched vessel, timing, preparation, storage and sample recovery</td>
-<td>Use the matched cell-free endpoint for the comparison and examine noncellular loss. Add an independent cell-associated readout when claiming uptake.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Elabscience. Human Aβ1-42 ELISA Kit, E-EL-H0543, supplied bilingual manual OWPK0C.pdf, Chinese V5.0. Chinese pp. 4-8 and 10; English pp. 18-26: sample handling, dilution, reagent preparation, assay and analysis. Local copy: sources/Elabscience_E-EL-H0543_V5.0.pdf. The link below opens the matching manufacturer product page. Inspected 2026-10-13. <a href="https://www.elabscience.com/p/human-a-1-42-amyloid-beta-1-42-elisa-kit--e-el-h0543">Open source</a></p>
-<p>[2] AnaSpec. β-Amyloid (1-42) Product Data Sheet, AS-20276 and related pack sizes, p. 1: molecular weight, peptide content, reconstitution and storage. Public sheet does not define the percentage basis of its 1.0% NH4OH solvent. Accessed 2026-10-13. <a href="https://www.anaspec.com/assets/b170c02d-e048-4e50-9c78-a12ed6d80393/tds-en-as-20276-25-beta-amyloid-1-42.pdf">Open source</a></p>
-<p>[3] Batarseh YS et al. Oleocanthal ameliorates amyloid-β oligomers' toxicity on astrocytes and neuronal cells: In vitro studies. Neuroscience 352 (2017): 204-215. doi:10.1016/j.neuroscience.2017.03.059. Methods, time- and concentration-dependent uptake: CCF-STTG1, 200 nM monomer preparation, sampling through 360 min. This supplies a starting-condition precedent; the team's preparation and supernatant-only endpoint are adaptations. Accessed 2026-10-13. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5504696/">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original FV03 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:38.49897%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Aβ42 Uptake Assay with ELISA
+Quantification
+
+ FV03 | ver 1.0 | Revised 2026-10-13
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Compare cell-associated Aβ42 clearance in CCF-STTG1 cultures by exposing matched cultures to
+ Aβ42 and measuring the remaining peptide in culture supernatants with Elabscience E-EL-H0543.
+ This workflow covers peptide preparation, 6 h exposure, frozen sample handling, manual ELISA
+ and concentration calculation.
+
+ Supernatant depletion is an indirect uptake readout. Interpret it with matched cell-free controls;
+ intracellular uptake and degradation require additional evidence.
+
+
+ Materials &amp; Equipment
+
+
+   Item                           Provider / identifier            Use / specification
+
+
+   CCF-STTG1 cells; 12-well       Laboratory cultures and        Matched experimental and control cultures; 1
+    culture plates                    supplies                   mL treatment medium per well.
+
+
+   Complete RPMI 1640         Gibco RPMI 1640; Cellmax     Use the same established formulation and serum
+   medium                       FBS; laboratory formulation in    content across groups and cell-free controls.
+                         C01
+
+
+   Aβ(1-42), lyophilized, 1 mg    AnaSpec AS-20276      MW 4514.1 g/mol; nominal stock 1 mg/mL. [2]
+
+
+   Concentrated aqueous         Laboratory ammonia stock      Ammonia stock diluted 100-fold by volume for
+   ammonia; sterile water;         labelled 25-28%; laboratory      the team&#39;s adapted reconstitution route; PBS for
+    sterile 1× PBS                   supplies                       immediate dilution.
+
+
+  Human Aβ1-42 ELISA kit        Elabscience E-EL-H0543         Coated plate, standard, diluents, 100×
+                                                                      detection antibody, 100× HRP conjugate, 25×
+                                                       wash buffer, TMB and stop solution. [1]
+
+
+    Distilled or deionized water     Laboratory supply              Prepare 1× ELISA wash buffer. [1]
+
+
+   Single-channel and             Laboratory supplies              Single-channel pipettes for stock and sample
+   multichannel pipettes; fresh                                      preparation; multichannel pipette required for
+    tips; reagent reservoirs                                      ELISA plate loading and reagent dispensing.
+
+
+   Low-binding collection tubes;    Laboratory supplies             Separate samples; minimize transfers; manual
+   absorbent paper; plate seals                                 washing and firm blotting.
+
+
+   Microplate reader and        Thermo Scientific Varioskan      Absorbance at 450 nm using the actual ELISA
+   software                     LUX; SkanIt                       plate template.
+
+
+
+
+FV03 | v1.0                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original FV03 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:24.54228%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:61.24542%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p>   Item                           Provider / identifier            Use / specification
+
+
+  CO2 incubator; 37°C          Laboratory equipment             Cells: 37°C, 5% CO2; ELISA: 37°C;
+   incubator; refrigerated                                                   clarification: 1000 × g at 2-8°C for 20 min. [1]
+    centrifuge; -80°C freezer
+
+
+    Cell culture cabinet;            Laboratory facilities              Aseptic cell work; handle concentrated
+   chemical fume hood;                                   ammonia in the chemical fume hood.
+   appropriate PPE
+
+
+ Before You Start
+
+ Prepare healthy CCF-STTG1 cultures using C01. If testing ORCA constructs, complete the
+ experimental and comparator transfections using FV01 and allow the planned expression period
+ and recovery before Aβ exposure. Match viable cell input and starting culture condition; the earlier
+ working setup used approximately 50-60% confluence, which is a reference condition rather than
+ an optimized density.
+
+ Plan independent culture replicates and the controls below before preparing Aβ. Keep ELISA
+ duplicate wells linked to their originating culture sample; duplicates are technical measurements, not
+ additional independent cultures.
+
+ Check peptide identity, label and batch CoA. Stock molarity calculated from nominal vial mass must
+ remain labelled nominal unless the CoA confirms the peptide-mass basis; HPLC purity does not
+ establish peptide content. Record the preparation route rather than assuming a defined monomer or
+ oligomer population. [2]
+
+ Prepare a culture/sample map and an ELISA plate map. Include a fresh standard curve and zero
+ standard on every ELISA plate, preferably in duplicate along with samples. Prearrange standards
+ and diluted samples so that the multichannel pipette can load them without changing sample order.
+ [1]
+
+ Procedure
+
+ A. Prepare Aβ42 and matched controls
+
+ 1. In a chemical fume hood, prepare the team&#39;s 100-fold volume dilution of concentrated ammonia:
+    add 20 µL of the laboratory 25-28% stock to 1980 µL sterile water, then close and mix. This
+     gives 1% (v/v) of that commercial stock. It is an adapted solvent definition, not a claim of
+     equivalence to AnaSpec&#39;s unspecified &#39;1% NH4OH&#39;.
+
+ 2. Add 80 µL of the diluted ammonia to the 1 mg Aβ42 vial and mix gently to dissolve. Immediately
+    add 920 µL sterile 1× PBS and mix gently, giving 1 mL of nominal 1 mg/mL stock,
+     approximately 221.5 µM. If visible material remains or precipitation occurs, resolve it before
+     using the nominal concentration. The initial solvent volume and immediate PBS dilution follow
+     the manufacturer&#39;s handling route. [2]
+
+ 3. Keep the stock needed for immediate use and aliquot the remainder at -20°C or below. Avoid
+     repeated freeze-thaw cycles. Label the nominal concentration, batch, preparation date and
+     actual solvent composition. [2]
+
+
+
+
+FV03 | v1.0                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original FV03 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> 4. Prepare fresh 200 nM Aβ42 treatment medium as a common batch, using Vstock = Cfinal ×
+      Vfinal / Cstock. For a 50 mL example, mix the quantities below; scale to the actual number of
+     Aβ-treated wells and controls. The concentration is the team&#39;s working treatment condition and a
+      literature-derived starting point, not a validated optimum for every culture density. [3]
+
+
+   Component                                            50 mL example
+
+
+   Nominal 1 mg/mL Aβ42 stock                                   45.1 µL
+
+
+   Established complete treatment medium                          49.9549 mL
+
+
+    Final mixture                                               50.000 mL; approximately 200 nM Aβ42
+
+
+ 5. Prepare a peptide-free vehicle stock with 80 µL of the same diluted ammonia plus 920 µL PBS.
+     For each 10 mL final no-Aβ control medium, add 9.02 µL vehicle stock and make up to 10 mL
+     with the same medium. This matches solvent carryover from the Aβ stock.
+
+
+   Culture / sample               Contents and role
+
+
+   Experimental and            Matched cells receiving 200 nM Aβ42; define construct identities in the
+   comparator cultures            experimental design.
+
+
+   No-cell + Aβ42             Same plate type, medium, volume and exposure time; estimates noncellular loss.
+
+
+    Cells + vehicle, no added      Background for each relevant cell condition.
+  Aβ42
+
+
+  No cells + vehicle, no added   Matched medium background for the cell-free control.
+  Aβ42
+
+
+   T0 / input aliquot           Same freshly mixed Aβ treatment medium, collected at the start and processed like
+                                 endpoint samples.
+
+
+ B. Expose cells and collect supernatants
+
+ 6. Inspect attachment, morphology and confluence before treatment. Gently aspirate the old
+    medium and promptly replace it with 1 mL freshly mixed Aβ42 treatment medium per 12-well
+      well. Add the matched vehicle medium to no-Aβ wells. Prepare additional empty wells for
+      cell-free controls if all experimental wells already contain cells.
+
+ 7. Collect the T0/input aliquot, record the actual addition time for each plate, and incubate all
+     treatment and cell-free wells for 6 h at 37°C with 5% CO2. Keep the addition and collection
+     order consistent; do not exchange medium or add further Aβ during exposure.
+
+ 8. At 6 h, inspect and record cell condition, then collect supernatant into labelled tubes before
+      collecting cells for any separate RNA or cell-quantity assay. A partial-volume sample is
+      sufficient; choose one fixed collection volume that allows clarification and repeat ELISA. Avoid
+     touching the adherent layer and use the same sampling arrangement for controls.
+
+
+
+
+
+FV03 | v1.0                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original FV03 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> 9. Aliquot the collected supernatants and freeze at -80°C for the later ELISA. The retained team
+     workflow freezes after collection and clarifies after thawing. Use the same storage duration and
+     freeze-thaw history for samples and controls; retain the collected volume and sample identity.
+
+ C. Thaw, clarify and dilute samples
+
+ 10. On the ELISA day, thaw samples slowly under cold conditions and mix gently after complete
+     thawing. Centrifuge the original thawed supernatants at 1000 × g, 2-8°C for 20 min. Transfer
+     the clarified liquid without disturbing the pellet, then mix and equilibrate for the assay. Clarify
+     before dilution. [1]
+
+ 11. Dilute each clarified sample 200-fold with the kit&#39;s Reference Standard &amp; Sample Diluent. The
+     following two-stage example yields 250 µL, sufficient for two 100 µL wells plus transfer
+     allowance; mix fully at each stage without foaming. Keep each individual dilution step at or
+    below 100-fold. [1]
+
+
+   Stage       Preparation                                                             Cumulative dilution
+
+
+   1         10 µL clarified original sample + 190 µL kit diluent                             20-fold
+
+
+   2         25 µL stage-1 mixture + 225 µL kit diluent                                    200-fold
+
+
+ The team used 200-fold dilution. Verify that each diluted sample lies within the 15.63-1000 pg/mL
+ curve. A nominal 200 nM input corresponds to approximately 902,820 pg/mL before dilution and
+ 4514 pg/mL after 200-fold dilution, so input or high-residual controls may need greater dilution. For
+ example, a further 10-fold dilution gives 2000-fold total and approximately 451 pg/mL for nominal
+ input. Use the actual total dilution for every sample. [1,2]
+
+ D. Prepare ELISA reagents
+
+ 12. Take out only the required kit strips and reagents about 20 min before use and equilibrate at
+     18-25°C. Prepare 1× wash buffer with one volume of 25× concentrate plus 24 volumes distilled
+     or deionized water, for example 12 mL concentrate plus 288 mL water. The eight washes
+     require 2.8 mL per used well plus handling allowance. Dissolve concentrate crystals by gentle
+    warming at 40°C before dilution; use the working buffer that day. [1]
+
+ 13. Briefly centrifuge the lyophilized standard at 10,000 × g for 1 min. Add 1 mL Reference
+     Standard &amp; Sample Diluent, wait 10 min and gently mix until dissolved to obtain 1000 pg/mL.
+     Prepare the fresh twofold series below; keep the zero-standard tube free of peptide. [1]
+
+
+   Standard                      Preparation
+
+
+   1000 pg/mL                    Reconstituted standard
+
+
+   500, 250, 125, 62.5, 31.25    For each successive tube, transfer 500 µL from the preceding concentration into
+   and 15.63 pg/mL           500 µL diluent; mix before the next transfer.
+
+
+   0 pg/mL                         Diluent alone; do not transfer standard into this tube.
+
+
+
+
+
+FV03 | v1.0                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original FV03 PDF, page 5" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> 14. Prepare 1× detection antibody and 1× HRP conjugate shortly before their respective additions.
+     Centrifuge each 100× concentrate at 800 × g for 1 min, then dilute one volume in 99 volumes
+      of its designated diluent, for example 10 µL concentrate plus 990 µL diluent. Calculate 100 µL
+     per used well plus 100-200 µL handling allowance; add any further measured reservoir
+     allowance needed. Keep the two diluents separate and protect HRP from light. [1]
+
+ E. Run the ELISA with a multichannel pipette
+
+ 15. Use a multichannel pipette to load 100 µL of each standard, zero standard or diluted sample
+      into the mapped wells, preferably in duplicate. Keep sample loading within about 10 min.
+     Dispense toward the bottom without scraping the well and avoid bubbles. Seal and incubate at
+    37°C for 90 min. [1]
+
+ 16. Discard the liquid without washing. Use the multichannel pipette to add 100 µL 1× detection
+     antibody per well, reseal and incubate at 37°C for 60 min. [1]
+
+ 17. Discard the liquid and firmly blot the inverted plate onto clean absorbent paper. Add 350 µL 1×
+    wash buffer per well with the multichannel pipette, soak for 1 min, discard and blot firmly
+     again. Perform three complete wash cycles. If the pipette holds at most 200 µL, dispense 175 µL
+     twice to deliver 350 µL. Remove residual droplets while keeping the strips secured, then
+     proceed immediately without allowing the wells to dry. [1]
+
+ 18. Add 100 µL 1× HRP conjugate per well with the multichannel pipette. Seal and incubate at
+    37°C for 30 min. [1]
+
+ 19. Discard the liquid and perform five complete washes using the same 350 µL/well, 1 min soak,
+     discard and firm-blot sequence. Immediately continue to substrate addition. [1]
+
+ 20. Add 90 µL TMB per well with the multichannel pipette in a fixed order. Seal and incubate at
+    37°C protected from light for approximately 15 min; stop when the upper standards show a
+     clear colour gradient, and do not exceed 30 min. Start the reader at least 15 min before
+     reading. [1]
+
+ 21. Add 50 µL stop solution per well with the multichannel pipette, following the same order and
+    pace as TMB addition. Check that the blue colour changes to yellow and inspect for bubbles.
+      [1]
+
+ 22. In SkanIt, select the actual 96-well ELISA plate and mapped used wells, create an absorbance
+     measurement at 450 nm, and confirm orientation. Read immediately after stopping. Retain the
+     plate map, native session and original OD450 export before processing. [1]
+
+ F. Calculate concentration and apparent clearance
+
+ 23. Inspect duplicate agreement, the zero-standard background and the increasing standard
+     response. Subtract the mean zero-standard OD from the standard and sample mean ODs and
+         fit a four-parameter logistic (4PL) curve. If using logarithmic concentration axes, keep zero as
+     the background control rather than taking log(0). [1]
+
+
+
+
+
+FV03 | v1.0                                                                              5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original FV03 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:38.20202%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:73.00468%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> 24. Interpolate only within the accepted curve and multiply by the actual cumulative dilution:
+     Coriginal = Cinterpolated × Dtotal. For the base workflow Dtotal = 200. If a sample is above
+     the curve, dilute further and rerun; if below the quantifiable range, use a lower dilution if
+      feasible or report below range. Do not extrapolate, replace below-range values with zero or
+     automatically assign every sample the same dilution. [1]
+
+ 25. For a control-adjusted endpoint, subtract the matched no-added-Aβ background after converting
+       all samples to original concentration units: Ccell,net = Ccell+Aβ - Ccell+vehicle; Cno-cell,net =
+     Cno-cell+Aβ - Cno-cell+vehicle. Then calculate apparent clearance (%) = 100 × (1 - Ccell,net /
+      Cno-cell,net). Use the matched 6 h cell-free denominator; calculate this ratio only when both net
+     values are supported by valid, quantifiable measurements and the denominator is positive.
+
+ 26. Summarize independent cultures separately from ELISA duplicate wells and retain the T0 result,
+      dilution chain and endpoint cell-condition record. Describe the result as residual extracellular
+    Aβ42 or apparent cell-associated clearance. Interpret differences alongside cell number or
+      viability; an intracellular uptake claim requires a separate cell-associated assay that addresses
+     surface-bound peptide.
+
+ p.s.
+
+
+ Use a multichannel pipette throughout ELISA plate loading, washing and shared-reagent additions.
+ Arrange the plate map, tubes and reservoirs beforehand; consistent channel order and timing
+ reduce avoidable well-to-well differences.
+
+ Blot firmly after discarding liquid, especially during manual washing: a weak tap can leave
+ substantial droplets. Keep strips secured in the frame, use clean absorbent paper, and continue
+ immediately so that thorough residual-liquid removal does not become drying of the wells.
+
+ Collect the supernatant before disturbing or harvesting cells. Keep Aβ preparation-to-addition time,
+ exposure duration, vessel material and freeze-thaw history comparable across groups and controls.
+
+ Treat 200-fold dilution as the team&#39;s working setting and check every sample against the curve. T0
+ and cell-free controls can contain much more residual Aβ than treated cultures and may need a
+ different dilution.
+
+ Use matching addition order for TMB and stop solution. Prepare antibody and HRP working
+ solutions fresh, use their designated diluents, and avoid carrying wash buffer into the next reagent.
+ [1]
+
+ Expected Outcome
+
+ Obtain an identifiable OD450 dataset, a usable standard curve and original-supernatant Aβ42
+ concentrations after applying sample-specific dilution factors. Standards should show increasing
+ signal and a visible colour gradient; use technical duplicates and blanks to judge assay consistency.
+
+ The endpoint can compare residual extracellular Aβ42 and apparent cell-associated clearance
+ across culture conditions. The protocol does not predetermine which group should clear more
+ peptide; lower supernatant signal alone does not establish intracellular uptake or degradation.
+
+
+
+
+
+FV03 | v1.0                                                                              6</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 7 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 7">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 7"><img src="page-007.webp" width="1800" height="2546" alt="Original FV03 PDF, page 7" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:70.21334%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.elabscience.com/p/human-a-1-42-amyloid-beta-1-42-elisa-kit--e-el-h0543" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.elabscience.com/p/human-a-1-42-amyloid-beta-1-42-elisa-kit--e-el-h0543" style="left:30.5986%;top:77.38543%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.anaspec.com/assets/b170c02d-e048-4e50-9c78-a12ed6d80393/tds-en-as-20276-25-beta-amyloid-1-42.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.anaspec.com/assets/b170c02d-e048-4e50-9c78-a12ed6d80393/tds-en-as-20276-25-beta-amyloid-1-42.pdf" style="left:31.64025%;top:82.43359%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5504696/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://pmc.ncbi.nlm.nih.gov/articles/PMC5504696/" style="left:25.96987%;top:90.45127%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 7</h2><p> Troubleshooting
+
+
+   Observed problem        Check first                         Action
+
+
+  Aβ stock remains cloudy    Actual solvent recipe, vial mass      Resolve the preparation before dosing. Record
+   or precipitates           and delay before PBS dilution       the route and use a fresh, consistently prepared
+                                                                   batch; visible dissolution does not certify
+                                                              aggregation state.
+
+
+    Cells detach or show       Recovery, starting cell condition,    Flag affected cultures. Re-establish comparable
+   poor condition during     medium and matched vehicle        healthy cultures and evaluate vehicle
+   exposure                    controls                              compatibility before interpreting clearance.
+
+
+   High blank or uneven     Wash count, soak time, residual     Verify three and five washes at the correct stages.
+   colour                         liquid, multichannel delivery and     Blot firmly on clean paper and dispense the next
+                                timing                            reagent promptly. Repeat the assay if controls
+                                                            remain unsuitable.
+
+
+   Large differences         Sample mixing, channel          Mix diluted samples again, check delivery from
+   between ELISA            performance, bubbles and         each channel, inspect bubbles and rerun affected
+   duplicates               mapping                          samples. Retain both original readings.
+
+
+    All standards are weak    Standard reconstitution, correct     Prepare a new curve and fresh working solutions.
+   or lack a gradient         antibody/HRP diluents, reagent     Confirm 37°C incubation and 450 nm reading;
+                               condition and incubations         do not calculate samples from a failed curve.
+
+
+   Sample exceeds the top    Actual dilution chain and OD        Increase dilution and rerun. Record the new
+   standard                     relative to 1000 pg/mL standard    cumulative factor rather than extrapolating.
+
+
+   Sample is near blank or    No-added-Aβ background,         Repeat at a lower dilution where compatible;
+   below range             sample dilution and curve lower     otherwise report below range. Do not assign zero
+                         end                                concentration or a clearance percentage from an
+                                                                    unquantifiable value.
+
+
+   Large Aβ loss also        Matched vessel, timing,           Use the matched cell-free endpoint for the
+   occurs without cells         preparation, storage and sample    comparison and examine noncellular loss. Add
+                             recovery                       an independent cell-associated readout when
+                                                                   claiming uptake.
+
+
+ Reference
+
+  [1] Elabscience. Human Aβ1-42 ELISA Kit, E-EL-H0543, supplied bilingual manual OWPK0C.pdf, Chinese V5.0.
+ Chinese pp. 4-8 and 10; English pp. 18-26: sample handling, dilution, reagent preparation, assay and analysis.
+ Local copy: sources/Elabscience_E-EL-H0543_V5.0.pdf. The link below opens the matching manufacturer product
+ page. Inspected 2026-10-13. Open source
+
+  [2] AnaSpec. β-Amyloid (1-42) Product Data Sheet, AS-20276 and related pack sizes, p. 1: molecular weight,
+ peptide content, reconstitution and storage. Public sheet does not define the percentage basis of its 1.0% NH4OH
+  solvent. Accessed 2026-10-13. Open source
+
+  [3] Batarseh YS et al. Oleocanthal ameliorates amyloid-β oligomers&#39; toxicity on astrocytes and neuronal cells: In vitro
+  studies. Neuroscience 352 (2017): 204-215. doi:10.1016/j.neuroscience.2017.03.059. Methods, time- and
+ concentration-dependent uptake: CCF-STTG1, 200 nM monomer preparation, sampling through 360 min. This
+ supplies a starting-condition precedent; the team&#39;s preparation and supernatant-only endpoint are adaptations.
+ Accessed 2026-10-13. Open source
+
+
+
+FV03 | v1.0                                                                              7</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

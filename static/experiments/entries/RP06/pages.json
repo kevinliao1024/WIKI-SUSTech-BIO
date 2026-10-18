@@ -1,0 +1,240 @@
+{
+  "source_sha256": "11dcc723580b2efe1666042ba5737624ea5572eeaa189078c4433d68e988e880",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 12,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "4de6d756b16be420a1b1b3b02cfa1fe2bd4a61fec3437ba4bfc7c5eac3b27a28",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 29.70922
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "1663e96df93f7ef2e3f95e0a0c7d7805e8f64a3a3c03da0f85d5d2da174b7683",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "15aa2805efbaa3dc2abe60a169e7f6eae18249d2af919681bf9d4b439419b682",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 3,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7230d036d943f2058b1da9b0f1166040ac214b2d7735d7a159f8c814ceab6555",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8c35bd88bd84e5ea12e7f055ec68c58d8717143716bb60f2e4d7da26bf1c0a51",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "de34c9abb9a7ff518a45c087b8042921fa1dff52432095674127f06b37db7e19",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "be0217336c24231c9a296040f8d44440144cbb7b5758b6feb82d29602f4775d3",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 8,
+      "image": "page-008.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f4484d6e3623b64f5ce183abf13e99769e073320de8253d19a6f77c512a7ee6c",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 9,
+      "image": "page-009.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "781380871fd2ae7c1ebf0a411b6d6449f1d91e0c63914cadc610afc4ded47c4a",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 10,
+      "image": "page-010.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "08df206b32415bae5f486dc6e121d6aef3c26774923ddaf1e8f03553a9e3793d",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 10,
+          "top": 64.92761
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 11,
+      "image": "page-011.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "39e73883437cfb423e5ce12a6f532044d71468a4a9f097db0b0eba090ba6df9d",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 11,
+          "top": 20.32557
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 11,
+          "top": 38.79592
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 12,
+      "image": "page-012.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "21ff4bc9f6cfb4c75fbfdd5400dec9f7331903fd5c3087a55398b351684e80b7",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 12,
+          "top": 35.35129
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.ohsu.edu/sites/default/files/2023-03/CytoFLEX-startup-guide-2021.pdf",
+          "left": 67.18478,
+          "top": 39.55387,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://pages.beckman.com/rs/682-XWP-826/images/fmna-mult-becls-talks-21-08-cytoflex-brochure-pdf.PDF",
+          "left": 52.38095,
+          "top": 43.11728,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://media.beckman.com/-/media/pdf-assets/flyers/flow-cytometer-cytoflex-gain-independent-compensation-flyer.pdf?rev=51db02c7f2d34cb7b1751a22b791d197",
+          "left": 49.81264,
+          "top": 46.68069,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.bio-rad-antibodies.com/flow-cytometry-gating-strategies.html",
+          "left": 50.94657,
+          "top": 50.2441,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://blog.addgene.org/antibodies-101-introduction-to-gating-in-flow-cytometry",
+          "left": 43.51623,
+          "top": 53.80752,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://docs.flowjo.com/flowjo/graphs-and-gating/gw-gating/gw-gatedrawing/",
+          "left": 32.30097,
+          "top": 57.37093,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.bio-rad-antibodies.com/flow-cytometry-controls.html",
+          "left": 42.48787,
+          "top": 60.93434,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.bio-rad-antibodies.com/blog/9-tips-to-get-publication-ready-flow-plots.html",
+          "left": 32.49512,
+          "top": 64.49775,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.beckman.com/resources/reading-material/application-notes/migration-of-panels-designed-on-cytoflex-s-to-cytoflex-srt",
+          "left": 42.16156,
+          "top": 76.67275,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.beckman.jp/en/landing/japan/2024/cytoflex-s-and-lx-campaign",
+          "left": 31.58193,
+          "top": 80.23616,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

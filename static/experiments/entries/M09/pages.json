@@ -1,0 +1,119 @@
+{
+  "source_sha256": "e32be7a5b67470f167bcb2d11df75a0fc1afaad3bd17aec56b3cd975c176a7ef",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "fbf6ffb1b4041e9ca9299f83f391a7a06a2805c583853a37bc31bdfb69818937",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 29.70922
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 64.3931
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "23e2a42d16d247e74b83099ae40d5e66d3c4ef02d6765d1098afb72eae60579c",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "1fe4f4c927d925519a71abbe1235f383024f21fe8665b88c09169e8b53a3cfbb",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8a0566e3a5429f6c14f3a71e42153c9879048a92a37ebf30f1050ecc5227ec36",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 29.64983
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 57.0881
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "613874b235e1c4532a406f1340ce497783a9d7c503507df773fd4e57a61bbb09",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 44.61616
+        }
+      ],
+      "links": [
+        {
+          "url": "https://bio.vazyme.com/download_xq/1847.html",
+          "left": 22.28239,
+          "top": 50.30349,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://bio.vazyme.com/download_xq/1850.html",
+          "left": 14.90299,
+          "top": 55.35166,
+          "width": 8.85807,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

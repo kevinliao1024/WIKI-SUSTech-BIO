@@ -1,0 +1,119 @@
+{
+  "source_sha256": "3b8d4ac760d6bc2c29033e07499a473f8068ec6236b132d12130694491f48b9c",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c21e93bdd2cf2f0117574ec17aefa93de9ebea48a7183b84d45982c255dd794a",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 60.59213
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "122eed11b17c7bbb1a2d84241940b8460a723d65f52393975325b90651febc18",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "00e4f3715a7c4fb8f0eebf85287c7a94babba96316b9229ef218018e3c377bd4",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d1c351598fa848b76e094d95ccbfcf42085322b33315cdb2164cba80193e6ef7",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 24.89862
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 43.30958
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ddb49d59b965c3a310b4227bb5afdfa82df5ee7abbee0e902206279d8bb97f43",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 65.04639
+        }
+      ],
+      "links": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980",
+          "left": 45.2651,
+          "top": 69.24897,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.bio-rad.com/en-uk/applications-technologies/qpcr-amplification?ID=3edb4096-4520-87be-7382-9bd9c130e419",
+          "left": 19.13603,
+          "top": 72.81238,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}
