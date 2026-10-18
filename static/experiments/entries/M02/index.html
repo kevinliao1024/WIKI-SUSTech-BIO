@@ -2,352 +2,607 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M02 · Agarose Gel Electrophoresis and Gel Extraction</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M02 · <strong>Category:</strong> Molecular Biology</p>
-<p>M02 | ver 1.4 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Check PCR products against their expected fragment sizes, separate the target band, and recover DNA for downstream assembly or cloning. Use a small aliquot for an analytical gel; use the remaining product on a preparative gel when size selection is needed. PCR preparation is described in M01.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Manufacturer</th>
-<th>Identifier / specification</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Agarose</td>
-<td>Tsingke</td>
-<td>TSJ001 reference product</td>
-<td>Standard agarose; 0.7-2.0% examples below [1]</td>
-</tr>
-<tr>
-<td>SYBR Safe DNA Gel Stain</td>
-<td>Thermo Fisher / Invitrogen</td>
-<td>10,000× concentrate; e.g. S33102</td>
-<td>1× in gel; ready-to-use formats require no further dilution [4]</td>
-</tr>
-<tr>
-<td>DNA loading buffer</td>
-<td>Vazyme</td>
-<td>Stock product as supplied</td>
-<td>6× calculation shown below; use the concentration on the tube</td>
-</tr>
-<tr>
-<td>DNA marker / ladder</td>
-<td>Vazyme</td>
-<td>MD101 / MD102 / MD103 / MD104</td>
-<td>Select by target size; products are ready to load [3]</td>
-</tr>
-<tr>
-<td>TAE buffer</td>
-<td>Laboratory reagent</td>
-<td>1× working TAE</td>
-<td>Same buffer for casting and running</td>
-</tr>
-<tr>
-<td>DEPC-treated water</td>
-<td>Sangon Biotech</td>
-<td>B501005</td>
-<td>External laboratory water; kit buffers remain as supplied [17]</td>
-</tr>
-<tr>
-<td>Horizontal gel tank and power supply</td>
-<td>Bio-Rad</td>
-<td>Available compatible system</td>
-<td>Gel tray, analytical and preparative combs [5]</td>
-</tr>
-<tr>
-<td>E.Z.N.A. Gel Extraction Kit</td>
-<td>Omega Bio-tek</td>
-<td>D2500</td>
-<td>HiBind DNA Mini Column, XP2, SPW and Elution Buffer [6]</td>
-</tr>
-<tr>
-<td>Absolute ethanol</td>
-<td>Sangon Biotech</td>
-<td>Absolute grade</td>
-<td>Prepare SPW as directed on its bottle</td>
-</tr>
-<tr>
-<td>Sodium acetate</td>
-<td>Laboratory reagent</td>
-<td>5 M, pH 5.2</td>
-<td>Use only if binding pH requires adjustment</td>
-</tr>
-<tr>
-<td>Imager; cutting surface and blade</td>
-<td>As available</td>
-<td>SYBR Safe-compatible optics</td>
-<td>Prefer blue light for DNA to be recovered [4]</td>
-</tr>
-<tr>
-<td>Balance, heat block, microcentrifuge</td>
-<td>Eppendorf centrifuge; laboratory equipment</td>
-<td>60 °C; ≥13,000 × g</td>
-<td>Gel weighing, dissolution and column purification</td>
-</tr>
-<tr>
-<td>Tubes, pipettes, tips; heating vessel</td>
-<td>Axygen tips; laboratory equipment</td>
-<td>1.5 / 2 mL tubes</td>
-<td>Sample loading, collection and gel casting</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Record each expected linear DNA size, sample identity and lane position. Select gel concentration and ladder before casting. Match each stain and loading-buffer dilution to its stock concentration. Select the ladder by its band map.</p>
-<p>Prepare fresh 1× TAE for both gel and tank. For example, dilute 20 mL of 50× TAE to 1 L with water. Set aside the PCR aliquot for checking and retain the rest for recovery.</p>
-<p>For extraction, prepare SPW with absolute ethanol using the bottle-specific dilution and preheat the block to 60 °C. Use the D2500 workflow with XP2 and SPW; do not substitute buffers from another kit. [6]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-select-gel-concentration-and-ladder">A. Select gel concentration and ladder</h3>
-<ol>
-<li>Choose agarose concentration using the expected target and the nearest unwanted fragment. The ranges below are broad separation guides; resolving two similar-sized bands may require a longer run or a different gel concentration. [1, 2]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Agarose (w/v)</th>
-<th>Broad linear DNA range</th>
-<th>Agarose for 50 mL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.7%</td>
-<td>0.8-12 kb</td>
-<td>0.35 g</td>
-</tr>
-<tr>
-<td>1.0%</td>
-<td>0.5-10 kb</td>
-<td>0.50 g</td>
-</tr>
-<tr>
-<td>1.5%</td>
-<td>0.2-3 kb</td>
-<td>0.75 g</td>
-</tr>
-<tr>
-<td>2.0%</td>
-<td>0.05-2 kb</td>
-<td>1.00 g</td>
-</tr>
-</tbody>
-</table>
-<p>Ranges follow Tsingke TSJ001 guidance. For routine selection, start around 2% for 100-500 bp, 1.5% for 0.5-2 kb, 1% for 2-5 kb, and 0.7-1% for 5-10 kb. These starting choices are an adaptation, not fixed cutoffs. Very short fragments and closely spaced products may need a higher-resolution method.</p>
-<ol start="2">
-<li>Select a Vazyme ladder with reference bands near and, where possible, on both sides of the expected size. Use the actual band map on the product sheet; the largest number in a marker name does not describe its spacing. [3]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Vazyme option</th>
-<th>Reference sizes / useful application</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100 bp DNA Ladder (MD104)</td>
-<td>100-1,000 bp in 100 bp steps, plus 1,500 bp; useful for short PCR products.</td>
-</tr>
-<tr>
-<td>DL2000 Plus (MD101)</td>
-<td>100, 250, 500, 750, 1,000, 1,500, 2,000 bp; routine checks up to 2 kb.</td>
-</tr>
-<tr>
-<td>DL5000 (MD102)</td>
-<td>100, 250, 500, 750, 1,000, 1,500, 2,000, 3,000, 5,000 bp; medium fragments.</td>
-</tr>
-<tr>
-<td>DL15000 (MD103)</td>
-<td>250, 1,000, 2,500, 5,000, 7,500, 10,000, 15,000 bp; larger fragments.</td>
-</tr>
-</tbody>
-</table>
-<p>For example, a 350 bp product is easier to size with MD104 than with the widely spaced MD103. A 6 kb product requires a marker extending above 5 kb. The Omega D2500 recovery workflow here is scoped to 100 bp-10 kb; a larger marker range does not extend the extraction scope. [7]</p>
-<h3 id="b-choose-the-comb-and-cast-the-gel">B. Choose the comb and cast the gel</h3>
-<ol start="3">
-<li>Choose the comb by the volume after loading-buffer addition and the number of samples. For compatible Bio-Rad mini trays, a 15-well comb suits small analytical aliquots; an 8-well or preparative comb offers wider wells for recovery. Check the actual tray and comb compatibility. [5]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Purpose</th>
-<th>Comb choice</th>
-<th>Loading decision</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Analytical PCR check</td>
-<td>Many narrow wells; thin teeth where suitable</td>
-<td>Allow one lane for ladder. Load a small aliquot to preserve the PCR product.</td>
-</tr>
-<tr>
-<td>Preparative recovery</td>
-<td>Fewer, wider wells or a preparative comb</td>
-<td>Use a well with sufficient rated capacity; otherwise divide the sample among adjacent lanes.</td>
-</tr>
-<tr>
-<td>High-volume or concentrated product</td>
-<td>Wide wells with adequate spacing</td>
-<td>Both liquid volume and DNA mass matter. A well that holds the liquid may still be overloaded.</td>
-</tr>
-</tbody>
-</table>
-<p>Check the comb/tray capacity at the chosen gel depth. Do not infer capacity from tooth count alone: tooth width, thickness and insertion depth all matter. Avoid casting an unnecessarily thick gel simply to fit more sample, because this increases the amount of agarose to dissolve.</p>
-<ol start="4">
-<li>
-<p>Weigh agarose using mass (g) = concentration (%) × buffer volume (mL) / 100. Heat it in 1× TAE until completely clear, swirling between short heating intervals. Use a heat-resistant vessel and protect against hot liquid. [1]</p>
-</li>
-<li>
-<p>Use in-gel SYBR Safe staining for this workflow. For 10,000× concentrate, add 5 µL per 50 mL gel solution to give 1× and mix evenly. A ready-to-use 1× stain replaces the corresponding buffer rather than receiving another 10,000-fold dilution. Protect stain from light. [4]</p>
-</li>
-<li>
-<p>Cool the molten agarose to approximately 60 °C, pour into a level casting tray with the selected comb, and remove bubbles near the teeth. Aim for a gel depth of about 3-5 mm. Leave until fully set, usually 30-60 min, then remove the comb gently. [1]</p>
-</li>
-</ol>
-<h3 id="c-prepare-samples-and-run-the-gel">C. Prepare samples and run the gel</h3>
-<ol start="7">
-<li>Prepare a small analytical aliquot from the completed M01 PCR. A practical starting example is 2 µL PCR product + 3 µL water + 1 µL 6× loading buffer: 6 µL total at 1× loading buffer. If the band is saturated, reduce PCR input; if faint, increase the aliquot within the well capacity.</li>
-</ol>
-<p>For a separate n× loading stock, add Vsample / (n - 1) of loading buffer, counting any added water in Vsample. For 6× stock, use 1 part loading buffer to 5 parts sample. If a PCR mix already contains ready-to-load buffer, do not automatically add another full dose. Loading buffer and SYBR Safe have different roles: sample density/tracking and fluorescent DNA detection.</p>
-<table>
-<thead>
-<tr>
-<th>Original PCR</th>
-<th>After 2 µL analytical aliquot</th>
-<th>6× loading added</th>
-<th>Preparative load</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>25 µL</td>
-<td>23 µL remaining</td>
-<td>4.6 µL</td>
-<td>27.6 µL</td>
-</tr>
-<tr>
-<td>50 µL</td>
-<td>48 µL remaining</td>
-<td>9.6 µL</td>
-<td>57.6 µL</td>
-</tr>
-</tbody>
-</table>
-<p>These are volume calculations for undiluted remaining PCR with no loading buffer already present. Select a preparative well that holds the resulting volume, or split the prepared mixture across lanes. Pool only matching PCR products with the same intended target.</p>
-<ol start="8">
-<li>
-<p>Place the gel with wells toward the black, negative electrode so DNA migrates toward the red, positive electrode. Add 1× TAE to cover the gel according to the tank instructions, clear bubbles from wells, and load without puncturing the well floor.</p>
-</li>
-<li>
-<p>Mix the ladder and load 5 µL of the selected ready-to-use Vazyme marker into a separate lane. Do not add extra loading buffer to these ready-to-use markers. Load samples according to the lane map. [3]</p>
-</li>
-<li>
-<p>Run at constant 120 V for approximately 35 min as the team's usual setting. Check migration and stop before the relevant small fragments leave the gel. Extend or shorten the run according to actual separation; reduce voltage if the gel heats excessively or bands curve.</p>
-</li>
-</ol>
-<p>Voltage must be interpreted using electrode spacing, not gel length: field strength (V/cm) = voltage / electrode distance (cm). At 120 V and 15 cm spacing, the field is 8 V/cm. Vazyme recommends 4-10 V/cm for its routine marker workflow; larger fragments may benefit from lower fields and longer runs. For &gt;5 kb resolution, Thermo guidance gives 1-3 V/cm. Stay within the actual Bio-Rad tank and power-supply ratings. [2, 3]</p>
-<ol start="11">
-<li>Switch off the power before opening the tank. Image the gel using SYBR Safe-compatible excitation and filters, preferably blue light for material to be recovered. Save the image and lane map. If this is an analytical check only, stop here and retain the remaining PCR product. [4]</li>
-</ol>
-<h3 id="d-excise-the-target-and-purify-with-omega-d2500">D. Excise the target and purify with Omega D2500</h3>
-<ol start="12">
-<li>On a preparative gel, identify the target against the ladder and excise a compact slice with a clean blade. Exclude neighboring bands and excess agarose. Keep illumination brief; use blue light when available. Transfer the slice to a preweighed tube. [4]</li>
-</ol>
-<p>Use the centrifugation workflow below, adapted from the D2500 quick guide. All column spins are at room temperature; the wash/dry/elution spins use maximum speed (≥13,000 × g) within tube and rotor limits. [6]</p>
-<ol start="13">
-<li>
-<p>Weigh the slice; 100 mg corresponds to approximately 100 µL gel. Add one gel volume of XP2. Incubate at 60 °C for about 7 min, mixing every 2-3 min until dissolved. [6]</p>
-</li>
-<li>
-<p>Check the dissolved mixture: it should be light yellow. If orange/red, add 5 µL of 5 M sodium acetate, pH 5.2, mix and reassess before loading. [6]</p>
-</li>
-<li>
-<p>Load ≤700 µL onto a HiBind column in its collection tube. Spin at 10,000 × g for 1 min; discard flow-through. Repeat until all sample is loaded. [6]</p>
-</li>
-<li>
-<p>Wash with 300 µL XP2; spin for 1 min and discard flow-through. [6]</p>
-</li>
-<li>
-<p>Wash with 700 µL ethanol-prepared SPW; spin for 1 min and discard flow-through. Repeat this wash for downstream assembly/cloning. [6]</p>
-</li>
-<li>
-<p>Spin the empty column for 2 min, then move it to a clean tube. [6]</p>
-</li>
-<li>
-<p>Apply 30-50 µL Elution Buffer centrally, wait 2 min, and spin for 1 min. Store recovered DNA at -20 °C. [6]</p>
-</li>
-<li>
-<p>Measure recovered DNA concentration and calculate the amount available for the next reaction. Recheck a small eluate aliquot if purity or fragment integrity is uncertain, keeping enough DNA for the intended assembly.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Decide whether the gel is for checking or recovery before casting it. A small analytical aliquot preserves most of a 25 or 50 µL PCR; a preparative comb can save several overloaded narrow lanes.</p>
-<p>For a weak but distinct target, recover the correct band and quantify the eluate before repeating the PCR. For increasing PCR yield, see M01 &gt; PCR Optimization &gt; O1. Pool only matching products and distribute the load to maintain separation.</p>
-<p>Tracking dye is a migration guide, not a molecular-size standard. Its apparent size changes with gel concentration and buffer; compare the DNA band with the ladder. [2]</p>
-<p>Trim the slice closely and dissolve it completely. If it remains difficult to dissolve, Omega suggests additional XP2; larger solution volumes require repeated column loading. [7]</p>
-<p>Keep fresh running buffer and complete the column drying step. Residual salts or ethanol can impair assembly even when a recovered band looks correct. [6, 7]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>The analytical gel should show a clearly resolved ladder and a product near the expected size. A correctly sized band supports the intended amplification but does not confirm sequence identity.</p>
-<p>After preparative separation, the target should be distinct enough to excise without adjacent products. Record the recovered concentration and volume; usable yield depends on input, fragment size and the downstream requirement.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>Check the ladder first: a shared defect suggests gel/run/imaging conditions; a sample-only defect suggests loading or sample quality.</p>
-<p>Images below are external EtBr examples, not team data or SYBR Safe performance measurements. Arrows identify appearances, not proven causes.</p>
-<h3 id="1-smearing-trailing-or-extra-bands">1. Smearing, trailing or extra bands</h3>
-<p><img alt="Original inverted grayscale gel: marker at left, multiple discrete bands in middle/right sample lanes, and vertical trailing above intense lower bands. Callout 1 points to extra bands; callout 2 points to trailing." src="assets/annotated_photo_1.png"></img></p>
-<p>1: extra discrete bands. 2: vertical trailing above a bright band.</p>
-<p>For trailing or smear, shorten exposure, then compare the sample with a 1:5 dilution at equal load volume and 1× loading buffer. Dilution lowers both DNA and salt. If smearing persists, check a fresh or cleaned aliquot; for PCR material, see M01 &gt; PCR Optimization &gt; O1-O2. [8-10]</p>
-<p>For discrete extra bands or a short by-product, check expected size and separation, then use M01 &gt; PCR Optimization &gt; O2 (O3 for suspected residual plasmid). Excise only a clearly separated target. [10]</p>
-<p>Retama; CC BY-SA 4.0. Original image retained; arrows and notes added by SUSTech-BIO 2026 iGEM Team under the same license. Source [12]; license [15].</p>
-<h3 id="2-broad-ragged-or-curved-bands">2. Broad, ragged or curved bands</h3>
-<p><img alt="Original grayscale EtBr gel: broad textured sample bands span several wide wells; ladder bands at left curve within their lane. Callout 1 points to a ragged sample-band edge; callout 2 points to a curved marker band." src="assets/annotated_photo_2.png"></img></p>
-<p>1: broad, ragged sample band. 2: curved ladder bands.</p>
-<p>Shorten exposure and rerun less sample to distinguish saturation from loading distortion. If the ladder and many lanes bend together, check heating, matching fresh buffer and gel uniformity; lower voltage if hot. Use 120 V / 35 min as a starting point and adjust to separation. [8, 9]</p>
-<p>Sgroey; CC BY-SA 4.0. Original image retained; arrows and notes added by SUSTech-BIO 2026 iGEM Team under the same license. Source [13]; license [15].</p>
-<h3 id="3-faint-bands-high-background-or-a-dark-dye-zone">3. Faint bands, high background or a dark dye zone</h3>
-<p><img alt="Original annotated color EtBr gel by Ultrabem, showing wells, DNA marker, DNA bands, a dark loading-dye zone and fluorescent gel background. Added callout 1 indicates the dark dye zone; callout 2 indicates a weak band beside stronger bands." src="assets/annotated_photo_3.png"></img></p>
-<p>1: dark tracking-dye zone. 2: weak band beside stronger bands.</p>
-<p>Check SYBR Safe dilution, filter/exposure and the imaging surface. Recast with uniformly mixed stain if background persists. If dye obscures the target, rerun to separate the two; tracking dye does not indicate DNA size. [4, 11]</p>
-<p>For a clear ladder but weak sample, check lane identity and loaded volume, then increase the aliquot within well capacity at 1× loading buffer. Missing small ladder bands suggest run-off: shorten the run or raise gel concentration for small targets. Persistent weak PCR product: M01 &gt; PCR Optimization &gt; O1. [10, 11]</p>
-<p>Ultrabem; CC0 1.0. Original labels and credit retained; numbered arrows and notes added by SUSTech-BIO 2026 iGEM Team. Source [14]; dedication [16].</p>
-<h3 id="4-neither-ladder-nor-samples-are-visible">4. Neither ladder nor samples are visible</h3>
-<p>Check power, polarity, 1× TAE and stain/imager compatibility. Re-image if the optical settings were wrong; if DNA has run off the gel, rerun retained material. [4, 8]</p>
-<h3 id="5-target-overlaps-a-neighboring-band">5. Target overlaps a neighboring band</h3>
-<p>Reduce excessive loading. Select gel concentration and local ladder bands using Section A; for close sizes, allow a longer separation at a suitable lower field while the target remains on the gel. Do not excise a merged band. [2, 3, 8]</p>
-<h3 id="6-a-lane-splits-bends-locally-or-leaks">6. A lane splits, bends locally or leaks</h3>
-<p>Check for bubbles, damaged wells and excess load volume. Reload into an intact well without piercing its floor; keep loading buffer at 1×. For recovery, use a wider well or divide the sample between wells. [9]</p>
-<h3 id="7-dna-remains-near-the-wells">7. DNA remains near the wells</h3>
-<p>If the ladder also fails to migrate, check power and buffer. If only the sample is affected, check expected size and compare a diluted or cleaned aliquot. Lower agarose concentration only when target size warrants it. [3, 8]</p>
-<h3 id="8-low-recovery-or-poor-downstream-assembly">8. Low recovery or poor downstream assembly</h3>
-<p>For low recovery, check complete gel dissolution, yellow binding mixture, SPW ethanol preparation and elution onto the membrane center (Section D). Quantify total recovered mass. For poor assembly, also check wash-buffer carryover, the drying spin, light exposure and the assembly recipe. [4, 6, 7]</p>
-<h2 id="reference">Reference</h2>
-<p>[1] Tsingke. Agarose, TSJ001: gel preparation and concentration guide, printed pp. 2-4. Revision not reliably readable. Accessed 2026-09-15. <a href="https://tsingke-shop.oss-cn-beijing.aliyuncs.com/upload/image/202206/ddd1032c-c5ab-46e5-81b6-9264fbb7be2b_source.pdf">Open source</a></p>
-<p>[2] Thermo Fisher Scientific. General Recommendations for DNA Electrophoresis, MAN0012614, pp. 1-2, 2012. General guidance; concentration ranges in this protocol follow Tsingke. Accessed 2026-09-15. <a href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012614_Gen_Recommend_DNA_Electrophoresis_UG.pdf">Open source</a></p>
-<p>[3] Vazyme. DNA Marker/Ladder, MD101/102/103/104, version 22.2, pp. 1-2. Manufacturer-authored manual hosted by Biorbyt. Accessed 2026-09-15. <a href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/MD101-104-V22.2.pdf">Open source</a></p>
-<p>[4] Thermo Fisher Scientific / Invitrogen. SYBR Safe DNA Gel Stain FAQs: dilution, in-gel staining and imaging for cloning. Accessed 2026-09-15. <a href="https://www.thermofisher.com/order/catalog/product/S33110/faqs">Open source</a></p>
-<p>[5] Bio-Rad. Mini-Sub Cell GT Cell: compatible comb formats and gel trays. Manufacturer reference system for tray and comb compatibility. Accessed 2026-09-15. <a href="https://www.bio-rad.com/en-us/product/mini-sub-cell-gt-cell?ID=85b69e1d-8ee0-4184-96bc-cd47e87d42f6">Open source</a></p>
-<p>[6] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit Quick Guide, D2500, QMF28 revision 2.1, p. 1, centrifugation protocol. Manufacturer-authored guide hosted by Froggabio. Accessed 2026-09-15. <a href="https://www.froggabio.com/media/productattachments/files/q/m/qmf28.0007.d2500.d2501_v2.1_1.pdf">Open source</a></p>
-<p>[7] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit (V-spin): description and recovery troubleshooting FAQ. Accessed 2026-09-15. <a href="https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/">Open source</a></p>
-<p>[8] Thermo Fisher Scientific. Nucleic Acid Gel Electrophoresis Troubleshooting: faint, smeared, poorly resolved and curved bands. Accessed 2026-09-15. <a href="https://www.thermofisher.com/us/en/home/life-science/cloning/cloning-learning-center/invitrogen-school-of-molecular-biology/na-electrophoresis-education/na-electrophoresis-troubleshooting.html">Open source</a></p>
-<p>[9] Bio-Rad. Sub-Cell GT, Wide Mini-Sub Cell GT, and Mini-Sub Cell GT Agarose Gel Electrophoresis Systems, document 10016027, Section 5, Table 11, printed p. 19 (PDF p. 25). Accessed 2026-09-15. <a href="https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf">Open source</a></p>
-<p>[10] New England Biolabs. PCR Troubleshooting Guide: no product, incorrect size, multiple/nonspecific products. General principles only; M01 retains its enzyme-specific programs. Accessed 2026-09-15. <a href="https://www.neb.com/tools-and-resources/troubleshooting-guides/pcr-troubleshooting-guide">Open source</a></p>
-<p>[11] Thermo Fisher Scientific. Nucleic Acid Stains, Ladders, and Markers Support - Troubleshooting: stain migration, speckles and missing small bands. Accessed 2026-09-15. <a href="https://www.thermofisher.com/jp/ja/home/technical-resources/technical-reference-library/nucleic-acid-purification-analysis-support-center/nucleic-acid-stains-ladders-markers-support/nucleic-acid-stains-ladders-markers-support-troubleshooting.html">Open source</a></p>
-<p>[12] Retama. Unspecific pcr.jpg (2008), 1% agarose, ethidium bromide. Wikimedia Commons; CC BY-SA 4.0 selected from offered licenses. Case 1 image: original image retained; numbered arrows and teaching notes added. Accessed 2026-09-15. <a href="https://commons.wikimedia.org/wiki/File:Unspecific_pcr.jpg">Open source</a></p>
-<p>[13] Sgroey. GelDoc DNA gel electrophoresis photograph stained with ethidium bromide 01.jpg. Wikimedia Commons; CC BY-SA 4.0. Case 2 image: original image retained; numbered arrows and teaching notes added. Underlying experiment and root cause are unspecified. Accessed 2026-09-15. <a href="https://commons.wikimedia.org/wiki/File:GelDoc_DNA_gel_electrophoresis_photograph_stained_with_ethidium_bromide_01.jpg">Open source</a></p>
-<p>[14] Ultrabem. Agarose gel electrophoresis of DNA with annotation.png (2023). Wikimedia Commons; CC0 1.0. Case 3 image: original labels and credit retained; additional callouts added. Accessed 2026-09-15. <a href="https://commons.wikimedia.org/wiki/File:Agarose_gel_electrophoresis_of_DNA_with_annotation.png">Open source</a></p>
-<p>[15] Creative Commons. CC BY-SA 4.0 license. Applies to Images in cases 1-2 and their added annotations; retain attribution, source/license links and modification notice when reusing the plates. <a href="https://creativecommons.org/licenses/by-sa/4.0/">Open source</a></p>
-<p>[16] Creative Commons. CC0 1.0 public-domain dedication. Original Case 3 image is provided under this dedication. <a href="https://creativecommons.org/publicdomain/zero/1.0/">Open source</a></p>
-<p>[17] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed 2026-10-03. <a href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M02 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:33.15386%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Agarose Gel Electrophoresis
+and Gel Extraction
+
+ M02 | ver 1.4 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Check PCR products against their expected fragment sizes, separate the target band, and recover
+ DNA for downstream assembly or cloning. Use a small aliquot for an analytical gel; use the
+ remaining product on a preparative gel when size selection is needed. PCR preparation is described
+ in M01.
+
+ Materials &amp; Equipment
+
+
+   Item                         Manufacturer      Identifier /             Use / Specification
+                                                          specification
+
+
+   Agarose                       Tsingke          TSJ001 reference        Standard agarose; 0.7-2.0%
+                                                  product                examples below [1]
+
+
+   SYBR Safe DNA Gel Stain     Thermo Fisher    10,000× concentrate;   1× in gel; ready-to-use formats
+                               / Invitrogen       e.g. S33102             require no further dilution [4]
+
+
+  DNA loading buffer         Vazyme          Stock product as       6× calculation shown below; use the
+                                                    supplied                 concentration on the tube
+
+
+  DNA marker / ladder        Vazyme       MD101 / MD102 /      Select by target size; products are
+                                   MD103 / MD104       ready to load [3]
+
+
+   TAE buffer                    Laboratory      1× working TAE       Same buffer for casting and running
+                                reagent
+
+
+   DEPC-treated water          Sangon        B501005                External laboratory water; kit buffers
+                                  Biotech                                 remain as supplied [17]
+
+
+   Horizontal gel tank and        Bio-Rad           Available compatible    Gel tray, analytical and preparative
+   power supply                                   system                combs [5]
+
+
+   E.Z.N.A. Gel Extraction Kit   Omega Bio-tek   D2500                  HiBind DNA Mini Column, XP2, SPW
+                                                               and Elution Buffer [6]
+
+
+   Absolute ethanol            Sangon          Absolute grade          Prepare SPW as directed on its bottle
+                                  Biotech
+
+
+   Sodium acetate               Laboratory      5 M, pH 5.2           Use only if binding pH requires
+                                reagent                                   adjustment
+
+
+
+
+
+M02 | v1.4                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M02 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:32.38178%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:53.52469%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p>   Item                         Manufacturer      Identifier /             Use / Specification
+                                                          specification
+
+
+   Imager; cutting surface and    As available     SYBR Safe-compatible    Prefer blue light for DNA to be
+   blade                                                optics                  recovered [4]
+
+
+   Balance, heat block,          Eppendorf      60 °C; ≥13,000 × g     Gel weighing, dissolution and column
+   microcentrifuge                  centrifuge;                                     purification
+                                  laboratory
+                               equipment
+
+
+   Tubes, pipettes, tips; heating   Axygen tips;      1.5 / 2 mL tubes        Sample loading, collection and gel
+   vessel                         laboratory                                   casting
+                               equipment
+
+
+ Before You Start
+
+ Record each expected linear DNA size, sample identity and lane position. Select gel concentration
+ and ladder before casting. Match each stain and loading-buffer dilution to its stock concentration.
+ Select the ladder by its band map.
+
+ Prepare fresh 1× TAE for both gel and tank. For example, dilute 20 mL of 50× TAE to 1 L with
+ water. Set aside the PCR aliquot for checking and retain the rest for recovery.
+
+ For extraction, prepare SPW with absolute ethanol using the bottle-specific dilution and preheat the
+ block to 60 °C. Use the D2500 workflow with XP2 and SPW; do not substitute buffers from another
+  kit. [6]
+
+ Procedure
+
+ A. Select gel concentration and ladder
+
+ 1. Choose agarose concentration using the expected target and the nearest unwanted fragment.
+     The ranges below are broad separation guides; resolving two similar-sized bands may require
+    a longer run or a different gel concentration. [1, 2]
+
+
+   Agarose (w/v)             Broad linear DNA range                      Agarose for 50 mL
+
+
+   0.7%                       0.8-12 kb                                   0.35 g
+
+
+   1.0%                       0.5-10 kb                                   0.50 g
+
+
+   1.5%                        0.2-3 kb                                    0.75 g
+
+
+   2.0%                       0.05-2 kb                                   1.00 g
+
+
+ Ranges follow Tsingke TSJ001 guidance. For routine selection, start around 2% for 100-500 bp,
+ 1.5% for 0.5-2 kb, 1% for 2-5 kb, and 0.7-1% for 5-10 kb. These starting choices are an
+ adaptation, not fixed cutoffs. Very short fragments and closely spaced products may need a
+ higher-resolution method.
+
+
+
+
+M02 | v1.4                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M02 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> 2. Select a Vazyme ladder with reference bands near and, where possible, on both sides of the
+     expected size. Use the actual band map on the product sheet; the largest number in a marker
+    name does not describe its spacing. [3]
+
+
+   Vazyme option                      Reference sizes / useful application
+
+
+   100 bp DNA Ladder (MD104)       100-1,000 bp in 100 bp steps, plus 1,500 bp; useful for short PCR
+                                          products.
+
+
+   DL2000 Plus (MD101)              100, 250, 500, 750, 1,000, 1,500, 2,000 bp; routine checks up to 2 kb.
+
+
+   DL5000 (MD102)                  100, 250, 500, 750, 1,000, 1,500, 2,000, 3,000, 5,000 bp; medium
+                                         fragments.
+
+
+   DL15000 (MD103)                 250, 1,000, 2,500, 5,000, 7,500, 10,000, 15,000 bp; larger fragments.
+
+
+ For example, a 350 bp product is easier to size with MD104 than with the widely spaced MD103.
+ A 6 kb product requires a marker extending above 5 kb. The Omega D2500 recovery workflow
+ here is scoped to 100 bp-10 kb; a larger marker range does not extend the extraction scope. [7]
+
+ B. Choose the comb and cast the gel
+
+ 3. Choose the comb by the volume after loading-buffer addition and the number of samples. For
+     compatible Bio-Rad mini trays, a 15-well comb suits small analytical aliquots; an 8-well or
+     preparative comb offers wider wells for recovery. Check the actual tray and comb
+      compatibility. [5]
+
+
+   Purpose              Comb choice                       Loading decision
+
+
+   Analytical PCR check      Many narrow wells; thin teeth        Allow one lane for ladder. Load a small
+                          where suitable                         aliquot to preserve the PCR product.
+
+
+   Preparative recovery       Fewer, wider wells or a             Use a well with sufficient rated capacity;
+                               preparative comb                    otherwise divide the sample among adjacent
+                                                                         lanes.
+
+
+   High-volume or          Wide wells with adequate spacing    Both liquid volume and DNA mass matter. A
+   concentrated product                                               well that holds the liquid may still be
+                                                                 overloaded.
+
+
+ Check the comb/tray capacity at the chosen gel depth. Do not infer capacity from tooth count
+ alone: tooth width, thickness and insertion depth all matter. Avoid casting an unnecessarily thick gel
+ simply to fit more sample, because this increases the amount of agarose to dissolve.
+
+ 4. Weigh agarose using mass (g) = concentration (%) × buffer volume (mL) / 100. Heat it in 1× TAE
+       until completely clear, swirling between short heating intervals. Use a heat-resistant vessel and
+      protect against hot liquid. [1]
+
+ 5. Use in-gel SYBR Safe staining for this workflow. For 10,000× concentrate, add 5 µL per 50 mL
+     gel solution to give 1× and mix evenly. A ready-to-use 1× stain replaces the corresponding
+      buffer rather than receiving another 10,000-fold dilution. Protect stain from light. [4]
+
+
+
+M02 | v1.4                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M02 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> 6. Cool the molten agarose to approximately 60 °C, pour into a level casting tray with the selected
+    comb, and remove bubbles near the teeth. Aim for a gel depth of about 3-5 mm. Leave until
+       fully set, usually 30-60 min, then remove the comb gently. [1]
+
+ C. Prepare samples and run the gel
+
+ 7. Prepare a small analytical aliquot from the completed M01 PCR. A practical starting example is 2
+     µL PCR product + 3 µL water + 1 µL 6× loading buffer: 6 µL total at 1× loading buffer. If the
+    band is saturated, reduce PCR input; if faint, increase the aliquot within the well capacity.
+
+ For a separate n× loading stock, add Vsample / (n - 1) of loading buffer, counting any added water
+ in Vsample. For 6× stock, use 1 part loading buffer to 5 parts sample. If a PCR mix already contains
+ ready-to-load buffer, do not automatically add another full dose. Loading buffer and SYBR Safe
+ have different roles: sample density/tracking and fluorescent DNA detection.
+
+
+   Original PCR           After 2 µL analytical aliquot      6× loading added           Preparative load
+
+
+   25 µL              23 µL remaining                  4.6 µL                   27.6 µL
+
+
+   50 µL              48 µL remaining                  9.6 µL                   57.6 µL
+
+
+ These are volume calculations for undiluted remaining PCR with no loading buffer already present.
+ Select a preparative well that holds the resulting volume, or split the prepared mixture across lanes.
+ Pool only matching PCR products with the same intended target.
+
+ 8. Place the gel with wells toward the black, negative electrode so DNA migrates toward the red,
+      positive electrode. Add 1× TAE to cover the gel according to the tank instructions, clear bubbles
+     from wells, and load without puncturing the well floor.
+
+ 9. Mix the ladder and load 5 µL of the selected ready-to-use Vazyme marker into a separate lane.
+    Do not add extra loading buffer to these ready-to-use markers. Load samples according to the
+     lane map. [3]
+
+ 10. Run at constant 120 V for approximately 35 min as the team&#39;s usual setting. Check migration
+    and stop before the relevant small fragments leave the gel. Extend or shorten the run according
+      to actual separation; reduce voltage if the gel heats excessively or bands curve.
+
+ Voltage must be interpreted using electrode spacing, not gel length: field strength (V/cm) = voltage
+ / electrode distance (cm). At 120 V and 15 cm spacing, the field is 8 V/cm. Vazyme recommends
+ 4-10 V/cm for its routine marker workflow; larger fragments may benefit from lower fields and
+ longer runs. For &gt;5 kb resolution, Thermo guidance gives 1-3 V/cm. Stay within the actual Bio-Rad
+ tank and power-supply ratings. [2, 3]
+
+ 11. Switch off the power before opening the tank. Image the gel using SYBR Safe-compatible
+      excitation and filters, preferably blue light for material to be recovered. Save the image and
+     lane map. If this is an analytical check only, stop here and retain the remaining PCR product.
+      [4]
+
+
+
+
+
+M02 | v1.4                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original M02 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:58.98859%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> D. Excise the target and purify with Omega D2500
+
+ 12. On a preparative gel, identify the target against the ladder and excise a compact slice with a
+     clean blade. Exclude neighboring bands and excess agarose. Keep illumination brief; use blue
+      light when available. Transfer the slice to a preweighed tube. [4]
+
+ Use the centrifugation workflow below, adapted from the D2500 quick guide. All column spins are
+ at room temperature; the wash/dry/elution spins use maximum speed (≥13,000 × g) within tube
+ and rotor limits. [6]
+
+ 13. Weigh the slice; 100 mg corresponds to approximately 100 µL gel. Add one gel volume of XP2.
+     Incubate at 60 °C for about 7 min, mixing every 2-3 min until dissolved. [6]
+
+ 14. Check the dissolved mixture: it should be light yellow. If orange/red, add 5 µL of 5 M sodium
+     acetate, pH 5.2, mix and reassess before loading. [6]
+
+ 15. Load ≤700 µL onto a HiBind column in its collection tube. Spin at 10,000 × g for 1 min; discard
+     flow-through. Repeat until all sample is loaded. [6]
+
+ 16. Wash with 300 µL XP2; spin for 1 min and discard flow-through. [6]
+
+ 17. Wash with 700 µL ethanol-prepared SPW; spin for 1 min and discard flow-through. Repeat this
+    wash for downstream assembly/cloning. [6]
+
+ 18. Spin the empty column for 2 min, then move it to a clean tube. [6]
+
+ 19. Apply 30-50 µL Elution Buffer centrally, wait 2 min, and spin for 1 min. Store recovered DNA at
+     -20 °C. [6]
+
+ 20. Measure recovered DNA concentration and calculate the amount available for the next
+      reaction. Recheck a small eluate aliquot if purity or fragment integrity is uncertain, keeping
+    enough DNA for the intended assembly.
+
+ p.s.
+
+
+ Decide whether the gel is for checking or recovery before casting it. A small analytical aliquot
+ preserves most of a 25 or 50 µL PCR; a preparative comb can save several overloaded narrow
+ lanes.
+
+ For a weak but distinct target, recover the correct band and quantify the eluate before repeating the
+ PCR. For increasing PCR yield, see M01 &gt; PCR Optimization &gt; O1. Pool only matching products
+ and distribute the load to maintain separation.
+
+ Tracking dye is a migration guide, not a molecular-size standard. Its apparent size changes with gel
+ concentration and buffer; compare the DNA band with the ladder. [2]
+
+ Trim the slice closely and dissolve it completely. If it remains difficult to dissolve, Omega suggests
+ additional XP2; larger solution volumes require repeated column loading. [7]
+
+ Keep fresh running buffer and complete the column drying step. Residual salts or ethanol can impair
+ assembly even when a recovered band looks correct. [6, 7]
+
+
+
+
+
+M02 | v1.4                                                                              5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original M02 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="expected-outcome" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:21.57277%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> Expected Outcome
+
+ The analytical gel should show a clearly resolved ladder and a product near the expected size. A
+ correctly sized band supports the intended amplification but does not confirm sequence identity.
+
+ After preparative separation, the target should be distinct enough to excise without adjacent
+ products. Record the recovered concentration and volume; usable yield depends on input, fragment
+ size and the downstream requirement.
+
+ Troubleshooting
+
+ Check the ladder first: a shared defect suggests gel/run/imaging conditions; a sample-only defect suggests loading
+ or sample quality.
+
+ Images below are external EtBr examples, not team data or SYBR Safe performance measurements. Arrows identify
+ appearances, not proven causes.
+
+ 1. Smearing, trailing or extra bands
+
+
+
+
+                                         1              2
+
+
+
+
+
+ 1: extra discrete bands. 2: vertical trailing above a bright band.
+
+ For trailing or smear, shorten exposure, then compare the sample with a 1:5 dilution at equal load
+ volume and 1× loading buffer. Dilution lowers both DNA and salt. If smearing persists, check a
+ fresh or cleaned aliquot; for PCR material, see M01 &gt; PCR Optimization &gt; O1-O2. [8-10]
+
+ For discrete extra bands or a short by-product, check expected size and separation, then use M01 &gt;
+ PCR Optimization &gt; O2 (O3 for suspected residual plasmid). Excise only a clearly separated target.
+ [10]
+
+ Retama; CC BY-SA 4.0. Original image retained; arrows and notes added by SUSTech-BIO 2026 iGEM Team under
+ the same license. Source [12]; license [15].
+
+
+
+
+
+M02 | v1.4                                                                              6</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 7 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 7">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 7"><img src="page-007.webp" width="1800" height="2546" alt="Original M02 PDF, page 7" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 7</h2><p> 2. Broad, ragged or curved bands
+
+
+
+
+                                 2             1
+
+
+
+
+
+ 1: broad, ragged sample band. 2: curved ladder bands.
+
+ Shorten exposure and rerun less sample to distinguish saturation from loading distortion. If the
+ ladder and many lanes bend together, check heating, matching fresh buffer and gel uniformity;
+ lower voltage if hot. Use 120 V / 35 min as a starting point and adjust to separation. [8, 9]
+
+ Sgroey; CC BY-SA 4.0. Original image retained; arrows and notes added by SUSTech-BIO 2026 iGEM Team under
+ the same license. Source [13]; license [15].
+
+ 3. Faint bands, high background or a dark dye zone
+
+
+
+
+
+                                2
+                                               1
+
+
+
+
+
+ 1: dark tracking-dye zone. 2: weak band beside stronger bands.
+
+ Check SYBR Safe dilution, filter/exposure and the imaging surface. Recast with uniformly mixed
+ stain if background persists. If dye obscures the target, rerun to separate the two; tracking dye does
+ not indicate DNA size. [4, 11]
+
+ For a clear ladder but weak sample, check lane identity and loaded volume, then increase the
+ aliquot within well capacity at 1× loading buffer. Missing small ladder bands suggest run-off:
+ shorten the run or raise gel concentration for small targets. Persistent weak PCR product: M01 &gt;
+ PCR Optimization &gt; O1. [10, 11]
+
+ Ultrabem; CC0 1.0. Original labels and credit retained; numbered arrows and notes added by SUSTech-BIO 2026
+ iGEM Team. Source [14]; dedication [16].
+
+
+
+
+
+M02 | v1.4                                                                              7</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 8 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 8">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 8"><img src="page-008.webp" width="1800" height="2546" alt="Original M02 PDF, page 8" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="reference" style="top:51.86177%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://tsingke-shop.oss-cn-beijing.aliyuncs.com/upload/image/202206/ddd1032c-c5ab-46e5-81b6-9264fbb7be2b_source.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://tsingke-shop.oss-cn-beijing.aliyuncs.com/upload/image/202206/ddd1032c-c5ab-46e5-81b6-9264fbb7be2b_source.pdf" style="left:33.14403%;top:56.06434%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012614_Gen_Recommend_DNA_Electrophoresis_UG.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012614_Gen_Recommend_DNA_Electrophoresis_UG.pdf" style="left:75.32308%;top:59.62775%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/MD101-104-V22.2.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/MD101-104-V22.2.pdf" style="left:38.95838%;top:63.19117%;width:8.85806%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/order/catalog/product/S33110/faqs" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/order/catalog/product/S33110/faqs" style="left:31.84843%;top:66.75458%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.bio-rad.com/en-us/product/mini-sub-cell-gt-cell?ID=85b69e1d-8ee0-4184-96bc-cd47e87d42f6" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.bio-rad.com/en-us/product/mini-sub-cell-gt-cell?ID=85b69e1d-8ee0-4184-96bc-cd47e87d42f6" style="left:42.9094%;top:70.31799%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.froggabio.com/media/productattachments/files/q/m/qmf28.0007.d2500.d2501_v2.1_1.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.froggabio.com/media/productattachments/files/q/m/qmf28.0007.d2500.d2501_v2.1_1.pdf" style="left:68.4597%;top:73.88141%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/" style="left:19.13603%;top:77.44482%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/us/en/home/life-science/cloning/cloning-learning-center/invitrogen-school-of-molecular-biology/na-electrophoresis-education/na-electrophoresis-troubleshooting.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/us/en/home/life-science/cloning/cloning-learning-center/invitrogen-school-of-molecular-biology/na-electrophoresis-education/na-electrophoresis-troubleshooting.html" style="left:36.14422%;top:81.00823%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf" style="left:74.15814%;top:84.57164%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.neb.com/tools-and-resources/troubleshooting-guides/pcr-troubleshooting-guide" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.neb.com/tools-and-resources/troubleshooting-guides/pcr-troubleshooting-guide" style="left:72.20404%;top:88.13505%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 8</h2><p> 4. Neither ladder nor samples are visible
+
+ Check power, polarity, 1× TAE and stain/imager compatibility. Re-image if the optical settings were
+ wrong; if DNA has run off the gel, rerun retained material. [4, 8]
+
+ 5. Target overlaps a neighboring band
+
+ Reduce excessive loading. Select gel concentration and local ladder bands using Section A; for
+ close sizes, allow a longer separation at a suitable lower field while the target remains on the gel.
+ Do not excise a merged band. [2, 3, 8]
+
+ 6. A lane splits, bends locally or leaks
+
+ Check for bubbles, damaged wells and excess load volume. Reload into an intact well without
+ piercing its floor; keep loading buffer at 1×. For recovery, use a wider well or divide the sample
+ between wells. [9]
+
+ 7. DNA remains near the wells
+
+  If the ladder also fails to migrate, check power and buffer. If only the sample is affected, check
+ expected size and compare a diluted or cleaned aliquot. Lower agarose concentration only when
+ target size warrants it. [3, 8]
+
+ 8. Low recovery or poor downstream assembly
+
+ For low recovery, check complete gel dissolution, yellow binding mixture, SPW ethanol preparation
+ and elution onto the membrane center (Section D). Quantify total recovered mass. For poor
+ assembly, also check wash-buffer carryover, the drying spin, light exposure and the assembly
+ recipe. [4, 6, 7]
+
+ Reference
+
+  [1] Tsingke. Agarose, TSJ001: gel preparation and concentration guide, printed pp. 2-4. Revision not reliably
+ readable. Accessed 2026-09-15. Open source
+
+  [2] Thermo Fisher Scientific. General Recommendations for DNA Electrophoresis, MAN0012614, pp. 1-2, 2012.
+ General guidance; concentration ranges in this protocol follow Tsingke. Accessed 2026-09-15. Open source
+
+  [3] Vazyme. DNA Marker/Ladder, MD101/102/103/104, version 22.2, pp. 1-2. Manufacturer-authored manual
+ hosted by Biorbyt. Accessed 2026-09-15. Open source
+
+  [4] Thermo Fisher Scientific / Invitrogen. SYBR Safe DNA Gel Stain FAQs: dilution, in-gel staining and imaging for
+ cloning. Accessed 2026-09-15. Open source
+
+  [5] Bio-Rad. Mini-Sub Cell GT Cell: compatible comb formats and gel trays. Manufacturer reference system for tray
+ and comb compatibility. Accessed 2026-09-15. Open source
+
+  [6] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit Quick Guide, D2500, QMF28 revision 2.1, p. 1, centrifugation
+ protocol. Manufacturer-authored guide hosted by Froggabio. Accessed 2026-09-15. Open source
+
+  [7] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit (V-spin): description and recovery troubleshooting FAQ. Accessed
+ 2026-09-15. Open source
+
+  [8] Thermo Fisher Scientific. Nucleic Acid Gel Electrophoresis Troubleshooting: faint, smeared, poorly resolved and
+ curved bands. Accessed 2026-09-15. Open source
+
+  [9] Bio-Rad. Sub-Cell GT, Wide Mini-Sub Cell GT, and Mini-Sub Cell GT Agarose Gel Electrophoresis Systems,
+ document 10016027, Section 5, Table 11, printed p. 19 (PDF p. 25). Accessed 2026-09-15. Open source
+
+ [10] New England Biolabs. PCR Troubleshooting Guide: no product, incorrect size, multiple/nonspecific products.
+ General principles only; M01 retains its enzyme-specific programs. Accessed 2026-09-15. Open source
+
+
+
+
+M02 | v1.4                                                                              8</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 9 of 9">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 9">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 9"><img src="page-009.webp" width="1800" height="2546" alt="Original M02 PDF, page 9" loading="lazy" decoding="async"></button>
+
+          <a class="pdf-source-link" href="https://www.thermofisher.com/jp/ja/home/technical-resources/technical-reference-library/nucleic-acid-purification-analysis-support-center/nucleic-acid-stains-ladders-markers-support/nucleic-acid-stains-ladders-markers-support-troubleshooting.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/jp/ja/home/technical-resources/technical-reference-library/nucleic-acid-purification-analysis-support-center/nucleic-acid-stains-ladders-markers-support/nucleic-acid-stains-ladders-markers-support-troubleshooting.html" style="left:49.60889%;top:7.8989%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://commons.wikimedia.org/wiki/File:Unspecific_pcr.jpg" target="_blank" rel="noopener" aria-label="Original PDF reference: https://commons.wikimedia.org/wiki/File:Unspecific_pcr.jpg" style="left:25.96987%;top:12.94706%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://commons.wikimedia.org/wiki/File:GelDoc_DNA_gel_electrophoresis_photograph_stained_with_ethidium_bromide_01.jpg" target="_blank" rel="noopener" aria-label="Original PDF reference: https://commons.wikimedia.org/wiki/File:GelDoc_DNA_gel_electrophoresis_photograph_stained_with_ethidium_bromide_01.jpg" style="left:64.22815%;top:17.99523%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://commons.wikimedia.org/wiki/File:Agarose_gel_electrophoresis_of_DNA_with_annotation.png" target="_blank" rel="noopener" aria-label="Original PDF reference: https://commons.wikimedia.org/wiki/File:Agarose_gel_electrophoresis_of_DNA_with_annotation.png" style="left:78.97218%;top:21.55864%;width:8.85806%;height:1.28283%"></a><a class="pdf-source-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://creativecommons.org/licenses/by-sa/4.0/" style="left:65.24175%;top:25.12205%;width:8.85807%;height:1.28283%"></a><a class="pdf-source-link" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://creativecommons.org/publicdomain/zero/1.0/" style="left:18.1933%;top:28.68547%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" style="left:19.13603%;top:32.24888%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 9</h2><p> [11] Thermo Fisher Scientific. Nucleic Acid Stains, Ladders, and Markers Support - Troubleshooting: stain migration,
+ speckles and missing small bands. Accessed 2026-09-15. Open source
+
+ [12] Retama. Unspecific pcr.jpg (2008), 1% agarose, ethidium bromide. Wikimedia Commons; CC BY-SA 4.0
+ selected from offered licenses. Case 1 image: original image retained; numbered arrows and teaching notes added.
+ Accessed 2026-09-15. Open source
+
+ [13] Sgroey. GelDoc DNA gel electrophoresis photograph stained with ethidium bromide 01.jpg. Wikimedia
+ Commons; CC BY-SA 4.0. Case 2 image: original image retained; numbered arrows and teaching notes added.
+ Underlying experiment and root cause are unspecified. Accessed 2026-09-15. Open source
+
+ [14] Ultrabem. Agarose gel electrophoresis of DNA with annotation.png (2023). Wikimedia Commons; CC0 1.0.
+ Case 3 image: original labels and credit retained; additional callouts added. Accessed 2026-09-15. Open source
+
+ [15] Creative Commons. CC BY-SA 4.0 license. Applies to Images in cases 1-2 and their added annotations; retain
+  attribution, source/license links and modification notice when reusing the plates. Open source
+
+ [16] Creative Commons. CC0 1.0 public-domain dedication. Original Case 3 image is provided under this
+ dedication. Open source
+
+ [17] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed
+ 2026-10-03. Open source
+
+
+
+
+
+M02 | v1.4                                                                              9</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

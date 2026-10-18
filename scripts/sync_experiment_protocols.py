@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
-"""Import current PDFs and render their maintained Markdown as static readers."""
+"""Import original PDFs and generate lossless page facsimiles (PyMuPDF/Pillow at import time)."""
 import argparse
 import hashlib
 import json
 from pathlib import Path
 import re
 import shutil
-from html import escape, unescape
-from html.parser import HTMLParser
-from urllib.parse import urlsplit, unquote
+from urllib.parse import urlsplit
 
 import yaml
-import markdown
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
@@ -26,87 +23,85 @@ GROUPS = [
 ]
 
 
-class EntryAssets(HTMLParser):
-    """Copy referenced local media, including linked SVG images; reject unsafe paths."""
-    def __init__(self, folder, destination):
-        super().__init__(convert_charrefs=False)
-        self.folder, self.destination, self.parts, self.text = folder, destination, [], []
+def render_entry(pdf, repo, data):
+    # Authoring-only dependencies, already used by the Notebook importer.
+    import fitz
+    from PIL import Image
 
-    def handle_starttag(self, tag, attrs):
-        if tag in {"script", "iframe", "object", "embed"}:
-            raise ValueError(f"Unsupported source markup: {tag}")
-        clean = []
-        for key, value in attrs:
-            if key.startswith("on"):
-                raise ValueError("Inline source event handlers are not allowed")
-            if key in {"src", "href"} and value:
-                url = urlsplit(value)
-                if url.scheme not in {"", "http", "https"} or value.startswith("//"):
-                    raise ValueError(f"Unsupported source URL: {value}")
-                if not url.scheme and url.path:
-                    source = (self.folder / unquote(url.path)).resolve()
-                    if not source.is_relative_to(self.folder.resolve()) or not source.is_file():
-                        raise ValueError(f"Missing or out-of-scope asset: {value}")
-                    target = self.destination / unquote(url.path)
-                    copy_asset(source, target, self.folder)
-            clean.append(key if value is None else f'{key}="{escape(value, quote=True)}"')
-        self.parts.append('<' + tag + (' ' + ' '.join(clean) if clean else '') + '>')
-
-    def handle_endtag(self, tag):
-        self.parts.append(f'</{tag}>')
-
-    def handle_data(self, data):
-        self.parts.append(data)
-        self.text.append(data)
-
-    def handle_entityref(self, name):
-        self.parts.append(f'&{name};')
-
-    def handle_charref(self, name):
-        self.parts.append(f'&#{name};')
-
-
-def copy_asset(source, target, root):
-    target.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(source, target)
-    if source.suffix == '.svg':
-        # Viewport SVGs in the source library link to adjacent PNGs.
-        for path in re.findall(r'(?:xlink:)?href="([^"]+)"', source.read_text()):
-            if path.startswith('data:') or path.startswith('#'):
-                continue
-            dependency = (source.parent / path).resolve()
-            if urlsplit(path).scheme or not dependency.is_relative_to(root.resolve()) or not dependency.is_file():
-                raise ValueError(f"Invalid SVG dependency: {path}")
-            copy_asset(dependency, target.parent / path, root)
-
-
-def render_entry(folder, repo, data, category):
-    files = list(folder.glob(folder.name + '*.md'))
-    if len(files) != 1:
-        raise ValueError(f"Expected one maintained Markdown file for {folder.name}")
-    raw = files[0].read_text()
-    # Preserve the source header metadata and every actual nonempty section.
-    preamble, *chunks = re.split(r'^## ', raw, flags=re.M)
-    preamble = re.sub(r'^# .*\n', '', preamble, count=1)
-    source = '## Experiment Information\n\n' + f'**ID:** {data["id"]} · **Category:** {category}\n\n' + preamble
-    for chunk in chunks:
-        heading, _, body = chunk.partition('\n')
-        if body.strip():
-            source += '\n## ' + heading + '\n' + body
-    converter = markdown.Markdown(extensions=['tables', 'sane_lists', 'toc'], extension_configs={'toc': {'toc_depth': '2-2'}})
-    html = converter.convert(source)
-    relative = Path('experiments/entries') / folder.name / 'index.html'
+    relative = Path('experiments/entries') / data['id'] / 'index.html'
     destination = repo / 'static' / relative
     destination.parent.mkdir(parents=True, exist_ok=True)
-    parser = EntryAssets(folder, destination.parent)
-    parser.feed(html)
+    digest = hashlib.sha256(pdf.read_bytes()).hexdigest()
+    manifest_path = destination.with_name('pages.json')
+    previous = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    renderer = f'PyMuPDF {fitz.__version__}; lossless WebP; width 1800'
+    reusable = previous.get('source_sha256') == digest and previous.get('renderer') == renderer
+    pages, toc, seen, texts = [], [], set(), []
+    with fitz.open(pdf) as document:
+        for number, page in enumerate(document, 1):
+            rect = page.rect
+            text = page.get_text(sort=True)
+            texts.append(text)
+            anchors = []
+            # Source PDFs use Georgia Bold 14pt for their actual section headings.
+            # Derive labels and positions from PDF text, never from a rewritten outline.
+            for block in page.get_text('dict')['blocks']:
+                for line in block.get('lines', []):
+                    spans = line['spans']
+                    if spans and all('Georgia-Bold' in v['font'] and abs(v['size'] - 14) < .2 for v in spans):
+                        title = ''.join(v['text'] for v in spans).strip()
+                        slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+                        if not slug or slug in seen:
+                            continue
+                        seen.add(slug)
+                        anchor = dict(id=slug, title=title, page=number, top=round(line['bbox'][1] / rect.height * 100, 5))
+                        toc.append(anchor)
+                        anchors.append(anchor)
+            image_name = f'page-{number:03d}.webp'
+            target = destination.parent / image_name
+            old = next((p for p in previous.get('pages', []) if p['number'] == number), {})
+            if not (reusable and target.exists() and hashlib.sha256(target.read_bytes()).hexdigest() == old.get('sha256')):
+                pix = page.get_pixmap(matrix=fitz.Matrix(1800 / rect.width, 1800 / rect.width), alpha=False)
+                Image.frombytes('RGB', [pix.width, pix.height], pix.samples).save(target, 'WEBP', lossless=True)
+            with Image.open(target) as img:
+                width, height = img.size
+            links = []
+            for link in page.get_links():
+                uri = link.get('uri', '')
+                if urlsplit(uri).scheme not in {'http', 'https'}:
+                    continue
+                box = link['from']
+                links.append(dict(url=uri, left=round(box.x0 / rect.width * 100, 5),
+                                  top=round(box.y0 / rect.height * 100, 5),
+                                  width=round(box.width / rect.width * 100, 5),
+                                  height=round(box.height / rect.height * 100, 5)))
+            pages.append(dict(number=number, image=image_name, width=width, height=height,
+                              sha256=hashlib.sha256(target.read_bytes()).hexdigest(),
+                              text=text, anchors=anchors, links=links))
     env = Environment(loader=FileSystemLoader(repo / 'wiki'), autoescape=select_autoescape())
-    template = env.get_template('components/experiments/entry.html')
-    toc = [dict(id=t['id'], name=unescape(t['name'])) for t in converter.toc_tokens]
-    destination.write_text(template.render(entry=data, body=''.join(parser.parts), toc=toc))
-    # Plain unique words from the real source support related-keyword search.
-    keywords = ' '.join(sorted(set(re.findall(r'[\wβµμ+-]+', ' '.join(parser.text).lower()))))
-    return relative.as_posix(), keywords, hashlib.sha256(raw.encode()).hexdigest()
+    rendered = env.get_template('components/experiments/entry.html').render(entry=data, pages=pages, toc=toc)
+    destination.write_text('\n'.join(line.rstrip() for line in rendered.splitlines()) + '\n')
+    manifest = dict(source_sha256=digest, renderer=renderer, page_count=len(pages),
+                    pages=[{k:v for k,v in p.items() if k != 'text'} for p in pages])
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    keywords = ' '.join(sorted(set(re.findall(r'[\wβµμ+-]+', ' '.join(texts).lower()))))
+    print(f"{data['id']}: {len(pages)} original PDF pages", flush=True)
+    return relative.as_posix(), keywords, len(pages)
+
+
+def refresh_readers(repo):
+    """Render only the already-approved, checksum-verified deployment PDFs."""
+    catalog = repo / 'docs/wet-lab/experiments.md'
+    _, frontmatter, body = catalog.read_text().split('---', 2)
+    metadata = yaml.safe_load(frontmatter)
+    for group in metadata['protocol_groups']:
+        for data in group['protocols']:
+            pdf = repo / 'static' / data['file']
+            if hashlib.sha256(pdf.read_bytes()).hexdigest() != data['sha256']:
+                raise ValueError(f"PDF checksum mismatch: {data['id']}")
+            data['reader'], data['keywords'], data['page_count'] = render_entry(pdf, repo, data)
+            data.pop('markdown_sha256', None)
+    catalog.write_text('---\n' + yaml.safe_dump(metadata, sort_keys=False, allow_unicode=True) + '---' + body)
 
 
 def sync(source, repo):
@@ -131,13 +126,13 @@ def sync(source, repo):
             target = repo / "static" / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(pdf, target)
-            reader, keywords, markdown_sha256 = render_entry(folder, repo, data, title)
+            reader, keywords, page_count = render_entry(pdf, repo, data)
             entries.append({
                 "id": data["id"], "title": data["title"],
                 "version": str(data["version"]), "file": relative.as_posix(),
                 "size_kb": round(len(raw) / 1024),
                 "sha256": hashlib.sha256(raw).hexdigest(),
-                "reader": reader, "keywords": keywords, "markdown_sha256": markdown_sha256,
+                "reader": reader, "keywords": keywords, "page_count": page_count,
             })
         if not entries:
             raise ValueError(f"No current PDFs for {code}")
@@ -156,7 +151,13 @@ def sync(source, repo):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source", type=Path, help="Maintained Protocols directory")
+    parser.add_argument("source", type=Path, nargs="?", help="Maintained Protocols directory")
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--refresh-readers", action="store_true", help="Render the existing approved deployment PDFs")
     args = parser.parse_args()
-    sync(args.source.resolve(), args.repo.resolve())
+    if args.refresh_readers:
+        refresh_readers(args.repo.resolve())
+    elif args.source:
+        sync(args.source.resolve(), args.repo.resolve())
+    else:
+        parser.error("Provide source or --refresh-readers")

@@ -1,5 +1,6 @@
 """Check source PDF integrity, static links and Wet Lab integration."""
 import hashlib
+import json
 from pathlib import Path
 import unittest
 from html.parser import HTMLParser
@@ -64,9 +65,22 @@ class ExperimentsTest(unittest.TestCase):
                 parser.feed(reader)
                 with self.subTest(entry=record['id']):
                     self.assertEqual(len(parser.ids), len(set(parser.ids)))
-                    self.assertIn('experiment-information', parser.ids)
+                    self.assertIn('entry-content', parser.ids)
+                    self.assertNotIn('<table', reader)
+                    self.assertNotIn('<iframe', reader)
+                    self.assertNotIn('<embed', reader)
+                    self.assertNotIn('reader-layout', reader)
                     self.assertIn('procedure', parser.ids)
                     self.assertNotIn('/Users/', reader)
+                    manifest = json.loads(path.with_name('pages.json').read_text())
+                    self.assertEqual(manifest['source_sha256'], record['sha256'])
+                    self.assertEqual(manifest['page_count'], record['page_count'])
+                    self.assertEqual(len(parser.images), record['page_count'])
+                    for number, preview in enumerate(manifest['pages'], 1):
+                        self.assertEqual(preview['number'], number)
+                        self.assertEqual(preview['width'], 1800)
+                        self.assertGreater(preview['height'], 0)
+                        self.assertEqual(hashlib.sha256((path.parent / preview['image']).read_bytes()).hexdigest(), preview['sha256'])
                     for link in parser.links:
                         if link.startswith('#'): self.assertIn(link[1:], parser.ids)
                     for asset in parser.images + parser.styles:

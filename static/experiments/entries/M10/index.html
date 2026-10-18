@@ -2,182 +2,210 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M10 · Reverse Transcription</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M10 · <strong>Category:</strong> Molecular Biology</p>
-<p>M10 | ver 1.1 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Prepare cDNA from 850 ng total RNA using the Takara PrimeScript RT reagent Kit with gDNA Eraser (Perfect Real Time), RR047A, with the TB Green recipe. [1]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PrimeScript RT reagent Kit with gDNA Eraser (Perfect Real Time)</td>
-<td>Takara / RR047A</td>
-<td>DNA removal and cDNA synthesis</td>
-</tr>
-<tr>
-<td>Purified total RNA</td>
-<td>Sample-specific</td>
-<td>Measured concentration; assess integrity</td>
-</tr>
-<tr>
-<td>RNase-free tubes and filter tips</td>
-<td>Axygen tips; laboratory supplies</td>
-<td>Reaction setup</td>
-</tr>
-<tr>
-<td>Pipettes, ice rack and microcentrifuge</td>
-<td>Eppendorf centrifuge; laboratory pipettes and ice rack</td>
-<td>Dispensing and collection</td>
-</tr>
-<tr>
-<td>Thermal cycler</td>
-<td>Same laboratory thermal cycler as M01</td>
-<td>42°C, 37°C and 85°C stages</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use 850 ng total RNA per reaction. This team-selected input is within the manufacturer’s 1 µg limit for the TB Green recipe. [1]</p>
-<p>Calculate RNA volume V (µL) = 850 / RNA concentration (ng/µL). V must be ≤7 µL, requiring RNA at ≥121.43 ng/µL. If RNA is more dilute, concentrate or re-extract it and remeasure before setup; do not exceed the 10 µL DNA-removal volume.</p>
-<p>Keep kit stocks at -20°C. Vortex both buffers and briefly spin; collect viscous enzymes by a short spin and pipette slowly. Assemble reactions on ice. [1]</p>
-<p>Include a matched no-RT control where DNA could amplify: process the same RNA through DNA removal, then replace the 1 µL RT enzyme with water. Include a no-template control in the downstream PCR.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-remove-genomic-dna">A. Remove genomic DNA</h3>
-<ol>
-<li>Combine the following for each sample. Use each sample’s measured RNA concentration to calculate its RNA and water volumes. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume per reaction</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5× gDNA Eraser Buffer</td>
-<td>2 µL</td>
-</tr>
-<tr>
-<td>gDNA Eraser</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>Total RNA (850 ng)</td>
-<td>V = 850 / concentration (ng/µL)</td>
-</tr>
-<tr>
-<td>RNase-free water</td>
-<td>(7 - V) µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>10 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li>Incubate at 42°C for 2 min, then place at 4°C while preparing the next stage. [1]</li>
-</ol>
-<h3 id="b-synthesize-cdna">B. Synthesize cDNA</h3>
-<ol start="3">
-<li>Prepare 10 µL of RT addition mix per sample, excluding the treated RNA. Add it to the entire 10 µL DNA-removal reaction, mix gently and start the program promptly. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DNA-removal reaction</td>
-<td>10 µL</td>
-</tr>
-<tr>
-<td>5× PrimeScript Buffer 2 (for Real Time)</td>
-<td>4 µL</td>
-</tr>
-<tr>
-<td>PrimeScript RT Enzyme Mix I</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>RT Primer Mix</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>RNase-free water</td>
-<td>4 µL</td>
-</tr>
-<tr>
-<td>Final volume</td>
-<td>20 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="4">
-<li>Run 37°C for 15 min, followed by 85°C for 5 sec and a 4°C hold. [1]</li>
-</ol>
-<h3 id="c-store-and-use-cdna">C. Store and use cDNA</h3>
-<ol start="5">
-<li>Store products at or below -20°C for longer-term use. For qPCR, keep carried-over RT reaction at ≤10% of the PCR volume; this corresponds to ≤2 µL undiluted product in 20 µL PCR. Record any dilution. [1]</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Retain stage A even after upstream DNase treatment: its buffer contributes to the complete RT system. [1]</p>
-<p>For individual additions in stage B, mix water and Buffer 2 with the treated RNA before adding primers and RT enzyme. This suppresses residual Eraser activity first. [1]</p>
-<p>Read the final heating step in seconds: 85°C for 5 sec. Keep the 37°C RT incubation at 15 min. [1]</p>
-<p>When processing samples of different RNA concentrations, calculate water separately for each tube. Normalize RNA concentration first if using one shared DNA-removal master mix.</p>
-<p>Label no-RT tubes before setup and dispense their enzyme-free mix separately. Carry controls through the same downstream dilution and assay as their matching samples.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain 20 µL of cDNA reaction mixture per sample. Evaluate it with a validated downstream assay and its controls; tube appearance does not establish success. A positive no-RT result indicates possible DNA contribution, and a positive no-template result requires assessment of contamination or assay background before interpreting RNA-derived signal.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observation</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>No or weak downstream signal</td>
-<td>RNA integrity, input calculation, enzyme addition and recorded program.</td>
-<td>Use a known amplifiable control to distinguish assay failure from sample failure. Re-extract compromised RNA or correct the identified setup error.</td>
-</tr>
-<tr>
-<td>Signal in the no-RT control</td>
-<td>DNA-removal setup and contamination during handling.</td>
-<td>Check Eraser addition and the 42°C stage. Resolve DNA carryover before attributing amplification to RNA.</td>
-</tr>
-<tr>
-<td>Variable signal across comparable samples</td>
-<td>RNA input, dilution records and dispensing consistency.</td>
-<td>Reconcile calculations and compare controls. Repeat affected preparations with consistent inputs and a shared mix.</td>
-</tr>
-<tr>
-<td>Signal improves unexpectedly after dilution</td>
-<td>RT carryover and extraction contaminants.</td>
-<td>Check the ≤10% carryover limit. Compare matched dilutions with controls; clean up or re-extract RNA if inhibition persists.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Takara Bio. PrimeScript RT reagent Kit with gDNA Eraser (Perfect Real Time), RR047A. Product Manual, v202202Da, pp. 3-7. Accessed 2026-09-27. <a href="https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 3">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M10 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:26.02703%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:56.43481%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Reverse Transcription
+
+ M10 | ver 1.1 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Prepare cDNA from 850 ng total RNA using the Takara PrimeScript RT reagent Kit with gDNA
+ Eraser (Perfect Real Time), RR047A, with the TB Green recipe. [1]
+
+ Materials &amp; Equipment
+
+
+   Item                                              Supplier / identifier         Use
+
+   PrimeScript RT reagent Kit with gDNA Eraser      Takara / RR047A        DNA removal and cDNA
+    (Perfect Real Time)                                                                   synthesis
+
+    Purified total RNA                                 Sample-specific             Measured concentration; assess
+                                                                                                integrity
+
+   RNase-free tubes and filter tips                Axygen tips; laboratory       Reaction setup
+                                                        supplies
+
+    Pipettes, ice rack and microcentrifuge             Eppendorf centrifuge;         Dispensing and collection
+                                                    laboratory pipettes and ice
+                                                    rack
+
+   Thermal cycler                           Same laboratory thermal     42°C, 37°C and 85°C stages
+                                                        cycler as M01
+
+
+ Before You Start
+
+ Use 850 ng total RNA per reaction. This team-selected input is within the manufacturer’s 1 µg limit
+ for the TB Green recipe. [1]
+
+ Calculate RNA volume V (µL) = 850 / RNA concentration (ng/µL). V must be ≤7 µL, requiring RNA
+ at ≥121.43 ng/µL. If RNA is more dilute, concentrate or re-extract it and remeasure before setup;
+ do not exceed the 10 µL DNA-removal volume.
+
+ Keep kit stocks at -20°C. Vortex both buffers and briefly spin; collect viscous enzymes by a short
+ spin and pipette slowly. Assemble reactions on ice. [1]
+
+ Include a matched no-RT control where DNA could amplify: process the same RNA through DNA
+ removal, then replace the 1 µL RT enzyme with water. Include a no-template control in the
+ downstream PCR.
+
+
+
+
+
+M10 | v1.1                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 3">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M10 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Procedure
+
+ A. Remove genomic DNA
+
+ 1. Combine the following for each sample. Use each sample’s measured RNA concentration to
+      calculate its RNA and water volumes. [1]
+
+
+   Component                                  Volume per reaction
+
+   5× gDNA Eraser Buffer                       2 µL
+
+  gDNA Eraser                              1 µL
+
+    Total RNA (850 ng)                       V = 850 / concentration (ng/µL)
+
+   RNase-free water                                  (7 - V) µL
+
+    Total                                    10 µL
+
+ 2. Incubate at 42°C for 2 min, then place at 4°C while preparing the next stage. [1]
+
+ B. Synthesize cDNA
+
+ 3. Prepare 10 µL of RT addition mix per sample, excluding the treated RNA. Add it to the entire 10
+     µL DNA-removal reaction, mix gently and start the program promptly. [1]
+
+
+   Component                                                             Volume
+
+   DNA-removal reaction                                                10 µL
+
+   5× PrimeScript Buffer 2 (for Real Time)                                    4 µL
+
+   PrimeScript RT Enzyme Mix I                                            1 µL
+
+   RT Primer Mix                                                      1 µL
+
+   RNase-free water                                                    4 µL
+
+    Final volume                                                       20 µL
+
+ 4. Run 37°C for 15 min, followed by 85°C for 5 sec and a 4°C hold. [1]
+
+ C. Store and use cDNA
+
+ 5. Store products at or below -20°C for longer-term use. For qPCR, keep carried-over RT reaction at
+    ≤10% of the PCR volume; this corresponds to ≤2 µL undiluted product in 20 µL PCR. Record any
+      dilution. [1]
+
+
+
+
+
+M10 | v1.1                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 3">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M10 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:32.38178%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:44.49738%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:76.56809%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf" style="left:41.14059%;top:80.77067%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> p.s.
+
+
+ Retain stage A even after upstream DNase treatment: its buffer contributes to the complete RT
+ system. [1]
+
+ For individual additions in stage B, mix water and Buffer 2 with the treated RNA before adding
+ primers and RT enzyme. This suppresses residual Eraser activity first. [1]
+
+ Read the final heating step in seconds: 85°C for 5 sec. Keep the 37°C RT incubation at 15 min. [1]
+
+ When processing samples of different RNA concentrations, calculate water separately for each
+ tube. Normalize RNA concentration first if using one shared DNA-removal master mix.
+
+ Label no-RT tubes before setup and dispense their enzyme-free mix separately. Carry controls
+ through the same downstream dilution and assay as their matching samples.
+
+ Expected Outcome
+
+ Obtain 20 µL of cDNA reaction mixture per sample. Evaluate it with a validated downstream assay
+ and its controls; tube appearance does not establish success. A positive no-RT result indicates
+ possible DNA contribution, and a positive no-template result requires assessment of contamination
+ or assay background before interpreting RNA-derived signal.
+
+ Troubleshooting
+
+
+   Observation               Check first                           Action
+
+  No or weak downstream    RNA integrity, input calculation,      Use a known amplifiable control to distinguish
+    signal                   enzyme addition and recorded       assay failure from sample failure. Re-extract
+                             program.                        compromised RNA or correct the identified
+                                                                     setup error.
+
+   Signal in the no-RT control    DNA-removal setup and            Check Eraser addition and the 42°C stage.
+                               contamination during handling.       Resolve DNA carryover before attributing
+                                                                          amplification to RNA.
+
+   Variable signal across     RNA input, dilution records and       Reconcile calculations and compare controls.
+   comparable samples         dispensing consistency.              Repeat affected preparations with consistent
+                                                                            inputs and a shared mix.
+
+   Signal improves            RT carryover and extraction         Check the ≤10% carryover limit. Compare
+   unexpectedly after dilution    contaminants.                     matched dilutions with controls; clean up or
+                                                                              re-extract RNA if inhibition persists.
+
+
+ Reference
+
+  [1] Takara Bio. PrimeScript RT reagent Kit with gDNA Eraser (Perfect Real Time), RR047A. Product Manual,
+ v202202Da, pp. 3-7. Accessed 2026-09-27. Open source
+
+
+
+
+
+M10 | v1.1                                                                              3</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

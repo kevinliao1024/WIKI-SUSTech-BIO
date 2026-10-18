@@ -2,335 +2,421 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M01 · PCR</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#pcr-optimization">PCR Optimization</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M01 · <strong>Category:</strong> Molecular Biology</p>
-<p>M01 | ver 1.6 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Perform high-fidelity amplification of a target DNA fragment for gel analysis and molecular cloning using either Takara PrimeSTAR Max or ABclonal Gloria Nova HS 2X Master Mix V2. Both options use the shared 50 µL or 25 µL recipe below; select the matching template guidance and thermal program.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Manufacturer</th>
-<th>Identifier / specification</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PrimeSTAR Max Premix (2×)</td>
-<td>Takara Bio</td>
-<td>R045A/B</td>
-<td>Option A [1]</td>
-</tr>
-<tr>
-<td>Gloria Nova HS 2X Master Mix V2</td>
-<td>ABclonal</td>
-<td>RK20731</td>
-<td>Option B [2]</td>
-</tr>
-<tr>
-<td>Forward and reverse primers</td>
-<td>As supplied</td>
-<td>Custom</td>
-<td>Separate 10 µM working solutions</td>
-</tr>
-<tr>
-<td>Purified template DNA</td>
-<td>User sample</td>
-<td>Not applicable</td>
-<td>Known concentration; target sequence verified</td>
-</tr>
-<tr>
-<td>Sterilized Type II water</td>
-<td>Laboratory-prepared</td>
-<td>Type II; sterilized</td>
-<td>Primer dilution and reaction setup</td>
-</tr>
-<tr>
-<td>PCR tubes, filter tips, pipettes</td>
-<td>Axygen tips; laboratory equipment</td>
-<td>For PCR</td>
-<td>Accurate dispensing at 0.5-50 µL</td>
-</tr>
-<tr>
-<td>Thermal cycler</td>
-<td>Laboratory equipment</td>
-<td>Programmable thermal block; heated lid</td>
-<td>Run the selected enzyme program</td>
-</tr>
-<tr>
-<td>Refrigerated centrifuge</td>
-<td>Eppendorf</td>
-<td>PCR-tube-compatible rotor</td>
-<td>Brief spin-down</td>
-</tr>
-<tr>
-<td>PCR-grade mineral oil (optional)</td>
-<td>As available</td>
-<td>PCR-grade evaporation barrier</td>
-<td>Optional evaporation barrier; see Troubleshooting</td>
-</tr>
-<tr>
-<td>Agarose gel system and DNA ladder</td>
-<td>As available</td>
-<td>For target size</td>
-<td>Gel buffer, stain and loading dye; product check</td>
-</tr>
-<tr>
-<td>Crushed ice</td>
-<td>Laboratory ice maker</td>
-<td>Crushed ice bath</td>
-<td>Keep reagent tubes cold</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Prepare separate 10 µM primer working solutions. For a 100 µM stock, mix 10 µL stock with 90 µL water. The reaction table assumes this working concentration.</p>
-<p>Check the expected amplicon length and both primer sequences. A known amplifiable positive control may be included when establishing an assay.</p>
-<p>Thaw and gently mix the chosen premix, then briefly spin. Assemble reactions on ice in a clean area separated from amplified DNA. Prepare separate mixes when comparing products.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-the-shared-reaction-mixture">A. Prepare the shared reaction mixture</h3>
-<ol>
-<li>
-<p>Select one master mix from Materials &amp; Equipment. Calculate template volume V (µL) = required DNA mass (ng) / measured concentration (ng/µL), using the product-specific input table below. Dilute concentrated stocks to a reliably pipettable volume.</p>
-</li>
-<li>
-<p>Prepare reactions with the shared recipe. For multiple samples using the same enzyme, primer pair and template volume, prepare a mixture without template, allowing about 10% extra for pipetting loss. Dispense it before adding templates.</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>50 µL</th>
-<th>25 µL</th>
-<th>Final</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Selected PCR master mix (2×)</td>
-<td>25 µL</td>
-<td>12.5 µL</td>
-<td>1×</td>
-</tr>
-<tr>
-<td>Forward primer (10 µM)</td>
-<td>1 µL</td>
-<td>0.5 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>Reverse primer (10 µM)</td>
-<td>1 µL</td>
-<td>0.5 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>Template DNA</td>
-<td>V50 µL</td>
-<td>V25 µL</td>
-<td>See input table</td>
-</tr>
-<tr>
-<td>Sterilized Type II water</td>
-<td>(23 - V50) µL</td>
-<td>(11.5 - V25) µL</td>
-<td>To volume</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>50 µL</td>
-<td>25 µL</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Use separate 10 µM primer working solutions. V50 and V25 denote the template volume in each reaction size; recalculate water whenever template volume changes. The selected primer concentration is 0.2 µM. [1, 2]</p>
-<h3 id="template-input-guide">Template input guide</h3>
-<table>
-<thead>
-<tr>
-<th>Template</th>
-<th>Takara: 50 µL</th>
-<th>ABclonal: 50 µL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Plasmid DNA</td>
-<td>0.01-1 ng</td>
-<td>0.001-10 ng</td>
-</tr>
-<tr>
-<td>Human genomic DNA</td>
-<td>5-200 ng</td>
-<td>10-100 ng</td>
-</tr>
-<tr>
-<td>E. coli genomic DNA</td>
-<td>0.1-200 ng</td>
-<td>0.5-200 ng</td>
-</tr>
-</tbody>
-</table>
-<p>These are product-specific starting ranges. For a 25 µL reaction, halve the listed DNA mass to preserve concentration; this is a proportional adaptation. This guide covers purified plasmid and genomic DNA. [1, 2]</p>
-<ol start="3">
-<li>Mix complete reactions gently and briefly spin. Select the actual reaction volume and enable the heated lid where available; otherwise use the mineral-oil overlay described in Troubleshooting.</li>
-</ol>
-<h3 id="b-select-the-thermal-program">B. Select the thermal program</h3>
-<ol start="4">
-<li>Run the program matching the selected master mix. Use the same temperatures and times for either reaction volume; calculate extension time from the expected amplicon length.</li>
-</ol>
-<h3 id="option-a-takara-primestar-max-r045ab">Option A: Takara PrimeSTAR Max (R045A/B)</h3>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time</th>
-<th>Repetitions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Denaturation</td>
-<td>98 °C</td>
-<td>10 s</td>
-<td>30-35 cycles: denaturation, annealing, extension</td>
-</tr>
-<tr>
-<td>Annealing</td>
-<td>55 °C</td>
-<td>5 or 15 s</td>
-<td>Within cycle</td>
-</tr>
-<tr>
-<td>Extension</td>
-<td>72 °C</td>
-<td>5 s/kb</td>
-<td>Within cycle</td>
-</tr>
-<tr>
-<td>Hold</td>
-<td>4 °C</td>
-<td>Until collection</td>
-<td>After cycling</td>
-</tr>
-</tbody>
-</table>
-<p>A separate initial denaturation or final extension is generally unnecessary. For primers ≤25 nt, use 5 s when both Tm values are ≥55 °C; otherwise use 15 s. Estimate Tm (°C) = 2(A + T) + 4(G + C) - 5 from nucleotide counts. For primers &gt;25 nt, start at 5 s. [1]</p>
-<p>Rapid extension guidance covers human genomic targets up to 6 kb and E. coli targets up to 10 kb. For longer targets, try 15-30 s/kb. [1] Above 200 ng template/50 µL (scaled: 100 ng/25 µL), reduce input or use 30-60 s/kb. [4]</p>
-<h3 id="option-b-abclonal-gloria-nova-hs-2x-master-mix-v2-rk20731">Option B: ABclonal Gloria Nova HS 2X Master Mix V2 (RK20731)</h3>
-<p>Transfer chilled reactions to a cycler preheated to 95 °C. [2]</p>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time</th>
-<th>Repetitions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Initial denaturation</td>
-<td>95 °C</td>
-<td>3 min</td>
-<td>Once</td>
-</tr>
-<tr>
-<td>Denaturation</td>
-<td>95 °C</td>
-<td>15 s</td>
-<td>25-35 cycles: denaturation, annealing, extension</td>
-</tr>
-<tr>
-<td>Annealing</td>
-<td>60 °C*</td>
-<td>30 s</td>
-<td>Within cycle</td>
-</tr>
-<tr>
-<td>Extension</td>
-<td>72 °C</td>
-<td>10 s/kb</td>
-<td>Within cycle</td>
-</tr>
-<tr>
-<td>Final extension</td>
-<td>72 °C</td>
-<td>5 min</td>
-<td>Once</td>
-</tr>
-<tr>
-<td>Hold</td>
-<td>4 °C</td>
-<td>Until collection</td>
-<td>After cycling</td>
-</tr>
-</tbody>
-</table>
-<p>*Start at 60 °C. For primers &gt;20 nt, use the lower primer Tm + 3 °C; for primers &lt;20 nt, use the lower Tm. For exactly 20 nt, start at the default and optimize if needed. Complex targets or fragments &gt;10 kb may need 15 s/kb. [2]</p>
-<h3 id="c-inspect-the-product">C. Inspect the product</h3>
-<ol start="5">
-<li>Analyze a small aliquot alongside an appropriate DNA ladder and any positive control included. Select agarose concentration for the expected fragment size and add loading dye at its working dilution. Retain the remaining product for the chosen downstream workflow. See M02 for the gel check and interpretation.</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Label tubes with the master mix and program name. When changing enzyme, reload its complete program, including initial and final stages.</p>
-<p>Use the stated 10 µM primer working solutions. Adding a 100 µM stock at the listed volumes gives a tenfold concentration error.</p>
-<p>Recalculate water when template volume changes. For inconsistent repeats, check mixing, pipetting and seals; use a shared reaction mix.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>A predominant product at the expected size supports successful amplification. Save the gel image with lane identities. Band size alone does not establish sequence identity.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>For problems first seen on a gel, start with M02, then use PCR Optimization below if indicated.</p>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Suggested action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bubbles remain after brief centrifugation</td>
-<td>Persistent surface bubbles or bubbles attached to the tube wall</td>
-<td>Gently tap the closed tube to release wall-attached bubbles. For a persistent surface bubble, use a fresh nuclease-free pipette tip to gently touch and break it; if needed, aspirate only the bubble while withdrawing the tip, avoiding loss of reaction liquid. Use a new tip for each tube, recap and briefly spin down. Avoid blowing air into the mixture during pipetting. [6]</td>
-</tr>
-<tr>
-<td>Reaction volume decreases after cycling</td>
-<td>Heated-lid activation, temperature and contact; tube-cap seal</td>
-<td>Briefly spin down to collect condensation. If volume remains reduced, check that the heated lid is enabled, reaches its specified temperature and contacts properly sealed tubes. If evaporation persists or the cycler has no heated lid, overlay the next reaction with PCR-grade mineral oil before cycling, using enough to cover the entire liquid surface and an amount compatible with the tube/cycler. Keep oil amounts consistent between tubes. [7]</td>
-</tr>
-</tbody>
-</table>
-<h2 id="pcr-optimization">PCR Optimization</h2>
-<p>Use these options after M02 has checked sample loading, electrophoresis and detection. A gel pattern suggests which check to make; it does not identify a cause by itself. Keep the selected enzyme-specific recipe and program as the starting point, and change one factor at a time.</p>
-<h3 id="o1-low-or-absent-amplification">O1. Low or absent amplification</h3>
-<p>Check primer identity, sequences, orientation and binding to the actual template. Confirm the 10 µM working dilution. If primer stock quality is suspect, reconstitute an unused dry aliquot and prepare a fresh working solution. Review template integrity, purity and input against the selected product guidance. [1, 2, 4]</p>
-<p>Recheck the full matching thermal program, especially annealing and length-dependent extension. Use an annealing-temperature gradient within the selected enzyme guidance if needed. For ABclonal difficult or long targets, apply its extension guidance in Section B; do not transfer settings between enzymes. A dilution comparison can help assess suspected template inhibition, but also reduces template input. [1-4]</p>
-<p>If a distinct, correctly sized product is present but more DNA is needed, run additional parallel PCRs and pool matching products for purification. This means additional reactions, not an automatic increase in cycle number. A faint, well-separated target can be recovered using M02; quantify the eluate to decide whether it meets the downstream requirement.</p>
-<h3 id="o2-nonspecific-amplification-or-short-by-products">O2. Nonspecific amplification or short by-products</h3>
-<p>After M02 excludes poor separation or loading distortion, review the expected product map and primer specificity. Extra bands or a short band near the front are candidates for nonspecific amplification or primer dimers, respectively; position alone does not establish their identity.</p>
-<p>Confirm primer working dilution and template input before testing annealing conditions. Follow the selected enzyme guidance: for PrimeSTAR Max, retain the specified short annealing duration; for ABclonal, evaluate annealing temperature and excessive primer/template input or cycling when appropriate. Redesign primers if the binding sites are unsuitable. Recover the intended band in M02 only if it is clearly separated. [1-3]</p>
-<h3 id="o3-residual-plasmid-template">O3. Residual plasmid template</h3>
-<p>Consider residual template separately from newly amplified by-products when the PCR started from a plasmid. Uncut plasmid conformations can migrate differently from linear DNA, so apparent size alone cannot identify a residual-template band.</p>
-<p>For residual Dam-methylated plasmid template containing DpnI recognition sites, see the DpnI digestion chapter. DpnI does not generally remove unmethylated nonspecific PCR amplicons; use O2 for those products. Confirm template methylation and site suitability before selecting digestion. [5]</p>
-<h2 id="reference">Reference</h2>
-<p>[1] Takara Bio. PrimeSTAR Max DNA Polymerase Product Manual, R045A, v202011Da (internal page headers), pp. 3-6. Accessed 2026-09-15. <a href="https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf">Open source</a></p>
-<p>[2] ABclonal. Gloria Nova HS 2X Master Mix V2, RK20731, datasheet M19B05V1.1, pp. 1-2. Accessed 2026-09-15. <a href="https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf">Open source</a></p>
-<p>[3] Takara Bio USA. When optimizing PCR conditions, which conditions are particularly important? PCR optimization guidance; updated 2023-09-28. Accessed 2026-09-15. <a href="https://help.takarabio.com/36168/kb/article/110025/when-optimizing-pcr-conditions-which-conditions-are-particularly-important">Open source</a></p>
-<p>[4] Takara Bio USA. If no amplification products are obtained, what parameters should be considered first when troubleshooting? Includes PrimeSTAR Max-specific guidance; updated 2023-09-28. Accessed 2026-09-15. <a href="https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting">Open source</a></p>
-<p>[5] New England Biolabs. DpnI, R0176: recognition-site methylation requirement and Product Notes. Accessed 2026-09-15. <a href="https://www.neb.com/en/products/r0176-dpni">Open source</a></p>
-<p>[6] Citri A et al. Comprehensive qPCR profiling of gene expression in single neuronal cells. Nature Protocols 7, 118-127 (2012), step 14 and Table 1. Physical bubble-removal technique adapted from qPCR wells to PCR tubes; author article mirrored by Gene Quantification. Accessed 2026-09-16. <a href="https://www.gene-quantification.de/citri-et-al-single-neuronal-cells-2012.pdf">Open source</a></p>
-<p>[7] Bio-Rad. PTC-100 Thermal Cycler Operations Manual, Bulletin 07512, sections Sealing Sample Vessels, Sealing with Oil or Wax, and Sealing with the Hot Bonnet Lid, printed pp. 4-5 to 4-6. General evaporation-control guidance; not an identification of the team cycler. Accessed 2026-09-16. <a href="https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_07512.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#pcr-optimization">PCR Optimization</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M01 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:29.70922%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>PCR
+
+ M01 | ver 1.6 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Perform high-fidelity amplification of a target DNA fragment for gel analysis and molecular cloning
+ using either Takara PrimeSTAR Max or ABclonal Gloria Nova HS 2X Master Mix V2. Both options
+ use the shared 50 µL or 25 µL recipe below; select the matching template guidance and thermal
+ program.
+
+ Materials &amp; Equipment
+
+
+   Item                                    Manufacturer      Identifier /       Use / Specification
+                                                                       specification
+
+
+   PrimeSTAR Max Premix (2×)              Takara Bio      R045A/B         Option A [1]
+
+
+   Gloria Nova HS 2X Master Mix V2        ABclonal       RK20731         Option B [2]
+
+
+   Forward and reverse primers             As supplied      Custom           Separate 10 µM working
+                                                                                           solutions
+
+
+    Purified template DNA                    User sample     Not applicable   Known concentration; target
+                                                                          sequence verified
+
+
+    Sterilized Type II water                    Laboratory-pre   Type II;            Primer dilution and reaction
+                                        pared              sterilized          setup
+
+
+   PCR tubes, filter tips, pipettes            Axygen tips;      For PCR           Accurate dispensing at 0.5-50
+                                              laboratory                          µL
+                                          equipment
+
+
+   Thermal cycler                            Laboratory      Programmable    Run the selected enzyme
+                                          equipment        thermal block;    program
+                                                          heated lid
+
+
+   Refrigerated centrifuge                   Eppendorf       PCR-tube-comp     Brief spin-down
+                                                                        atible rotor
+
+
+   PCR-grade mineral oil (optional)          As available     PCR-grade        Optional evaporation barrier;
+                                                             evaporation       see Troubleshooting
+                                                                    barrier
+
+
+   Agarose gel system and DNA ladder      As available      For target size    Gel buffer, stain and loading
+                                                                               dye; product check
+
+
+   Crushed ice                              Laboratory ice    Crushed ice      Keep reagent tubes cold
+                                       maker           bath
+
+
+
+M01 | v1.6                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M01 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:24.24533%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Before You Start
+
+ Prepare separate 10 µM primer working solutions. For a 100 µM stock, mix 10 µL stock with 90 µL
+ water. The reaction table assumes this working concentration.
+
+ Check the expected amplicon length and both primer sequences. A known amplifiable positive
+ control may be included when establishing an assay.
+
+ Thaw and gently mix the chosen premix, then briefly spin. Assemble reactions on ice in a clean area
+ separated from amplified DNA. Prepare separate mixes when comparing products.
+
+ Procedure
+
+ A. Prepare the shared reaction mixture
+
+ 1. Select one master mix from Materials &amp; Equipment. Calculate template volume V (µL) = required
+   DNA mass (ng) / measured concentration (ng/µL), using the product-specific input table below.
+      Dilute concentrated stocks to a reliably pipettable volume.
+
+ 2. Prepare reactions with the shared recipe. For multiple samples using the same enzyme, primer
+     pair and template volume, prepare a mixture without template, allowing about 10% extra for
+      pipetting loss. Dispense it before adding templates.
+
+
+   Component                             50 µL              25 µL                    Final
+
+
+   Selected PCR master mix (2×)               25 µL                12.5 µL            1×
+
+
+   Forward primer (10 µM)                   1 µL                  0.5 µL                0.2 µM
+
+
+   Reverse primer (10 µM)                    1 µL                  0.5 µL                0.2 µM
+
+
+   Template DNA                         V50 µL            V25 µL              See input table
+
+
+    Sterilized Type II water                       (23 - V50) µL          (11.5 - V25) µL        To volume
+
+
+    Total                                  50 µL              25 µL
+
+
+ Use separate 10 µM primer working solutions. V50 and V25 denote the template volume in each
+ reaction size; recalculate water whenever template volume changes. The selected primer
+ concentration is 0.2 µM. [1, 2]
+
+ Template input guide
+
+
+   Template                                   Takara: 50 µL                    ABclonal: 50 µL
+
+
+   Plasmid DNA                               0.01-1 ng                      0.001-10 ng
+
+
+  Human genomic DNA                      5-200 ng                      10-100 ng
+
+
+    E. coli genomic DNA                        0.1-200 ng                      0.5-200 ng
+
+
+
+
+
+M01 | v1.6                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M01 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> These are product-specific starting ranges. For a 25 µL reaction, halve the listed DNA mass to
+ preserve concentration; this is a proportional adaptation. This guide covers purified plasmid and
+ genomic DNA. [1, 2]
+
+ 3. Mix complete reactions gently and briefly spin. Select the actual reaction volume and enable the
+     heated lid where available; otherwise use the mineral-oil overlay described in Troubleshooting.
+
+ B. Select the thermal program
+
+ 4. Run the program matching the selected master mix. Use the same temperatures and times for
+      either reaction volume; calculate extension time from the expected amplicon length.
+
+ Option A: Takara PrimeSTAR Max (R045A/B)
+
+
+   Stage                        Temperature          Time                               Repetitions
+
+
+   Denaturation              98 °C             10 s                          30-35 cycles:
+                                                                                           denaturation, annealing,
+                                                                                          extension
+
+
+   Annealing                55 °C             5 or 15 s                        Within cycle
+
+
+   Extension                 72 °C             5 s/kb                          Within cycle
+
+
+   Hold                    4 °C                    Until collection                    After cycling
+
+
+ A separate initial denaturation or final extension is generally unnecessary. For primers ≤25 nt, use 5
+ s when both Tm values are ≥55 °C; otherwise use 15 s. Estimate Tm (°C) = 2(A + T) + 4(G + C) - 5
+ from nucleotide counts. For primers &gt;25 nt, start at 5 s. [1]
+
+ Rapid extension guidance covers human genomic targets up to 6 kb and E. coli targets up to 10 kb.
+ For longer targets, try 15-30 s/kb. [1] Above 200 ng template/50 µL (scaled: 100 ng/25 µL),
+ reduce input or use 30-60 s/kb. [4]
+
+ Option B: ABclonal Gloria Nova HS 2X Master Mix V2 (RK20731)
+
+ Transfer chilled reactions to a cycler preheated to 95 °C. [2]
+
+
+   Stage                        Temperature          Time                               Repetitions
+
+
+    Initial denaturation          95 °C             3 min                     Once
+
+
+   Denaturation              95 °C             15 s                          25-35 cycles:
+                                                                                           denaturation, annealing,
+                                                                                          extension
+
+
+   Annealing                60 °C*            30 s                            Within cycle
+
+
+   Extension                 72 °C             10 s/kb                         Within cycle
+
+
+    Final extension             72 °C             5 min                     Once
+
+
+   Hold                    4 °C                    Until collection                    After cycling
+
+
+
+M01 | v1.6                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M01 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:25.49252%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:43.90348%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:52.33689%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> *Start at 60 °C. For primers &gt;20 nt, use the lower primer Tm + 3 °C; for primers &lt;20 nt, use the
+ lower Tm. For exactly 20 nt, start at the default and optimize if needed. Complex targets or
+ fragments &gt;10 kb may need 15 s/kb. [2]
+
+ C. Inspect the product
+
+ 5. Analyze a small aliquot alongside an appropriate DNA ladder and any positive control included.
+      Select agarose concentration for the expected fragment size and add loading dye at its
+     working dilution. Retain the remaining product for the chosen downstream workflow. See M02
+      for the gel check and interpretation.
+
+ p.s.
+
+
+ Label tubes with the master mix and program name. When changing enzyme, reload its complete
+ program, including initial and final stages.
+
+ Use the stated 10 µM primer working solutions. Adding a 100 µM stock at the listed volumes gives a
+ tenfold concentration error.
+
+ Recalculate water when template volume changes. For inconsistent repeats, check mixing, pipetting
+ and seals; use a shared reaction mix.
+
+ Expected Outcome
+
+ A predominant product at the expected size supports successful amplification. Save the gel image
+ with lane identities. Band size alone does not establish sequence identity.
+
+ Troubleshooting
+
+ For problems first seen on a gel, start with M02, then use PCR Optimization below if indicated.
+
+
+   Observed problem      Check first               Suggested action
+
+
+   Bubbles remain after      Persistent surface          Gently tap the closed tube to release wall-attached bubbles.
+    brief centrifugation      bubbles or bubbles        For a persistent surface bubble, use a fresh nuclease-free
+                           attached to the tube        pipette tip to gently touch and break it; if needed, aspirate
+                             wall                      only the bubble while withdrawing the tip, avoiding loss of
+                                                         reaction liquid. Use a new tip for each tube, recap and
+                                                                briefly spin down. Avoid blowing air into the mixture during
+                                                             pipetting. [6]
+
+
+   Reaction volume         Heated-lid activation,       Briefly spin down to collect condensation. If volume remains
+   decreases after          temperature and          reduced, check that the heated lid is enabled, reaches its
+   cycling                   contact; tube-cap seal      specified temperature and contacts properly sealed tubes. If
+                                                    evaporation persists or the cycler has no heated lid, overlay
+                                                         the next reaction with PCR-grade mineral oil before cycling,
+                                                       using enough to cover the entire liquid surface and an
+                                              amount compatible with the tube/cycler. Keep oil amounts
+                                                            consistent between tubes. [7]
+
+
+
+
+
+M01 | v1.6                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original M01 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="pcr-optimization" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> PCR Optimization
+
+ Use these options after M02 has checked sample loading, electrophoresis and detection. A gel
+ pattern suggests which check to make; it does not identify a cause by itself. Keep the selected
+ enzyme-specific recipe and program as the starting point, and change one factor at a time.
+
+ O1. Low or absent amplification
+
+ Check primer identity, sequences, orientation and binding to the actual template. Confirm the 10 µM
+ working dilution. If primer stock quality is suspect, reconstitute an unused dry aliquot and prepare a
+ fresh working solution. Review template integrity, purity and input against the selected product
+ guidance. [1, 2, 4]
+
+ Recheck the full matching thermal program, especially annealing and length-dependent extension.
+ Use an annealing-temperature gradient within the selected enzyme guidance if needed. For
+ ABclonal difficult or long targets, apply its extension guidance in Section B; do not transfer settings
+ between enzymes. A dilution comparison can help assess suspected template inhibition, but also
+ reduces template input. [1-4]
+
+  If a distinct, correctly sized product is present but more DNA is needed, run additional parallel PCRs
+ and pool matching products for purification. This means additional reactions, not an automatic
+ increase in cycle number. A faint, well-separated target can be recovered using M02; quantify the
+ eluate to decide whether it meets the downstream requirement.
+
+ O2. Nonspecific amplification or short by-products
+
+ After M02 excludes poor separation or loading distortion, review the expected product map and
+ primer specificity. Extra bands or a short band near the front are candidates for nonspecific
+ amplification or primer dimers, respectively; position alone does not establish their identity.
+
+ Confirm primer working dilution and template input before testing annealing conditions. Follow the
+ selected enzyme guidance: for PrimeSTAR Max, retain the specified short annealing duration; for
+ ABclonal, evaluate annealing temperature and excessive primer/template input or cycling when
+ appropriate. Redesign primers if the binding sites are unsuitable. Recover the intended band in M02
+ only if it is clearly separated. [1-3]
+
+ O3. Residual plasmid template
+
+ Consider residual template separately from newly amplified by-products when the PCR started from
+ a plasmid. Uncut plasmid conformations can migrate differently from linear DNA, so apparent size
+ alone cannot identify a residual-template band.
+
+ For residual Dam-methylated plasmid template containing DpnI recognition sites, see the DpnI
+ digestion chapter. DpnI does not generally remove unmethylated nonspecific PCR amplicons; use
+ O2 for those products. Confirm template methylation and site suitability before selecting digestion.
+ [5]
+
+
+
+
+
+M01 | v1.6                                                                              5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original M01 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="reference" style="top:6.78461%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf" style="left:31.84475%;top:10.98719%;width:8.85807%;height:1.28283%"></a><a class="pdf-source-link" href="https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf" style="left:19.13603%;top:14.5506%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://help.takarabio.com/36168/kb/article/110025/when-optimizing-pcr-conditions-which-conditions-are-particularly-important" target="_blank" rel="noopener" aria-label="Original PDF reference: https://help.takarabio.com/36168/kb/article/110025/when-optimizing-pcr-conditions-which-conditions-are-particularly-important" style="left:48.43066%;top:18.11401%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting" target="_blank" rel="noopener" aria-label="Original PDF reference: https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting" style="left:83.1683%;top:21.67742%;width:3.92297%;height:1.28283%"></a><a class="pdf-source-link" href="https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting" target="_blank" rel="noopener" aria-label="Original PDF reference: https://help.takarabio.com/36168/kb/article/110036/if-no-amplification-products-are-obtained-what-parameters-should-be-considered-first-when-troubleshooting" style="left:10.07937%;top:23.16218%;width:4.46854%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.neb.com/en/products/r0176-dpni" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.neb.com/en/products/r0176-dpni" style="left:19.13603%;top:26.72559%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.gene-quantification.de/citri-et-al-single-neuronal-cells-2012.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.gene-quantification.de/citri-et-al-single-neuronal-cells-2012.pdf" style="left:58.98298%;top:31.77376%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_07512.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_07512.pdf" style="left:53.13764%;top:36.82192%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> Reference
+
+  [1] Takara Bio. PrimeSTAR Max DNA Polymerase Product Manual, R045A, v202011Da (internal page headers),
+ pp. 3-6. Accessed 2026-09-15. Open source
+
+  [2] ABclonal. Gloria Nova HS 2X Master Mix V2, RK20731, datasheet M19B05V1.1, pp. 1-2. Accessed
+ 2026-09-15. Open source
+
+  [3] Takara Bio USA. When optimizing PCR conditions, which conditions are particularly important? PCR optimization
+ guidance; updated 2023-09-28. Accessed 2026-09-15. Open source
+
+  [4] Takara Bio USA. If no amplification products are obtained, what parameters should be considered first when
+ troubleshooting? Includes PrimeSTAR Max-specific guidance; updated 2023-09-28. Accessed 2026-09-15. Open
+ source
+
+  [5] New England Biolabs. DpnI, R0176: recognition-site methylation requirement and Product Notes. Accessed
+ 2026-09-15. Open source
+
+  [6] Citri A et al. Comprehensive qPCR profiling of gene expression in single neuronal cells. Nature Protocols 7,
+ 118-127 (2012), step 14 and Table 1. Physical bubble-removal technique adapted from qPCR wells to PCR tubes;
+ author article mirrored by Gene Quantification. Accessed 2026-09-16. Open source
+
+  [7] Bio-Rad. PTC-100 Thermal Cycler Operations Manual, Bulletin 07512, sections Sealing Sample Vessels, Sealing
+ with Oil or Wax, and Sealing with the Hot Bonnet Lid, printed pp. 4-5 to 4-6. General evaporation-control guidance;
+ not an identification of the team cycler. Accessed 2026-09-16. Open source
+
+
+
+
+
+M01 | v1.6                                                                              6</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

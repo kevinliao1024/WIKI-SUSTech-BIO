@@ -1,0 +1,124 @@
+{
+  "source_sha256": "6007c2d48dededa4f92b30b24708e1839cebd7ead3eb7d282b36ac4e8b17ff86",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "314e88ad4332286041ce3a1a332e321ee9a56251fa21b494c3c78f01c2bc0c8c",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 79.83455
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "da30509f72bd1b6f018084751bce406053f4650413f863ac82bab8e9a9140961",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 16.64338
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "129adaf93f5127e2e66e9551b46144a6cbf4944795972ade516f5f9b9482ea1b",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 22.40423
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 47.16994
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "76cedab9d28a4e1f1e1a9aa0bc73a50203f7828cef48864acf66a57b1747cd65",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 52.63384
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.thermofisher.com/nl/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/thawing-cells.html",
+          "left": 66.4842,
+          "top": 56.83642,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.atcc.org/resources/culture-guides/animal-cell-culture-guide",
+          "left": 25.96987,
+          "top": 60.39983,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.atcc.org/the-science/culturing-cells/reviving-cells",
+          "left": 85.43838,
+          "top": 62.47849,
+          "width": 3.92297,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.atcc.org/the-science/culturing-cells/reviving-cells",
+          "left": 10.07937,
+          "top": 63.96324,
+          "width": 4.46854,
+          "height": 1.28282
+        }
+      ]
+    }
+  ]
+}

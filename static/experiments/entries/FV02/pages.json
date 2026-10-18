@@ -1,0 +1,184 @@
+{
+  "source_sha256": "915dbf9b2a1a4c15ea4dea93ff23fd79c4c4ad75ff9c531edf294535cd8a79ed",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 6,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "560e0c50bdd10cab1a473cc8239e368734e0a76888da937ceebb8757f1ad5b52",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 35.82642
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d7c167e072d06f790af14cf8090c039e4a0d073e1aa88ec0ecbedb365e29a956",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 24.95801
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 56.13786
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c5651b234dd46f461f8a82c9c9091e3fd5f3ba8a09d70c79be05807a3175f37a",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "56688ed0cafe677acc909c1c0bf23f5189caa898b2cfb884191c4e85145c233f",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "becad52c153cf8c9e619cf3d79065c4353cdd2df8d6d846699ff2ed1c6cfdd23",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 39.74616
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 59.04798
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8af0ba5143756020e221042761b3231504435603ac703aec093f571b1fe0984d",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 6,
+          "top": 43.1908
+        }
+      ],
+      "links": [
+        {
+          "url": "https://en.bio-protocol.org/pdf/Bio-protocol1912.pdf",
+          "left": 58.43744,
+          "top": 48.87813,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/D3922",
+          "left": 33.20753,
+          "top": 52.44154,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/BID/certificate/Certificates-of-Analysis/D3922%20Lot%202040725%20CofA.pdf",
+          "left": 79.36565,
+          "top": 56.00495,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7941729/",
+          "left": 63.40796,
+          "top": 61.05312,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.whservicebio.com/pathological-reagent/fixatives/paraformaldehyde-fixative-neutral.html",
+          "left": 76.88814,
+          "top": 64.61654,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/MAN0002469_ProLong_SlowFade_Antifade_Mountants_PI.pdf",
+          "left": 10.07937,
+          "top": 69.6647,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/P36930",
+          "left": 60.1088,
+          "top": 73.22811,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://bpb-us-e1.wpmucdn.com/sites.northeastern.edu/dist/8/650/files/2020/09/LSM_800_Confocal_Power_Pack.pdf",
+          "left": 80.69152,
+          "top": 76.79153,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/protocols/cell-and-tissue-analysis/protocols/dapi-imaging-protocol.html",
+          "left": 82.65671,
+          "top": 80.35494,
+          "width": 3.92297,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/protocols/cell-and-tissue-analysis/protocols/dapi-imaging-protocol.html",
+          "left": 10.07937,
+          "top": 81.83969,
+          "width": 4.46854,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

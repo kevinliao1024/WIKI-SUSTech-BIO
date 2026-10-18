@@ -2,245 +2,395 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RP03 · TMP Treatment and Reporter Stabilization Assay</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> RP03 · <strong>Category:</strong> Reporter System</p>
-<p>RP03 | ver 1.0 | Revised 2026-10-14</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Test whether trimethoprim (TMP) restores fluorescence from an ecDHFR destabilizing-domain (DD) Reporter in HEK293T cells. Compare WT and InAC with the constitutively fluorescent AC control, each with matched vehicle or TMP treatment.</p>
-<p>The reference format is a six-well plate with 1 µg Reporter DNA and 2.0 mL treatment medium per well, using 10 µM TMP. This is a Reporter-stabilization assay; fluorescence restoration alone does not establish RNA editing or directly measure protein half-life. [1,4]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Identity / Selection</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEK293T and Reporter plasmids</td>
-<td>Sequence-checked WT, AC and InAC clones</td>
-<td>WT/InAC retain the DD; AC provides the no-DD fluorescence control. Keep the construct version and DNA input consistent. [1]</td>
-</tr>
-<tr>
-<td>Trimethoprim powder</td>
-<td>Free base; CAS 738-70-5; MW 290.32 g/mol</td>
-<td>Use the labeled supplier, lot, purity and solubility limit. A salt or formulated product requires its own mass calculation. [2,3]</td>
-</tr>
-<tr>
-<td>DMSO</td>
-<td>Sterile, cell-culture-grade solvent</td>
-<td>TMP stock/work solution and equal-volume vehicle; keep concentrated solutions in compatible tubes.</td>
-</tr>
-<tr>
-<td>Complete HEK293T medium</td>
-<td>The same formulation used for the cultures</td>
-<td>Prewarm; C01 covers culture conditions and C04 covers Reporter transfection.</td>
-</tr>
-<tr>
-<td>Six-well plate and sterile tubes</td>
-<td>Cell-culture plate; solvent-compatible stock tubes; 15 mL mixing tubes</td>
-<td>One vehicle and one TMP well per construct in the reference plate. Scale volumes for independent replicate wells.</td>
-</tr>
-<tr>
-<td>Sterile syringe and filter, when preparing powder stock</td>
-<td>0.20/0.22 µm; exact membrane, housing and syringe compatible with DMSO</td>
-<td>A sterile PTFE membrane with a compatible housing is a candidate. Check the complete device instructions; pore size alone does not establish solvent compatibility. [5]</td>
-</tr>
-<tr>
-<td>Balance, pipettes, vortex and culture equipment</td>
-<td>Analytical balance; calibrated pipettes; biosafety cabinet; 37°C / 5% CO2 incubator</td>
-<td>Choose a weighing amount and pipette range that can be measured reliably.</td>
-</tr>
-<tr>
-<td>Fluorescence readout</td>
-<td>Microscope and/or flow cytometer</td>
-<td>RP04: microscopy; RP06: flow acquisition. RP07 is reserved for Reporter data analysis.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Prepare healthy, matched Reporter-transfected cultures using C04. The original six-well test used 1 µg Reporter DNA per well; WT, AC and InAC each occupied two wells. Transfection doses must be scaled for another vessel rather than copied from a 12-well recipe. [1]</p>
-<p>Assign each construct to vehicle and +TMP before treatment. Record actual well positions, clone IDs and the transfection time as T = 0. The original one-well-per-condition format is an exploratory screen; use independent culture/transfection wells for reproducible estimates rather than counting flow events as replicates.</p>
-<p>Check the TMP form and stock concentration against the bottle/lot record. Use a 10 mM DMSO work solution for the main route: final TMP 10 µM and DMSO 0.1% in both arms. Stock solubility differs among products; use 100 mM only when supported for the selected reagent. [1-3]</p>
-<p>Use a defined treatment interval. The reference schedule is next-day medium exchange at about T + 24 h, followed by 24 h TMP exposure and readout near T + 48 h. If the transfection method requires a different exchange time, specify it and keep the exposure interval identical across wells. [1,4]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-tmp-in-dmso">A. Prepare TMP in DMSO</h3>
-<ol>
-<li>Calculate the mass for the intended stock: mass (mg) = concentration (mM) × final volume (mL) × MW (g/mol) / 1000. Record the form, lot and actual mass. Apply a purity correction only when the lot certificate provides a quantitative mass fraction; do not automatically treat HPLC area purity as an exact mass fraction.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stock option</th>
-<th>TMP free-base mass</th>
-<th>Final DMSO volume</th>
-<th>Use condition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100 mM primary stock</td>
-<td>29.032 mg</td>
-<td>1.00 mL</td>
-<td>Use only if the actual product supports at least 29.032 mg/mL in DMSO and dissolves fully.</td>
-</tr>
-<tr>
-<td>10 mM stock prepared directly</td>
-<td>29.032 mg</td>
-<td>10.00 mL</td>
-<td>Alternative when a 100 mM stock is not supported; makes the same 10 mM work solution. Scale only within reliable weighing limits.</td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li>
-<p>Add part of the required DMSO to the weighed powder and mix until fully dissolved, then bring to the intended final solution volume with DMSO. Inspect for crystals or cloudiness. Do not assign the nominal concentration to an incompletely dissolved suspension. Use the direct 10 mM route when the actual product does not support a clear 100 mM stock. [2,3]</p>
-</li>
-<li>
-<p>If making a sterile culture stock from powder, filter the fully dissolved solution into a sterile compatible tube using a sterile 0.20/0.22 µm device rated for DMSO, including its housing and syringe. Check filter hold-up volume and recheck clarity after filtration. Do not use a nonsterile analytical filter or an unspecified PES/PVDF filter solely because its pore size is 0.22 µm. [5]</p>
-</li>
-<li>
-<p>When a clear, sterile 100 mM primary stock is available, combine 100 µL stock with 900 µL sterile DMSO to obtain 1.00 mL of 10 mM work solution. If the stock was prepared directly at 10 mM, use it as the work solution. Label concentration, solvent, date and lot; follow the actual product instructions for aliquoting and stock storage. [1]</p>
-</li>
-</ol>
-<h3 id="b-prepare-matched-treatment-media">B. Prepare matched treatment media</h3>
-<ol start="5">
-<li>Calculate the medium required for each treatment arm: number of wells × final volume per well × 1.10. For three wells at 2.0 mL, prepare 6.60 mL per arm. Calculate TMP work-solution volume as Vstock = Cfinal × Vfinal / Cstock using matching concentration and volume units.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component / Final condition</th>
-<th>+TMP medium</th>
-<th>Vehicle medium</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Prewarmed complete medium</td>
-<td>6593.4 µL</td>
-<td>6593.4 µL</td>
-</tr>
-<tr>
-<td>10 mM TMP in DMSO</td>
-<td>6.6 µL</td>
-<td>None</td>
-</tr>
-<tr>
-<td>Sterile DMSO without TMP</td>
-<td>None</td>
-<td>6.6 µL</td>
-</tr>
-<tr>
-<td>Total volume</td>
-<td>6600 µL</td>
-<td>6600 µL</td>
-</tr>
-<tr>
-<td>Final TMP</td>
-<td>10 µM</td>
-<td>0 µM</td>
-</tr>
-<tr>
-<td>Final DMSO (v/v)</td>
-<td>0.1%</td>
-<td>0.1%</td>
-</tr>
-</tbody>
-</table>
-<ol start="6">
-<li>Prepare +TMP and vehicle in separate labeled sterile tubes. Add the small solvent aliquot to the medium in the mixing tube, mix promptly and thoroughly, and check that both solutions remain clear. Use the freshly prepared media for this treatment. Do not dispense concentrated TMP/DMSO directly onto the cell layer. [1]</li>
-</ol>
-<h3 id="c-exchange-medium-and-treat-cells">C. Exchange medium and treat cells</h3>
-<ol start="7">
-<li>
-<p>Inspect cell attachment and morphology before exchange and retain a baseline brightfield record if available. Confirm the six-well assignment: WT vehicle / WT +TMP, AC vehicle / AC +TMP, and InAC vehicle / InAC +TMP. Treat matched wells at the same time point. [1]</p>
-</li>
-<li>
-<p>At the selected next-day exchange, handle one well at a time. Gently remove old medium without touching the cell layer, then immediately add 2.0 mL of the assigned treatment medium along the well wall. Complete vehicle wells before +TMP wells, using fresh sterile tips and avoiding cross-contamination. Do not leave the cell layer dry. [1]</p>
-</li>
-<li>
-<p>Gently move the plate forward/back and side-to-side to distribute medium. Return cultures to 37°C and 5% CO2 for the reference 24 h exposure. Record treatment start/end times, TMP concentration, DMSO percentage, culture volume and deviations; keep the defined interval equal across comparison wells. [1,4]</p>
-</li>
-</ol>
-<h3 id="d-observe-acquire-and-interpret">D. Observe, acquire and interpret</h3>
-<ol start="10">
-<li>
-<p>Check cell morphology and medium clarity during treatment and again before collection. Acquire paired brightfield, EGFP and mCherry images using the same field-selection rule and matched settings within each channel, following RP04. Use images to document the fluorescence response and cell condition.</p>
-</li>
-<li>
-<p>At the endpoint, collect and acquire flow samples using RP06 if flow is the selected readout. Use the same detector settings and acquisition/gating rule across all six conditions. Retain original files and compensation status. Include matched Reporter-negative cells when a current background boundary is needed; preserve the limitation if that control is unavailable.</p>
-</li>
-<li>
-<p>Compare +TMP with vehicle within each construct. Examine the EGFP distribution together with mCherry and cell condition; use a consistently defined, expression-matched population if a normalized comparison is planned. Do not infer compensation from the six dual-color Reporter tubes, or count individual flow events as independent experiments.</p>
-</li>
-<li>
-<p>Look for an EGFP response in DD-containing WT/InAC that differs from the no-DD AC response. Retain original images/FCS, sample map, treatment times and the analysis definition. A single well per condition supports a descriptive pilot; do not attach significance claims or convert this rescue response to an RNA-editing percentage. [1,4]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Keep concentrated TMP solutions in DMSO rather than using a high-concentration aqueous intermediate. Check clarity after dilution into medium and use freshly prepared treatment media. Precipitation makes the delivered dose uncertain. [1-3]</p>
-<p>Match DMSO between TMP and vehicle. Do not assume that 0.1% DMSO is biologically inert. If solvent effects are a concern, include untreated cultures as an additional comparison while retaining the matched vehicle pair.</p>
-<p>If reducing DMSO is necessary, a 20 mM DMSO work solution is an alternative: 200 µL of a supported 100 mM stock + 800 µL DMSO; then 3.3 µL work solution + 6596.7 µL medium per 6.60 mL arm. Use 3.3 µL pure DMSO in the vehicle arm. Both arms contain 0.05% DMSO, with 10 µM TMP only in +TMP. Use a calibrated pipette for 3.3 µL and one route consistently; this alternative is not an established optimized condition. [1]</p>
-<p>Interpret the AC control alongside WT/InAC. A response shared by all constructs, loss of cells, or a changing mCherry distribution calls for reassessment before attributing fluorescence changes to DD stabilization.</p>
-<p>Use the actual stock label for storage and the actual device instructions for filtration. A clear solution and a membrane-material name alone do not establish correct concentration, sterility or compatibility of the complete filter assembly. [2,3,5]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain matched vehicle/TMP fluorescence records for WT, AC and InAC, accompanied by cell-condition checks and treatment metadata. An increase in WT/InAC EGFP relative to their vehicle wells, with a smaller response in AC under comparable sampling and expression conditions, is consistent with TMP-responsive DD behavior.</p>
-<p>No fixed rescue magnitude or saturation threshold is required. Report the observed distributions and replicate structure. This assay tests Reporter stabilization behavior; target-transcript sequencing is needed separately to assess RNA editing.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stock or treatment medium is cloudy</td>
-<td>TMP form, stock strength, product solubility, DMSO condition and mixing</td>
-<td>Do not use a suspension at its nominal dose. Remake a supported clear DMSO stock; use the direct 10 mM route if 100 mM is unsupported, then remake matched media. [2,3]</td>
-</tr>
-<tr>
-<td>Filtering is difficult or the device changes appearance</td>
-<td>Exact membrane, housing/syringe compatibility and filter capacity</td>
-<td>Stop and replace with a sterile DMSO-rated assembly. Do not force liquid through a damaged or incompatible device. [5]</td>
-</tr>
-<tr>
-<td>Cells detach or morphology worsens</td>
-<td>Baseline health, handling, vehicle response, concentration and exposure time</td>
-<td>Retain the observation and compare vehicle with untreated cells if available. Reassess dosing/handling in a separate repeat; do not call loss of cells a Reporter response.</td>
-</tr>
-<tr>
-<td>Little EGFP change after TMP</td>
-<td>Correct wells, stock calculation, exposure interval, initial expression, channel settings and signal saturation</td>
-<td>Verify preparation and matched acquisition before changing dose. Check the actual DD construct and repeat with appropriate controls; do not increase concentration blindly.</td>
-</tr>
-<tr>
-<td>AC changes as much as WT/InAC, or mCherry also shifts</td>
-<td>Cell state, solvent matching, sampling population, expression distribution and spillover</td>
-<td>Treat the result as ambiguous for DD stabilization. Review raw distributions and controls using the same analysis rule; obtain a repeat with matched conditions.</td>
-</tr>
-<tr>
-<td>Bright samples clip or apparent differences depend on image settings</td>
-<td>Detector range, exposure/gain and automatic settings</td>
-<td>Reacquire all comparison samples using a common unsaturated setting. Preserve the original files and label qualitative images appropriately.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] SUSTech-BIO 2026 team. S1 TMP rescue plan, 2026-08-25; TMP-preparation chat and handwritten recipe, 2026-08-26; experimental Notebook entries, 2026-08-25 to 2026-08-27. Local sources retained under sources/.</p>
-<p>[2] Selleck Chemicals. Trimethoprim, S3129: molecular weight and product-specific DMSO solubility (58 mg/mL). Comparison source, not a confirmed laboratory product. Accessed 2026-10-14. <a href="https://www.selleckchem.com/products/trimethoprim.html">Open source</a></p>
-<p>[3] Cayman Chemical. Trimethoprim, Item 16473, product information, 2022-10-27, p. 1: DMSO solubility (approximately 20 mg/mL) and limited aqueous solubility. Comparison source, not a confirmed laboratory product. Accessed 2026-10-14. <a href="https://cdn.caymanchem.com/cdn/insert/16473.pdf">Open source</a></p>
-<p>[4] Ramadurgum P, Hulleman JD. Protocol for Designing Small-Molecule-Regulated Destabilizing Domains for In Vitro Use. STAR Protocols 1, 100069 (2020), steps 21-23 and 39-42: TMP/DMSO stocks, vehicle control and 24 h treatment/readout. Adapted to the local Reporter assay. Accessed 2026-10-14. <a href="https://doi.org/10.1016/j.xpro.2020.100069">Open source</a></p>
-<p>[5] Merck / Millipore. Chemical Compatibility of Filter Components: membrane and housing material tables and applicability limitations. Check the selected complete device. Accessed 2026-10-14. <a href="https://www.sigmaaldrich.com/AT/en/technical-documents/technical-article/analytical-chemistry/filtration/chemical-compatibility-of-filter-components">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original RP03 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:38.49897%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>TMP Treatment and Reporter
+Stabilization Assay
+
+ RP03 | ver 1.0 | Revised 2026-10-14
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Test whether trimethoprim (TMP) restores fluorescence from an ecDHFR destabilizing-domain (DD)
+ Reporter in HEK293T cells. Compare WT and InAC with the constitutively fluorescent AC control,
+ each with matched vehicle or TMP treatment.
+
+ The reference format is a six-well plate with 1 µg Reporter DNA and 2.0 mL treatment medium per
+ well, using 10 µM TMP. This is a Reporter-stabilization assay; fluorescence restoration alone does
+ not establish RNA editing or directly measure protein half-life. [1,4]
+
+
+ Materials &amp; Equipment
+
+
+   Item                              Identity / Selection                 Use / Specification
+
+
+   HEK293T and Reporter       Sequence-checked WT, AC and      WT/InAC retain the DD; AC provides the
+   plasmids                  InAC clones                       no-DD fluorescence control. Keep the
+                                                                             construct version and DNA input consistent.
+                                                                             [1]
+
+
+   Trimethoprim powder         Free base; CAS 738-70-5; MW       Use the labeled supplier, lot, purity and
+                            290.32 g/mol                              solubility limit. A salt or formulated product
+                                                                           requires its own mass calculation. [2,3]
+
+
+  DMSO                            Sterile, cell-culture-grade solvent      TMP stock/work solution and equal-volume
+                                                                               vehicle; keep concentrated solutions in
+                                                                    compatible tubes.
+
+
+   Complete HEK293T          The same formulation used for the     Prewarm; C01 covers culture conditions
+   medium                         cultures                         and C04 covers Reporter transfection.
+
+
+    Six-well plate and sterile        Cell-culture plate;                One vehicle and one TMP well per
+   tubes                          solvent-compatible stock tubes; 15      construct in the reference plate. Scale
+                          mL mixing tubes                     volumes for independent replicate wells.
+
+
+    Sterile syringe and filter,      0.20/0.22 µm; exact membrane,    A sterile PTFE membrane with a compatible
+   when preparing powder      housing and syringe compatible        housing is a candidate. Check the complete
+   stock                          with DMSO                          device instructions; pore size alone does
+                                                                        not establish solvent compatibility. [5]
+
+
+   Balance, pipettes, vortex       Analytical balance; calibrated        Choose a weighing amount and pipette
+   and culture equipment          pipettes; biosafety cabinet; 37°C /    range that can be measured reliably.
+                     5% CO2 incubator
+
+
+
+
+RP03 | v1.0                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original RP03 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:18.18752%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:51.20847%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p>   Item                              Identity / Selection                 Use / Specification
+
+
+   Fluorescence readout         Microscope and/or flow cytometer     RP04: microscopy; RP06: flow acquisition.
+                                                         RP07 is reserved for Reporter data
+                                                                              analysis.
+
+
+ Before You Start
+
+ Prepare healthy, matched Reporter-transfected cultures using C04. The original six-well test used 1
+ µg Reporter DNA per well; WT, AC and InAC each occupied two wells. Transfection doses must be
+ scaled for another vessel rather than copied from a 12-well recipe. [1]
+
+ Assign each construct to vehicle and +TMP before treatment. Record actual well positions, clone IDs
+ and the transfection time as T = 0. The original one-well-per-condition format is an exploratory
+ screen; use independent culture/transfection wells for reproducible estimates rather than counting
+ flow events as replicates.
+
+ Check the TMP form and stock concentration against the bottle/lot record. Use a 10 mM DMSO
+ work solution for the main route: final TMP 10 µM and DMSO 0.1% in both arms. Stock solubility
+ differs among products; use 100 mM only when supported for the selected reagent. [1-3]
+
+ Use a defined treatment interval. The reference schedule is next-day medium exchange at about T +
+ 24 h, followed by 24 h TMP exposure and readout near T + 48 h. If the transfection method
+ requires a different exchange time, specify it and keep the exposure interval identical across wells.
+ [1,4]
+
+ Procedure
+
+ A. Prepare TMP in DMSO
+
+ 1. Calculate the mass for the intended stock: mass (mg) = concentration (mM) × final volume (mL) ×
+  MW (g/mol) / 1000. Record the form, lot and actual mass. Apply a purity correction only
+    when the lot certificate provides a quantitative mass fraction; do not automatically treat HPLC
+     area purity as an exact mass fraction.
+
+
+   Stock option         TMP free-base mass      Final DMSO volume    Use condition
+
+
+   100 mM primary       29.032 mg            1.00 mL              Use only if the actual product supports
+   stock                                                                          at least 29.032 mg/mL in DMSO and
+                                                                                  dissolves fully.
+
+
+   10 mM stock          29.032 mg            10.00 mL                Alternative when a 100 mM stock is
+   prepared directly                                                        not supported; makes the same 10 mM
+                                                                work solution. Scale only within
+                                                                                    reliable weighing limits.
+
+
+ 2. Add part of the required DMSO to the weighed powder and mix until fully dissolved, then bring
+      to the intended final solution volume with DMSO. Inspect for crystals or cloudiness. Do not
+     assign the nominal concentration to an incompletely dissolved suspension. Use the direct 10 mM
+     route when the actual product does not support a clear 100 mM stock. [2,3]
+
+
+
+
+RP03 | v1.0                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original RP03 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> 3. If making a sterile culture stock from powder, filter the fully dissolved solution into a sterile
+     compatible tube using a sterile 0.20/0.22 µm device rated for DMSO, including its housing and
+      syringe. Check filter hold-up volume and recheck clarity after filtration. Do not use a nonsterile
+      analytical filter or an unspecified PES/PVDF filter solely because its pore size is 0.22 µm. [5]
+
+ 4. When a clear, sterile 100 mM primary stock is available, combine 100 µL stock with 900 µL
+       sterile DMSO to obtain 1.00 mL of 10 mM work solution. If the stock was prepared directly at
+    10 mM, use it as the work solution. Label concentration, solvent, date and lot; follow the actual
+     product instructions for aliquoting and stock storage. [1]
+
+ B. Prepare matched treatment media
+
+ 5. Calculate the medium required for each treatment arm: number of wells × final volume per well ×
+     1.10. For three wells at 2.0 mL, prepare 6.60 mL per arm. Calculate TMP work-solution volume
+     as Vstock = Cfinal × Vfinal / Cstock using matching concentration and volume units.
+
+
+   Component / Final condition                +TMP medium                   Vehicle medium
+
+
+   Prewarmed complete medium                 6593.4 µL                   6593.4 µL
+
+
+   10 mM TMP in DMSO                         6.6 µL                    None
+
+
+    Sterile DMSO without TMP                 None                         6.6 µL
+
+
+    Total volume                            6600 µL                   6600 µL
+
+
+    Final TMP                              10 µM                    0 µM
+
+
+    Final DMSO (v/v)                        0.1%                     0.1%
+
+
+ 6. Prepare +TMP and vehicle in separate labeled sterile tubes. Add the small solvent aliquot to the
+    medium in the mixing tube, mix promptly and thoroughly, and check that both solutions remain
+      clear. Use the freshly prepared media for this treatment. Do not dispense concentrated
+   TMP/DMSO directly onto the cell layer. [1]
+
+ C. Exchange medium and treat cells
+
+ 7. Inspect cell attachment and morphology before exchange and retain a baseline brightfield
+     record if available. Confirm the six-well assignment: WT vehicle / WT +TMP, AC vehicle / AC
+    +TMP, and InAC vehicle / InAC +TMP. Treat matched wells at the same time point. [1]
+
+ 8. At the selected next-day exchange, handle one well at a time. Gently remove old medium without
+     touching the cell layer, then immediately add 2.0 mL of the assigned treatment medium along
+     the well wall. Complete vehicle wells before +TMP wells, using fresh sterile tips and avoiding
+     cross-contamination. Do not leave the cell layer dry. [1]
+
+ 9. Gently move the plate forward/back and side-to-side to distribute medium. Return cultures to
+    37°C and 5% CO2 for the reference 24 h exposure. Record treatment start/end times, TMP
+     concentration, DMSO percentage, culture volume and deviations; keep the defined interval
+     equal across comparison wells. [1,4]
+
+
+
+
+RP03 | v1.0                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original RP03 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:43.60653%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> D. Observe, acquire and interpret
+
+ 10. Check cell morphology and medium clarity during treatment and again before collection.
+     Acquire paired brightfield, EGFP and mCherry images using the same field-selection rule and
+     matched settings within each channel, following RP04. Use images to document the fluorescence
+     response and cell condition.
+
+ 11. At the endpoint, collect and acquire flow samples using RP06 if flow is the selected readout. Use
+     the same detector settings and acquisition/gating rule across all six conditions. Retain original
+       files and compensation status. Include matched Reporter-negative cells when a current
+     background boundary is needed; preserve the limitation if that control is unavailable.
+
+ 12. Compare +TMP with vehicle within each construct. Examine the EGFP distribution together with
+    mCherry and cell condition; use a consistently defined, expression-matched population if a
+     normalized comparison is planned. Do not infer compensation from the six dual-color Reporter
+      tubes, or count individual flow events as independent experiments.
+
+ 13. Look for an EGFP response in DD-containing WT/InAC that differs from the no-DD AC response.
+     Retain original images/FCS, sample map, treatment times and the analysis definition. A single
+     well per condition supports a descriptive pilot; do not attach significance claims or convert this
+     rescue response to an RNA-editing percentage. [1,4]
+
+ p.s.
+
+
+ Keep concentrated TMP solutions in DMSO rather than using a high-concentration aqueous
+ intermediate. Check clarity after dilution into medium and use freshly prepared treatment media.
+ Precipitation makes the delivered dose uncertain. [1-3]
+
+ Match DMSO between TMP and vehicle. Do not assume that 0.1% DMSO is biologically inert. If
+ solvent effects are a concern, include untreated cultures as an additional comparison while retaining
+ the matched vehicle pair.
+
+  If reducing DMSO is necessary, a 20 mM DMSO work solution is an alternative: 200 µL of a
+ supported 100 mM stock + 800 µL DMSO; then 3.3 µL work solution + 6596.7 µL medium per 6.60
+ mL arm. Use 3.3 µL pure DMSO in the vehicle arm. Both arms contain 0.05% DMSO, with 10 µM
+ TMP only in +TMP. Use a calibrated pipette for 3.3 µL and one route consistently; this alternative is
+ not an established optimized condition. [1]
+
+ Interpret the AC control alongside WT/InAC. A response shared by all constructs, loss of cells, or a
+ changing mCherry distribution calls for reassessment before attributing fluorescence changes to DD
+ stabilization.
+
+ Use the actual stock label for storage and the actual device instructions for filtration. A clear solution
+ and a membrane-material name alone do not establish correct concentration, sterility or
+ compatibility of the complete filter assembly. [2,3,5]
+
+
+
+
+
+RP03 | v1.0                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original RP03 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="expected-outcome" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:26.08642%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:82.74467%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.selleckchem.com/products/trimethoprim.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.selleckchem.com/products/trimethoprim.html" style="left:65.27866%;top:90.51066%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Expected Outcome
+
+ Obtain matched vehicle/TMP fluorescence records for WT, AC and InAC, accompanied by
+ cell-condition checks and treatment metadata. An increase in WT/InAC EGFP relative to their vehicle
+ wells, with a smaller response in AC under comparable sampling and expression conditions, is
+ consistent with TMP-responsive DD behavior.
+
+ No fixed rescue magnitude or saturation threshold is required. Report the observed distributions
+ and replicate structure. This assay tests Reporter stabilization behavior; target-transcript sequencing
+  is needed separately to assess RNA editing.
+
+
+ Troubleshooting
+
+
+   Observed problem          Check first                           Action
+
+
+   Stock or treatment medium   TMP form, stock strength, product    Do not use a suspension at its nominal dose.
+     is cloudy                          solubility, DMSO condition and      Remake a supported clear DMSO stock; use
+                                mixing                                the direct 10 mM route if 100 mM is
+                                                                   unsupported, then remake matched media.
+                                                                          [2,3]
+
+
+    Filtering is difficult or the      Exact membrane, housing/syringe    Stop and replace with a sterile DMSO-rated
+   device changes                compatibility and filter capacity       assembly. Do not force liquid through a
+   appearance                                          damaged or incompatible device. [5]
+
+
+    Cells detach or                Baseline health, handling, vehicle     Retain the observation and compare vehicle
+   morphology worsens          response, concentration and          with untreated cells if available. Reassess
+                              exposure time                       dosing/handling in a separate repeat; do not
+                                                                                     call loss of cells a Reporter response.
+
+
+     Little EGFP change after       Correct wells, stock calculation,       Verify preparation and matched acquisition
+  TMP                       exposure interval, initial              before changing dose. Check the actual DD
+                                  expression, channel settings and       construct and repeat with appropriate
+                                    signal saturation                        controls; do not increase concentration
+                                                                                blindly.
+
+
+  AC changes as much as        Cell state, solvent matching,           Treat the result as ambiguous for DD
+   WT/InAC, or mCherry also    sampling population, expression       stabilization. Review raw distributions and
+    shifts                             distribution and spillover               controls using the same analysis rule; obtain
+                                                        a repeat with matched conditions.
+
+
+    Bright samples clip or         Detector range, exposure/gain       Reacquire all comparison samples using a
+   apparent differences        and automatic settings            common unsaturated setting. Preserve the
+   depend on image settings                                               original files and label qualitative images
+                                                                        appropriately.
+
+
+ Reference
+
+  [1] SUSTech-BIO 2026 team. S1 TMP rescue plan, 2026-08-25; TMP-preparation chat and handwritten recipe,
+ 2026-08-26; experimental Notebook entries, 2026-08-25 to 2026-08-27. Local sources retained under sources/.
+
+  [2] Selleck Chemicals. Trimethoprim, S3129: molecular weight and product-specific DMSO solubility (58 mg/mL).
+ Comparison source, not a confirmed laboratory product. Accessed 2026-10-14. Open source
+
+
+
+RP03 | v1.0                                                                              5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original RP03 PDF, page 6" loading="lazy" decoding="async"></button>
+
+          <a class="pdf-source-link" href="https://cdn.caymanchem.com/cdn/insert/16473.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://cdn.caymanchem.com/cdn/insert/16473.pdf" style="left:25.96987%;top:9.38365%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://doi.org/10.1016/j.xpro.2020.100069" target="_blank" rel="noopener" aria-label="Original PDF reference: https://doi.org/10.1016/j.xpro.2020.100069" style="left:65.2137%;top:14.43182%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.sigmaaldrich.com/AT/en/technical-documents/technical-article/analytical-chemistry/filtration/chemical-compatibility-of-filter-components" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.sigmaaldrich.com/AT/en/technical-documents/technical-article/analytical-chemistry/filtration/chemical-compatibility-of-filter-components" style="left:67.77389%;top:17.99523%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p>  [3] Cayman Chemical. Trimethoprim, Item 16473, product information, 2022-10-27, p. 1: DMSO solubility
+ (approximately 20 mg/mL) and limited aqueous solubility. Comparison source, not a confirmed laboratory product.
+ Accessed 2026-10-14. Open source
+
+  [4] Ramadurgum P, Hulleman JD. Protocol for Designing Small-Molecule-Regulated Destabilizing Domains for In
+  Vitro Use. STAR Protocols 1, 100069 (2020), steps 21-23 and 39-42: TMP/DMSO stocks, vehicle control and 24 h
+ treatment/readout. Adapted to the local Reporter assay. Accessed 2026-10-14. Open source
+
+  [5] Merck / Millipore. Chemical Compatibility of Filter Components: membrane and housing material tables and
+  applicability limitations. Check the selected complete device. Accessed 2026-10-14. Open source
+
+
+
+
+
+RP03 | v1.0                                                                              6</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

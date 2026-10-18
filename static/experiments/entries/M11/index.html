@@ -2,282 +2,321 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M11 · SYBR Green qPCR</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M11 · <strong>Category:</strong> Molecular Biology</p>
-<p>M11 | ver 1.3 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Measure target amplification using Hieff UNICON® ColorGPS qPCR SYBR Green Master Mix (No Rox) on a Bio-Rad CFX96. For gene-expression assays, use cDNA prepared in M10 and interpret results with the controls below.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hieff UNICON® ColorGPS qPCR SYBR Green Master Mix (No Rox), 2×</td>
-<td>Yeasen / 11188ES</td>
-<td>qPCR premix; matched product [1]</td>
-</tr>
-<tr>
-<td>Forward and reverse primers</td>
-<td>Assay-specific; 10 µM stocks</td>
-<td>One validated primer pair per reaction</td>
-</tr>
-<tr>
-<td>cDNA, no-RT products and positive-control template</td>
-<td>Sample-specific</td>
-<td>Samples and assay controls</td>
-</tr>
-<tr>
-<td>Sterilized Type II water</td>
-<td>Laboratory-prepared</td>
-<td>Reaction setup, template dilution and NTCs</td>
-</tr>
-<tr>
-<td>Filter tips</td>
-<td>Axygen</td>
-<td>Aerosol-resistant tips compatible with the pipette volume</td>
-</tr>
-<tr>
-<td>Optical PCR plate and seals</td>
-<td>CFX96-compatible consumables</td>
-<td>Optical sealing and amplification</td>
-</tr>
-<tr>
-<td>CFX96, plate centrifuge and pipettes</td>
-<td>Bio-Rad / laboratory equipment</td>
-<td>Amplification, plate collection and setup</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use the 20 µL manufacturer recipe below as the standard scale. Select template volume and dilution from an assay dilution check; do not assume one template concentration suits all targets. [1]</p>
-<p>For M10 products, 850 ng is the RNA input into the complete 20 µL RT reaction, not the cDNA mass loaded into each qPCR well. Track dilution and volume instead of assigning an unmeasured cDNA yield.</p>
-<p>Thaw the premix, gently invert until homogeneous and briefly spin. Resolve visible precipitate before dispensing; avoid vortexing and strong light. Keep stocks at -25 to -15°C. [1]</p>
-<p>Plan independent biological samples and technical replicates separately. A practical plate layout uses triplicate wells per sample and primer pair; technical wells do not increase biological sample size. Include the controls on the next page.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-assign-samples-and-controls">A. Assign samples and controls</h3>
-<ol>
-<li>Make a plate map before pipetting. Give every well a sample ID, target, dilution, replicate ID and control designation. Run each reference-gene assay in separate wells from its target-gene assay.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Control / group</th>
-<th>How to prepare</th>
-<th>What it establishes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NTC: every primer pair, every plate</td>
-<td>Replace the complete template volume with sterilized Type II water. Keep primers, premix and total reaction volume unchanged.</td>
-<td>Detects reagent/setup background, including contamination or primer dimers.</td>
-</tr>
-<tr>
-<td>No-RT (NRT): RNA-derived assays</td>
-<td>Use the matched M10 reaction made without RT enzyme, at the same dilution and volume as +RT. Test assays that could amplify DNA.</td>
-<td>Assesses residual DNA contribution; water-only NTC cannot replace this control.</td>
-</tr>
-<tr>
-<td>Positive amplification control</td>
-<td>Use a previously verified target-containing template with the same primers. Handle after low-input samples.</td>
-<td>Checks that the PCR assay works. A DNA control does not test the RT step.</td>
-</tr>
-<tr>
-<td>Biological comparator / calibrator</td>
-<td>Process the relevant untreated, vehicle or vector control through extraction, RT and qPCR alongside treated samples.</td>
-<td>Defines the biological comparison; choose it from the experiment design.</td>
-</tr>
-<tr>
-<td>Reference gene(s)</td>
-<td>Measure validated stable transcript(s) in every biological sample.</td>
-<td>Supports expression normalization; do not assume GAPDH or ACTB is stable.</td>
-</tr>
-<tr>
-<td>Extraction blank, when processing contamination is a concern</td>
-<td>Carry a sample-free extraction through RT and qPCR.</td>
-<td>Locates contamination introduced before qPCR setup.</td>
-</tr>
-<tr>
-<td>Standards / inter-run calibrator, when needed</td>
-<td>Use a dilution series for efficiency or absolute quantification; repeat a common sample across plates for cross-run comparison.</td>
-<td>Checks usable assay range or run-to-run consistency.</td>
-</tr>
-</tbody>
-</table>
-<p>Control functions follow Bio-Rad guidance [2]. Include replicate control wells where plate capacity permits; flag amplification in a negative-control well rather than averaging it away.</p>
-<h3 id="b-assemble-the-reaction">B. Assemble the reaction</h3>
-<ol start="2">
-<li>Prepare the selected template input. If dilution is needed, use sterilized Type II water and record the dilution factor. Use sterilized Type II water in place of template for NTC wells.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Per 20 µL</th>
-<th>Final</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2× ColorGPS Master Mix (No Rox)</td>
-<td>10 µL</td>
-<td>1×</td>
-</tr>
-<tr>
-<td>Forward primer, 10 µM</td>
-<td>0.4 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>Reverse primer, 10 µM</td>
-<td>0.4 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>Prepared DNA/cDNA or control</td>
-<td>x µL</td>
-<td>Assay-selected</td>
-</tr>
-<tr>
-<td>Sterilized Type II water</td>
-<td>(9.2 - x) µL</td>
-<td>To volume</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>20 µL</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>For undiluted RT product, x must be ≤2 µL. If using diluted product, track the undiluted RT equivalent and validate the dilution. The same x applies to matched samples and controls. [1]</p>
-<ol start="3">
-<li>
-<p>Prepare one shared mix per primer pair containing premix, primers and water, with sufficient overage for dispensing loss. Dispense (20 - x) µL, then add x µL of the assigned template or control with a fresh tip.</p>
-</li>
-<li>
-<p>Seal the plate with a compatible optical seal, mix without splashing and briefly centrifuge to collect liquid and remove bubbles. Verify plate orientation, fill pattern and seal contact before loading.</p>
-</li>
-</ol>
-<h3 id="c-configure-the-cfx96-and-run">C. Configure the CFX96 and run</h3>
-<ol start="5">
-<li>Create a 20 µL run. Select SYBR detection (SYBR/FAM scan mode where available); do not add ROX or enable ROX normalization. Enter target/sample names and designate NTC, NRT, positive controls and standards in the plate setup. Set plate type to match the consumable.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time / repeats</th>
-<th>Read</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Initial denaturation</td>
-<td>95°C</td>
-<td>2 min; once</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Denaturation</td>
-<td>95°C</td>
-<td>10 sec; 40 cycles</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Annealing / extension</td>
-<td>60°C</td>
-<td>30 sec; 40 cycles</td>
-<td>Yes, each cycle</td>
-</tr>
-<tr>
-<td>Melt curve</td>
-<td>Instrument default melt program</td>
-<td>After amplification</td>
-<td>At each melt step</td>
-</tr>
-</tbody>
-</table>
-<p>Use the Yeasen cycling conditions above [1]. In a GOTO-style editor, repeat the two cycling steps 39 additional times for 40 total cycles. Retain the CFX software’s standard melt program, inspect its range and increments, and save these settings with the run.</p>
-<ol start="6">
-<li>Confirm fluorescence acquisition at the 60°C step and during melting, check the plate map against the physical plate, and start the run. Save both the protocol and plate definition.</li>
-</ol>
-<h3 id="d-review-and-export">D. Review and export</h3>
-<ol start="7">
-<li>
-<p>Inspect amplification and melt curves together with NTC, no-RT and positive controls before accepting Cq values. Check technical-replicate agreement and use consistent baseline/threshold rules within each assay. Investigate discrepant wells; retain the reason for any exclusion.</p>
-</li>
-<li>
-<p>Export raw run data, Cq values, amplification and melt curves, plate map and dilution records. For relative expression, normalize to validated reference genes and the planned biological comparator; use comparative Cq calculations only after confirming compatible amplification efficiencies. [2]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Prepare NTC wells before handling template stocks. Use dedicated clean-area pipettes and fresh aerosol-resistant filter tips for every transfer; keep amplified material away from setup.</p>
-<p>Keep no-RT and NTC controls distinct. An NTC tests qPCR setup background; a no-RT control tests whether the RNA preparation can generate signal without reverse transcription.</p>
-<p>Do not open amplified plates in the pre-PCR area. Keep seals intact when archiving or disposing of them to limit carryover into later runs.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain interpretable amplification curves and an assay-consistent melt peak in valid positive samples, with appropriate negative controls and reproducible technical wells. A single melt peak supports specificity but does not prove amplicon identity. Retain control outcomes with the reported expression or quantity results.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observation</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NTC amplifies with a sample-like melt peak</td>
-<td>Contaminated water, primers, premix, pipettes or aerosol carryover; plate-map errors.</td>
-<td>Repeat with fresh aliquots and a clean setup area. Switching to aerosol-resistant filter tips may improve the result by reducing carryover [1]; it cannot remove contamination already in a reagent. Replace suspect reagents and rerun NTCs.</td>
-</tr>
-<tr>
-<td>Late NTC signal with a lower or additional melt peak</td>
-<td>Primer dimers versus other nonspecific products.</td>
-<td>Optimize annealing conditions and primer concentration within 0.1-1 µM [1], or redesign primers. Filter tips do not correct primer dimers. Do not use a universal late-Cq cutoff to dismiss the signal.</td>
-</tr>
-<tr>
-<td>No-RT control amplifies</td>
-<td>Residual DNA, DNA-removal setup and primer specificity.</td>
-<td>Review M10 Eraser treatment and RNA handling. Consider exon-junction primers when applicable; resolve the DNA contribution before interpreting transcript changes.</td>
-</tr>
-<tr>
-<td>No signal, including positive control</td>
-<td>Missing components, wrong detection channel, absent plate-read step or program error.</td>
-<td>Check the saved setup and reagent identity. Repeat with a verified control after correcting the fault.</td>
-</tr>
-<tr>
-<td>Sample fails but positive control works</td>
-<td>Template dilution, inhibitors, RNA integrity and target abundance.</td>
-<td>Compare matched template dilutions and reference-gene results. Review extraction and RT records before increasing input.</td>
-</tr>
-<tr>
-<td>Replicates disagree or edge wells differ</td>
-<td>Bubbles, incomplete mixing, pipetting, seal integrity and evaporation.</td>
-<td>Check well images/curves and plate notes; repeat affected samples with fresh sealing and consistent dispensing.</td>
-</tr>
-<tr>
-<td>Multiple melt peaks</td>
-<td>Nonspecific products, dimers or DNA carryover.</td>
-<td>Compare NTC/no-RT and positive controls; optimize or redesign the assay before quantification. Verify product identity if necessary.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Yeasen. Hieff UNICON ColorGPS qPCR Master Mix (No Rox), 11188ES. IFU, internal version Ver.EN20260116, pp. 1-3. Accessed 2026-09-27. <a href="https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980">Open source</a></p>
-<p>[2] Bio-Rad. qPCR Amplification. Assay setup, assay controls, reference genes and ROX requirements. Accessed 2026-09-27. <a href="https://www.bio-rad.com/en-uk/applications-technologies/qpcr-amplification?ID=3edb4096-4520-87be-7382-9bd9c130e419">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M11 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:27.86813%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:60.59213%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>SYBR Green qPCR
+
+ M11 | ver 1.3 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Measure target amplification using Hieff UNICON® ColorGPS qPCR SYBR Green Master Mix (No
+ Rox) on a Bio-Rad CFX96. For gene-expression assays, use cDNA prepared in M10 and interpret
+ results with the controls below.
+
+ Materials &amp; Equipment
+
+   Item                                                   Supplier / identifier      Use
+
+    Hieff UNICON® ColorGPS qPCR SYBR Green         Yeasen / 11188ES      qPCR premix; matched
+   Master Mix (No Rox), 2×                                                      product [1]
+
+   Forward and reverse primers                             Assay-specific; 10 µM    One validated primer pair per
+                                                              stocks                     reaction
+
+   cDNA, no-RT products and positive-control template      Sample-specific          Samples and assay controls
+
+    Sterilized Type II water                               Laboratory-prepared      Reaction setup, template
+                                                                                                dilution and NTCs
+
+    Filter tips                                     Axygen                    Aerosol-resistant tips
+                                                                                compatible with the pipette
+                                                                          volume
+
+   Optical PCR plate and seals                          CFX96-compatible         Optical sealing and
+                                                    consumables               amplification
+
+   CFX96, plate centrifuge and pipettes                   Bio-Rad / laboratory       Amplification, plate collection
+                                                     equipment             and setup
+
+
+ Before You Start
+
+ Use the 20 µL manufacturer recipe below as the standard scale. Select template volume and dilution
+ from an assay dilution check; do not assume one template concentration suits all targets. [1]
+
+ For M10 products, 850 ng is the RNA input into the complete 20 µL RT reaction, not the cDNA mass
+ loaded into each qPCR well. Track dilution and volume instead of assigning an unmeasured cDNA
+ yield.
+
+ Thaw the premix, gently invert until homogeneous and briefly spin. Resolve visible precipitate
+ before dispensing; avoid vortexing and strong light. Keep stocks at -25 to -15°C. [1]
+
+ Plan independent biological samples and technical replicates separately. A practical plate layout
+ uses triplicate wells per sample and primer pair; technical wells do not increase biological sample
+ size. Include the controls on the next page.
+
+
+
+
+
+M11 | v1.3                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M11 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Procedure
+
+ A. Assign samples and controls
+
+ 1. Make a plate map before pipetting. Give every well a sample ID, target, dilution, replicate ID
+    and control designation. Run each reference-gene assay in separate wells from its target-gene
+     assay.
+
+
+   Control / group        How to prepare                         What it establishes
+
+   NTC: every primer pair,   Replace the complete template volume with       Detects reagent/setup background,
+   every plate                   sterilized Type II water. Keep primers, premix     including contamination or primer
+                        and total reaction volume unchanged.            dimers.
+
+   No-RT (NRT):            Use the matched M10 reaction made without     Assesses residual DNA contribution;
+   RNA-derived assays       RT enzyme, at the same dilution and volume as    water-only NTC cannot replace this
+                            +RT. Test assays that could amplify DNA.          control.
+
+    Positive amplification      Use a previously verified target-containing       Checks that the PCR assay works. A
+   control                    template with the same primers. Handle after   DNA control does not test the RT
+                                low-input samples.                                  step.
+
+   Biological comparator /    Process the relevant untreated, vehicle or         Defines the biological comparison;
+    calibrator                  vector control through extraction, RT and qPCR   choose it from the experiment
+                             alongside treated samples.                       design.
+
+   Reference gene(s)        Measure validated stable transcript(s) in every    Supports expression normalization;
+                                biological sample.                         do not assume GAPDH or ACTB is
+                                                                                       stable.
+
+   Extraction blank, when    Carry a sample-free extraction through RT and    Locates contamination introduced
+   processing              qPCR.                                         before qPCR setup.
+   contamination is a
+   concern
+
+   Standards / inter-run      Use a dilution series for efficiency or absolute     Checks usable assay range or
+    calibrator, when            quantification; repeat a common sample           run-to-run consistency.
+   needed                   across plates for cross-run comparison.
+
+ Control functions follow Bio-Rad guidance [2]. Include replicate control wells where plate capacity
+ permits; flag amplification in a negative-control well rather than averaging it away.
+
+
+
+
+
+M11 | v1.3                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M11 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> B. Assemble the reaction
+
+ 2. Prepare the selected template input. If dilution is needed, use sterilized Type II water and record
+     the dilution factor. Use sterilized Type II water in place of template for NTC wells.
+
+
+   Component                                              Per 20 µL                         Final
+
+   2× ColorGPS Master Mix (No Rox)                   10 µL                    1×
+
+   Forward primer, 10 µM                                 0.4 µL                        0.2 µM
+
+   Reverse primer, 10 µM                                 0.4 µL                        0.2 µM
+
+   Prepared DNA/cDNA or control                       x µL                            Assay-selected
+
+    Sterilized Type II water                                    (9.2 - x) µL                  To volume
+
+    Total                                         20 µL
+
+ For undiluted RT product, x must be ≤2 µL. If using diluted product, track the undiluted RT equivalent
+ and validate the dilution. The same x applies to matched samples and controls. [1]
+
+ 3. Prepare one shared mix per primer pair containing premix, primers and water, with sufficient
+     overage for dispensing loss. Dispense (20 - x) µL, then add x µL of the assigned template or
+      control with a fresh tip.
+
+ 4. Seal the plate with a compatible optical seal, mix without splashing and briefly centrifuge to
+      collect liquid and remove bubbles. Verify plate orientation, fill pattern and seal contact before
+     loading.
+
+ C. Configure the CFX96 and run
+
+ 5. Create a 20 µL run. Select SYBR detection (SYBR/FAM scan mode where available); do not add
+    ROX or enable ROX normalization. Enter target/sample names and designate NTC, NRT,
+      positive controls and standards in the plate setup. Set plate type to match the consumable.
+
+
+   Stage                            Temperature         Time / repeats                 Read
+
+    Initial denaturation              95°C            2 min; once               No
+
+   Denaturation                  95°C            10 sec; 40 cycles            No
+
+   Annealing / extension           60°C            30 sec; 40 cycles                  Yes, each cycle
+
+   Melt curve                           Instrument default     After amplification                At each melt step
+                                         melt program
+
+ Use the Yeasen cycling conditions above [1]. In a GOTO-style editor, repeat the two cycling steps
+ 39 additional times for 40 total cycles. Retain the CFX software’s standard melt program, inspect its
+ range and increments, and save these settings with the run.
+
+ 6. Confirm fluorescence acquisition at the 60°C step and during melting, check the plate map
+     against the physical plate, and start the run. Save both the protocol and plate definition.
+
+
+
+
+
+M11 | v1.3                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M11 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:24.89862%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:43.30958%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> D. Review and export
+
+ 7. Inspect amplification and melt curves together with NTC, no-RT and positive controls before
+     accepting Cq values. Check technical-replicate agreement and use consistent baseline/threshold
+      rules within each assay. Investigate discrepant wells; retain the reason for any exclusion.
+
+ 8. Export raw run data, Cq values, amplification and melt curves, plate map and dilution records.
+     For relative expression, normalize to validated reference genes and the planned biological
+     comparator; use comparative Cq calculations only after confirming compatible amplification
+      efficiencies. [2]
+
+ p.s.
+
+
+ Prepare NTC wells before handling template stocks. Use dedicated clean-area pipettes and fresh
+ aerosol-resistant filter tips for every transfer; keep amplified material away from setup.
+
+ Keep no-RT and NTC controls distinct. An NTC tests qPCR setup background; a no-RT control tests
+ whether the RNA preparation can generate signal without reverse transcription.
+
+ Do not open amplified plates in the pre-PCR area. Keep seals intact when archiving or disposing of
+ them to limit carryover into later runs.
+
+ Expected Outcome
+
+ Obtain interpretable amplification curves and an assay-consistent melt peak in valid positive
+ samples, with appropriate negative controls and reproducible technical wells. A single melt peak
+ supports specificity but does not prove amplicon identity. Retain control outcomes with the reported
+ expression or quantity results.
+
+
+
+
+
+M11 | v1.3                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original M11 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:65.04639%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980" target="_blank" rel="noopener" aria-label="Original PDF reference: https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980" style="left:45.2651%;top:69.24897%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.bio-rad.com/en-uk/applications-technologies/qpcr-amplification?ID=3edb4096-4520-87be-7382-9bd9c130e419" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.bio-rad.com/en-uk/applications-technologies/qpcr-amplification?ID=3edb4096-4520-87be-7382-9bd9c130e419" style="left:19.13603%;top:72.81238%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Troubleshooting
+
+
+   Observation              Check first                       Action
+
+  NTC amplifies with a        Contaminated water, primers,     Repeat with fresh aliquots and a clean setup area.
+   sample-like melt peak        premix, pipettes or aerosol        Switching to aerosol-resistant filter tips may
+                                carryover; plate-map errors.      improve the result by reducing carryover [1]; it
+                                                             cannot remove contamination already in a
+                                                                 reagent. Replace suspect reagents and rerun
+                                                        NTCs.
+
+   Late NTC signal with a       Primer dimers versus other        Optimize annealing conditions and primer
+   lower or additional melt      nonspecific products.              concentration within 0.1-1 µM [1], or redesign
+   peak                                                           primers. Filter tips do not correct primer dimers.
+                                               Do not use a universal late-Cq cutoff to dismiss the
+                                                                         signal.
+
+   No-RT control amplifies      Residual DNA, DNA-removal     Review M10 Eraser treatment and RNA handling.
+                                setup and primer specificity.      Consider exon-junction primers when applicable;
+                                                                   resolve the DNA contribution before interpreting
+                                                                          transcript changes.
+
+  No signal, including         Missing components, wrong      Check the saved setup and reagent identity.
+    positive control               detection channel, absent        Repeat with a verified control after correcting the
+                                 plate-read step or program         fault.
+                                   error.
+
+   Sample fails but positive     Template dilution, inhibitors,     Compare matched template dilutions and
+   control works          RNA integrity and target          reference-gene results. Review extraction and RT
+                            abundance.                      records before increasing input.
+
+   Replicates disagree or       Bubbles, incomplete mixing,      Check well images/curves and plate notes; repeat
+   edge wells differ              pipetting, seal integrity and        affected samples with fresh sealing and consistent
+                               evaporation.                      dispensing.
+
+   Multiple melt peaks          Nonspecific products, dimers     Compare NTC/no-RT and positive controls;
+                               or DNA carryover.               optimize or redesign the assay before
+                                                                        quantification. Verify product identity if necessary.
+
+
+ Reference
+
+  [1] Yeasen. Hieff UNICON ColorGPS qPCR Master Mix (No Rox), 11188ES. IFU, internal version
+ Ver.EN20260116, pp. 1-3. Accessed 2026-09-27. Open source
+
+  [2] Bio-Rad. qPCR Amplification. Assay setup, assay controls, reference genes and ROX requirements. Accessed
+ 2026-09-27. Open source
+
+
+
+
+
+M11 | v1.3                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

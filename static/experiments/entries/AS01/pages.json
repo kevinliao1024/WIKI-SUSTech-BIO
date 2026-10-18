@@ -1,0 +1,124 @@
+{
+  "source_sha256": "9c9ba3154fbdc0bcbdab76825290ca5756977db38af802de80a337bd2e0feee5",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c110b8f3e5ef8e04b8fdb9713cfb51d1eba9fef7890faa8ed7716cebb69a5f03",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 34.22288
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 84.70454
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "567a23beb3061b992c7cd91eef7ac82d1f8d4069650d38e57618c81d0c2b635a",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 24.00776
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "8dce581b7c75930c9b1d3b5832ffa07e3b8520536b1fd0f165ac9f1736d1b902",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 60.11701
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "27dfc57cc525b6c08683865beed7fd809533dd6087aa538a57907ee4091d1e1f",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 18.90021
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 55.42518
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf",
+          "left": 25.96987,
+          "top": 61.11251,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.idtdna.com/pages/products/functional-genomics/antisense-oligos",
+          "left": 70.95715,
+          "top": 64.67593,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/protocols/rnai-epigenetics-and-gene-regulation/rnai-protocol/lipofectamine-rnaimax.html",
+          "left": 67.76504,
+          "top": 69.72409,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://sfvideo.blob.core.windows.net/sitefinity/docs/default-source/protocol/rna-knockdown-using-gapmer-antisense-oligonucleotides_asos-demonstrated-protocol.pdf?sfvrsn=ed76f607_6",
+          "left": 49.13936,
+          "top": 74.77226,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ The accordion is independent of filtering and remains usable without JavaScript.
 
 ## Sources and categories
 
-The import contains **36 original PDFs and 36 HTML readers in seven flat categories**.
+The import contains **36 original PDFs, 191 original page images and 36 page containers in seven flat categories**.
 The retained MX01 and MX02 IDs are displayed under Molecular Biology (15 entries);
 they are integrated molecular workflows, not an eighth navigation category.
 No source file or source identifier was removed or renumbered.
@@ -24,10 +24,14 @@ C is displayed as Cell Biology and MR as miRNA Regulation per the page brief.
 The source index lists RP07, but there is no current RP07 PDF; it remains absent.
 
 The maintained numbered `Protocols/<ID>/` folders are authoritative.
-The reader is generated from the corresponding Markdown without rewriting
-experimental instructions. It adds documented ID/category metadata, preserves
-source sections, tables, images and reference links, and omits empty sections.
-Its TOC lists only actual level-two sections. The original PDF remains accessible
+The reader displays lossless 1800-pixel-wide page images rendered directly from
+each original PDF, preserving its fonts, pagination, tables, figures and footer.
+It contains no browser PDF plug-in, viewer toolbar, gray canvas or sidebar.
+Select a page to enlarge it within a horizontally scrollable page region; select
+again to fit. The compact section menu uses actual Georgia Bold 14pt headings
+extracted from the source PDFs, with anchors at their original page coordinates.
+References retain the PDF link annotations. Exact PDF text is included for
+screen readers; the visible page is never reconstructed from Markdown. The original PDF remains accessible
 from every reader and directly from cards when JavaScript is unavailable.
 Notebook links lead to the real Notebook overview, not invented dated records;
 Reporter System entries additionally link to SONAR Measurement.
@@ -42,10 +46,12 @@ python scripts/sync_experiment_protocols.py /path/to/Protocols
 
 This updates `docs/wet-lab/experiments.md`, PDF copies in
 `static/experiments/pdf/`, and HTML/media in `static/experiments/entries/`.
-The catalog records PDF and Markdown SHA-256 values, titles and versions.
+The catalog records PDF SHA-256 values, titles and versions.
 The reader template is `wiki/components/experiments/entry.html`, with styles in
-`static/experiments/reader.css`. Local image and SVG dependencies are copied;
-out-of-scope paths and active source markup are rejected. Source references remain
+`static/experiments/reader.css`. Each entry has a pages.json manifest with the source checksum, page count,
+image dimensions, image checksums, source section coordinates and link annotations.
+PyMuPDF and Pillow are required only for importing, as in the Notebook importer.
+The generated site has no PDF rendering dependency. Source references remain
 as supplied; import does not certify that external publishers keep their URLs live.
 The importer does not delete obsolete deployment files; review removals separately.
 Do not edit generated readers or PDFs: update the maintained library and reimport.
@@ -61,3 +67,10 @@ The browser check accepts `EXPERIMENTS_BASE`, `EXPERIMENTS_OUTPUT` and
 `PLAYWRIGHT_MODULE`. It uses installed Chrome without adding a production
 dependency. Check a separate Frozen-Flask output with `audit_build` before delivery.
 All readers, fonts and media load locally; no runtime CDN or external PDF viewer.
+
+To refresh only the page images from the already-imported, checksum-verified PDFs,
+run: python scripts/sync_experiment_protocols.py --refresh-readers
+
+The importer caches verified images when both the source hash and renderer match.
+PDFs themselves remain unchanged. Text cannot be selected directly from an image;
+the original download is retained for copying text or printing.

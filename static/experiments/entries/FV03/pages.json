@@ -1,0 +1,144 @@
+{
+  "source_sha256": "89cf4524a02627a70b6165ce354f5d09446e1baff6147d401b96a4a6259253da",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 7,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "78bcd7842b590d6e720167f3b54d3502b09380fd5a7bcb1fde175b9e45561217",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 38.49897
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d1dfc783c6d0b323ef2193d1a98a918b9a884875e34f8da4894b37dc1b7a85c3",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 24.54228
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 61.24542
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "02f0b837406a6caf28951f2668363818e66c55d068b695e1b612ecab0e7cb5a8",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "af4336961f2993433ceb0610c648074d5faacc9b65e20f79df60390ab73ea740",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ae016f413022d833b779b92c8680574c238b1669c2e86f3ec407f1b7ad90fd27",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "72cbc52a543b9b5be8442f76716c98f0995ae7cc6329469e1d1f222f166252d0",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 6,
+          "top": 38.20202
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 6,
+          "top": 73.00468
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "656bbd1435457f7c437d13eaae764f51602ed128a5038db395adfa27d558fdc3",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 7,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 7,
+          "top": 70.21334
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.elabscience.com/p/human-a-1-42-amyloid-beta-1-42-elisa-kit--e-el-h0543",
+          "left": 30.5986,
+          "top": 77.38543,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.anaspec.com/assets/b170c02d-e048-4e50-9c78-a12ed6d80393/tds-en-as-20276-25-beta-amyloid-1-42.pdf",
+          "left": 31.64025,
+          "top": 82.43359,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504696/",
+          "left": 25.96987,
+          "top": 90.45127,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "source_sha256": "3fca5545e5bd83353c6b5ebb3f4bac4636afeae010f0bff4e6e88e0e3ca55d0b",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 9,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "eee55516337076ebe041c932aeabe6318daeecc590a676ea438584ce4a225f3d",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 33.15386
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "24017216600058a57e91b35b8542db136bc6b49710af6e4d2e0d3e714b0bb711",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 32.38178
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 53.52469
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d02228cfc84a7cb86a7b6dda8c5b821309b1d114b232943d9b4e91c39ba406e3",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7a3e234e7be4133d5ea22bdda9d5aa054bde74923c99965e4712f58d0b79b887",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ccd686ed7562e9850810ea5567701e15dfddf18c5c16a7cfce3c381d2000b1fd",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 5,
+          "top": 58.98859
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ca0f9d28f4bd487afc0604fc393bc6d77ebcd71ce01b0a0d7b39baf85689aa5b",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 6,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 6,
+          "top": 21.57277
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 7,
+      "image": "page-007.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "32c06dc15664bdb113e946465467c0b7f0082c255fb5e4f8dddd14c9e095e678",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 8,
+      "image": "page-008.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "68137fb586fa67b8729351e6f1c84631a407b4a74db675d7fab2d8d651312877",
+      "anchors": [
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 8,
+          "top": 51.86177
+        }
+      ],
+      "links": [
+        {
+          "url": "https://tsingke-shop.oss-cn-beijing.aliyuncs.com/upload/image/202206/ddd1032c-c5ab-46e5-81b6-9264fbb7be2b_source.pdf",
+          "left": 33.14403,
+          "top": 56.06434,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012614_Gen_Recommend_DNA_Electrophoresis_UG.pdf",
+          "left": 75.32308,
+          "top": 59.62775,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/MD101-104-V22.2.pdf",
+          "left": 38.95838,
+          "top": 63.19117,
+          "width": 8.85806,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/S33110/faqs",
+          "left": 31.84843,
+          "top": 66.75458,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.bio-rad.com/en-us/product/mini-sub-cell-gt-cell?ID=85b69e1d-8ee0-4184-96bc-cd47e87d42f6",
+          "left": 42.9094,
+          "top": 70.31799,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.froggabio.com/media/productattachments/files/q/m/qmf28.0007.d2500.d2501_v2.1_1.pdf",
+          "left": 68.4597,
+          "top": 73.88141,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/",
+          "left": 19.13603,
+          "top": 77.44482,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/life-science/cloning/cloning-learning-center/invitrogen-school-of-molecular-biology/na-electrophoresis-education/na-electrophoresis-troubleshooting.html",
+          "left": 36.14422,
+          "top": 81.00823,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.bio-rad.com/sites/default/files/2024-07/10016027.pdf",
+          "left": 74.15814,
+          "top": 84.57164,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.neb.com/tools-and-resources/troubleshooting-guides/pcr-troubleshooting-guide",
+          "left": 72.20404,
+          "top": 88.13505,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "image": "page-009.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "6c4d39345b70cfb3498a7fb1468eb8d404358a002f1d24440da78ea3bc317789",
+      "anchors": [],
+      "links": [
+        {
+          "url": "https://www.thermofisher.com/jp/ja/home/technical-resources/technical-reference-library/nucleic-acid-purification-analysis-support-center/nucleic-acid-stains-ladders-markers-support/nucleic-acid-stains-ladders-markers-support-troubleshooting.html",
+          "left": 49.60889,
+          "top": 7.8989,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Unspecific_pcr.jpg",
+          "left": 25.96987,
+          "top": 12.94706,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:GelDoc_DNA_gel_electrophoresis_photograph_stained_with_ethidium_bromide_01.jpg",
+          "left": 64.22815,
+          "top": 17.99523,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Agarose_gel_electrophoresis_of_DNA_with_annotation.png",
+          "left": 78.97218,
+          "top": 21.55864,
+          "width": 8.85806,
+          "height": 1.28283
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "left": 65.24175,
+          "top": 25.12205,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "left": 18.1933,
+          "top": 28.68547,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 32.24888,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

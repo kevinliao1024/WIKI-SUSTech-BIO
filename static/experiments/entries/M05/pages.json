@@ -1,0 +1,138 @@
+{
+  "source_sha256": "dadb3f78ee1e5089798ea8b0ddc35c413bfbb0da4c9fb53c4e5debdaa4cd843e",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "252630fa05d726e38fa40568fad518fbc9309a40c63145b3bbda5fd6e204c88d",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "44d3ffb6298fd10a65417ecfcabb593e085e2d51d3d76a3cf230b78b9d7c020d",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 63.7992
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "2a34ebeee50c0165ec7175eca437a4d5b9626ab374dd20292909e3463c713af7",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 53.04957
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 77.81528
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "5aff09c784db437f978f71b47d4836a2d95bea29855b08c4b0bb285f77f741d9",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 57.14749
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf",
+          "left": 51.82654,
+          "top": 61.35007,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.transgen.com/download/pdf/1/CD521_213/CD521.pdf",
+          "left": 51.82654,
+          "top": 64.91349,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.addgene.org/protocols/bacterial-transformation/",
+          "left": 25.96987,
+          "top": 68.4769,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/J66972.AC",
+          "left": 25.96987,
+          "top": 72.04031,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.addgene.org/protocols/pouring-lb-agar-plates/",
+          "left": 30.63551,
+          "top": 75.60372,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 79.16713,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

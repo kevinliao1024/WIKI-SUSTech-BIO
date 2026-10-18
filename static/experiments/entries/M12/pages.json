@@ -1,0 +1,126 @@
+{
+  "source_sha256": "a12c60ec34f851c8c2d2457ad89582b95bc3d322ce1707a9c4d4d87d1b470a04",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "704f32e8cc6d3cf4ca808a87e3c8f56a92c0c0dc9ef6406225bbc53338b68740",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 79.30004
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a32f31da6af7745f96cdea7e77e8dbe3a60a88c7918ddf7fc04760c710e32da5",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a33f9e3b692725d34b9e8b94afbd20949550a0c159cdc75a6ff83881c241b761",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "56555803577115eb9bf3c35592dadc0d0e7a01f4e2cdf850a5724a3751ac0029",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 49.01104
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 73.77675
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c90c03fddaae6b5ff9c136b70a0fc48aa70b2febe0530f59858e438b26f76608",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 57.62261
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.cellsignal.com/learn-and-support/technical-support/do-you-have-a-recommended-protocol-for-stripping-re-probing-blots/000001442",
+          "left": 34.81319,
+          "top": 65.38861,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/BID/Technical-Notes/strip-reprobe-western-blots-tech-tip.pdf",
+          "left": 31.16261,
+          "top": 68.95202,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.cellsignal.com/learn-and-support/troubleshooting/western-blot-troubleshooting-guide",
+          "left": 75.51133,
+          "top": 71.03068,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

@@ -2,349 +2,421 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AA03 · AAV Titer Quantification</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> AA03 · <strong>Category:</strong> AAV Delivery</p>
-<p>AA03 | ver 1.0 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Determine the physical genome titer of recombinant AAV using the Beyotime Universal AAV Titration Kit by qPCR (C2921S) on a Bio-Rad CFX96. The assay targets AAV2-derived ITRs and reports vector genomes per milliliter (vg/mL); it does not measure infectious or functional titer. [1]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Universal AAV Titration Kit by qPCR</td>
-<td>Beyotime C2921S</td>
-<td>50 reactions at 20 µL; use the supplied extraction reagents, qPCR mix, primer mix, Positive Control and water</td>
-</tr>
-<tr>
-<td>Recombinant AAV sample</td>
-<td>Preparation from AA02</td>
-<td>AAV2-derived ITRs; retain the original sample and all dilution records</td>
-</tr>
-<tr>
-<td>Real-time PCR system</td>
-<td>Bio-Rad CFX96</td>
-<td>SYBR Green detection; no ROX required [1]</td>
-</tr>
-<tr>
-<td>Thermal cycler or heating blocks</td>
-<td>Laboratory equipment</td>
-<td>37°C, 55°C and 95°C for sample pretreatment</td>
-</tr>
-<tr>
-<td>qPCR plates or tube strips; optical seals</td>
-<td>CFX96-compatible consumables</td>
-<td>Nuclease-free; use the plate type configured in the instrument</td>
-</tr>
-<tr>
-<td>Pipettes; filter tips; tubes</td>
-<td>Laboratory supplies</td>
-<td>Nuclease-free liquid handling and serial dilutions</td>
-</tr>
-<tr>
-<td>Ice; vortex mixer; centrifuge</td>
-<td>Laboratory equipment</td>
-<td>Reagent cooling, mixing and brief plate/tube centrifugation</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Confirm that the vector contains AAV2-derived ITRs; capsid serotype alone does not determine compatibility. Start with an AAV preparation from AA02 and identify it as purified or crude, because the DNase I incubation differs. [1]</p>
-<p>Thaw and gently mix kit reagents before use; keep qPCR reagents on ice and protect the fluorescent mix from light. Store the kit at -20°C and minimize repeated freeze-thaw cycles. Keep the concentrated Positive Control separate from sample preparation. [1]</p>
-<p>Plan a standard curve and a water no-template control (NTC) on every plate, with technical replicates for standards and samples. Triplicates are a practical starting design; prioritize additional replicates for low-copy standards when extending the curve. Include an extraction blank when checking contamination introduced during pretreatment.</p>
-<p>Record any dilution of intact virus before extraction as Dpre, and the total dilution of the final lysate before qPCR as Dpost. The kit recommends at least a fivefold lysate dilution (Dpost ≥ 5). Budget standards, controls, sample replicates and pipetting excess within the kit capacity. [1]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-remove-free-dna-and-release-aav-genomes">A. Remove free DNA and release AAV genomes</h3>
-<ol>
-<li>For each sample, assemble the following 20 µL DNase I reaction using 2 µL of the AAV preparation. Record any prior virus dilution. Process an extraction blank in parallel by replacing the AAV input with water, if included. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume per sample</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AAV preparation</td>
-<td>2 µL</td>
-</tr>
-<tr>
-<td>Reaction Buffer (10X)</td>
-<td>2 µL</td>
-</tr>
-<tr>
-<td>Ultrapure Water</td>
-<td>14 µL</td>
-</tr>
-<tr>
-<td>DNase I (1 U/µL)</td>
-<td>2 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>20 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li>
-<p>Mix and incubate at 37°C for 15 min for purified AAV, or 60 min for crude AAV obtained by freeze-thaw preparation. Heat at 95°C for 10 min to inactivate DNase I. Use a heated lid to limit evaporation. [1]</p>
-</li>
-<li>
-<p>Freshly combine 45.5 µL DNA Extraction Solution and 2 µL Enzyme Mix per sample. Mix well, then add 5 µL of the DNase-treated, heat-inactivated sample to this 47.5 µL digestion mixture. [1]</p>
-</li>
-<li>
-<p>Incubate at 55°C for 15 min, then at 95°C for 5 min. Add 47.5 µL Stop Solution and vortex to mix. The resulting genome lysate volume is 100 µL. Use immediately or store at -20°C. [1]</p>
-</li>
-<li>
-<p>Dilute the lysate at least fivefold with supplied Ultrapure Water before qPCR. For example, combine 5 µL lysate with 20 µL water for Dpost = 5; scale to the number of wells needed. If inhibition is suspected, test a further dilution and compare dilution-corrected results. [1]</p>
-</li>
-</ol>
-<h3 id="b-prepare-the-positive-control-standard-curve">B. Prepare the Positive Control standard curve</h3>
-<ol start="6">
-<li>Check the Positive Control concentration on the supplied label. For the 2 × 10^9 copies/µL stock specified in the IFU, prepare ST0-ST5 as below, mixing each tube thoroughly before transferring to the next and changing tips at every transfer. Use 5 µL of each dilution per qPCR well. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Standard</th>
-<th>Preparation</th>
-<th>copies/µL</th>
-<th>copies/reaction</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ST0</td>
-<td>5 µL stock + 45 µL water</td>
-<td>2 × 10^8</td>
-<td>10^9</td>
-</tr>
-<tr>
-<td>ST1</td>
-<td>5 µL ST0 + 45 µL water</td>
-<td>2 × 10^7</td>
-<td>10^8</td>
-</tr>
-<tr>
-<td>ST2</td>
-<td>5 µL ST1 + 45 µL water</td>
-<td>2 × 10^6</td>
-<td>10^7</td>
-</tr>
-<tr>
-<td>ST3</td>
-<td>5 µL ST2 + 45 µL water</td>
-<td>2 × 10^5</td>
-<td>10^6</td>
-</tr>
-<tr>
-<td>ST4</td>
-<td>5 µL ST3 + 45 µL water</td>
-<td>2 × 10^4</td>
-<td>10^5</td>
-</tr>
-<tr>
-<td>ST5</td>
-<td>5 µL ST4 + 45 µL water</td>
-<td>2 × 10^3</td>
-<td>10^4</td>
-</tr>
-</tbody>
-</table>
-<ol start="7">
-<li>If low titers are expected, add Positive Control dilutions at the low-concentration end so that the intended standard curve brackets the samples. For example, continue the same 1:10 dilution from ST5 to obtain 10^3 copies/reaction and, if needed, another point at 10^2 copies/reaction. These are optional extension points, not a manufacturer-validated lower quantification range.</li>
-</ol>
-<p>Accept an extended low-copy point only when replicate amplification is reproducible, melt profiles are consistent with the standards, and the signal is distinguishable from the NTC. Review the low-end fit as well as the overall regression; a high overall R² alone does not validate the added points. Keep failed or inconsistent extension points out of the accepted quantitative range and document why.</p>
-<h3 id="c-assemble-qpcr-reactions">C. Assemble qPCR reactions</h3>
-<ol start="8">
-<li>Prepare a common master mix without template, allowing for pipetting loss. Dispense 15 µL per well and add 5 µL of diluted sample, standard or water for the NTC. Do not put the plasmid Positive Control through the DNase I pretreatment. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume per 20 µL reaction</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BeyoFast SYBR Green qPCR Mix (2X, with UDG)</td>
-<td>10 µL</td>
-</tr>
-<tr>
-<td>AAV Primer Mix (10 µM)</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>Ultrapure Water</td>
-<td>4 µL</td>
-</tr>
-<tr>
-<td>Template: diluted lysate, standard or NTC water</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>Low ROX / High ROX</td>
-<td>None on CFX96</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>20 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="9">
-<li>Mix gently, seal the plate or tubes, and centrifuge briefly to collect liquid and remove bubbles. Verify the physical plate against the well map, including standard quantities, dilutions and replicate labels. [1]</li>
-</ol>
-<h3 id="d-run-the-cfx96">D. Run the CFX96</h3>
-<ol start="10">
-<li>Select SYBR Green detection, set a 20 µL reaction volume and enter the kit cycling conditions below. Assign standards by copies per reaction, rather than copies per microliter, to match the calculation in section E. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time / repeats</th>
-<th>Read</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UDG treatment</td>
-<td>50°C</td>
-<td>5 min; once</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Initial denaturation</td>
-<td>95°C</td>
-<td>2 min; once</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Denaturation</td>
-<td>95°C</td>
-<td>15 s</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Annealing / extension</td>
-<td>60°C</td>
-<td>30 s</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Repeat the last two stages</td>
-<td>-</td>
-<td>40 total cycles</td>
-<td>At each 60°C step</td>
-</tr>
-<tr>
-<td>Melt curve</td>
-<td>CFX melt program</td>
-<td>Inspect range and increments</td>
-<td>At every increment</td>
-</tr>
-</tbody>
-</table>
-<p>In a GOTO editor, return to the denaturation step 39 additional times for 40 cycles in total. The IFU lists an optional melt analysis using a QuantStudio example. On CFX96, append a native melt-curve acquisition step and save its temperature range, increment and hold time; three temperature holds alone do not replace a scanned melt curve. [1]</p>
-<ol start="11">
-<li>Check that fluorescence collection is enabled at the end of each 60°C step and during melting, then start the run. Save the thermal protocol, well map and original run file.</li>
-</ol>
-<h3 id="e-check-the-run-and-calculate-genome-titer">E. Check the run and calculate genome titer</h3>
-<ol start="12">
-<li>
-<p>Inspect amplification curves, melt curves and replicate agreement before fitting the standard curve. Review the NTC and any extraction blank first. The IFU gives no typical amplification or Cq &gt; 34 as its NTC reference, but this alone is insufficient to validate low-copy extension points near background. [1]</p>
-</li>
-<li>
-<p>Fit Cq = m × log10(Q) + b using accepted standards, where Q is copies per reaction. Record the slope, intercept, R² and efficiency, calculated as E = (10^(-1/m) - 1) × 100%. Use consistent baseline and threshold settings within the assay and document any excluded wells.</p>
-</li>
-<li>
-<p>For a sample within the accepted standard range, calculate Q = 10^((Cq - b)/m), then convert to the original-virus genome titer using the expression below. Apply each dilution factor once.</p>
-</li>
-</ol>
-<p>Titer (vg/mL) = Q × 200 × Dpost × Dpre × 1000 / 5 = Q × 40,000 × Dpost × Dpre. [1]</p>
-<p>The fixed factor 200 comes from the extraction volumes: 2 µL virus in 20 µL, followed by transfer of 5 µL into a final 100 µL lysate. Dpost is the subsequent lysate dilution; Dpre is any intact-virus dilution before extraction (1 if none). The denominator 5 is the qPCR template volume in µL. If software reports copies/µL instead, reconcile the quantity units before using this formula.</p>
-<ol start="15">
-<li>
-<p>Compare dilution-corrected titers across valid sample dilutions and summarize accepted technical replicates. If a sample falls below the lowest reliable standard, report it as below the established quantification range and repeat with validated lower standards. Any provisional extrapolated value must be labeled as an extrapolation, not a confirmed titer.</p>
-</li>
-<li>
-<p>Retain the raw run file, Cq export, standard quantities, amplification and melt curves, fit statistics, replicate exclusions, dilution calculations and the final result in vg/mL. Do not interpret technical replicates as independent virus preparations.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>For low-titer AAV, plan extra low-concentration Positive Control gradients before running the plate. The aim is to bracket the sample with reliable standard points; simply adding more high-concentration controls will not resolve low-end extrapolation.</p>
-<p>Extra standard points do not automatically increase assay sensitivity. If their signals overlap the NTC or vary substantially between replicates, the lower range has not been established.</p>
-<p>Keep the kit’s recommended lysate dilution in mind when signal is weak: using less-diluted lysate may also increase inhibition. Check dilution behavior before changing template input or pretreatment volumes. [1]</p>
-<p>DNase I removes free DNA before genome extraction. Skipping it can overestimate the titer through residual packaging plasmid; the kit’s UDG system does not replace this step. [1]</p>
-<p>Prepare the concentrated Positive Control away from samples and keep completed qPCR reactions sealed. Include standards and controls when counting the 50-reaction kit capacity. [1]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>A valid run produces a concentration-dependent standard series, reproducible technical wells and sample melt profiles consistent with the assay. Accepted sample quantities fall within the supported standard range and yield comparable titers after dilution correction.</p>
-<p>Report physical genome titer in vg/mL together with the accepted curve range and relevant QC limitations. This measurement does not establish transduction efficiency, biological activity or the fraction of full-length genomes.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Suggested action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sample is later than the lowest reliable standard</td>
-<td>Standard range, added low-copy points and NTC background</td>
-<td>Add lower Positive Control dilutions and test their reproducibility. Until supported, report below-range results or explicitly labeled extrapolations.</td>
-</tr>
-<tr>
-<td>Low-copy standards amplify inconsistently</td>
-<td>Serial-dilution mixing, transfers, replicates and NTC</td>
-<td>Prepare a fresh dilution series and reassess low-end replicates. Do not force unreliable points into the curve to include a sample.</td>
-</tr>
-<tr>
-<td>NTC or extraction blank has sample-like amplification</td>
-<td>Reagents, standard handling and melt profile</td>
-<td>Replace suspect aliquots and repeat setup in a clean area. A late Cq alone does not establish that low-copy sample signals are valid.</td>
-</tr>
-<tr>
-<td>Standards fail to amplify</td>
-<td>Mix, primer, template addition; program and read settings</td>
-<td>Verify the 20 µL recipe, 60°C acquisition and reagent handling; remake the Positive Control series before interpreting negative samples.</td>
-</tr>
-<tr>
-<td>Corrected titer changes with sample dilution</td>
-<td>Dilution calculations, pipetting and possible inhibition</td>
-<td>Repeat matched lysate dilutions at or above the recommended fivefold dilution. Select a reproducible range before reporting the original titer.</td>
-</tr>
-<tr>
-<td>Unexpectedly high titer</td>
-<td>DNase treatment and the fixed 200-fold extraction factor</td>
-<td>Confirm incubation and inactivation records, check for contamination, and recalculate each factor once; repeat pretreatment if indicated.</td>
-</tr>
-<tr>
-<td>Multiple melt peaks or large replicate differences</td>
-<td>NTC, curve shape, bubbles, sealing and mixing</td>
-<td>Inspect melt specificity and plate handling. Repeat affected wells or preparation; document exclusions instead of averaging discrepant signals.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Beyotime. Universal AAV Titration Kit by qPCR, C2921S/C2921M. Version 2025.09.17; pp. 1-4: ITR scope, ROX compatibility, sample extraction, standards, cycling and titer calculation. Accessed 2026-10-03. <a href="https://m.beyotime.com/Manual/C2921%20Universal%20AAV%20Titration%20Kit%20by%20qPCR.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original AA03 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:27.86813%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:68.6098%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>AAV Titer Quantification
+
+ AA03 | ver 1.0 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Determine the physical genome titer of recombinant AAV using the Beyotime Universal AAV
+ Titration Kit by qPCR (C2921S) on a Bio-Rad CFX96. The assay targets AAV2-derived ITRs and
+ reports vector genomes per milliliter (vg/mL); it does not measure infectious or functional titer. [1]
+
+ Materials &amp; Equipment
+
+
+   Item                             Supplier / identifier         Use / specification
+
+
+   Universal AAV Titration Kit      Beyotime C2921S          50 reactions at 20 µL; use the supplied extraction
+   by qPCR                                                       reagents, qPCR mix, primer mix, Positive Control
+                                                     and water
+
+
+   Recombinant AAV sample       Preparation from AA02      AAV2-derived ITRs; retain the original sample and
+                                                                                     all dilution records
+
+
+   Real-time PCR system            Bio-Rad CFX96            SYBR Green detection; no ROX required [1]
+
+
+   Thermal cycler or heating        Laboratory equipment       37°C, 55°C and 95°C for sample pretreatment
+   blocks
+
+
+   qPCR plates or tube strips;       CFX96-compatible             Nuclease-free; use the plate type configured in the
+    optical seals                   consumables                  instrument
+
+
+    Pipettes; filter tips; tubes         Laboratory supplies           Nuclease-free liquid handling and serial dilutions
+
+
+    Ice; vortex mixer; centrifuge     Laboratory equipment        Reagent cooling, mixing and brief plate/tube
+                                                                      centrifugation
+
+
+ Before You Start
+
+ Confirm that the vector contains AAV2-derived ITRs; capsid serotype alone does not determine
+ compatibility. Start with an AAV preparation from AA02 and identify it as purified or crude,
+ because the DNase I incubation differs. [1]
+
+ Thaw and gently mix kit reagents before use; keep qPCR reagents on ice and protect the fluorescent
+ mix from light. Store the kit at -20°C and minimize repeated freeze-thaw cycles. Keep the
+ concentrated Positive Control separate from sample preparation. [1]
+
+ Plan a standard curve and a water no-template control (NTC) on every plate, with technical
+ replicates for standards and samples. Triplicates are a practical starting design; prioritize additional
+ replicates for low-copy standards when extending the curve. Include an extraction blank when
+ checking contamination introduced during pretreatment.
+
+
+
+AA03 | v1.0                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original AA03 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:13.97082%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Record any dilution of intact virus before extraction as Dpre, and the total dilution of the final lysate
+ before qPCR as Dpost. The kit recommends at least a fivefold lysate dilution (Dpost ≥ 5). Budget
+ standards, controls, sample replicates and pipetting excess within the kit capacity. [1]
+
+ Procedure
+
+ A. Remove free DNA and release AAV genomes
+
+ 1. For each sample, assemble the following 20 µL DNase I reaction using 2 µL of the AAV
+     preparation. Record any prior virus dilution. Process an extraction blank in parallel by
+     replacing the AAV input with water, if included. [1]
+
+
+   Component                                                              Volume per sample
+
+
+  AAV preparation                                                     2 µL
+
+
+   Reaction Buffer (10X)                                                  2 µL
+
+
+   Ultrapure Water                                                      14 µL
+
+
+  DNase I (1 U/µL)                                                     2 µL
+
+
+    Total                                                              20 µL
+
+
+ 2. Mix and incubate at 37°C for 15 min for purified AAV, or 60 min for crude AAV obtained by
+     freeze-thaw preparation. Heat at 95°C for 10 min to inactivate DNase I. Use a heated lid to
+       limit evaporation. [1]
+
+ 3. Freshly combine 45.5 µL DNA Extraction Solution and 2 µL Enzyme Mix per sample. Mix well,
+     then add 5 µL of the DNase-treated, heat-inactivated sample to this 47.5 µL digestion mixture.
+      [1]
+
+ 4. Incubate at 55°C for 15 min, then at 95°C for 5 min. Add 47.5 µL Stop Solution and vortex to
+     mix. The resulting genome lysate volume is 100 µL. Use immediately or store at -20°C. [1]
+
+ 5. Dilute the lysate at least fivefold with supplied Ultrapure Water before qPCR. For example,
+     combine 5 µL lysate with 20 µL water for Dpost = 5; scale to the number of wells needed. If
+      inhibition is suspected, test a further dilution and compare dilution-corrected results. [1]
+
+ B. Prepare the Positive Control standard curve
+
+ 6. Check the Positive Control concentration on the supplied label. For the 2 × 10^9 copies/µL stock
+      specified in the IFU, prepare ST0-ST5 as below, mixing each tube thoroughly before transferring
+      to the next and changing tips at every transfer. Use 5 µL of each dilution per qPCR well. [1]
+
+
+
+
+
+AA03 | v1.0                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original AA03 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p>   Standard     Preparation                                        copies/µL             copies/reaction
+
+
+   ST0        5 µL stock + 45 µL water                      2 × 10^8          10^9
+
+
+   ST1        5 µL ST0 + 45 µL water                       2 × 10^7          10^8
+
+
+   ST2        5 µL ST1 + 45 µL water                       2 × 10^6          10^7
+
+
+   ST3        5 µL ST2 + 45 µL water                       2 × 10^5          10^6
+
+
+   ST4        5 µL ST3 + 45 µL water                       2 × 10^4          10^5
+
+
+   ST5        5 µL ST4 + 45 µL water                       2 × 10^3          10^4
+
+
+ 7. If low titers are expected, add Positive Control dilutions at the low-concentration end so that the
+     intended standard curve brackets the samples. For example, continue the same 1:10 dilution
+     from ST5 to obtain 10^3 copies/reaction and, if needed, another point at 10^2
+     copies/reaction. These are optional extension points, not a manufacturer-validated lower
+      quantification range.
+
+ Accept an extended low-copy point only when replicate amplification is reproducible, melt profiles
+ are consistent with the standards, and the signal is distinguishable from the NTC. Review the low-end
+  fit as well as the overall regression; a high overall R² alone does not validate the added points.
+ Keep failed or inconsistent extension points out of the accepted quantitative range and document
+ why.
+
+ C. Assemble qPCR reactions
+
+ 8. Prepare a common master mix without template, allowing for pipetting loss. Dispense 15 µL per
+     well and add 5 µL of diluted sample, standard or water for the NTC. Do not put the plasmid
+      Positive Control through the DNase I pretreatment. [1]
+
+
+   Component                                                         Volume per 20 µL reaction
+
+
+   BeyoFast SYBR Green qPCR Mix (2X, with UDG)                         10 µL
+
+
+  AAV Primer Mix (10 µM)                                           1 µL
+
+
+   Ultrapure Water                                                 4 µL
+
+
+   Template: diluted lysate, standard or NTC water                          5 µL
+
+
+   Low ROX / High ROX                                            None on CFX96
+
+
+    Total                                                          20 µL
+
+
+ 9. Mix gently, seal the plate or tubes, and centrifuge briefly to collect liquid and remove bubbles.
+      Verify the physical plate against the well map, including standard quantities, dilutions and
+      replicate labels. [1]
+
+
+
+
+AA03 | v1.0                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original AA03 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> D. Run the CFX96
+
+ 10. Select SYBR Green detection, set a 20 µL reaction volume and enter the kit cycling conditions
+     below. Assign standards by copies per reaction, rather than copies per microliter, to match the
+      calculation in section E. [1]
+
+
+   Stage                             Temperature      Time / repeats                   Read
+
+
+  UDG treatment                 50°C          5 min; once                  No
+
+
+    Initial denaturation              95°C          2 min; once                  No
+
+
+   Denaturation                  95°C          15 s                      No
+
+
+   Annealing / extension            60°C          30 s                               Yes
+
+
+   Repeat the last two stages                          -              40 total cycles                       At each 60°C
+                                                                                                     step
+
+
+   Melt curve                     CFX melt           Inspect range and increments         At every
+                                  program                                                increment
+
+
+ In a GOTO editor, return to the denaturation step 39 additional times for 40 cycles in total. The IFU
+  lists an optional melt analysis using a QuantStudio example. On CFX96, append a native melt-curve
+ acquisition step and save its temperature range, increment and hold time; three temperature holds
+ alone do not replace a scanned melt curve. [1]
+
+ 11. Check that fluorescence collection is enabled at the end of each 60°C step and during melting,
+     then start the run. Save the thermal protocol, well map and original run file.
+
+ E. Check the run and calculate genome titer
+
+ 12. Inspect amplification curves, melt curves and replicate agreement before fitting the standard
+     curve. Review the NTC and any extraction blank first. The IFU gives no typical amplification or
+    Cq &gt; 34 as its NTC reference, but this alone is insufficient to validate low-copy extension points
+     near background. [1]
+
+ 13. Fit Cq = m × log10(Q) + b using accepted standards, where Q is copies per reaction. Record
+     the slope, intercept, R² and efficiency, calculated as E = (10^(-1/m) - 1) × 100%. Use consistent
+     baseline and threshold settings within the assay and document any excluded wells.
+
+ 14. For a sample within the accepted standard range, calculate Q = 10^((Cq - b)/m), then convert
+      to the original-virus genome titer using the expression below. Apply each dilution factor once.
+
+ Titer (vg/mL) = Q × 200 × Dpost × Dpre × 1000 / 5 = Q × 40,000 × Dpost × Dpre. [1]
+
+ The fixed factor 200 comes from the extraction volumes: 2 µL virus in 20 µL, followed by transfer of
+ 5 µL into a final 100 µL lysate. Dpost is the subsequent lysate dilution; Dpre is any intact-virus
+ dilution before extraction (1 if none). The denominator 5 is the qPCR template volume in µL. If
+ software reports copies/µL instead, reconcile the quantity units before using this formula.
+
+ 15. Compare dilution-corrected titers across valid sample dilutions and summarize accepted
+      technical replicates. If a sample falls below the lowest reliable standard, report it as below the
+
+
+AA03 | v1.0                                                                             4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original AA03 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:18.72204%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:49.8425%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p>     established quantification range and repeat with validated lower standards. Any provisional
+     extrapolated value must be labeled as an extrapolation, not a confirmed titer.
+
+ 16. Retain the raw run file, Cq export, standard quantities, amplification and melt curves, fit
+       statistics, replicate exclusions, dilution calculations and the final result in vg/mL. Do not interpret
+      technical replicates as independent virus preparations.
+
+ p.s.
+
+
+ For low-titer AAV, plan extra low-concentration Positive Control gradients before running the plate.
+ The aim is to bracket the sample with reliable standard points; simply adding more
+ high-concentration controls will not resolve low-end extrapolation.
+
+ Extra standard points do not automatically increase assay sensitivity. If their signals overlap the NTC
+ or vary substantially between replicates, the lower range has not been established.
+
+ Keep the kit’s recommended lysate dilution in mind when signal is weak: using less-diluted lysate
+ may also increase inhibition. Check dilution behavior before changing template input or
+ pretreatment volumes. [1]
+
+ DNase I removes free DNA before genome extraction. Skipping it can overestimate the titer through
+ residual packaging plasmid; the kit’s UDG system does not replace this step. [1]
+
+ Prepare the concentrated Positive Control away from samples and keep completed qPCR reactions
+ sealed. Include standards and controls when counting the 50-reaction kit capacity. [1]
+
+ Expected Outcome
+
+ A valid run produces a concentration-dependent standard series, reproducible technical wells and
+ sample melt profiles consistent with the assay. Accepted sample quantities fall within the supported
+ standard range and yield comparable titers after dilution correction.
+
+ Report physical genome titer in vg/mL together with the accepted curve range and relevant QC
+ limitations. This measurement does not establish transduction efficiency, biological activity or the
+ fraction of full-length genomes.
+
+
+
+
+
+AA03 | v1.0                                                                             5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 6">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original AA03 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:60.88908%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://m.beyotime.com/Manual/C2921%20Universal%20AAV%20Titration%20Kit%20by%20qPCR.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://m.beyotime.com/Manual/C2921%20Universal%20AAV%20Titration%20Kit%20by%20qPCR.pdf" style="left:79.59598%;top:65.09166%;width:8.85808%;height:1.28282%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> Troubleshooting
+
+
+   Observed problem       Check first                      Suggested action
+
+
+   Sample is later than the    Standard range, added        Add lower Positive Control dilutions and test their
+   lowest reliable            low-copy points and NTC           reproducibility. Until supported, report below-range
+   standard                background                          results or explicitly labeled extrapolations.
+
+
+   Low-copy standards         Serial-dilution mixing, transfers,    Prepare a fresh dilution series and reassess low-end
+   amplify inconsistently       replicates and NTC                 replicates. Do not force unreliable points into the
+                                                             curve to include a sample.
+
+
+  NTC or extraction         Reagents, standard handling      Replace suspect aliquots and repeat setup in a clean
+   blank has sample-like     and melt profile                  area. A late Cq alone does not establish that
+   amplification                                             low-copy sample signals are valid.
+
+
+   Standards fail to          Mix, primer, template addition;    Verify the 20 µL recipe, 60°C acquisition and
+   amplify                program and read settings        reagent handling; remake the Positive Control series
+                                                             before interpreting negative samples.
+
+
+   Corrected titer changes    Dilution calculations, pipetting     Repeat matched lysate dilutions at or above the
+   with sample dilution      and possible inhibition          recommended fivefold dilution. Select a
+                                                               reproducible range before reporting the original
+                                                                                         titer.
+
+
+   Unexpectedly high titer   DNase treatment and the fixed    Confirm incubation and inactivation records, check
+                             200-fold extraction factor           for contamination, and recalculate each factor once;
+                                                             repeat pretreatment if indicated.
+
+
+   Multiple melt peaks or    NTC, curve shape, bubbles,        Inspect melt specificity and plate handling. Repeat
+   large replicate             sealing and mixing                affected wells or preparation; document exclusions
+   differences                                                   instead of averaging discrepant signals.
+
+
+ Reference
+
+  [1] Beyotime. Universal AAV Titration Kit by qPCR, C2921S/C2921M. Version 2025.09.17; pp. 1-4: ITR scope,
+ ROX compatibility, sample extraction, standards, cycling and titer calculation. Accessed 2026-10-03. Open source
+
+
+
+
+
+AA03 | v1.0                                                                             6</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

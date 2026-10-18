@@ -1,0 +1,107 @@
+{
+  "source_sha256": "a9f92db4831b29ddac735f3a859e4db87ab3536192c635acc34cd95cc29625d4",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 3,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "75f48793fc843428e90771a01357ec6ee3a3bcdcd6bc8a475e7543a91af707b3",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 83.87308
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "3399f76145a059221e1ef5a6f014d0440cc513c63ff57311085381f74f04ab3d",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 31.72849
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "80073d6b58d42b38ee26c3dbb6e4c0f3b25dc84d0a816fc3ae29f2922a11061b",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 23.35447
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 3,
+          "top": 38.14263
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 3,
+          "top": 75.08333
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/RC112.pdf?timestamp=20260128",
+          "left": 10.07937,
+          "top": 80.77067,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.vazymeglobal.com/product-center/total-rna-extraction/fastpure-cell-tissue-total-rna-isolation-kit-v2",
+          "left": 30.14238,
+          "top": 84.33408,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 87.89749,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

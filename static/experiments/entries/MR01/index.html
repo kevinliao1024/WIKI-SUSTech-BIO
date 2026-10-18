@@ -2,212 +2,335 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MR01 · TRIzol-based RNA Extraction for miRNA Retention</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> MR01 · <strong>Category:</strong> miRNA Regulation</p>
-<p>MR01 | ver 1.2 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Extract total RNA, including small RNA, from adherent cultured cells for subsequent miRNA analysis. This guide adapts the earlier M0 Day 2 extraction workflow and ends at RNA quality control and storage. It does not establish quantitative recovery of every miRNA. [1]</p>
-<p>The increased isopropanol volume, overnight precipitation at -20°C, 30 min pellet spin and two ethanol washes are retained from that workflow. Overnight freezing is an adaptation, not the manufacturer’s routine precipitation condition; assess salt carryover before downstream use. [1, 3]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Manufacturer</th>
-<th>Identifier / specification</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TRIzol Reagent</td>
-<td>Invitrogen</td>
-<td>15596018</td>
-<td>1 mL per well of a 6-well plate</td>
-</tr>
-<tr>
-<td>Chloroform; isopropanol</td>
-<td>Sangon Biotech</td>
-<td>Molecular biology / analytical grade</td>
-<td>Analytical / molecular biology grade; 0.2 mL chloroform per 1 mL TRIzol</td>
-</tr>
-<tr>
-<td>Absolute ethanol</td>
-<td>Sangon Biotech</td>
-<td>Absolute grade</td>
-<td>Prepare 75% ethanol (v/v) with DEPC-treated water</td>
-</tr>
-<tr>
-<td>DEPC-treated water</td>
-<td>Sangon Biotech</td>
-<td>B501005</td>
-<td>RNase-free water for ethanol preparation, RNA dissolution, dilution and measurement blank [5]</td>
-</tr>
-<tr>
-<td>PBS</td>
-<td>Gibco</td>
-<td>Sterile phosphate-buffered saline</td>
-<td>One brief wash before lysis in the adapted adherent-cell workflow</td>
-</tr>
-<tr>
-<td>Pipette tips</td>
-<td>Axygen tips; laboratory equipment</td>
-<td>RNase-free, volume-compatible tips</td>
-<td>RNase-free tips for RNA handling</td>
-</tr>
-<tr>
-<td>RNase-free tubes; pipettes</td>
-<td>Laboratory supplies</td>
-<td>RNase-free tubes; calibrated pipettes</td>
-<td>Solvent-compatible polypropylene tubes rated for 12,000 × g; allow mixing headspace</td>
-</tr>
-<tr>
-<td>Refrigerated microcentrifuge</td>
-<td>Eppendorf centrifuge; laboratory equipment</td>
-<td>Refrigerated; compatible rotor</td>
-<td>Compatible rotor; 12,000 × g and 7,500 × g at 4°C</td>
-</tr>
-<tr>
-<td>Microvolume spectrophotometer</td>
-<td>Thermo Scientific</td>
-<td>NanoDrop One</td>
-<td>RNA concentration, absorbance spectrum and purity ratios</td>
-</tr>
-<tr>
-<td>Heat block / water bath</td>
-<td>As available</td>
-<td>Temperature-controlled heating</td>
-<td>55°C for RNA dissolution</td>
-</tr>
-<tr>
-<td>Chemical fume hood; freezers</td>
-<td>As available</td>
-<td>Chemical ventilation; cold storage</td>
-<td>Solvent handling; -20°C precipitation and -80°C RNA storage</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use the original working scale: one well of adherent cells in a 6-well plate, approximately 1 × 10^6 cells, with 1 mL TRIzol. Keep cell input and processing consistent across samples. This carrier-free workflow has not been established for low-input specimens. [1]</p>
-<p>Precool the centrifuge to 4°C and prepare 75% ethanol in DEPC-treated water. Plan overnight precipitation followed by next-day pelleting. Set the dissolution block to 55°C. [1]</p>
-<p>Handle TRIzol and chloroform in a chemical fume hood with appropriate gloves, eye protection and a lab coat; collect solvent-containing waste in the designated chemical-waste stream. Use the actual product SDS and local disposal requirements.</p>
-<p>Select tubes by total liquid volume and rotor rating. With 0.60 mL aqueous phase plus 0.90 mL isopropanol, a 1.5 mL tube leaves no mixing headspace; use a compatible 2 mL tube for that volume.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="cell-lysis">Cell lysis</h3>
-<ol>
-<li>
-<p>Remove culture medium. Briefly rinse the adherent cells once with cold PBS, remove the wash completely, and proceed immediately to lysis without leaving the cells dry. This wash is retained from the earlier adherent-cell protocol. [1]</p>
-</li>
-<li>
-<p>Add 1 mL TRIzol directly to the well. Pipette across the surface until the cells are dispersed and no visible clumps remain; transfer the lysate to a labeled tube. Leave at room temperature for 5 min. [1]</p>
-</li>
-</ol>
-<h3 id="phase-separation">Phase separation</h3>
-<ol start="3">
-<li>
-<p>Add 0.2 mL chloroform per 1 mL starting TRIzol. Close securely and shake vigorously by hand for 15 s; leave at room temperature for 3 min. [1]</p>
-</li>
-<li>
-<p>Centrifuge at 12,000 × g for 15 min at 4°C. Identify the upper aqueous phase, the intervening interface and the lower organic phase. [1]</p>
-</li>
-<li>
-<p>Transfer the clear upper phase into a fresh tube, stopping before the interface. Record the volume actually collected, commonly around 0.5 mL at this scale; do not force recovery of a preset volume. [1]</p>
-</li>
-</ol>
-<h3 id="rna-precipitation">RNA precipitation</h3>
-<ol start="6">
-<li>Add 1.5 volumes of isopropanol relative to the recovered aqueous phase and mix by inversion. For 0.50 mL aqueous phase, add 0.75 mL isopropanol. The denominator is the aqueous-phase volume, not the original TRIzol volume. [1]</li>
-</ol>
-<p>This isopropanol increase is compatible with the manufacturer’s small-RNA guidance, which allows testing up to 1.0 mL per 1 mL TRIzol while checking salt carryover. Do not extrapolate the ratio beyond that range without reassessment. [3]</p>
-<ol start="7">
-<li>
-<p>Incubate at -20°C overnight, retaining the earlier adapted condition. The routine manufacturer protocol instead uses 10 min at room temperature; cold overnight precipitation can increase salt co-precipitation and is not evidence of improved miRNA recovery by itself. [1–3]</p>
-</li>
-<li>
-<p>Centrifuge at 12,000 × g for 30 min at 4°C. Locate the pellet, which may be small or difficult to see. Aspirate the supernatant from the opposite side without disturbing it. [1]</p>
-</li>
-</ol>
-<h3 id="ethanol-washes-and-dissolution">Ethanol washes and dissolution</h3>
-<ol start="9">
-<li>
-<p>Add 1 mL chilled 75% ethanol per 1 mL starting TRIzol and gently resuspend the pellet. Centrifuge at 7,500 × g for 5 min at 4°C, then remove the wash. Repeat once for two washes in total. [1]</p>
-</li>
-<li>
-<p>Remove residual ethanol without touching the pellet. Air-dry for approximately 5–10 min; avoid prolonged drying until the pellet becomes hard and difficult to dissolve. [1]</p>
-</li>
-<li>
-<p>Add 30 µL DEPC-treated water. Resuspend gently and incubate at 55°C for 10 min; mix again and check that the RNA has dissolved. Keep on ice for immediate measurements. [1]</p>
-</li>
-</ol>
-<h3 id="quality-control-and-storage">Quality control and storage</h3>
-<ol start="12">
-<li>Blank the NanoDrop One with the same DEPC-treated water used for dissolution. Measure the dissolved sample and save concentration, A260/A280, A260/A230 and the absorbance spectrum. Record any dilution factor and dissolution volume. [1, 4]</li>
-</ol>
-<p>An A260/A280 near 2 and A260/A230 around 2.0–2.2 are useful reference values, not universal pass/fail limits. A low ratio can reflect contaminants or measurement conditions; it does not identify a single contaminant. Inspect the spectrum and repeat after checking the blank and pedestal. [4]</p>
-<ol start="13">
-<li>Prepare a working aliquot at a concentration suitable for the selected miRNA RT assay, using volumes within the pipette’s reliable range. Keep the stock RNA at -80°C and minimize repeated thawing. Use a validated miRNA-compatible RT procedure and include no-RT and no-template controls in downstream testing. [1]</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Protect the interface margin. A slightly smaller clean aqueous transfer is preferable to carrying visible interface into the RNA tube. Keep the same handling order across samples.</p>
-<p>The second ethanol wash addresses potential carryover after increased isopropanol and cold precipitation; it does not guarantee removal of all salts. If a pause is needed after pelleting, the manufacturer allows storage under 75% ethanol at -20°C for up to one year. [3, 2]</p>
-<p>Do not substitute a generic cleanup column without confirming mature-miRNA retention. “Total RNA” alone is not sufficient evidence that a cleanup method preserves the relevant size range.</p>
-<p>A late miRNA or U6 Cq is not a diagnosis of extraction failure. Expression, RNA input, RT performance, inhibition and assay specificity also matter. U6 detection does not demonstrate unbiased recovery of mature miRNAs.</p>
-<p>A dilution series prepared from finished cDNA tests the PCR stage; it cannot rule out inhibition that occurred during reverse transcription. Investigate suspected RT inhibition with RNA inputs varied before RT while keeping the assay design controlled.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain dissolved total RNA with documented concentration, spectrum and purity ratios. Pellet visibility and total RNA yield vary with input and do not quantify the small-RNA fraction.</p>
-<p>Suitability for miRNA work requires downstream assay evidence with appropriate controls. Do not impose a universal U6 Cq, RNA concentration or recovery yield as proof of success.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Poor separation or visible material in the upper layer</td>
-<td>Mixing, reagent volumes, input load and centrifuge temperature</td>
-<td>Confirm the chloroform ratio and separation settings. Transfer only a clean aqueous layer; avoid carrying the interface forward.</td>
-</tr>
-<tr>
-<td>Small / invisible pellet or low yield</td>
-<td>Input, aqueous volume, precipitation ratio and pellet handling</td>
-<td>Review the recorded volumes and actual × g. Handle the expected pellet location carefully. Low-input samples need a separately established carrier-assisted method.</td>
-</tr>
-<tr>
-<td>Low purity ratios or unexpected spectral shape</td>
-<td>Blank, pedestal, full dissolution and solvent / salt carryover</td>
-<td>Repeat the measurement correctly. Review both washes and phase transfer. Persistent contamination requires cleanup demonstrated to retain small RNA, or a fresh extraction. [4]</td>
-</tr>
-<tr>
-<td>Pellet does not dissolve</td>
-<td>Overdrying and dissolution conditions</td>
-<td>Repeat gentle mixing within the 55–60°C, 10–15 min dissolution conditions; verify dissolution before quantification. [2]</td>
-</tr>
-<tr>
-<td>Weak or inconsistent downstream signal</td>
-<td>Input, assay controls, RNA-to-RT dilution and specificity</td>
-<td>Separate extraction loss, RT inhibition and PCR failure using controlled comparisons. Do not diagnose missing miRNA from one Cq cutoff.</td>
-</tr>
-<tr>
-<td>Signal in a no-RT control</td>
-<td>Interface carryover, assay design and contamination</td>
-<td>Assess residual DNA and setup contamination. If needed, use RNase-free DNA removal with cleanup verified to retain small RNA before repeating RT.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Project source: M0D2_miRNA_stemloop_protocol-5.pdf, pp. 1–5, especially sections 3 and 5.1–5.3. Maintained source: GFA+MRE/M0/. Reopened 2026-10-03. Source of the adapted extraction conditions.</p>
-<p>[2] Thermo Fisher Scientific. TRIzol Reagent User Guide, MAN0001271, Rev. D, 31 March 2025. RNA workflow and quantification, pp. 1–3. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/trizol_reagent.pdf">Open source</a></p>
-<p>[3] Thermo Fisher Scientific. TRIzol Reagent FAQs: small-RNA precipitation; stopping points and storage. Increased isopropanol, salt carryover and a second ethanol wash. Accessed 2026-10-03. <a href="https://www.thermofisher.com/order/catalog/product/15596026CN/faqs">Open source</a></p>
-<p>[4] Thermo Scientific. Assessment of Nucleic Acid Purity, technical note TN52646, pp. 1–3. Purity ratios, contaminants and measurement interpretation. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/CAD/Product-Bulletins/TN52646-E-0215M-NucleicAcid.pdf">Open source</a></p>
-<p>[5] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed 2026-10-03. <a href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original MR01 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:37.66751%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>TRIzol-based RNA Extraction for
+miRNA Retention
+
+ MR01 | ver 1.2 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Extract total RNA, including small RNA, from adherent cultured cells for subsequent miRNA
+ analysis. This guide adapts the earlier M0 Day 2 extraction workflow and ends at RNA quality
+ control and storage. It does not establish quantitative recovery of every miRNA. [1]
+
+ The increased isopropanol volume, overnight precipitation at -20°C, 30 min pellet spin and two
+ ethanol washes are retained from that workflow. Overnight freezing is an adaptation, not the
+ manufacturer’s routine precipitation condition; assess salt carryover before downstream use. [1, 3]
+
+ Materials &amp; Equipment
+
+
+   Item                        Manufacturer       Identifier /           Use / Specification
+                                                          specification
+
+
+   TRIzol Reagent                Invitrogen       15596018          1 mL per well of a 6-well plate
+
+
+   Chloroform; isopropanol     Sangon Biotech    Molecular biology     Analytical / molecular biology grade;
+                                                / analytical grade     0.2 mL chloroform per 1 mL TRIzol
+
+
+   Absolute ethanol           Sangon Biotech    Absolute grade       Prepare 75% ethanol (v/v) with
+                                                                        DEPC-treated water
+
+
+   DEPC-treated water         Sangon Biotech   B501005             RNase-free water for ethanol
+                                                                            preparation, RNA dissolution, dilution
+                                                             and measurement blank [5]
+
+
+   PBS                       Gibco                Sterile            One brief wash before lysis in the
+                                                   phosphate-buffered    adapted adherent-cell workflow
+                                                         saline
+
+
+    Pipette tips                Axygen tips;       RNase-free,           RNase-free tips for RNA handling
+                                 laboratory         volume-compatible
+                              equipment           tips
+
+
+   RNase-free tubes; pipettes     Laboratory        RNase-free tubes;      Solvent-compatible polypropylene tubes
+                                   supplies            calibrated pipettes     rated for 12,000 × g; allow mixing
+                                                                 headspace
+
+
+
+
+
+MR01 | v1.2                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original MR01 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:37.25178%" aria-hidden="true"></span><span class="pdf-section-anchor" id="procedure" style="top:64.74944%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p>   Item                        Manufacturer       Identifier /           Use / Specification
+                                                          specification
+
+
+   Refrigerated                Eppendorf          Refrigerated;         Compatible rotor; 12,000 × g and
+   microcentrifuge                 centrifuge;         compatible rotor      7,500 × g at 4°C
+                                 laboratory
+                              equipment
+
+
+   Microvolume               Thermo         NanoDrop One     RNA concentration, absorbance
+   spectrophotometer               Scientific                                spectrum and purity ratios
+
+
+   Heat block / water bath      As available       Temperature-control   55°C for RNA dissolution
+                                                     led heating
+
+
+   Chemical fume hood;        As available       Chemical              Solvent handling; -20°C precipitation
+   freezers                                                ventilation; cold      and -80°C RNA storage
+                                                   storage
+
+
+ Before You Start
+
+ Use the original working scale: one well of adherent cells in a 6-well plate, approximately 1 × 10^6
+  cells, with 1 mL TRIzol. Keep cell input and processing consistent across samples. This carrier-free
+ workflow has not been established for low-input specimens. [1]
+
+ Precool the centrifuge to 4°C and prepare 75% ethanol in DEPC-treated water. Plan overnight
+ precipitation followed by next-day pelleting. Set the dissolution block to 55°C. [1]
+
+ Handle TRIzol and chloroform in a chemical fume hood with appropriate gloves, eye protection and
+ a lab coat; collect solvent-containing waste in the designated chemical-waste stream. Use the actual
+ product SDS and local disposal requirements.
+
+ Select tubes by total liquid volume and rotor rating. With 0.60 mL aqueous phase plus 0.90 mL
+ isopropanol, a 1.5 mL tube leaves no mixing headspace; use a compatible 2 mL tube for that
+ volume.
+
+ Procedure
+
+ Cell lysis
+
+ 1. Remove culture medium. Briefly rinse the adherent cells once with cold PBS, remove the wash
+     completely, and proceed immediately to lysis without leaving the cells dry. This wash is retained
+     from the earlier adherent-cell protocol. [1]
+
+ 2. Add 1 mL TRIzol directly to the well. Pipette across the surface until the cells are dispersed and no
+      visible clumps remain; transfer the lysate to a labeled tube. Leave at room temperature for 5
+     min. [1]
+
+ Phase separation
+
+ 3. Add 0.2 mL chloroform per 1 mL starting TRIzol. Close securely and shake vigorously by hand
+      for 15 s; leave at room temperature for 3 min. [1]
+
+
+
+
+
+MR01 | v1.2                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original MR01 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> 4. Centrifuge at 12,000 × g for 15 min at 4°C. Identify the upper aqueous phase, the intervening
+      interface and the lower organic phase. [1]
+
+ 5. Transfer the clear upper phase into a fresh tube, stopping before the interface. Record the
+     volume actually collected, commonly around 0.5 mL at this scale; do not force recovery of a
+     preset volume. [1]
+
+ RNA precipitation
+
+ 6. Add 1.5 volumes of isopropanol relative to the recovered aqueous phase and mix by inversion.
+     For 0.50 mL aqueous phase, add 0.75 mL isopropanol. The denominator is the aqueous-phase
+     volume, not the original TRIzol volume. [1]
+
+ This isopropanol increase is compatible with the manufacturer’s small-RNA guidance, which allows
+ testing up to 1.0 mL per 1 mL TRIzol while checking salt carryover. Do not extrapolate the ratio
+ beyond that range without reassessment. [3]
+
+ 7. Incubate at -20°C overnight, retaining the earlier adapted condition. The routine manufacturer
+     protocol instead uses 10 min at room temperature; cold overnight precipitation can increase salt
+      co-precipitation and is not evidence of improved miRNA recovery by itself. [1–3]
+
+ 8. Centrifuge at 12,000 × g for 30 min at 4°C. Locate the pellet, which may be small or difficult to
+     see. Aspirate the supernatant from the opposite side without disturbing it. [1]
+
+ Ethanol washes and dissolution
+
+ 9. Add 1 mL chilled 75% ethanol per 1 mL starting TRIzol and gently resuspend the pellet.
+     Centrifuge at 7,500 × g for 5 min at 4°C, then remove the wash. Repeat once for two washes
+      in total. [1]
+
+ 10. Remove residual ethanol without touching the pellet. Air-dry for approximately 5–10 min; avoid
+     prolonged drying until the pellet becomes hard and difficult to dissolve. [1]
+
+ 11. Add 30 µL DEPC-treated water. Resuspend gently and incubate at 55°C for 10 min; mix again
+    and check that the RNA has dissolved. Keep on ice for immediate measurements. [1]
+
+ Quality control and storage
+
+ 12. Blank the NanoDrop One with the same DEPC-treated water used for dissolution. Measure the
+     dissolved sample and save concentration, A260/A280, A260/A230 and the absorbance
+     spectrum. Record any dilution factor and dissolution volume. [1, 4]
+
+ An A260/A280 near 2 and A260/A230 around 2.0–2.2 are useful reference values, not universal
+ pass/fail limits. A low ratio can reflect contaminants or measurement conditions; it does not identify
+ a single contaminant. Inspect the spectrum and repeat after checking the blank and pedestal. [4]
+
+ 13. Prepare a working aliquot at a concentration suitable for the selected miRNA RT assay, using
+     volumes within the pipette’s reliable range. Keep the stock RNA at -80°C and minimize
+     repeated thawing. Use a validated miRNA-compatible RT procedure and include no-RT and
+     no-template controls in downstream testing. [1]
+
+
+
+
+
+MR01 | v1.2                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original MR01 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:39.74616%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> p.s.
+
+
+ Protect the interface margin. A slightly smaller clean aqueous transfer is preferable to carrying
+ visible interface into the RNA tube. Keep the same handling order across samples.
+
+ The second ethanol wash addresses potential carryover after increased isopropanol and cold
+ precipitation; it does not guarantee removal of all salts. If a pause is needed after pelleting, the
+ manufacturer allows storage under 75% ethanol at -20°C for up to one year. [3, 2]
+
+ Do not substitute a generic cleanup column without confirming mature-miRNA retention. “Total
+ RNA” alone is not sufficient evidence that a cleanup method preserves the relevant size range.
+
+ A late miRNA or U6 Cq is not a diagnosis of extraction failure. Expression, RNA input, RT
+ performance, inhibition and assay specificity also matter. U6 detection does not demonstrate
+ unbiased recovery of mature miRNAs.
+
+ A dilution series prepared from finished cDNA tests the PCR stage; it cannot rule out inhibition that
+ occurred during reverse transcription. Investigate suspected RT inhibition with RNA inputs varied
+ before RT while keeping the assay design controlled.
+
+ Expected Outcome
+
+ Obtain dissolved total RNA with documented concentration, spectrum and purity ratios. Pellet
+  visibility and total RNA yield vary with input and do not quantify the small-RNA fraction.
+
+ Suitability for miRNA work requires downstream assay evidence with appropriate controls. Do not
+ impose a universal U6 Cq, RNA concentration or recovery yield as proof of success.
+
+
+
+
+
+MR01 | v1.2                                                                             4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original MR01 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:56.01908%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/trizol_reagent.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/trizol_reagent.pdf" style="left:45.76269%;top:63.78507%;width:8.85807%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/order/catalog/product/15596026CN/faqs" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/order/catalog/product/15596026CN/faqs" style="left:64.78477%;top:67.34848%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/CAD/Product-Bulletins/TN52646-E-0215M-NucleicAcid.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/CAD/Product-Bulletins/TN52646-E-0215M-NucleicAcid.pdf" style="left:58.11703%;top:70.9119%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf" style="left:19.13603%;top:74.47531%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Troubleshooting
+
+
+   Observed problem      Check first                         Action
+
+
+   Poor separation or       Mixing, reagent volumes, input     Confirm the chloroform ratio and separation settings.
+    visible material in the     load and centrifuge temperature    Transfer only a clean aqueous layer; avoid carrying
+   upper layer                                                   the interface forward.
+
+
+   Small / invisible pellet     Input, aqueous volume,           Review the recorded volumes and actual × g.
+   or low yield               precipitation ratio and pellet       Handle the expected pellet location carefully.
+                           handling                           Low-input samples need a separately established
+                                                                        carrier-assisted method.
+
+
+   Low purity ratios or       Blank, pedestal, full dissolution     Repeat the measurement correctly. Review both
+   unexpected spectral     and solvent / salt carryover       washes and phase transfer. Persistent contamination
+   shape                                                        requires cleanup demonstrated to retain small RNA,
+                                                              or a fresh extraction. [4]
+
+
+    Pellet does not          Overdrying and dissolution        Repeat gentle mixing within the 55–60°C, 10–15
+   dissolve                  conditions                       min dissolution conditions; verify dissolution before
+                                                                      quantification. [2]
+
+
+  Weak or inconsistent      Input, assay controls, RNA-to-RT    Separate extraction loss, RT inhibition and PCR
+   downstream signal        dilution and specificity                failure using controlled comparisons. Do not
+                                                          diagnose missing miRNA from one Cq cutoff.
+
+
+   Signal in a no-RT          Interface carryover, assay          Assess residual DNA and setup contamination. If
+   control                  design and contamination         needed, use RNase-free DNA removal with cleanup
+                                                                       verified to retain small RNA before repeating RT.
+
+
+ Reference
+
+  [1] Project source: M0D2_miRNA_stemloop_protocol-5.pdf, pp. 1–5, especially sections 3 and 5.1–5.3. Maintained
+ source: GFA+MRE/M0/. Reopened 2026-10-03. Source of the adapted extraction conditions.
+
+  [2] Thermo Fisher Scientific. TRIzol Reagent User Guide, MAN0001271, Rev. D, 31 March 2025. RNA workflow
+ and quantification, pp. 1–3. Accessed 2026-10-03. Open source
+
+  [3] Thermo Fisher Scientific. TRIzol Reagent FAQs: small-RNA precipitation; stopping points and storage. Increased
+ isopropanol, salt carryover and a second ethanol wash. Accessed 2026-10-03. Open source
+
+  [4] Thermo Scientific. Assessment of Nucleic Acid Purity, technical note TN52646, pp. 1–3. Purity ratios,
+ contaminants and measurement interpretation. Accessed 2026-10-03. Open source
+
+  [5] Sangon Biotech. B501005 DEPC-treated water, SDS, revision 2024-12-24; product identity. Accessed
+ 2026-10-03. Open source
+
+
+
+
+
+MR01 | v1.2                                                                             5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

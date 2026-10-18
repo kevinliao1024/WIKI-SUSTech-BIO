@@ -2,470 +2,580 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MR02 · Stem-loop RT-qPCR for miRNA Detection</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> MR02 · <strong>Category:</strong> miRNA Regulation</p>
-<p>MR02 | ver 1.0 | Revised 2026-10-14</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Prepare miRNA-specific cDNA with custom stem-loop primers, then detect miR-124-3p, miR-137-3p and miR-126-3p in separate SYBR qPCR assays. U6 is included as a candidate reference assay, subject to DNA-background and stability checks.</p>
-<p>Follow the confirmed M0D2 stem-loop workflow: omit gDNA Eraser pretreatment and use the custom RT primer mix with RR047A Buffer 2 and Enzyme Mix I. Assess DNA background and assay performance with the controls below. [4]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Specification / use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Total RNA retaining small RNAs</td>
-<td>Sample-specific; MR01</td>
-<td>Measured concentration; 50 ng per RT</td>
-</tr>
-<tr>
-<td>PrimeScript RT reagent Kit with gDNA Eraser</td>
-<td>Takara / RR047A</td>
-<td>Use Buffer 2 and Enzyme Mix I; omit gDNA Eraser, its buffer and supplied RT Primer Mix [4]</td>
-</tr>
-<tr>
-<td>Custom RT and qPCR oligonucleotides</td>
-<td>M0 primer order; sequences below</td>
-<td>Separate 10 µM stocks; four-primer RT working mix</td>
-</tr>
-<tr>
-<td>Hieff UNICON ColorGPS qPCR Master Mix (No Rox), 2×</td>
-<td>Yeasen / 11188ES</td>
-<td>User-confirmed product; water dilution without Dilution Buffer [2, 4]</td>
-</tr>
-<tr>
-<td>RNase-free water</td>
-<td>Kit-supplied / laboratory RNA-grade water</td>
-<td>RNA and RT setup; sterile Type II water for qPCR dilution and setup</td>
-</tr>
-<tr>
-<td>Pipettes, tubes, ice rack and filter tips</td>
-<td>Laboratory equipment; Axygen tips</td>
-<td>RNA-safe preparation; low-volume dispensing</td>
-</tr>
-<tr>
-<td>Microcentrifuge / plate centrifuge</td>
-<td>Eppendorf / laboratory equipment</td>
-<td>Brief collection and optical-plate spin</td>
-</tr>
-<tr>
-<td>RNA concentration instrument</td>
-<td>Thermo Fisher / NanoDrop One</td>
-<td>Concentration and absorbance-ratio records; not proof of miRNA recovery</td>
-</tr>
-<tr>
-<td>Thermal cycler</td>
-<td>Laboratory instrument</td>
-<td>RT program; optional oligonucleotide-only folding</td>
-</tr>
-<tr>
-<td>Real-time PCR system and optical plate/seal</td>
-<td>Bio-Rad / CFX96</td>
-<td>SYBR detection, 10 µL adapted volume and melt analysis; no ROX</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<h3 id="dna-removal-policy-and-assay-controls">DNA-removal policy and assay controls</h3>
-<p>For this stem-loop branch, omit the 42°C gDNA Eraser pretreatment. Do not add gDNA Eraser, gDNA Eraser Buffer or the supplied RT Primer Mix. The day plan specifies this omission and the user confirmed it was followed. This is the selected experimental adaptation; the RR047A manufacturer workflow includes a separate DNA-removal stage whose buffer enters RT. [1, 4]</p>
-<p>The day plan gives the following rationale: avoid exposing the DNA RT oligonucleotides to DNA-degrading activity, minimize extra processing of small-RNA samples, and use the artificial stem-loop sequence for the miRNA assays while monitoring DNA background with U6 no-RT controls. This records the design rationale. It does not establish that DNA removal is impossible with custom primers or that all background products are excluded; assess the controls for each assay. [3, 4]</p>
-<p>Use an extraction method demonstrated to retain the relevant small RNAs; MR01 documents the selected TRIzol route. Keep independent culture samples separate. Assess concentration and possible inhibitor carryover, without treating a NanoDrop ratio or an arbitrary U6 Cq as proof of successful small-RNA recovery.</p>
-<p>Use dedicated miRNA RT products for the assays below. Oligo(dT)/random-primer mRNA cDNA from M10 does not substitute for these custom stem-loop RT products. Use one qPCR primer pair per well: the shared RT reaction is multiplexed, the qPCR assays are separate.</p>
-<table>
-<thead>
-<tr>
-<th>Oligonucleotide</th>
-<th>Sequence, 5′ to 3′</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SL-RT-124</td>
-<td>GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACGGCATT</td>
-</tr>
-<tr>
-<td>SL-RT-137</td>
-<td>GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACCTACGC</td>
-</tr>
-<tr>
-<td>SL-RT-126</td>
-<td>GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACCGCATT</td>
-</tr>
-<tr>
-<td>qF-124</td>
-<td>CGCTAAGGCACGCGGTG</td>
-</tr>
-<tr>
-<td>qF-137</td>
-<td>GCGCGCGTTATTGCTTAAGAATAC</td>
-</tr>
-<tr>
-<td>qF-126</td>
-<td>GCGCGTCGTACCGTGAGTAAT</td>
-</tr>
-<tr>
-<td>UNIV-R</td>
-<td>GTGCAGGGTCCGAGGT</td>
-</tr>
-<tr>
-<td>U6-F</td>
-<td>GCTTCGGCAGCACATATACTAAAAT</td>
-</tr>
-<tr>
-<td>U6-R</td>
-<td>CGCTTCACGAATTTGCGTGTCAT</td>
-</tr>
-</tbody>
-</table>
-<p>SL-RT-124 / -137 / -126 and U6-R enter the shared RT mix. qF-124 / -137 / -126 each pair with UNIV-R; U6-F pairs with U6-R. U6-R is a gene-specific linear RT primer, not a fourth stem-loop primer. The local design predicts 57, 64, 61 and 89 bp respectively; these are design values, not experimental product-identity confirmation. [4]</p>
-<p>Prepare a plate map containing sample, assay, dilution, technical replicate and control identities. Include qPCR NTCs for every primer pair, no-RT products with the same RNA input and primers, and a known amplifiable assay control. A mature-RNA positive processed through RT additionally checks the RT step; a DNA/cDNA positive checks amplification only. [3]</p>
-<p>Keep U6 provisional until its no-RT background, usable assay range and stability across the intended samples are acceptable. A different normalizer needs its own RT and qPCR assay; the existing four-primer mix does not contain a miR-16 RT primer.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-rna-and-the-custom-rt-primers">A. Prepare RNA and the custom RT primers</h3>
-<ol>
-<li>
-<p>Prepare small-RNA-retaining total RNA using MR01 or another qualified route. Measure concentration and retain an aliquot of the original RNA. Dilute a working aliquot to 10 ng/µL with RNase-free water; use an intermediate dilution when a one-step calculation would require unreliable submicrolitre transfer. [4]</p>
-</li>
-<li>
-<p>Prepare 100 µL of the RT primer working mix using four separate 10 µM stocks. Add a fresh tip for each stock and mix thoroughly. Each oligonucleotide is 500 nM in this working mix. [4]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>RT-mix ingredient</th>
-<th>Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SL-RT-124, 10 µM</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>SL-RT-137, 10 µM</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>SL-RT-126, 10 µM</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>U6-R, 10 µM</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>RNase-free water</td>
-<td>80 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>100 µL</td>
-</tr>
-</tbody>
-</table>
-<p>If using the archived optional pre-folding step, heat the oligonucleotide working mix alone at 95°C for 5 min, cool to 25°C at 0.1°C/sec, then place on ice. Do this before adding RNA or RT enzyme. It is a local preparation option, not a Takara requirement or demonstrated remedy for failed amplification. [4]</p>
-<h3 id="b-prepare-the-10-l-custom-stem-loop-rt-reaction">B. Prepare the 10 µL custom stem-loop RT reaction</h3>
-<ol start="3">
-<li>Assemble the confirmed 10 µL RT formulation on ice. Skip gDNA Eraser pretreatment and use the custom RT primer working mix in place of the supplied RT Primer Mix. Prepare a shared mix without RNA and add each sample separately. [4]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>RT component</th>
-<th>+RT</th>
-<th>No-RT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5× PrimeScript Buffer 2</td>
-<td>2.0 µL</td>
-<td>2.0 µL</td>
-</tr>
-<tr>
-<td>PrimeScript RT Enzyme Mix I</td>
-<td>0.5 µL</td>
-<td>0 µL</td>
-</tr>
-<tr>
-<td>Four-primer working mix, each 500 nM</td>
-<td>0.5 µL</td>
-<td>0.5 µL</td>
-</tr>
-<tr>
-<td>Total RNA, 10 ng/µL</td>
-<td>5.0 µL = 50 ng</td>
-<td>5.0 µL = 50 ng</td>
-</tr>
-<tr>
-<td>RNase-free water</td>
-<td>2.0 µL</td>
-<td>2.5 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>10 µL</td>
-<td>10 µL</td>
-</tr>
-</tbody>
-</table>
-<p>This mixture gives 25 nM of each RT oligonucleotide and 1× Buffer 2. The original combined entry “RNA + water, 7 µL” means 5 µL RNA plus 2 µL water; 7 µL RNA at 10 ng/µL would instead introduce 70 ng. [4]</p>
-<ol start="4">
-<li>
-<p>Prepare matched no-RT reactions by replacing the 0.5 µL Enzyme Mix I with water while preserving RNA and primer input. An RNA-free RT control, when investigating RT-stage background, replaces the RNA volume with water and proceeds through the same program. It is distinct from a water-only qPCR NTC. [3, 4]</p>
-</li>
-<li>
-<p>Run the following constant-temperature RT program from the day plan. Record the selected program and any change; this 60 min RT and 5 min heat treatment differ from the RR047A standard gene-specific-primer program. Use the same program across comparison samples. [1, 4]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Primer annealing</td>
-<td>16°C</td>
-<td>30 min</td>
-</tr>
-<tr>
-<td>Reverse transcription</td>
-<td>42°C</td>
-<td>60 min</td>
-</tr>
-<tr>
-<td>Heat treatment</td>
-<td>85°C</td>
-<td>5 min</td>
-</tr>
-<tr>
-<td>Hold</td>
-<td>4°C</td>
-<td>Until removal</td>
-</tr>
-</tbody>
-</table>
-<p>The day plan also listed a pulsed option: 16°C for 30 min, then 60 cycles of 30°C for 30 sec / 42°C for 30 sec / 50°C for 1 sec, then 85°C for 5 min. The cited primary method used SuperScript III. Record this as an alternative requiring assay-specific assessment; its presence in the plan does not establish that the team ran it. [3, 4]</p>
-<h3 id="c-dilute-the-rt-products-and-prepare-an-assay-range-check">C. Dilute the RT products and prepare an assay range check</h3>
-<ol start="6">
-<li>
-<p>Make a 1:5 total dilution of each RT product, for example 2 µL RT product plus 8 µL sterile Type II water. Dilute the matched no-RT products identically. Keep working aliquots on ice for same-day setup and retained cDNA at or below -20°C. [1, 4]</p>
-</li>
-<li>
-<p>For each assay, use a known amplifiable cDNA pool to assess dilution behavior. The archived example used equal aliquots from six samples and the four-point series below. Verify that the pool actually contains an interpretable positive for the selected target; a weak or failed pool cannot establish assay efficiency. [3, 4]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Point</th>
-<th>Dilution from original RT product</th>
-<th>Preparation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>D1</td>
-<td>1:5</td>
-<td>2 µL original pool + 8 µL water</td>
-</tr>
-<tr>
-<td>D2</td>
-<td>1:25</td>
-<td>5 µL D1 + 20 µL water</td>
-</tr>
-<tr>
-<td>D3</td>
-<td>1:125</td>
-<td>5 µL D2 + 20 µL water</td>
-</tr>
-<tr>
-<td>D4</td>
-<td>1:625</td>
-<td>5 µL D3 + 20 µL water</td>
-</tr>
-</tbody>
-</table>
-<p>Prepare each dilution accurately and mix before the next transfer. Use the series to evaluate qPCR efficiency, repeatability and its working range; it cannot by itself establish RNA recovery or reverse-transcription efficiency. Do not infer “no miRNA” from a failed dilution series.</p>
-<h3 id="d-assemble-separate-10-l-qpcr-assays">D. Assemble separate 10 µL qPCR assays</h3>
-<ol start="8">
-<li>Thaw and gently invert 11188ES until homogeneous, then briefly spin. Prepare a separate master mix for each primer pair; keep template out of the shared mix. Use the adapted 10 µL recipe below, half the manufacturer 20 µL scale, and assess evaporation and reproducibility for the selected plate/seal. No Dilution Buffer or ROX is added. [2, 4]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>qPCR component</th>
-<th>Per well</th>
-<th>24 wells + 15% excess</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>11188ES 2× SYBR mix</td>
-<td>5.0 µL</td>
-<td>138.00 µL</td>
-</tr>
-<tr>
-<td>Forward primer, 10 µM</td>
-<td>0.2 µL</td>
-<td>5.52 µL</td>
-</tr>
-<tr>
-<td>UNIV-R or U6-R, 10 µM</td>
-<td>0.2 µL</td>
-<td>5.52 µL</td>
-</tr>
-<tr>
-<td>Sterile Type II water</td>
-<td>3.6 µL</td>
-<td>99.36 µL</td>
-</tr>
-<tr>
-<td>Master mix subtotal</td>
-<td>9.0 µL</td>
-<td>248.40 µL</td>
-</tr>
-<tr>
-<td>1:5 cDNA, diluted no-RT, standard or NTC water</td>
-<td>1.0 µL</td>
-<td>Add separately</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>10.0 µL</td>
-<td>27.6 well-equivalents prepared</td>
-</tr>
-</tbody>
-</table>
-<p>Each PCR primer is 0.2 µM final. One microlitre of 1:5 RT product carries 0.2 µL original RT mix, or 2% of a 10 µL PCR. With the archived 50 ng / 10 µL RT input, this is 1 ng RNA-input equivalent per well, not a measured cDNA mass. Scale shared ingredients by N × 1.15; the excess is prepared volume, not additional independent reactions.</p>
-<ol start="9">
-<li>Dispense 9 µL of the correct assay mix into mapped wells, then add 1 µL of the assigned template or water with fresh filter tips. Prepare NTCs before handling concentrated templates. Seal the plate and collect the liquid by a brief compatible plate spin; the archived setup used 500 × g for 1 min. Check bubbles and sealing. [4]</li>
-</ol>
-<p>The archived 96-well example assigned A/B to miR-124, C/D to miR-137, E/F to miR-126 and G/H to U6. Per assay: six samples in duplicate occupy 12 wells; four dilution points in duplicate, two no-RT and two NTC occupy another 12. Those no-RT controls represent one RNA sample per cell background, not all six sample-matched controls. Allocate additional or separate qualification wells for positive RNA controls and RT blanks. [4]</p>
-<h3 id="e-amplify-export-and-interpret">E. Amplify, export and interpret</h3>
-<ol start="10">
-<li>Set CFX96 to SYBR detection, enter a 10 µL sample volume, and record the actual program. For a new 11188ES run use the matching manufacturer starting program below. The archived M0D2 plan used 95°C for 30 sec initially and 95°C for 5 sec within cycling; those shorter settings are historical adaptations, not the 11188ES standard. [2, 4]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Temperature</th>
-<th>Time / repeats</th>
-<th>Read</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Initial denaturation</td>
-<td>95°C</td>
-<td>2 min; once</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Denaturation</td>
-<td>95°C</td>
-<td>10 sec; 40 cycles</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Annealing / extension</td>
-<td>60°C</td>
-<td>30 sec; 40 cycles</td>
-<td>Every cycle</td>
-</tr>
-<tr>
-<td>Melt curve</td>
-<td>65-95°C local range</td>
-<td>0.5°C increments; record dwell/settings</td>
-<td>Every step</td>
-</tr>
-</tbody>
-</table>
-<ol start="11">
-<li>
-<p>Inspect full amplification and melt curves together with NTC, no-RT and positive controls. Check technical-repeat agreement and assay-specific dilution behavior before accepting numerical results. A similar or single melt peak does not establish target identity; small primer-derived products can resemble the intended short amplicon. [3]</p>
-</li>
-<li>
-<p>Export the raw run, full Cq/amplification/melt data, plate map, dilution record and processing settings. Retain all wells and exclusion reasons. Preserve missing Cq as unavailable; do not assign Cq = 40 or convert a failed control or unqualified assay into zero abundance.</p>
-</li>
-<li>
-<p>For valid dilution points, fit Cq against log10 relative template concentration and calculate E = 10^(-1/slope) - 1. The archived plan proposed 90-110% efficiency and R² at least 0.99 as working acceptance targets; record the observed result and usable range for each assay. A cDNA series qualifies the PCR response within that range, not the whole extraction/RT workflow. [4]</p>
-</li>
-<li>
-<p>Normalize only when a reference is qualified for the intended samples and target/reference efficiencies support the selected calculation. Under appropriate comparative-Cq conditions, calculate ΔCq = Cq(target) - Cq(reference), then ΔΔCq relative to the defined biological calibrator and fold change = 2^(-ΔΔCq). Average acceptable technical repeats within their parent sample; they do not increase biological n. If controls, reference or assay range fail, report the observation and limitation rather than a fold change.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>This workflow omits gDNA Eraser pretreatment. U6 primers can amplify genomic DNA, so review no-RT results before using U6 for normalization. If DNA background compromises U6, return to retained RNA for a compatible DNA-removal workflow or qualify a different reference assay. [4]</p>
-<p>Do not heat an enzyme-containing mixture for oligonucleotide folding. Document whether the optional folding and constant or pulsed RT program were used; the options are not interchangeable evidence of assay success.</p>
-<p>A late U6 or miRNA Cq can reflect low input, inhibition, poor RT or assay background. It cannot identify failed extraction on its own. Compare qualified controls rather than imposing a universal Cq cutoff.</p>
-<p>Short products and primer-derived products may share a melt region. Review the complete derivative curve, controls and verified product identity; a clean-looking peak alone is insufficient. [3]</p>
-<p>Mature-miRNA abundance after mimic delivery does not establish MRE regulation. Use MR03 for mimic delivery and a matched functional comparison for the biological effect.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Expect target-assay amplification with appropriate negative controls, reproducible technical repeats and a usable dilution range when the assays perform adequately. Retain the raw curves and product-identity evidence; a completed reaction does not by itself establish successful miRNA quantification.</p>
-<p>U6 may be usable only after background and stability assessment. Missing or failed assay results remain unavailable for normalization; the guide does not assume the historical M0D2 run achieved valid endogenous-miRNA quantification.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Late or absent signals, including RNA positive</td>
-<td>RT formulation, small-RNA input, primer identity and positive-control stage</td>
-<td>Check actual reagent identity, recipe, enzyme handling and RNA quality. Use RNA-through-RT and PCR-positive controls to locate the failure; do not conclude absence of miRNA.</td>
-</tr>
-<tr>
-<td>U6 no-RT overlaps the sample</td>
-<td>DNA contribution, control mapping and U6 assay specificity</td>
-<td>Do not use U6 for normalization. Qualify compatible DNA treatment or an independently validated reference assay; another stem-loop assay requires a matching RT primer.</td>
-</tr>
-<tr>
-<td>miRNA no-RT or NTC has a sample-like peak</td>
-<td>Carryover, RT-primer-derived products and plate assignment</td>
-<td>Repeat with fresh reagents and stage-specific controls. Verify product identity; stem-loop design and similar Tm do not exclude all DNA/background products.</td>
-</tr>
-<tr>
-<td>Dilution series is nonlinear or missing</td>
-<td>Pool positivity, transfer accuracy, inhibitors and low-input instability</td>
-<td>Prepare fresh dilutions from a verified template and establish the usable range. Retain failed points and reasons; do not force an efficiency fit.</td>
-</tr>
-<tr>
-<td>Technical repeats or melt curves disagree</td>
-<td>Bubbles, seal, mixing, pipetting and competing products</td>
-<td>Repeat affected assay/sample wells with consistent setup. Inspect full curves and controls before excluding wells or combining results.</td>
-</tr>
-<tr>
-<td>Candidate reference changes across conditions</td>
-<td>Control quality, assay range and reference stability</td>
-<td>Qualify a suitable reference independently before relative quantification. Do not infer a biological miRNA change from an unstable denominator.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Takara Bio. PrimeScript RT reagent Kit with gDNA Eraser, RR047A. Manual v202202Da, p. 3 component footnote and pp. 6-7 RT workflow. Accessed 2026-10-14. <a href="https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf">Open source</a></p>
-<p>[2] Yeasen. Hieff UNICON ColorGPS qPCR Master Mix (No Rox), 11188ES. IFU Ver.EN20260116, pp. 1-3; 20 µL standard scale, cycling and optional dilution buffer. Accessed 2026-10-14. <a href="https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980">Open source</a></p>
-<p>[3] Varkonyi-Gasic E et al. Protocol: a highly sensitive RT-PCR method for detection and quantification of microRNAs. Plant Methods 3:12 (2007), doi:10.1186/1746-4811-3-12. SuperScript III-based pulsed RT; SYBR negative-control products and specificity limits. Accessed 2026-10-14. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2225395/">Open source</a></p>
-<p>[4] SUSTech-BIO 2026. M0D2_miRNA_stemloop_protocol-5.pdf, sections 4-7, including p. 6 rationale for omitting gDNA Eraser; M0 primer order A12:B20; 2026-08-14 raw run metadata. User confirmed on 2026-10-14: 11188ES, RR047A, skipped DNA removal and no added Eraser Buffer. Local records and confirmed experimental adaptation.</p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original MR02 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:37.66751%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Stem-loop RT-qPCR for miRNA
+Detection
+
+ MR02 | ver 1.0 | Revised 2026-10-14
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Prepare miRNA-specific cDNA with custom stem-loop primers, then detect miR-124-3p, miR-137-3p
+ and miR-126-3p in separate SYBR qPCR assays. U6 is included as a candidate reference assay,
+ subject to DNA-background and stability checks.
+
+ Follow the confirmed M0D2 stem-loop workflow: omit gDNA Eraser pretreatment and use the
+ custom RT primer mix with RR047A Buffer 2 and Enzyme Mix I. Assess DNA background and assay
+ performance with the controls below. [4]
+
+ Materials &amp; Equipment
+
+
+   Item                                    Supplier / identifier          Specification / use
+
+
+    Total RNA retaining small RNAs          Sample-specific; MR01     Measured concentration; 50 ng per RT
+
+
+   PrimeScript RT reagent Kit with gDNA    Takara / RR047A         Use Buffer 2 and Enzyme Mix I; omit gDNA
+   Eraser                                                                 Eraser, its buffer and supplied RT Primer Mix
+                                                                            [4]
+
+
+   Custom RT and qPCR oligonucleotides  M0 primer order;          Separate 10 µM stocks; four-primer RT
+                                        sequences below           working mix
+
+
+    Hieff UNICON ColorGPS qPCR         Yeasen / 11188ES          User-confirmed product; water dilution
+   Master Mix (No Rox), 2×                                            without Dilution Buffer [2, 4]
+
+
+   RNase-free water                          Kit-supplied / laboratory   RNA and RT setup; sterile Type II water for
+                                    RNA-grade water         qPCR dilution and setup
+
+
+    Pipettes, tubes, ice rack and filter tips    Laboratory equipment;     RNA-safe preparation; low-volume
+                                   Axygen tips                 dispensing
+
+
+   Microcentrifuge / plate centrifuge       Eppendorf / laboratory      Brief collection and optical-plate spin
+                                       equipment
+
+
+  RNA concentration instrument          Thermo Fisher /             Concentration and absorbance-ratio
+                                  NanoDrop One             records; not proof of miRNA recovery
+
+
+   Thermal cycler                         Laboratory instrument      RT program; optional oligonucleotide-only
+                                                                           folding
+
+
+   Real-time PCR system and optical        Bio-Rad / CFX96         SYBR detection, 10 µL adapted volume and
+   plate/seal                                                           melt analysis; no ROX
+
+
+
+MR02 | v1.0                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original MR02 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Before You Start
+
+ DNA-removal policy and assay controls
+
+ For this stem-loop branch, omit the 42°C gDNA Eraser pretreatment. Do not add gDNA Eraser,
+ gDNA Eraser Buffer or the supplied RT Primer Mix. The day plan specifies this omission and the user
+ confirmed it was followed. This is the selected experimental adaptation; the RR047A manufacturer
+ workflow includes a separate DNA-removal stage whose buffer enters RT. [1, 4]
+
+ The day plan gives the following rationale: avoid exposing the DNA RT oligonucleotides to
+ DNA-degrading activity, minimize extra processing of small-RNA samples, and use the artificial
+ stem-loop sequence for the miRNA assays while monitoring DNA background with U6 no-RT
+ controls. This records the design rationale. It does not establish that DNA removal is impossible with
+ custom primers or that all background products are excluded; assess the controls for each assay. [3,
+ 4]
+
+ Use an extraction method demonstrated to retain the relevant small RNAs; MR01 documents the
+ selected TRIzol route. Keep independent culture samples separate. Assess concentration and
+ possible inhibitor carryover, without treating a NanoDrop ratio or an arbitrary U6 Cq as proof of
+ successful small-RNA recovery.
+
+ Use dedicated miRNA RT products for the assays below. Oligo(dT)/random-primer mRNA cDNA
+ from M10 does not substitute for these custom stem-loop RT products. Use one qPCR primer pair per
+ well: the shared RT reaction is multiplexed, the qPCR assays are separate.
+
+
+   Oligonucleotide         Sequence, 5′ to 3′
+
+
+   SL-RT-124           GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACGGCATT
+
+
+   SL-RT-137           GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACCTACGC
+
+
+   SL-RT-126           GTCGTATCCAGTGCAGGGTCCGAGGTATTCGCACTGGATACGACCGCATT
+
+
+   qF-124            CGCTAAGGCACGCGGTG
+
+
+   qF-137             GCGCGCGTTATTGCTTAAGAATAC
+
+
+   qF-126             GCGCGTCGTACCGTGAGTAAT
+
+
+   UNIV-R            GTGCAGGGTCCGAGGT
+
+
+   U6-F               GCTTCGGCAGCACATATACTAAAAT
+
+
+   U6-R               CGCTTCACGAATTTGCGTGTCAT
+
+
+ SL-RT-124 / -137 / -126 and U6-R enter the shared RT mix. qF-124 / -137 / -126 each pair with
+ UNIV-R; U6-F pairs with U6-R. U6-R is a gene-specific linear RT primer, not a fourth stem-loop
+ primer. The local design predicts 57, 64, 61 and 89 bp respectively; these are design values, not
+ experimental product-identity confirmation. [4]
+
+
+
+
+
+MR02 | v1.0                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original MR02 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:22.16667%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> Prepare a plate map containing sample, assay, dilution, technical replicate and control identities.
+ Include qPCR NTCs for every primer pair, no-RT products with the same RNA input and primers, and
+ a known amplifiable assay control. A mature-RNA positive processed through RT additionally
+ checks the RT step; a DNA/cDNA positive checks amplification only. [3]
+
+ Keep U6 provisional until its no-RT background, usable assay range and stability across the
+ intended samples are acceptable. A different normalizer needs its own RT and qPCR assay; the
+ existing four-primer mix does not contain a miR-16 RT primer.
+
+ Procedure
+
+ A. Prepare RNA and the custom RT primers
+
+ 1. Prepare small-RNA-retaining total RNA using MR01 or another qualified route. Measure
+     concentration and retain an aliquot of the original RNA. Dilute a working aliquot to 10 ng/µL
+     with RNase-free water; use an intermediate dilution when a one-step calculation would require
+     unreliable submicrolitre transfer. [4]
+
+ 2. Prepare 100 µL of the RT primer working mix using four separate 10 µM stocks. Add a fresh tip
+      for each stock and mix thoroughly. Each oligonucleotide is 500 nM in this working mix. [4]
+
+
+   RT-mix ingredient                                                        Volume
+
+
+   SL-RT-124, 10 µM                                                    5 µL
+
+
+   SL-RT-137, 10 µM                                                    5 µL
+
+
+   SL-RT-126, 10 µM                                                    5 µL
+
+
+   U6-R, 10 µM                                                       5 µL
+
+
+   RNase-free water                                                    80 µL
+
+
+    Total                                                             100 µL
+
+
+  If using the archived optional pre-folding step, heat the oligonucleotide working mix alone at 95°C
+ for 5 min, cool to 25°C at 0.1°C/sec, then place on ice. Do this before adding RNA or RT enzyme.
+  It is a local preparation option, not a Takara requirement or demonstrated remedy for failed
+ amplification. [4]
+
+ B. Prepare the 10 µL custom stem-loop RT reaction
+
+ 3. Assemble the confirmed 10 µL RT formulation on ice. Skip gDNA Eraser pretreatment and use the
+     custom RT primer working mix in place of the supplied RT Primer Mix. Prepare a shared mix
+     without RNA and add each sample separately. [4]
+
+
+
+
+
+MR02 | v1.0                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original MR02 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p>   RT component                                        +RT                    No-RT
+
+
+   5× PrimeScript Buffer 2                                    2.0 µL                   2.0 µL
+
+
+   PrimeScript RT Enzyme Mix I                               0.5 µL                0 µL
+
+
+   Four-primer working mix, each 500 nM                     0.5 µL                   0.5 µL
+
+
+    Total RNA, 10 ng/µL                                     5.0 µL = 50 ng           5.0 µL = 50 ng
+
+
+   RNase-free water                                         2.0 µL                   2.5 µL
+
+
+    Total                                           10 µL                10 µL
+
+
+ This mixture gives 25 nM of each RT oligonucleotide and 1× Buffer 2. The original combined entry
+ “RNA + water, 7 µL” means 5 µL RNA plus 2 µL water; 7 µL RNA at 10 ng/µL would instead
+ introduce 70 ng. [4]
+
+ 4. Prepare matched no-RT reactions by replacing the 0.5 µL Enzyme Mix I with water while
+     preserving RNA and primer input. An RNA-free RT control, when investigating RT-stage
+     background, replaces the RNA volume with water and proceeds through the same program. It
+        is distinct from a water-only qPCR NTC. [3, 4]
+
+ 5. Run the following constant-temperature RT program from the day plan. Record the selected
+    program and any change; this 60 min RT and 5 min heat treatment differ from the RR047A
+     standard gene-specific-primer program. Use the same program across comparison samples. [1,
+     4]
+
+
+   Stage                                           Temperature                 Time
+
+
+   Primer annealing                           16°C                    30 min
+
+
+   Reverse transcription                        42°C                    60 min
+
+
+   Heat treatment                            85°C                    5 min
+
+
+   Hold                                   4°C                               Until removal
+
+
+ The day plan also listed a pulsed option: 16°C for 30 min, then 60 cycles of 30°C for 30 sec /
+ 42°C for 30 sec / 50°C for 1 sec, then 85°C for 5 min. The cited primary method used SuperScript
+  III. Record this as an alternative requiring assay-specific assessment; its presence in the plan does
+ not establish that the team ran it. [3, 4]
+
+ C. Dilute the RT products and prepare an assay range check
+
+ 6. Make a 1:5 total dilution of each RT product, for example 2 µL RT product plus 8 µL sterile Type II
+     water. Dilute the matched no-RT products identically. Keep working aliquots on ice for same-day
+     setup and retained cDNA at or below -20°C. [1, 4]
+
+ 7. For each assay, use a known amplifiable cDNA pool to assess dilution behavior. The archived
+    example used equal aliquots from six samples and the four-point series below. Verify that the
+
+
+MR02 | v1.0                                                                             4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original MR02 PDF, page 5" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p>     pool actually contains an interpretable positive for the selected target; a weak or failed pool
+     cannot establish assay efficiency. [3, 4]
+
+
+    Point        Dilution from original RT product            Preparation
+
+
+  D1        1:5                               2 µL original pool + 8 µL water
+
+
+  D2        1:25                              5 µL D1 + 20 µL water
+
+
+  D3        1:125                             5 µL D2 + 20 µL water
+
+
+  D4        1:625                             5 µL D3 + 20 µL water
+
+
+ Prepare each dilution accurately and mix before the next transfer. Use the series to evaluate qPCR
+ efficiency, repeatability and its working range; it cannot by itself establish RNA recovery or
+ reverse-transcription efficiency. Do not infer “no miRNA” from a failed dilution series.
+
+ D. Assemble separate 10 µL qPCR assays
+
+ 8. Thaw and gently invert 11188ES until homogeneous, then briefly spin. Prepare a separate master
+     mix for each primer pair; keep template out of the shared mix. Use the adapted 10 µL recipe
+     below, half the manufacturer 20 µL scale, and assess evaporation and reproducibility for the
+     selected plate/seal. No Dilution Buffer or ROX is added. [2, 4]
+
+
+   qPCR component                                  Per well          24 wells + 15% excess
+
+
+   11188ES 2× SYBR mix                           5.0 µL            138.00 µL
+
+
+   Forward primer, 10 µM                           0.2 µL             5.52 µL
+
+
+   UNIV-R or U6-R, 10 µM                           0.2 µL             5.52 µL
+
+
+    Sterile Type II water                              3.6 µL             99.36 µL
+
+
+   Master mix subtotal                              9.0 µL            248.40 µL
+
+
+   1:5 cDNA, diluted no-RT, standard or NTC water    1.0 µL           Add separately
+
+
+    Total                                         10.0 µL            27.6 well-equivalents prepared
+
+
+ Each PCR primer is 0.2 µM final. One microlitre of 1:5 RT product carries 0.2 µL original RT mix, or
+ 2% of a 10 µL PCR. With the archived 50 ng / 10 µL RT input, this is 1 ng RNA-input equivalent per
+ well, not a measured cDNA mass. Scale shared ingredients by N × 1.15; the excess is prepared
+ volume, not additional independent reactions.
+
+ 9. Dispense 9 µL of the correct assay mix into mapped wells, then add 1 µL of the assigned template
+     or water with fresh filter tips. Prepare NTCs before handling concentrated templates. Seal the
+     plate and collect the liquid by a brief compatible plate spin; the archived setup used 500 × g for
+    1 min. Check bubbles and sealing. [4]
+
+
+
+
+
+MR02 | v1.0                                                                             5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original MR02 PDF, page 6" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> The archived 96-well example assigned A/B to miR-124, C/D to miR-137, E/F to miR-126 and G/H
+ to U6. Per assay: six samples in duplicate occupy 12 wells; four dilution points in duplicate, two
+ no-RT and two NTC occupy another 12. Those no-RT controls represent one RNA sample per cell
+ background, not all six sample-matched controls. Allocate additional or separate qualification wells
+ for positive RNA controls and RT blanks. [4]
+
+ E. Amplify, export and interpret
+
+ 10. Set CFX96 to SYBR detection, enter a 10 µL sample volume, and record the actual program. For
+    a new 11188ES run use the matching manufacturer starting program below. The archived
+   M0D2 plan used 95°C for 30 sec initially and 95°C for 5 sec within cycling; those shorter
+      settings are historical adaptations, not the 11188ES standard. [2, 4]
+
+
+   Stage                          Temperature         Time / repeats                     Read
+
+
+    Initial denaturation            95°C             2 min; once                   No
+
+
+   Denaturation                95°C             10 sec; 40 cycles               No
+
+
+   Annealing / extension         60°C             30 sec; 40 cycles                      Every cycle
+
+
+   Melt curve                    65-95°C local       0.5°C increments; record               Every step
+                                 range                 dwell/settings
+
+
+ 11. Inspect full amplification and melt curves together with NTC, no-RT and positive controls. Check
+      technical-repeat agreement and assay-specific dilution behavior before accepting numerical
+      results. A similar or single melt peak does not establish target identity; small primer-derived
+     products can resemble the intended short amplicon. [3]
+
+ 12. Export the raw run, full Cq/amplification/melt data, plate map, dilution record and processing
+      settings. Retain all wells and exclusion reasons. Preserve missing Cq as unavailable; do not
+     assign Cq = 40 or convert a failed control or unqualified assay into zero abundance.
+
+ 13. For valid dilution points, fit Cq against log10 relative template concentration and calculate E =
+     10^(-1/slope) - 1. The archived plan proposed 90-110% efficiency and R² at least 0.99 as
+     working acceptance targets; record the observed result and usable range for each assay. A
+    cDNA series qualifies the PCR response within that range, not the whole extraction/RT
+     workflow. [4]
+
+ 14. Normalize only when a reference is qualified for the intended samples and target/reference
+      efficiencies support the selected calculation. Under appropriate comparative-Cq conditions,
+      calculate ΔCq = Cq(target) - Cq(reference), then ΔΔCq relative to the defined biological
+      calibrator and fold change = 2^(-ΔΔCq). Average acceptable technical repeats within their
+     parent sample; they do not increase biological n. If controls, reference or assay range fail,
+     report the observation and limitation rather than a fold change.
+
+
+
+
+
+MR02 | v1.0                                                                             6</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 7 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 7">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 7"><img src="page-007.webp" width="1800" height="2546" alt="Original MR02 PDF, page 7" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:39.74616%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 7</h2><p> p.s.
+
+
+ This workflow omits gDNA Eraser pretreatment. U6 primers can amplify genomic DNA, so review
+ no-RT results before using U6 for normalization. If DNA background compromises U6, return to
+ retained RNA for a compatible DNA-removal workflow or qualify a different reference assay. [4]
+
+ Do not heat an enzyme-containing mixture for oligonucleotide folding. Document whether the
+ optional folding and constant or pulsed RT program were used; the options are not interchangeable
+ evidence of assay success.
+
+ A late U6 or miRNA Cq can reflect low input, inhibition, poor RT or assay background. It cannot
+ identify failed extraction on its own. Compare qualified controls rather than imposing a universal Cq
+ cutoff.
+
+ Short products and primer-derived products may share a melt region. Review the complete
+ derivative curve, controls and verified product identity; a clean-looking peak alone is insufficient. [3]
+
+ Mature-miRNA abundance after mimic delivery does not establish MRE regulation. Use MR03 for
+ mimic delivery and a matched functional comparison for the biological effect.
+
+ Expected Outcome
+
+ Expect target-assay amplification with appropriate negative controls, reproducible technical repeats
+ and a usable dilution range when the assays perform adequately. Retain the raw curves and
+ product-identity evidence; a completed reaction does not by itself establish successful miRNA
+ quantification.
+
+ U6 may be usable only after background and stability assessment. Missing or failed assay results
+ remain unavailable for normalization; the guide does not assume the historical M0D2 run achieved
+ valid endogenous-miRNA quantification.
+
+
+
+
+
+MR02 | v1.0                                                                             7</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 8 of 8">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 8">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 8"><img src="page-008.webp" width="1800" height="2546" alt="Original MR02 PDF, page 8" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:64.92761%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://takara.co.kr/file/manual/pdf/RR047A_e.v2202Da.pdf" style="left:49.96177%;top:69.13019%;width:8.85807%;height:1.28283%"></a><a class="pdf-source-link" href="https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980" target="_blank" rel="noopener" aria-label="Original PDF reference: https://cdn.shopify.com/s/files/1/0803/9419/1166/files/11188ES_-Hieff_UNICON_ColorGPS_qPCR_Master_Mix_No_Rox_-Ver.EN20241218.pdf?v=1774921980" style="left:61.72923%;top:72.6936%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2225395/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://pmc.ncbi.nlm.nih.gov/articles/PMC2225395/" style="left:46.76668%;top:77.74177%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 8</h2><p> Troubleshooting
+
+
+   Observed problem        Check first                             Action
+
+
+   Late or absent signals,     RT formulation, small-RNA input,       Check actual reagent identity, recipe, enzyme
+   including RNA positive     primer identity and positive-control      handling and RNA quality. Use
+                              stage                               RNA-through-RT and PCR-positive controls to
+                                                                        locate the failure; do not conclude absence of
+                                                        miRNA.
+
+
+  U6 no-RT overlaps the    DNA contribution, control mapping    Do not use U6 for normalization. Qualify
+   sample                 and U6 assay specificity               compatible DNA treatment or an
+                                                                   independently validated reference assay;
+                                                                  another stem-loop assay requires a matching
+                                                             RT primer.
+
+
+  miRNA no-RT or NTC       Carryover, RT-primer-derived          Repeat with fresh reagents and stage-specific
+   has a sample-like peak      products and plate assignment           controls. Verify product identity; stem-loop
+                                                                   design and similar Tm do not exclude all
+                                                        DNA/background products.
+
+
+    Dilution series is           Pool positivity, transfer accuracy,       Prepare fresh dilutions from a verified
+   nonlinear or missing         inhibitors and low-input instability       template and establish the usable range.
+                                                                      Retain failed points and reasons; do not force
+                                                          an efficiency fit.
+
+
+   Technical repeats or        Bubbles, seal, mixing, pipetting and     Repeat affected assay/sample wells with
+   melt curves disagree       competing products                      consistent setup. Inspect full curves and
+                                                                           controls before excluding wells or combining
+                                                                                     results.
+
+
+   Candidate reference        Control quality, assay range and        Qualify a suitable reference independently
+   changes across             reference stability                     before relative quantification. Do not infer a
+   conditions                                                            biological miRNA change from an unstable
+                                                                  denominator.
+
+
+ Reference
+
+  [1] Takara Bio. PrimeScript RT reagent Kit with gDNA Eraser, RR047A. Manual v202202Da, p. 3 component
+ footnote and pp. 6-7 RT workflow. Accessed 2026-10-14. Open source
+
+  [2] Yeasen. Hieff UNICON ColorGPS qPCR Master Mix (No Rox), 11188ES. IFU Ver.EN20260116, pp. 1-3; 20 µL
+ standard scale, cycling and optional dilution buffer. Accessed 2026-10-14. Open source
+
+  [3] Varkonyi-Gasic E et al. Protocol: a highly sensitive RT-PCR method for detection and quantification of microRNAs.
+  Plant Methods 3:12 (2007), doi:10.1186/1746-4811-3-12. SuperScript III-based pulsed RT; SYBR negative-control
+ products and specificity limits. Accessed 2026-10-14. Open source
+
+  [4] SUSTech-BIO 2026. M0D2_miRNA_stemloop_protocol-5.pdf, sections 4-7, including p. 6 rationale for omitting
+ gDNA Eraser; M0 primer order A12:B20; 2026-08-14 raw run metadata. User confirmed on 2026-10-14: 11188ES,
+ RR047A, skipped DNA removal and no added Eraser Buffer. Local records and confirmed experimental adaptation.
+
+
+
+
+
+MR02 | v1.0                                                                             8</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>
