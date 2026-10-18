@@ -24,7 +24,7 @@ Team closing section; Attributions remains available.
 
 ## Verification
 
-- Python unittest discovery: 126 checks passed.
+- Python unittest discovery: 127 checks passed against `d2568bb` main, including its latest Engineering and HP changes.
 - `node tests/team_compilation.mjs`: passed two complete cycles, preloading,
   delayed and failed images, typing, scroll lock, completion and reduced motion.
 - Frozen-Flask build: passed in a dedicated destination; shared `public/` was
