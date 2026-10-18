@@ -1,0 +1,60 @@
+<!doctype html><meta charset="utf-8"><title>Engineering boundary regression</title>
+<style>body{font:15px system-ui;margin:12px;background:#f4f3fc;color:#334071}button{font:inherit;padding:8px 18px}pre{white-space:pre-wrap}iframe{width:100%;height:640px;border:1px solid #ccd}</style>
+<button id="run">Run continuous gesture regression</button><pre id="results">Ready. Exercises the real Engineering event handlers.</pre>
+<iframe id="wiki" title="Engineering under test"></iframe>
+<script>
+const frame=document.querySelector('#wiki'), output=document.querySelector('#results');
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const check=(condition,message)=>{if(!condition)throw Error(message)};
+async function openPart(part){
+ await new Promise(resolve=>{frame.onload=resolve;frame.src='/engineering?boundary-regression='+Date.now()+'#'+part});
+ await wait(150);
+ const d=frame.contentDocument,r=d.querySelector('#engineering-reading');
+ return {d,r,w:frame.contentWindow,h:d.querySelector('.engineering-boundary'),ws:d.querySelector('[data-engineering-workspace]')};
+}
+function wheel(c,delta){
+ const event=new c.w.WheelEvent('wheel',{deltaY:delta,bubbles:true,cancelable:true});
+ c.r.dispatchEvent(event);
+ if(!event.defaultPrevented)c.r.scrollTop+=delta;
+}
+document.querySelector('#run').onclick=async()=>{
+ output.textContent='Running…';const lines=[];
+ try{
+  for(const [part,direction,expected] of [['gfa',-1,'integrated-orca'],['cre-loxp',-1,'aso'],['pod',1,'cetus'],['gfa',1,'mre']]){
+   const c=await openPart(part);
+   c.r.scrollTop=direction<0?24:c.r.scrollHeight-c.r.clientHeight-24;
+   await wait(32);
+   for(const delta of [60,54,38,25,16,8,4,2,1,.8,.4]){wheel(c,delta*direction);await wait(16)}
+   check(c.ws.dataset.engineeringActivePanel===part,part+': inertial tail changed chapter');
+   check(c.h.hasAttribute('data-open'),part+': first gesture did not reveal hint');
+   // A new pulse while momentum is still arriving: no 300ms silence and
+   // no pointer movement. This is the regression missed by isolated gestures.
+   wheel(c,9*direction);await wait(16);wheel(c,15*direction);await wait(240);
+   check(c.ws.dataset.engineeringActivePanel===expected,part+': second stroke was swallowed');
+   check(!c.h.hasAttribute('data-open'),part+': stale hint after turn');
+   lines.push('PASS '+part+' → '+expected+': momentum retained, renewed stroke confirmed');
+   output.textContent=lines.join('\n');
+  }
+  const c=await openPart('cre-loxp');c.r.scrollTop=24;await wait(32);
+  wheel(c,-60);await wait(220);
+  check(c.h.hasAttribute('data-open'),'hint missing before jitter test');
+  const mutations=[];
+  const observer=new c.w.MutationObserver(items=>mutations.push(...items.map(x=>x.attributeName)));
+  observer.observe(c.h,{attributes:true});
+  const transforms=[];
+  for(let i=0;i<30;i++){
+   wheel(c,i%2?.5:-.8);c.r.scrollTop=i%2?.3:0;
+   await wait(16);transforms.push(c.w.getComputedStyle(c.h).transform);
+  }
+  observer.disconnect();
+  check(new Set(transforms).size===1,'hint transform oscillated during tiny tail/rebound events');
+  check(mutations.length===0,'hint attributes were rewritten during tail/rebound: '+mutations.join(','));
+  check(c.ws.dataset.engineeringActivePanel==='cre-loxp','tiny tail changed chapter');
+  lines.push('PASS drawer remains stationary across 30 tail/rebound samples; no attribute rewrites');
+  wheel(c,30);await wait(32);
+  check(!c.h.hasAttribute('data-open')&&c.r.scrollTop>2,'reverse scroll failed to resume reading');
+  lines.push('PASS reverse scroll immediately closes drawer and resumes reading');
+  output.textContent=lines.join('\n')+'\nALL PASSED';
+ }catch(error){output.textContent=lines.join('\n')+'\nFAIL '+error.message;}
+};
+</script>

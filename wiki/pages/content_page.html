@@ -7,7 +7,11 @@
 {% set directory = namespace(groups=[], current=none) %}
 {% for item in content.toc %}
   {% if item.level == 2 or directory.current is none %}
-    {% set directory.current = {'heading': item, 'children': []} %}
+    {% set heading = item %}
+    {% if content.source_label == 'docs/wet-lab/measurement.md' and item.level == 2 %}
+      {% set heading = {'id': item.id, 'name': item.name.split(' — ', 1)[0], 'level': item.level, 'custom_label': true} %}
+    {% endif %}
+    {% set directory.current = {'heading': heading, 'children': []} %}
     {% set directory.groups = directory.groups + [directory.current] %}
   {% else %}
     {% set _ = directory.current.children.append(item) %}
@@ -18,6 +22,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">
 {% if has_model_reading %}<link rel="stylesheet" href="{{ url_for('static', filename='content-model-reading.css') }}">{% endif %}
+{% if content.source_label == 'docs/wet-lab/measurement.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='measurement-reading.css') }}">{% endif %}
 {% endblock %}
 {% block page_scripts %}
 {% if has_dbtl %}<script src="{{ url_for('static', filename='reading-orbit/dbtl-wheel.js') }}" defer></script>{% endif %}
@@ -30,6 +35,13 @@
   <header class="content-overview">
     <h1>{{ content.title }}</h1>
   </header>
+
+  {% if content.source_label == 'docs/wet-lab/measurement.md' and content.metadata.overview %}
+  <section class="measurement-overview" aria-labelledby="measurement-overview-title">
+    <h2 id="measurement-overview-title">Overview</h2>
+    <p>{{ content.metadata.overview }}</p>
+  </section>
+  {% endif %}
 
   {% if has_model_reading %}<div class="content-model-stage">{% endif %}
   {% if content.toc and not has_dbtl %}

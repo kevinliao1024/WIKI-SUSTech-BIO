@@ -2,11 +2,23 @@
 title: Measurement
 subtitle: Beyond Brightness — Making RNA-Editing Reporter Signals Measurable
 eyebrow: Wet Lab
+overview: >-
+  SONAR turns editing-responsive fluorescence into a structured measurement workflow.
+  Four layers establish the calibration context Θ, quantify the Reporter Activity Score (RAS),
+  calibrate a Relative Editing Score (RES) against AC/INAC references, and explore a
+  Predicted Editing Rate (PER) through independent molecular measurements.
+  RAS describes reporter output, while RES is a DNA-input reference equivalent;
+  neither is an absolute RNA-editing percentage. PER remains exploratory and requires
+  matched molecular calibration.
 ---
 
 # SONAR Measurement
 
-*Beyond Brightness: Making RNA-Editing Reporter Signals Measurable*
+<blockquote class="measurement-opening-quote" markdown="1">
+
+Beyond Brightness: Making RNA-Editing Reporter Signals Measurable
+
+</blockquote>
 
 ## 1. The Measurement Challenge — Beyond Brightness
 
@@ -26,7 +38,7 @@ We organize their interpretation into four layers:
 
 | Layer | Measurement question | Main output |
 |---|---|---|
-| **0 — Context Calibration** | Which events and fluorescence values are suitable for comparison? | A versioned **Context Profile** |
+| **0 — Context Calibration** | Which events and fluorescence values are suitable for comparison? | **Θ (Theta)**, the versioned calibration context |
 | **1 — Flow Quantification** | How strongly does the reporter respond relative to its expression? | **RAS**, the Reporter Activity Score |
 | **2 — Reporter Calibration** | What experimentally measured reference input gives an equivalent response? | **RES**, the Relative Editing Score |
 | **3 — Molecular Evaluation** | What molecular signal accompanies the optical response, and can it be predicted? | A validated *relative* molecular analysis and a pathway toward **PER**, Predicted Editing Rate |
@@ -73,9 +85,9 @@ Because mCherry later appears in the denominator of RAS, we also defined a red q
 
 *Figure 3. Two Mock controls establish distinct additive backgrounds and detection thresholds for all three fluorescence channels.*
 
-### 3.3 A reusable Context Profile
+### 3.3 A reusable calibration context Θ {#33-a-reusable-context-profile}
 
-We froze the channel mapping, acquisition rule, scatter and singlet gates, background estimates, thresholds, and their source records as a versioned **Context Profile**, <span class="submission-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi mathvariant="normal">Ω</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">t</mi></mrow></msub><annotation encoding="application/x-tex">&#92;&#79;&#109;&#101;&#103;&#97;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#99;&#111;&#110;&#116;&#101;&#120;&#116;&#125;&#125;</annotation></semantics></math></span>. Across **34 unique FCS acquisitions**—32 independent transfection wells and two Mock controls—the final event-retention range for experimental wells was **66.48%–77.08%**. Transferring Mock-derived thresholds to the other Mock gave negative-tail fractions of **0.424%–0.602%**, and all **204 stored event-selection masks** were reconstructed exactly from the original files and frozen parameters.
+We froze the channel mapping, acquisition rule, scatter and singlet gates, background estimates, thresholds, and their source records as the versioned **calibration context Θ (Theta)**. This is the parameter bundle stored as a Context Profile in the reference data files. Across **34 unique FCS acquisitions**—32 independent transfection wells and two Mock controls—the final event-retention range for experimental wells was **66.48%–77.08%**. Transferring Mock-derived thresholds to the other Mock gave negative-tail fractions of **0.424%–0.602%**, and all **204 stored event-selection masks** were reconstructed exactly from the original files and frozen parameters.
 
 For a new instrument, experiment, or reporter condition, the *rules* can be reused while the fluorescence parameters must be re-estimated from matched controls. Current measurements remain detector-scale, exploratory measurements: independent single-color compensation and viability staining were not available. Thus, retained events are **singlet-like by scatter and pulse geometry**, not independently confirmed viable cells.
 
@@ -103,7 +115,7 @@ In `S10_1_1_B`, **18,290** of the 68,986 Layer 0 events satisfied the reporter c
 
 ### 4.2 Does normalization improve repeatability?
 
-We compared raw mean EGFP with RAS **within the same Reporter Population** in A/B independent-transfection pairs. The comparison uses the corrected S7 reference labels, including the 15% condition and the exchanged 75%/90% labels.
+We compared raw mean EGFP with RAS **within the same Reporter Population** in A/B independent-transfection pairs.
 
 | Experiment | Conditions (two wells each) | Median CV, raw EGFP | Median CV, RAS | Conditions improved |
 |---|---:|---:|---:|---:|
@@ -162,7 +174,7 @@ Consequently, correcting EGFP by mCherry does not reveal the fraction of edited 
 
 ### 5.2 Building and fitting the AC/INAC response ladder
 
-In S7, we co-transfected AC and INAC at **ten corrected DNA mass fractions**, each with two independent transfection wells:
+In S7, we co-transfected AC and INAC at **ten DNA mass fractions**, each with two independent transfection wells:
 
 <div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>A</mi><mo>=</mo><mfrac><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mrow><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>I</mi><mi>N</mi><mi>A</mi><mi>C</mi></mrow></msub></mrow></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><mi>A</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>0.05</mn><mo>,</mo><mn>0.15</mn><mo>,</mo><mn>0.20</mn><mo>,</mo><mn>0.30</mn><mo>,</mo><mn>0.40</mn><mo>,</mo><mn>0.50</mn><mo>,</mo><mn>0.75</mn><mo>,</mo><mn>0.90</mn><mo>,</mo><mn>1.00</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#65;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#125;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#43;&#109;&#95;&#123;&#73;&#78;&#65;&#67;&#125;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#65;&#92;&#105;&#110;&#92;&#123;&#48;&#44;&#48;&#46;&#48;&#53;&#44;&#48;&#46;&#49;&#53;&#44;&#48;&#46;&#50;&#48;&#44;&#48;&#46;&#51;&#48;&#44;&#48;&#46;&#52;&#48;&#44;&#48;&#46;&#53;&#48;&#44;&#48;&#46;&#55;&#53;&#44;&#48;&#46;&#57;&#48;&#44;&#49;&#46;&#48;&#48;&#92;&#125;&#46;&#10;</annotation></semantics></math></div>
 
@@ -219,7 +231,7 @@ We also separated two kinds of uncertainty. A **conditional bootstrap interval**
 
 ### 5.4 A worked example—and the calibration boundary
 
-The original file `S7_90B` corresponds to **75% AC after correction of the experimental labels**. Its **32,207** reporter-selected events yielded **RAS = 0.956260**; applying the upper branch of the frozen inverse gives:
+The **75% AC reference sample** (`S7_90B`) illustrates the calculation. Its **32,207** reporter-selected events yielded **RAS = 0.956260**; applying the upper branch of the frozen inverse gives:
 
 <div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><mn>0.5</mn><mo>+</mo><mfrac><mrow><mn>0.956260</mn><mo>−</mo><mn>0.745776</mn></mrow><mn>0.857406</mn></mfrac><mo>=</mo><menclose notation="box"><mrow><mn>0.74549</mn><mspace width="0.278em" /><mtext mathvariant="normal">(74.55%AC DNA mass-equivalent)</mtext></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#82;&#69;&#83;&#61;&#48;&#46;&#53;&#43;&#92;&#102;&#114;&#97;&#99;&#123;&#48;&#46;&#57;&#53;&#54;&#50;&#54;&#48;&#45;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#125;&#123;&#48;&#46;&#56;&#53;&#55;&#52;&#48;&#54;&#125;&#10;&#61;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#48;&#46;&#55;&#52;&#53;&#52;&#57;&#92;&#59;&#92;&#116;&#101;&#120;&#116;&#123;&#40;&#55;&#52;&#46;&#53;&#53;&#92;&#37;&#32;&#65;&#67;&#32;&#68;&#78;&#65;&#32;&#109;&#97;&#115;&#115;&#45;&#101;&#113;&#117;&#105;&#118;&#97;&#108;&#101;&#110;&#116;&#41;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
 
@@ -229,7 +241,7 @@ The conditional bootstrap interval was **73.27%–75.85%**, while the compatibil
 
 *Figure 11. The frozen calibration converts a real S7 RAS into an AC DNA-input equivalent with separately reported uncertainty ranges.*
 
-Layer 2 thus turns a reporter-normalized optical signal into a **measured reference equivalent with explicit inverse error and scope**. The stored model also records its population definition, Context Profile, input labels, version, and uncertainty data. Those checks matter when applying it: **the S7 AC/INAC curve is not automatically a valid RES calibration for the S10 OpenA-1 editor-dose experiment**, which uses a different reporter and experimental context. A numerical inverse and a scientifically qualified interpretation are reported as separate statuses.
+Layer 2 thus turns a reporter-normalized optical signal into a **measured reference equivalent with explicit inverse error and scope**. The stored model also records its population definition, calibration context Θ, input labels, version, and uncertainty data. Those checks matter when applying it: **the S7 AC/INAC curve is not automatically a valid RES calibration for the S10 OpenA-1 editor-dose experiment**, which uses a different reporter and experimental context. A numerical inverse and a scientifically qualified interpretation are reported as separate statuses.
 
 ## 6. Layer 3 — Connecting Optical Signals to Molecular Evidence
 
