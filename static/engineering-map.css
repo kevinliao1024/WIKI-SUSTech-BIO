@@ -1,4 +1,4 @@
-/* An airy academic mind map: stable hit targets, gently floating typography. */
+/* A layered navigation map with one clearly highlighted reading path. */
 .engineering-workspace[data-engineering-view='map'] {
   max-width: none;
   padding: 22px clamp(18px, 3vw, 52px) 26px;
@@ -22,12 +22,12 @@
 .engineering-map-canvas {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, .8fr) minmax(0, 1.15fr) minmax(0, .65fr);
+  grid-template-columns: minmax(0, .95fr) minmax(0, .8fr) minmax(0, 1.2fr) minmax(0, .75fr);
   align-items: center;
-  column-gap: 5%;
+  column-gap: 4%;
   flex: 1 0 auto;
   width: 100%; min-width: 0; min-height: 430px;
-  padding: 20px 12px;
+  padding: 28px 36px;
   isolation: isolate;
 }
 .engineering-map-canvas::before {
@@ -37,8 +37,8 @@
 .engineering-map-lines { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
 .map-connection-path { fill: none; stroke: #d4dae5; stroke-width: 1.2; stroke-linecap: round; vector-effect: non-scaling-stroke; transition: stroke .2s ease; }
 .map-connection-anchor { fill: #fafbfd; stroke: #cbd2df; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
-.engineering-map-stream.is-active .map-connection-path { stroke: #919bb7; stroke-width: 1.5; }
-.engineering-map-stream.is-active .map-connection-anchor { fill: #929bb9; stroke: #929bb9; }
+.engineering-map-stream.is-active .map-connection-path { stroke: #7d83ae; stroke-width: 2; }
+.engineering-map-stream.is-active .map-connection-anchor { fill: #7d83ae; stroke: #7d83ae; }
 .engineering-map-root,
 .engineering-map-group,
 .engineering-map-leaf,
@@ -55,35 +55,45 @@
   user-select: none;
 }
 .engineering-map-root { grid-column: 1; grid-row: 1; min-height: 126px; padding: 20px 14px; }
-.engineering-map-root h1 { margin: 0; color: #29354a; font: 600 clamp(28px, 3.1vw, 46px)/1.15 'Source Sans 3', 'Segoe UI', sans-serif; letter-spacing: -.025em; animation: map-node-float 9s ease-in-out infinite; }
-.map-label { display: block; font-weight: 550; line-height: 1.3; animation: map-node-float 9s ease-in-out infinite; }
+.engineering-map-root h1 { margin: 0; color: #29354a; font: 600 clamp(26px, 2.5vw, 36px)/1.15 'Source Sans 3', 'Segoe UI', sans-serif; letter-spacing: -.025em; }
+.map-label { display: block; font-weight: 550; line-height: 1.3; }
 .engineering-map-groups { grid-column: 2; grid-row: 1; display: grid; gap: clamp(16px, 3.2vh, 34px); align-content: center; min-width: 0; }
 .engineering-map-group-row { position: relative; min-width: 0; }
-.engineering-map-group { height: 64px; font-size: clamp(18px, 1.7vw, 25px); cursor: pointer; transition: color .2s; }
-.engineering-map-group-row:nth-child(2n) .engineering-map-group .map-label { animation-delay: -3s; }
-.engineering-map-group-row:nth-child(3n) .engineering-map-group .map-label { animation-delay: -5s; }
-.engineering-map-group.is-selected { color: #465b87; }
+.engineering-map-group { height: 64px; border: 1px solid #e3e6ef; border-radius: 16px; background: #eef0f6; font-size: clamp(18px, 1.7vw, 25px); cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.engineering-map-group .map-label { font-weight: 650; }
+.engineering-map-group.is-selected { color: #414c7a; background: #e5e4f4; border-color: #a5a9cc; box-shadow: 0 4px 14px #4b527b0c; }
 .engineering-map-branches { grid-column: 3; grid-row: 1; min-width: 0; }
 .engineering-map-leaves { display: grid; gap: 18px; }
-.engineering-map-leaf { min-height: 64px; font-size: clamp(17px, 1.4vw, 21px); justify-content: flex-start; text-align: left; cursor: pointer; transition: color .2s; }
-.engineering-map-leaf .map-label { animation-delay: -2s; }
-.engineering-map-leaf:nth-child(2n) .map-label { animation-delay: -6s; }
-.engineering-map-leaf.is-selected { color: #465b87; }
+.engineering-map-leaf { min-height: 64px; border: 1px solid #dce1eb; border-radius: 12px; background: #fff; font-size: clamp(17px, 1.4vw, 21px); justify-content: flex-start; text-align: left; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.engineering-map-leaf.is-selected { color: #414c7a; border-color: #9a9fc5; background: #f2f1fa; box-shadow: inset 3px 0 #7d83ae; }
 .engineering-map[data-selected-group='model'] .engineering-map-leaves { gap: 12px; }
 .engineering-map[data-selected-group='model'] .engineering-map-leaf { min-height: 62px; font-size: clamp(16px, 1.25vw, 19px); }
 .engineering-map[data-simple='true'] .engineering-map-branches { visibility: hidden; }
 .engineering-map-cycles { grid-column: 4; grid-row: 1; display: grid; gap: 22px; min-width: 0; }
-.engineering-map-cycle { min-height: 62px; cursor: pointer; }
-.engineering-map-cycle strong { font-size: clamp(16px, 1.3vw, 20px); font-weight: 550; color: inherit; white-space: nowrap; }
-.engineering-map-cycle .map-label { animation-delay: -4s; }
-.engineering-map-cycle:nth-child(2) .map-label { animation-delay: -7s; }
+.engineering-map-cycle { min-height: 44px; padding: 10px 14px; border: 1px solid #d5d8e8; border-radius: 999px; background: #f0f0f8; color: #4b557e; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.engineering-map-cycle strong { font-size: clamp(15px, 1.2vw, 18px); font-weight: 550; color: inherit; white-space: nowrap; }
 .engineering-map-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) { gap: 8px; }
 .engineering-map-cycles:is([data-cycle-count='5'], [data-cycle-count='6']) .engineering-map-cycle { min-height: 44px; padding-block: 10px; }
 .engineering-map-cycles[data-many-cycles='true'] { gap: 4px; }
 .engineering-map-cycles[data-many-cycles='true'] .engineering-map-cycle { min-height: 36px; padding-block: 6px; }
 .engineering-map :is(button,a):hover { color: #40557e; }
-.engineering-map :is(button,a):focus-visible { outline: none; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
-@keyframes map-node-float { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
+.engineering-map :is(.engineering-map-group,.engineering-map-leaf,.engineering-map-cycle):hover { border-color: #929bc0; background: #e8eaf5; }
+.engineering-map :is(button,a):focus-visible { outline: 2px solid #6575a3; outline-offset: 4px; }
+/* Keep the anchor in a stable layout, but hit-test its moving surface so
+   displaced edges remain clickable without overlapping a neighbouring link. */
+.engineering-map .has-motion-surface { pointer-events:none; background:transparent !important; border-color:transparent !important; box-shadow:none !important; }
+.has-motion-surface > .map-label { visibility:hidden; }
+.map-node-surface { position:absolute; inset:-1px; display:flex; align-items:center; justify-content:inherit; text-align:inherit; padding:inherit; border:1px solid #dce1eb; border-radius:inherit; box-sizing:border-box; pointer-events:auto; background:#fff; transition:background .2s,border-color .2s,box-shadow .35s; }
+.engineering-map-group > .map-node-surface { background:#eef0f6; border-color:#e3e6ef; }
+.engineering-map-group.is-selected > .map-node-surface { background:#e5e4f4; border-color:#a5a9cc; }
+.engineering-map-leaf.is-selected > .map-node-surface { background:#f2f1fa; border-color:#9a9fc5; box-shadow:inset 3px 0 #7d83ae; }
+.engineering-map-cycle > .map-node-surface { background:#f0f0f8; border-color:#d5d8e8; }
+.has-motion-surface:hover > .map-node-surface { background:#e8eaf5; border-color:#929bc0; }
+.engineering-map[data-motion-enabled='true'] :is(.engineering-map-root,.map-node-surface) { will-change:transform; }
+.engineering-map[data-motion-enabled='true'] .map-node-surface { box-shadow:0 5px 14px #404b7409; }
+.engineering-map[data-motion-enabled='true'] .engineering-map-leaf.is-selected > .map-node-surface { box-shadow:inset 3px 0 #7d83ae,0 7px 18px #404b7410; }
+.engineering-map[data-motion-enabled='true'] .is-attracted > .map-node-surface { box-shadow:0 12px 26px #404b7420; border-color:#929bc0; }
+.engineering-map[data-motion-enabled='true'] .engineering-map-leaf.is-selected.is-attracted > .map-node-surface { box-shadow:inset 3px 0 #7d83ae,0 12px 26px #404b7420; }
 @media (min-width:901px) {
   .engineering-map-branches { position:relative; align-self:start; top:var(--branch-top,0px); }
   .engineering-map-cycles { position:relative; align-self:start; top:var(--cycle-top,0px); }
@@ -135,12 +145,16 @@
 .engineering-map[data-overview='true'] .engineering-map-leaves { grid-column:2; grid-row:var(--map-row); gap:8px; }
 .engineering-map[data-overview='true'] .engineering-map-leaf { min-height:56px; padding:12px 6px; font-size:clamp(15px,2vw,19px); }
 .engineering-map[data-overview='true'] .engineering-map-cycles { grid-column:1/-1; grid-row:7; position:static; width:100%; max-width:none; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.engineering-map[data-overview='true'] .engineering-map-cycles::before { content:attr(aria-label); grid-column:1/-1; font-size:16px; font-weight:650; color:#414c7a; }
+.engineering-map-currents { position:absolute; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; fill:none; stroke:#9ba7c4; stroke-width:1; opacity:.14; }
+.engineering-map[data-overview='true'] .engineering-map-currents { display:none; }
 .engineering-map[data-flow-paused='true'] *, .engineering-map[data-flow-paused='true'] *::before, .engineering-map[data-flow-paused='true'] *::after { animation-play-state:paused !important; }
 @media (prefers-reduced-motion:reduce) {
   .engineering-map *, .engineering-map *::before, .engineering-map *::after { animation:none !important; transition:none !important; }
+  .engineering-map :is(.engineering-map-root,.map-node-surface,.engineering-map-currents) { transform:none !important; will-change:auto; }
 }
 @media (forced-colors:active) {
-  .engineering-map-canvas::before { display:none; }
+  .engineering-map-canvas::before,.engineering-map-currents { display:none; }
   .engineering-map :is(.engineering-map-root,button,a) { color:CanvasText; }
   .engineering-map [aria-expanded='true'],.engineering-map .is-selected { color:Highlight; text-decoration:underline; }
   .map-connection-path { stroke:CanvasText; }

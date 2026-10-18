@@ -20,6 +20,11 @@
 <script type="application/json" data-engineering-map-data>{{ engineering_groups | tojson }}</script>
 <section class="engineering-map" data-engineering-map data-selected-group="" aria-labelledby="engineering-map-title">
   <div class="engineering-map-canvas" data-map-canvas>
+    <svg class="engineering-map-currents" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M-80 520C180 370 320 670 650 505S1040 365 1280 470"/>
+      <path d="M-80 546C180 396 320 696 650 531S1040 391 1280 496"/>
+      <path d="M-80 572C180 422 320 722 650 557S1040 417 1280 522"/>
+    </svg>
     <svg class="engineering-map-lines" data-map-lines aria-hidden="true" focusable="false"></svg>
     <div class="engineering-map-root">
       <h1 id="engineering-map-title">Engineering</h1>
