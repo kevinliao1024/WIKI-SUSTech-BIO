@@ -56,6 +56,7 @@ body.engineering-workspace-page {
 .engineering-controls h1 { margin: 0; color: #334071; text-align: center; font: 800 clamp(28px, 3vw, 42px)/1.1 "Avenir Next", "Segoe UI", sans-serif; letter-spacing: -.045em; }
 .engineering-controls .dbtl-directory { display: grid; place-items: center; min-height: 0; }
 .engineering-controls .dbtl-directory[hidden] { display: none !important; }
+.engineering-controls .dbtl-wheel[data-mascot-only] :is(.dbtl-wheel__stage, .dbtl-wheel__rotor) { display: none; }
 .engineering-controls .dbtl-wheel__stage[aria-disabled='true'] { opacity: .35; cursor: default; }
 .engineering-controls .dbtl-wheel { width: 100%; --dbtl-size: min(100%, 320px); }
 .engineering-cycles { display: grid; grid-template-columns: repeat(var(--cycle-count, 2), minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 330px; align-self: center; padding-inline: 14px; }
