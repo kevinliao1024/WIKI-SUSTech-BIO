@@ -96,6 +96,17 @@ body.engineering-workspace-page {
 .engineering-part-panel { display: flow-root; }
 .engineering-part-panel[hidden] { display: none; }
 .engineering-copy .markdown-content :is(p, li) { font: inherit; }
+.engineering-copy .markdown-content .engineering-cycle-prose {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #2d3038;
+  letter-spacing: normal;
+  text-align: left;
+}
+@media (max-width: 760px) {
+  .engineering-copy .markdown-content .engineering-cycle-prose { font-size: 18px; }
+}
 .engineering-copy .markdown-content :is(h2, h3, h4, h5, h6)[id] { scroll-margin-top: 0; }
 .engineering-copy .markdown-content h2 { padding: 34px 0 0; margin: 34px 0 22px; border-top: 1px solid #d2dcec; font: 700 32px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
 .engineering-copy .markdown-content h3 { margin: 30px 0 15px; font: 700 23px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
