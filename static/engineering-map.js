@@ -13,6 +13,7 @@
   const root = map.querySelector('.engineering-map-root');
   const desktop = matchMedia('(min-width: 901px)');
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const overview = () => !desktop.matches || !hover.matches;
   const namespace = 'http://www.w3.org/2000/svg';
   const streams = new Map();
@@ -22,14 +23,40 @@
   let keyboardNavigation = false;
   let keyboardSettlingUntil = 0;
   let pointerPosition;
+  let frame = 0;
+  let lastFrame = 0;
+  let motionTime = 0;
+  let pointerDown = false;
+  let canvasBounds;
+  let activeNodes = [];
+  let connections = [];
+  const motionStates = new Map();
+  const pointer = { inside: false, x: 0, y: 0, nx: 0, ny: 0, node: null };
+  const currents = map.querySelector('.engineering-map-currents');
+  const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
+  const canFloat = () => !map.hidden && !document.hidden && !overview() && !reducedMotion.matches && !keyboardNavigation;
 
   const groupButton = () => groupButtons.find(button => button.dataset.engineeringGroup === selectedGroup);
   const visibleLeaves = () => leafButtons.filter(button => !button.closest('[data-map-branch-group]').hidden);
   const nodeId = node => node.dataset.engineeringGroup || node.dataset.engineeringPart ||
     (node.dataset.mapCycle ? `${selectedPart}-cycle-${node.dataset.mapCycle}` : 'engineering');
 
+  function visualSurface(node) {
+    if (node === root) return node;
+    let surface = node.querySelector('.map-node-surface');
+    if (!surface) {
+      surface = document.createElement('span');
+      surface.className = 'map-node-surface';
+      surface.setAttribute('aria-hidden', 'true');
+      surface.append(node.querySelector('.map-label').cloneNode(true));
+      node.append(surface);
+      node.classList.add('has-motion-surface');
+    }
+    return surface;
+  }
+
   // Keep each downstream cluster beside its parent, clamped to the map canvas.
-  // Only layout changes measure nodes; animation itself runs in CSS, without a frame loop.
+  // Layout is measured only on selection/resize. Animation uses cached rectangles.
   function placeCluster(cluster, parent, property, bounds) {
     cluster.style.setProperty(property, '0px');
     if (overview() || !parent || cluster.hidden) return;
@@ -59,61 +86,152 @@
     return stream;
   }
 
+  function movingBox(node) {
+    const state = motionStates.get(node);
+    const box = state.box;
+    const dx = box.width * (state.scale - 1) / 2;
+    const dy = box.height * (state.scale - 1) / 2;
+    return { left: box.left + state.x - dx, right: box.right + state.x + dx,
+      top: box.top + state.y - dy, bottom: box.bottom + state.y + dy,
+      width: box.width * state.scale, height: box.height * state.scale };
+  }
+
+  function paintConnection({ from, to, stream }) {
+    const a = movingBox(from), b = movingBox(to);
+    const rootAbove = overview() && from === root;
+    const cyclesBelow = overview() && to.dataset.mapCycle;
+    const horizontal = !overview() || (!cyclesBelow && b.left >= a.right + 8);
+    const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
+    const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
+    const [x1, y1] = start, [x2, y2] = end;
+    const bend = Math.max(24, Math.abs(x2 - x1) * .55);
+    const leftBranch = Math.max(10, Math.min(x1, x2) - 30);
+    const points = rootAbove
+      ? [[x1,y1],[leftBranch,y1],[leftBranch,y2],[x2,y2]]
+      : horizontal ? [[x1,y1],[x1+bend,y1],[x2-bend,y2],[x2,y2]]
+      : [[x1,y1],[x1,(y1+y2)/2],[x2,(y1+y2)/2],[x2,y2]];
+    const d = `M${points[0]} C${points[1]} ${points[2]} ${points[3]}`;
+    if (stream.dataset.path === d) return;
+    stream.dataset.path = d;
+    stream.firstElementChild.setAttribute('d', d);
+    [...stream.children].slice(1).forEach((anchor, index) => {
+      anchor.setAttribute('cx', String(index ? x2 : x1));
+      anchor.setAttribute('cy', String(index ? y2 : y1));
+    });
+  }
+
+  function resetFloating() {
+    for (const [node, state] of motionStates) {
+      state.x = state.y = state.vx = state.vy = 0;
+      state.scale = 1;
+      state.surface.style.removeProperty('transform');
+      node.classList.remove('is-attracted');
+    }
+    currents.style.removeProperty('transform');
+    connections.forEach(paintConnection);
+  }
+
+  function animate(now) {
+    frame = 0;
+    if (!canFloat()) { resetFloating(); return; }
+    frame = requestAnimationFrame(animate);
+    // Follow the display refresh rate; cached geometry keeps layout out of this loop.
+    const dt = Math.min((now - (lastFrame || now - 16.7)) / 1000, 1 / 30);
+    lastFrame = now;
+    if (pointerDown) return;
+    motionTime += dt;
+    const currentGroup = groupButton();
+    activeNodes.forEach((node, index) => {
+      const state = motionStates.get(node), box = state.box;
+      const isCycle = Boolean(node.dataset.mapCycle);
+      const dense = isCycle && cycleLinks.length > 6;
+      const primary = pointer.inside && pointer.node === node;
+      const linked = pointer.inside && pointer.node && (node === root || node === currentGroup || node.dataset.engineeringPart === selectedPart || isCycle);
+      const phase = node === root ? 0 : isCycle ? 2.8 : index * .85;
+      const depth = node === root ? .9 : isCycle ? 1.04 : 1;
+      const cx = box.left + box.width / 2, cy = box.top + box.height / 2;
+      const pull = primary ? .12 : linked ? .018 : 0;
+      const tx = Math.sin(motionTime * .4 + phase) * 2.2 + (pointer.inside ? pointer.nx * 22 * depth : 0) + clamp((pointer.x - cx) * pull, primary ? -7 : -2.5, primary ? 7 : 2.5);
+      const ty = Math.sin(motionTime * .52 + phase) * (dense ? .7 : 2.6) + (pointer.inside ? pointer.ny * 14 * depth : 0) + clamp((pointer.y - cy) * pull, primary && !dense ? -5 : -1.5, primary && !dense ? 5 : 1.5) - (primary && !dense ? 2 : 0);
+      // A softer, nearly critically damped spring preserves momentum when the
+      // pointer reverses or leaves. Bound the target, not the spring's travel.
+      state.vx += ((tx - state.x) * 32 - state.vx * 11.5) * dt;
+      state.vy += ((ty - state.y) * 32 - state.vy * 11.5) * dt;
+      state.x += state.vx * dt;
+      state.y += state.vy * dt;
+      state.scale += ((primary && !dense && node !== root ? 1.018 : 1) - state.scale) * (1 - Math.exp(-dt * 10));
+      state.surface.style.transform = `translate3d(${state.x.toFixed(2)}px,${state.y.toFixed(2)}px,0) scale(${state.scale.toFixed(4)})`;
+      node.classList.toggle('is-attracted', primary);
+    });
+    const drift = motionStates.get(root);
+    if (drift) {
+      currents.style.transform = `translate3d(${(-drift.x * .7).toFixed(2)}px,${(-drift.y * .5).toFixed(2)}px,0)`;
+    }
+    connections.forEach(paintConnection);
+  }
+
+  function syncFloating() {
+    map.dataset.motionEnabled = String(canFloat());
+    if (!canFloat()) {
+      cancelAnimationFrame(frame); frame = 0; lastFrame = 0;
+      pointer.inside = false; pointer.node = null;
+      resetFloating();
+    } else if (!frame) { lastFrame = 0; frame = requestAnimationFrame(animate); }
+  }
+
   function draw() {
     queued = false;
     if (map.hidden) return;
+    // Temporarily clear visual offsets while measuring the stable layout.
+    motionStates.forEach(state => state.surface.style.removeProperty('transform'));
     const bounds = canvas.getBoundingClientRect();
+    canvasBounds = bounds;
+    const clusterBounds = { top: bounds.top, height: bounds.height };
     const currentGroup = groupButton();
-    placeCluster(branches, currentGroup, '--branch-top', bounds);
+    placeCluster(branches, currentGroup, '--branch-top', clusterBounds);
     const leaves = visibleLeaves();
     const currentLeaf = leaves.find(button => button.dataset.engineeringPart === selectedPart);
-    placeCluster(cycles, currentLeaf || currentGroup, '--cycle-top', bounds);
+    placeCluster(cycles, currentLeaf || currentGroup, '--cycle-top', clusterBounds);
     lines.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
     const retained = new Set();
+    activeNodes = [root, ...groupButtons, ...leaves, ...(cycles.hidden ? [] : cycleLinks)];
+    connections = [];
+    for (const node of motionStates.keys()) {
+      if (!activeNodes.includes(node)) { node.classList.remove('is-attracted'); motionStates.delete(node); }
+    }
+    activeNodes.forEach(node => {
+      const rect = (node === root ? node.querySelector('h1') : node).getBoundingClientRect();
+      const state = motionStates.get(node) || { x: 0, y: 0, vx: 0, vy: 0, scale: 1 };
+      state.surface = visualSurface(node);
+      state.box = { left:rect.left-bounds.left, right:rect.right-bounds.left, top:rect.top-bounds.top, bottom:rect.bottom-bounds.top, width:rect.width, height:rect.height };
+      motionStates.set(node, state);
+      state.surface.style.transform = `translate3d(${state.x}px,${state.y}px,0) scale(${state.scale})`;
+    });
 
     function connect(from, to, active) {
       if (!from) return;
-      const a = (from.querySelector('.map-label, h1') || from).getBoundingClientRect();
-      const b = (to.querySelector('.map-label') || to).getBoundingClientRect();
-      const rootAbove = overview() && from === root;
-      const cyclesBelow = overview() && to.dataset.mapCycle;
-      const horizontal = !overview() || (!cyclesBelow && b.left >= a.right + 8);
-      const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
-      const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
-      const x1 = start[0] - bounds.left, y1 = start[1] - bounds.top;
-      const x2 = end[0] - bounds.left, y2 = end[1] - bounds.top;
-      const bend = Math.max(24, Math.abs(x2 - x1) * .55);
-      const leftBranch = Math.max(10, Math.min(x1, x2) - 30);
-      const points = rootAbove
-        ? [[x1,y1],[leftBranch,y1],[leftBranch,y2],[x2,y2]]
-        : horizontal
-        ? [[x1,y1],[x1+bend,y1],[x2-bend,y2],[x2,y2]]
-        : [[x1,y1],[x1,(y1+y2)/2],[x2,(y1+y2)/2],[x2,y2]];
-      const d = `M${points[0]} C${points[1]} ${points[2]} ${points[3]}`;
       const fromId = nodeId(from), toId = nodeId(to), key = `${fromId}:${toId}`;
       retained.add(key);
       const stream = streams.get(key) || makeStream(key);
       stream.classList.toggle('is-active', active);
       stream.dataset.from = fromId;
       stream.dataset.to = toId;
-      if (stream.dataset.path !== d) {
-        stream.dataset.path = d;
-        stream.querySelector('path').setAttribute('d', d);
-        stream.querySelectorAll('circle').forEach((anchor, index) => {
-          anchor.setAttribute('cx', String(index ? x2 : x1));
-          anchor.setAttribute('cy', String(index ? y2 : y1));
-        });
-      }
+      const connection = { from, to, stream };
+      connections.push(connection);
+      paintConnection(connection);
     }
     groupButtons.forEach(button => connect(root, button, button.dataset.engineeringGroup === selectedGroup));
     leaves.forEach(button => {
       const groupId = button.closest('[data-map-branch-group]').dataset.mapBranchGroup;
       connect(groupButtons.find(group => group.dataset.engineeringGroup === groupId), button, button.dataset.engineeringPart === selectedPart);
     });
-    if (!cycles.hidden) cycleLinks.forEach(link => connect(currentLeaf || currentGroup, link, true));
+    // In the narrow overview, cycles sit below all modules. A labelled picker
+    // avoids drawing long connections through unrelated module rows.
+    if (!cycles.hidden && !overview()) cycleLinks.forEach(link => connect(currentLeaf || currentGroup, link, true));
     streams.forEach((stream, key) => {
       if (!retained.has(key)) { stream.remove(); streams.delete(key); }
     });
+    syncFloating();
   }
 
   function schedule() {
@@ -178,6 +296,33 @@
     if (button.dataset.engineeringGroup) chooseGroup(button.dataset.engineeringGroup);
     else if (button.dataset.engineeringPart !== selectedPart) choosePart(button.dataset.engineeringPart);
   }
+  let motionPointerPosition;
+  map.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' || overview() || reducedMotion.matches) return;
+    const position = `${event.clientX}:${event.clientY}`;
+    // Transformed nodes can generate enter/leave events under a stationary
+    // cursor. Only physical pointer movement changes the attracted node.
+    if (pointer.inside && motionPointerPosition === position) return;
+    motionPointerPosition = position;
+    keyboardNavigation = false;
+    if (!canvasBounds) return;
+    pointer.inside = true;
+    pointer.x = event.clientX - canvasBounds.left;
+    pointer.y = event.clientY - canvasBounds.top;
+    pointer.nx = clamp(pointer.x / canvasBounds.width * 2 - 1, -1, 1);
+    pointer.ny = clamp(pointer.y / canvasBounds.height * 2 - 1, -1, 1);
+    pointer.node = event.target.closest('.engineering-map-group,.engineering-map-leaf,.engineering-map-cycle');
+    syncFloating();
+  }, { passive: true });
+  map.addEventListener('pointerleave', () => { pointer.inside = false; pointer.node = null; });
+  map.addEventListener('pointerdown', () => { pointerDown = true; }, { passive: true });
+  addEventListener('pointerup', () => { pointerDown = false; }, { passive: true });
+  addEventListener('pointercancel', () => { pointerDown = false; pointer.inside = false; });
+  addEventListener('blur', () => { pointerDown = false; pointer.inside = false; pointer.node = null; });
+  map.addEventListener('scroll', schedule, { passive: true });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Tab' && !map.hidden) { keyboardNavigation = true; syncFloating(); }
+  });
   [...groupButtons, ...leafButtons].forEach(button => {
     button.addEventListener('mousemove', event => {
       // Revealing or resizing a branch must not select a different node under
@@ -206,6 +351,7 @@
   });
   map.addEventListener('keydown', event => {
     keyboardNavigation = true;
+    syncFloating();
     keyboardSettlingUntil = performance.now() + 300;
     if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
     const group = event.target.closest('[data-engineering-group]');
@@ -235,21 +381,28 @@
     schedule();
   });
   function updateMotion() {
-    map.dataset.flowPaused = String(map.hidden || document.hidden);
+    map.dataset.flowPaused = String(map.hidden || document.hidden || reducedMotion.matches);
+    if (map.hidden || document.hidden) pointerDown = false;
+    syncFloating();
     if (!map.hidden) schedule();
   }
   function updateLayout() {
     map.dataset.overview = String(overview());
     branchGroups.forEach(section => { section.hidden = !overview() && section.dataset.mapBranchGroup !== selectedGroup; });
+    syncFloating();
     schedule();
   }
   new MutationObserver(updateMotion).observe(map, { attributes: true, attributeFilter: ['hidden'] });
   document.addEventListener('visibilitychange', updateMotion);
   addEventListener('resize', updateLayout);
   hover.addEventListener('change', updateLayout);
+  reducedMotion.addEventListener('change', updateMotion);
   addEventListener('load', schedule);
   if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(canvas);
   document.fonts?.ready.then(schedule);
   updateLayout();
+  // Start with a complete example path; later map-select events restore the
+  // reader's current module, including when returning from a deep link.
+  choosePart('pod');
   updateMotion();
 })();
