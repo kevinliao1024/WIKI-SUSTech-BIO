@@ -72,7 +72,7 @@
   function selectDiagram(link) {
     if (map.hidden) return;
     if (link.dataset.overviewSelectGroup) chooseGroup(link.dataset.overviewSelectGroup);
-    else choosePart(link.dataset.overviewTarget);
+    else choosePart(link.dataset.overviewTarget.replace(/-cycle-\d{2}.*$/, ''));
   }
   diagramLinks.forEach(link => {
     link.addEventListener('pointermove', event => {
@@ -147,14 +147,15 @@
 
   function paintConnection({ from, to, stream }) {
     const a = movingBox(from), b = movingBox(to);
-    const rootAbove = (!wide.matches || overview()) && from === root;
-    const horizontal = !overview() || b.left >= a.right + 8;
-    const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
-    const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
+    const peer = to.classList.contains('engineering-map-peer');
+    const rootAbove = !peer && (!wide.matches || overview()) && from === root;
+    const horizontal = !peer && (!overview() || b.left >= a.right + 8);
+    const start = peer ? [a.left - 10, a.top + a.height / 2] : rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
+    const end = peer ? [b.left - 10, b.top + b.height / 2] : rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
     const [x1, y1] = start, [x2, y2] = end;
     const bend = Math.max(24, Math.abs(x2 - x1) * .55);
-    const leftBranch = Math.max(10, Math.min(x1, x2) - 30);
-    const points = rootAbove
+    const leftBranch = Math.max(10, Math.min(x1, x2) - (peer ? 48 : 30));
+    const points = peer || rootAbove
       ? [[x1,y1],[leftBranch,y1],[leftBranch,y2],[x2,y2]]
       : horizontal ? [[x1,y1],[x1+bend,y1],[x2-bend,y2],[x2,y2]]
       : [[x1,y1],[x1,(y1+y2)/2],[x2,(y1+y2)/2],[x2,y2]];
@@ -244,7 +245,7 @@
       if (!activeNodes.includes(node)) { node.classList.remove('is-attracted'); motionStates.delete(node); }
     }
     activeNodes.forEach(node => {
-      const rect = (node === root ? node.querySelector('h1') : node).getBoundingClientRect();
+      const rect = node.getBoundingClientRect();
       const state = motionStates.get(node) || { x: 0, y: 0, vx: 0, vy: 0, scale: 1 };
       state.surface = visualSurface(node);
       state.box = { left:rect.left-bounds.left, right:rect.right-bounds.left, top:rect.top-bounds.top, bottom:rect.bottom-bounds.top, width:rect.width, height:rect.height };
@@ -334,7 +335,7 @@
     pointer.node = event.target.closest('.engineering-map-group,.engineering-map-leaf');
     syncFloating();
   }, { passive: true });
-  canvas.addEventListener('pointerleave', () => { pointer.inside = false; pointer.node = null; });
+  canvas.addEventListener('pointerleave', () => { pointer.inside = false; pointer.node = null; pointerPosition = undefined; });
   map.addEventListener('pointerdown', () => { pointerDown = true; }, { passive: true });
   addEventListener('pointerup', () => { pointerDown = false; }, { passive: true });
   addEventListener('pointercancel', () => { pointerDown = false; pointer.inside = false; });

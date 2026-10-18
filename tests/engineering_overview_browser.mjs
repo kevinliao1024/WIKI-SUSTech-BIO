@@ -29,12 +29,65 @@ try {
  const groups=await page.locator('[data-engineering-map-data]').evaluate(e=>JSON.parse(e.textContent));
  assert.equal(await page.locator('.engineering-map-cycles,[data-map-cycle]').count(),0);
  assert.equal(await art().locator('image').count(),1);
- assert.equal(await art().locator('[data-overview-layer]').count(),18);
+ assert.equal(await art().locator('[data-overview-layer]').count(),21);
  const left=await page.locator('[data-map-canvas]').boundingBox(),right=await art().boundingBox();
  assert.ok(left.x+left.width<right.x,'Mind map is entirely left of overview.');
+ // Fundamental is a peer of the root on the map, but a regular reader category.
+ const peer=page.locator('.engineering-map-peer[data-engineering-group="fundamental-research"]');
+ assert.equal(await peer.locator('xpath=ancestor::nav').count(),0);
+ const peerBox=await peer.boundingBox(),rootBox=await page.locator('.engineering-map-root').boundingBox();
+ assert.ok(Math.abs(peerBox.x+peerBox.width/2-rootBox.x-rootBox.width/2)<2);
+ assert.ok(peerBox.y+peerBox.height<rootBox.y);
+ assert.equal(await page.locator('[data-from="engineering"][data-to="fundamental-research"]').count(),1);
+ const fvPeer=page.locator('.engineering-map-peer[data-engineering-group="functional-validation"]');
+ assert.equal(await fvPeer.locator('xpath=ancestor::nav').count(),0);
+ const fvBox=await fvPeer.boundingBox();
+ assert.ok(Math.abs(fvBox.x+fvBox.width/2-rootBox.x-rootBox.width/2)<2);
+ assert.ok(fvBox.y>rootBox.y+rootBox.height);
+ assert.equal(await page.locator('[data-from="engineering"][data-to="functional-validation"]').count(),1);
+ await fvPeer.hover();await assertColor('','functional-validation');
+ await page.screenshot({path:`${output}/desktop-functional.png`});
+ for(const number of ['01','02','03']){
+  await page.locator(`[data-overview-target="functional-validation-cycle-${number}"]`).click();
+  await selected('functional-validation');
+  assert.equal(new URL(page.url()).hash,`#functional-validation-cycle-${number}`);
+  assert.match(await page.locator('[data-engineering-cycles]').innerText(),/Experiment/);
+  for(const stage of ['design','build','test','learn']){
+   await page.locator(`[data-dbtl-stage="${stage}"]`).click();
+   assert.equal(new URL(page.url()).hash,`#functional-validation-cycle-${number}-${stage}`);
+  }
+  await back();
+ }
+ await page.goto(`${base}/engineering#functional-validation-cycle-03-test`,{waitUntil:'networkidle'});
+ await selected('functional-validation');
+ await page.screenshot({path:`${output}/functional-reader.png`});
+ await page.setViewportSize({width:390,height:844});
+ await page.reload({waitUntil:'networkidle'});await selected('functional-validation');
+ await page.screenshot({path:`${output}/functional-reader-mobile.png`});
+ await page.setViewportSize({width:1440,height:1000});await back();
+ await peer.hover();await assertColor('','fundamental-research');
+ await page.screenshot({path:`${output}/desktop-fundamental.png`});
+ for(const number of ['01','02']){
+  await page.locator(`[data-overview-target="fundamental-research-cycle-${number}"]`).click();
+  await selected('fundamental-research');
+  assert.equal(new URL(page.url()).hash,`#fundamental-research-cycle-${number}`);
+  for(const stage of ['design','build','test','learn']){
+   await page.locator(`[data-dbtl-stage="${stage}"]`).click();
+   assert.equal(new URL(page.url()).hash,`#fundamental-research-cycle-${number}-${stage}`);
+  }
+  await back();
+ }
+ await page.goto(`${base}/engineering#fundamental-research-cycle-02-test`,{waitUntil:'networkidle'});
+ await selected('fundamental-research');
+ await page.screenshot({path:`${output}/fundamental-reader.png`});
+ await page.setViewportSize({width:390,height:844});
+ await page.reload({waitUntil:'networkidle'});await selected('fundamental-research');
+ await page.screenshot({path:`${output}/fundamental-reader-mobile.png`});
+ await page.setViewportSize({width:1440,height:1000});
+ await back();
  for(const group of groups){
   const parent=page.locator(`[data-engineering-group="${group.id}"]`);
-  await parent.hover();await assertColor('',group.id);
+  await page.mouse.move(8,105);await parent.hover();await assertColor('',group.id);
   for(const part of group.parts){
    if(group.parts.length>1){await page.locator(`[data-engineering-part="${part.id}"]`).hover();await assertColor(part.id,group.id);}
    const diagram=page.locator(`[data-overview-target="${part.id}"]${group.parts.length>1?':not([data-overview-select-group])':''}`).first();
@@ -76,6 +129,6 @@ try {
  await mobile.locator('[data-overview-target="aso"]').tap();
  await mobile.waitForFunction(()=>document.querySelector('[data-engineering-workspace]').dataset.engineeringActivePart==='aso');
  assert.deepEqual(errors,[]);
- await writeFile(`${output}/result.json`,JSON.stringify({passed:true,parts:groups.flatMap(g=>g.parts).length,rasterAssets:1,layers:18,checks:['bidirectional hover','grayscale isolation','both chapter destinations','keyboard Enter','reader return','motion','responsive overflow','touch tap'],errors},null,2));
- console.log('PASS: all 14 chapters from both sides, hover color isolation, keyboard, motion, mobile and touch.');
+ await writeFile(`${output}/result.json`,JSON.stringify({passed:true,parts:groups.flatMap(g=>g.parts).length,rasterAssets:1,layers:21,checks:['bidirectional hover','grayscale isolation','both chapter destinations','keyboard Enter','reader return','motion','responsive overflow','touch tap'],errors},null,2));
+ console.log('PASS: all 16 chapters from both sides, hover color isolation, keyboard, motion, mobile and touch.');
 } finally {await browser.close();}

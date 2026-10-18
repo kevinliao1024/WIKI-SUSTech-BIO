@@ -1,4 +1,5 @@
 {% set engineering_groups = [
+  {'id': 'fundamental-research', 'label': 'Fundamental Research', 'parts': [{'id': 'fundamental-research', 'label': 'Fundamental Research'}]},
   {'id': 'edit', 'label': 'Edit', 'parts': [
     {'id': 'pod', 'label': 'POD'},
     {'id': 'cetus', 'label': 'CETUS'},
@@ -15,7 +16,8 @@
     {'id': 'model-puf', 'label': 'PUF Specificity Design'},
     {'id': 'model-apobec', 'label': 'APOBEC Engineering'},
     {'id': 'model-lamar', 'label': 'LAMAR Prioritization'},
-    {'id': 'model-whole-body', 'label': 'Whole-body Delivery Model'}]}
+    {'id': 'model-whole-body', 'label': 'Whole-body Delivery Model'}]},
+  {'id': 'functional-validation', 'label': 'Functional Validation', 'parts': [{'id': 'functional-validation', 'label': 'Functional Validation'}]}
 ] %}
 <script type="application/json" data-engineering-map-data>{{ engineering_groups | tojson }}</script>
 <section class="engineering-map" data-engineering-map data-selected-group="" aria-labelledby="engineering-map-title">
@@ -26,20 +28,21 @@
       <path d="M-80 572C180 422 320 722 650 557S1040 417 1280 522"/>
     </svg>
     <svg class="engineering-map-lines" data-map-lines aria-hidden="true" focusable="false"></svg>
+    <a class="engineering-map-group engineering-map-peer" data-engineering-group="fundamental-research" href="#fundamental-research" aria-label="Fundamental Research, open overview"><span class="map-label">Fundamental Research</span></a>
     <div class="engineering-map-root">
-      <h1 id="engineering-map-title">Engineering</h1>
+      <h1 id="engineering-map-title">Platform Development</h1>
     </div>
     <nav class="engineering-map-groups" aria-label="Engineering parts">
-      {% for group in engineering_groups %}
-      <div class="engineering-map-group-row" style="--map-row: {{ loop.index + 1 }}">
+      {% for group in engineering_groups if group.id not in ['fundamental-research', 'functional-validation'] %}
+      <div class="engineering-map-group-row" style="--map-row: {{ loop.index + 2 }}">
         <a class="engineering-map-group" data-engineering-group="{{ group.id }}" href="#{{ group.parts[0].id }}" aria-label="{{ group.label }}, open {{ group.parts[0].label }} overview"><span class="map-label">{{ group.label }}</span></a>
       </div>
       {% endfor %}
     </nav>
     <div class="engineering-map-branches">
-      {% for group in engineering_groups %}
+      {% for group in engineering_groups if group.id not in ['fundamental-research', 'functional-validation'] %}
       {% if group.parts | length > 1 %}
-      <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" style="--map-row: {{ loop.index + 1 }}" role="group" aria-label="{{ group.label }} branches" hidden>
+      <div class="engineering-map-leaves" id="engineering-map-{{ group.id }}" data-map-branch-group="{{ group.id }}" style="--map-row: {{ loop.index + 2 }}" role="group" aria-label="{{ group.label }} branches" hidden>
         {% for part in group.parts %}
         <a class="engineering-map-leaf" data-engineering-part="{{ part.id }}" href="#{{ part.id }}" aria-label="{{ part.label }}, open overview"><span class="map-label">{{ part.label }}</span></a>
         {% endfor %}
@@ -47,10 +50,10 @@
       {% endif %}
       {% endfor %}
     </div>
+    <a class="engineering-map-group engineering-map-peer engineering-map-peer--functional" data-engineering-group="functional-validation" href="#functional-validation" aria-label="Functional Validation, open overview"><span class="map-label">Functional Validation</span></a>
 
   </div>
   <figure class="engineering-overview">
     {% include 'components/engineering_overview.html' %}
-    <figcaption>Hover to explore · Click to read</figcaption>
   </figure>
 </section>

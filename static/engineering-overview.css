@@ -1,17 +1,16 @@
 /* The overview is native vector geometry, with one original AAV raster icon. */
-.engineering-workspace[data-engineering-view='map'] { padding:14px 28px 18px; background:#fff; }
-.engineering-map { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); gap:28px; align-items:center; }
+.engineering-workspace[data-engineering-view='map'] { --engineering-overview-height:calc(100svh - var(--engineering-nav-height,112px) - 16px); padding:8px 28px; background:#fff; }
+.engineering-map { display:grid; grid-template-columns:minmax(0,1fr) min(38vw,calc(var(--engineering-overview-height) * .45693)); gap:clamp(24px,3vw,48px); align-items:center; }
 .engineering-map-canvas { height:100%; min-height:480px; padding:24px 8px; column-gap:7%; grid-template-columns:minmax(0,.95fr) minmax(0,.8fr) minmax(0,1.35fr); }
 .engineering-map-canvas::before { background:none; }
 .engineering-map-root { padding-inline:0; }
-.engineering-map-root h1 { font-size:clamp(24px,2.2vw,34px); }
-.engineering-map-groups { gap:26px; }
+.engineering-map-root h1 { max-width:100%; font-size:clamp(21px,1.9vw,29px); text-wrap:balance; }
+.engineering-map-groups { gap:32px; }
 .engineering-map-group { height:58px; padding:12px 8px; font-size:clamp(18px,1.6vw,23px); }
 .engineering-map-leaf { min-height:58px; padding:12px 14px; font-size:clamp(16px,1.4vw,20px); }
 .engineering-map[data-selected-group='model'] .engineering-map-leaf { font-size:clamp(15px,1.2vw,18px); }
 .engineering-overview { display:flex; flex-direction:column; align-items:center; justify-content:center; align-self:stretch; min-width:0; min-height:0; margin:0; }
-.engineering-overview-art { display:block; width:100%; height:100%; min-height:0; max-height:calc(100svh - var(--engineering-nav-height,112px) - 60px); overflow:visible; }
-.engineering-overview figcaption { flex:none; margin:6px 0 0; color:#657184; font-size:13px; text-align:center; }
+.engineering-overview-art { display:block; width:100%; height:100%; min-height:0; max-height:var(--engineering-overview-height); overflow:visible; }
 .overview-layer { pointer-events:none; }
 .overview-layer image { filter:grayscale(1); }
 .overview-layer.is-active image { filter:none; }
@@ -20,7 +19,7 @@
 .overview-links a:focus-visible > rect { stroke:#263f73; stroke-dasharray:5 4; }
 @media (max-width:1150px) and (min-width:901px) {
   .engineering-workspace[data-engineering-view='map'] { padding-inline:18px; }
-  .engineering-map { gap:12px; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
+  .engineering-map { gap:24px; }
   .engineering-map-canvas { column-gap:5%; grid-template-columns:minmax(0,.9fr) minmax(0,.75fr) minmax(0,1.35fr); }
   .engineering-map-root h1 { font-size:23px; }
   .engineering-map-leaf { padding-inline:10px; }
@@ -30,7 +29,6 @@
   .engineering-map-canvas { height:auto; }
   .engineering-overview { width:min(100%,600px); justify-self:center; }
   .engineering-overview-art { flex:none; height:auto; max-height:none; aspect-ratio:732 / 1017; }
-  .engineering-overview figcaption { margin-bottom:18px; }
 }
 @media (prefers-reduced-motion:reduce) { .overview-layer { transition:none; } }
 @media (forced-colors:active) {
@@ -40,8 +38,8 @@
 
 /* Keep both representations in view in a narrow desktop preview panel. */
 @media (min-width:600px) and (max-width:900px) and (hover:hover) and (pointer:fine) {
-  .engineering-workspace[data-engineering-view='map'] { padding:10px 12px 14px; }
-  .engineering-map { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px; }
+  .engineering-workspace[data-engineering-view='map'] { --engineering-overview-height:calc(100svh - var(--engineering-nav-height,112px) - 24px); padding:10px 12px 14px; }
+  .engineering-map { grid-template-columns:minmax(0,1fr) min(45vw,calc(var(--engineering-overview-height) * .45693)); gap:24px; }
   .engineering-map-canvas { min-height:440px; grid-template-columns:minmax(64px,.7fr) minmax(0,1.3fr); grid-template-rows:64px auto; align-content:center; gap:18px 20px; padding:10px 2px; }
   .engineering-map-root { grid-column:1/-1; grid-row:1; min-height:0; }
   .engineering-map-root h1 { font-size:24px; }
@@ -50,5 +48,85 @@
   .engineering-map-branches { grid-column:2; grid-row:2; position:relative; align-self:start; top:var(--branch-top,0px); }
   .engineering-map-leaves { gap:12px; }
   .engineering-map-leaf, .engineering-map[data-selected-group='model'] .engineering-map-leaf { min-height:46px; padding:8px; font-size:13px; }
-  .engineering-overview figcaption { font-size:11px; }
 }
+
+/* Fundamental Research and Functional Validation share the root column. */
+.engineering-map-peer {
+  grid-column:1; grid-row:1; align-self:center; transform:translateY(-190px);
+  height:auto; min-height:76px; padding:10px 0;
+  border:0; background:transparent; font-size:clamp(21px,1.9vw,29px);
+}
+.engineering-map-peer > .map-node-surface { background:transparent; border-color:transparent; }
+.engineering-map-peer .map-label { font-weight:600; }
+.engineering-map-peer.is-selected > .map-node-surface { background:#eef2f8; border-color:#b7c8dc; }
+@media (max-width:900px) {
+  .engineering-map-canvas { grid-template-rows:76px 64px auto; }
+  .engineering-map-peer { grid-column:1/-1; grid-row:1; transform:none; max-width:250px; justify-self:center; font-size:23px; }
+  .engineering-map-root { grid-row:2; }
+  .engineering-map-groups, .engineering-map-branches { grid-row:3; }
+}
+.engineering-map[data-overview='true'] .engineering-map-peer { grid-column:1/-1; grid-row:1; transform:none; justify-self:center; max-width:260px; font-size:25px; }
+.engineering-map[data-overview='true'] .engineering-map-root { grid-row:2; }
+@media (max-width:599px), (hover:none) {
+  .engineering-overview-art { aspect-ratio:732 / 1602; }
+}
+.engineering-workspace:is([data-engineering-active-part='fundamental-research'],[data-engineering-active-part='functional-validation']) .engineering-heading-row--group { font-size:14px; }
+.engineering-workspace:is([data-engineering-active-part='fundamental-research'],[data-engineering-active-part='functional-validation']) .engineering-heading-row > :is(.engineering-heading-group,.engineering-heading-part) { white-space:normal; line-height:1.05; }
+
+/* Keep the two overview-level titles on one line and reserve their full width. */
+.engineering-map-root h1,
+.engineering-map-peer .map-label {
+  white-space:nowrap;
+  text-wrap:nowrap;
+  font-size:clamp(20px,1.65vw,26px);
+}
+@media (min-width:901px) and (hover:hover) and (pointer:fine) {
+  .engineering-map-canvas {
+    grid-template-columns:max-content minmax(100px,.85fr) minmax(0,1.3fr);
+    column-gap:clamp(28px,3.5vw,54px);
+  }
+  .engineering-map-groups { width:100%; max-width:170px; justify-self:center; }
+  .engineering-map-branches { width:100%; max-width:330px; justify-self:start; }
+}
+@media (max-width:900px), (hover:none) {
+  .engineering-map-peer,
+  .engineering-map[data-overview='true'] .engineering-map-peer { max-width:100%; }
+  .engineering-map-root h1,
+  .engineering-map-peer .map-label { font-size:clamp(20px,3.4vw,25px); }
+}
+
+
+/* Framed peer modules with a clear left-hand lane for their curved connector. */
+.engineering-map-root,
+.engineering-map-peer {
+  box-sizing:border-box;
+  height:64px; min-height:64px;
+  padding:12px 14px;
+  border:1px solid #cbd4e4;
+  border-radius:16px;
+  background:#eef2f8;
+}
+.engineering-map-peer > .map-node-surface {
+  background:#eef2f8;
+  border-color:#cbd4e4;
+}
+.engineering-map-peer.is-selected > .map-node-surface {
+  background:#e5e4f4;
+  border-color:#a5a9cc;
+}
+@media (min-width:901px) and (hover:hover) and (pointer:fine) {
+  .engineering-map-canvas { padding-left:64px; }
+}
+@media (max-width:900px), (hover:none) {
+  .engineering-map-canvas,
+  .engineering-map[data-overview='true'] .engineering-map-canvas { padding-left:44px; }
+  .engineering-map-root,
+  .engineering-map-peer { padding-inline:10px; }
+}
+
+/* Functional Validation is a peer below Platform Development, not a workstream. */
+.engineering-map-peer--functional { transform:translateY(190px); }
+@media (max-width:900px) {
+  .engineering-map-peer--functional { grid-row:4; transform:none; }
+}
+.engineering-map[data-overview='true'] .engineering-map-peer--functional { grid-row:8; transform:none; }

@@ -74,79 +74,19 @@ The [Whole-body Delivery Model](/software#rewire) extended this workflow to deli
 
 ## 06. Functional Validation — Toward Disease-Relevant Cellular Effects
 
-Molecular editing is necessary for ORCA's therapeutic ambition, but it is not sufficient. A transcript carrying the desired APOE4-to-APOE3-equivalent change must ultimately produce a meaningful biological consequence. We therefore moved beyond artificial APOE reporters to explore two functions associated with astrocytic apoE biology: **lipid homeostasis** and **extracellular Aβ42 handling**.
-
-### Choosing an Endogenous-APOE Cell Model
-
-Astrocytes are major contributors to apoE production and lipid transport in the central nervous system, and participate in extracellular Aβ processing. Published studies—including **Lin et al. (2018)** and **Sienski et al. (2021)**—have linked APOE4 astrocytes to altered lipid metabolism and Aβ-related phenotypes, providing a rationale for both experimental directions [1,2,3,12].
-
-Our preferred model was initially **APOE4/4 human iPSC-derived astrocytes** from BrainXell. Purchasing advanced to quotation and pre-order discussions, but uncertainty around import requirements, cold-chain delivery, and the project schedule prevented their timely use. We instead selected **CCF-STTG1**, a human astrocytoma-derived line with documented apoE expression, secretion, and lipid-related responses. Its reported **APOE3/APOE4 background** [4] allowed us to investigate endogenous APOE-associated biology in an experimentally accessible human cell model.
-
-This choice also defined the interpretation of our experiments. CCF-STTG1 is **not equivalent to a normal APOE4/4 astrocyte model**. In particular, endogenous APOE3 transcripts can already contribute a target-site T signal, complicating any attempt to attribute that signal to new C-to-U editing. We therefore treated these experiments as **initial functional exploration**, not proof of endogenous APOE4 correction.
-
-![Figure 1 — Cell model selection](/assets/images/submission-20261017/results/figure-1-cell-model-selection.png)
-
-*Figure 1. Selection of CCF-STTG1 as an experimentally feasible endogenous-APOE model following constraints on obtaining APOE4/4 iPSC-derived astrocytes.*
-
-The two functional readouts were grounded in prior work connecting APOE4 with lipid-droplet abnormalities and altered Aβ42 processing. We first needed a reliable way to introduce plasmids into CCF-STTG1, then examined lipid-related cellular structures and extracellular Aβ42 signals.
-
-![Figure 2 — Lipid-droplet rationale](/assets/images/submission-20261017/results/figure-2-lipid-droplet-rationale.png)
-
-*Figure 2. Published astrocyte studies motivate lipid-droplet phenotyping as a possible functional readout of APOE4-directed intervention (adapted material from Sienski et al., 2021, and Farmer et al., 2019).*
-
-![Figure 3 — Aβ42 handling rationale](/assets/images/submission-20261017/results/figure-3-abeta42-rationale.png)
-
-*Figure 3. Published APOE4-associated Aβ42 uptake deficits and improvement after APOE4-to-APOE3 DNA correction motivate the corresponding ORCA RNA-editing hypothesis (panels A–B adapted from Lin et al., 2018).*
+Functional studies moved ORCA beyond artificial reporters into CCF-STTG1, an accessible human cell model expressing endogenous APOE. The complete model-selection rationale, figures, methods and Design–Build–Test–Learn records are now in [Functional Validation within Engineering](/engineering#functional-validation).
 
 ### Experiment I — Establishing CCF-STTG1 Electroporation
 
-AAV9-mediated expression was not yet verified, so we used electroporation as an independent route for preliminary cellular studies. Starting from published CCF-STTG1 conditions, we screened **1100–1400 V in 50-V steps** while holding pulse width at **20 ms** and pulse number at **two**. Each condition received approximately **1 × 10⁵ cells** and **0.5 μg mCherry-only plasmid**, allowing delivery and expression to be evaluated without confounding them with ORCA activity.
-
-At approximately 72 hours, both microscopy and flow cytometry showed exogenous mCherry expression. Median fluorescence generally increased with voltage, reaching its highest value at **1350 V** before declining at 1400 V. Higher voltages were also associated with fewer visibly spread adherent cells and a declining proportion of events within the fixed FSC/SSC gate. This scatter-gate fraction was **not** interpreted as a direct cell-viability measurement.
-
-Balancing the stronger reporter signal with observed cell condition, we adopted **1350 V, 20 ms, two pulses** as a provisional working setting for subsequent experiments.
-
-![Figure 4 — CCF-STTG1 electroporation](/assets/images/submission-20261017/results/figure-4-electroporation.png)
-
-*Figure 4. Electroporation-voltage optimization in CCF-STTG1 using mCherry expression, cell morphology, and flow-cytometric scatter profiles.*
-
-[Supplementary Figure 4: selected fluorescence distributions](/assets/images/submission-20261017/results/supplementary-figure-4-fluorescence-distributions.png)
+An mCherry-based screen established **1350 V, 20 ms, two pulses** as a provisional working condition for subsequent experiments. The observations support detectable plasmid expression, not a calibrated transfection efficiency or a direct viability measurement. [Read Experiment I](/engineering#functional-validation-cycle-01).
 
 ### Experiment II — Investigating Lipid-Droplet-Related Phenotypes
 
-We next compared four CCF-STTG1 conditions: **untreated CTRL**, **electroporated empty vector (EV)**, **IO-02**, and **IO-03**. Neutral-lipid-associated structures were stained with **BODIPY 493/503**, nuclei with DAPI, and the cells imaged by confocal microscopy.
-
-CTRL cells displayed conspicuous bright BODIPY-positive puncta. Importantly, **EV also differed visibly from untreated CTRL**, indicating that the electroporation and vector-treatment background mattered. Acquisition settings for CTRL and the treated groups were not fully matched, so we did not use their displayed intensities for uncalibrated quantitative comparisons. Both IO-treated fields showed fewer prominent puncta, but the key comparison was **IO versus EV**, not IO versus untreated cells.
-
-![Figure 5 — Confocal lipid-related observations](/assets/images/submission-20261017/results/figure-5-confocal-observation.png)
-
-*Figure 5. Representative BODIPY 493/503 and DAPI confocal images of untreated, EV, IO-02, and IO-03 CCF-STTG1 cells.*
-
-We quantified EV and IO images from the **original CZI BODIPY channels** using the same Difference-of-Gaussians enhancement, local-peak detection, watershed segmentation, and morphology filters. The primary analysis considered compact BODIPY-positive punctate candidates with areas of **0.08–12 μm²**.
-
-Under these operational criteria, the analyzed **EV field contained 12 candidates**, versus **2 each** in the IO-02 and IO-03 fields—an **83.3% lower count** in either IO field. Total detected candidate areas were **32.41 μm² (EV)**, **2.35 μm² (IO-02)**, and **4.35 μm² (IO-03)**, corresponding to reductions of **92.8%** and **86.6%** relative to EV. The direction of the puncta-count difference remained consistent across the illustrated threshold-sensitivity analyses drawn from **1,701 parameter combinations**.
-
-Crucially, mean whole-field BODIPY intensity did **not** decrease in parallel (**8.21, 8.47, and 8.36 a.u.** for EV, IO-02, and IO-03). The result therefore concerns the **distribution of prominent punctate structures**, not a demonstrated reduction in total neutral-lipid content.
-
-![Figure 6 — Quantitative BODIPY image analysis](/assets/images/submission-20261017/results/figure-6-quantitative-analysis.png)
-
-*Figure 6. Consistent image-analysis criteria identified fewer high-contrast BODIPY-positive punctate candidates in IO-treated fields than in EV, without a corresponding decline in mean whole-field fluorescence.*
-
-These findings provide a **phenotypic signal worth following up**, not an established functional rescue. The quantitative comparison used **one analyzable confocal field per group**; the segmented objects have not been independently validated as individual lipid droplets; and **additional endogenous APOE4 RNA editing was not reliably confirmed** in these cells. Larger matched-acquisition datasets and molecular verification will be needed before linking the observed phenotype causally to ORCA-mediated APOE4 correction.
+IO-treated fields contained fewer algorithm-detected BODIPY-positive punctate candidates than EV, without a parallel decrease in mean whole-field fluorescence. With **one analyzable field per group** and no reliable confirmation of newly generated endogenous APOE4 editing, this is an exploratory image phenotype, not established functional rescue. [Read Experiment II](/engineering#functional-validation-cycle-02).
 
 ### Experiment III — Exploring Extracellular Aβ42 Handling
 
-Our second functional direction examined **residual extracellular Aβ42** after a six-hour challenge, rather than assuming that supernatant depletion directly measures cellular uptake. Conditions included **EV, PUF12, IO-02, and IO-03** at **700 ng and 1400 ng** plasmid input, plus **PUF-only (700 ng)** and untreated **CTRL**. Cell-free **BLANK 0 h** and **BLANK 6 h** samples provided references for the starting Aβ42 signal and changes occurring in culture medium without cells. Each culture condition had two preparations with three ELISA technical wells per preparation.
-
-Cells were exposed to a nominal **200 nM Aβ42** challenge. We assayed collected supernatants with the Elabscience Human Aβ1–42 ELISA kit (**E-EL-H0543**). The standard series, covering **0–1000 pg/mL**, showed a clear concentration–absorbance relationship; a four-parameter logistic fit gave **R² = 0.999872** (RMSE **0.01249 OD**).
-
-However, **all 72 sample and cell-free reference wells** had OD450 values of **4.5166–5.0361**, exceeding the highest standard's mean OD450 of **3.35245**. The sample signals therefore lay outside the reliable quantification range. Rechecking the preparation records identified a **tenfold dilution-factor calculation and execution error**: samples had been diluted **200-fold instead of the planned 2000-fold**. From the nominal starting concentration, those dilutions would correspond to approximately **4514 pg/mL** and **451 pg/mL**, respectively; these are *theoretical starting-concentration estimates*, not measurements of Aβ42 remaining after incubation.
-
-![Figure 7 — Extracellular Aβ42 ELISA](/assets/images/submission-20261017/results/figure-7-extracellular-abeta42.png)
-
-*Figure 7. The Aβ42 ELISA standard curve was internally consistent, but every experimental and cell-free sample exceeded its calibrated range, preventing valid concentration comparisons.*
-
-Thus, Experiment III established an initial ELISA workflow and demonstrated why sample dilution must be verified against the assay's dynamic range, but **did not yield valid residual-Aβ42 concentrations or evidence of a treatment-dependent clearance difference**. A verified dilution pilot, followed by the same cellular and cell-free controls, is needed before this functional question can be tested quantitatively.
+The ELISA standard curve was internally consistent, but **all 72 sample and reference wells exceeded its calibrated range**. Review identified **200-fold dilution instead of the planned 2000-fold**, preventing reliable residual-Aβ42 concentrations or treatment-dependent clearance comparisons. A verified dilution pilot is required before repeating the assay. [Read Experiment III](/engineering#functional-validation-cycle-03).
 
 ## 07. Conclusion — What ORCA Has Established
 

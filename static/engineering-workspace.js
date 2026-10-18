@@ -87,7 +87,7 @@
     }
     return panels.get(id);
   }
-  let contentPanel = panelFor('pod');
+  let contentPanel = panelFor(partOrder[0]);
   for (const node of [...article.childNodes]) {
     if (node.nodeType === Node.ELEMENT_NODE && /^H[2-6]$/.test(node.tagName)) {
       const part = partAlias(node.id);

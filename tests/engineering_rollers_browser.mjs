@@ -38,6 +38,9 @@ try {
   await expect('gfa');
   await row('group').focus();
   await page.keyboard.press('Home');
+  await expect('fundamental-research');
+  assert.equal(await row('part').getAttribute('aria-disabled'), 'true');
+  await page.keyboard.press('ArrowRight');
   await expect('pod');
   await row('part').focus();
   await page.keyboard.press('ArrowLeft');
@@ -46,6 +49,9 @@ try {
   await page.screenshot({ path: 'work/engineering-rollers-qa/desktop.png' });
   await row('group').focus();
   await page.keyboard.press('End');
+  await expect('functional-validation');
+  assert.equal(await row('part').getAttribute('aria-disabled'), 'true');
+  await page.keyboard.press('ArrowLeft');
   await expect('model-rna-seq');
   await page.screenshot({ path: 'work/engineering-rollers-qa/long-label.png' });
   await page.emulateMedia({ reducedMotion: 'reduce' });

@@ -1,8 +1,8 @@
 {
   "source": "docs/design/engineering-overview/source.pptx",
-  "sha256": "72f2bc4382d058b02678f10d3e7e224df646256b243a987d866c609d2a10c4a9",
-  "objects": 255,
-  "semantic_layers": 18,
+  "sha256": "26bb8f72f3f2eab856a1ccba564f592799678e92000ba3c2577433e616d43272",
+  "objects": 412,
+  "semantic_layers": 21,
   "model_labels": "Futura Bold 14.25 pt",
   "raster_assets": 1
 }

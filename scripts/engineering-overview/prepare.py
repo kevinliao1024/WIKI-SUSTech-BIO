@@ -8,6 +8,7 @@ out=repo/'work/engineering-overview';out.mkdir(parents=True,exist_ok=True)
 ns={'p':'http://schemas.openxmlformats.org/presentationml/2006/main','a':'http://schemas.openxmlformats.org/drawingml/2006/main'}
 source=repo/'docs/design/engineering-overview/source.pptx'
 groups={'edit-frame':{2,62},'edit-base':{79,80,81,109,271},'pod':set(range(63,76))|set(range(82,106)), 'cetus':(set(range(76,79))|set(range(106,115)))-{109},'deliver':{3,56,57,58,407},'measure':{4,115,269,411}|set(range(118,155))|set(range(401,407)), 'control-frame':{5,158,159,160,161,162}, 'gfa':{164,168}|set(range(170,176)), 'mre':{165,302}|set(range(180,210)), 'aso':{166,300,301}|set(range(210,243)), 'cre-loxp':{167}|set(range(243,259)), 'model-frame':{264,7,270,408,409,410}, 'model-rna-seq':set(range(10,19)), 'model-puf':set(range(19,24)), 'model-apobec':{24}, 'model-protein-label':{25}, 'model-lamar':set(range(26,48)), 'model-whole-body':set(range(48,55))}
+groups.update({'fundamental-research':set(range(601,696)), 'functional-validation':set(range(696,758))|set(range(901,919)), 'stage-connectors':{919,920}})
 with ZipFile(source) as zi:
  original=E.fromstring(zi.read('ppt/slides/slide1.xml'))
  shapes=original.find('p:cSld/p:spTree',ns)
