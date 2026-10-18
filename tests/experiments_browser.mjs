@@ -14,6 +14,17 @@ page.on('pageerror', e => errors.push(e.message));
 page.on('response', r => {if(r.status()>=400 && r.url().includes('/experiments/')) failedResources.push(r.url());});
 const count = () => page.locator('[data-protocol]:visible').count();
 const shot = async name => {await page.screenshot({path:output+'/'+name+'.png'});};
+const assertFirstPageFits = async () => {
+  await page.waitForFunction(() => {
+    const frame = document.querySelector('[data-reader] iframe');
+    const image = frame?.contentDocument?.querySelector('.page-zoom img');
+    if (!image || !image.closest('.page-sheet').style.getPropertyValue('--page-fit-width')) return false;
+    const rect = image.getBoundingClientRect();
+    const outer = frame.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= frame.clientHeight && rect.left >= 0
+      && rect.right <= frame.clientWidth && outer.bottom <= innerHeight;
+  });
+};
 await page.goto(base+'/experiments');
 await page.locator('[data-search-tools]:visible').waitFor();
 assert.equal(await count(),36);
@@ -66,6 +77,9 @@ await page.locator('#M01').focus();await page.keyboard.press('Enter');
 await page.waitForSelector('[data-reader][open] iframe');
 const reader=page.frameLocator('[data-reader] iframe');
 await reader.locator('#procedure').waitFor();
+await assertFirstPageFits();
+await reader.locator('.page-zoom img').first().evaluate(img=>img.decode());
+await shot('first-page-desktop');
 assert.match(await reader.locator('body').evaluate(e=>getComputedStyle(e).fontFamily), /Source Sans 3/);
 const toc=await reader.locator('nav a').evaluateAll(ns=>ns.map(n=>n.hash.slice(1)));
 const headings=await reader.locator('.pdf-section-anchor').evaluateAll(ns=>ns.map(n=>n.id));
@@ -121,6 +135,9 @@ for (const width of [834,390,320]) {
   await page.locator('#M02').click();
   const small=page.frameLocator('iframe');
   await small.locator('#procedure').waitFor();
+  await assertFirstPageFits();
+  await small.locator('.page-zoom img').first().evaluate(img=>img.decode());
+  await shot('first-page-'+width);
   assert.ok(await small.locator('html').evaluate(e=>e.scrollWidth<=innerWidth+1),'No reader overflow at '+width);
   await small.locator('.section-links summary').click();
   await small.locator('a[href="#troubleshooting"]').click();

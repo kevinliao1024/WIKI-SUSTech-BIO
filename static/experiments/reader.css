@@ -16,7 +16,7 @@ body{margin:0;font:16px/1.5 'Source Sans 3','Segoe UI',Arial,sans-serif}
 .pdf-page{margin:0}
 .pdf-page+.pdf-page{border-top:1px solid #e0e3e8;margin-top:12px;padding-top:12px}
 .page-viewport{overflow:auto;overscroll-behavior-x:contain}
-.page-sheet{position:relative;width:100%;margin:0 auto;max-width:1100px}
+.page-sheet{position:relative;width:min(100%,var(--page-fit-width,360px));margin:0 auto;max-width:1100px}
 .page-sheet.is-enlarged{width:max(100%,1600px);max-width:none}
 .page-zoom{display:block;width:100%;padding:0;border:0;background:#fff;cursor:zoom-in}
 .page-sheet.is-enlarged .page-zoom{cursor:zoom-out}
