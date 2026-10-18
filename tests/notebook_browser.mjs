@@ -92,6 +92,40 @@ assert.equal(await page.locator('.nb-rail-motion,.nb-scene-ghost').count(),0,'Ra
 assert.equal(await page.locator('[data-mode="overview"]').count(),1);
 results.push('Motion: intermediate rail rotation, exact dense-date selection, chronological reader and interrupted-return cleanup.');
 
+// Horizontal zoom preserves date geometry, pinning and reader return context.
+await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');
+const baseGap=(await point('aav','2026-09-26')).x-(await point('reporter','2026-08-03')).x;
+const baseLabel=await page.locator('[data-label-track="aav"]').boundingBox();
+const baseFont=await page.locator('.nb-line-label').first().evaluate(n=>getComputedStyle(n).fontSize);
+await page.locator('[data-zoom]').focus();
+for(let i=0;i<4;i++)await page.keyboard.press('ArrowRight');
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'200%');
+const wideGap=(await point('aav','2026-09-26')).x-(await point('reporter','2026-08-03')).x;
+assert.ok(Math.abs(wideGap-baseGap*2)<2,'Zoom doubles elapsed-date spacing');
+assert.equal(await page.locator('.nb-line-label').first().evaluate(n=>getComputedStyle(n).fontSize),baseFont,'Labels do not scale');
+assert.ok(Math.abs((await page.locator('[data-label-track="aav"]').boundingBox()).x-baseLabel.x)<2,'Track names stay pinned');
+const viewport=await page.locator('[data-viewport]').boundingBox();
+const panBefore=await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft);
+await page.mouse.move(viewport.x+viewport.width*.65,viewport.y+120);await page.mouse.down();
+await page.mouse.move(viewport.x+viewport.width*.65-100,viewport.y+120,{steps:6});await page.mouse.up();
+assert.ok(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft)>panBefore+80,'Mouse drag pans the calendar');
+assert.equal(await page.locator('[data-mode="overview"]').count(),1,'Dragging never opens a track');
+await page.locator('.nb-lane[data-track="aav"] .nb-date-target[data-date="2026-09-26"]').click();await page.waitForTimeout(700);
+const savedPan=await page.evaluate(()=>history.state.overviewX);
+assert.equal(await page.locator('[data-jump]').inputValue(),'2026-09-26');
+await page.locator('[data-back]').click();await page.waitForTimeout(700);
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'200%');
+assert.ok(Math.abs(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft)-savedPan)<2,'Return keeps zoomed pan position');
+await page.locator('[data-zoom-fit]').click();
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'100%');
+assert.equal(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft),0);
+assert.equal(await page.locator('[data-zoom-out]').isDisabled(),true);
+await page.locator('[data-zoom]').focus();await page.keyboard.press('End');
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'300%');
+assert.equal(await page.locator('[data-zoom-in]').isDisabled(),true);
+await page.locator('[data-zoom-fit]').click();
+results.push('Zoom: keyboard slider, exact horizontal scaling, pinned labels, drag without accidental navigation, date selection, return context and fit/bounds.');
+
 // Static-host prefix is handled by relative asset paths, independently of the dev root.
 for(const size of [{width:834,height:1112},{width:390,height:844},{width:320,height:740}]) {
  await page.setViewportSize(size);await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');await page.waitForTimeout(300);

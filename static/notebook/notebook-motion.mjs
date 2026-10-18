@@ -5,11 +5,14 @@ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 export function cancelRailMotion(){cleanup?.();cleanup=null;}
 export function captureRail(lane){
   if(!lane || reduced() || lane.g.closest('.is-initializing'))return null;
+  const viewport=lane.g.closest('[data-viewport]').getBoundingClientRect();
+  const left=Math.max(0,viewport.left+(lane.g.closest('.is-focus')?0:166)),right=Math.min(innerWidth,viewport.right);
   const points=lane.events.map(({date,node})=>{
     const b=node.querySelector('.nb-event').getBoundingClientRect();
-    return {date,x:b.x+b.width/2,y:b.y+b.height/2,r:b.width/2};
+    const x=b.x+b.width/2,y=b.y+b.height/2;
+    return {date,x:Math.max(left,Math.min(right,x)),y,r:b.width/2,visible:x>=left&&x<=right&&y>=0&&y<=innerHeight};
   });
-  const visible=points.some(p=>p.x>=0&&p.x<=innerWidth&&p.y>=0&&p.y<=innerHeight);
+  const visible=points.some(p=>p.visible);
   return visible?{points,color:lane.track.color}:null;
 }
 export function captureScene(app){
@@ -72,7 +75,7 @@ export function morphRail(from,to,lane,app,scene){
     const fraction=(Date.parse(pair.from.date)-first)/span;
     pair.middle={x:vertical[0].x,y:clamp(vertical[0].y)+(clamp(vertical.at(-1).y)-clamp(vertical[0].y))*fraction};
   }
-  const visible=p=>p.y>=0&&p.y<=innerHeight&&p.x>=0&&p.x<=innerWidth?1:0;
+  const visible=p=>p.visible?1:0;
   const draw=now=>{
     const t=Math.min(1,(now-start)/duration),e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
     const points=pairs.map(({from:a,to:b,middle,circle})=>{

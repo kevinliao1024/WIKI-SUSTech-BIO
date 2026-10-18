@@ -131,3 +131,18 @@ return to overview, and the track directory. No source records or attachments ch
 - [Rail rotating into the reader](qa/rail-transition.png)
 - [Focused chronological records](qa/reader-list.png)
 - [Track directory](qa/track-cards.png)
+
+
+## Horizontal zoom — 2026-10-18
+
+Chrome assertions passed for keyboard slider changes, proportional date spacing
+at 200%, unchanged label size, pinned labels during pan, mouse dragging without
+accidental record navigation, exact date selection while zoomed, and zoom/pan
+restoration after returning from the reader. Fit and both zoom bounds are checked.
+Existing responsive, rail-motion, source-preview, history and fallback checks
+also passed. Visual review covered 1176×772 at 100% and 200%, and 390px at 200%.
+Notebook Python inventory/hash checks, Node date-scale checks and the frozen
+build/link audit passed. No record metadata or source attachments changed.
+
+- [Fit overview](qa/overview-entry.png)
+- [Zoomed timeline](qa/zoomed-timeline.png)

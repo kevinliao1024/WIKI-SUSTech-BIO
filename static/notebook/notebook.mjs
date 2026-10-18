@@ -12,7 +12,8 @@ const attr = (node, values) => {for (const [key,value] of Object.entries(values)
 const baseURL = new URL(app.dataset.index, location.href);
 const sourceURL = path => new URL(path, baseURL).href;
 const shortDate = iso => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(iso)*DAY));
-let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0;
+let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0, overviewZoom = 100;
+let labelLayer;
 let ticks = [], lanes = [], months = [], milestones = [], rowElements = [], pendingLayout = 0;
 const expanded = new Set();
 let dateObserver;
@@ -20,6 +21,53 @@ const resizeObserver = new ResizeObserver(() => scheduleLayout());
 
 function link(text, href) { const a = el('a', '', text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; }
 function scheduleLayout() { cancelAnimationFrame(pendingLayout); pendingLayout = requestAnimationFrame(layoutMap); }
+const clampZoom=value=>Math.max(100,Math.min(300,Number(value)||100));
+function pinLabels(){
+  if(!labelLayer)return;
+  labelLayer.style.display=selected?'none':'';
+  labelLayer.setAttribute('transform',`translate(${$('viewport').scrollLeft} 0)`);
+}
+function changeZoom(value,fit=false){
+  if(selected||!bounds)return;
+  cancelRailMotion();
+  const viewport=$('viewport'),anchor=176+(viewport.clientWidth-176)/2;
+  const fraction=(viewport.scrollLeft+anchor-176)/($('stage').clientWidth-208);
+  overviewZoom=clampZoom(value);
+  layoutMap();
+  viewport.scrollLeft=fit?0:176+fraction*($('stage').clientWidth-208)-anchor;
+  overviewX=viewport.scrollLeft;pinLabels();
+  history.replaceState({...history.state,notebook:true,overviewZoom,overviewX,overviewScroll:scrollY},'');
+}
+function bindZoom(){
+  $('zoom').addEventListener('input',()=>changeZoom($('zoom').value));
+  $('zoom-out').addEventListener('click',()=>changeZoom(overviewZoom-25));
+  $('zoom-in').addEventListener('click',()=>changeZoom(overviewZoom+25));
+  $('zoom-fit').addEventListener('click',()=>changeZoom(100,true));
+  const viewport=$('viewport');
+  viewport.addEventListener('scroll',pinLabels,{passive:true});
+  let pan=null,dragged=false;
+  viewport.addEventListener('pointerdown',e=>{
+    dragged=false;
+    if(selected||e.pointerType!=='mouse'||e.button!==0||viewport.scrollWidth<=viewport.clientWidth)return;
+    pan={id:e.pointerId,x:e.clientX,scroll:viewport.scrollLeft};
+  });
+  viewport.addEventListener('pointermove',e=>{
+    if(!pan||e.pointerId!==pan.id)return;
+    if(!(e.buttons&1)){pan=null;dragged=false;return;}
+    const distance=e.clientX-pan.x;
+    if(!dragged&&Math.abs(distance)<5)return;
+    dragged=true;viewport.setPointerCapture(e.pointerId);viewport.classList.add('is-panning');
+    viewport.scrollLeft=pan.scroll-distance;e.preventDefault();
+  });
+  const end=e=>{
+    if(pan&&viewport.hasPointerCapture(pan.id))viewport.releasePointerCapture(pan.id);
+    pan=null;viewport.classList.remove('is-panning');
+    if(e.type==='pointercancel')dragged=false;
+  };
+  viewport.addEventListener('pointerup',end);viewport.addEventListener('pointercancel',end);
+  viewport.addEventListener('lostpointercapture',()=>{pan=null;viewport.classList.remove('is-panning');});
+  viewport.addEventListener('click',e=>{if(dragged){e.preventDefault();e.stopImmediatePropagation();dragged=false;}},true);
+}
 function nearestDate(date) {
   if (!groups.length) return null;
   const target = date ? dayNumber(date) : dayNumber(groups[0].date);
@@ -50,7 +98,7 @@ function writeURL(track, date, record, replace = false) {
   if(track) url.searchParams.set('track',track);
   if(date) url.searchParams.set('date',date);
   if(record) url.searchParams.set('record',record);
-  history[replace ? 'replaceState' : 'pushState']({notebook:true, overviewScroll, overviewX},'',url);
+  history[replace ? 'replaceState' : 'pushState']({notebook:true, overviewScroll, overviewX, overviewZoom},'',url);
 }
 function readURL() {
   const query = new URL(location.href).searchParams;
@@ -63,7 +111,7 @@ function readURL() {
 function navigate(track, date, record) {
   if(!selected && track) {
     overviewScroll=scrollY;overviewX=$('viewport').scrollLeft;
-    history.replaceState({...history.state, notebook:true, overviewScroll,overviewX},'');
+    history.replaceState({...history.state, notebook:true, overviewScroll,overviewX,overviewZoom},'');
   }
   if(track && !date) {
     if(selected) date=activeDate;
@@ -75,6 +123,8 @@ function navigate(track, date, record) {
 }
 function buildMap() {
   const map=$('map-group');
+  labelLayer=svg('g',{class:'nb-label-layer'});
+  labelLayer.append(svg('rect',{class:'nb-label-gutter',x:0,y:0,width:166,'data-label-gutter':''}));
   const bands=svg('g',{class:'nb-calendar-bands','aria-hidden':'true'});map.append(bands);
   map.append(svg('rect',{class:'nb-axis-panel',x:-54,width:108,rx:24,'data-axis-panel':''}));
   map.append(svg('line',{class:'nb-axis','data-axis':'',x1:0,x2:0}));
@@ -120,7 +170,11 @@ function buildMap() {
     g.addEventListener('keydown',e=>{if(e.target===g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(track.id);}});
     g.addEventListener('pointerenter',()=>highlight(track.id));g.addEventListener('pointerleave',()=>highlight(null));
     g.addEventListener('focusin',()=>highlight(track.id));g.addEventListener('focusout',()=>highlight(null));
-    map.append(g);lanes.push({track,range,g,row,hit,wash,path,label,labelPanel,start,end,events,index:i});
+    const heading=svg('g',{class:'nb-lane-heading','data-label-track':track.id});heading.style.color=track.color;
+    heading.append(labelPanel,label);labelLayer.append(heading);
+    heading.addEventListener('click',()=>navigate(track.id));
+    heading.addEventListener('pointerenter',()=>highlight(track.id));heading.addEventListener('pointerleave',()=>highlight(null));
+    map.append(g);lanes.push({track,range,g,row,hit,wash,path,label,labelPanel,heading,start,end,events,index:i});
   }
   for (const milestone of index.milestones || []) {
     const node=svg('g',{class:'nb-milestone',role:'button',tabindex:0,'aria-label':milestone.label});
@@ -129,16 +183,24 @@ function buildMap() {
     node.addEventListener('click',open);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
     map.append(node);milestones.push({node,data:milestone});
   }
+  map.append(labelLayer);
 }
 function highlight(id) {
-  for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
+  for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.heading.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
 }
 function layoutMap() {
   if(!bounds) return;
-  const stage=$('stage'), width=stage.clientWidth, small=innerWidth<=600;
+  const stage=$('stage'),small=innerWidth<=600;
+  const base=Math.max($('viewport').clientWidth,small?800:900);
+  stage.style.width=selected?'100%':`${208+(base-208)*overviewZoom/100}px`;
+  const width=stage.clientWidth;
+  $('zoom').value=overviewZoom;$('zoom').setAttribute('aria-valuetext',`${overviewZoom} percent`);
+  $('zoom-value').textContent=`${overviewZoom}%`;$('zoom-out').disabled=overviewZoom<=100;$('zoom-in').disabled=overviewZoom>=300;
+  $('viewport').classList.toggle('can-pan',!selected&&width>$('viewport').clientWidth);
   // A compact overview exposes every track at once, without compressing calendar dates.
   const height=selected?Math.max(240,$('records').offsetHeight):Math.max(340,Math.min(530,innerHeight-stage.getBoundingClientRect().top-scrollY-20));
   stage.style.height=`${height}px`;
+  attr(labelLayer.querySelector('[data-label-gutter]'),{height});pinLabels();
   const axisX=selected?(small?10:innerWidth<=1000?70:100):0;
   $('map-group').style.transform=`translateX(${axisX}px)`;
   const left=176, right=width-32, scale=(right-left)/(bounds.end-bounds.start || 1);
@@ -290,7 +352,7 @@ function renderState(state,userAction=false) {
       }
       if(userAction)$('focus-heading').focus({preventScroll:true});
     } else if(previous || history.state?.notebook) {
-      window.scrollTo({top:overviewScroll,behavior:'instant'});$('viewport').scrollLeft=overviewX;
+      window.scrollTo({top:overviewScroll,behavior:'instant'});$('viewport').scrollLeft=overviewX;pinLabels();
       if(userAction)lanes.find(l=>l.track.id===previous)?.g.focus({preventScroll:true});
     }
     if(from && movingLane && (!selected||selected===movingLane.track.id))morphRail(from,captureRail(movingLane),movingLane,app,scene);
@@ -313,11 +375,11 @@ async function init() {
     }
     $('switch').replaceChildren(...index.tracks.filter(t=>index.records.some(r=>r.trackId===t.id)).map(t=>{const option=el('option','',t.label);option.value=t.id;return option;}));
     $('switch').addEventListener('change',()=>navigate($('switch').value,activeDate));
-    buildMap();
-    if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;}
+    buildMap();bindZoom();
+    if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;overviewZoom=clampZoom(history.state.overviewZoom);}
     $('back').addEventListener('click',()=>navigate(null));
     $('jump').addEventListener('change',()=>{writeURL(selected,$('jump').value);jumpTo($('jump').value,null,true);});
-    window.addEventListener('popstate',()=>{if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;}renderState(readURL());});
+    window.addEventListener('popstate',()=>{if(history.state?.notebook){overviewScroll=history.state.overviewScroll||0;overviewX=history.state.overviewX||0;overviewZoom=clampZoom(history.state.overviewZoom);}renderState(readURL());});
     window.addEventListener('resize',scheduleLayout);
     renderState(readURL());
   } catch(error) {

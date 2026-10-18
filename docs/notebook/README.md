@@ -79,9 +79,9 @@ explicit `sourceNote` describing the shared source.
 3. For a new branch, add its metadata to `track_specs` in the importer and rerun.
    For a curated index not generated from this archive, edit `index.json` with
    the same schema, copy its original PDFs, and render the indexed pages.
-4. The current nine-track lane layout is computed by `overviewLaneX` in
-   `notebook.mjs`; extend the left/right lane counts and minimum map width when adding
-   more than nine tracks. Dates and cards never require changes to animation code.
+4. The horizontal lane layout is computed by `layoutMap` in `notebook.mjs`.
+   Review row spacing and chart height when adding more than nine tracks.
+   Dates and cards never require changes to animation code.
 5. Add verified Engineering links as `{ "label": "POD Engineering", "route":
    "engineering#verified-section-id" }` only after that section actually exists
    and its content corresponds to the track. Verify the rendered anchor as well
@@ -96,9 +96,10 @@ It intentionally does not delete arbitrary existing assets.
 
 ## Interaction and accessibility
 
-Overview uses UTC calendar-day arithmetic at **14 CSS pixels per day** for all
-tracks, including days without records. Month, Monday and day ticks share the
-same scale. The minimum and maximum real dates determine track terminals.
+Overview uses UTC calendar-day arithmetic with a shared horizontal scale for all
+tracks, including days without records. The scale fits the available chart width
+at 100% and expands proportionally with zoom. Month, Monday and day ticks share
+the same scale. The minimum and maximum real dates determine track terminals.
 
 The SVG calendar and every lane remain mounted when switching views. Their
 horizontal translations animate into a compact left rail. Focus hides all
@@ -205,3 +206,16 @@ resize or a user scroll gesture. Reduced-motion preferences bypass these layers.
 Offscreen transitions fall back to an immediate layout instead of flying a rail
 across an unrelated part of the page. Expanded PDF pages continue to drive the
 measured node-to-card alignment; no record or source attachment is changed.
+
+## Horizontal zoom
+
+The overview offers a keyboard-accessible slider and minus/plus buttons from
+100% to 300% in 25-point steps. Zoom changes date spacing only; labels, text and
+line weights keep their readable size. The date under the center of the visible
+calendar stays approximately in place, subject to the scroll bounds.
+
+Track labels remain pinned at the left while the chart scrolls. A mouse drag
+pans an enlarged chart; touch and trackpad scrolling remain native. Dragging
+does not activate a date node. Fit restores 100% and the left edge (small screens
+retain the chart's readable minimum width). Opening a track and returning keeps
+the zoom and horizontal position, including browser history navigation.

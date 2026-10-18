@@ -233,3 +233,25 @@ body:not(.ot) main.notebook-page { background: #edf0f4; }
 body .nb-scene-ghost{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;padding:0!important;margin:0;background:transparent!important;z-index:39;pointer-events:none;overflow:hidden}
 .nb-scene-ghost .nb-app{max-width:none}
 @media(prefers-reduced-motion:reduce){.nb-rail-motion,.nb-scene-ghost{display:none}}
+
+/* Zoom stretches calendar spacing only; labels and marks retain their reading size. */
+.nb-timeline-header{position:relative}
+.nb-zoom{position:absolute;right:22px;top:20px;display:flex;align-items:center;gap:6px;color:var(--nb-ink)}
+.nb-zoom button{display:grid;place-items:center;min-width:32px;height:36px;padding:0 6px;border:1px solid #dddfea;border-radius:8px;background:#f7f7fc;font-size:20px;line-height:1}
+.nb-zoom button:hover:not(:disabled){background:#edecf8;border-color:#b8b9de}
+.nb-zoom button:disabled{opacity:.35;cursor:default}
+.nb-zoom input{width:86px;accent-color:#5f62cd;cursor:ew-resize}
+.nb-zoom output{min-width:40px;font-size:13px;font-variant-numeric:tabular-nums;text-align:center}
+.nb-zoom .nb-zoom-fit{font-size:13px;padding-inline:10px}
+.nb-app.is-focus .nb-timeline-header{display:none}
+.nb-label-gutter{fill:#fffefc;pointer-events:all}
+.nb-lane-heading{pointer-events:all;cursor:pointer}
+.nb-lane-heading.is-highlighted .nb-line-label-panel{opacity:.17}
+.nb-viewport.can-pan{cursor:grab}
+.nb-viewport.is-panning,.nb-viewport.is-panning *{cursor:grabbing!important;user-select:none}
+@media(max-width:1050px){
+  .nb-zoom{position:static;justify-content:center;padding:0 16px 14px}
+  .nb-app:not(.is-focus) .nb-timeline-title{padding-bottom:10px}
+  .nb-zoom button{min-width:36px;height:40px}
+  .nb-zoom input{width:100px}
+}
