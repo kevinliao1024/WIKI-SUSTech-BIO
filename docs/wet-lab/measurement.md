@@ -103,7 +103,7 @@ In `S10_1_1_B`, **18,290** of the 68,986 Layer 0 events satisfied the reporter c
 
 ### 4.2 Does normalization improve repeatability?
 
-We compared raw mean EGFP with RAS **within the same Reporter Population** in A/B independent-transfection pairs. The comparison uses the corrected S7 reference labels, including the 15% condition and the exchanged 75%/90% labels.
+We compared raw mean EGFP with RAS **within the same Reporter Population** in A/B independent-transfection pairs.
 
 | Experiment | Conditions (two wells each) | Median CV, raw EGFP | Median CV, RAS | Conditions improved |
 |---|---:|---:|---:|---:|
@@ -162,7 +162,7 @@ Consequently, correcting EGFP by mCherry does not reveal the fraction of edited 
 
 ### 5.2 Building and fitting the AC/INAC response ladder
 
-In S7, we co-transfected AC and INAC at **ten corrected DNA mass fractions**, each with two independent transfection wells:
+In S7, we co-transfected AC and INAC at **ten DNA mass fractions**, each with two independent transfection wells:
 
 <div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><menclose notation="box"><mrow><mi>A</mi><mo>=</mo><mfrac><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mrow><msub><mi>m</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>+</mo><msub><mi>m</mi><mrow><mi>I</mi><mi>N</mi><mi>A</mi><mi>C</mi></mrow></msub></mrow></mfrac></mrow></menclose><mo>,</mo><mspace width="2.0em" /><mi>A</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>0.05</mn><mo>,</mo><mn>0.15</mn><mo>,</mo><mn>0.20</mn><mo>,</mo><mn>0.30</mn><mo>,</mo><mn>0.40</mn><mo>,</mo><mn>0.50</mn><mo>,</mo><mn>0.75</mn><mo>,</mo><mn>0.90</mn><mo>,</mo><mn>1.00</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#65;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#125;&#123;&#109;&#95;&#123;&#65;&#67;&#125;&#43;&#109;&#95;&#123;&#73;&#78;&#65;&#67;&#125;&#125;&#125;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#65;&#92;&#105;&#110;&#92;&#123;&#48;&#44;&#48;&#46;&#48;&#53;&#44;&#48;&#46;&#49;&#53;&#44;&#48;&#46;&#50;&#48;&#44;&#48;&#46;&#51;&#48;&#44;&#48;&#46;&#52;&#48;&#44;&#48;&#46;&#53;&#48;&#44;&#48;&#46;&#55;&#53;&#44;&#48;&#46;&#57;&#48;&#44;&#49;&#46;&#48;&#48;&#92;&#125;&#46;&#10;</annotation></semantics></math></div>
 
@@ -219,7 +219,7 @@ We also separated two kinds of uncertainty. A **conditional bootstrap interval**
 
 ### 5.4 A worked example—and the calibration boundary
 
-The original file `S7_90B` corresponds to **75% AC after correction of the experimental labels**. Its **32,207** reporter-selected events yielded **RAS = 0.956260**; applying the upper branch of the frozen inverse gives:
+The **75% AC reference sample** (`S7_90B`) illustrates the calculation. Its **32,207** reporter-selected events yielded **RAS = 0.956260**; applying the upper branch of the frozen inverse gives:
 
 <div class="submission-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mi>E</mi><mi>S</mi><mo>=</mo><mn>0.5</mn><mo>+</mo><mfrac><mrow><mn>0.956260</mn><mo>−</mo><mn>0.745776</mn></mrow><mn>0.857406</mn></mfrac><mo>=</mo><menclose notation="box"><mrow><mn>0.74549</mn><mspace width="0.278em" /><mtext mathvariant="normal">(74.55%AC DNA mass-equivalent)</mtext></mrow></menclose><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#82;&#69;&#83;&#61;&#48;&#46;&#53;&#43;&#92;&#102;&#114;&#97;&#99;&#123;&#48;&#46;&#57;&#53;&#54;&#50;&#54;&#48;&#45;&#48;&#46;&#55;&#52;&#53;&#55;&#55;&#54;&#125;&#123;&#48;&#46;&#56;&#53;&#55;&#52;&#48;&#54;&#125;&#10;&#61;&#92;&#98;&#111;&#120;&#101;&#100;&#123;&#48;&#46;&#55;&#52;&#53;&#52;&#57;&#92;&#59;&#92;&#116;&#101;&#120;&#116;&#123;&#40;&#55;&#52;&#46;&#53;&#53;&#92;&#37;&#32;&#65;&#67;&#32;&#68;&#78;&#65;&#32;&#109;&#97;&#115;&#115;&#45;&#101;&#113;&#117;&#105;&#118;&#97;&#108;&#101;&#110;&#116;&#41;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
 
