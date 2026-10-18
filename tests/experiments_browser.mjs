@@ -18,7 +18,7 @@ const assertFirstPageFits = async () => {
   await page.waitForFunction(() => {
     const frame = document.querySelector('[data-reader] iframe');
     const image = frame?.contentDocument?.querySelector('.page-zoom img');
-    if (!image || !image.closest('.page-sheet').style.getPropertyValue('--page-fit-width')) return false;
+    if (!image || !frame.contentDocument.documentElement.classList.contains('is-embedded') || !image.closest('.page-sheet').style.getPropertyValue('--page-fit-width')) return false;
     const rect = image.getBoundingClientRect();
     const outer = frame.getBoundingClientRect();
     return rect.top >= 0 && rect.bottom <= frame.clientHeight && rect.left >= 0
@@ -80,13 +80,14 @@ await reader.locator('#procedure').waitFor();
 await assertFirstPageFits();
 await reader.locator('.page-zoom img').first().evaluate(img=>img.decode());
 await shot('first-page-desktop');
+assert.ok(await page.locator('.exp-reader-sidebar').evaluate(sidebar => sidebar.getBoundingClientRect().right <= document.querySelector('[data-reader-host]').getBoundingClientRect().left));
+assert.ok(await reader.locator('.page-zoom img').first().evaluate(img => img.getBoundingClientRect().height > 850));
 assert.match(await reader.locator('body').evaluate(e=>getComputedStyle(e).fontFamily), /Source Sans 3/);
 const toc=await reader.locator('nav a').evaluateAll(ns=>ns.map(n=>n.hash.slice(1)));
 const headings=await reader.locator('.pdf-section-anchor').evaluateAll(ns=>ns.map(n=>n.id));
 assert.deepEqual(toc,headings);
 assert.ok(!toc.includes('workflow'),'No invented optional section');
-await reader.locator('.section-links summary').click();
-await reader.getByRole('link',{name:'Materials & Equipment',exact:true}).click();
+await page.locator('[data-reader-sections]').getByRole('link',{name:'Materials & Equipment',exact:true}).click();
 await page.waitForFunction(() => Math.abs(document.querySelector('[data-reader] iframe').contentDocument.querySelector('#materials-equipment').getBoundingClientRect().top-16)<4);
 await reader.locator('.page-zoom img').first().evaluate(img=>img.decode());
 assert.equal(await reader.locator('embed,object,iframe,table').count(),0);
@@ -139,8 +140,7 @@ for (const width of [834,390,320]) {
   await small.locator('.page-zoom img').first().evaluate(img=>img.decode());
   await shot('first-page-'+width);
   assert.ok(await small.locator('html').evaluate(e=>e.scrollWidth<=innerWidth+1),'No reader overflow at '+width);
-  await small.locator('.section-links summary').click();
-  await small.locator('a[href="#troubleshooting"]').click();
+  await page.locator('[data-reader-sections] a[href$="#troubleshooting"]').click();
   await small.locator('img').first().waitFor();
   await small.locator('#troubleshooting').evaluate(async anchor => {
     await anchor.closest('.page-sheet').querySelector('img').decode();

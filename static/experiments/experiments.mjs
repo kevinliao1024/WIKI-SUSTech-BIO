@@ -82,6 +82,23 @@ if (root) {
     root.querySelector('[data-reader-measurement]').hidden = protocol.dataset.categoryCode !== 'RP';
     host.replaceChildren();
     const frame = document.createElement('iframe');
+    const sections = root.querySelector('[data-reader-sections]');
+    sections.replaceChildren();
+    frame.addEventListener('load', () => {
+      if (!frame.isConnected) return;
+      const content = frame.contentDocument;
+      content.documentElement.classList.add('is-embedded');
+      for (const source of content.querySelectorAll('.section-links a')) {
+        const link = source.cloneNode(true);
+        link.href = `${frame.src}${source.hash}`;
+        link.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          content.getElementById(source.hash.slice(1))?.scrollIntoView({block:'start'});
+        });
+        sections.append(link);
+      }
+    }, {once:true});
     frame.src = protocol.dataset.readerUrl;
     frame.title = `${protocol.id} — ${protocol.dataset.title}`;
     host.append(frame);

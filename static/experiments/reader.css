@@ -1,10 +1,11 @@
-/* Original PDF pages: no reflowed prose, PDF plug-in, sidebar or viewer chrome. */
+/* Original PDF pages; the enclosing Wiki supplies information and navigation. */
 @font-face{font-family:'Source Sans 3';src:url('../fonts/source-sans-3-variable.woff2') format('woff2');font-weight:200 900;font-display:swap}
 *{box-sizing:border-box}
 html{background:#fff;color:#111;scroll-behavior:auto}
 body{margin:0;font:16px/1.5 'Source Sans 3','Segoe UI',Arial,sans-serif}
 .page-intro{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:12px 16px}
 .page-intro p{margin:0;color:#656796}
+.is-embedded .page-intro{display:none}
 .section-links{flex:1;min-width:160px}
 .section-links summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;color:#3d409b;font-weight:600;list-style:none}
 .section-links summary::after{content:'⌄'}

@@ -26,9 +26,13 @@ The source index lists RP07, but there is no current RP07 PDF; it remains absent
 The maintained numbered `Protocols/<ID>/` folders are authoritative.
 The reader displays lossless 1800-pixel-wide page images rendered directly from
 each original PDF, preserving its fonts, pagination, tables, figures and footer.
-It contains no browser PDF plug-in, viewer toolbar, gray canvas or sidebar.
+It contains no browser PDF plug-in, viewer toolbar or gray canvas. The Wiki's
+own information, download links and section navigation occupy a left column;
+the original pages scroll independently on the right. The 94dvh window fits
+the complete first page by default. On narrow phones, the information moves
+into a compact, independently scrollable region above the document.
 Select a page to enlarge it within a horizontally scrollable page region; select
-again to fit. The compact section menu uses actual Georgia Bold 14pt headings
+again to fit. The section navigation uses actual Georgia Bold 14pt headings
 extracted from the source PDFs, with anchors at their original page coordinates.
 References retain the PDF link annotations. Exact PDF text is included for
 screen readers; the visible page is never reconstructed from Markdown. The original PDF remains accessible
