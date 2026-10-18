@@ -1,7 +1,7 @@
 ---
 title: Software
 heading: Whole-body Delivery Model
-subtitle: Whole-body delivery modeling and the PUF website.
+subtitle: Whole-body delivery modeling and PUFFER.
 figures:
 - title: Delivery-to-editing model
   file: 14_full_model_workflow

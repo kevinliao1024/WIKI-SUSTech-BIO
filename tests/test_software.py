@@ -48,7 +48,7 @@ class SoftwareDeliveryTest(unittest.TestCase):
         self.assertIn('https://github.com/pdx12320/igem_software', self.html)
         self.assertIn('unscored design candidates', self.html)
         self.assertRegex(self.html, r'<h2[^>]*>Whole-body Delivery Model</h2>')
-        self.assertIn('<h2>PUF Website</h2>', self.html)
+        self.assertIn('<h2>PUFFER</h2>', self.html)
         self.assertNotRegex(self.html, r'[\u4e00-\u9fff]')
         chapter_numbers = re.findall(r'<h3 id="[^"]+" data-model-chapter><span class="chapter-number">([\d.]+)</span>', self.html)
         expected_numbers = [f'{section}.{chapter}' for section in (1, 2) for chapter in range(1, 7)]
