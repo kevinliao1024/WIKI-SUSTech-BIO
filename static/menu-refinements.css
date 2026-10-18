@@ -29,7 +29,7 @@
 }
 /* Keep the longest desktop title on one line within its own column. */
 @media (min-width:1200px) {
-  .whale-navigation .rna-toggle[aria-label="Human Practices"] .nav-label { white-space:nowrap; overflow-wrap:normal; }
+  .whale-navigation .rna-toggle[aria-label="Engagement"] .nav-label { white-space:nowrap; overflow-wrap:normal; }
   .whale-navigation .whale-pod > .rna-nav:last-child { min-width:max-content; }
 }
 @media (max-width:1199px) {
@@ -234,7 +234,7 @@ body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Dry Lab"]) .rna-br
   --node-glow:235,191,100;
   --node-sheen:255,210,144;
 }
-body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Human Practices"]) .rna-branch__base[data-base] {
+body .whale-navigation .rna-nav:has(> .rna-toggle[aria-label="Engagement"]) .rna-branch__base[data-base] {
   --node-fill:232,137,181;
   --node-edge:255,199,222;
   --node-glow:225,112,172;

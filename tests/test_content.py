@@ -21,6 +21,9 @@ class MarkdownContentTest(unittest.TestCase):
                     # The custom Model template renders its heading from front matter.
                     self.assertTrue(content.metadata.get("heading"))
                     self.assertIn("<p>", content.html)
+                elif route == "education":
+                    # Education is intentionally a blank landing page for now.
+                    self.assertEqual(content.html.strip(), "")
                 elif route == "team":
                     self.assertTrue(config.is_custom)
                     self.assertTrue(content.metadata.get("members"))

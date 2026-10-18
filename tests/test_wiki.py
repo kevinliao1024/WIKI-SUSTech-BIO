@@ -34,6 +34,7 @@ PUBLIC_ROUTES = [
     "/software",
     "/hardware",
     "/human-practices",
+    "/education",
     "/inclusivity",
 ]
 
@@ -52,6 +53,7 @@ PLACEHOLDER_ROUTES = [
     "/safety-and-security",
     "/hardware",
     "/human-practices",
+    "/education",
     "/inclusivity",
 ]
 
@@ -78,7 +80,7 @@ class WikiRoutesTest(unittest.TestCase):
                 self.get_text(route)
 
     def test_unknown_page_returns_designed_404(self):
-        for route in ("/this-page-does-not-exist", "/education"):
+        for route in ("/this-page-does-not-exist",):
             with self.subTest(route=route):
                 response = self.client.get(route)
                 self.assertEqual(response.status_code, 404)
@@ -96,8 +98,8 @@ class WikiRoutesTest(unittest.TestCase):
         index = re.search(r'<section\b[^>]*aria-labelledby="ot-index-title"[^>]*>(.*?)</section>', page, re.S)
         self.assertIsNotNone(menu)
         self.assertIsNotNone(index)
-        self.assertNotIn('href="/education"', menu.group(1))
-        self.assertNotIn('href="/education"', index.group(1))
+        self.assertIn('href="/education"', menu.group(1))
+        self.assertIn('href="/education"', index.group(1))
         navigation_routes = [f"/{route}" for group in NAVIGATION for route, _ in group["items"]]
         for route in navigation_routes:
             with self.subTest(route=route):

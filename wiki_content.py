@@ -66,6 +66,7 @@ CONTENT_PAGES: dict[str, PageConfig] = {
     "software": PageConfig("dry-lab/software.md", "pages/software.html"),
     "hardware": PageConfig("dry-lab/hardware.md"),
     "human-practices": PageConfig("human-practices/human-practices.md", "pages/human-practices.html"),
+    "education": PageConfig("human-practices/education.md"),
     "inclusivity": PageConfig("human-practices/inclusivity.md", "pages/inclusivity.html"),
 }
 
@@ -103,10 +104,11 @@ NAVIGATION = (
         ),
     },
     {
-        "label": "Human Practices",
+        "label": "Engagement",
         "align_end": True,
         "items": (
-            ("human-practices", "Human Practices"),
+            ("human-practices", "Human Practice"),
+            ("education", "Education"),
             ("inclusivity", "Inclusivity"),
         ),
     },
