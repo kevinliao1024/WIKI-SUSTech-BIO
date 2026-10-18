@@ -1,0 +1,52 @@
+/* Description's title continuations and workstream labels. */
+.markdown-content .description-heading-line {
+  display: block;
+}
+
+.markdown-content .description-heading-subtitle {
+  display: block;
+  margin-top: 10px;
+  color: #464786;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.content-page--model-reading .markdown-content .description-workstream-title {
+  margin: 30px 0 6px;
+  line-height: 1.45;
+}
+
+.markdown-content .description-workstream-title + p {
+  margin-top: 0;
+}
+
+.content-page--model-reading .markdown-content .description-card {
+  margin: 32px 0;
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid #e0e3ef;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 40%, #f8f8fd);
+  box-shadow: 0 12px 30px -10px #44477726, 0 3px 8px #44477708;
+}
+
+.content-page--model-reading .markdown-content .description-card > :first-child {
+  margin-top: 0;
+}
+
+.content-page--model-reading .markdown-content .description-card > :last-child {
+  margin-bottom: 0;
+}
+
+.content-page--model-reading .markdown-content .description-card--workstream {
+  margin: 22px 0;
+}
+
+@media (max-width: 480px) {
+  .content-page--model-reading .markdown-content .description-card {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+}

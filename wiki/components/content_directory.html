@@ -11,7 +11,7 @@
       </div>
       {% if group.children %}
       <ol class="content-subnav" id="{{ prefix }}-subnav-{{ loop.index }}">
-        {% for item in group.children %}<li><a href="#{{ item.id }}">{{ item.name }}</a></li>{% endfor %}
+        {% for item in group.children %}<li><a href="#{{ item.id }}"{% if item.custom_label %} data-content-custom-label{% endif %}>{{ item.name }}</a></li>{% endfor %}
       </ol>
       {% endif %}
     </li>

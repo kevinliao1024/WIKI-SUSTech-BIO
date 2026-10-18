@@ -5,16 +5,30 @@
 {% set has_dbtl = content.source_label == 'docs/project/engineering.md' %}
 {% set has_model_reading = not has_dbtl and (content.source_label.startswith('docs/project/') or content.source_label.startswith('docs/human-practices/')) %}
 {% set directory = namespace(groups=[], current=none) %}
-{% for item in content.toc %}
+{% set is_description = content.source_label == 'docs/project/description.md' %}
+{% set description_labels = {
+  'alzheimer-s-disease-the-problem': 'Alzheimer’s Disease',
+  'apoe-from-lipid-biology-to-ad-risk': 'APOE',
+  'existing-strategies-and-the-gap-we-saw': 'Existing Strategies',
+  'our-approach-from-an-rna-editor-to-orca': 'Our Approach'
+} %}
+{% for item in content.toc if not (is_description and item.id == 'references') %}
   {% if item.level == 2 or directory.current is none %}
     {% set heading = item %}
     {% if content.source_label == 'docs/wet-lab/measurement.md' and item.level == 2 %}
       {% set heading = {'id': item.id, 'name': item.name.split(' — ', 1)[0], 'level': item.level, 'custom_label': true} %}
+    {% elif is_description and item.id in description_labels %}
+      {% set heading = {'id': item.id, 'name': description_labels[item.id], 'level': item.level, 'custom_label': true} %}
     {% endif %}
     {% set directory.current = {'heading': heading, 'children': []} %}
     {% set directory.groups = directory.groups + [directory.current] %}
   {% else %}
-    {% set _ = directory.current.children.append(item) %}
+    {% if is_description %}
+      {% set child = {'id': item.id, 'name': item.name.split(' — ', 1)[0], 'level': item.level, 'custom_label': true} %}
+      {% set _ = directory.current.children.append(child) %}
+    {% else %}
+      {% set _ = directory.current.children.append(item) %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 {% block page_styles %}
@@ -23,7 +37,11 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='content-reading.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='model-reading.css') }}">
 {% if has_model_reading %}<link rel="stylesheet" href="{{ url_for('static', filename='content-model-reading.css') }}">{% endif %}
-{% if content.source_label == 'docs/project/description.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='description-stats.css') }}">{% endif %}
+{% if content.source_label == 'docs/project/description.md' %}
+<link rel="stylesheet" href="{{ url_for('static', filename='description-stats.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='description-navigation.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='description-typography.css') }}">
+{% endif %}
 {% if content.source_label == 'docs/wet-lab/measurement.md' %}<link rel="stylesheet" href="{{ url_for('static', filename='measurement-reading.css') }}">{% endif %}
 {% if content.source_label in ['docs/project/blueprint.md', 'docs/project/results.md'] %}<link rel="stylesheet" href="{{ url_for('static', filename='experiment-prose.css') }}">{% endif %}
 {% endblock %}
