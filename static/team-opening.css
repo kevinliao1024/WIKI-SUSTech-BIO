@@ -46,7 +46,7 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
 }
 .team-opening__cover { background: var(--opening-bg); opacity: 1; }
 .team-opening__blur {
-  background: #19143D2e;
+  background: rgba(25, 20, 61, .64);
   opacity: 0;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
@@ -69,6 +69,9 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
   stroke-linejoin: round;
   shape-rendering: geometricPrecision;
   vector-effect: non-scaling-stroke;
+}
+.team-opening__piece,
+.team-opening__piece-label-motion {
   transform-box: view-box;
   opacity: .86;
   animation: team-opening-unfold 1400ms 700ms cubic-bezier(.22,.72,.18,1) both;
@@ -77,6 +80,27 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
 .team-opening__piece--ne { --opening-x: 26%; --opening-y: -21%; --opening-turn: 3deg; transform-origin: 75% 25%; }
 .team-opening__piece--sw { --opening-x: -26%; --opening-y: 21%; --opening-turn: 3deg; transform-origin: 25% 75%; }
 .team-opening__piece--se { --opening-x: 26%; --opening-y: 21%; --opening-turn: -3deg; transform-origin: 75% 75%; }
+/* HTML keeps the lettering proportional while the SVG stretches to the viewport. */
+.team-opening__puzzle-labels,
+.team-opening__piece-label-motion { position: absolute; inset: 0; pointer-events: none; }
+.team-opening__puzzle-labels { z-index: 3; }
+.team-opening__piece-label {
+  position: absolute;
+  left: 38%;
+  top: 32%;
+  width: min(220px, 18vw);
+  transform: translate(-50%, -50%);
+  color: var(--opening-line);
+  font: 700 clamp(18px, 2.6vw, 36px)/1.2 'Team Futura', Futura, 'Avenir Next', sans-serif;
+  letter-spacing: .02em;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 12px #19143d66;
+}
+.team-opening__piece--ne > .team-opening__piece-label,
+.team-opening__piece--se > .team-opening__piece-label { left: 62%; }
+.team-opening__piece--sw > .team-opening__piece-label,
+.team-opening__piece--se > .team-opening__piece-label { top: 68%; }
 .team-opening__title {
   position: relative;
   z-index: 5;
@@ -118,6 +142,7 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
   transition: opacity 400ms ease, transform 500ms ease;
 }
 .team-opening__compile-code--right { transform: translateX(12px); }
+.team-opening .team-opening__compile-code { font-size: 14px; font-weight: 500; }
 .team-opening__compile.is-active .team-opening__compile-code { opacity: 1; transform: translateX(0); }
 .team-opening__compile-line {
   display: block;
@@ -161,6 +186,7 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
 .team-opening__pkg:focus-visible { background: transparent; }
 .team-opening__pkg:focus-visible .team-opening__pkg-art { outline: 2px solid var(--opening-line); outline-offset: 6px; }
 .team-opening__pkg-name { font: 700 12px/1.3 ui-monospace, SFMono-Regular, monospace; letter-spacing: .09em; }
+.team-opening .team-opening__pkg-name { font-size: 16px; color: #FFFFFF; text-shadow: 0 1px 4px #09071d66; }
 .team-opening__pkg-art {
   position: relative;
   display: grid;
@@ -173,6 +199,7 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
   border-radius: 10px;
   background: #E9E8FF1c;
 }
+.team-opening .team-opening__pkg-art { border: 3px solid #FFFFFF; }
 .team-opening__pkg-art img {
   display: block;
   width: 100%;
@@ -183,14 +210,26 @@ body.team-page--opening-blur .member-card.is-ready .member-card__turn { transfor
 .team-opening__pkg.is-unpacking .team-opening__pkg-art img {
   transform: scale(.88) rotate(-3deg);
 }
+.team-opening__pkg.is-unpacking .team-opening__pkg-art::before,
 .team-opening__pkg.is-unpacking .team-opening__pkg-art::after {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 10px;
-  border: 1px solid #E9E8FF;
-  border-top-color: transparent;
   border-radius: 50%;
+  background: conic-gradient(from -45deg, #f6bad5, #e0c6ef 35%, #b4dcf7 72%, transparent 87% 100%);
+  pointer-events: none;
   animation: team-package-spinner 600ms linear infinite;
+}
+.team-opening__pkg.is-unpacking .team-opening__pkg-art::before {
+  inset: 5px;
+  opacity: .65;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 6.5px), transparent 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 6.5px), transparent 100%);
+}
+.team-opening__pkg.is-unpacking .team-opening__pkg-art::after {
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
 }
 .team-opening__pkg.is-complete .team-opening__pkg-art {
   border-color: #F58F9C;
@@ -417,14 +456,15 @@ html:is([data-wh-cover], [data-wh-busy]) .team-opening * { animation-play-state:
 }
 @media (max-width: 640px) {
   .team-opening__piece { stroke-width: 14; }
+  .team-opening__piece-label { width: 22vw; max-width: 9ch; font-size: clamp(12px, 3.6vw, 20px); }
   .team-opening__pkg { grid-column: 1 / -1; grid-row: 1; }
   .team-opening__pkg-name { font-size: 11px; }
+  .team-opening .team-opening__pkg-name { font-size: 14px; }
   .team-opening__pkg-art { width: 118px; }
-  .team-opening__piece--nw, .team-opening__piece--sw { --opening-x: -30%; }
-  .team-opening__piece--ne, .team-opening__piece--se { --opening-x: 30%; }
   .team-opening__word { font-size: clamp(70px, 22vw, 130px); }
   .team-opening__compile { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: min(420px, 88vw); }
   .team-opening__compile-code { height: 120px; font-size: 9px; }
+  .team-opening .team-opening__compile-code { font-size: 12px; }
   .team-opening__eyebrow { margin-bottom: 13px; font-size: 10px; }
   .team-opening__caption { margin: 16px 0 15px; font-size: 12px; }
   .team-questionnaires--opening .team-questionnaire { width: 94px; padding: 5px; }
@@ -451,6 +491,10 @@ html:is([data-wh-cover], [data-wh-busy]) .team-opening * { animation-play-state:
 @media (prefers-reduced-motion: reduce) {
   .js .team-opening { animation: none; }
   .team-opening * { animation: none; }
+  .team-opening__piece,
+  .team-opening__piece-label-motion { transform: translate(var(--opening-x), var(--opening-y)) rotate(var(--opening-turn)) scale(.92); }
+  .team-opening__pkg.is-unpacking .team-opening__pkg-art::before,
+  .team-opening__pkg.is-unpacking .team-opening__pkg-art::after { animation: none; }
   .team-opening:is([data-phase="preview"], [data-phase="title"], [data-phase="package"]) .team-opening__letter { animation: none; opacity: 1; transform: none; }
   .team-opening__title { transition: none; }
   .team-opening__compile-code { scroll-behavior: auto; }

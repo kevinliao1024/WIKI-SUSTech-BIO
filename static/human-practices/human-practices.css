@@ -5,6 +5,83 @@
   container-type: inline-size;
 }
 .hp-manuscript .hp-subtitle { margin: 0 0 24px; }
+
+/* HP's opening note and introduction; Inclusivity shares this stylesheet. */
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle {
+  max-width: 36ch;
+  margin: 4px auto 32px;
+  color: #51466c;
+  font-family: Baskerville, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(25px, 4.3cqw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 38px;
+  padding: clamp(24px, 4.5cqw, 36px);
+  border: 1px solid #d9dce8;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #dcece9a6, transparent 62%),
+    radial-gradient(ellipse at 0% 100%, #f8e7e459, transparent 65%),
+    linear-gradient(125deg, #f0edf8, #f5f8f8);
+  box-shadow: 0 12px 32px #38304e0a, inset 0 1px 0 #ffffffd9;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #a66b7d, #739c9b);
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -120px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 27px, #6e989b1a 28px 29px, transparent 30px 48px);
+  pointer-events: none;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote > p {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 18px;
+  color: #4b5263;
+  font-size: 18px;
+  line-height: 1.65;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote > p:first-child {
+  color: #303650;
+  font-size: clamp(21px, 3.3cqw, 25px);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote > p:nth-child(2) {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #697b9629;
+  color: #555175;
+  font-size: 17px;
+  line-height: 1.65;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote strong {
+  color: inherit;
+  font-weight: 650;
+}
+[data-content-source="docs/human-practices/human-practices.md"] .hp-manuscript > .hp-subtitle + blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
 .hp-manuscript > p > img,
 .hp-manuscript .hp-figure > img {
   display: block;
@@ -49,6 +126,13 @@
 @container (min-width: 560px) {
   .hp-manuscript .hp-media-row {
     grid-template-columns: minmax(0, 1fr) minmax(200px, 40%);
+  }
+  /* Figure 23: keep the poster proportional and align the two final text lines. */
+  .hp-manuscript .hp-media-row:has(> #hp-figure-26) {
+    align-items: last baseline;
+  }
+  .hp-manuscript #hp-figure-26 > img {
+    width: 95%;
   }
 }
 

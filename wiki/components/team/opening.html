@@ -7,6 +7,13 @@
     <path class="team-opening__piece team-opening__piece--sw" d="M2 400 H252 C264 400 254 416 260 428 C274 464 326 464 340 428 C346 416 336 400 348 400 H600 V552 C600 564 584 554 572 560 C536 574 536 626 572 640 C584 646 600 636 600 648 V798 H2 Z"/>
     <path class="team-opening__piece team-opening__piece--se" d="M600 400 H852 C864 400 854 384 860 372 C874 336 926 336 940 372 C946 384 936 400 948 400 H1198 V798 H600 V648 C600 636 584 646 572 640 C536 626 536 574 572 560 C584 554 600 564 600 552 Z"/>
   </svg>
+  <div class="team-opening__puzzle-labels" aria-hidden="true">
+    {% for corner, label in [('nw', 'Wet Lab'), ('ne', 'Dry Lab'), ('sw', 'Human Practices'), ('se', 'Design & Wiki')] %}
+    <div class="team-opening__piece-label-motion team-opening__piece--{{ corner }}">
+      <span class="team-opening__piece-label">{{ label }}</span>
+    </div>
+    {% endfor %}
+  </div>
   <div class="team-opening__title">
     <p class="team-opening__word"><span class="team-sr-only">Team</span><span class="team-opening__letters" aria-hidden="true">{% for letter in 'Team' %}<span class="team-opening__letter" style="--letter-index: {{ loop.index0 }}">{{ letter }}</span>{% endfor %}</span></p>
     <div class="team-opening__compile" data-team-compile>

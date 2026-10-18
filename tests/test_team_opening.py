@@ -1,9 +1,12 @@
 """Team opening animation integration checks."""
 from pathlib import Path
+import html
+import json
 import re
 import unittest
 
 from app import app
+from wiki_content import load_markdown_content
 
 
 ROOT = Path(app.root_path)
@@ -36,20 +39,45 @@ class TeamOpeningTest(unittest.TestCase):
         self.assertNotIn('team-intro__people', page)
         self.assertNotIn('team-intro__manifest', page)
 
-    def test_package_header_precedes_roster_with_unlinked_folders(self):
+    def test_package_header_precedes_roster_with_accessible_folder_filters(self):
         with app.test_client() as client:
             page = client.get('/team').get_data(as_text=True)
         self.assertIn('team-package-header.css', page)
+        self.assertRegex(page, r'<script[^>]+src="[^"]*team-filters\.js" defer></script>')
         self.assertLess(page.index('data-team-package-header'), page.index('id="team-deck"'))
         header = page.split('data-team-package-header', 1)[1].split('</header>', 1)[0]
         self.assertIn('data-team-package-mount', header)
         self.assertIn('ORCA_TEAM.pkg', header)
         folders = header.split('class="team-skill-folders"', 1)[1].split('</ul>', 1)[0]
         self.assertEqual(folders.count('<li '), 5)
+        self.assertEqual(folders.count('<button '), 5)
         for name in ['Dry Lab', 'Wet Lab', 'Human Practices', 'Design', 'Wiki']:
             self.assertIn(f'<span>{name}</span>', folders)
+            self.assertRegex(folders, rf'<button[^>]+type="button"[^>]+data-team-filter="{name}"[^>]+aria-pressed="false"[^>]+aria-controls="team-deck" disabled>')
         self.assertNotIn('<a ', folders)
-        self.assertNotIn('<button', folders)
+        self.assertIn('data-team-filter-reset hidden', header)
+        self.assertIn('data-team-filter-summary hidden', header)
+        self.assertIn('data-team-filter-status role="status" aria-live="polite" aria-atomic="true"', header)
+        self.assertIn('data-team-filter-empty hidden', page)
+
+    def test_folder_filters_receive_all_formal_member_role_labels(self):
+        with app.test_client() as client:
+            page = client.get('/team').get_data(as_text=True)
+        content = load_markdown_content('team/team.md', asset_url=lambda path: '/assets/' + path)
+        expected = {
+            member['name']: [role['label'] for role in member.get('roles', [])]
+            for member in content.metadata['members']
+            if member.get('category', 'team-members') == 'team-members'
+        }
+        section = page.split('id="team-members"', 1)[1].split('</section>', 1)[0]
+        cards = re.findall(r'<article\b[^>]*data-member-card[^>]*>', section)
+        actual = {}
+        for card in cards:
+            name = html.unescape(re.search(r'data-member-name="([^"]+)"', card).group(1))
+            roles = html.unescape(re.search(r'data-member-roles="([^"]+)"', card).group(1))
+            actual[name] = json.loads(roles)
+        self.assertEqual(actual, expected)
+        self.assertIn(f'data-team-member-count>{len(expected)}</span>', section)
 
     def test_compilation_includes_every_member_once_in_order(self):
         with app.test_client() as client:

@@ -162,32 +162,34 @@ assert.equal(run.root.classList.contains('team-opening-scroll-locked'), true, 'W
 run.click();
 assert.equal(run.lines.filter(line => !line.hidden).length, 1);
 assert.notEqual(run.lines[0].textContent, run.original[0], 'The first line should type gradually.');
-run.advance(200);
+run.advance(160);
 assert.equal(run.lines[0].textContent, run.original[0]);
 assert.equal(run.lines[1].hidden, true);
-run.advance(56);
-assert.equal(run.lines.filter(line => !line.hidden).length, 2, 'The next line should appear sooner at 1.1x speed.');
-run.advance(2744);
+run.advance(32);
+assert.equal(run.lines.filter(line => !line.hidden).length, 2, 'The next line should appear by 192 ms at 1.3x the previous output speed.');
+run.advance(2808);
 assert.equal(run.opening.hidden, false, 'Compilation should outlast the old three-second loading.');
 assert.equal(run.root.classList.contains('team-opening-scroll-locked'), true, 'Compilation must keep background scrolling locked.');
 run.click();
-run.advance(4800);
+run.advance(3000);
+assert.equal(run.button.classList.contains('is-complete'), false, 'The final reading pause must finish before the completion pop starts.');
+run.advance(200);
 assert.equal(run.opening.hidden, false, 'The completed code should remain during its reading pause.');
-assert.equal(run.button.classList.contains('is-complete'), true, 'The faster output should reach completion before eight seconds.');
+assert.equal(run.button.classList.contains('is-complete'), true, 'The faster output should reach completion by 6.2 seconds.');
 assert.deepEqual(run.lines.map(line => line.textContent), run.original);
 assert.ok(run.panels.every(panel => panel.scrolls.length >= 15), 'Both logs should scroll to new lines.');
-run.advance(800);
+run.advance(1000);
 assert.equal(run.opening.hidden, false, 'The completion pop should remain visible before entering the roster.');
 assert.equal(run.button.classList.contains('is-complete'), true);
 assert.equal(run.button.classList.contains('is-unpacking'), false);
 assert.equal(run.root.classList.contains('team-opening-scroll-locked'), true, 'The completion pop must keep the blurred page locked.');
-run.advance(1400);
+run.advance(400);
 assert.equal(run.opening.hidden, true);
 assert.equal(run.body.classList.contains('team-package-open'), true);
 assert.equal(run.root.classList.contains('team-opening-scroll-locked'), false, 'The roster must regain scrolling after unpacking.');
 assert.equal(run.rootStyles.has('--team-opening-scroll-top'), false);
 assert.deepEqual(run.frames, ['01', '02', '03', '04', '01', '02', '03', '04']);
-assert.ok(run.frameEvents.slice(1).every((event, index) => event.time - run.frameEvents[index].time >= 900),
+assert.ok(run.frameEvents.slice(1).every((event, index) => event.time - run.frameEvents[index].time >= 750),
   'Every image in both cycles must have its own visible hold.');
 assert.equal(run.mount.child, run.compilation, 'The actual package and completed log should remain in the page header.');
 assert.equal(run.header.focused, true, 'Keyboard focus should leave the dismissed opening.');
@@ -221,7 +223,7 @@ assert.deepEqual(changed.frames, previousFrames, 'No frame timer may remain afte
 
 const completed = setup();
 completed.click();
-completed.advance(9000);
+completed.advance(6800);
 assert.equal(completed.button.classList.contains('is-complete'), true);
 completed.reduceMotion();
 assert.equal(completed.opening.hidden, true, 'Reduced motion should also finish the completion pop immediately.');

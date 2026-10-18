@@ -27,7 +27,7 @@
 {% set is_student_leader = roles|selectattr('label', 'equalto', 'Student Leader')|list|length > 0 %}
 {% set bottom_roles = roles|rejectattr('label', 'equalto', 'Student Leader')|list %}
 {% set key = 'team-card-' ~ index %}
-<article class="member-card{% if not photo %} member-card--pending{% endif %}{% if quote %} member-card--with-quote{% endif %}{% if quote_is_long %} member-card--long-quote{% endif %}" data-member-card data-member-name="{{ name }}" aria-label="{{ name }}{% if member.get('preview') %} card layout preview{% endif %}">
+<article class="member-card{% if not photo %} member-card--pending{% endif %}{% if quote %} member-card--with-quote{% endif %}{% if quote_is_long %} member-card--long-quote{% endif %}" data-member-card data-member-name="{{ name }}" data-member-roles="{{ roles|map(attribute='label')|list|tojson|forceescape }}" aria-label="{{ name }}{% if member.get('preview') %} card layout preview{% endif %}">
   <div class="member-card__turn">
     <div class="member-card__face member-card__front" data-card-front>
       <div class="member-card__portrait">

@@ -98,7 +98,7 @@ body.team-page:not(.ot){--particle-bg:#FFFEFC;background:var(--team-paper);color
 .member-card.is-flipped .member-card__toggle{pointer-events:none}
 @media(min-width:1200px){
  .team-deck{width:min(1760px,calc(100% - 80px))}
- .team-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:20px 16px}
+ .team-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 16px}
  .member-card__roles li{font-size:max(9px,3.7cqw);padding:2.6cqw 3cqw;gap:1.8cqw}
  .member-card__roles svg{width:max(10px,5.5cqw);height:max(10px,5.5cqw)}
  .member-card__footer{font-size:max(4px,2.05cqw);gap:1cqw;letter-spacing:0}
@@ -127,7 +127,7 @@ body.team-page:not(.ot){--particle-bg:#FFFEFC;background:var(--team-paper);color
 .team-category .member-card{
  flex:0 0 calc((100% - (var(--team-columns) - 1) * var(--team-column-gap)) / var(--team-columns));
 }
-@media(min-width:1200px){.team-category .team-grid{--team-columns:8;--team-column-gap:16px;--team-row-gap:20px}}
+@media(min-width:1200px){.team-category .team-grid{--team-columns:5;--team-column-gap:16px;--team-row-gap:20px}}
 @media(min-width:1001px) and (max-width:1199px){.team-category .team-grid{--team-columns:5;--team-column-gap:18px;--team-row-gap:24px}}
 @media(min-width:768px) and (max-width:1000px){.team-category .team-grid{--team-columns:4;--team-column-gap:16px;--team-row-gap:24px}}
 @media(min-width:641px) and (max-width:767px){.team-category .team-grid{--team-columns:3;--team-column-gap:16px;--team-row-gap:24px}}

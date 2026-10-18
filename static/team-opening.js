@@ -164,7 +164,7 @@
     }
 
     const holdDuration = 600;
-    const outputSpeed = 1.1;
+    const outputSpeed = 1.1 * 1.3;
     const outputDuration = (Math.max(8000, lines.length * 260 + holdDuration) - holdDuration) / outputSpeed;
     const duration = outputDuration + holdDuration;
     const lineInterval = outputDuration / Math.max(lines.length, 1);
