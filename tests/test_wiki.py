@@ -200,7 +200,7 @@ class WikiRoutesTest(unittest.TestCase):
             with self.subTest(route=route):
                 page = self.get_text(route)
                 self.assertNotIn("onetake/", page)
-                if route == "/human-practices":
+                if route == "/inclusivity":
                     # The requested STL viewers use local Three.js, without the
                     # homepage's particle scenes or animation dependencies.
                     importmap = re.search(r'<script type="importmap">(.*?)</script>', page, re.S)
@@ -212,6 +212,29 @@ class WikiRoutesTest(unittest.TestCase):
                     self.assertIn("human-practices/model-viewers/viewers.js", page)
                 else:
                     self.assertNotIn('type="importmap"', page)
+
+    def test_inclusivity_owns_accessibility_content_and_model_viewers(self):
+        hp = self.get_text("/human-practices")
+        inclusivity = self.get_text("/inclusivity")
+        for title in [
+            "Anjia Guardian: A home-safety mini-app designed for older adults",
+            "Biology Models to Explore by Touch: The Brain and the Cell",
+        ]:
+            self.assertIn(title, inclusivity)
+            self.assertNotIn(title, hp)
+        # Catch an empty inherited-template body as well as missing figures.
+        self.assertIn("The interface uses large text", inclusivity)
+        self.assertIn("Could we offer a more tangible way", inclusivity)
+        for filename in [
+            "biology-brain-model-render.webp", "biology-cell-model-render.webp",
+            "biology-brain-model.stl.zip", "biology-animal-cell-model.stl.zip",
+        ]:
+            self.assertIn(filename, inclusivity)
+            self.assertNotIn(filename, hp)
+        self.assertIn('/inclusivity#1-anjia-guardian-', hp)
+        self.assertNotIn("human-practices/model-viewers/viewers.js", hp)
+        self.assertEqual(hp.count('class="hp-media-row"'), 7)
+        self.assertEqual(inclusivity.count('class="hp-media-row"'), 2)
 
     def test_hero_assets_are_served_from_requested_path(self):
         response = self.client.get("/assets/hero/clearance/cleaners-ready.png")
@@ -295,7 +318,10 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertTrue(all(re.search(r'\bhidden(?=[\s>])', branch) for branch in branches))
         map_section = re.search(r'<section\b[^>]*data-engineering-map\s[^>]*>(.*?)</section>', page, re.S)
         self.assertIsNotNone(map_section)
-        self.assertNotRegex(map_section.group(1), r'<(?:img|image|defs)\b')
+        self.assertNotRegex(map_section.group(1), r'<img\b')
+        self.assertEqual(len(re.findall(r'<image\b', map_section.group(1))), 1)
+        self.assertIn('data-engineering-overview=', map_section.group(1))
+        self.assertEqual(len(re.findall(r'\bdata-overview-layer=', map_section.group(1))), 18)
         self.assertNotIn('engineering-map-water-art', map_section.group(1))
         self.assertRegex(map_section.group(1), r'<h1\b[^>]*id="engineering-map-title"[^>]*>Engineering</h1>')
         visible_copy = re.sub(r'<[^>]+>', '', map_section.group(1))
@@ -314,10 +340,9 @@ class WikiRoutesTest(unittest.TestCase):
             self.assertIn(f'href="#{group["parts"][0]["id"]}"', link.group(0))
         leaf_parts = [part for part in ENGINEERING_PARTS if part not in {"deliver", "measure"}]
         self.assertCountEqual(re.findall(r'\bdata-engineering-part="([^"]+)"', page), leaf_parts)
-        # Both views derive their variable-length cycle navigation from the
-        # authored headings after loading, rather than a fixed two-link list.
+        # Cycles remain in the reader; the overview map stops at module level.
         self.assertNotRegex(page, r'\bdata-map-cycle="')
-        self.assertIn('id="engineering-map-cycle-picker" aria-label="Engineering cycles"', page)
+        self.assertNotIn('engineering-map-cycle-picker', page)
         self.assertNotRegex(page, r'\bdata-engineering-cycle="')
         self.assertLess(page.index('/static/engineering-structure.js'), page.index('/static/engineering-map.js'))
         self.assertEqual(len(re.findall(r'\bdata-engineering-map-back(?=[\s>])', page)), 1)

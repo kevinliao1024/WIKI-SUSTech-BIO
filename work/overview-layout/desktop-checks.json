@@ -1,0 +1,102 @@
+[
+  {
+    "cardOverflow": false,
+    "chapter": "pod",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "cetus",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "integrated-orca",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "gfa",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "mre",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "aso",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "cre-loxp",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "deliver",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "measure",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "dry-dbtl",
+    "contained": true,
+    "float": "right",
+    "height": 188.0703125,
+    "loaded": true,
+    "visible": true,
+    "width": 313.453125
+  }
+]

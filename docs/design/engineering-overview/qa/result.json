@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "parts": 14,
+  "rasterAssets": 1,
+  "layers": 18,
+  "checks": [
+    "bidirectional hover",
+    "grayscale isolation",
+    "both chapter destinations",
+    "keyboard Enter",
+    "reader return",
+    "motion",
+    "responsive overflow",
+    "touch tap"
+  ],
+  "errors": []
+}

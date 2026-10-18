@@ -6,12 +6,11 @@
   const leafButtons = [...map.querySelectorAll('.engineering-map-leaf[data-engineering-part]')];
   const branchGroups = [...map.querySelectorAll('[data-map-branch-group]')];
   const branches = map.querySelector('.engineering-map-branches');
-  const cycles = map.querySelector('.engineering-map-cycles');
-  let cycleLinks = [];
   const canvas = map.querySelector('[data-map-canvas]');
   const lines = map.querySelector('[data-map-lines]');
   const root = map.querySelector('.engineering-map-root');
-  const desktop = matchMedia('(min-width: 901px)');
+  const desktop = matchMedia('(min-width: 600px)');
+  const wide = matchMedia('(min-width: 901px)');
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const overview = () => !desktop.matches || !hover.matches;
@@ -34,13 +33,63 @@
   const pointer = { inside: false, x: 0, y: 0, nx: 0, ny: 0, node: null };
   const currents = map.querySelector('.engineering-map-currents');
   const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
-  const canFloat = () => !map.hidden && !document.hidden && !overview() && !reducedMotion.matches && !keyboardNavigation;
+  const canFloat = () => wide.matches && !map.hidden && !document.hidden && !overview() && !reducedMotion.matches && !keyboardNavigation;
 
   const groupButton = () => groupButtons.find(button => button.dataset.engineeringGroup === selectedGroup);
   const visibleLeaves = () => leafButtons.filter(button => !button.closest('[data-map-branch-group]').hidden);
   const nodeId = node => node.dataset.engineeringGroup || node.dataset.engineeringPart ||
-    (node.dataset.mapCycle ? `${selectedPart}-cycle-${node.dataset.mapCycle}` : 'engineering');
+    'engineering';
 
+
+  const art = map.querySelector('[data-engineering-overview]');
+  const layers = [...art.querySelectorAll('[data-overview-layer]')];
+  const diagramLinks = [...art.querySelectorAll('[data-overview-target]')];
+  // Write real SVG paint values, rather than trusting compositing filters on
+  // groups of <use> glyphs. Keep an immutable copy for exact color restoration.
+  const paints = new Map(layers.map(layer => [layer,
+    [...layer.querySelectorAll('[fill], [stroke]')].flatMap(node =>
+      ['fill', 'stroke'].flatMap(attribute => {
+        const color = node.getAttribute(attribute);
+        if (!/^#[0-9a-f]{6}$/i.test(color || '')) return [];
+        const rgb = [1, 3, 5].map(offset => parseInt(color.slice(offset, offset + 2), 16));
+        const value = Math.round(rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722);
+        return [{ node, attribute, color, gray: '#' + value.toString(16).padStart(2, '0').repeat(3) }];
+      }))
+  ]));
+  function highlight(group, part = '') {
+    if (art.dataset.activeGroup === group && art.dataset.activePart === part) return;
+    art.dataset.activeGroup = group;
+    art.dataset.activePart = part;
+    layers.forEach(layer => {
+      const active = layer.dataset.overviewFamily === group && (!part || layer.dataset.overviewParts.split(' ').includes(part));
+      layer.classList.toggle('is-active', active);
+      paints.get(layer).forEach(({ node, attribute, color, gray }) => node.setAttribute(attribute, active ? color : gray));
+    });
+    diagramLinks.forEach(link => link.classList.toggle('is-active', part
+      ? link.dataset.overviewTarget === part && !link.dataset.overviewSelectGroup
+      : link.dataset.overviewSelectGroup === group));
+  }
+  function selectDiagram(link) {
+    if (map.hidden) return;
+    if (link.dataset.overviewSelectGroup) chooseGroup(link.dataset.overviewSelectGroup);
+    else choosePart(link.dataset.overviewTarget);
+  }
+  diagramLinks.forEach(link => {
+    link.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      // Focusing/scrolling can fire hover events beneath a stationary cursor.
+      // Only a real pointer movement may override the keyboard selection.
+      if ((keyboardNavigation || performance.now() < keyboardSettlingUntil) && !event.movementX && !event.movementY) return;
+      keyboardNavigation = false;
+      selectDiagram(link);
+    });
+    link.addEventListener('focus', () => {
+      keyboardNavigation = true;
+      keyboardSettlingUntil = performance.now() + 300;
+      selectDiagram(link);
+    });
+    link.addEventListener('click', () => selectDiagram(link));
+  });
   function visualSurface(node) {
     if (node === root) return node;
     let surface = node.querySelector('.map-node-surface');
@@ -64,8 +113,8 @@
     const origin = box.top - bounds.top;
     const parentBox = parent.getBoundingClientRect();
     const desired = parentBox.top + parentBox.height / 2 - bounds.top - box.height / 2;
-    const inset = 22;
-    const top = Math.max(inset, Math.min(desired, bounds.height - box.height - inset));
+    const inset = wide.matches ? 22 : root.getBoundingClientRect().bottom - bounds.top + 16;
+    const top = Math.max(inset, Math.min(desired, bounds.height - box.height - 22));
     cluster.style.setProperty(property, `${Math.round(top - origin)}px`);
   }
 
@@ -98,9 +147,8 @@
 
   function paintConnection({ from, to, stream }) {
     const a = movingBox(from), b = movingBox(to);
-    const rootAbove = overview() && from === root;
-    const cyclesBelow = overview() && to.dataset.mapCycle;
-    const horizontal = !overview() || (!cyclesBelow && b.left >= a.right + 8);
+    const rootAbove = (!wide.matches || overview()) && from === root;
+    const horizontal = !overview() || b.left >= a.right + 8;
     const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
     const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
     const [x1, y1] = start, [x2, y2] = end;
@@ -143,23 +191,21 @@
     const currentGroup = groupButton();
     activeNodes.forEach((node, index) => {
       const state = motionStates.get(node), box = state.box;
-      const isCycle = Boolean(node.dataset.mapCycle);
-      const dense = isCycle && cycleLinks.length > 6;
       const primary = pointer.inside && pointer.node === node;
-      const linked = pointer.inside && pointer.node && (node === root || node === currentGroup || node.dataset.engineeringPart === selectedPart || isCycle);
-      const phase = node === root ? 0 : isCycle ? 2.8 : index * .85;
-      const depth = node === root ? .9 : isCycle ? 1.04 : 1;
+      const linked = pointer.inside && pointer.node && (node === root || node === currentGroup || node.dataset.engineeringPart === selectedPart);
+      const phase = node === root ? 0 : index * .85;
+      const depth = node === root ? .9 : 1;
       const cx = box.left + box.width / 2, cy = box.top + box.height / 2;
       const pull = primary ? .12 : linked ? .018 : 0;
       const tx = Math.sin(motionTime * .4 + phase) * 2.2 + (pointer.inside ? pointer.nx * 22 * depth : 0) + clamp((pointer.x - cx) * pull, primary ? -7 : -2.5, primary ? 7 : 2.5);
-      const ty = Math.sin(motionTime * .52 + phase) * (dense ? .7 : 2.6) + (pointer.inside ? pointer.ny * 14 * depth : 0) + clamp((pointer.y - cy) * pull, primary && !dense ? -5 : -1.5, primary && !dense ? 5 : 1.5) - (primary && !dense ? 2 : 0);
+      const ty = Math.sin(motionTime * .52 + phase) * 2.6 + (pointer.inside ? pointer.ny * 14 * depth : 0) + clamp((pointer.y - cy) * pull, primary ? -5 : -1.5, primary ? 5 : 1.5) - (primary ? 2 : 0);
       // A softer, nearly critically damped spring preserves momentum when the
       // pointer reverses or leaves. Bound the target, not the spring's travel.
       state.vx += ((tx - state.x) * 32 - state.vx * 11.5) * dt;
       state.vy += ((ty - state.y) * 32 - state.vy * 11.5) * dt;
       state.x += state.vx * dt;
       state.y += state.vy * dt;
-      state.scale += ((primary && !dense && node !== root ? 1.018 : 1) - state.scale) * (1 - Math.exp(-dt * 10));
+      state.scale += ((primary && node !== root ? 1.018 : 1) - state.scale) * (1 - Math.exp(-dt * 10));
       state.surface.style.transform = `translate3d(${state.x.toFixed(2)}px,${state.y.toFixed(2)}px,0) scale(${state.scale.toFixed(4)})`;
       node.classList.toggle('is-attracted', primary);
     });
@@ -190,11 +236,9 @@
     const currentGroup = groupButton();
     placeCluster(branches, currentGroup, '--branch-top', clusterBounds);
     const leaves = visibleLeaves();
-    const currentLeaf = leaves.find(button => button.dataset.engineeringPart === selectedPart);
-    placeCluster(cycles, currentLeaf || currentGroup, '--cycle-top', clusterBounds);
     lines.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
     const retained = new Set();
-    activeNodes = [root, ...groupButtons, ...leaves, ...(cycles.hidden ? [] : cycleLinks)];
+    activeNodes = [root, ...groupButtons, ...leaves];
     connections = [];
     for (const node of motionStates.keys()) {
       if (!activeNodes.includes(node)) { node.classList.remove('is-attracted'); motionStates.delete(node); }
@@ -225,9 +269,6 @@
       const groupId = button.closest('[data-map-branch-group]').dataset.mapBranchGroup;
       connect(groupButtons.find(group => group.dataset.engineeringGroup === groupId), button, button.dataset.engineeringPart === selectedPart);
     });
-    // In the narrow overview, cycles sit below all modules. A labelled picker
-    // avoids drawing long connections through unrelated module rows.
-    if (!cycles.hidden && !overview()) cycleLinks.forEach(link => connect(currentLeaf || currentGroup, link, true));
     streams.forEach((stream, key) => {
       if (!retained.has(key)) { stream.remove(); streams.delete(key); }
     });
@@ -243,61 +284,40 @@
     if (!group) return;
     if (selectedGroup !== group.id) chooseGroup(group.id);
     selectedPart = id;
-    const part = group.parts.find(item => item.id === id);
+    map.dataset.selectedPart = id;
     leafButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringPart === id));
-    cycles.hidden = part.cycles.length === 0;
-    cycles.setAttribute('aria-label', `${part.label} cycles`);
-    if (cycles.dataset.part !== id) {
-      cycleLinks = part.cycles.map(number => {
-        const link = document.createElement('a');
-        link.className = 'engineering-map-cycle';
-        link.dataset.mapCycle = number;
-        const label = document.createElement('strong');
-        label.className = 'map-label';
-        label.textContent = part.cycleLabels[number];
-        link.append(label);
-        return link;
-      });
-      cycles.replaceChildren(...cycleLinks);
-      cycles.dataset.part = id;
-      cycles.dataset.cycleCount = String(cycleLinks.length);
-      cycles.dataset.manyCycles = String(cycleLinks.length > 6);
-    }
-    cycleLinks.forEach(link => {
-      link.href = `#${id}-cycle-${link.dataset.mapCycle}`;
-      link.setAttribute('aria-label', `${part.label}, ${part.cycleLabels[link.dataset.mapCycle]}`);
-    });
     if (focus) {
       const target = leafButtons.find(button => button.dataset.engineeringPart === id) || groupButton();
       target.focus({ preventScroll: true });
       requestAnimationFrame(() => target.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
     }
+    highlight(group.id, id);
     schedule();
   }
 
   function chooseGroup(id) {
     const group = groups.find(item => item.id === id);
-    // Crossing the same parent again must not close the already selected cycle branch.
-    if (!group || selectedGroup === id) return;
+    if (!group) return;
     selectedGroup = id;
     selectedPart = null;
+    map.dataset.selectedPart = '';
     map.dataset.selectedGroup = id;
     map.dataset.simple = String(group.parts.length === 1);
     groupButtons.forEach(button => button.classList.toggle('is-selected', button.dataset.engineeringGroup === id));
     branchGroups.forEach(section => { section.hidden = !overview() && section.dataset.mapBranchGroup !== id; });
     leafButtons.forEach(button => button.classList.remove('is-selected'));
-    cycles.hidden = true;
     if (group.parts.length === 1) choosePart(group.parts[0].id);
+    highlight(id);
     schedule();
   }
 
   function hoverNode(button) {
     if (!hover.matches || map.hidden) return;
     if (button.dataset.engineeringGroup) chooseGroup(button.dataset.engineeringGroup);
-    else if (button.dataset.engineeringPart !== selectedPart) choosePart(button.dataset.engineeringPart);
+    else choosePart(button.dataset.engineeringPart);
   }
   let motionPointerPosition;
-  map.addEventListener('pointermove', event => {
+  canvas.addEventListener('pointermove', event => {
     if (event.pointerType !== 'mouse' || overview() || reducedMotion.matches) return;
     const position = `${event.clientX}:${event.clientY}`;
     // Transformed nodes can generate enter/leave events under a stationary
@@ -311,10 +331,10 @@
     pointer.y = event.clientY - canvasBounds.top;
     pointer.nx = clamp(pointer.x / canvasBounds.width * 2 - 1, -1, 1);
     pointer.ny = clamp(pointer.y / canvasBounds.height * 2 - 1, -1, 1);
-    pointer.node = event.target.closest('.engineering-map-group,.engineering-map-leaf,.engineering-map-cycle');
+    pointer.node = event.target.closest('.engineering-map-group,.engineering-map-leaf');
     syncFloating();
   }, { passive: true });
-  map.addEventListener('pointerleave', () => { pointer.inside = false; pointer.node = null; });
+  canvas.addEventListener('pointerleave', () => { pointer.inside = false; pointer.node = null; });
   map.addEventListener('pointerdown', () => { pointerDown = true; }, { passive: true });
   addEventListener('pointerup', () => { pointerDown = false; }, { passive: true });
   addEventListener('pointercancel', () => { pointerDown = false; pointer.inside = false; });
@@ -356,19 +376,13 @@
     if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) return;
     const group = event.target.closest('[data-engineering-group]');
     const leaf = event.target.closest('.engineering-map-leaf[data-engineering-part]');
-    const cycle = event.target.closest('[data-map-cycle]');
-    if (!group && !leaf && !cycle) return;
+    if (!group && !leaf) return;
     event.preventDefault();
     if (event.key === 'ArrowRight') {
       if (group) {
         chooseGroup(group.dataset.engineeringGroup);
-        (visibleLeaves().find(button => button.closest('[data-map-branch-group]').dataset.mapBranchGroup === selectedGroup) || cycleLinks[0])?.focus();
-      } else if (leaf) {
-        choosePart(leaf.dataset.engineeringPart);
-        cycleLinks[0]?.focus();
+        (visibleLeaves().find(button => button.closest('[data-map-branch-group]').dataset.mapBranchGroup === selectedGroup))?.focus();
       }
-    } else if (cycle) {
-      (visibleLeaves().find(button => button.dataset.engineeringPart === selectedPart) || groupButton()).focus();
     } else if (leaf) groupButton().focus();
   });
 
@@ -401,8 +415,7 @@
   if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(canvas);
   document.fonts?.ready.then(schedule);
   updateLayout();
-  // Start with a complete example path; later map-select events restore the
-  // reader's current module, including when returning from a deep link.
+  // Restore the reader's module when returning from a deep link.
   choosePart('pod');
   updateMotion();
 })();

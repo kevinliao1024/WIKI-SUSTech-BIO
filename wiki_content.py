@@ -66,7 +66,7 @@ CONTENT_PAGES: dict[str, PageConfig] = {
     "software": PageConfig("dry-lab/software.md", "pages/software.html"),
     "hardware": PageConfig("dry-lab/hardware.md"),
     "human-practices": PageConfig("human-practices/human-practices.md", "pages/human-practices.html"),
-    "inclusivity": PageConfig("human-practices/inclusivity.md"),
+    "inclusivity": PageConfig("human-practices/inclusivity.md", "pages/inclusivity.html"),
 }
 
 

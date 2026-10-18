@@ -496,12 +496,12 @@
   workspace.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const target = hashTarget(link.hash);
+    const target = hashTarget(link.getAttribute('href'));
     if (!target) return;
     event.preventDefault();
     // A cycle or part change is a direct jump. Only the four nearby DBTL
     // stages use smooth scrolling within their current record.
-    go(target, { instant: link.hasAttribute('data-engineering-cycle') || link.hasAttribute('data-map-cycle') || link.hasAttribute('data-engineering-group') || link.hasAttribute('data-engineering-part') });
+    go(target, { instant: link.hasAttribute('data-engineering-cycle') || link.hasAttribute('data-overview-target') || link.hasAttribute('data-engineering-group') || link.hasAttribute('data-engineering-part') });
   });
 
   function syncHash() {

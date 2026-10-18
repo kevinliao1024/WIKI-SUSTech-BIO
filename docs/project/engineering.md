@@ -18,6 +18,8 @@ Programmable On-target Docking
 
 ### Overview {#pod-overview}
 
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/pod.png" alt="POD recognition module bound to APOE4 RNA." width="1800" height="1080" decoding="async">
+
 Selecting PUF12 gave ORCA a programmable RNA-recognition backbone for editing APOE4 at C388, but it did not confine editing to that site. **POD (Programmable On-target Docking)** addresses the recognition side of this problem. By engineering the tripartite recognition motifs (TRMs) of individual PUF repeats, we sought variants that preserve useful C388 editing while improving discrimination against unwanted APOE edits. Three engineering cycles took us from exploratory motif design and construct verification to functional screening and literature-guided expansion of the recognition repertoire.
 
 ### **Engineering Rationale** {#pod-engineering-rationale .engineering-section-title}
@@ -215,6 +217,8 @@ Engineering APOBEC substrate selectivity
 {.engineering-chapter-subtitle}
 
 ### Overview {#cetus-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/cetus.png" alt="CETUS catalytic module and C-to-U RNA editing." width="1800" height="1080" decoding="async">
 
 Targeting the right RNA does not guarantee editing the right cytidine. In ORCA, PUF recruits the editor to APOE4, but the attached APOBEC domain can also act on nearby cytidines with compatible sequence contexts. **CETUS** addresses this second layer of specificity by engineering the deaminase itself.
 
@@ -451,6 +455,8 @@ Engineering the complete RNA editor
 
 ### Overview {#integrated-orca-overview}
 
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/integrated-orca.png" alt="Integrated ORCA combines POD recognition and CETUS catalysis." width="1800" height="1080" decoding="async">
+
 Optimizing an RNA-binding domain and a catalytic domain separately does not guarantee that they will work better together. To move from individual protein-engineering efforts to a complete APOE4-targeting editor, we integrated selected POD and CETUS variants into ORCA and evaluated their performance against the original editor and matched single-module controls. Our objective was not simply to maximize editing at C388, but to retain useful target activity while reducing potentially consequential bystander editing. A combinatorial library, targeted and regional editing analyses, and Nanopore read-level measurements allowed us to compare these competing objectives and select two complementary candidates for further development.
 
 ### **Engineering Rationale** {#integrated-orca-engineering-rationale .engineering-section-title}
@@ -671,6 +677,8 @@ Cell-context-dependent transcriptional control
 
 ### Overview {#gfa-overview}
 
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/gfa.png" alt="GFA transcriptional control of ORCA." width="1800" height="1080" decoding="async">
+
 PUF-mediated RNA recognition determines *what* ORCA can edit, but not *where* the editor is expressed. To introduce an additional layer of control for our astrocyte-oriented system, we investigated **gfaABC1D**, a compact promoter derived from the human *GFAP* regulatory region. Through two engineering cycles, we established contrasting GFAP-associated cellular backgrounds and compared gfaABC1D with CMV in ORCA expression constructs. The resulting transcriptional and editing-associated readouts supported gfaABC1D as a cell-context-dependent control element, while revealing an unexpectedly weak CMV response in U251 cells.
 
 ### **Engineering Rationale** {#gfa-engineering-rationale .engineering-section-title}
@@ -762,6 +770,8 @@ Evaluating microRNA-mediated regulation
 <p class="control-evidence-note">Constructed and tested; miRNA-specific suppression not established. Excluded from the final ORCA design.</p>
 
 ### Overview {#mre-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/mre.png" alt="miRNA-responsive elements in the ORCA transcript 3-prime UTR." width="1800" height="1080" decoding="async">
 
 Transcriptional control alone may not fully restrict ORCA expression to the intended cell population. We therefore explored a complementary, microRNA-responsive layer designed to suppress editor transcripts in non-target cellular environments. Inspired by an astrocyte-targeting AAV strategy, we introduced a **4×6T microRNA response element (MRE)** into the ORCA transcript and evaluated it through three Design–Build–Test–Learn (DBTL) cycles: endogenous miRNA profiling, direct editor-expression testing, and a controlled miR-124 mimic experiment. The central question was whether this extra layer could improve expression selectivity **without sacrificing functional editing output**.
 
@@ -877,6 +887,8 @@ Engineering an external OFF interface
 <p class="control-evidence-note">Tag-dependent suppression of editing demonstrated; recovery after ASO withdrawal remains unverified.</p>
 
 ### Overview {#aso-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/aso.png" alt="Gapmer ASO, RNA tag and RNase H1 control of ORCA mRNA." width="1800" height="1080" decoding="async">
 
 Controlling where ORCA is expressed does not resolve every risk associated with sustained RNA-editing activity. We therefore sought an independent means of suppressing the editor after delivery, without permanently altering its expression cassette. Within our broader control strategy, permanent termination is addressed by Cre–loxP; here, we investigated **antisense oligonucleotides (ASOs)** as a potentially reversible, externally administered OFF signal.
 
@@ -1146,6 +1158,8 @@ A proposed genetic off-switch
 
 ### Overview {#cre-loxp-overview}
 
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/cre-loxp.png" alt="Cre-mediated excision of a loxP-flanked ORCA cassette." width="1800" height="1080" decoding="async">
+
 AAV9 offers a route to sustained ORCA expression, allowing the editor to act on newly synthesized APOE4 transcripts. Yet an editor designed to persist also needs a way to stop. We therefore proposed a **Cre–loxP genetic off-switch**: two loxP sites flank the ORCA coding sequence, enabling subsequently delivered Cre recombinase to excise it from the expression template.
 
 This design complements our antisense oligonucleotide (ASO) strategy. Whereas ASOs suppress ORCA at the RNA level, Cre–loxP is intended to prevent further production of the editor from recombined DNA templates. **The Cre–loxP module is a proposed design and has not been experimentally validated in ORCA.**
@@ -1225,6 +1239,8 @@ Delivery toward CNS applications
 {.engineering-chapter-subtitle}
 
 ### Overview {#deliver-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/deliver.png" alt="AAV9 delivery of an ITR-flanked ORCA cassette." width="1800" height="1080" decoding="async">
 
 An RNA editor can only become a useful biological intervention if it reaches the intended cells and remains available for an appropriate period. For ORCA, which is designed to convert APOE4 RNA into an APOE3-like sequence, delivery must address two challenges: access to the central nervous system (CNS) and continued editing of newly produced transcripts.
 
@@ -1386,6 +1402,8 @@ Engineering an editing-responsive reporter
 {.engineering-chapter-subtitle}
 
 ### Overview {#measure-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/measure.png" alt="SONAR reporter and SAP fluorescence analysis." width="1800" height="1080" decoding="async">
 
 RNA editing changes individual nucleotides, but those changes are not immediately visible in living cells. To evaluate ORCA more efficiently, we developed **SONAR (System for Optical Normalization and Analysis of RNA Editing)**: an editing-responsive fluorescence reporter supported by a framework for interpreting its output. Across ten engineering cycles, we established the reporter's protein-stability switch, refined its expression and target context, added an editor-expression marker, and explored fluorescence measurements across three platforms. The resulting system provides multiple optical views of reporter behavior while making clear why fluorescence alone cannot be treated as an RNA-editing percentage.
 
@@ -1703,6 +1721,8 @@ Most importantly, the real-editor experiments showed why these channels must be 
 ### Dry Lab Engineering {#dry-dbtl}
 
 #### Overview {#dry-dbtl-overview}
+
+<img class="engineering-overview-illustration" src="/assets/images/engineering-overviews/dry-dbtl.png" alt="PUFFER modelling workflow: RNA-seq, PUF and APOBEC, LAMAR, and whole-body modelling." width="1800" height="1080" decoding="async">
 
 ORCA aims to improve the specificity of programmable APOE4 RNA editing while preserving useful target activity. The PUF recognition domain, the APOBEC catalytic domain and the surrounding RNA sequence each contribute to this design problem. Our dry-lab workflow connects editor design and site prioritization with delivery, expression and RNA-product formation at the system scale.
 
