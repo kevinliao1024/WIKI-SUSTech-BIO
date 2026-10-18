@@ -1,62 +1,148 @@
 [
   {
     "overview": "deliver-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/01_DELIVER_AAV9.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-01-deliver-aav9--4cfe8c8a10c0.png",
     "image": "deliver.png",
-    "sha256": "bbace08be292dfc04d17786fe292a8281ba2eb0b757b6e254656bc7a2e1b3865"
+    "sha256": "4cfe8c8a10c0c676fd7b90f111fbad4292ed11e8677bd3f2316bab2f267eba46",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-01-deliver-aav9-4cfe8c8a10c0.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "66de286c8a81a097ee4d6b0f6ccc9c85195bd24672ef34c9f8c55fcef7a8c791",
+    "mean_absolute_rgb_error": 0.4381
   },
   {
     "overview": "dry-dbtl-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/02_MODEL_PUFFER.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-02-model-puffer--20f881f97a22.png",
     "image": "dry-dbtl.png",
-    "sha256": "8a7dba3876517410c83b02b259178ffd97719d9661b8599b698d41de69884f8f"
+    "sha256": "20f881f97a22bb3b956bf7d2d7aee469350177ef7e053b8467ab3264b2cf8e3a",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-02-model-puffer-20f881f97a22.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "20345c7646ecacbfc5a3d838aaa51ddbdb6f641ce4e4337f52711d59ece03753",
+    "mean_absolute_rgb_error": 0.4036
   },
   {
     "overview": "pod-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/03_EDIT_POD.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-03-edit-pod--ab6d3cf75d44.png",
     "image": "pod.png",
-    "sha256": "8ccc9cc4a1c8f116107a108a328ea62b7081bfeb4eff315b528b6e213e9850a6"
+    "sha256": "ab6d3cf75d44771f9bad10970669259d7ac26968920e6261232103f959414f34",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-03-edit-pod-ab6d3cf75d44.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "8c56b66c422e351f909fe6102f285af5aca89b574c23b0a16a8458612eadd47e",
+    "mean_absolute_rgb_error": 0.4383
   },
   {
     "overview": "cetus-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/04_EDIT_CETUS.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-04-edit-cetus--93b89f8f928c.png",
     "image": "cetus.png",
-    "sha256": "96eb24a0a50b34268f5881920f5ec82ad93b94791d178ac918195228c547a5b8"
+    "sha256": "93b89f8f928cae999d74357f12629acdee44e9f4209aa02e836236262e77beac",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-04-edit-cetus-93b89f8f928c.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "80803f0e6d95523a52c4ad815bac38124b0b5cd28b29029cd47352a76a01e4d4",
+    "mean_absolute_rgb_error": 0.4276
   },
   {
     "overview": "integrated-orca-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/05_EDIT_Integrated_ORCA.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-05-edit-integrated-orca--04959982e2fc.png",
     "image": "integrated-orca.png",
-    "sha256": "1ae0cde9a09bb2f6fdee08e4d086a5a8cc3a30511ae5b659a2b3edc40ad7cb17"
+    "sha256": "04959982e2fc377d7f7efa527f893e2b263619ea17d7e827be3c55bab42e720b",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-05-edit-integrated-orca-04959982e2fc.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "2953e2bf6ffc88a14899f6fe71bb5934906d2719b178b846c6502d20a902e2f2",
+    "mean_absolute_rgb_error": 0.476
   },
   {
     "overview": "measure-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/06_MEASURE_SONAR.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-06-measure-sonar--300652f1e043.png",
     "image": "measure.png",
-    "sha256": "df3fb49a5a5acd0cac8af9301e3acecd7ea0697dbb38738d02064825f7536cbe"
+    "sha256": "300652f1e04350d1d4bcfed3ab9d1c2d94599cde589c3a3f067bbe818873758c",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-06-measure-sonar-300652f1e043.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "5e2ff761c598a38879ecd4c6ca5f6e764a705912ebde5047a0460c2282f4d36f",
+    "mean_absolute_rgb_error": 0.1891
   },
   {
     "overview": "gfa-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/07_CONTROL_GFA.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-07-control-gfa--2a31ad12f985.png",
     "image": "gfa.png",
-    "sha256": "c7ec686ef826faaa3df5ecef77c6663ee6cd8c39568644bef814ec2692200041"
+    "sha256": "2a31ad12f985881eb3cacbb3974a4b6ad596cd7acc42fc603b766fa73fb3e7ae",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-07-control-gfa-2a31ad12f985.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "4d6197fc6c69f3b4ff93800d3febbef051a5923c0e5dcd88210e99724e67a6a5",
+    "mean_absolute_rgb_error": 0.1408
   },
   {
     "overview": "mre-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/08_CONTROL_MRE.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-08-control-mre--b93f88270309.png",
     "image": "mre.png",
-    "sha256": "e2d46f0855ccc4458bb04f74976d9033652ed9ae666fc4263f9c07b2b29bc6e7"
+    "sha256": "b93f8827030982512f09e5fd4c8dbc6f832ede72cf4c5918d0793a117cc826df",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-08-control-mre-b93f88270309.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "2ffba51da263b4e5ee48c7a687c39a0bfd2a51e787726d9fb35c8cbc7ff4df3d",
+    "mean_absolute_rgb_error": 0.1329
   },
   {
     "overview": "aso-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/09_CONTROL_ASO.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-09-control-aso--12b2fb19a667.png",
     "image": "aso.png",
-    "sha256": "e4dd0dbb0be40465ded6d4a2e07b3d8d9ba9fc3af9fe3e0314c4e61c316bf043"
+    "sha256": "12b2fb19a66785b990c74faf50b8e336152bddf0a3008a3b4dfb50282a210e05",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-09-control-aso-12b2fb19a667.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "845e22ffe2f5b9418d68b44555ccf0ee3deca7baed027ac404acc37cd2afd027",
+    "mean_absolute_rgb_error": 0.1418
   },
   {
     "overview": "cre-loxp-overview",
-    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/10_CONTROL_Cre-loxP.png",
+    "source": "ORCA_Engineering_13_PNG_Upload.zip :: orca-engineering-10-control-cre-loxp--4ec25a9e9be1.png",
     "image": "cre-loxp.png",
-    "sha256": "080d467aa02ce510d34bd444d66309a0c897b11dc4d7f06df81edcb35a994bcf"
+    "sha256": "4ec25a9e9be1dc8e773eb489751b0135f0daf5a6654ba8ebc9187099b54be4d4",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-10-control-cre-loxp-4ec25a9e9be1.avif",
+    "width": 1800,
+    "height": 1080,
+    "verified_on": "2026-10-19",
+    "remote_sha256": "810d8a25841b77c9593173b1ee935c4f9ffa05b3998fc8614c1e7078a1d8894c",
+    "mean_absolute_rgb_error": 0.1547
+  },
+  {
+    "overview": "fundamental-research-overview",
+    "source": "ORCA_FR_FV_Titles_PNG_PPTX.zip :: 11_Fundamental_Research.png",
+    "image": "fundamental-research.png",
+    "sha256": "5a292a432e764f09af08ca7c1f399d597082aa65bd4e3564d7e03bb458be0406",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-11-fundamental-research-5a292a432e76.avif",
+    "width": 1800,
+    "height": 1080,
+    "status": "verified_uploaded",
+    "verified_on": "2026-10-19",
+    "remote_sha256": "bf51497d57a6d7c3214e41e4f955c250268ad2219894cc90122aeb1968f7650f",
+    "mean_absolute_rgb_error": 0.4352
+  },
+  {
+    "overview": "functional-validation-overview",
+    "source": "ORCA_FR_FV_Titles_PNG_PPTX.zip :: 12_Functional_Validation.png",
+    "image": "functional-validation.png",
+    "sha256": "6778be681dc8587c4fb897c5d4c62d7e855c44f317f9b3bdde2bf8b14527cb8d",
+    "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-12-functional-validation-6778be681dc8.avif",
+    "width": 1800,
+    "height": 1080,
+    "status": "verified_uploaded",
+    "verified_on": "2026-10-19",
+    "remote_sha256": "49e7f87d6a1214102a2ef4de9c01ed98df36db67535f887a8932476bd74a1b9a",
+    "mean_absolute_rgb_error": 0.149
   }
 ]

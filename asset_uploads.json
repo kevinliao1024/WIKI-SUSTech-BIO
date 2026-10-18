@@ -1,6 +1,6 @@
 {
   "verified_on": "2026-10-18",
-  "source": "User-provided official upload lists; flat-package additions matched by normalized filename and source Git blob fingerprint. This import does not claim remote byte identity after image conversion. M132E update on 2026-10-19: eight user-uploaded IO figures verified via HTTP 200 and AVIF decode; local hashes identify approved PNG originals, not converted AVIF bytes.",
+  "source": "User-provided official upload lists; flat-package additions matched by normalized filename and source Git blob fingerprint. This import does not claim remote byte identity after image conversion. M132E update on 2026-10-19: eight user-uploaded IO figures verified via HTTP 200 and AVIF decode; local hashes identify approved PNG originals, not converted AVIF bytes. Final Engineering chapter illustrations verified 2026-10-19: twelve approved PNG originals matched to uploaded AVIFs by filename SHA-256 suffix, HTTP 200, AVIF decode, exact dimensions and pixel comparison. Includes restored titles on Fundamental Research and Functional Validation; PNG and AVIF hashes identify different encodings.",
   "urls": [
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-domain-525ae93f89.webp",
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-plate-3901fa4861.avif",
@@ -1848,7 +1848,19 @@
     "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-10-m132e-20261019.avif",
     "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-11-m132e-20261019.avif",
     "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-13-m132e-20261019.avif",
-    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-14-m132e-20261019.avif"
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-14-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-01-deliver-aav9-4cfe8c8a10c0.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-02-model-puffer-20f881f97a22.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-03-edit-pod-ab6d3cf75d44.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-04-edit-cetus-93b89f8f928c.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-05-edit-integrated-orca-04959982e2fc.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-06-measure-sonar-300652f1e043.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-07-control-gfa-2a31ad12f985.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-08-control-mre-b93f88270309.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-09-control-aso-12b2fb19a667.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-10-control-cre-loxp-4ec25a9e9be1.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-11-fundamental-research-5a292a432e76.avif",
+    "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-12-functional-validation-6778be681dc8.avif"
   ],
   "confirmed_mapping": [
     {
@@ -6556,66 +6568,6 @@
       "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
     },
     {
-      "local_path": "assets/images/engineering-overviews/aso.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-aso-3e16a87911.avif",
-      "sha256": "e4dd0dbb0be40465ded6d4a2e07b3d8d9ba9fc3af9fe3e0314c4e61c316bf043",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/cetus.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-cetus-64a42b91d6.avif",
-      "sha256": "96eb24a0a50b34268f5881920f5ec82ad93b94791d178ac918195228c547a5b8",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/cre-loxp.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-cre-loxp-310528d1d7.avif",
-      "sha256": "080d467aa02ce510d34bd444d66309a0c897b11dc4d7f06df81edcb35a994bcf",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/deliver.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-deliver-e13bd0461c.avif",
-      "sha256": "bbace08be292dfc04d17786fe292a8281ba2eb0b757b6e254656bc7a2e1b3865",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/dry-dbtl.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-dry-dbtl-78532f03f5.avif",
-      "sha256": "8a7dba3876517410c83b02b259178ffd97719d9661b8599b698d41de69884f8f",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/gfa.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-gfa-af90f65717.avif",
-      "sha256": "c7ec686ef826faaa3df5ecef77c6663ee6cd8c39568644bef814ec2692200041",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/integrated-orca.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-integrated-orca-165dd771ba.avif",
-      "sha256": "1ae0cde9a09bb2f6fdee08e4d086a5a8cc3a30511ae5b659a2b3edc40ad7cb17",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/measure.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-measure-ad10488a45.avif",
-      "sha256": "df3fb49a5a5acd0cac8af9301e3acecd7ea0697dbb38738d02064825f7536cbe",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/mre.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-mre-630058f45a.avif",
-      "sha256": "e2d46f0855ccc4458bb04f74976d9033652ed9ae666fc4263f9c07b2b29bc6e7",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
-      "local_path": "assets/images/engineering-overviews/pod.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-engineering-overviews-pod-01d7d79924.avif",
-      "sha256": "8ccc9cc4a1c8f116107a108a328ea62b7081bfeb4eff315b528b6e213e9850a6",
-      "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
-    },
-    {
       "local_path": "assets/images/orca-model-overview-v15.png",
       "url": "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-images-orca-model-overview-v15-1a2a04ea34.avif",
       "sha256": "a3aa1bcaaab5609b03cbdc9a27fec617ebcd87e125116be95f854a259446b3da",
@@ -7118,6 +7070,78 @@
       "url": "https://static.igem.wiki/teams/6085/wiki/10-18-11-02/static-human-practices-organizations-team-cuhk-hongkong-sbs-e56399cc4a.avif",
       "sha256": "cd1f6b6f040608ec6576d2a9d4238ec1b9246795e84bc5027513d29547a1602a",
       "evidence": "user_upload_list_flat_filename_and_git_blob_fingerprint"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/aso.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-09-control-aso-12b2fb19a667.avif",
+      "sha256": "12b2fb19a66785b990c74faf50b8e336152bddf0a3008a3b4dfb50282a210e05",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/cetus.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-04-edit-cetus-93b89f8f928c.avif",
+      "sha256": "93b89f8f928cae999d74357f12629acdee44e9f4209aa02e836236262e77beac",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/cre-loxp.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-10-control-cre-loxp-4ec25a9e9be1.avif",
+      "sha256": "4ec25a9e9be1dc8e773eb489751b0135f0daf5a6654ba8ebc9187099b54be4d4",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/deliver.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-01-deliver-aav9-4cfe8c8a10c0.avif",
+      "sha256": "4cfe8c8a10c0c676fd7b90f111fbad4292ed11e8677bd3f2316bab2f267eba46",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/dry-dbtl.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-02-model-puffer-20f881f97a22.avif",
+      "sha256": "20f881f97a22bb3b956bf7d2d7aee469350177ef7e053b8467ab3264b2cf8e3a",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/gfa.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-07-control-gfa-2a31ad12f985.avif",
+      "sha256": "2a31ad12f985881eb3cacbb3974a4b6ad596cd7acc42fc603b766fa73fb3e7ae",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/integrated-orca.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-05-edit-integrated-orca-04959982e2fc.avif",
+      "sha256": "04959982e2fc377d7f7efa527f893e2b263619ea17d7e827be3c55bab42e720b",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/measure.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-06-measure-sonar-300652f1e043.avif",
+      "sha256": "300652f1e04350d1d4bcfed3ab9d1c2d94599cde589c3a3f067bbe818873758c",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/mre.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-08-control-mre-b93f88270309.avif",
+      "sha256": "b93f8827030982512f09e5fd4c8dbc6f832ede72cf4c5918d0793a117cc826df",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/pod.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-03-edit-pod-ab6d3cf75d44.avif",
+      "sha256": "ab6d3cf75d44771f9bad10970669259d7ac26968920e6261232103f959414f34",
+      "evidence": "approved_upload_manifest_sha25612_http200_avif_decode_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/fundamental-research.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-11-fundamental-research-5a292a432e76.avif",
+      "sha256": "5a292a432e764f09af08ca7c1f399d597082aa65bd4e3564d7e03bb458be0406",
+      "evidence": "user_supplied_title_fix_url_http200_avif_decode_dimensions_and_pixel_comparison_20261019"
+    },
+    {
+      "local_path": "assets/images/engineering-overviews/functional-validation.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-12-functional-validation-6778be681dc8.avif",
+      "sha256": "6778be681dc8587c4fb897c5d4c62d7e855c44f317f9b3bdde2bf8b14527cb8d",
+      "evidence": "user_supplied_title_fix_url_http200_avif_decode_dimensions_and_pixel_comparison_20261019"
     }
   ],
   "content_hashes": [

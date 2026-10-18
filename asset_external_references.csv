@@ -20,8 +20,8 @@ https://static.igem.wiki/common/icons/favicons/igem-2022.svg,tests/test_audit.py
 https://static.igem.wiki/teams/0000/your-approved-portrait.avif,docs/team/member-cards.md:12,official
 https://static.igem.wiki/teams/5873/fonts/afacad-bold.ttf,static/assets/brand/footer-2025-provenance.json:54; static/school-footer.css:13,official
 https://static.igem.wiki/teams/5873/fonts/afacad-regular.ttf,static/assets/brand/footer-2025-provenance.json:53; static/school-footer.css:6,official
-https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp,static/assets/brand/footer-2025-provenance.json:19; wiki/footer.html:36,official
-https://static.igem.wiki/teams/5873/images/footer/contactus/rednote.webp,static/assets/brand/footer-2025-provenance.json:20; wiki/footer.html:42,official
+https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp,static/assets/brand/footer-2025-provenance.json:19; wiki/footer.html:44,official
+https://static.igem.wiki/teams/5873/images/footer/contactus/rednote.webp,static/assets/brand/footer-2025-provenance.json:20; wiki/footer.html:50,official
 https://static.igem.wiki/teams/5873/images/footer/contactus/wechat.webp,static/assets/brand/footer-2025-provenance.json:21; static/assets/brand/wechat-team-provenance.json:2,official
 https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/1-nankeda.webp,static/assets/brand/footer-2025-provenance.json:22,official
 https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/2-shengkeyuan.webp,static/assets/brand/footer-2025-provenance.json:23,official
@@ -49,10 +49,22 @@ https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/szu-china
 https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongji-china.webp,static/assets/brand/footer-2025-provenance.json:45,official
 https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongjishuke.webp,static/assets/brand/footer-2025-provenance.json:46; static/human-practices/organizations/manifest-footer-2025-additions.json:36,official
 https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/yixueyuan.webp,static/assets/brand/footer-2025-provenance.json:47; static/human-practices/organizations/manifest-footer-2025-additions.json:17,official
-https://static.igem.wiki/teams/5873/images/footer/sustech.webp,static/assets/brand/footer-2025-provenance.json:18; wiki/footer.html:20,official
+https://static.igem.wiki/teams/5873/images/footer/sustech.webp,static/assets/brand/footer-2025-provenance.json:18; wiki/footer.html:34,official
 https://static.igem.wiki/teams/5919/images/logo.webp,static/human-practices/organizations/manifest-part1.json:199; static/human-practices/organizations/manifest-teams.json:55,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-01-deliver-aav9-4cfe8c8a10c0.avif,assets/images/engineering-overviews/manifest.json:7,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-02-model-puffer-20f881f97a22.avif,assets/images/engineering-overviews/manifest.json:19,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-03-edit-pod-ab6d3cf75d44.avif,assets/images/engineering-overviews/manifest.json:31,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-04-edit-cetus-93b89f8f928c.avif,assets/images/engineering-overviews/manifest.json:43,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-05-edit-integrated-orca-04959982e2fc.avif,assets/images/engineering-overviews/manifest.json:55,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-06-measure-sonar-300652f1e043.avif,assets/images/engineering-overviews/manifest.json:67,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-07-control-gfa-2a31ad12f985.avif,assets/images/engineering-overviews/manifest.json:79,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-08-control-mre-b93f88270309.avif,assets/images/engineering-overviews/manifest.json:91,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-09-control-aso-12b2fb19a667.avif,assets/images/engineering-overviews/manifest.json:103,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-10-control-cre-loxp-4ec25a9e9be1.avif,assets/images/engineering-overviews/manifest.json:115,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-11-fundamental-research-5a292a432e76.avif,assets/images/engineering-overviews/manifest.json:127,official
+https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-12-functional-validation-6778be681dc8.avif,assets/images/engineering-overviews/manifest.json:140,official
 https://static.igem.wiki/teams/6085/wiki/figure.avif,tests/test_igem_assets.py:14,official
-https://static.igem.wiki/teams/6085/wiki/not-found/not-found-background.avif,wiki/pages/404.html:14,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-background.avif,tests/test_dual_environment.py:56; wiki/pages/404.html:14,official
 https://static.igem.wiki/teams/6085/wiki/not-found/not-found-bubbles.avif,wiki/pages/404.html:15,official
 https://static.igem.wiki/teams/6085/wiki/not-found/not-found-island-sign.avif,wiki/pages/404.html:17,official
 https://static.igem.wiki/teams/6085/wiki/not-found/not-found-mascot.avif,wiki/pages/404.html:18,official
@@ -75,6 +87,8 @@ https://static.igem.wiki/teams/6085/wiki/team/pkg3.avif,docs/team/team.md:8,offi
 https://static.igem.wiki/teams/6085/wiki/team/pkg4.avif,docs/team/team.md:9,official
 https://static.igem.wiki/teams/6085/wiki/team/xueyin-lu.avif,docs/team/team.md:295,official
 https://static.igem.wiki/teams/6085/wiki/team/yanfei-pu.avif,docs/team/team.md:275,official
+https://static.igem.wiki/teams/6085/wiki/test.avif,tests/test_dual_environment.py:66,official
+https://static.igem.wiki/teams/6085/wiki/unknown.png,tests/test_dual_environment.py:69,official
 https://static.igem.wiki/teams/6193/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:23,official
 https://static.igem.wiki/teams/6309/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:39,official
 https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable-italic.woff2,static/fonts/source-sans-3-provenance.json:17,official
