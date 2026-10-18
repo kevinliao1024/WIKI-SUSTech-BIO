@@ -1,0 +1,32 @@
+/* A float lets the same paragraph continue below the chapter illustration. */
+.engineering-overview-card:has(.engineering-overview-illustration) {
+  display: flow-root;
+  container-type: inline-size;
+}
+.engineering-copy .markdown-content img.engineering-overview-illustration {
+  display: block;
+  float: right;
+  width: 44%;
+  max-width: 360px;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  margin: 2px 0 16px 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+@container (max-width: 520px) {
+  .engineering-copy .markdown-content img.engineering-overview-illustration {
+    float: none;
+    width: min(100%, 360px);
+    margin: 0 auto 20px;
+  }
+}
+@media (max-width: 600px) {
+  .engineering-copy .markdown-content img.engineering-overview-illustration {
+    float: none;
+    width: min(100%, 360px);
+    margin: 0 auto 20px;
+  }
+}

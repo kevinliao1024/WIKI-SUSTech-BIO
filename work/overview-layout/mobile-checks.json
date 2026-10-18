@@ -1,0 +1,92 @@
+[
+  {
+    "cardOverflow": false,
+    "chapter": "pod",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "cetus",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "integrated-orca",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "gfa",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "mre",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "aso",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "cre-loxp",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "deliver",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "measure",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  },
+  {
+    "cardOverflow": false,
+    "chapter": "dry-dbtl",
+    "contained": true,
+    "float": "none",
+    "loaded": true,
+    "textBelow": true,
+    "visible": true
+  }
+]
