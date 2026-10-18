@@ -74,12 +74,18 @@ class ExperimentsTest(unittest.TestCase):
                         self.assertTrue((path.parent / asset).is_file(), asset)
         with app.test_client() as client:
             html = client.get('/experiments').get_data(as_text=True)
-            for removed in ('How to Use / Read', 'WET LAB / EXPERIMENT LIBRARY',
+            for removed in ('WET LAB / EXPERIMENT LIBRARY',
                             'BROWSE BY METHOD', 'Follow the research timeline',
                             'One connected research journey.', 'Methods to build on.',
                             'class="exp-family"', 'class="exp-group-count"'):
                 self.assertNotIn(removed, html)
             from html import escape
+            self.assertIn('<details class="exp-guide" id="how-to-read">', html)
+            self.assertLess(html.index('id="how-to-read"'), html.index('id="experiment-workspace"'))
+            self.assertEqual(html.count('class="exp-step-number"'), 13)
+            for item in guide['find_steps'] + guide['read_modules']:
+                self.assertIn(escape(item['text'], quote=False), html)
+            self.assertIn(guide['clarification_lead'], html)
             for group in content.metadata['protocol_groups']:
                 self.assertIn(escape(group['title']), html)
             self.assertIn('data-category-indicator', html)

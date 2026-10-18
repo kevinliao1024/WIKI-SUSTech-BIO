@@ -81,7 +81,7 @@ body:has(.experiments-page) .reading-orbit{display:none!important}
 /* Inline mini-manual: native details remains usable without JavaScript. */
 .exp-intro h1{font-size:clamp(58px,7vw,92px);margin-bottom:16px}
 .exp-intro-bottom{padding-bottom:0;border-bottom:0}
-.exp-guide{max-width:1260px;margin:28px auto 0;border:1px solid #dcdbea;border-radius:10px;background:#faf9fc;overflow-anchor:none}
+.exp-guide{max-width:1260px;margin:28px auto 32px;border:1px solid #dcdbea;border-radius:10px;background:#faf9fc;overflow-anchor:none}
 .exp-guide summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;cursor:pointer;list-style:none;min-height:72px}
 .exp-guide summary::-webkit-details-marker{display:none}
 .exp-guide summary strong{font-size:16px;font-weight:600}

@@ -104,9 +104,12 @@ if (root) {
     } else {
       releaseReader();
       showRoute(hash);
+      const guide = hash === '#how-to-read' ? root.querySelector('#how-to-read') : null;
+      if (guide) guide.open = true;
       if (scroll) {
         const navBottom = document.querySelector('.site-nav')?.getBoundingClientRect().bottom || 100;
-        const top = window.scrollY + root.querySelector('#experiment-workspace').getBoundingClientRect().top - navBottom - 24;
+        const target = guide || root.querySelector('#experiment-workspace');
+        const top = window.scrollY + target.getBoundingClientRect().top - navBottom - 24;
         window.scrollTo({top, behavior:reducedMotion.matches ? 'instant' : 'smooth'});
       }
     }

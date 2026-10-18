@@ -17,7 +17,10 @@ const shot = async name => {await page.screenshot({path:output+'/'+name+'.png'})
 await page.goto(base+'/experiments');
 await page.locator('[data-search-tools]:visible').waitFor();
 assert.equal(await count(),36);
-assert.equal(await page.locator('.exp-guide').count(),0);
+const guide = page.locator('.exp-guide');
+const summary = guide.locator('summary');
+assert.equal(await guide.count(),1);
+assert.equal(await guide.getAttribute('open'),null);
 assert.equal(await page.locator('h1').innerText(),'Experiment.');
 assert.equal(await page.locator('[data-category]').count(),8); // All + seven peers
 assert.equal(await page.locator('.exp-family, .exp-group-count, .exp-sidebar-note, .exp-notebook').count(),0);
@@ -25,6 +28,17 @@ assert.match(await page.locator('.exp-protocol h3').first().evaluate(e=>getCompu
 assert.equal(await page.locator('iframe').count(),0);
 assert.ok(await page.locator('[data-search]').evaluate(e=>e.getBoundingClientRect().top<innerHeight));
 await shot('desktop-library');
+await summary.focus();
+const before = await page.evaluate(()=>scrollY);
+await page.keyboard.press('Enter');
+assert.equal(await guide.getAttribute('open'),'');
+assert.ok(Math.abs(await page.evaluate(()=>scrollY)-before)<2);
+assert.equal(await guide.locator('.exp-find-steps>li:visible').count(),4);
+assert.equal(await guide.locator('.exp-read-modules>li:visible').count(),9);
+await shot('guide-desktop');
+await guide.locator('.exp-read-guide').screenshot({path:output+'/guide-nine-modules.png'});
+await page.keyboard.press('Space');
+assert.equal(await guide.getAttribute('open'),null);
 const initialIndicator = await page.locator('[data-category-indicator]').evaluate(e=>getComputedStyle(e).transform);
 await page.locator('[data-category="M"]').click();assert.equal(await count(),15);
 const cards=await page.locator('[data-protocol]:visible').evaluateAll(ns=>ns.map(n=>({parts:[...n.children].map(c=>c.tagName),rect:n.getBoundingClientRect().toJSON()})));
@@ -43,6 +57,11 @@ await page.waitForFunction(() => {
 });
 assert.notEqual(await page.locator('[data-category-indicator]').evaluate(e=>getComputedStyle(e).transform), initialIndicator);
 
+const filtered = await count();
+await summary.click();await summary.click();
+assert.equal(await page.locator('[data-search]').inputValue(),'PrimeSTAR');
+assert.equal(await count(),filtered);
+assert.equal(await page.locator('[data-category="M"]').getAttribute('aria-current'),'page');
 await page.locator('#M01').focus();await page.keyboard.press('Enter');
 await page.waitForSelector('[data-reader][open] iframe');
 const reader=page.frameLocator('[data-reader] iframe');
@@ -83,6 +102,11 @@ for (const width of [834,390,320]) {
   await page.locator('[data-search-tools]:visible').waitFor();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No library overflow at '+width);
   await shot('library-'+width);
+  await summary.click();
+  assert.equal(await guide.locator('.exp-read-modules>li:visible').count(),9);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No guide overflow at '+width);
+  await shot('guide-'+width);
+  await summary.click();
   await page.locator('#M02').click();
   const small=page.frameLocator('iframe');
   await small.locator('#procedure').waitFor();
@@ -96,11 +120,13 @@ for (const width of [834,390,320]) {
 const nojs=await browser.newPage({javaScriptEnabled:false});
 await nojs.goto(base+'/experiments');
 assert.equal(await nojs.locator('[data-protocol][href$=".pdf"]:visible').count(),36);
-assert.equal(await nojs.locator('.exp-guide').count(),0);
+await nojs.locator('.exp-guide summary').click();
+assert.equal(await nojs.locator('.exp-read-modules>li:visible').count(),9);
 await page.goto(base+'/experiments#how-to-read');
 await page.locator('[data-search-tools]:visible').waitFor();
-assert.equal(await count(),36,'Old guide URL still opens the library without a runtime error');
+assert.equal(await count(),36);
+assert.equal(await guide.getAttribute('open'),'','Guide URL opens the inline guide');
 
 assert.deepEqual(errors,[]);assert.deepEqual(failedResources,[]);
-await writeFile(output+'/results.json',JSON.stringify({passed:true,checks:['minimal headings, Model typography and moving category indicator; old guide URL remains safe','seven peer categories, combined source-keyword search, filter/query preservation','36 ID/name cards, HTML reader, actual-section TOC, PDF originals, images and references','focus return, Escape, history and no-JavaScript fallback','1440 / 834 / 390 / 320 px and reduced motion'],errors,failedResources},null,2));
+await writeFile(output+'/results.json',JSON.stringify({passed:true,checks:['collapsed guide with 4 + 9 explanations, keyboard, preserved search and direct guide URL; current Model typography and category indicator','seven peer categories, combined source-keyword search, filter/query preservation','36 ID/name cards, HTML reader, actual-section TOC, PDF originals, images and references','focus return, Escape, history and no-JavaScript fallback','1440 / 834 / 390 / 320 px and reduced motion'],errors,failedResources},null,2));
 await browser.close();console.log('Experiment browser checks passed.');
