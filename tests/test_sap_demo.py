@@ -27,7 +27,7 @@ class URLs(HTMLParser):
 
 
 class SAPDemoTest(unittest.TestCase):
-    def test_both_contribution_pages_embed_the_complete_app(self):
+    def test_both_contribution_pages_link_to_app_without_duplicate_embed(self):
         client = app.test_client()
         for route in ('/contribution', '/project-contribution-sonar'):
             with self.subTest(route=route):
@@ -35,11 +35,13 @@ class SAPDemoTest(unittest.TestCase):
                 parser = URLs()
                 parser.feed(html)
                 frames = [f for f in parser.frames if 'sap-demo/' in f.get('src', '')]
-                self.assertEqual(len(frames), 1)
-                self.assertEqual(frames[0]['src'], 'static/sap-demo/index.html#design')
-                self.assertIn('Design, Analysis and Data Sources', frames[0]['title'])
-                self.assertIn('sap-demo-embed.mjs', html)
-        self.assertNotIn('sap-demo-embed.mjs', client.get('/description').get_data(as_text=True))
+                self.assertEqual(frames, [])
+                self.assertIn('static/sap-demo/index.html#design', parser.urls)
+                self.assertIn('#oligo-design', parser.urls)
+                self.assertIn('#data-analysis', parser.urls)
+                self.assertNotIn('sap-demo-embed.mjs', html)
+        with client.get('/static/sap-demo/index.html') as response:
+            self.assertEqual(response.status_code, 200)
 
     def test_entry_assets_work_under_team_prefix(self):
         # Relative app paths must remain inside /sustech/static/sap-demo/.

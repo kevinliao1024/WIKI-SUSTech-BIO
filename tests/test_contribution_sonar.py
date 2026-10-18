@@ -16,7 +16,10 @@ class SonarContributionTest(unittest.TestCase):
             self.assertEqual(len(re.findall('id="'+anchor+'"',html)),1)
         self.assertIn('Neither score is a directly measured RNA editing percentage',html)
         self.assertIn('ratio of corrected signal sums',html)
-        self.assertNotIn('Download SAP',html)
+        # Public desktop packages are now available; downloads also work without JS.
+        self.assertIn('id="sap-download"',html)
+        for asset in ['SAP-1.4.0rc1-macos-arm64.dmg', 'SAP-1.4.0rc1-windows-x64-portable.zip']:
+            self.assertIn('https://github.com/Hansen614/SONAR-Analysis-Program/releases/download/v1.4.0rc1/'+asset,html)
     def test_assets_scoped(self):
         self.assertIn(b'sonar-contribution/index.mjs',self.client.get('/project-contribution-sonar').data)
         self.assertNotIn(b'sonar-contribution/index.mjs',self.client.get('/description').data)

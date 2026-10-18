@@ -41,3 +41,19 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Two distinct ways to start: desktop and browser. */
+.sap-start-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:26px 0 14px}
+.sap-start-card{--sap-accent:#236553;--sap-tint:#e3eee7;display:flex;flex-direction:column;min-width:0;padding:26px 22px;border:1px solid #d0ded7;border-top:4px solid var(--sap-accent);border-radius:14px;background:#f5f9f6;scroll-margin-top:120px}
+.sap-start-online{--sap-accent:#5053a3;--sap-tint:#e9e9fa;background:#f6f6fc;border-color:#d9daeb;border-top-color:var(--sap-accent)}
+.markdown-content .sap-start-card h3{font-size:1.6rem;margin:0 0 8px;line-height:1.2;border:0;padding:0}
+.markdown-content .sap-start-card .sap-start-description{font-size:.88rem;line-height:1.5;margin:0 0 12px}
+.sap-start-downloads{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sap-start-card a.sap-start-button{display:flex;justify-content:space-between;align-items:center;gap:6px;min-height:46px;margin-top:12px;padding:10px 12px;border:2px solid var(--sap-accent);border-radius:8px;background:var(--sap-accent);color:#fff!important;text-decoration:none!important;font-size:.8rem;font-weight:700;line-height:1.4}
+.sap-start-card a.sap-start-button:hover{filter:brightness(.9)}.sap-start-card a:focus-visible{outline:3px solid #5f62cd;outline-offset:4px}
+@media(max-width:760px){.sap-start-options{grid-template-columns:1fr;gap:20px}.sap-start-card{padding:22px 20px}}
+
+.sap-start-meta{display:block;font-size:.7rem;line-height:1.65;margin-top:9px;color:#555970}
+.sap-install-help{font-size:.75rem;margin-top:16px}.sap-install-help summary{cursor:pointer;color:var(--sap-accent);min-height:28px}.markdown-content .sap-install-help p{font-size:.78rem;line-height:1.6;margin:8px 0 0}
+.sap-workflow{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0 42px}.sap-workflow>a{display:flex;gap:16px;border-top:2px solid #9b9ef7;padding:20px 0;text-decoration:none!important;color:#2e3065!important;min-width:0}.sap-workflow-number{flex:0 0 40px;white-space:nowrap;font:30px Georgia,serif;color:#6f71c1}.sap-workflow strong{font-size:1rem}.markdown-content .sap-workflow p{font-size:.85rem;line-height:1.6;margin:10px 0}.sap-workflow>a:focus-visible,.sap-install-help summary:focus-visible{outline:3px solid #5f62cd;outline-offset:4px}
+@media(max-width:760px){.sap-workflow{grid-template-columns:1fr;gap:4px}}

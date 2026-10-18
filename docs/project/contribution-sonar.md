@@ -19,15 +19,27 @@ eyebrow: Project / Contribution
 
 ## Getting Started {#getting-started}
 
-<div class="sonar-path"><a href="#step-1"><b>01</b><span>Build your reporter<small>Sequence → construct</small></span></a><a href="#step-2"><b>02</b><span>Read the response<small>Experiment → flow → analysis</small></span></a></div>
+<div class="sap-start-options">
+<section class="sap-start-card sap-start-desktop" id="sap-download" aria-labelledby="sap-desktop-title">
+<h3 id="sap-desktop-title">Download SAP</h3>
+<p class="sap-start-description">Work with your own data.</p>
+<div class="sap-start-downloads"><a class="sap-start-button" href="https://github.com/Hansen614/SONAR-Analysis-Program/releases/download/v1.4.0rc1/SAP-1.4.0rc1-macos-arm64.dmg">Mac <span aria-hidden="true">↓</span></a><a class="sap-start-button" href="https://github.com/Hansen614/SONAR-Analysis-Program/releases/download/v1.4.0rc1/SAP-1.4.0rc1-windows-x64-portable.zip">Windows <span aria-hidden="true">↓</span></a></div>
+<small class="sap-start-meta">Mac: M series · macOS 14+ · 283 MB<br>Windows: x64 · 603 MB</small>
+<details class="sap-install-help"><summary>Installation notes · v1.4.0rc1 preview</summary><p>Mac: open the DMG and drag SAP to Applications.<br>Windows: extract the ZIP and open SAP/SAP.exe. Keep the whole folder together.</p><p>Windows is unsigned; macOS is not notarized. First launch may be blocked.</p><p><a href="https://github.com/Hansen614/SONAR-Analysis-Program/blob/v1.4.0rc1/packaging/INSTALL.md" target="_blank" rel="noopener">Installation guide ↗</a> · <a href="https://github.com/Hansen614/SONAR-Analysis-Program/releases/tag/v1.4.0rc1" target="_blank" rel="noopener">Release details ↗</a></p></details>
+</section>
+<section class="sap-start-card sap-start-online" aria-labelledby="sap-online-title">
+<h3 id="sap-online-title">Use SAP online</h3>
+<p class="sap-start-description">Try the guided example.</p>
+<a class="sap-start-button" href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Launch online <span aria-hidden="true">↗</span></a>
+<small class="sap-start-meta">Analysis uses example data.<br>Use the desktop app to upload your own files.</small>
+</section>
+</div>
 
-### Try SAP in your browser {#sap-demo}
+### How to use SAP {#sap-demo}
 
-Follow the original SAP interface from **Design** to **Analysis**, with a green highlight and a step-by-step guide. Sequence design runs in your browser; Analysis replays the prepared real-data example. The design and analysis cases are separate, and the saved fluorescence results do not establish an RNA editing percentage. File upload is available in the full application.
-
-<div class="sap-demo-embed" data-sap-embed>
-<div class="sap-demo-toolbar"><strong>SAP · Guided example</strong><div><a href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Open in a new tab ↗</a><button type="button" data-sap-fullscreen hidden>Full screen</button></div></div>
-<iframe src="static/sap-demo/index.html#design" title="SAP guided example: Design, Analysis and Data Sources" loading="lazy" allow="fullscreen; clipboard-write" allowfullscreen></iframe>
+<div class="sap-workflow" aria-label="SAP workflow">
+<a href="#oligo-design"><span class="sap-workflow-number">01</span><div><strong>Design your reporter ↓</strong><p>Sequence → editing site → oligos.</p></div></a>
+<a href="#data-analysis"><span class="sap-workflow-number">02</span><div><strong>Analyse fluorescence ↓</strong><p>Matched controls → samples → results.</p></div></a>
 </div>
 
 ## Reporter Design & Construction {#step-1}
@@ -132,7 +144,7 @@ These team-supplied resources are shared for inspection and adaptation. Keep the
 <div class="sonar-resources">
 <div><h4>Design & construction</h4><p><a href="static/sonar-contribution/resources/RP01.pdf">RP01 · Oligo design · PDF</a><br><a href="static/sonar-contribution/resources/RP02.pdf">RP02 · Golden Gate construction · PDF</a><br><a href="static/sonar-contribution/resources/Universal_Reporter_Plasmid.gb">Universal Reporter · GenBank</a></p><small>Protocol source snapshots and computational plasmid.</small></div>
 <div><h4>Experiment & acquisition</h4><p><a href="static/sonar-contribution/resources/C04.pdf">C04 · Cell seeding and transfection · PDF</a><br><a href="static/sonar-contribution/resources/RP06.pdf">RP06 · Flow cytometry · PDF</a><br><a href="static/sonar-contribution/data/provenance.json">Source checksums · JSON</a></p><small>Always match the source version to your assay.</small></div>
-<div><h4>Software & example data</h4><p><a href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Open the guided SAP example</a><br><a href="https://github.com/Hansen614/SONAR-Analysis-Program/releases/tag/v1.4.0rc1" target="_blank" rel="noopener">Desktop downloads · v1.4.0rc1 preview</a><br><a href="https://github.com/Hansen614/SONAR-Analysis-Program" target="_blank" rel="noopener">SAP source code</a></p><p><a href="static/sonar-contribution/data/flow.v1.json">S7 teaching event subset · JSON</a><br>Deterministic display subset with full-source reference statistics; original raw FCS are not bundled.</p><small>No numerical PER model is supplied.</small></div>
+<div><h4>Software & example data</h4><p><a href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Open the guided SAP example</a><br><a href="#sap-download">Download SAP for Mac or Windows</a><br><a href="https://github.com/Hansen614/SONAR-Analysis-Program" target="_blank" rel="noopener">SAP source code</a></p><p><a href="static/sonar-contribution/data/flow.v1.json">S7 teaching event subset · JSON</a><br>Deterministic display subset with full-source reference statistics; original raw FCS are not bundled.</p><small>No numerical PER model is supplied.</small></div>
 </div>
 
 SONAR is learned as a workflow. Reuse the components that fit your question, keep the assay context alongside your data, and recalibrate when the reporter or conditions change.
