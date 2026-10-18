@@ -20,6 +20,7 @@ varying vec2 vUv;
 
 uniform vec2  uResolution;
 uniform float uTime;
+uniform float uFlow;
 uniform float uProgress;
 uniform float uDirection;
 uniform float uReveal;
@@ -86,15 +87,16 @@ vec3 sky(vec2 uv, float near, out float dust) {
   s *= 0.30 + 1.35 * smoothstep(0.24, 0.86, clump);
 
   // Nebula: broad cold clouds, with a warmer core where the gas is densest.
-  float n1 = fbm5(vu * 1.15 + vec2(drift, -drift * 0.5));
-  float n2 = fbm3(vu * 2.9 - vec2(drift * 1.4, drift * 0.3));
+  float n1 = uQuality > 0.5 ? fbm5(vu * 1.15 + vec2(drift, -drift * 0.5))
+                           : fbm3(vu * 1.15 + vec2(drift, -drift * 0.5));
+  float n2 = uQuality > 0.5 ? fbm3(vu * 2.9 - vec2(drift * 1.4, drift * 0.3)) : n1;
   float veil = smoothstep(0.30, 0.95, n1);
   vec3 nebula = vec3(0.569, 0.780, 1.0) * veil * 0.085;
   nebula += vec3(0.573, 0.624, 1.0) * smoothstep(0.42, 1.0, n2) * 0.070;
   nebula += vec3(1.0, 0.90, 0.72) * smoothstep(0.72, 1.0, n1) * 0.022;
 
   // Dust: subtractive lanes, so the field has depth rather than only brightness.
-  dust = smoothstep(0.34, 0.78, fbm3(vu * 1.5 + 21.0));
+  dust = smoothstep(0.34, 0.78, uQuality > 0.5 ? fbm3(vu * 1.5 + 21.0) : n1);
 
   vec3 base = vec3(0.0235, 0.0784, 0.1804);
   return base + nebula + vec3(0.569, 0.780, 1.0) * s;
@@ -109,7 +111,7 @@ void main() {
 
   float form  = smoothstep(0.06, 0.46, t);
   float push  = smoothstep(0.48, 0.88, t);
-  float flood = smoothstep(0.90, 1.0, t);
+  float flood = smoothstep(0.95, 1.0, t);
 
   /* Camera. Advancing is expressed as the screen shrinking around the hole, so
      every layer — sky, disk, core — grows together instead of one disc scaling
@@ -162,9 +164,12 @@ void main() {
   float valid = step(0.0, tHit) * (1.0 - smoothstep(3.2, 6.4, rd));
 
   float radial = 1.0 / (0.34 + rd * rd * 0.52);
-  float shear = az + 1.25 / (rd + 0.22) + uTime * 0.42;
+  float spiralTravel = clamp((t - 0.10) / 0.86, 0.0, 1.0);
+  float waitingFlow = max(0.0, uTime - t * 1.5);
+  float flowRotation = toHome > 0.5 ? -uTime * 0.42 : uFlow;
+  float shear = az + 1.25 / (rd + 0.22) - flowRotation;
   float turb = fbm3(vec2(rd * 3.4 - uTime * 0.55, shear * 2.3));
-  float lanes = 0.52 + 0.48 * sin(rd * 13.0 - uTime * 2.1 + az * 3.0);
+  float lanes = 0.52 + 0.48 * sin(rd * 13.0 + (az - flowRotation) * 3.0);
   float band = radial * (0.42 + 0.95 * turb) * lanes * valid;
 
   // Beaming: the limb sweeping toward the viewer is brighter than the receding one.
@@ -212,6 +217,18 @@ void main() {
   // Inside the photon sphere the sky is still there, crushed and dimmed.
   core += mix(navy * 1.5, ice * 0.10, halo) * (1.0 - knot) * 0.55;
   color = mix(color, core, smoothstep(0.0, 0.30, form) * (1.0 - 0.35 * push));
+
+  // Wall grooves follow the slower particle field; the lettering overtakes it.
+  // log(radius) supplies the depth shear of a spiral receding into the core.
+  if (toHome < 0.5) {
+    vec2 screenQ = (vUv - 0.5) * vec2(aspect, 1.0);
+    float wallRadius = max(length(screenQ), 0.001);
+    float wallAngle = atan(screenQ.y, screenQ.x);
+    float groovePhase = wallAngle - flowRotation - log(wallRadius + 0.025) * 1.4;
+    float groove = pow(0.5 + 0.5 * cos(groovePhase * 5.0), 18.0);
+    float wall = smoothstep(0.035, 0.16, wallRadius) * exp(-wallRadius * 0.85);
+    color += ice * groove * wall * smoothstep(0.16, 0.42, t) * (1.0 - flood) * 0.24;
+  }
 
   /* ---------------------------------------------- the way back to Home -- */
   if (toHome > 0.5) {

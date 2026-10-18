@@ -43,3 +43,64 @@ html[data-wh-cover="home"]::before { background: var(--wh-navy); }
 @media (prefers-reduced-motion: reduce) {
   .wh-fallback { display: none; }
 }
+
+/* One word curves around the tunnel wall, projected through the same
+   camera as the particles. Progress owns position, scale and orientation. */
+.wh-loading {
+  position: absolute; inset: 0; z-index: 3;
+  color: var(--wh-train-ink, var(--wh-navy)); opacity: 0; visibility: hidden;
+  pointer-events: none;
+}
+.wh-loading__flight, .wh-loading__word { position: absolute; inset: 0; }
+.wh-loading__letter {
+  position: absolute; left: 50%; top: 50%;
+  font: 800 6vh/1 Futura, 'Trebuchet MS', sans-serif;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate(-50%, -50%) translate(var(--wh-letter-x, 0vh), var(--wh-letter-y, 0vh))
+    rotate(var(--wh-letter-rotation, 0deg)) scale(var(--wh-letter-scale, 1));
+}
+.wh-ink-defs { position: absolute; overflow: hidden; pointer-events: none; }
+.wh-loading__glyph {
+  position: relative; display: inline-block;
+  /* Keep the original face; exaggerate its height and ink weight only.
+     Independent scale composes with the existing subtle letter movement. */
+  scale: 1 2.05;
+  -webkit-text-stroke: .035em currentColor;
+  paint-order: stroke fill;
+  transform-origin: 50% 50%;
+  filter: url(#wh-ink-bleed);
+  text-shadow: .015em .02em .035em #082c6033;
+}
+/* Sparse droplets travel with the letters, keeping this one inked word. */
+.wh-loading__glyph::after {
+  content: ''; position: absolute; inset: -.2em -.22em; pointer-events: none;
+  opacity: .65;
+  background:
+    radial-gradient(ellipse at 14% 22%, currentColor 0 1.8%, transparent 3%),
+    radial-gradient(ellipse at 84% 17%, currentColor 0 1.2%, transparent 2.2%),
+    radial-gradient(ellipse at 91% 68%, currentColor 0 2%, transparent 3.1%),
+    radial-gradient(ellipse at 19% 83%, currentColor 0 1.5%, transparent 2.5%);
+}
+.wh-overlay[data-active][data-direction="to-light"][data-phase="departure"] .wh-loading,
+.wh-overlay[data-active][data-phase="covered"] .wh-loading,
+.wh-overlay[data-active][data-phase="arrival"] .wh-loading,
+.wh-overlay[data-active][data-phase="reveal"] .wh-loading {
+  opacity: var(--wh-train-opacity, 0); visibility: visible;
+}
+.wh-overlay[data-active] .wh-loading__glyph {
+  animation: wh-letter-fold 1100ms ease-in-out infinite;
+  animation-delay: calc(var(--wh-letter) * -95ms);
+}
+@keyframes wh-letter-fold {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1, 1); }
+  25% { transform: translateY(-.025em) rotate(-2deg) scale(.99, 1.02); }
+  50% { transform: translateY(.02em) rotate(2deg) scale(1.02, .99); }
+  75% { transform: translateY(-.01em) rotate(-1deg) scale(1, 1.01); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wh-overlay[data-active] .wh-loading__glyph { animation: none; filter: none; }
+  .wh-loading__flight { display: grid; place-items: center; }
+  .wh-loading__word { position: static; display: flex; gap: .13em; }
+  .wh-loading__letter { position: static; transform: none; font-size: clamp(26px, 4.5vw, 58px); }
+}

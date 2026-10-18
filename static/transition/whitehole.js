@@ -6,6 +6,26 @@
   const path = url => new URL(url, location.href).pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '') || '/';
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+  // Project letters on one helical tunnel wall through the particle camera.
+  // FOV and camera advance match whitehole-scene.js (62 degrees, 0 → -0.7).
+  // Units returned in vh keep the perspective aspect-correct on narrow screens.
+  function loadingPose(progress, index) {
+    const travel = clamp((progress - 0.10) / 0.86);
+    const cameraZ = -0.7 * smooth(0.46, 0.84, progress);
+    // Keep the word readable on the wall, then let it pass the camera.
+    const depth = 4.8 - 4 * Math.pow(travel, 5);
+    const radius = 0.55 + 0.23 * travel;
+    const theta = -0.8 + travel * 18.85 - depth * 0.24 + (index - 3) * 0.35;
+    const distance = Math.max(0.12, depth + cameraZ + (index - 3) * 0.025);
+    const projection = 50 / Math.tan(31 * Math.PI / 180) / distance;
+    return {
+      x: Math.cos(theta) * radius * projection,
+      y: -Math.sin(theta) * radius * projection,
+      rotation: -theta * 180 / Math.PI - 90,
+      size: 0.22 * projection,
+    };
+  }
+
   class TransitionTimeline {
     play(duration, draw) {
       this.cancel();
@@ -32,7 +52,22 @@
       this.overlay = document.createElement('div');
       this.overlay.className = 'wh-overlay'; this.overlay.setAttribute('aria-hidden', 'true');
       this.overlay.dataset.renderer = 'css';
-      this.overlay.innerHTML = '<div class="wh-backdrop"></div><div class="wh-fallback"></div><div class="wh-seal"></div>';
+      this.overlay.innerHTML = '<div class="wh-backdrop"></div><div class="wh-fallback"></div><div class="wh-seal"></div>' +
+        '<svg class="wh-ink-defs" width="0" height="0" aria-hidden="true"><defs>' +
+        '<filter id="wh-ink-bleed" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">' +
+        '<feTurbulence type="fractalNoise" baseFrequency=".055 .1" numOctaves="3" seed="7" result="grain"/>' +
+        '<feDisplacementMap in="SourceGraphic" in2="grain" scale="3" xChannelSelector="R" yChannelSelector="G" result="ink"/>' +
+        '<feGaussianBlur in="ink" stdDeviation=".55" result="bleed"/>' +
+        '<feMerge><feMergeNode in="bleed"/><feMergeNode in="ink"/></feMerge></filter></defs></svg>';
+      // HTML/CSS only: readable even while the optional GPU module is unavailable.
+      const loading = document.createElement('div');
+      loading.className = 'wh-loading';
+      const word = '<span class="wh-loading__word">' + Array.from('LOADING', (letter, i) =>
+        `<span class="wh-loading__letter" style="--wh-letter:${i}"><span class="wh-loading__glyph">${letter}</span></span>`).join('') + '</span>';
+      // One continuous word follows the tunnel wall; no duplicate streams.
+      loading.innerHTML = `<span class="wh-loading__flight">${word}</span>`;
+      this.overlay.append(loading);
+      this.loadingLetters = Array.from(loading.querySelectorAll('.wh-loading__letter'));
       document.body.append(this.overlay);
       this.click = event => {
         const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
@@ -106,6 +141,42 @@
       await Promise.race([work, delay(450)]);
       if (!this.scene) abandoned = true;
     }
+    preloadDestination(html, url) {
+      // Parse inert markup: fetch page assets without running its opening/scripts.
+      if (typeof DOMParser === 'undefined') return;
+      const page = new DOMParser().parseFromString(html, 'text/html');
+      this.preloads ||= [];
+      const seen = new Set();
+      const base = new URL(page.querySelector('base[href]')?.getAttribute('href') || url.href, url);
+      const warm = (value, as, module = false) => {
+        if (!value || this.preloads.length >= 48) return;
+        let asset; try { asset = new URL(value, base); } catch { return; }
+        if (!['http:', 'https:'].includes(asset.protocol) ||
+            (asset.origin !== location.origin && asset.hostname !== 'static.igem.wiki')) return;
+        const key = `${as}:${asset.href}`;
+        if (seen.has(key)) return;
+        seen.add(key);
+        const link = document.createElement('link');
+        link.rel = module ? 'modulepreload' : 'preload'; link.as = as; link.href = asset.href;
+        if (module || as === 'font') link.crossOrigin = 'anonymous';
+        this.preloads.push(link); document.head.append(link);
+      };
+      for (const style of page.querySelectorAll('link[rel~="stylesheet"][href]')) warm(style.getAttribute('href'), 'style');
+      for (const script of page.querySelectorAll('script[src]')) {
+        const type = (script.getAttribute('type') || '').toLowerCase();
+        if (!type || ['module', 'text/javascript', 'application/javascript'].includes(type)) {
+          warm(script.getAttribute('src'), 'script', type === 'module');
+        }
+      }
+      for (const font of page.querySelectorAll('link[rel="preload"][as="font"][href]')) warm(font.getAttribute('href'), 'font');
+      // The first content images can be marked lazy yet enter the first screen.
+      // Warm just two of those, then a few explicitly eager images; leave the rest lazy.
+      const images = [
+        ...Array.from(page.querySelectorAll('main img[src]')).slice(0, 2),
+        ...Array.from(page.querySelectorAll('img[src]:not([loading="lazy"])')).slice(0, 2),
+      ];
+      for (const image of images) warm(image.getAttribute('src'), 'image');
+    }
     begin(direction) {
       this.busy = true; this.committed = false; this.directionName = direction;
       this.overlay.dataset.direction = direction; this.overlay.dataset.phase = 'departure';
@@ -115,22 +186,38 @@
       this.emit('start', { direction });
       return ++this.generation;
     }
-    draw(p, reveal = 0) {
+    draw(p, reveal = 0, flowTime) {
       const style = this.overlay.style;
+      this.loadingLetters?.forEach((letter, index) => {
+        const pose = loadingPose(p, index);
+        letter.style.setProperty('--wh-letter-x', `${pose.x}vh`);
+        letter.style.setProperty('--wh-letter-y', `${pose.y}vh`);
+        letter.style.setProperty('--wh-letter-rotation', `${pose.rotation}deg`);
+        // Keep the ink/font raster fixed; scaling a cached glyph avoids per-frame font/filter repaint.
+        letter.style.setProperty('--wh-letter-scale', String(pose.size / 6));
+      });
+      style.setProperty('--wh-train-opacity', String(smooth(0.10, 0.18, p) * (1 - smooth(0.90, 0.97, p))));
+      // The train sits in the luminous core: dark ink stays legible there.
+      style.setProperty('--wh-train-ink', this.directionName === 'to-home' ? '#f8f7f4' : '#082c60');
       style.setProperty('--wh-opacity', String(smooth(0, 0.13, p) * (1 - reveal)));
       style.setProperty('--wh-scale', String(0.15 + smooth(0.08, 0.6, p) * 1.6 + Math.pow(smooth(0.65, 1, p), 3) * 16));
-      style.setProperty('--wh-cover', String(smooth(0.87, 1, p) * (1 - reveal)));
+      style.setProperty('--wh-cover', String(smooth(0.98, 1, p) * (1 - reveal)));
       this.overlay.style.opacity = String(1 - reveal);
-      try { this.scene?.render(p, this.directionName, reveal); }
+      try { this.scene?.render(p, this.directionName, reveal, flowTime); }
       catch { this.scene?.dispose(); this.scene = null; this.overlay.dataset.renderer = 'css'; }
     }
     async ready() {
-      const loaded = document.readyState === 'complete' ? Promise.resolve() : new Promise(resolve => addEventListener('load', resolve, { once: true }));
-      await Promise.race([Promise.all([loaded, document.fonts?.ready || Promise.resolve()]), delay(1400)]);
+      // The deferred controller already has parsed content and styles. Offscreen
+      // images must not hold the entire page behind a blank cover.
+      await Promise.race([document.fonts?.ready || Promise.resolve(), delay(350)]);
       await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
     async arrive(state) {
       if (!['to-light', 'to-home'].includes(state.direction)) { this.reset(); return; }
+      // Let authored page openings own their arrival without an extra loading act.
+      if (state.direction === 'to-light' && document.querySelector('[data-team-opening], [data-design-opening], [data-wh-own-opening]')) {
+        this.reset(); return;
+      }
       const token = this.begin(state.direction);
       this.overlay.dataset.phase = 'arrival';
       this.draw(1);
@@ -138,11 +225,13 @@
       await new Promise(resolve => requestAnimationFrame(resolve));
       if (token !== this.generation) return;
       document.documentElement.removeAttribute('data-wh-cover'); clearTimeout(this.config.watchdog);
-      await this.ready();
+      // The outgoing word has left the viewport. Reveal the parsed page promptly.
+      if (state.direction === 'to-home') await this.ready();
       if (token !== this.generation) return;
       if (state.direction === 'to-home') await this.prepareScene(token);
       if (token !== this.generation) return;
-      const duration = this.motion.matches ? 80 : 500;
+      this.overlay.dataset.phase = 'reveal';
+      const duration = this.motion.matches ? 80 : state.direction === 'to-light' ? 90 : 320;
       await this.timeline.play(duration, p => this.draw(1, smooth(0, 1, p)));
       if (token === this.generation) { this.emit('complete', { direction: state.direction }); this.reset(); }
     }
@@ -156,24 +245,47 @@
       this.abort = new AbortController(); const signal = this.abort.signal;
       const timeout = setTimeout(() => this.abort?.abort(), 8000);
       // Check the destination while the animation runs. A failed fetch returns to the current page.
+      let destinationSettled = false;
       const destination = fetch(url.href, { signal, credentials: 'same-origin', headers: { Accept: 'text/html' } })
         .then(response => {
           if (!response.ok || new URL(response.url).origin !== location.origin ||
               !response.headers.get('content-type')?.includes('text/html')) throw new Error('Page unavailable');
-          return response.text();
-        }).then(() => true).catch(() => false);
-      await this.prepareScene(token);
+          return response.text().then(html => ({ html, url: new URL(response.url) }));
+        }).then(page => {
+          if (token === this.generation) {
+            try { this.preloadDestination(page.html, page.url); } catch { /* Warming is optional. */ }
+          }
+          return true;
+        }).catch(() => false).then(ok => { destinationSettled = true; return ok; });
+      // Start the CSS portal immediately; GPU preparation runs alongside it.
+      void this.prepareScene(token);
       if (token !== this.generation) { clearTimeout(timeout); return false; }
-      const duration = this.motion.matches ? 80 : 1500;
-      const completed = await this.timeline.play(duration, p => this.draw(p));
+      const duration = this.motion.matches ? 80 : direction === 'to-light' ? 4200 : 1500;
+      // Most of the word's slow orbit is unchanged; reserve only a short exit.
+      const handoff = direction === 'to-light' && !this.motion.matches ? 0.94 : 1;
+      const completed = await this.timeline.play(duration * handoff, p => this.draw(p * handoff));
       if (!completed || token !== this.generation) { clearTimeout(timeout); return false; }
-      this.overlay.dataset.phase = 'covered'; this.scene?.dispose(); this.scene = null;
-      const ok = await destination; clearTimeout(timeout);
+      if (!destinationSettled && handoff < 1) {
+        // A slow response must not freeze the white-ray frame. Keep the wall flowing.
+        const waitingSince = performance.now();
+        const flow = now => {
+          if (token !== this.generation) return;
+          this.draw(handoff, 0, handoff * 1.5 + (now - waitingSince) / 1000);
+          this.waitFrame = requestAnimationFrame(flow);
+        };
+        this.waitFrame = requestAnimationFrame(flow);
+      }
+      const ok = await destination; clearTimeout(timeout); cancelAnimationFrame(this.waitFrame);
       if (token !== this.generation) return false;
       if (!ok) {
         this.emit('error', { url: url.href }); this.reset();
         this.showNotice('This page could not be opened. Please try again.'); return false;
       }
+      if (handoff < 1) {
+        const exited = await this.timeline.play(70, p => this.draw(handoff + (1 - handoff) * p));
+        if (!exited || token !== this.generation) return false;
+      }
+      this.overlay.dataset.phase = 'covered'; this.scene?.dispose(); this.scene = null;
       const state = { version: 1, direction, to: url.href, created: Date.now() };
       try { sessionStorage.setItem(this.config.key, JSON.stringify(state)); } catch { /* CSS departure still works. */ }
       this.committed = true; this.emit('navigate', { url: url.href, direction });
@@ -183,7 +295,9 @@
       return true;
     }
     reset(clearPending = true) {
-      ++this.generation; this.timeline.cancel(); this.abort?.abort(); this.abort = null;
+      ++this.generation; this.timeline.cancel(); cancelAnimationFrame(this.waitFrame);
+      this.abort?.abort(); this.abort = null;
+      this.preloads?.forEach(link => link.remove()); this.preloads = [];
       clearTimeout(this.escapeTimer); clearTimeout(this.config.watchdog);
       this.scene?.dispose(); this.scene = null;
       this.overlay.removeAttribute('data-active'); this.overlay.style.opacity = '';
@@ -207,7 +321,7 @@
       this.overlay.remove(); this.notice?.remove();
     }
   }
-  window.ORCAWhiteHoleClasses = { TransitionTimeline, PageTransitionController };
+  window.ORCAWhiteHoleClasses = { TransitionTimeline, PageTransitionController, loadingPose };
   const config = window.__orcaWhiteHole;
   if (config && !document.documentElement.hasAttribute('data-wh-preview')) {
     window.ORCAWhiteHole = new PageTransitionController(config);
