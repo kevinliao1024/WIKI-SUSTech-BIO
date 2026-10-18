@@ -7,7 +7,6 @@
     <h1>{{ content.title }}<span>.</span></h1>
   </header>
   <section class="nb-app" data-notebook data-index="{{ url_for('static', filename='notebook/index.json') }}" aria-label="Interactive research notebook" aria-busy="true">
-    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <div class="nb-toolbar">
       <div class="nb-view-label"><button class="nb-back" type="button" data-back hidden aria-label="Return to timeline overview">← <span>Overview</span></button><span data-view-label>Research timeline</span></div>
       <label class="nb-track-switch" hidden data-switch-label>Track <select data-switch aria-label="Switch experimental track"></select></label>
@@ -22,6 +21,7 @@
       </div>
     </div>
     <div class="nb-end" data-end hidden></div>
+    <nav class="nb-tracks" data-tracks aria-label="Experimental tracks"></nav>
     <p class="nb-status" data-status role="status" aria-live="polite"></p>
   </section>
   <noscript><p>The interactive timeline needs JavaScript. <a href="{{ url_for('static', filename='notebook/catalog.html') }}">Browse the source index</a> for every date, experiment title and original PDF.</p></noscript>
