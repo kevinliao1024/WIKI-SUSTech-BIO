@@ -1,0 +1,35 @@
+<div class="team-opening" data-team-opening data-team-package-count="{{ members|length }}">
+  <div class="team-opening__cover" aria-hidden="true"></div>
+  <div class="team-opening__blur" aria-hidden="true"></div>
+  <svg class="team-opening__puzzle" viewBox="0 0 1200 800" preserveAspectRatio="none" fill="none" aria-hidden="true" focusable="false">
+    <path class="team-opening__piece team-opening__piece--nw" d="M2 2 H600 V152 C600 164 616 154 628 160 C664 174 664 226 628 240 C616 246 600 236 600 248 V400 H348 C336 400 346 416 340 428 C326 464 274 464 260 428 C254 416 264 400 252 400 H2 Z"/>
+    <path class="team-opening__piece team-opening__piece--ne" d="M600 2 H1198 V400 H948 C936 400 946 384 940 372 C926 336 874 336 860 372 C854 384 864 400 852 400 H600 V248 C600 236 616 246 628 240 C664 226 664 174 628 160 C616 154 600 164 600 152 Z"/>
+    <path class="team-opening__piece team-opening__piece--sw" d="M2 400 H252 C264 400 254 416 260 428 C274 464 326 464 340 428 C346 416 336 400 348 400 H600 V552 C600 564 584 554 572 560 C536 574 536 626 572 640 C584 646 600 636 600 648 V798 H2 Z"/>
+    <path class="team-opening__piece team-opening__piece--se" d="M600 400 H852 C864 400 854 384 860 372 C874 336 926 336 940 372 C946 384 936 400 948 400 H1198 V798 H600 V648 C600 636 584 646 572 640 C536 626 536 574 572 560 C584 554 600 564 600 552 Z"/>
+  </svg>
+  <div class="team-opening__title">
+    <p class="team-opening__word"><span class="team-sr-only">Team</span><span class="team-opening__letters" aria-hidden="true">{% for letter in 'Team' %}<span class="team-opening__letter" style="--letter-index: {{ loop.index0 }}">{{ letter }}</span>{% endfor %}</span></p>
+    <div class="team-opening__compile" data-team-compile>
+      <div class="team-opening__compile-code team-opening__compile-code--left" aria-hidden="true">
+        <span class="team-opening__compile-line" data-team-compile-order="0" hidden>compile ORCA_TEAM.skill</span>
+        <span class="team-opening__compile-line" data-team-compile-order="2" hidden>load modules/dry_lab</span>
+        <span class="team-opening__compile-line" data-team-compile-order="4" hidden>load modules/wet_lab</span>
+        {% for member in members %}{% if loop.index0 is even %}<span class="team-opening__compile-line team-opening__compile-line--extract" data-team-compile-order="{{ loop.index0 + 6 }}" hidden>extract {{ member.name|replace(' ', '_')|lower }}_skill.md</span>{% endif %}{% endfor %}
+        <span class="team-opening__compile-line" data-team-compile-order="{{ members|length + 6 }}" hidden>link skills → ORCA_TEAM.skill</span>
+      </div>
+      <button class="team-opening__pkg" type="button" data-team-package aria-label="Open ORCA team package"
+        data-team-package-frames="{{ url_for('static', filename='assets/team/questionnaires/questionnaire-01.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-02.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-03.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-04.png') }}">
+        <span class="team-opening__pkg-art"><img src="{{ url_for('static', filename='assets/team/questionnaires/questionnaire-01.png') }}" alt="" width="240" height="240" data-team-package-frame></span>
+        <span class="team-opening__pkg-name">ORCA_TEAM.pkg</span>
+        <span class="team-opening__sr-status" data-team-package-status aria-live="polite"></span>
+      </button>
+      <div class="team-opening__compile-code team-opening__compile-code--right" aria-hidden="true">
+        <span class="team-opening__compile-line" data-team-compile-order="1" hidden>status: compiling</span>
+        <span class="team-opening__compile-line" data-team-compile-order="3" hidden>load modules/human_practices</span>
+        <span class="team-opening__compile-line" data-team-compile-order="5" hidden>load modules/design_wiki</span>
+        {% for member in members %}{% if loop.index0 is odd %}<span class="team-opening__compile-line team-opening__compile-line--extract" data-team-compile-order="{{ loop.index0 + 6 }}" hidden>extract {{ member.name|replace(' ', '_')|lower }}_skill.md</span>{% endif %}{% endfor %}
+        <span class="team-opening__compile-line" data-team-compile-order="{{ members|length + 7 }}" hidden>build complete · {{ members|length }} skills ready</span>
+      </div>
+    </div>
+  </div>
+</div>

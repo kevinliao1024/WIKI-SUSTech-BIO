@@ -1,0 +1,69 @@
+{% macro icon(kind) -%}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{% if kind == 'design' %}<path d="m4 16-1 5 5-1L20 8l-4-4Z M13 7l4 4 M4 16l4 4"/>
+{% elif kind == 'outreach' %}<path d="m4 10 13-5v14L4 14Z M4 10H2v4h2 M7 15l2 6h4l-3-5 M20 8l2-2 M20 16l2 2 M21 12h2"/>
+{% elif kind == 'wet' %}<path d="M9 3h6 M10 3v7L4 20q0 1 2 1h12q2 0 2-1l-6-10V3 M8 15h8"/>
+{% elif kind == 'dry' %}<path d="m8 6-6 6 6 6 M16 6l6 6-6 6 M14 3l-4 18"/>
+{% elif kind == 'compute' %}<rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01 M7 17.5h.01 M12 6.5h5 M12 17.5h5"/>
+{% elif kind == 'video' %}<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/>
+{% elif kind == 'interview' %}<path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-6 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z M7 9h10 M7 13h6"/>
+{% elif kind == 'inclusivity' %}<circle cx="12" cy="6" r="3"/><path d="M4 11h16 M12 9v7 M12 16l-5 5 M12 16l5 5"/>
+{% elif kind == 'illustration' %}<path d="m4 18-1 3 4-1L20 7l-3-3Z M14 7l3 3 M4 18l3 2 M13 3l2-2 M21 12l2-2"/>
+{% else %}<path d="M12 3v18 M3 12h18 M5 5l14 14 M5 19 19 5"/>{% endif %}
+</svg>
+{%- endmacro %}
+
+{% macro heart(class_name) -%}
+<svg class="{{ class_name }}" viewBox="0 0 64 70" fill="none" aria-hidden="true" focusable="false"><path d="M31 60C20 48 5 27 11 16c6-12 20-6 20 9C43-3 64 4 53 25 47 37 39 48 31 60Z M31 25l-5 19" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- endmacro %}
+
+{% macro member_card(member, index=1) -%}
+{% set name = member.get('name', 'ORCA') %}
+{% set photo = url_for('static', filename=member.photo_asset) if member.get('photo_asset') else member.get('photo', '') %}
+{% set quote = member.get('quote', '') %}
+{% set display_quote = quote %}
+{% set quote_is_long = quote|length > 110 %}
+{% set roles = member.get('roles', []) %}
+{% set is_student_leader = roles|selectattr('label', 'equalto', 'Student Leader')|list|length > 0 %}
+{% set bottom_roles = roles|rejectattr('label', 'equalto', 'Student Leader')|list %}
+{% set key = 'team-card-' ~ index %}
+<article class="member-card{% if not photo %} member-card--pending{% endif %}{% if quote %} member-card--with-quote{% endif %}{% if quote_is_long %} member-card--long-quote{% endif %}" data-member-card data-member-name="{{ name }}" aria-label="{{ name }}{% if member.get('preview') %} card layout preview{% endif %}">
+  <div class="member-card__turn">
+    <div class="member-card__face member-card__front" data-card-front>
+      <div class="member-card__portrait">
+        {% if photo %}
+        <img class="member-card__photo" src="{{ photo }}" alt="Portrait of {{ name }}" width="1200" height="1600" loading="{{ 'eager' if index <= 3 else 'lazy' }}" decoding="async" style="object-position:{{ member.get('photo_position', '50% 40%') }};--photo-scale:{{ member.get('photo_scale', 1.35) }};--photo-origin:{{ member.get('photo_origin', '50% 65%') }}">
+        {% endif %}
+        <div class="member-card__missing" {% if photo %}hidden{% endif %}>
+          <span data-photo-status>{{ 'Card layout preview · portrait pending' if member.get('preview') else 'Portrait to come' }}</span>
+        </div>
+        <span class="member-card__shade" aria-hidden="true"></span>
+        <div class="member-card__top">
+          <span class="member-card__number">{{ member.get('number', '%02d'|format(index)) }}</span>
+          {% if is_student_leader %}<span class="member-card__leader" id="{{ key }}-leader" data-card-leader>Student Leader</span>{% endif %}
+        </div>
+        <div class="member-card__identity">
+          {{ heart('member-card__front-heart') }}
+          <h4 class="member-card__name" id="{{ key }}-name"><span data-fit-name>{{ member.get('card_name', name) }}</span></h4>
+          <svg class="member-card__arrow" viewBox="0 0 200 38" fill="none" aria-hidden="true" focusable="false"><path d="M4 29 173 8 66 32 193 18 M174 10l20 7-12 13" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <ul class="member-card__roles{% if member.get('role_layout') == 'two-rows' %} member-card__roles--two-rows{% endif %}" id="{{ key }}-roles" aria-label="Roles">
+            {% for role in bottom_roles %}<li>{{ icon(role.get('icon', 'other')) }}<span>{{ role.label }}</span></li>{% else %}<li>{{ icon('other') }}<span>Team 2026</span></li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="member-card__face member-card__back" data-card-back>
+      <div class="member-card__quote-area">
+        {% if quote %}
+        <span class="member-card__open-quote" aria-hidden="true">“</span>
+        <blockquote class="member-card__quote" id="{{ key }}-quote" lang="{{ member.get('quote_lang', 'en') }}"><span data-fit-quote>{% set accent = member.get('quote_accent', '') %}{% if accent and accent in display_quote %}{% set parts = display_quote.partition(accent) %}{{ parts[0] }}<em>{{ parts[1] }}</em>{{ parts[2] }}{% else %}{{ display_quote }}{% endif %}</span></blockquote>
+        <span class="member-card__close-quote" aria-hidden="true">”</span>
+        {% else %}<p class="member-card__quote member-card__quote--pending" id="{{ key }}-quote"><span data-fit-quote>A few words,<br>in your own voice.</span><small>Personal one-liner to come</small></p>{% endif %}
+        {{ heart('member-card__back-heart') }}
+      </div>
+      <p class="member-card__footer">SCIENCE <span>×</span> PEOPLE <span>×</span> A BRIGHTER TOMORROW</p>
+    </div>
+  </div>
+  <button class="member-card__toggle" type="button" aria-pressed="false" aria-label="Flip {{ name }} card" aria-describedby="{% if is_student_leader %}{{ key }}-leader {% endif %}{{ key }}-roles" data-card-toggle hidden><span class="team-sr-only">Flip {{ name }} card</span></button>
+</article>
+{%- endmacro %}
