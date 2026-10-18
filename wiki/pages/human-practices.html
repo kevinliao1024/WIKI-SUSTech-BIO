@@ -1,0 +1,29 @@
+{% extends "pages/content_page.html" %}
+
+{% set interviews %}{% include 'components/teacher_interviews.html' %}{% endset %}
+{% set manuscript = rendered_markdown | replace('<!-- teacher-interviews -->', interviews) %}
+{% set rendered_markdown %}
+<div class="hp-manuscript" lang="en">
+  <p class="hp-subtitle">{{ content.metadata.subtitle }}</p>
+  {{ manuscript | safe }}
+</div>
+{% endset %}
+
+{% block page_styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='human-practices/human-practices.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='human-practices/pdf-panels.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='human-practices/model-viewers/viewers.css') }}">
+{% endblock %}
+
+{% block page_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='human-practices/interviews/orca-interviews.js') }}" defer></script>
+<script src="{{ url_for('static', filename='human-practices/pdf-panels.js') }}" defer></script>
+{% set three_url = url_for('static', filename='vendor/three/three.module.js') %}
+{% set addons_url = url_for('static', filename='vendor/three/addons/controls/OrbitControls.js').split('controls/OrbitControls.js')[0] %}
+<script type="importmap">
+{"imports":{"three":"{{ '' if three_url.startswith('/') else './' }}{{ three_url }}","three/addons/":"{{ '' if addons_url.startswith('/') else './' }}{{ addons_url }}"}}
+</script>
+<script type="module" src="{{ url_for('static', filename='human-practices/model-viewers/viewers.js') }}"></script>
+{% endblock %}

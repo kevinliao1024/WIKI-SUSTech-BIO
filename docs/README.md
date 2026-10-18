@@ -37,7 +37,6 @@
 | Software | `docs/dry-lab/software.md` |
 | Hardware | `docs/dry-lab/hardware.md` |
 | Human Practices | `docs/human-practices/human-practices.md` |
-| Education | `docs/human-practices/education.md` |
 | Inclusivity | `docs/human-practices/inclusivity.md` |
 
 Homepage 是特殊动画页面，仍由 Wiki 开发者维护，不在这张表里。

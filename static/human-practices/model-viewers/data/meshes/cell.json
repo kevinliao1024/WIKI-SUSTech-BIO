@@ -1,0 +1,50 @@
+{
+  "format": "positions-float32le-indices-uint32le",
+  "id": "cell",
+  "source": "biology-animal-cell-model.stl.zip",
+  "sourceMember": "biology-animal-cell-model.stl",
+  "sourceArchiveSha256": "38cd2a2407992a357de28fa9d60a1b1129d3b0c83e3497d6bd6702ab2a48350f",
+  "sourceStlSha256": "8249e4dbe50b424def6934cdf3c7554dcbe05ba8d3d4aca60aba6a818ab628e4",
+  "sourceTriangles": 1467272,
+  "sourceAttributeValues": [
+    0
+  ],
+  "sourceBounds": [
+    [
+      -0.47540283203125,
+      -0.487548828125,
+      -0.5
+    ],
+    [
+      0.47540283203125,
+      0.487548828125,
+      0.5
+    ]
+  ],
+  "vertices": 252041,
+  "triangles": 514425,
+  "indexByteOffset": 3024492,
+  "byteLength": 9197592,
+  "sha256": "6ccf3d648d4cd90a192b40463aa68a4e29d4c704745b989d0f9d485943e3c3dd",
+  "mesh": "cell.bin",
+  "bounds": [
+    [
+      -0.4751705527305603,
+      -0.487518310546875,
+      -0.5
+    ],
+    [
+      0.4750848710536957,
+      0.48706257343292236,
+      0.5
+    ]
+  ],
+  "derivation": "vertex clustering; degenerate and duplicate triangles removed",
+  "reduction": {
+    "gridResolution": 220,
+    "cellSize": 0.004545454545454545,
+    "maxVertexDisplacement": 0.004628743976354599
+  },
+  "numpyVersion": "2.3.5",
+  "colorStatus": "No colors in source STL. Browser palette is for visual display, not biological segmentation."
+}

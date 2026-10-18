@@ -4,7 +4,6 @@
   const footer = document.querySelector('[data-school-footer]');
   if (!footer) return;
   const scroller = footer.querySelector('[data-footer-sponsor-scroll]');
-  const track = footer.querySelector('[data-footer-sponsor-track]');
   const group = footer.querySelector('[data-footer-sponsor-group]');
   const dialog = footer.querySelector('[data-footer-lightbox]');
   const enlarged = dialog.querySelector('[data-footer-lightbox-image]');
@@ -20,27 +19,29 @@
   let position = 0;
   let cycleWidth = 0;
 
-  // One copy creates a seamless visual loop. Only the original group is in the
-  // accessibility tree and keyboard order; all 26 originals remain scrollable.
+  // A visual copy joins the end of the strip to its beginning. The source list
+  // still contains each logo once, and only it is in the accessibility tree.
   const copy = group.cloneNode(true);
   copy.removeAttribute('data-footer-sponsor-group');
   copy.setAttribute('aria-hidden', 'true');
   copy.querySelectorAll('button').forEach(button => { button.tabIndex = -1; });
-  track.append(copy);
+  copy.querySelectorAll('img').forEach(image => { image.loading = 'eager'; });
+  group.after(copy);
 
   function measure() {
     cycleWidth = group.getBoundingClientRect().width;
     position = scroller.scrollLeft;
   }
   function canAnimate() {
-    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && cycleWidth > 0;
+    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && cycleWidth > scroller.clientWidth;
   }
   function tick(now) {
     frame = 0;
     if (!canAnimate()) { previous = 0; return; }
     if (previous) {
-      position += Math.min(now - previous, 64) * .06;
-      if (position >= cycleWidth) position %= cycleWidth;
+      // Increasing scrollLeft brings logos in from the right; the identical
+      // copy preserves their on-screen positions without reversing direction.
+      position = (position + Math.min(now - previous, 64) * .06) % cycleWidth;
       scroller.scrollLeft = position;
     }
     previous = now;
@@ -64,7 +65,11 @@
   scroller.addEventListener('touchend', () => { hovering = false; sync(); }, { passive: true });
   scroller.addEventListener('touchcancel', () => { hovering = false; sync(); }, { passive: true });
   group.querySelectorAll('img').forEach(image => image.addEventListener('load', measure));
-  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(group);
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(() => { measure(); sync(); });
+    observer.observe(group);
+    observer.observe(scroller);
+  }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => { visible = entries.some(entry => entry.isIntersecting); sync(); }).observe(scroller);
   } else { visible = true; }
@@ -84,6 +89,7 @@
     });
     enlarged.src = image.currentSrc || image.src;
     enlarged.alt = image.alt;
+    dialog.classList.toggle('footer-lightbox--dark', Boolean(button.querySelector('.community-logo-surface--dark')));
     dialog.setAttribute('aria-label', image.alt);
     dialog.showModal();
     close.focus();

@@ -1,0 +1,315 @@
+{
+  "scope": "Organizations selected from the supplied Human Practices manuscript and the user-requested institution and club logos from the 2025 SUSTech-BIO footer. Inclusion does not assign a sponsorship category.",
+  "source_manifests": [
+    "manifest-part1.json",
+    "manifest-part2.json",
+    "manifest-teams.json",
+    "manifest-reference.json",
+    "manifest-footer-2025-additions.json"
+  ],
+  "team_emblem": "The SUSTech-BIO emblem is already displayed in the main footer brand area.",
+  "entries": [
+    {
+      "name": "School of Life Sciences, SUSTech",
+      "logo": "part1-sustech-life-sciences.png",
+      "detail": "Department of Systems Biology",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "School of Life Sciences, SUSTech",
+        "Department of Systems Biology, SUSTech"
+      ]
+    },
+    {
+      "name": "School of Medicine, SUSTech",
+      "logo": "sustech-school-of-medicine-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "School of Medicine, SUSTech"
+      ]
+    },
+    {
+      "name": "Department of Statistics and Data Science, SUSTech",
+      "logo": "sustech-statistics-data-science-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Department of Statistics and Data Science, SUSTech"
+      ]
+    },
+    {
+      "name": "Department of Computer Science and Engineering, SUSTech",
+      "logo": "sustech-computer-science-engineering-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Department of Computer Science and Engineering, SUSTech"
+      ]
+    },
+    {
+      "name": "SUSTech Synthetic Biology Club",
+      "logo": "sustech-synthetic-biology-club-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "SUSTech Synthetic Biology Club"
+      ]
+    },
+    {
+      "name": "iGBA",
+      "logo": "igba.webp",
+      "detail": "Greater Bay Area SynBio Alliance",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "iGBA"
+      ]
+    },
+    {
+      "name": "Shenzhen University of Advanced Technology",
+      "logo": "suat.png",
+      "detail": "",
+      "background": "dark",
+      "mark": "organization",
+      "covers": [
+        "Shenzhen University of Advanced Technology"
+      ]
+    },
+    {
+      "name": "Faculty of Life and Health Sciences, SUAT",
+      "logo": "part1-suat-life-health.svg",
+      "detail": "",
+      "background": "dark",
+      "mark": "organization",
+      "covers": [
+        "Faculty of Life and Health Sciences, SUAT"
+      ]
+    },
+    {
+      "name": "Shenzhen People's Hospital",
+      "logo": "part1-shenzhen-peoples-hospital.png",
+      "detail": "Department of Neurology",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Shenzhen People's Hospital"
+      ]
+    },
+    {
+      "name": "Yali High School, Changsha",
+      "logo": "part1-yali-high-school.png",
+      "detail": "Biology Teaching and Research Group",
+      "background": "dark",
+      "mark": "organization",
+      "covers": [
+        "Yali High School, Changsha"
+      ]
+    },
+    {
+      "name": "Shokz",
+      "logo": "part1-shokz.png",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Shokz"
+      ]
+    },
+    {
+      "name": "Pearson Edexcel",
+      "logo": "pearson-edexcel.png",
+      "detail": "Curriculum reference",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Pearson Edexcel"
+      ]
+    },
+    {
+      "name": "High School Affiliated to SUSTech",
+      "logo": "part1-sustech-high-school.png",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "High School Affiliated to SUSTech"
+      ]
+    },
+    {
+      "name": "iGEM",
+      "logo": "igem.svg",
+      "detail": "Software & AI Village",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "iGEM"
+      ]
+    },
+    {
+      "name": "Roche",
+      "logo": "roche.png",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Roche"
+      ]
+    },
+    {
+      "name": "RiboNext",
+      "logo": "ribonext-color.svg",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "RiboNext"
+      ]
+    },
+    {
+      "name": "HKUST (Guangzhou)",
+      "logo": "hkust-gz-header.png",
+      "detail": "",
+      "background": "dark",
+      "mark": "organization",
+      "covers": [
+        "HKUST (Guangzhou)"
+      ]
+    },
+    {
+      "name": "South China Agricultural University",
+      "logo": "scau.svg",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "South China Agricultural University"
+      ]
+    },
+    {
+      "name": "Tsinghua University",
+      "logo": "tsinghua.png",
+      "detail": "",
+      "background": "dark",
+      "mark": "organization",
+      "covers": [
+        "Tsinghua University"
+      ]
+    },
+    {
+      "name": "Shenzhen University",
+      "logo": "szu.png",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Shenzhen University"
+      ]
+    },
+    {
+      "name": "The Chinese University of Hong Kong",
+      "logo": "cuhk.png",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "The Chinese University of Hong Kong",
+        "CUHK-HongKong-SBS"
+      ]
+    },
+    {
+      "name": "HG-Tokyo",
+      "logo": "team-hg-tokyo.webp",
+      "detail": "iGEM team",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "HG-Tokyo"
+      ]
+    },
+    {
+      "name": "NAU-China",
+      "logo": "team-nau-china.webp",
+      "detail": "iGEM team",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "NAU-China"
+      ]
+    },
+    {
+      "name": "Cataverse-GreatBay",
+      "logo": "team-cataverse-greatbay.avif",
+      "detail": "iGEM team",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Cataverse-GreatBay"
+      ]
+    },
+    {
+      "name": "SUSTech-MED",
+      "logo": "sustech-med-team.webp",
+      "detail": "iGEM team",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "SUSTech-MED"
+      ]
+    },
+    {
+      "name": "The University of Hong Kong",
+      "logo": "hku.svg",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "The University of Hong Kong"
+      ]
+    },
+    {
+      "name": "HKU iGEM Team",
+      "logo": "hku-igem-team.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "HKU iGEM Team"
+      ]
+    },
+    {
+      "name": "Peking University",
+      "logo": "pku.png",
+      "detail": "Peking–Rice Summit",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Peking University"
+      ]
+    },
+    {
+      "name": "Rice University",
+      "logo": "rice.svg",
+      "detail": "Peking–Rice Summit",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Rice University"
+      ]
+    }
+  ],
+  "display_policy": "Show each available logo once, without visible name captions. Omit organizations without a logo. Keep the SUSTech seal and SUSTech-BIO emblem in the main footer brand area only.",
+  "omitted_without_logo": [
+    "Taoyuan Subdistrict Elderly Service Center",
+    "Shahe Subdistrict Elderly Service Center"
+  ],
+  "main_footer_seal_covers": [
+    "Southern University of Science and Technology",
+    "SUSTech 3D Printing Club",
+    "SUSTech Kindergarten"
+  ]
+}

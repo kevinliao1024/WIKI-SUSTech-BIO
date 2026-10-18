@@ -1,0 +1,14 @@
+{
+  "source_qr": "https://static.igem.wiki/teams/5873/images/footer/contactus/wechat.webp",
+  "source_qr_sha256": "b59f04aeb5f8e7a47269dd19c20539d5521a2ebb9c1324a8162a9f428ec361dd",
+  "emblem": "static/assets/brand/sustech-bio-logo.png",
+  "emblem_sha256": "da3397225273db6d2cfa5e66a4fc1c257899de3ccabe4e7ac755435a4139f9d6",
+  "adaptation": "SVG composition: original QR image embedded unchanged; replace its existing 94px central badge with the current team emblem.",
+  "qr_pattern": "Unchanged outside the existing central badge.",
+  "verification": {
+    "decoder": "macOS Vision QR detector, CPU mode",
+    "original_payload": "http://weixin.qq.com/r/mp/Bxf17SvEqXbWrW_O90IV",
+    "updated_payload": "http://weixin.qq.com/r/mp/Bxf17SvEqXbWrW_O90IV",
+    "result": "Identical decoded target before and after the central-emblem update."
+  }
+}

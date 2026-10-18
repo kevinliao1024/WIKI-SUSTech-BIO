@@ -1,0 +1,24 @@
+/* Model's shared reading styles set typography, figure widths and captions. */
+.hp-manuscript {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.hp-manuscript .hp-subtitle { margin: 0 0 24px; }
+.hp-manuscript > p > img,
+.hp-manuscript .hp-figure > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-inline: auto;
+}
+.hp-manuscript orca-interviews {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 28px 0;
+  overflow-wrap: normal;
+}
+@media (max-width: 760px) {
+  .hp-manuscript .hp-figure > figcaption { padding: 12px 7px 6px; }
+}

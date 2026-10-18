@@ -14,7 +14,7 @@ Before engineering ORCA as a complete system, we first needed a functional edito
 
 #### Design
 
-REWIRE combines a programmable PUF RNA-binding domain with a deaminase in a single protein. Each PUF repeat recognizes one RNA nucleotide, allowing an attached APOBEC domain to be positioned near a chosen cytidine for C-to-U editing [1]. Previous studies suggested that extending PUF recognition from eight to ten nucleotides could improve target discrimination, while PUF-binding affinity does not necessarily increase beyond approximately 9–10 repeats [1,2]. We therefore began with a **10-repeat PUF domain**.
+REWIRE combines a programmable PUF RNA-binding domain with a deaminase in a single protein. Each PUF repeat recognizes one RNA nucleotide [3,4], allowing an attached APOBEC domain to be positioned near a chosen cytidine for C-to-U editing [1]. Previous studies suggested that extending PUF recognition from eight to ten nucleotides could improve target discrimination, while PUF-binding affinity does not necessarily increase beyond approximately 9–10 repeats [1,2]. We therefore began with a **10-repeat PUF domain**.
 
 Our 10R construct recognizes APOE4 nucleotides 376–385 (`5′-AUGGAGGACG-3′`). A two-nucleotide UG spacer separates this site from **C388**, and an XTEN linker connects PUF10R to APOBEC. The intended C-to-U edit converts `CGC` to `UGC`, producing the R130C substitution (Figure 1A).
 
@@ -97,9 +97,9 @@ We organized the next stage of ORCA engineering into **five connected routes: ED
 
 We pursued three complementary approaches to the PUF–APOBEC machinery:
 
-**POD — Programmable On-target Docking.** This route focused on the PUF recognition domain, introducing targeted mutations into individual repeats to investigate nucleotide recognition and target discrimination.
+**POD — Programmable On-target Docking.** This route focused on the PUF recognition domain, introducing targeted mutations into individual repeats to investigate nucleotide recognition and target discrimination [3,4].
 
-**CETUS — Cytidine Editing, Tethered for Uridine Switching.** This route focused on the APOBEC catalytic domain, designing and evaluating variants to investigate how catalytic modifications influence editing activity and specificity.
+**CETUS — Cytidine Editing, Tethered for Uridine Switching.** This route focused on the APOBEC catalytic domain, designing and evaluating variants to investigate how catalytic modifications influence editing activity and specificity [5].
 
 **Integrated ORCA (IO).** Combined engineered PUF and APOBEC variants to examine their behavior within a single editor.
 
@@ -107,21 +107,21 @@ We pursued three complementary approaches to the PUF–APOBEC machinery:
 
 Our **G.M.A.C.** framework explored four regulatory strategies:
 
-**GFA — Transcriptional Control.** Investigated the gfaABC1D promoter for astrocyte-oriented expression.
+**GFA — Transcriptional Control.** Investigated the gfaABC1D promoter for astrocyte-oriented expression [6].
 
-**MRE — Post-Transcriptional Regulation.** Tested a 4×6T miRNA response-element architecture and a reduced 2× configuration.
+**MRE — Post-Transcriptional Regulation.** Tested a 4×6T miRNA response-element architecture and a reduced 2× configuration (background on miRNA-mediated transgene regulation: [7]).
 
-**ASO — Reversible Suppression.** Developed an antisense oligonucleotide approach for externally induced suppression of editor expression.
+**ASO — Reversible Suppression.** Developed an antisense oligonucleotide approach for externally induced suppression of editor expression (background on antisense-mediated RNA suppression: [8]).
 
-**Cre–loxP — Permanent Shutdown.** Designed a recombinase-mediated excision strategy to permanently terminate editor expression.
+**Cre–loxP — Permanent Shutdown.** Designed a recombinase-mediated excision strategy to permanently terminate editor expression [9].
 
 ### 03. DELIVER — Developing an AAV9 Delivery Strategy
 
-We constructed AAV-compatible vectors and carried out two packaging rounds, progressing from an **mCherry-based proof of concept** to an **ORCA-containing vector**.
+We constructed AAV-compatible vectors and carried out two packaging rounds, progressing from an **mCherry-based proof of concept** to an **ORCA-containing vector** (background on AAV9 delivery and mCherry: [10,11]).
 
 ### 04. MEASURE — Quantifying RNA Editing
 
-We redesigned a fluorescence-based editing reporter and developed **SONAR (System for Optical Normalization and Analysis of RNA Editing)**, a multilayer framework spanning flow-cytometry processing, normalized fluorescence readouts, empirical calibration, and exploratory sequencing-linked editing estimates.
+We redesigned a fluorescence-based editing reporter and developed **SONAR (System for Optical Normalization and Analysis of RNA Editing)**, a multilayer framework spanning flow-cytometry processing, normalized fluorescence readouts, empirical calibration, and exploratory sequencing-linked editing estimates (related flow-cytometry calibration methodology: [12]).
 
 ### 05. MODEL — Connecting Editing Evidence, Editor Design and Delivery
 
@@ -137,5 +137,15 @@ The five routes extend ORCA beyond the editing reaction itself, providing a coor
 
 ## References
 
-1. Han W, Huang W, Wei T, et al. Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research*. 2022;50(16):9580–9595. https://doi.org/10.1093/nar/gkac713
-2. Zhao YY, Mao MW, et al. Expanding RNA binding specificity and affinity of engineered PUF domains. *Nucleic Acids Research*. 2018;46(9):4771–4782. https://doi.org/10.1093/nar/gky134
+1. Han W, Huang W, Wei T, et al. Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research*. 2022;50(16):9580–9595. <https://doi.org/10.1093/nar/gkac713>
+2. Zhao YY, Mao MW, et al. Expanding RNA binding specificity and affinity of engineered PUF domains. *Nucleic Acids Research*. 2018;46(9):4771–4782. <https://doi.org/10.1093/nar/gky134>
+3. Wang X, McLachlan J, Zamore PD, Hall TMT. Modular recognition of RNA by a human Pumilio-homology domain. *Cell*. 2002;110(4):501–512. <https://doi.org/10.1016/S0092-8674(02)00873-5>
+4. Cheong CG, Hall TMT. Engineering RNA sequence specificity of Pumilio repeats. *Proceedings of the National Academy of Sciences USA*. 2006;103(37):13635–13639. <https://doi.org/10.1073/pnas.0606294103>
+5. Sharma S, Patnaik SK, Taggart RT, et al. APOBEC3A cytidine deaminase induces RNA editing in monocytes and macrophages. *Nature Communications*. 2015;6:6881. <https://doi.org/10.1038/ncomms7881>
+6. Lee Y, Messing A, Su M, Brenner M. GFAP promoter elements required for region-specific and astrocyte-specific expression. *Glia*. 2008;56(5):481–493. <https://doi.org/10.1002/glia.20622>
+7. Brown BD, Venneri MA, Zingale A, Sergi Sergi L, Naldini L. Endogenous microRNA regulation suppresses transgene expression in hematopoietic lineages and enables stable gene transfer. *Nature Medicine*. 2006;12(5):585–591. <https://doi.org/10.1038/nm1398>
+8. Wu H, Lima WF, Zhang H, et al. Determination of the role of the human RNase H1 in the pharmacology of DNA-like antisense drugs. *Journal of Biological Chemistry*. 2004;279(17):17181–17189. <https://doi.org/10.1074/jbc.M311683200>
+9. Sauer B, Henderson N. Site-specific DNA recombination in mammalian cells by the Cre recombinase of bacteriophage P1. *Proceedings of the National Academy of Sciences USA*. 1988;85(14):5166–5170. <https://doi.org/10.1073/pnas.85.14.5166>
+10. Foust KD, Nurre E, Montgomery CL, et al. Intravascular AAV9 preferentially targets neonatal neurons and adult astrocytes. *Nature Biotechnology*. 2009;27(1):59–65. <https://doi.org/10.1038/nbt.1515>
+11. Shaner NC, Campbell RE, Steinbach PA, et al. Improved monomeric red, orange and yellow fluorescent proteins derived from Discosoma sp. red fluorescent protein. *Nature Biotechnology*. 2004;22(12):1567–1572. <https://doi.org/10.1038/nbt1037>
+12. Castillo-Hair SM, Sexton JT, Landry BP, et al. FlowCal: a user-friendly, open source software tool for automatically converting flow cytometry data from arbitrary to calibrated units. *ACS Synthetic Biology*. 2016;5(7):774–780. <https://doi.org/10.1021/acssynbio.5b00284>

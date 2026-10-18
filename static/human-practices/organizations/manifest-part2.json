@@ -1,0 +1,220 @@
+{
+  "scope": "Organizations explicitly named or represented by a named event in the Human Practices body. The list does not assert sponsorship or endorsement.",
+  "assets": [
+    {
+      "name": "The Hong Kong University of Science and Technology (Guangzhou)",
+      "local_filename": "hkust-gz-header.png",
+      "source_url": "https://www.hkust-gz.edu.cn/wp-content/themes/hkust-gz-official-0827/images/logo-e-white-2x.png",
+      "official_page_url": "https://www.hkust-gz.edu.cn/",
+      "evidence_section": "3.1 HKUST(GZ) visit",
+      "preferred_background": "dark",
+      "used": true,
+      "sha256": "e2d9de125e94ca99fe5a306aa81272c6470c6dd9fe6bafaee3d637ed1d92b342",
+      "bytes": 10955,
+      "notes": "Official university wordmark. White mark requires a dark background. The 2025 Lychee Guardians project badge was rejected as a university logo."
+    },
+    {
+      "name": "South China Agricultural University",
+      "local_filename": "scau.svg",
+      "source_url": "https://www.scau.edu.cn/_upload/tpl/06/94/1684/template1684/images/logo_green.svg",
+      "official_page_url": "https://www.scau.edu.cn/xxbs/list.htm",
+      "evidence_section": "3.2 Guangzhou meetup",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "a8d18485d00b09c3f0531d28bb284ca2c493b75fb44717e195f0a8ec48a22141",
+      "bytes": 81416,
+      "notes": "Official green university logo linked from its identity page."
+    },
+    {
+      "name": "Tsinghua University",
+      "local_filename": "tsinghua.png",
+      "source_url": "https://www.tsinghua.edu.cn/image/logo180.png",
+      "official_page_url": "https://www.tsinghua.edu.cn/",
+      "evidence_section": "3.3 Tsinghua synthetic biology creative design competition",
+      "preferred_background": "dark",
+      "used": true,
+      "sha256": "dd43e6bb8c1bb332cc38d255e2cbf60eb5240d902deb7ea76904a2cea9aef987",
+      "bytes": 7875,
+      "notes": "Official university site footer mark. White mark requires a dark background."
+    },
+    {
+      "name": "The Chinese University of Hong Kong",
+      "local_filename": "cuhk.png",
+      "source_url": "https://www.cuhk.edu.hk/english/images/cuhk_logo_2x.png?20221027",
+      "official_page_url": "https://www.cuhk.edu.hk/english/",
+      "evidence_section": "2.7 WORLDPROOF judge Jacky Yuen; acknowledgements CUHK-HongKong-SBS",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "8c5631e97c7e486600369b129eaae5690cad62e3813ac4c7869a8f2599371301",
+      "bytes": 30385,
+      "notes": "Official university logo. It identifies the university, not a distinct team or School of Biomedical Sciences logo."
+    },
+    {
+      "name": "The University of Hong Kong",
+      "local_filename": "hku.svg",
+      "source_url": "https://www.hku.hk/adobe/dynamicmedia/deliver/dm-aid--afc8d43c-587a-43f0-b93c-26f8bd397e0e/logo-hku.svg.webp?width=208&preferwebp=true",
+      "official_page_url": "https://www.hku.hk/",
+      "evidence_section": "3.6 Grand APiC co-hosting and venue; acknowledgements",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "8015f43dbdef80cb7c77f4ad2ec3236abd6c28d912c848702bde7ebada5b02be",
+      "bytes": 77972,
+      "notes": "Official university logo. The server returns SVG despite its .webp URL; the original bytes are saved with the correct .svg extension."
+    },
+    {
+      "name": "Shenzhen University",
+      "local_filename": "szu.png",
+      "source_url": "https://www.szu.edu.cn/images/logo_03.png",
+      "official_page_url": "https://www.szu.edu.cn/",
+      "evidence_section": "3.4 South China meetup",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "b6920cda33d7948f126eea50ee55dd62c8482a3a5f8aac1f3ae14d77a5f0da82",
+      "bytes": 20227,
+      "notes": "Official university logo; distinct from Shenzhen University of Advanced Technology."
+    },
+    {
+      "name": "Peking University",
+      "local_filename": "pku.png",
+      "source_url": "https://www.pku.edu.cn/pku_logo_red.png",
+      "official_page_url": "https://www.pku.edu.cn/",
+      "evidence_section": "3.8 Peking–Rice Global Summit",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "b328ed3c9e579ec8c2031ad8a5b6c244994fba5d1e93cc98901d1fcc3c306bdb",
+      "bytes": 25869,
+      "notes": "Official university seal. The HP body names the Peking–Rice event; this is an event-name association, not evidence of direct sponsorship."
+    },
+    {
+      "name": "Rice University",
+      "local_filename": "rice.svg",
+      "source_url": "https://brand.rice.edu/sites/g/files/bxs5371/files/2019-07/Rice_University_Horizontal_Blue.svg",
+      "official_page_url": "https://brand.rice.edu/",
+      "evidence_section": "3.8 Peking–Rice Global Summit",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "c6f98c6282f2cee8820e02738e76637dd249ed8f5ed70eff1024e3f8ab876e51",
+      "bytes": 26403,
+      "notes": "Official university horizontal logo from the brand site. The HP body names the Peking–Rice event; this is an event-name association, not evidence of direct sponsorship."
+    },
+    {
+      "name": "Roche",
+      "local_filename": "roche.png",
+      "source_url": "https://assets.roche.com/f/176343/801x529/f89c88a24c/roche-logo-blue.png",
+      "official_page_url": "https://www.roche.com/media",
+      "evidence_section": "2.7 WORLDPROOF judge Elzbieta Gralinska",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "1690bfb9087c53dbe97b8668f9dd9c9068be25dacb3b60f454c43370210d6a80",
+      "bytes": 25075,
+      "notes": "Official blue logo in the Roche media library. HP mentions a judge affiliation, not company sponsorship."
+    },
+    {
+      "name": "RiboNext",
+      "local_filename": "ribonext-color.svg",
+      "source_url": "https://www.ribonext.com/public/static/home/images/logob.svg",
+      "official_page_url": "https://www.ribonext.com/en_about.html",
+      "evidence_section": "2.7 WORLDPROOF judge Yannan Tian",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "b754a87013567e1fe790b417d16cc4c7716647a22a14a2ca6157eea17ba3d686",
+      "bytes": 8294,
+      "notes": "Official colored logo referenced by the company website. HP mentions a judge affiliation, not company sponsorship."
+    },
+    {
+      "name": "Shenzhen University of Advanced Technology",
+      "local_filename": "suat.png",
+      "source_url": "https://www.suat-sz.edu.cn/images/logo0605.png",
+      "official_page_url": "https://www.suat-sz.edu.cn/",
+      "evidence_section": "3.7 SynBio Challenges host; 1.2 expert affiliation",
+      "preferred_background": "dark",
+      "used": true,
+      "sha256": "1032322ff2d2d9be54fc437e3ebf941a6e02f23b3b48fe7f1f6bcb494575f194",
+      "bytes": 9008,
+      "notes": "Official university logo. Purple symbol with white lettering requires a dark background; a school within the university must be named separately if this parent logo is used."
+    },
+    {
+      "name": "The Greater Bay Area SynBio Alliance (iGBA)",
+      "local_filename": "igba.webp",
+      "source_url": "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/igba.webp",
+      "official_page_url": "https://cn.linkedin.com/company/igem-igba",
+      "evidence_section": "2.7 WORLDPROOF judge Duncan Chiu; 3.1 discussion with iGBA representatives",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "b6639ebf648bdfcb6be0c0c873c933f5540497cfa3ed7bfedb26fd18e3e8c856",
+      "bytes": 24074,
+      "notes": "The supplied WORLDPROOF poster explicitly identifies Duncan Chiu as Chairperson, iGBA, and displays the same iGBA logo. This links the full alliance name used for that person in the HP body to iGBA in this page context. The organization-owned profile calls it The Greater Bay Area SynBio Alliance (iGBA) and describes its Guangdong-Hong Kong-Macao scope. Use one iGBA card rather than duplicate alliance and acronym cards. Asset bytes are reused unchanged from the existing SUSTech-BIO footer.",
+      "identity_evidence": [
+        "assets/human-practices/images/worldproof-event-poster.webp",
+        "https://cn.linkedin.com/company/igem-igba"
+      ]
+    },
+    {
+      "name": "SUSTech-MED iGEM Team",
+      "local_filename": "sustech-med-team.webp",
+      "source_url": "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustech-med.webp",
+      "official_page_url": "https://2025.igem.wiki/sustech-bio/",
+      "evidence_section": "2.9 campus charity fair; 3.6 Grand APiC co-hosting; acknowledgements",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "33e7d85af2d18dbe108d5fed48172ea951d0203fe690227894dcdb34757fbd72",
+      "bytes": 10168,
+      "notes": "Reused existing SUSTech-BIO footer team mark; visually verified as SUSTech-MED without a visible year."
+    },
+    {
+      "name": "HKU iGEM Team",
+      "local_filename": "hku-igem-team.webp",
+      "source_url": "https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hku-hongkong.webp",
+      "official_page_url": "https://2025.igem.wiki/sustech-bio/",
+      "evidence_section": "3.6 Grand APiC co-hosting; acknowledgements",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "e09b099e719a435bea3015cfd3b640d79de94689fcd8aa79dec14af403f3c1e7",
+      "bytes": 13032,
+      "notes": "Reused existing SUSTech-BIO footer team mark; visually verified as HKU iGEM without a visible year. Separate from the official HKU university logo."
+    },
+    {
+      "name": "iGEM",
+      "local_filename": "igem.svg",
+      "source_url": "https://static.igem.org/websites/common/2022/logos/igem-logo-dark.svg",
+      "official_page_url": "https://igem.org/",
+      "evidence_section": "2.7 Software & AI Village and ambassador affiliations; Section 3 iGEM community exchanges",
+      "preferred_background": "light",
+      "used": true,
+      "sha256": "3f30d80f12f0d042f42b4bcbc2ccd5a676ae38efc8e84931a089bf8f6ff138d5",
+      "bytes": 3874,
+      "notes": "Official iGEM logo referenced by the current igem.org website bundle. Identifies iGEM generally; do not label it as a separate Software & AI Village mark."
+    }
+  ],
+  "pending": [],
+  "excluded_candidates": [
+    {
+      "file": "work/footer-logo-sources/hkust-gz.webp",
+      "reason": "2025 Lychee Guardians project team badge, not HKUST(GZ) university mark."
+    },
+    {
+      "file": "work/footer-logo-sources/tsinghua-header.png",
+      "reason": "Byte-identical duplicate of selected tsinghua.png."
+    },
+    {
+      "file": "work/footer-logo-sources/ribonext.svg",
+      "reason": "White variant replaced by official colored ribonext-color.svg."
+    },
+    {
+      "file": "work/footer-logo-sources/suat-footer.png",
+      "reason": "White footer variant not used; selected official purple-symbol header variant."
+    }
+  ],
+  "verification": "All 15 selected assets rendered successfully in local Chrome and were visually inspected on light and dark backgrounds. SVG/raster bytes retained unchanged; no logos generated or redrawn.",
+  "svg_self_containment": {
+    "files": [
+      "scau.svg",
+      "hku.svg",
+      "rice.svg",
+      "ribonext-color.svg",
+      "igem.svg"
+    ],
+    "static_check": "Zero text/tspan nodes, zero @font-face/@import rules, no external href or CSS url references; only internal SCAU clip paths.",
+    "browser_check": "All five rendered successfully in an offline Chrome context with zero HTTP(S) requests and zero page errors."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "retrieved_at": "2026-10-18",
+  "assets": [
+    {
+      "name": "NAU-China",
+      "file": "team-nau-china.webp",
+      "url": "https://static.igem.wiki/teams/6419/wiki/common/logo3.webp",
+      "source_page": "https://2026.igem.wiki/nau-china/",
+      "source_year": 2026,
+      "verification": "Official 2026 wiki navigation image has alt text NAU CHINA Logo.",
+      "note": "Artwork itself reads NAU CHINA 2026.",
+      "width": 4393,
+      "height": 2042,
+      "path": "static/human-practices/organizations/team-nau-china.webp",
+      "sha256": "3b8afc76e49e9d4b45a888b0ce28153fa5491a70d8fef6a1a5fd33c8dd5bc26b",
+      "bytes": 145854,
+      "transformation": "None; downloaded source bytes preserved.",
+      "attribution": "Source team and official iGEM wiki; wiki footer declares CC BY 4.0."
+    },
+    {
+      "name": "Cataverse-GreatBay",
+      "file": "team-cataverse-greatbay.avif",
+      "url": "https://static.igem.wiki/teams/6193/wiki/home/team-logo.avif",
+      "source_page": "https://2026.igem.wiki/cataverse-greatbay/",
+      "source_year": 2026,
+      "verification": "Official 2026 home page places this file in its home-team-logo card.",
+      "note": "The team-published 2026 mark reads UriCell, its project identity; caption should remain Cataverse-GreatBay. No permanent or university emblem has been inferred.",
+      "width": 318,
+      "height": 307,
+      "path": "static/human-practices/organizations/team-cataverse-greatbay.avif",
+      "sha256": "5d1f2faeb5a8dfffe0e498a33c567474d40eac0eed4956c249082c45ef8b887f",
+      "bytes": 47875,
+      "transformation": "None; downloaded source bytes preserved.",
+      "attribution": "Source team and official iGEM wiki; wiki footer declares CC BY 4.0."
+    },
+    {
+      "name": "CUHK-HongKong-SBS",
+      "file": "team-cuhk-hongkong-sbs.avif",
+      "url": "https://static.igem.wiki/teams/6309/wiki/home/team-logo.avif",
+      "source_page": "https://2026.igem.wiki/cuhk-hongkong-sbs/",
+      "source_year": 2026,
+      "verification": "Official navigation labels this image CUHK SBS Logo and CUHKSBS Team.",
+      "note": "Original source is only 63 by 72 px; do not enlarge significantly. Existing cuhk.png may be used instead with precise team caption if the footer uses a shared institution mark.",
+      "width": 63,
+      "height": 72,
+      "path": "static/human-practices/organizations/team-cuhk-hongkong-sbs.avif",
+      "sha256": "cd1f6b6f040608ec6576d2a9d4238ec1b9246795e84bc5027513d29547a1602a",
+      "bytes": 3853,
+      "transformation": "None; downloaded source bytes preserved.",
+      "attribution": "Source team and official iGEM wiki; wiki footer declares CC BY 4.0."
+    },
+    {
+      "name": "HG-Tokyo",
+      "file": "team-hg-tokyo.webp",
+      "url": "https://static.igem.wiki/teams/5919/images/logo.webp",
+      "source_page": "https://2025.igem.wiki/hg-tokyo/",
+      "source_year": 2025,
+      "verification": "Official 2025 wiki uses this HG-Tokyo emblem both as navigation logo and favicon.",
+      "note": "The live 2026 wiki remains the default template, with no logo assets in its current app bundle. This is an authentic published 2025 team emblem, not claimed to be newly issued for 2026.",
+      "width": 667,
+      "height": 667,
+      "path": "static/human-practices/organizations/team-hg-tokyo.webp",
+      "sha256": "d7ec1daabd803a1430de155eda190ff8a807cf9cdd3834124869e4b8d69267c3",
+      "bytes": 34090,
+      "transformation": "None; downloaded source bytes preserved.",
+      "attribution": "Source team and official iGEM wiki; wiki footer declares CC BY 4.0."
+    }
+  ],
+  "identity_checks": [
+    {
+      "name": "CUHK-HongKong-SBS / Chinese University of Hong Kong iGEM team",
+      "conclusion": "Same team supported by the official CUHK-HongKong-SBS team page listing Jacky Yuen as Secondary Principal Investigator, matching the HP interviewee affiliation. Use one team record rather than duplicating these names.",
+      "source_page": "https://2026.igem.wiki/cuhk-hongkong-sbs/team",
+      "evidence": "Jacky Yuen — Secondary Principal Investigator",
+      "suggested_caption": "CUHK-HongKong-SBS · The Chinese University of Hong Kong"
+    },
+    {
+      "name": "Peking–Rice Human Practices Summit",
+      "conclusion": "Peking University and Rice University are supported as summit hosts/co-organizers by both the supplied participation certificate and Peking iGEM’s official 2026 account. This establishes event involvement, not sponsorship of SUSTech-BIO.",
+      "source_page": "https://2026.igem.wiki/peking/human-practices/",
+      "verified_source_page": "https://2026.igem.wiki/peking/human-practices/",
+      "evidence": "Together with Rice University, we developed a cross-continental summit to discuss Human Practices in different settings.",
+      "local_evidence": "assets/human-practices/images/peking-rice-summit-participation-certificate.webp",
+      "certificate_note": "The supplied certificate explicitly names Peking University and Rice University as hosts of the virtual event."
+    }
+  ],
+  "visual_review": "All four assets were decoded with Pillow and reviewed together on a white background; no altered or generated logos were used."
+}

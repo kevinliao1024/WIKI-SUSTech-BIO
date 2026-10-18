@@ -57,6 +57,35 @@ async function state(page) {
       disabled: orbit.getAttribute('aria-disabled'), tabIndex: orbit.tabIndex };
   });
 }
+async function assertPathProgress(page) {
+  const progress = await page.evaluate(() => {
+    const orbit = document.querySelector('[data-reading-orbit]');
+    const shell = orbit.querySelector('.reading-orbit__shell');
+    const path = orbit.querySelector('[data-orbit-progress]');
+    const tip = orbit.querySelector('[data-orbit-tip]');
+    const style = getComputedStyle(path);
+    const spin = getComputedStyle(orbit.querySelector('.reading-orbit__spin'));
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const ratio = max ? Math.max(0, Math.min(1, scrollY / max)) : 0;
+    const expected = shell.getPointAtLength(shell.getTotalLength() * ratio);
+    const dash = parseFloat(style.strokeDasharray);
+    const offset = parseFloat(style.strokeDashoffset);
+    return { ratio, percent: Number(orbit.getAttribute('aria-valuenow')),
+      sameTrace: path.getAttribute('d') === shell.getAttribute('d'),
+      pathLength: path.pathLength.baseVal, dash, offset, drawn: 1 - offset / dash,
+      tipError: Math.hypot(Number(tip.getAttribute('cx')) - expected.x, Number(tip.getAttribute('cy')) - expected.y),
+      fixed: spin.transform === 'none' || new DOMMatrixReadOnly(spin.transform).isIdentity,
+      animation: spin.animationName };
+  });
+  assert.ok(progress.sameTrace, 'Gold progress must follow the complete existing shell trace.');
+  assert.equal(progress.pathLength, 100);
+  assert.equal(progress.dash, 100);
+  assert.ok(Math.abs(progress.drawn - progress.ratio) < .0002, `Visible SVG stroke must match document progress: ${JSON.stringify(progress)}`);
+  assert.equal(progress.percent, Math.round(progress.ratio * 100));
+  assert.ok(progress.tipError < .1, 'The gold tip must stay at the actual end of the revealed trace.');
+  assert.ok(progress.fixed && progress.animation === 'none', 'The trace start must remain fixed, without artwork rotation.');
+  return progress;
+}
 async function scrollFraction(page, ratio) {
   await page.evaluate(ratio => scrollTo({ top: ratio * (document.documentElement.scrollHeight - innerHeight), behavior: 'instant' }), ratio);
   await page.waitForFunction(ratio => Math.abs(Number(document.querySelector('[data-reading-orbit]').getAttribute('aria-valuenow')) - ratio * 100) <= 1, ratio);
@@ -88,12 +117,24 @@ async function mouseDrag(page, ratio, grabFraction = .3) {
   const after = await state(page);
   assert.ok(!after.dragging);
   assert.ok(Math.abs(after.percent - Math.max(0, Math.min(100, ratio * 100))) <= 1, JSON.stringify(after));
+  await assertPathProgress(page);
   return after;
 }
 try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
   const page = await context.newPage();
   await fixture(page);
+  const growth = [];
+  for (const ratio of [0, .25, .5, .75, 1, .25]) {
+    await scrollFraction(page, ratio);
+    growth.push(await assertPathProgress(page));
+    if ([.25, .5, 1].includes(ratio)) await page.locator('.reading-orbit__form').screenshot({ path: `${output}/orbit-trace-${ratio * 100}.png` });
+  }
+  assert.equal(growth[0].drawn, 0, 'At the start, no gold trace length is revealed.');
+  assert.equal(growth[4].offset, 0, 'At 100%, the complete shell trace is gold.');
+  for (let index = 1; index < 5; index++) assert.ok(growth[index].drawn > growth[index - 1].drawn);
+  assert.ok(growth[5].drawn < growth[4].drawn, 'Scrolling backward must shorten the trace from its endpoint.');
+  record('Gold trace: 0 → 25 → 50 → 75 → 100 → 25%, complete shell coverage, a fixed start and a tip at the revealed endpoint passed.');
   await scrollFraction(page, .25);
   await mouseDrag(page, .73, .8);
   await mouseDrag(page, .19);
@@ -117,8 +158,10 @@ try {
   assert.equal((await state(page)).y, 0);
   await page.keyboard.press('End');
   assert.equal((await state(page)).percent, 100);
+  await assertPathProgress(page);
   await page.keyboard.press('Home');
   assert.equal((await state(page)).percent, 0);
+  await assertPathProgress(page);
   assert.equal(await slider.getAttribute('aria-valuetext'), '0% of page');
   assert.equal(await page.locator('[data-orbit-traveler]').evaluate(el => getComputedStyle(el).outlineStyle), 'none');
   assert.equal(await page.locator('.reading-orbit__form').evaluate(el => getComputedStyle(el).outlineStyle), 'solid');
@@ -131,11 +174,12 @@ try {
   assert.ok((await state(page)).percent > 0);
   await scrollFraction(page, .43);
   let current = await state(page);
-  assert.ok(Math.abs(current.angle - 309.6) < .2, 'rotation follows the rounded document scroll offset');
+  assert.equal(current.angle, 0, 'Artwork remains fixed while the gold trace grows.');
+  await assertPathProgress(page);
   await page.locator('#under-track').click();
   assert.equal(await page.evaluate(() => document.activeElement.id), 'under-track', 'empty track must remain click-through');
   await page.screenshot({ path: `${output}/orbit-desktop.png` });
-  record('Ordinary wheel/programmatic scroll, rotation, footer theme and click-through track passed.');
+  record('Ordinary wheel/programmatic scroll, gold trace growth, footer theme and click-through track passed.');
 
   await page.mouse.move(current.x + current.width / 2, current.top + 20);
   await page.mouse.down();
@@ -154,6 +198,7 @@ try {
   await page.mouse.up();
   await page.evaluate(() => document.querySelector('main').style.minHeight = '5200px');
   await page.waitForFunction(() => Number(document.querySelector('[data-reading-orbit]').getAttribute('aria-valuenow')) === Math.round(scrollY / (document.documentElement.scrollHeight - innerHeight) * 100));
+  await assertPathProgress(page);
   record('Active resize, document-height changes and window-blur cleanup passed.');
 
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -163,7 +208,8 @@ try {
   await page.keyboard.press('End');
   assert.equal((await state(page)).percent, 100);
   assert.equal((await state(page)).angle, 0);
-  record('Reduced motion: dragging and keyboard remain usable with no artwork rotation.');
+  await assertPathProgress(page);
+  record('Reduced motion: dragging and keyboard still update the full gold trace, with no artwork rotation.');
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   const touchPage = await mobile.newPage();
@@ -182,6 +228,7 @@ try {
     await cdp.send('Input.dispatchTouchEvent', { type: cancel ? 'touchCancel' : 'touchEnd', touchPoints: [] });
     assert.ok(!(await state(touchPage)).dragging);
     assert.ok(Math.abs((await state(touchPage)).percent - Math.max(0, Math.min(100, ratio * 100))) <= 1);
+    await assertPathProgress(touchPage);
   }
   await touchDrag(.75);
   await touchDrag(.2);
@@ -199,6 +246,7 @@ try {
   assert.equal(short.percent, 0);
   assert.equal(short.disabled, 'true');
   assert.equal(short.tabIndex, -1);
+  await assertPathProgress(shortPage);
   await shortPage.mouse.move(short.x + 20, short.top + 20);
   await shortPage.mouse.down();
   await shortPage.mouse.move(short.x + 20, short.top + 100);

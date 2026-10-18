@@ -1,0 +1,50 @@
+{
+  "format": "positions-float32le-indices-uint32le",
+  "id": "brain",
+  "source": "biology-brain-model.stl.zip",
+  "sourceMember": "biology-brain-model.stl",
+  "sourceArchiveSha256": "2fffc396cf67a73155e40faa6c86c6a44a3f3d454c4c5e55bcbde0d4bb4d5edf",
+  "sourceStlSha256": "6b51163408ae15f4912602c33bee59b02a94f0395974d9aa391089553bc93e83",
+  "sourceTriangles": 1439423,
+  "sourceAttributeValues": [
+    0
+  ],
+  "sourceBounds": [
+    [
+      -0.34820556640625,
+      -0.35731738805770874,
+      -0.5
+    ],
+    [
+      0.34820556640625,
+      0.5433173775672913,
+      0.5
+    ]
+  ],
+  "vertices": 166943,
+  "triangles": 338854,
+  "indexByteOffset": 2003316,
+  "byteLength": 6069564,
+  "sha256": "9b844340aad8142644abd4973dd6b97adf0304526f2508070aed6c2d5ed9f4ed",
+  "mesh": "brain.bin",
+  "bounds": [
+    [
+      -0.3481455147266388,
+      -0.35722583532333374,
+      -0.49972105026245117
+    ],
+    [
+      0.3480428159236908,
+      0.5431711077690125,
+      0.5
+    ]
+  ],
+  "derivation": "vertex clustering; degenerate and duplicate triangles removed",
+  "reduction": {
+    "gridResolution": 220,
+    "cellSize": 0.004545454545454545,
+    "maxVertexDisplacement": 0.004510102793574333
+  },
+  "numpyVersion": "2.3.5",
+  "colorStatus": "No colors in source STL. Browser palette is for visual display, not biological segmentation."
+}

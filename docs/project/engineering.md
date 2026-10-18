@@ -1859,6 +1859,31 @@ PUF12 contributed 1,889 candidates on chromosome 1, which contained 129,467 call
 
 Callable-site density replaced counts as the basis for chromosome comparisons. We retained both outputs for different decisions: counts describe editing breadth, while normalized density describes its relative distribution. Together, they guide follow-up site selection across genomic regions.
 
+#### References {#model-rna-seq-references}
+
+1. Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B (Methodological), 57*(1), 289–300. [doi: 10.1111/j.2517-6161.1995.tb02031.x](<https://doi.org/10.1111/j.2517-6161.1995.tb02031.x>)
+
+2. Chen, S., Zhou, Y., Chen, Y., & Gu, J. (2018). fastp: An ultra-fast all-in-one FASTQ preprocessor. *Bioinformatics, 34*(17), i884–i890. [doi: 10.1093/bioinformatics/bty560](<https://doi.org/10.1093/bioinformatics/bty560>)
+
+3. Dobin, A., Davis, C. A., Schlesinger, F., Drenkow, J., Zaleski, C., Jha, S., Batut, P., Chaisson, M., & Gingeras, T. R. (2013). STAR: Ultrafast universal RNA-seq aligner. *Bioinformatics, 29*(1), 15–21. [doi: 10.1093/bioinformatics/bts635](<https://doi.org/10.1093/bioinformatics/bts635>)
+
+4. Flati, T., Gioiosa, S., Spallanzani, N., Tagliaferri, I., Diroma, M. A., Pesole, G., Chillemi, G., Picardi, E., & Castrignanò, T. (2020). HPC-REDItools: A novel HPC-aware tool for improved large scale RNA-editing analysis. *BMC Bioinformatics, 21*(Suppl. 10), Article 353. [doi: 10.1186/s12859-020-03562-x](<https://doi.org/10.1186/s12859-020-03562-x>)
+
+5. Han, W., Huang, W., Wei, T., Ye, Y., Mao, M., & Wang, Z. (2022). Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research, 50*(16), 9580–9595. [doi: 10.1093/nar/gkac713](<https://doi.org/10.1093/nar/gkac713>)
+
+6. Illumina. (2014). *Understanding Illumina quality scores* (Publication No. 770-2012-058) [Technical note]. [Source](https://www.illumina.com/content/dam/illumina-marketing/documents/products/technotes/technote_understanding_quality_scores.pdf).
+
+7. McKenna, A., Hanna, M., Banks, E., Sivachenko, A., Cibulskis, K., Kernytsky, A., Garimella, K., Altshuler, D., Gabriel, S., Daly, M., & DePristo, M. A. (2010). The Genome Analysis Toolkit: A MapReduce framework for analyzing next-generation DNA sequencing data. *Genome Research, 20*(9), 1297–1303. [doi: 10.1101/gr.107524.110](<https://doi.org/10.1101/gr.107524.110>)
+
+8. McLaren, W., Gil, L., Hunt, S. E., Riat, H. S., Ritchie, G. R. S., Thormann, A., Flicek, P., & Cunningham, F. (2016). The Ensembl Variant Effect Predictor. *Genome Biology, 17*(1), Article 122. [doi: 10.1186/s13059-016-0974-4](<https://doi.org/10.1186/s13059-016-0974-4>)
+
+9. Picardi, E., & Pesole, G. (2013). REDItools: High-throughput RNA editing detection made easy. *Bioinformatics, 29*(14), 1813–1814. [doi: 10.1093/bioinformatics/btt287](<https://doi.org/10.1093/bioinformatics/btt287>)
+
+10. Radivojević, T., Costello, Z., Workman, K., & Garcia Martin, H. (2020). A machine learning Automated Recommendation Tool for synthetic biology. *Nature Communications, 11*(1), Article 4879. [doi: 10.1038/s41467-020-18008-4](<https://doi.org/10.1038/s41467-020-18008-4>)
+
+11. Zhao, Y.-Y., Mao, M.-W., Zhang, W.-J., Wang, J., Li, H.-T., Yang, Y., Wang, Z., & Wu, J.-W. (2018). Expanding RNA binding specificity and affinity of engineered PUF domains. *Nucleic Acids Research, 46*(9), 4771–4782. [doi: 10.1093/nar/gky134](<https://doi.org/10.1093/nar/gky134>)
+
+
 ---
 
 ### PUF {#model-puf .engineering-chapter-title}
@@ -2002,7 +2027,7 @@ Layer 4 became a priority for independent evaluation, while layer 12 remained in
 
 ##### Design {#model-puf-cycle-05-design}
 
-PUF repeats provide modular RNA recognition, with recognition residues that can be engineered to change sequence preference (Cheong & Hall, 2006; Wang et al., 2002). Training labels mainly covered tripartite recognition motif (TRM) variants, leaving scaffold substitutions and additional TRM positions sparsely represented. The scaffold also shapes the arrangement of recognition residues. We introduced structure-conditioned generation to explore these regions alongside the supervised ranker.
+PUF repeats provide modular RNA recognition, with recognition residues that can be engineered to change sequence preference (Cheong & Hall, 2006; Wang et al., 2002). Training labels mainly covered tripartite recognition motif (TRM) variants, leaving scaffold substitutions and additional TRM positions sparsely represented. The scaffold also shapes the arrangement of recognition residues (Zhao et al., 2018). We introduced structure-conditioned generation to explore these regions alongside the supervised ranker.
 
 ##### Build {#model-puf-cycle-05-build}
 
@@ -2058,6 +2083,33 @@ Every exported scaffold candidate preserved the TRM residues and contained one r
 
 The final workflow combined a supervised ranker with structure-conditioned exploration and explicit candidate-screening rules. PUF-ESM prioritized sequences within the labelled domain; inverse folding proposed scaffold and additional TRM substitutions. Complete annotation made the structural rule operate as intended. Combining these proposals with existing TRM backgrounds and returning new functional labels would extend the next round of model development.
 
+#### References {#model-puf-references}
+
+1. Abramson, J., Adler, J., Dunger, J., Evans, R., Green, T., Pritzel, A., Ronneberger, O., Willmore, L., Ballard, A. J., Bambrick, J., Bodenstein, S. W., Evans, D. A., Hung, C.-C., O’Neill, M., Reiman, D., Tunyasuvunakool, K., Wu, Z., Žemgulytė, A., Arvaniti, E., … Jumper, J. M. (2024). Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature, 630*(8016), 493–500. [doi: 10.1038/s41586-024-07487-w](<https://doi.org/10.1038/s41586-024-07487-w>)
+
+2. Cheong, C.-G., & Hall, T. M. T. (2006). Engineering RNA sequence specificity of Pumilio repeats. *Proceedings of the National Academy of Sciences of the United States of America, 103*(37), 13635–13639. [doi: 10.1073/pnas.0606294103](<https://doi.org/10.1073/pnas.0606294103>)
+
+3. Dauparas, J., Anishchenko, I., Bennett, N., Bai, H., Ragotte, R. J., Milles, L. F., Wicky, B. I. M., Courbet, A., de Haas, R. J., Bethel, N., Leung, P. J. Y., Huddy, T. F., Pellock, S., Tischer, D., Chan, F., Koepnick, B., Nguyen, H., Kang, A., Sankaran, B., … Baker, D. (2022). Robust deep learning–based protein sequence design using ProteinMPNN. *Science, 378*(6615), 49–56. [doi: 10.1126/science.add2187](<https://doi.org/10.1126/science.add2187>)
+
+4. Dauparas, J., Lee, G. R., Pecoraro, R., An, L., Anishchenko, I., Glasscock, C., & Baker, D. (2025). Atomic context-conditioned protein sequence design using LigandMPNN. *Nature Methods, 22*(4), 717–723. [doi: 10.1038/s41592-025-02626-1](<https://doi.org/10.1038/s41592-025-02626-1>)
+
+5. Fei, H., Li, Y., Liu, Y., Wei, J., Chen, A., & Gao, C. (2025). Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints. *Cell, 188*(17), 4674–4692.e19. [doi: 10.1016/j.cell.2025.06.014](<https://doi.org/10.1016/j.cell.2025.06.014>)
+
+6. Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. *Technometrics, 12*(1), 55–67. [doi: 10.1080/00401706.1970.10488634](<https://doi.org/10.1080/00401706.1970.10488634>)
+
+7. Hsu, C., Nisonoff, H., Fannjiang, C., & Listgarten, J. (2022). Learning protein fitness models from evolutionary and assay-labeled data. *Nature Biotechnology, 40*(7), 1114–1122. [doi: 10.1038/s41587-021-01146-5](<https://doi.org/10.1038/s41587-021-01146-5>)
+
+8. Li, F.-Z., Amini, A. P., Yue, Y., Yang, K. K., & Lu, A. X. (2024). Feature reuse and scaling: Understanding transfer learning with protein language models. In R. Salakhutdinov, Z. Kolter, K. Heller, A. Weller, N. Oliver, J. Scarlett, & F. Berkenkamp (Eds.), *Proceedings of the 41st International Conference on Machine Learning* (Vol. 235, pp. 27351–27375). PMLR. [Source](https://proceedings.mlr.press/v235/li24a.html).
+
+9. Lin, Z., Akin, H., Rao, R., Hie, B., Zhu, Z., Lu, W., Smetanin, N., Verkuil, R., Kabeli, O., Shmueli, Y., dos Santos Costa, A., Fazel-Zarandi, M., Sercu, T., Candido, S., & Rives, A. (2023). Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science, 379*(6637), 1123–1130. [doi: 10.1126/science.ade2574](<https://doi.org/10.1126/science.ade2574>)
+
+10. Varma, S., & Simon, R. (2006). Bias in error estimation when using cross-validation for model selection. *BMC Bioinformatics, 7*, Article 91. [doi: 10.1186/1471-2105-7-91](<https://doi.org/10.1186/1471-2105-7-91>)
+
+11. Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [doi: 10.1016/S0092-8674(02)00873-5](<https://doi.org/10.1016/S0092-8674(02)00873-5>)
+
+12. Zhao, Y.-Y., Mao, M.-W., Zhang, W.-J., Wang, J., Li, H.-T., Yang, Y., Wang, Z., & Wu, J.-W. (2018). Expanding RNA binding specificity and affinity of engineered PUF domains. *Nucleic Acids Research, 46*(9), 4771–4782. [doi: 10.1093/nar/gky134](<https://doi.org/10.1093/nar/gky134>)
+
+
 ---
 
 ### APOBEC {#model-apobec .engineering-chapter-title}
@@ -2067,7 +2119,7 @@ Refining catalytic-module structural models
 
 #### Overview {#model-apobec-overview}
 
-Module 3 used structural modelling to organize APOBEC variants for matched comparisons of substrate preference and activity. Published PUF–APOBEC fusion designs provide the platform context for examining recognition and catalytic domains together (Han et al., 2025). Wet-lab inputs included parent and variant sequences, functional labels, and requests for same-site, combination and sequence-background controls. These inputs defined the comparisons returned by the model.
+Module 3 used structural modelling to organize APOBEC variants for matched comparisons of substrate preference and activity. Published PUF–APOBEC fusion designs provide the platform context for examining recognition and catalytic domains together (Wang et al., 2002; Han et al., 2022, 2025). Wet-lab inputs included parent and variant sequences, functional labels, and requests for same-site, combination and sequence-background controls. These inputs defined the comparisons returned by the model.
 
 Our modelling framework combined **contact decomposition, parent-corrected substrate differences, parallel complex and protein-only predictions, and contact-network clustering**. The revisions addressed ambiguous contact types, parental substrate effects, RNA-dependent deviations and unstable structural groups. The resulting contact maps and structural branches guided candidate combinations and mechanistic controls.
 
@@ -2179,7 +2231,7 @@ Following the spectral clustering framework of Ng et al. (2002), we connected co
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>A</mi><mrow><mi>u</mi><mi>v</mi></mrow></msub><mo>=</mo><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mfrac><msup><mrow><mo stretchy="true" form="prefix">‖</mo><msub><mi>x</mi><mi>u</mi></msub><mo>−</mo><msub><mi>x</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">‖</mo></mrow><mn>2</mn></msup><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mspace width="2.0em" /><mi>σ</mi><mo>=</mo><msub><mrow><mi mathvariant="normal">median</mi><mo>⁡</mo></mrow><mrow><mi>u</mi><mo>&lt;</mo><mi>v</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">‖</mo><msub><mi>x</mi><mi>u</mi></msub><mo>−</mo><msub><mi>x</mi><mi>v</mi></msub><mo stretchy="true" form="postfix">‖</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#65;&#95;&#123;&#117;&#118;&#125;&#61;&#92;&#101;&#120;&#112;&#92;&#108;&#101;&#102;&#116;&#91;&#45;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#108;&#86;&#101;&#114;&#116;&#32;&#120;&#95;&#117;&#45;&#120;&#95;&#118;&#92;&#114;&#86;&#101;&#114;&#116;&#94;&#50;&#125;&#123;&#50;&#92;&#115;&#105;&#103;&#109;&#97;&#94;&#50;&#125;&#92;&#114;&#105;&#103;&#104;&#116;&#93;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#10;&#92;&#115;&#105;&#103;&#109;&#97;&#61;&#92;&#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;&#110;&#97;&#109;&#101;&#123;&#109;&#101;&#100;&#105;&#97;&#110;&#125;&#95;&#123;&#117;&#60;&#118;&#125;&#92;&#108;&#86;&#101;&#114;&#116;&#32;&#120;&#95;&#117;&#45;&#120;&#95;&#118;&#92;&#114;&#86;&#101;&#114;&#116;&#46;&#10;</annotation></semantics></math></div>
 
-Cluster count was selected from two, three or four groups using silhouette in the selected CP space. We also compared partition recurrence with cluster count fixed or reselected during seed resampling.
+Cluster count was selected from two, three or four groups using silhouette in the selected CP space (Rousseeuw, 1987). We also compared partition recurrence with cluster count fixed or reselected during seed resampling.
 
 ##### Test {#model-apobec-cycle-04-test}
 
@@ -2203,11 +2255,11 @@ We ranked contact pairs by variance across the 11 construct means and compared t
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>V</mi><mi>f</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mfrac><munderover><mo>∑</mo><mrow><mi>v</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>v</mi><mo>,</mo><mi>f</mi></mrow></msub><mo>−</mo><msub><mover><mi>x</mi><mo accent="true">¯</mo></mover><mi>f</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em" /><mi>n</mi><mo>=</mo><mn>11</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#86;&#95;&#102;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#110;&#45;&#49;&#125;&#92;&#115;&#117;&#109;&#95;&#123;&#118;&#61;&#49;&#125;&#94;&#123;&#110;&#125;&#40;&#120;&#95;&#123;&#118;&#44;&#102;&#125;&#45;&#92;&#111;&#118;&#101;&#114;&#108;&#105;&#110;&#101;&#123;&#120;&#125;&#95;&#102;&#41;&#94;&#50;&#44;&#10;&#92;&#113;&#113;&#117;&#97;&#100;&#32;&#110;&#61;&#49;&#49;&#46;&#10;</annotation></semantics></math></div>
 
-The tested subsets contained 77, 154 or 230 pairs. Each workflow underwent **200 bootstrap replicates**, resampling whole seed groups within each construct. Feature selection, representation fitting and cluster-count selection were repeated within each replicate. Complete-partition recurrence was calculated as:
+The tested subsets contained 77, 154 or 230 pairs. Each workflow underwent **200 bootstrap replicates**, resampling whole seed groups within each construct. Feature selection, representation fitting and cluster-count selection were repeated within each replicate (bootstrap methodology: Efron, 1979). Complete-partition recurrence was calculated as:
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mn>1</mn><mn>200</mn></mfrac><munderover><mo>∑</mo><mrow><mi>b</mi><mo>=</mo><mn>1</mn></mrow><mn>200</mn></munderover><mn mathvariant="bold">𝟏</mn><mspace width="-0.167em" /><mrow><mo stretchy="true" form="prefix">[</mo><mi mathvariant="normal">ARI</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>L</mi><mi>b</mi></msub><mo>,</mo><msub><mi>L</mi><mn>0</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#82;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#50;&#48;&#48;&#125;&#92;&#115;&#117;&#109;&#95;&#123;&#98;&#61;&#49;&#125;&#94;&#123;&#50;&#48;&#48;&#125;&#10;&#92;&#109;&#97;&#116;&#104;&#98;&#102;&#123;&#49;&#125;&#92;&#33;&#92;&#108;&#101;&#102;&#116;&#91;&#92;&#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;&#110;&#97;&#109;&#101;&#123;&#65;&#82;&#73;&#125;&#40;&#76;&#95;&#98;&#44;&#76;&#95;&#48;&#41;&#61;&#49;&#92;&#114;&#105;&#103;&#104;&#116;&#93;&#46;&#10;</annotation></semantics></math></div>
 
-Here, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>L</mi><mn>0</mn></msub><annotation encoding="application/x-tex">&#76;&#95;&#48;</annotation></semantics></math></span> is a workflow's baseline partition, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>L</mi><mi>b</mi></msub><annotation encoding="application/x-tex">&#76;&#95;&#98;</annotation></semantics></math></span> its resampled partition, and ARI the adjusted Rand index. An ARI of one indicates identical complete partitions. As a complementary control, confidence-filtered Ward clustering retained pairs whose two endpoints had minimum construct-mean Cα pLDDT of at least 70. The endpoint-confidence mask remained fixed across all 200 bootstrap replicates.
+Here, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>L</mi><mn>0</mn></msub><annotation encoding="application/x-tex">&#76;&#95;&#48;</annotation></semantics></math></span> is a workflow's baseline partition, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>L</mi><mi>b</mi></msub><annotation encoding="application/x-tex">&#76;&#95;&#98;</annotation></semantics></math></span> its resampled partition, and ARI the adjusted Rand index (Hubert & Arabie, 1985). An ARI of one indicates identical complete partitions. As a complementary control, confidence-filtered Ward clustering (Ward, 1963) retained pairs whose two endpoints had minimum construct-mean Cα pLDDT of at least 70 (confidence-score background: Jumper et al., 2021). The endpoint-confidence mask remained fixed across all 200 bootstrap replicates.
 
 ##### Test {#model-apobec-cycle-05-test}
 
@@ -2224,6 +2276,31 @@ The original-space silhouette decreased slightly, from **0.465 to 0.455**. The c
 ##### Learn {#model-apobec-cycle-05-learn}
 
 We selected **spectral clustering on the 77 highest-variance contact pairs** as the main structural grouping and retained confidence-filtered Ward clustering as a sensitivity comparison. Selection combined complete construct coverage, the original CP scale and recurrence under feature and cluster-count reselection. The final output supplied three reproducible structural branches for matched comparisons of parents, single substitutions and combinations, alongside the local contact hypotheses from earlier cycles.
+
+#### References {#model-apobec-references}
+
+1. Abramson, J., Adler, J., Dunger, J., Evans, R., Green, T., Pritzel, A., Ronneberger, O., Willmore, L., Ballard, A. J., Bambrick, J., Bodenstein, S. W., Evans, D. A., Hung, C.-C., O’Neill, M., Reiman, D., Tunyasuvunakool, K., Wu, Z., Žemgulytė, A., Arvaniti, E., … Jumper, J. M. (2024). Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature, 630*(8016), 493–500. [doi: 10.1038/s41586-024-07487-w](<https://doi.org/10.1038/s41586-024-07487-w>)
+
+2. Efron, B. (1979). Bootstrap methods: Another look at the jackknife. *The Annals of Statistics, 7*(1), 1–26. [doi: 10.1214/aos/1176344552](<https://doi.org/10.1214/aos/1176344552>)
+
+3. Han, W., Huang, W., Wei, T., Ye, Y., Mao, M., & Wang, Z. (2022). Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research, 50*(16), 9580–9595. [doi: 10.1093/nar/gkac713](<https://doi.org/10.1093/nar/gkac713>)
+
+4. Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. *Nature Communications, 16*, Article 9727. [doi: 10.1038/s41467-025-64748-6](<https://doi.org/10.1038/s41467-025-64748-6>)
+
+5. Hubert, L., & Arabie, P. (1985). Comparing partitions. *Journal of Classification, 2*, 193–218. [doi: 10.1007/BF01908075](<https://doi.org/10.1007/BF01908075>)
+
+6. Jumper, J., Evans, R., Pritzel, A., et al. (2021). Highly accurate protein structure prediction with AlphaFold. *Nature, 596*, 583–589. [doi: 10.1038/s41586-021-03819-2](<https://doi.org/10.1038/s41586-021-03819-2>)
+
+7. Ng, A. Y., Jordan, M. I., & Weiss, Y. (2002). On spectral clustering: Analysis and an algorithm. In T. G. Dietterich, S. Becker, & Z. Ghahramani (Eds.), *Advances in neural information processing systems* (Vol. 14, pp. 849–856). MIT Press. [Source](https://proceedings.neurips.cc/paper/2001/hash/801272ee79cfde7fa5960571fee36b9b-Abstract.html).
+
+8. Rousseeuw, P. J. (1987). Silhouettes: A graphical aid to the interpretation and validation of cluster analysis. *Journal of Computational and Applied Mathematics, 20*, 53–65. [doi: 10.1016/0377-0427(87)90125-7](<https://doi.org/10.1016/0377-0427(87)90125-7>)
+
+9. Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [doi: 10.1016/S0092-8674(02)00873-5](<https://doi.org/10.1016/S0092-8674(02)00873-5>)
+
+10. Ward, J. H., Jr. (1963). Hierarchical grouping to optimize an objective function. *Journal of the American Statistical Association, 58*(301), 236–244. [doi: 10.1080/01621459.1963.10500845](<https://doi.org/10.1080/01621459.1963.10500845>)
+
+11. Wolfe, A. D., Li, S., Goedderz, C., & Chen, X. S. (2020). The structure of APOBEC1 and insights into its RNA and DNA substrate selectivity. *NAR Cancer, 2*(4), Article zcaa027. [doi: 10.1093/narcan/zcaa027](<https://doi.org/10.1093/narcan/zcaa027>)
+
 
 ---
 
@@ -2246,7 +2323,7 @@ Our initial machine-learning and task-specific deep-learning approaches sought t
 
 ##### Build {#model-lamar-cycle-01-build}
 
-Following advice from PI Zefeng Wang, we adopted the RNA language model LAMAR as a pretrained encoder. A task-specific prediction head connected its contextual representations to editing labels:
+Following advice from PI Zefeng Wang, we adopted the RNA language model LAMAR as a pretrained encoder. A task-specific prediction head connected its contextual representations to editing labels (Transformer background: Vaswani et al., 2017):
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>h</mi><mo>=</mo><msub><mi>E</mi><mi>θ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em" /><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>=</mo><msub><mi>g</mi><mi>ϕ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#104;&#32;&#61;&#32;&#69;&#95;&#123;&#92;&#116;&#104;&#101;&#116;&#97;&#125;&#40;&#120;&#41;&#44;&#32;&#92;&#113;&#113;&#117;&#97;&#100;&#32;&#92;&#104;&#97;&#116;&#123;&#121;&#125;&#32;&#61;&#32;&#103;&#95;&#123;&#92;&#112;&#104;&#105;&#125;&#40;&#104;&#41;&#46;&#10;</annotation></semantics></math></div>
 
@@ -2270,7 +2347,7 @@ Human transcripts became the target domain for continued sequence learning. The 
 
 ##### Build {#model-lamar-cycle-02-build}
 
-We continued masked language modelling on human transcripts derived from GRCh38 and GENCODE release 50. GENCODE provides the reference gene-annotation framework (Mudge et al., 2025). The encoder learned to predict masked nucleotides from their surrounding sequence:
+We continued masked language modelling on human transcripts derived from GRCh38 and GENCODE release 50. GENCODE provides the reference gene-annotation framework (Mudge et al., 2025). The encoder learned to predict masked nucleotides from their surrounding sequence (masked-language-modelling background: Devlin et al., 2019):
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">ℒ</mi><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">L</mi><mi mathvariant="normal">M</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mrow><mo stretchy="false" form="prefix">|</mo><mi>M</mi><mo stretchy="false" form="prefix">|</mo></mrow></mfrac><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi>M</mi></mrow></munder><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><msub><mi>p</mi><mi>θ</mi></msub><mspace width="-0.167em" /><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>∣</mo><msup><mi>x</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#77;&#76;&#77;&#125;&#125;&#10;&#61;&#32;&#45;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#124;&#77;&#124;&#125;&#92;&#115;&#117;&#109;&#95;&#123;&#105;&#92;&#105;&#110;&#32;&#77;&#125;&#10;&#92;&#108;&#111;&#103;&#32;&#112;&#95;&#123;&#92;&#116;&#104;&#101;&#116;&#97;&#125;&#92;&#33;&#92;&#108;&#101;&#102;&#116;&#40;&#120;&#95;&#105;&#92;&#109;&#105;&#100;&#32;&#120;&#94;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#109;&#97;&#115;&#107;&#125;&#125;&#92;&#114;&#105;&#103;&#104;&#116;&#41;&#46;&#10;</annotation></semantics></math></div>
 
@@ -2328,7 +2405,7 @@ The frozen configuration trained the regional prediction head while keeping the 
 
 Here, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi>θ</mi><mn>0</mn></msub><annotation encoding="application/x-tex">&#92;&#116;&#104;&#101;&#116;&#97;&#95;&#48;</annotation></semantics></math></span> is the human-adapted encoder initialization, <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">&#92;&#112;&#104;&#105;</annotation></semantics></math></span> denotes the head parameters, and <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><msub><mi mathvariant="script">ℒ</mi><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">s</mi></mrow></msub><annotation encoding="application/x-tex">&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#32;&#76;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#99;&#108;&#115;&#125;&#125;</annotation></semantics></math></span> is the regional classification objective.
 
-Validation AP guided regional hyperparameter and checkpoint selection, with Optuna used for the parameter search. Training loss tracked fitting to the training labels; validation AP assessed the ranking of labelled regions. We interpreted precision–recall performance in the context of positive-label prevalence (Saito & Rehmsmeier, 2015).
+Validation AP guided regional hyperparameter and checkpoint selection, with Optuna used for the parameter search. Training loss tracked fitting to the training labels; validation AP assessed the ranking of labelled regions. We interpreted precision–recall performance in the context of positive-label prevalence (Davis & Goadrich, 2006; Saito & Rehmsmeier, 2015).
 
 ##### Test {#model-lamar-cycle-04-test}
 
@@ -2387,6 +2464,31 @@ Hit@K measures the proportion of evaluated positive windows with at least one su
 
 The model now returned ordered cytidine candidates for the experimental team to examine within each region. Finding useful sites under a limited budget became the practical objective. Further evaluation will assess the complete workflow and newly proposed candidates. The learning-to-rank framework reviewed by T.-Y. Liu (2009) provides a methodological basis for aligning the training objective with this use.
 
+#### References {#model-lamar-references}
+
+1. Akiba, T., Sano, S., Yanase, T., Ohta, T., & Koyama, M. (2019). Optuna: A next-generation hyperparameter optimization framework. In *Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining* (pp. 2623–2631). Association for Computing Machinery. [doi: 10.1145/3292500.3330701](<https://doi.org/10.1145/3292500.3330701>)
+
+2. Davis, J., & Goadrich, M. (2006). The relationship between precision-recall and ROC curves. In *Proceedings of the 23rd International Conference on Machine Learning* (pp. 233–240). [doi: 10.1145/1143844.1143874](<https://doi.org/10.1145/1143844.1143874>)
+
+3. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. In *Proceedings of NAACL-HLT 2019* (Vol. 1, pp. 4171–4186). [doi: 10.18653/v1/N19-1423](<https://doi.org/10.18653/v1/N19-1423>)
+
+4. Elkan, C., & Noto, K. (2008). Learning classifiers from only positive and unlabeled data. In *Proceedings of the 14th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 213–220). Association for Computing Machinery. [doi: 10.1145/1401890.1401920](<https://doi.org/10.1145/1401890.1401920>)
+
+5. Gururangan, S., Marasović, A., Swayamdipta, S., Lo, K., Beltagy, I., Downey, D., & Smith, N. A. (2020). Don’t stop pretraining: Adapt language models to domains and tasks. In D. Jurafsky, J. Chai, N. Schluter, & J. Tetreault (Eds.), *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics* (pp. 8342–8360). Association for Computational Linguistics. [doi: 10.18653/v1/2020.acl-main.740](<https://doi.org/10.18653/v1/2020.acl-main.740>)
+
+6. Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., & Chen, W. (2022). LoRA: Low-rank adaptation of large language models. In *International Conference on Learning Representations*. [Source](https://openreview.net/forum?id=nZeVKeeFYf9).
+
+7. Liu, T.-Y. (2009). Learning to rank for information retrieval. *Foundations and Trends in Information Retrieval, 3*(3), 225–331. [doi: 10.1561/1500000016](<https://doi.org/10.1561/1500000016>)
+
+8. Mudge, J. M., Carbonell-Sala, S., Diekhans, M., Martinez, J. G., Hunt, T., Jungreis, I., Loveland, J. E., Arnan, C., Barnes, I., Bennett, R., Berry, A., Bignell, A., Cerdán-Vélez, D., Cochran, K., Cortés, L. T., Davidson, C., Donaldson, S., Dursun, C., Fatima, R., … Frankish, A. (2025). GENCODE 2025: Reference gene annotation for human and mouse. *Nucleic Acids Research, 53*(D1), D966–D975. [doi: 10.1093/nar/gkae1078](<https://doi.org/10.1093/nar/gkae1078>)
+
+9. Saito, T., & Rehmsmeier, M. (2015). The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets. *PLOS ONE, 10*(3), Article e0118432. [doi: 10.1371/journal.pone.0118432](<https://doi.org/10.1371/journal.pone.0118432>)
+
+10. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. *Advances in Neural Information Processing Systems, 30*, 5998–6008. [Conference paper](https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html).
+
+11. Zhou, H., Hu, Y., Zheng, Y., Li, J., Peng, J., Hu, J., Yang, Y., Chen, W., Zhang, G., & Wang, Z. (2025). A foundation language model to decipher diverse regulation of RNAs. *Genome Biology, 26*, Article 301. [doi: 10.1186/s13059-025-03752-x](<https://doi.org/10.1186/s13059-025-03752-x>)
+
+
 ---
 
 ### Whole-body Model {#model-whole-body .engineering-chapter-title}
@@ -2420,7 +2522,7 @@ The editing layer tracks unedited RNA, 112-only editing, 158-only editing and do
 
 <div class="engineering-equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>S</mi><mn>3</mn></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mi>J</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mn mathvariant="normal">112</mn></mrow></msub><mo>−</mo><msub><mi>J</mi><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">g</mi><mn mathvariant="normal">3</mn></mrow></msub><mo>−</mo><msub><mi>J</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mn mathvariant="normal">158</mn><mo stretchy="false" form="prefix" mathvariant="normal">|</mo><mn mathvariant="normal">112</mn></mrow></msub><mo>+</mo><msub><mi>J</mi><mrow><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">b</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mn mathvariant="normal">158</mn><mo stretchy="false" form="prefix" mathvariant="normal">|</mo><mn mathvariant="normal">112</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">&#10;&#92;&#102;&#114;&#97;&#99;&#123;&#100;&#83;&#95;&#51;&#125;&#123;&#100;&#116;&#125;&#61;&#74;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#101;&#100;&#105;&#116;&#49;&#49;&#50;&#125;&#125;&#45;&#74;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#100;&#101;&#103;&#51;&#125;&#125;&#10;&#45;&#74;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#98;&#105;&#110;&#100;&#49;&#53;&#56;&#124;&#49;&#49;&#50;&#125;&#125;&#43;&#74;&#95;&#123;&#92;&#109;&#97;&#116;&#104;&#114;&#109;&#123;&#117;&#110;&#98;&#105;&#110;&#100;&#49;&#53;&#56;&#124;&#49;&#49;&#50;&#125;&#125;&#46;&#10;</annotation></semantics></math></div>
 
-The subsequent bound complex can undergo further editing to form the double-edited product. APOE3-like and combined APOE3/APOE2-like fractions are reported separately, normalized by the total free and bound APOE RNA pool. The compartmental ODE chain was integrated with SciPy’s LSODA solver (Virtanen et al., 2020).
+The subsequent bound complex can undergo further editing to form the double-edited product. APOE3-like and combined APOE3/APOE2-like fractions are reported separately, normalized by the total free and bound APOE RNA pool. The compartmental ODE chain was integrated with SciPy’s LSODA solver (Petzold, 1983; Virtanen et al., 2020).
 
 ##### Test {#model-whole-body-cycle-01-test}
 
@@ -2488,7 +2590,7 @@ Although the encoded catalytic ratio was 25, saturation compressed the resulting
 
 ##### Learn {#model-whole-body-cycle-03-learn}
 
-Sequence priors made candidate differences explicit, and the benchmark identified where those priors required calibration. We retained separate sequence modifiers while treating their coefficients as adjustable. Saturation and parameter identifiability became central to interpreting context-dependent predictions.
+Sequence priors made candidate differences explicit, and the benchmark identified where those priors required calibration. We retained separate sequence modifiers while treating their coefficients as adjustable. Saturation and parameter identifiability became central to interpreting context-dependent predictions (identifiability background: Raue et al., 2009).
 
 The repeat-number prior applies to the configurations that informed it. Module 1's PUF12 profile highlights the need to recalibrate this relationship for other editor backgrounds.
 
@@ -2496,7 +2598,7 @@ The repeat-number prior applies to the configurations that informed it. Module 1
 
 ##### Design {#model-whole-body-cycle-04-design}
 
-A favourable trajectory at one parameter setting gave little information about its robustness. The context benchmark also showed that reaction outputs could respond nonlinearly to assumed rates. We extended the model from a single parameter vector to an ensemble of parameterized predictions.
+A favourable trajectory at one parameter setting gave little information about its robustness. The context benchmark also showed that reaction outputs could respond nonlinearly to assumed rates. We extended the model from a single parameter vector to an ensemble of parameterized predictions (uncertainty-analysis background: Marino et al., 2008).
 
 ##### Build {#model-whole-body-cycle-04-build}
 
@@ -2548,88 +2650,28 @@ Maximum relative mass-balance error remained below 1×10⁻¹¹ in all three sce
 
 Spatial coverage became a separate output alongside mean editing, with vessel-distance groups retained as the diagnostic. Dose primarily changed the magnitude of editing in these simulations. Delivery comparisons must therefore examine barrier release, diffusion and uptake together to address the uneven distribution revealed by the model.
 
----
-
 <span id="references"></span>
 
-#### References {#dry-dbtl-references}
+#### <span id="dry-dbtl-references">References</span> {#model-whole-body-references}
 
-Abramson, J., Adler, J., Dunger, J., Evans, R., Green, T., Pritzel, A., Ronneberger, O., Willmore, L., Ballard, A. J., Bambrick, J., Bodenstein, S. W., Evans, D. A., Hung, C.-C., O’Neill, M., Reiman, D., Tunyasuvunakool, K., Wu, Z., Žemgulytė, A., Arvaniti, E., … Jumper, J. M. (2024). Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature, 630*(8016), 493–500. doi: 10.1038/s41586-024-07487-w
+1. Ghaffarizadeh, A., Friedman, S. H., & Macklin, P. (2016). BioFVM: An efficient, parallelized diffusive transport solver for 3-D biological simulations. *Bioinformatics, 32*(8), 1256–1258. [doi: 10.1093/bioinformatics/btv730](<https://doi.org/10.1093/bioinformatics/btv730>)
 
-Akiba, T., Sano, S., Yanase, T., Ohta, T., & Koyama, M. (2019). Optuna: A next-generation hyperparameter optimization framework. In *Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining* (pp. 2623–2631). Association for Computing Machinery. doi: 10.1145/3292500.3330701
+2. Ghaffarizadeh, A., Heiland, R., Friedman, S. H., Mumenthaler, S. M., & Macklin, P. (2018). PhysiCell: An open source physics-based cell simulator for 3-D multicellular systems. *PLOS Computational Biology, 14*(2), Article e1005991. [doi: 10.1371/journal.pcbi.1005991](<https://doi.org/10.1371/journal.pcbi.1005991>)
 
-Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B (Methodological), 57*(1), 289–300. doi: 10.1111/j.2517-6161.1995.tb02031.x
+3. Grünewald, J., Zhou, R., Garcia, S. P., Iyer, S., Lareau, C. A., Aryee, M. J., & Joung, J. K. (2019). Transcriptome-wide off-target RNA editing induced by CRISPR-guided DNA base editors. *Nature, 569*(7756), 433–437. [doi: 10.1038/s41586-019-1161-z](<https://doi.org/10.1038/s41586-019-1161-z>)
 
-Chen, S., Zhou, Y., Chen, Y., & Gu, J. (2018). fastp: An ultra-fast all-in-one FASTQ preprocessor. *Bioinformatics, 34*(17), i884–i890. doi: 10.1093/bioinformatics/bty560
+4. Han, W., Huang, W., Wei, T., Ye, Y., Mao, M., & Wang, Z. (2022). Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research, 50*(16), 9580–9595. [doi: 10.1093/nar/gkac713](<https://doi.org/10.1093/nar/gkac713>)
 
-Cheong, C.-G., & Hall, T. M. T. (2006). Engineering RNA sequence specificity of Pumilio repeats. *Proceedings of the National Academy of Sciences of the United States of America, 103*(37), 13635–13639. doi: 10.1073/pnas.0606294103
+5. Liu, S., Chowdhury, E. A., Xu, V., Jerez, A., Mahmood, L., Ly, B. Q., Le, H. K., Nguyen, A., Rajwade, A., Meno-Tetang, G., & Shah, D. K. (2024). Whole-body disposition and physiologically based pharmacokinetic modeling of adeno-associated viruses and the transgene product. *Journal of Pharmaceutical Sciences, 113*(1), 141–157. [doi: 10.1016/j.xphs.2023.10.005](<https://doi.org/10.1016/j.xphs.2023.10.005>)
 
-Dauparas, J., Anishchenko, I., Bennett, N., Bai, H., Ragotte, R. J., Milles, L. F., Wicky, B. I. M., Courbet, A., de Haas, R. J., Bethel, N., Leung, P. J. Y., Huddy, T. F., Pellock, S., Tischer, D., Chan, F., Koepnick, B., Nguyen, H., Kang, A., Sankaran, B., … Baker, D. (2022). Robust deep learning–based protein sequence design using ProteinMPNN. *Science, 378*(6615), 49–56. doi: 10.1126/science.add2187
+6. Marino, S., Hogue, I. B., Ray, C. J., & Kirschner, D. E. (2008). A methodology for performing global uncertainty and sensitivity analysis in systems biology. *Journal of Theoretical Biology, 254*(1), 178–196. [doi: 10.1016/j.jtbi.2008.04.011](<https://doi.org/10.1016/j.jtbi.2008.04.011>)
 
-Dauparas, J., Lee, G. R., Pecoraro, R., An, L., Anishchenko, I., Glasscock, C., & Baker, D. (2025). Atomic context-conditioned protein sequence design using LigandMPNN. *Nature Methods, 22*(4), 717–723. doi: 10.1038/s41592-025-02626-1
+7. Petzold, L. (1983). Automatic selection of methods for solving stiff and nonstiff systems of ordinary differential equations. *SIAM Journal on Scientific and Statistical Computing, 4*(1), 136–148. [doi: 10.1137/0904010](<https://doi.org/10.1137/0904010>)
 
-Dobin, A., Davis, C. A., Schlesinger, F., Drenkow, J., Zaleski, C., Jha, S., Batut, P., Chaisson, M., & Gingeras, T. R. (2013). STAR: Ultrafast universal RNA-seq aligner. *Bioinformatics, 29*(1), 15–21. doi: 10.1093/bioinformatics/bts635
+8. Raue, A., Kreutz, C., Maiwald, T., Bachmann, J., Schilling, M., Klingmüller, U., & Timmer, J. (2009). Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood. *Bioinformatics, 25*(15), 1923–1929. [doi: 10.1093/bioinformatics/btp358](<https://doi.org/10.1093/bioinformatics/btp358>)
 
-Elkan, C., & Noto, K. (2008). Learning classifiers from only positive and unlabeled data. In *Proceedings of the 14th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 213–220). Association for Computing Machinery. doi: 10.1145/1401890.1401920
+9. Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. *Nature Methods, 17*(3), 261–272. [doi: 10.1038/s41592-019-0686-2](<https://doi.org/10.1038/s41592-019-0686-2>)
 
-Fei, H., Li, Y., Liu, Y., Wei, J., Chen, A., & Gao, C. (2025). Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints. *Cell, 188*(17), 4674–4692.e19. doi: 10.1016/j.cell.2025.06.014
+10. Weisgraber, K. H., Rall, S. C., Jr., & Mahley, R. W. (1981). Human E apoprotein heterogeneity. Cysteine-arginine interchanges in the amino acid sequence of the apo-E isoforms. *Journal of Biological Chemistry, 256*(17), 9077–9083. [doi: 10.1016/S0021-9258(19)52510-8](<https://doi.org/10.1016/S0021-9258(19)52510-8>)
 
-Flati, T., Gioiosa, S., Spallanzani, N., Tagliaferri, I., Diroma, M. A., Pesole, G., Chillemi, G., Picardi, E., & Castrignanò, T. (2020). HPC-REDItools: A novel HPC-aware tool for improved large scale RNA-editing analysis. *BMC Bioinformatics, 21*(Suppl. 10), Article 353. doi: 10.1186/s12859-020-03562-x
-
-Ghaffarizadeh, A., Friedman, S. H., & Macklin, P. (2016). BioFVM: An efficient, parallelized diffusive transport solver for 3-D biological simulations. *Bioinformatics, 32*(8), 1256–1258. doi: 10.1093/bioinformatics/btv730
-
-Ghaffarizadeh, A., Heiland, R., Friedman, S. H., Mumenthaler, S. M., & Macklin, P. (2018). PhysiCell: An open source physics-based cell simulator for 3-D multicellular systems. *PLOS Computational Biology, 14*(2), Article e1005991. doi: 10.1371/journal.pcbi.1005991
-
-Grünewald, J., Zhou, R., Garcia, S. P., Iyer, S., Lareau, C. A., Aryee, M. J., & Joung, J. K. (2019). Transcriptome-wide off-target RNA editing induced by CRISPR-guided DNA base editors. *Nature, 569*(7756), 433–437. doi: 10.1038/s41586-019-1161-z
-
-Gururangan, S., Marasović, A., Swayamdipta, S., Lo, K., Beltagy, I., Downey, D., & Smith, N. A. (2020). Don’t stop pretraining: Adapt language models to domains and tasks. In D. Jurafsky, J. Chai, N. Schluter, & J. Tetreault (Eds.), *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics* (pp. 8342–8360). Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.740
-
-Han, W., Huang, W., Wei, T., Ye, Y., Mao, M., & Wang, Z. (2022). Programmable RNA base editing with a single gRNA-free enzyme. *Nucleic Acids Research, 50*(16), 9580–9595. doi: 10.1093/nar/gkac713
-
-Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. *Nature Communications, 16*, Article 9727. doi: 10.1038/s41467-025-64748-6
-
-Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. *Technometrics, 12*(1), 55–67. doi: 10.1080/00401706.1970.10488634
-
-Hsu, C., Nisonoff, H., Fannjiang, C., & Listgarten, J. (2022). Learning protein fitness models from evolutionary and assay-labeled data. *Nature Biotechnology, 40*(7), 1114–1122. doi: 10.1038/s41587-021-01146-5
-
-Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., & Chen, W. (2022). LoRA: Low-rank adaptation of large language models. In *International Conference on Learning Representations*.
-
-Illumina. (2014). *Understanding Illumina quality scores* (Publication No. 770-2012-058) [Technical note].
-
-Li, F.-Z., Amini, A. P., Yue, Y., Yang, K. K., & Lu, A. X. (2024). Feature reuse and scaling: Understanding transfer learning with protein language models. In R. Salakhutdinov, Z. Kolter, K. Heller, A. Weller, N. Oliver, J. Scarlett, & F. Berkenkamp (Eds.), *Proceedings of the 41st International Conference on Machine Learning* (Vol. 235, pp. 27351–27375). PMLR.
-
-Lin, Z., Akin, H., Rao, R., Hie, B., Zhu, Z., Lu, W., Smetanin, N., Verkuil, R., Kabeli, O., Shmueli, Y., dos Santos Costa, A., Fazel-Zarandi, M., Sercu, T., Candido, S., & Rives, A. (2023). Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science, 379*(6637), 1123–1130. doi: 10.1126/science.ade2574
-
-Liu, S., Chowdhury, E. A., Xu, V., Jerez, A., Mahmood, L., Ly, B. Q., Le, H. K., Nguyen, A., Rajwade, A., Meno-Tetang, G., & Shah, D. K. (2024). Whole-body disposition and physiologically based pharmacokinetic modeling of adeno-associated viruses and the transgene product. *Journal of Pharmaceutical Sciences, 113*(1), 141–157. doi: 10.1016/j.xphs.2023.10.005
-
-Liu, T.-Y. (2009). Learning to rank for information retrieval. *Foundations and Trends in Information Retrieval, 3*(3), 225–331. doi: 10.1561/1500000016
-
-McKenna, A., Hanna, M., Banks, E., Sivachenko, A., Cibulskis, K., Kernytsky, A., Garimella, K., Altshuler, D., Gabriel, S., Daly, M., & DePristo, M. A. (2010). The Genome Analysis Toolkit: A MapReduce framework for analyzing next-generation DNA sequencing data. *Genome Research, 20*(9), 1297–1303. doi: 10.1101/gr.107524.110
-
-McLaren, W., Gil, L., Hunt, S. E., Riat, H. S., Ritchie, G. R. S., Thormann, A., Flicek, P., & Cunningham, F. (2016). The Ensembl Variant Effect Predictor. *Genome Biology, 17*(1), Article 122. doi: 10.1186/s13059-016-0974-4
-
-Mudge, J. M., Carbonell-Sala, S., Diekhans, M., Martinez, J. G., Hunt, T., Jungreis, I., Loveland, J. E., Arnan, C., Barnes, I., Bennett, R., Berry, A., Bignell, A., Cerdán-Vélez, D., Cochran, K., Cortés, L. T., Davidson, C., Donaldson, S., Dursun, C., Fatima, R., … Frankish, A. (2025). GENCODE 2025: Reference gene annotation for human and mouse. *Nucleic Acids Research, 53*(D1), D966–D975. doi: 10.1093/nar/gkae1078
-
-Ng, A. Y., Jordan, M. I., & Weiss, Y. (2002). On spectral clustering: Analysis and an algorithm. In T. G. Dietterich, S. Becker, & Z. Ghahramani (Eds.), *Advances in neural information processing systems* (Vol. 14, pp. 849–856). MIT Press.
-
-Picardi, E., & Pesole, G. (2013). REDItools: High-throughput RNA editing detection made easy. *Bioinformatics, 29*(14), 1813–1814. doi: 10.1093/bioinformatics/btt287
-
-Radivojević, T., Costello, Z., Workman, K., & Garcia Martin, H. (2020). A machine learning Automated Recommendation Tool for synthetic biology. *Nature Communications, 11*(1), Article 4879. doi: 10.1038/s41467-020-18008-4
-
-Saito, T., & Rehmsmeier, M. (2015). The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets. *PLOS ONE, 10*(3), Article e0118432. doi: 10.1371/journal.pone.0118432
-
-Varma, S., & Simon, R. (2006). Bias in error estimation when using cross-validation for model selection. *BMC Bioinformatics, 7*, Article 91. doi: 10.1186/1471-2105-7-91
-
-Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. *Nature Methods, 17*(3), 261–272. doi: 10.1038/s41592-019-0686-2
-
-Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. doi: 10.1016/S0092-8674(02)00873-5
-
-Weisgraber, K. H., Rall, S. C., Jr., & Mahley, R. W. (1981). Human E apoprotein heterogeneity. Cysteine-arginine interchanges in the amino acid sequence of the apo-E isoforms. *Journal of Biological Chemistry, 256*(17), 9077–9083. doi: 10.1016/S0021-9258(19)52510-8
-
-Wolfe, A. D., Li, S., Goedderz, C., & Chen, X. S. (2020). The structure of APOBEC1 and insights into its RNA and DNA substrate selectivity. *NAR Cancer, 2*(4), Article zcaa027. doi: 10.1093/narcan/zcaa027
-
-Zhao, Y.-Y., Mao, M.-W., Zhang, W.-J., Wang, J., Li, H.-T., Yang, Y., Wang, Z., & Wu, J.-W. (2018). Expanding RNA binding specificity and affinity of engineered PUF domains. *Nucleic Acids Research, 46*(9), 4771–4782. doi: 10.1093/nar/gky134
-
-Zhou, C., Sun, Y., Yan, R., Liu, Y., Zuo, E., Gu, C., Han, L., Wei, Y., Hu, X., Zeng, R., Li, Y., Zhou, H., Guo, F., & Yang, H. (2019). Off-target RNA mutation induced by DNA base editing and its elimination by mutagenesis. *Nature, 571*(7764), 275–278. doi: 10.1038/s41586-019-1314-0
-
-Zhou, H., Hu, Y., Zheng, Y., Li, J., Peng, J., Hu, J., Yang, Y., Chen, W., Zhang, G., & Wang, Z. (2025). A foundation language model to decipher diverse regulation of RNAs. *Genome Biology, 26*, Article 301. doi: 10.1186/s13059-025-03752-x
+11. Zhou, C., Sun, Y., Yan, R., Liu, Y., Zuo, E., Gu, C., Han, L., Wei, Y., Hu, X., Zeng, R., Li, Y., Zhou, H., Guo, F., & Yang, H. (2019). Off-target RNA mutation induced by DNA base editing and its elimination by mutagenesis. *Nature, 571*(7764), 275–278. [doi: 10.1038/s41586-019-1314-0](<https://doi.org/10.1038/s41586-019-1314-0>)
