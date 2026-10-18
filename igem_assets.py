@@ -124,6 +124,10 @@ def install(app):
     def rewrite_media(response):
         if app.config['WIKI_ASSET_MODE'] != 'igem' or response.status_code != 200:
             return response
+        # SAP is a sealed standalone app with explicit official media URLs.
+        # Re-serializing its JSON would invalidate the in-app SHA-256 checks.
+        if request.path.startswith('/static/sap-demo/'):
+            return response
         # Notebook's validated archival schema deliberately permits only local
         # paths. Its sourceURL() resolves previews at the last possible moment.
         if request.path == '/static/notebook/index.json':

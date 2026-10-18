@@ -1,0 +1,132 @@
+LOCUS       Universal_Rep_CDS       2022 bp    DNA     linear   SYN 15-OCT-2026
+DEFINITION  Linear universal reporter CDS with Golden Gate acceptor and stuffer.
+ACCESSION   Universal_Reporter_CDS
+VERSION     Universal_Reporter_CDS
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+COMMENT     Computational sequence design. See companion provenance.json for
+            derivation and verification; not evidence of a sequence-confirmed
+            physical clone.
+FEATURES             Location/Qualifiers
+     CDS             1..2022
+                     /label="Universal reporter CDS"
+                     /ApEinfo_fwdcolor="#4B8B8D"
+                     /ApEinfo_revcolor="#4B8B8D"
+                     /codon_start=1
+                     /transl_table=1
+                     /translation="MVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEG
+                     TQTAKLKVTKGGPLPFAWDILSPQFMYGSKAYVKHPADIPDYLKLSFPEGFKWERVMNF
+                     EDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALK
+                     GEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERA
+                     EGRHSTGGMDELYKGSGATNFSLLKQAGDVEENPGPMVSKGEELFTGVVPILVELDGDV
+                     NGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLTYGVQCFSRYPDHMKQH
+                     DFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHK
+                     LEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNH
+                     YLSTQSALSKDPNEKRDHMVLLEFVTAAGITLGMDELYKGSRDPAVSDIWDPVSGSMIS
+                     LIAALAVDRVIGMETVMPWNLPADLAWFKRNTLNKPVIMGRHTWESIGRPLPGRKNIIL
+                     SSQPSTDDRVTWVKSVDEAIAACGDVPEIMVIGGGRVYEQFLPKAQKLYLTHIDAEVEG
+                     DTHFPDYEPDDWESVFSEFHDADAQNSHSYCFEILERR"
+     misc_feature    1..708
+                     /label="mCherry"
+                     /ApEinfo_fwdcolor="#D95B69"
+                     /ApEinfo_revcolor="#D95B69"
+                     /note="Upstream fluorescence reference; 236 amino acids."
+     misc_feature    709..717
+                     /label="GSG linker"
+                     /ApEinfo_fwdcolor="#E6A451"
+                     /ApEinfo_revcolor="#E6A451"
+     misc_feature    718..774
+                     /label="P2A"
+                     /ApEinfo_fwdcolor="#E6A451"
+                     /ApEinfo_revcolor="#E6A451"
+                     /note="Ribosomal skipping peptide; ATNFSLLKQAGDVEENPGP. Not
+                     T2A."
+     misc_feature    775..1491
+                     /label="EGFP"
+                     /ApEinfo_fwdcolor="#53A875"
+                     /ApEinfo_revcolor="#53A875"
+                     /note="Fluorescence reporter domain; 239 amino acids."
+     misc_feature    1492..1497
+                     /label="GS linker (EGFP)"
+                     /ApEinfo_fwdcolor="#4B8B8D"
+                     /ApEinfo_revcolor="#4B8B8D"
+     protein_bind    complement(1499..1504)
+                     /label="BsaI (reverse)"
+                     /ApEinfo_fwdcolor="#9C7BA8"
+                     /ApEinfo_revcolor="#9C7BA8"
+                     /note="GAGACC; retained Golden Gate recognition site."
+     misc_feature    1505..1529
+                     /label="Stuffer"
+                     /ApEinfo_fwdcolor="#94A0AA"
+                     /ApEinfo_revcolor="#94A0AA"
+                     /note="25-nt inter-site spacer in the current synthesized
+                     sequence; replace with the target window. This is not the
+                     earlier 24-nt design."
+     protein_bind    1530..1535
+                     /label="BsaI (forward)"
+                     /ApEinfo_fwdcolor="#9C7BA8"
+                     /ApEinfo_revcolor="#9C7BA8"
+                     /note="GGTCTC; retained Golden Gate recognition site."
+     misc_feature    1537..1542
+                     /label="GS linker (DHFR)"
+                     /ApEinfo_fwdcolor="#4B8B8D"
+                     /ApEinfo_revcolor="#4B8B8D"
+     misc_feature    1543..2019
+                     /label="ecDHFR-DD"
+                     /ApEinfo_fwdcolor="#537CAC"
+                     /ApEinfo_revcolor="#537CAC"
+                     /note="C-terminal destabilizing domain; 159 amino acids.
+                     Retained from the current supplied construct."
+     misc_feature    2020..2022
+                     /label="Stop"
+                     /ApEinfo_fwdcolor="#94A0AA"
+                     /ApEinfo_revcolor="#94A0AA"
+                     /note="TGA"
+     misc_feature    1494..1497
+                     /label="CAGC junction"
+                     /ApEinfo_fwdcolor="#9C7BA8"
+                     /ApEinfo_revcolor="#9C7BA8"
+                     /note="Left 4-nt fusion sequence."
+     misc_feature    1537..1540
+                     /label="GGCA junction"
+                     /ApEinfo_fwdcolor="#9C7BA8"
+                     /ApEinfo_revcolor="#9C7BA8"
+                     /note="Right 4-nt fusion sequence."
+ORIGIN
+        1 atggtgtcca aaggggagga ggataatatg gccatcatca aggagtttat gcgctttaag
+       61 gtgcacatgg aaggcagcgt gaatggccac gagttcgaaa tcgagggcga gggcgaggga
+      121 aggccctacg aagggacaca gaccgcaaag ctcaaggtga ccaagggggg ccccctgcca
+      181 ttcgcctggg atatcctgag cccccagttc atgtacggca gcaaggccta cgtgaagcac
+      241 ccagccgata ttcccgatta cctcaagctg agcttccctg agggctttaa gtgggagcgg
+      301 gtgatgaatt ttgaagatgg cggcgtggtg accgtcacac aggattcttc cctgcaggac
+      361 ggcgagttta tctataaggt gaagctgaga ggcaccaact tcccctccga cggccctgtg
+      421 atgcagaaga agaccatggg ttgggaagcc tcaagcgagc ggatgtaccc cgaggacggc
+      481 gccctgaaag gggagattaa gcagagactg aagctgaaag acggcggcca ctacgacgca
+      541 gaagtgaaga caacctacaa ggccaagaag cctgtgcagt tgcccggggc ctacaacgtg
+      601 aacatcaaac tggacatcac ctctcataac gaggactata ctatcgtgga gcagtatgag
+      661 cgggccgagg gccggcacag caccggcggc atggacgaac tgtacaaggg aagcggagct
+      721 actaacttca gcctgctgaa gcaggctggc gacgtggagg agaaccctgg acctatggtg
+      781 tctaaaggcg aggagctgtt caccggcgtc gtgcccatcc tcgtggagct ggatggcgac
+      841 gtgaacggac acaagttcag tgtgagtggc gagggcgagg gcgatgccac ctacggcaag
+      901 ctgacactga agtttatctg caccactgga aaactgcccg tgccttggcc tacactggtg
+      961 accaccctga cctacggagt gcagtgcttc tccagatatc cagatcatat gaagcagcac
+     1021 gacttcttta agtccgccat gcccgagggc tatgtgcagg aaagaaccat ttttttcaag
+     1081 gatgacggga actataaaac aagagcagag gtgaagttcg agggagatac cctggtgaat
+     1141 cggatcgaac tgaagggcat cgactttaag gaggacggca acattctggg ccacaagctg
+     1201 gagtacaact acaatagcca caatgtgtac atcatggccg ataagcagaa gaacggcatt
+     1261 aaggtgaact ttaagatccg gcacaacatc gaggatggca gcgtgcagct ggccgaccat
+     1321 taccagcaga acacccccat cggagacggc cctgtgctgc tgcccgataa ccactacctg
+     1381 tccacccaga gcgccctgag caaagacccc aatgaaaaaa gagatcacat ggtgctgctg
+     1441 gaatttgtga ccgccgccgg aatcaccttg ggcatggatg agctgtacaa gggcagcaga
+     1501 gaccctgcag tctcagacat atgggatccg gtctctggca gcatgatctc tctgattgcc
+     1561 gccctcgccg tggacagagt gattggcatg gaaaccgtga tgccttggaa cctgcctgcc
+     1621 gatctggcct ggttcaagcg gaataccctg aataagccag tgatcatggg caggcacaca
+     1681 tgggagtcca tcggcaggcc cctgcctgga aggaagaata tcattctgag ttcacagcct
+     1741 tccaccgacg acagagtgac ctgggtgaaa agtgtggatg aggccatcgc cgcttgtggc
+     1801 gacgtgcccg agatcatggt gatcggaggc ggcagagtgt acgagcagtt cctgccaaaa
+     1861 gctcagaagc tgtatctgac ccatatcgac gccgaggtgg agggcgacac ccacttcccc
+     1921 gactatgagc ccgacgattg ggagagtgtg tttagcgagt tccatgatgc cgatgcccag
+     1981 aactctcact catattgctt cgagatcctg gagaggcggt ga
+//

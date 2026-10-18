@@ -1,0 +1,46 @@
+{
+  "source_file_sha256": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+  "vector_sequence_sha256": "5ad931f80bb685db80d25568c05f384ac94219a9a4e29d27687fd4f55ac35cf4",
+  "left_keep": 2615,
+  "right_start": 2654,
+  "products": [
+    {
+      "core": "ATGGAGGACGTGCGA",
+      "length": 7474,
+      "sequence_sha256": "1e339b3f305a90e146f1e6737d1e1f426fc3b80031e53f5253eee0da58173469",
+      "protein_sha256": "d2d8d94220bbc13e7568a717a658efda01d47eb24ddaceee6656858eae8e8d55",
+      "stop_positions_0based": [
+        665
+      ]
+    },
+    {
+      "core": "ATGGAGGACGTGTGA",
+      "length": 7474,
+      "sequence_sha256": "ac0e30713680f0c3188b8c731dd92cd92014cdf794e2e076c12bb7a8649897d9",
+      "protein_sha256": "7fc0baeb090c5d7423e103059f6d4c132610dccfa96d2ac062471320cffa7405",
+      "stop_positions_0based": [
+        503,
+        665
+      ]
+    },
+    {
+      "core": "GACATGGAGGACGTGCGA",
+      "length": 7477,
+      "sequence_sha256": "533b5b0293b576ab738dd6e02b87c4c387ac21d033feda7fa86982a033072ca3",
+      "protein_sha256": "32ff20d65dfbc089abb2211c95a5fb45499d4e57c485a23939d99814de706019",
+      "stop_positions_0based": [
+        666
+      ]
+    },
+    {
+      "core": "GACATGGAGGACGTGTGA",
+      "length": 7477,
+      "sequence_sha256": "3bd6c5f1f0382e4e514355febb3afb9885c41d048dfbf8df62cc94a146d4d822",
+      "protein_sha256": "bc3afa4eed3f93a9f24ab232bd7185d0df0d50e491c7ee20f7376417afe7d3e8",
+      "stop_positions_0based": [
+        504,
+        666
+      ]
+    }
+  ]
+}
