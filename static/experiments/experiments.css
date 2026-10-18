@@ -81,38 +81,82 @@ body:has(.experiments-page) .reading-orbit{display:none!important}
 /* Inline mini-manual: native details remains usable without JavaScript. */
 .exp-intro h1{font-size:clamp(58px,7vw,92px);margin-bottom:16px}
 .exp-intro-bottom{padding-bottom:0;border-bottom:0}
-.exp-guide{max-width:1260px;margin:28px auto 32px;border:1px solid #dcdbea;border-radius:10px;background:#faf9fc;overflow-anchor:none}
-.exp-guide summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;cursor:pointer;list-style:none;min-height:72px}
-.exp-guide summary::-webkit-details-marker{display:none}
-.exp-guide summary strong{font-size:16px;font-weight:600}
-.exp-guide summary small{display:block;color:var(--exp-muted);font-size:12px;line-height:1.6;margin-top:4px}
-.exp-chevron{font-size:23px;color:#5f62cd}
-.exp-guide[open] .exp-chevron{transform:rotate(180deg)}
-.exp-guide-body{padding:6px 28px 24px;border-top:1px solid #e8e7f1}
-.exp-guide-body p{font-size:14px;line-height:1.8;color:var(--exp-muted);margin:10px 0 18px}
-.exp-guide-body .exp-guide-opening{max-width:900px;margin:20px 0 30px}
-.exp-guide-body h2{font:700 28px/1.25 Georgia,serif;letter-spacing:-.025em;margin:0 0 12px}
-.exp-guide-body h3{font:600 14px/1.5 var(--sans,Arial,sans-serif);margin:0}
-.exp-find-steps,.exp-read-modules{list-style:none;padding:0;margin:20px 0 30px}
-.exp-find-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.exp-find-steps li{padding:20px;background:#fffefc;border:1px solid #e3e2ed;border-radius:8px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px 12px}
-.exp-find-steps p{grid-column:2;margin:0;font-size:13px}
-.exp-step-number{font:400 18px/1.3 Georgia,serif;color:#777a9e}
-.exp-read-guide{border-top:1px solid #dcdbea;padding-top:28px}
-.exp-read-modules li{display:grid;grid-template-columns:285px minmax(0,1fr);gap:30px;padding:16px 12px;border-bottom:1px solid #e3e2ed}
-.exp-read-modules li>div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:baseline}
-.exp-read-modules p{margin:0;font-size:13px}
-.exp-read-modules strong,.exp-guide-clarification strong{font-weight:600;color:var(--exp-ink)}
-.exp-procedure-guide{border-left:3px solid #5f62cd;background:#efedf8}
-.exp-guide-body .exp-guide-clarification{background:#f2f0f7;border-left:2px solid #f2989f;padding:16px 20px}
-.exp-guide-body .exp-guide-closing{font-size:12px;margin:20px 0 0}
-.exp-reader-actions{flex-wrap:wrap;gap:12px 22px}
-@media(max-width:760px){
- .exp-guide{margin-top:22px}.exp-guide summary{padding:16px}.exp-guide summary strong{font-size:15px}.exp-guide summary small{font-size:11px}
- .exp-guide-body{padding:8px 16px 20px}.exp-guide-body h2{font-size:25px}.exp-guide-body p{font-size:13px}
- .exp-find-steps{grid-template-columns:1fr}.exp-find-steps li{padding:16px;gap:8px}.exp-find-steps p{grid-column:1/-1}
- .exp-read-modules li{grid-template-columns:1fr;gap:8px;padding:16px 8px}.exp-read-modules li>div{gap:8px}
- .exp-intro h1{font-size:clamp(48px,12vw,76px)}.exp-reader-actions{font-size:11px}
+/* Match Experiment's Source Sans body, Georgia headings and white reading surface. */
+.exp-guide {
+  max-width: 1260px;
+  margin: 28px auto 32px;
+  border: 1px solid #e0e3e8;
+  border-radius: 28px;
+  background: linear-gradient(90deg, #f3f4f5, #fff 22px, #fff calc(100% - 22px), #f3f4f5);
+  box-shadow: 0 0 28px 2px #5f667526;
+  overflow-anchor: none;
+}
+.exp-guide summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px clamp(24px, 3vw, 44px);
+  cursor: pointer;
+  list-style: none;
+  border-radius: inherit;
+}
+.exp-guide summary::-webkit-details-marker { display: none; }
+.exp-guide summary strong { font: 700 28px/1.3 Georgia, serif; letter-spacing: -.025em; }
+.exp-guide summary small { display: block; margin-top: 8px; color: var(--exp-muted); font-size: 18px; line-height: 1.5; }
+.exp-chevron { display: grid; place-items: center; flex: 0 0 36px; height: 36px; border: 1px solid #cfd5e6; border-radius: 50%; color: #656796; font-size: 24px; line-height: 1; }
+.exp-guide[open] .exp-chevron { transform: rotate(180deg); }
+.exp-guide-body { padding: 0 clamp(24px, 3vw, 44px) 36px; }
+.exp-guide-body p { font-size: 20px; line-height: 1.75; color: var(--exp-ink); margin: 12px 0 24px; }
+.exp-guide-body .exp-guide-opening { border-top: 1px solid #e0e3e8; padding-top: 28px; margin: 0 0 36px; }
+.exp-guide-body h2 { font: 700 clamp(28px, 2.8vw, 40px)/1.2 Georgia, serif; letter-spacing: -.035em; margin: 0 0 16px; }
+.exp-guide-body h3 { font: 600 20px/1.5 var(--sans); margin: 0; color: var(--exp-ink); }
+.exp-guide-body section > h2 + p { color: var(--exp-muted); }
+.exp-find-steps, .exp-read-modules { list-style: none; padding: 0; margin: 24px 0 36px; }
+.exp-find-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.exp-find-steps li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-content: start;
+  gap: 12px 16px;
+  padding: 24px;
+  border: 1px solid #dfe3eb;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 100% 0, #7478b80a, transparent 64%), linear-gradient(145deg, #fff 12%, #fbfcfe 50%, #edf1f7 100%);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 #dce2ec66, 0 2px 5px #25314c06, 0 12px 24px -14px #3d507e42;
+}
+.exp-find-steps p { grid-column: 1 / -1; margin: 0; }
+.exp-step-number { font: 600 16px/1.875 var(--sans); letter-spacing: .03em; color: #656796; }
+.exp-read-guide { border-top: 1px solid #e0e3e8; padding-top: 36px; }
+.exp-read-modules li { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px; padding: 24px 16px; border-bottom: 1px solid #e0e3e8; }
+.exp-read-modules li > div { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.exp-read-modules p { margin: 0; }
+.exp-read-modules strong, .exp-guide-clarification strong { font-weight: 600; color: var(--exp-ink); }
+.exp-procedure-guide { border-left: 2px solid #7d7fc1; background: #f3f4fa; }
+.exp-guide-body .exp-guide-clarification { padding: 24px; border: 1px solid #e0e3e8; border-left: 3px solid #f2989f; border-radius: 0 12px 12px 0; background: #f7f8fa; }
+.exp-guide-body .exp-guide-closing { font-size: 18px; color: var(--exp-muted); margin: 24px 0 0; }
+.exp-reader-actions { flex-wrap: wrap; gap: 12px 22px; }
+@media (max-width: 1000px) {
+  .exp-read-modules li { grid-template-columns: 240px minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 760px) {
+  .exp-guide { margin-top: 22px; border-radius: 20px; }
+  .exp-guide summary { padding: 22px 18px; gap: 12px; align-items: flex-start; }
+  .exp-guide summary strong { font-size: 25px; }
+  .exp-guide summary small { font-size: 16px; }
+  .exp-chevron { flex-basis: 30px; height: 30px; font-size: 22px; }
+  .exp-guide-body { padding: 0 18px 28px; }
+  .exp-guide-body h2 { font-size: clamp(25px, 6vw, 30px); }
+  .exp-guide-body h3, .exp-guide-body p { font-size: 18px; }
+  .exp-guide-body .exp-guide-opening { padding-top: 24px; margin-bottom: 28px; }
+  .exp-find-steps { grid-template-columns: 1fr; gap: 12px; }
+  .exp-find-steps li { padding: 18px; gap: 12px; }
+  .exp-read-guide { padding-top: 28px; }
+  .exp-read-modules li { grid-template-columns: 1fr; gap: 12px; padding: 20px 8px; }
+  .exp-read-modules li > div { gap: 12px; }
+  .exp-guide-body .exp-guide-clarification { padding: 18px; }
+  .exp-guide-body .exp-guide-closing { font-size: 16px; }
+  .exp-reader-actions { font-size: 11px; }
 }
 
 /* Use the same reading surface and type hierarchy as Dry Model. */
