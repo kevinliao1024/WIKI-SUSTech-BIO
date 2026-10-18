@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='reading-back-to-top.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='engineering-workspace.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='engineering-map.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='engineering-rollers.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='engineering-cycle-tuner.css') }}">
 {% endblock %}
 {% block main %}
 <main id="main-content" class="engineering-workspace" data-engineering-workspace data-engineering-view="map" data-content-source="{{ content.source_label }}">
   {% include 'components/engineering_map.html' %}
   <aside class="engineering-controls" aria-label="Engineering navigation" hidden>
-    <div class="engineering-heading" aria-live="polite" aria-atomic="true">
+    <div class="engineering-heading">
       <h1 id="engineering-title">Engineering</h1>
       <div class="engineering-heading-row engineering-heading-row--group" data-engineering-heading-row="group">
         <span class="engineering-heading-preview" data-engineering-preview="previous" aria-hidden="true"></span>
@@ -24,6 +26,7 @@
         <p class="engineering-heading-part" data-engineering-heading-part>POD</p>
         <span class="engineering-heading-preview" data-engineering-preview="next" aria-hidden="true"></span>
       </div>
+      <p class="engineering-roller-help" id="engineering-roller-help">Drag to turn · Click either side · ← →</p>
     </div>
     <div class="dbtl-directory">{% include 'components/dbtl_wheel.html' %}</div>
     <nav class="engineering-cycles" aria-label="POD cycles" data-engineering-cycles></nav>
@@ -44,5 +47,7 @@
 <script src="{{ url_for('static', filename='engineering-structure.js') }}" defer></script>
 <script src="{{ url_for('static', filename='engineering-map.js') }}" defer></script>
 <script src="{{ url_for('static', filename='engineering-boundary.js') }}" defer></script>
+<script src="{{ url_for('static', filename='engineering-rollers.js') }}" defer></script>
+<script src="{{ url_for('static', filename='engineering-cycle-tuner.js') }}" defer></script>
 <script src="{{ url_for('static', filename='engineering-workspace.js') }}" defer></script>
 {% endblock %}

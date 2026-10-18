@@ -10,6 +10,12 @@
       .map(heading => heading.id.slice(prefix.length));
     part.cycleLabels = Object.fromEntries(part.cycles.map(number => [number,
       document.getElementById(`${prefix}${number}`).dataset.cycleLabel || `Cycle ${Number(number)}`]));
+    part.cycleSubtitles = Object.fromEntries(part.cycles.map(number => {
+      const heading = document.getElementById(`${prefix}${number}`);
+      const full = heading.textContent.trim();
+      const label = part.cycleLabels[number];
+      return [number, (full.startsWith(label) ? full.slice(label.length) : full.replace(/^Cycle\s+\d+/i, '')).replace(/^\s*[:—–-]\s*/, '').trim()];
+    }));
     part.stages = Object.fromEntries(part.cycles.map(number => [number,
       ['design', 'build', 'test', 'learn'].filter(stage => document.getElementById(`${prefix}${number}-${stage}`))]));
   }

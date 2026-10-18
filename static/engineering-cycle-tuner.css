@@ -1,0 +1,52 @@
+/* A single horizontal tuning window. Longer sets scroll without wrapping rows. */
+.engineering-controls .engineering-cycles.engineering-cycle-tuner {
+  display: grid; grid-template-columns: 18px minmax(0, 1fr) 18px; align-items: start;
+  width: 100%; max-width: 330px; gap: 4px; padding: 0; flex-shrink: 0;
+}
+.engineering-controls .engineering-cycle-tuner[hidden] { display: none; }
+.cycle-tuner-viewport {
+  min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin;
+  scrollbar-color: #a7afc9 #e8ebf3; border: 1px solid #c5ccdd; border-radius: 8px;
+  background: linear-gradient(#e1e7f0, #f8f9fc 30px, #eef1f7);
+  box-shadow: inset 0 2px 4px #33407117, 0 1px 0 #fff;
+}
+.cycle-tuner-track { position: relative; display: flex; min-width: 100%; width: 100%; }
+.cycle-tuner-track[data-expanded='true'] { width: calc(var(--tuner-count) * 132px); }
+.cycle-tuner-track::before {
+  content: ''; position: absolute; inset: 5px 0 auto; height: 12px;
+  background: repeating-linear-gradient(90deg, #7c8aaa99 0 1px, transparent 1px 8px);
+  border-bottom: 1px solid #9eaac3; pointer-events: none;
+}
+.engineering-controls .engineering-cycle-tuner a {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-start;
+  flex: 1 0 0; min-width: 0; min-height: 91px; gap: 3px;
+  padding: 24px 5px 8px; border: 0; color: #64708f; white-space: normal;
+  text-align: center; text-decoration: none; font-weight: 500;
+}
+.engineering-controls .engineering-cycle-tuner a::before { display: none; }
+.engineering-controls .engineering-cycle-tuner a::after {
+  content: ''; position: absolute; left: calc(50% - 1px); top: 5px; width: 2px; height: 12px; background: #657698;
+}
+.engineering-controls .engineering-cycle-tuner a[aria-current] { background: #dce3f04d; color: #334071; }
+.engineering-controls .engineering-cycle-tuner a:hover { background: #dce3f070; }
+.engineering-controls .engineering-cycle-tuner a:focus-visible { outline: 2px solid #8594bc; outline-offset: -2px; border-radius: 5px; }
+.cycle-tuner-label { font: 750 11px/1.2 'Avenir Next', 'Segoe UI', sans-serif; }
+.cycle-tuner-subtitle { font: 500 10px/1.3 'Avenir Next', 'Segoe UI', sans-serif; overflow-wrap: anywhere; }
+.cycle-tuner-needle {
+  position: absolute; z-index: 2; left: calc((var(--tuner-index, 0) + .5) * 100% / var(--tuner-count));
+  top: 1px; width: 2px; height: 22px; transform: translateX(-50%);
+  background: #b8657d; box-shadow: 0 0 3px #b8657d55; pointer-events: none;
+  transition: left 220ms ease-out;
+}
+.cycle-tuner-needle::before { content: ''; position: absolute; top: 0; left: -3px; border-inline: 4px solid transparent; border-top: 5px solid #b8657d; }
+.engineering-cycle-tuner[data-intro='true'] .cycle-tuner-needle { opacity: .45; }
+.cycle-tuner-step { border: 0; background: transparent; color: #68799f; padding: 0; width: 18px; height: 38px; font: 24px/1 sans-serif; cursor: pointer; }
+.cycle-tuner-step:disabled { opacity: .2; cursor: default; }
+.cycle-tuner-step:focus-visible { outline: 2px solid #8594bc; border-radius: 4px; }
+@media (min-width: 761px) {
+  .engineering-controls .dbtl-wheel { --dbtl-size: clamp(96px, calc(100dvh - var(--engineering-nav-height, 112px) - 365px), 280px); }
+}
+@media (max-width: 760px) {
+  .engineering-controls .engineering-cycles.engineering-cycle-tuner { max-width: 390px; gap: 3px; }
+}
+@media (prefers-reduced-motion: reduce) { .cycle-tuner-needle { transition: none; } }

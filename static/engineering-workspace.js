@@ -5,7 +5,7 @@
   const wheel = workspace.querySelector('[data-dbtl-wheel]');
   const stageLinks = [...wheel.querySelectorAll('[data-dbtl-stage]')];
   const cycleNav = workspace.querySelector('[data-engineering-cycles]');
-  let cycleLinks = [];
+  const cycleTuner = new window.ORCACycleTuner(cycleNav);
   const map = workspace.querySelector('[data-engineering-map]');
   const controls = workspace.querySelector('.engineering-controls');
   const headingGroup = workspace.querySelector('[data-engineering-heading-group]');
@@ -22,7 +22,6 @@
   const partRecords = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part])));
   const partOrder = [...parts.keys()];
   const groupForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, group])));
-  const cyclesForPart = new Map(groups.flatMap(group => group.parts.map(part => [part.id, part.cycles])));
   const portraits = new Map([...wheel.querySelectorAll('[data-dbtl-portrait]')]
     .map(image => [image.dataset.dbtlCycle, image]));
   let angle = 0;
@@ -35,6 +34,7 @@
   let mapPart;
   let turning;
   let paperEntrance;
+  let rollers;
   const boundary = new window.ORCAChapterBoundary();
   const hint = document.createElement('div');
   hint.className = 'engineering-boundary';
@@ -252,35 +252,7 @@
       wheel.dataset.portrait = portrait.dataset.dbtlPortrait;
       selectedPortrait = portrait;
     }
-    cycleNav.setAttribute('aria-label', `${parts.get(part)} overview and engineering records`);
-    if (cycleNav.dataset.part !== part) {
-      const overviewLink = document.createElement('a');
-      overviewLink.dataset.engineeringOverview = '';
-      overviewLink.href = `#${part}`;
-      overviewLink.textContent = record.cycles.length ? 'Overview' : 'Proposed design';
-      cycleLinks = cyclesForPart.get(part).map(number => {
-        const link = document.createElement('a');
-        link.dataset.engineeringCycle = number;
-        const label = document.createElement('span');
-        label.textContent = record.cycleLabels[number];
-        link.append(label);
-        return link;
-      });
-      cycleNav.replaceChildren(overviewLink, ...cycleLinks);
-      cycleNav.dataset.part = part;
-      cycleNav.dataset.cycleCount = String(cycleLinks.length);
-      cycleNav.dataset.manyCycles = String(cycleLinks.length > 6);
-      cycleNav.style.setProperty('--cycle-count', cycleLinks.length > 6 ? 5 : Math.max(1, cycleLinks.length));
-    }
-    const overviewLink = cycleNav.querySelector('[data-engineering-overview]');
-    if (overview) overviewLink.setAttribute('aria-current', 'location');
-    else overviewLink.removeAttribute('aria-current');
-    cycleLinks.forEach(link => {
-      link.href = `#${part}-cycle-${link.dataset.engineeringCycle}`;
-      link.setAttribute('aria-label', `${parts.get(part)}, ${record.cycleLabels[link.dataset.engineeringCycle]}`);
-      if (!overview && link.dataset.engineeringCycle === number) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
+    cycleTuner.render(record, number, overview);
     stageLinks.forEach(link => {
       const id = `${cycle}-${link.dataset.dbtlStage}`;
       const available = Boolean(number && document.getElementById(id));
@@ -319,7 +291,8 @@
     return group ? { group: group.label, part: group.label === parts.get(part) ? '' : parts.get(part) } : { group: '', part: '' };
   }
 
-  function renderHeading(part) {
+  function renderHeading(part, boundaryPreview = false) {
+    if (rollers && !boundaryPreview) { rollers.sync(part); return; }
     const index = partOrder.indexOf(part);
     const current = headingLabels(part);
     headingGroup.textContent = current.group;
@@ -352,6 +325,7 @@
       for (const property of ['transform', 'opacity', 'filter', 'clip-path']) slot.style.removeProperty(property);
     }));
     reader.removeAttribute('aria-busy');
+    if (mapPart) rollers?.sync(mapPart);
   }
 
   function renderPicker(turn, progress) {
@@ -386,6 +360,7 @@
     cancelPending();
     const turn = { mode, phase: 'dragging', index, progress: 0, scrollTop: reader.scrollTop, timer: null, frame: null };
     turning = turn;
+    renderHeading(mapPart, true);
     reader.setAttribute('aria-busy', 'true');
     renderPicker(turn, 0);
     return turn;
@@ -667,6 +642,14 @@
     if (siteNav) observer.observe(siteNav);
     observer.observe(reader);
   }
+  rollers = new window.ORCAEngineeringRollers({
+    rows: headingRows, groups,
+    beforeInput: () => { cancelTurn(); boundary.clear(); hideHint(); },
+    navigate: part => {
+      const target = document.getElementById(part);
+      go(target, { focus: false, instant: true });
+    },
+  });
   resize();
   pauseAnimation();
   syncHash();
