@@ -476,6 +476,50 @@ body.unified-reading-page:not(.ot) .markdown-content figure {
 .content-subnav a[aria-current] { box-shadow: inset 2px 0 #7d7fc1; }
 .content-directory :is(a, button):focus-visible { outline: 2px solid #5f62cd; outline-offset: -2px; }
 .content-directory [hidden] { display: none; }
+/* Share Model's motion language across every grouped reading directory. */
+.content-page .content-directory .content-group__head > a {
+  transition: color .22s ease, background-color .22s ease, border-color .22s ease;
+}
+.content-page .content-group__toggle::after {
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1);
+}
+.content-page .content-directory .content-subnav {
+  position: relative;
+  isolation: isolate;
+}
+.content-page .content-subnav.is-animating { overflow: hidden; }
+.content-page .content-subnav > li { position: static; }
+.content-page .content-subnav a {
+  position: relative;
+  z-index: 1;
+  transition: color .22s ease;
+}
+.content-page .content-subnav a[aria-current] {
+  background: transparent;
+  box-shadow: none;
+}
+.content-page .content-subnav > .content-subnav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  list-style: none;
+  border-radius: 7px;
+  background: #eaeaf8;
+  box-shadow: inset 2px 0 #7d7fc1;
+  opacity: 0;
+  transition: transform .36s cubic-bezier(.22, 1, .36, 1), width .3s ease, height .3s ease, opacity .18s ease;
+}
+.content-page .content-subnav-indicator.is-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .content-page .content-directory .content-group__head > a,
+  .content-page .content-group__toggle::after,
+  .content-page .content-subnav a,
+  .content-page .content-subnav > .content-subnav-indicator { transition: none; }
+}
 .content-mobile-directory { display: none; }
 
 @media (min-width: 761px) and (max-width: 1100px) {
