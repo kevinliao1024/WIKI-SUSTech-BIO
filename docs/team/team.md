@@ -2,6 +2,11 @@
 title: Meet Our Team
 subtitle: A name, a face, and a little of what makes each of us, us.
 eyebrow: The people behind ORCA
+package_frames:
+- https://static.igem.wiki/teams/6085/wiki/team/pkg1.avif
+- https://static.igem.wiki/teams/6085/wiki/team/pkg2.avif
+- https://static.igem.wiki/teams/6085/wiki/team/pkg3.avif
+- https://static.igem.wiki/teams/6085/wiki/team/pkg4.avif
 members:
 - name: Benxiang Xiao
   number: '01'
@@ -247,7 +252,7 @@ members:
 - name: Junming Feng
   number: '18'
   category: advisors
-  photo: ''
+  photo: https://static.igem.wiki/teams/6085/wiki/team/junming-feng.avif
   quote: Just do it
   quote_lang: en
   quote_source: Team members contribution.xlsx / Sheet1!B17
@@ -257,7 +262,7 @@ members:
 - name: Huiwen Ma
   number: '19'
   category: advisors
-  photo: ''
+  photo: https://static.igem.wiki/teams/6085/wiki/team/huiwen-ma.avif
   quote: With the power of models, we accelerate experimental progress, with the light of many, we illuminate the beacon of synthetic biology.
   quote_lang: en
   quote_source: Team members contribution.xlsx / Sheet1!B18
@@ -267,7 +272,7 @@ members:
 - name: Yanfei Pu
   number: '20'
   category: advisors
-  photo: ''
+  photo: https://static.igem.wiki/teams/6085/wiki/team/yanfei-pu.avif
   quote: Fortune favors the bold
   quote_lang: en
   quote_source: Team members contribution.xlsx / Sheet1!B20
@@ -287,7 +292,7 @@ members:
 - name: Xueyin Lu
   number: '22'
   category: instructor
-  photo: ''
+  photo: https://static.igem.wiki/teams/6085/wiki/team/xueyin-lu.avif
   quote: ''
   quote_lang: en
   roles:

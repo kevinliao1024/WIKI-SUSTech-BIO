@@ -21,6 +21,9 @@ class MarkdownContentTest(unittest.TestCase):
                     # The custom Model template renders its heading from front matter.
                     self.assertTrue(content.metadata.get("heading"))
                     self.assertIn("<p>", content.html)
+                elif route == "team":
+                    self.assertTrue(config.is_custom)
+                    self.assertTrue(content.metadata.get("members"))
                 else:
                     self.assertIn("<h2", content.html)
 

@@ -44,7 +44,7 @@ class MarkdownContent:
 # This is the single route -> Markdown -> template registry for every content page.
 # The homepage and 404 page intentionally remain special Jinja implementations.
 CONTENT_PAGES: dict[str, PageConfig] = {
-    "team": PageConfig("team/team.md"),
+    "team": PageConfig("team/team.md", "pages/team.html"),
     "attributions": PageConfig("team/attributions.md"),
     "description": PageConfig("project/description.md"),
     "blueprint": PageConfig("project/blueprint.md"),
