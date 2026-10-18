@@ -282,7 +282,7 @@ members:
 - name: Jacky Man-leuk Yuen
   number: '21'
   category: advisors
-  photo: ''
+  photo: https://static.igem.wiki/teams/6085/wiki/team/jacky-yuen-advisor.avif
   quote: Press Start to Continue.
   quote_lang: en
   roles:
