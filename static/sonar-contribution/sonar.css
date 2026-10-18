@@ -3,3 +3,22 @@
 @media(max-width:760px){.sonar-timeline,.sonar-resources{grid-template-columns:1fr}.sonar-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.sonar-instrument{padding:18px}.sonar-path{gap:8px}.sonar-path a{padding:16px 4px;gap:9px}.sonar-path b{font-size:30px}.sonar-path span{font-size:.88rem}.sonar-layer-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.sonar-bounds{grid-template-columns:repeat(2,minmax(0,1fr))}.sonar-metrics strong{font-size:1.25rem}.sonar-screens:has(figure){grid-template-columns:1fr}.sonar-intro{padding-left:16px}.sonar-instrument .sonar-controls{align-items:stretch}.sonar-instrument select{width:100%}}
 @media(prefers-reduced-motion:reduce){.sonar-instrument *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(forced-colors:active){.sonar-instrument button[aria-pressed=true]{outline:3px solid Highlight}.sonar-bar{background:CanvasText}}
+
+/* The Contribution section uses the existing SAP wordmark. */
+.content-page .markdown-content #sonar .sap-logo {
+  display: block;
+  width: 242px;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+}
+.sap-logo-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
