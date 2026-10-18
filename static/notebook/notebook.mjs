@@ -135,10 +135,6 @@ function buildMap() {
 }
 function highlight(id) {
   for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
-  if(!selected) {
-    const lane=lanes.find(l=>l.track.id===id);
-    $('instruction').textContent=lane?`${lane.track.label} · ${lane.track.description}`:'Newest first. Select a line to follow its experiments, or explore all tracks below.';
-  }
 }
 function layoutMap() {
   if(!bounds) return;
@@ -256,12 +252,10 @@ function renderState(state,userAction=false) {
   app.style.setProperty('--track',track?.color||'#3d409b');
   $('back').hidden=!selected;$('jump-label').hidden=!selected;$('switch-label').hidden=!selected;if(selected)$('switch').value=selected;$('focus-heading').hidden=!selected;$('end').hidden=!selected;
   for(const button of $('tracks').children) button.setAttribute('aria-pressed',String(button.dataset.track===selected));
-  $('view-label').textContent=track?track.label:'Research timeline';
+  $('view-label').textContent=track?track.label:'';
   $('status').textContent='';
   if(track) {
     $('viewport').scrollLeft=0;
-    $('instruction').textContent='Follow the dates. Open a title to read the original notebook pages.';
-    $('date-range').textContent=`${formatDate(groups[0].date)} — ${formatDate(groups.at(-1).date)}`;
     $('focus-heading').replaceChildren(el('h2','',track.label),el('p','',track.description));
     $('jump').replaceChildren(...groups.map(g=>{const o=el('option','',formatDate(g.date));o.value=g.date;return o;}));
     renderRecords(track);
@@ -272,7 +266,6 @@ function renderState(state,userAction=false) {
     const back=el('button','nb-back','← Return to all tracks');back.type='button';back.addEventListener('click',()=>navigate(null));$('end').append(back);
   } else {
     resizeObserver.disconnect();dateObserver?.disconnect();$('records').replaceChildren();rowElements=[];
-    $('date-range').textContent=`${formatDate(isoDay(bounds.end))} → ${formatDate(isoDay(bounds.start))}`;
     highlight(null);resizeObserver.observe($('viewport'));
   }
   layoutMap();
