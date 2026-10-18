@@ -1,0 +1,10 @@
+.sap-demo-embed{margin:1.5rem 0 2.5rem;border:1px solid #c9ded7;border-radius:16px;overflow:hidden;background:#f7f9fa;min-width:0}
+.sap-demo-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:12px 16px;background:#eef5f2;color:#27313d;font-size:14px}
+.sap-demo-toolbar>div{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.sap-demo-toolbar a{color:#236553!important;font-size:13px}
+.sap-demo-toolbar button{border:1px solid #287d69;border-radius:7px;background:#fff;color:#236553;padding:7px 12px;font:inherit;cursor:pointer}
+.sap-demo-toolbar button:focus-visible,.sap-demo-toolbar a:focus-visible{outline:3px solid #20c979;outline-offset:3px}
+.sap-demo-embed iframe{display:block;width:100%;height:850px;border:0;background:#f7f9fa}
+.sap-demo-embed:fullscreen{display:flex;flex-direction:column;border:0;border-radius:0;width:100%;height:100%;margin:0}
+.sap-demo-embed:fullscreen iframe{flex:1;min-height:0;height:100%}
+@media(max-width:600px){.sap-demo-toolbar{padding:12px}.sap-demo-embed iframe{height:760px}}

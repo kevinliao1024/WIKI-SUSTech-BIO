@@ -1,0 +1,100 @@
+/* SONAR SAP × ORCA / v1.0 · scoped semantic tokens · no JS dependency */
+:root {
+  color-scheme: light;
+  --sap-canvas: #F8F9FB;
+  --sap-surface: #FFFFFF;
+  --sap-surface-muted: #F4F6F8;
+  --sap-surface-warm: #FEFDFB;
+  --sap-ink: #202A35;
+  --sap-ink-secondary: #5F6D79;
+  --sap-ink-subtle: #5F6D79;
+  --sap-line: #DEE5EB;
+  --sap-line-strong: #C2CED8;
+  --sap-white: #FFFFFF;
+  --sap-focus: #243E55;
+
+  --sap-design: #A84F5A;
+  --sap-design-hover: #8C3D48;
+  --sap-design-soft: #FBF0F0;
+  --sap-design-border: #E8C5CA;
+  --sap-design-ink: #7D3540;
+  --sap-analysis: #287D69;
+  --sap-analysis-hover: #1D6756;
+  --sap-analysis-soft: #EDF7F3;
+  --sap-analysis-border: #C8E4D9;
+  --sap-analysis-ink: #195C4E;
+  --sap-sources: #426F9C;
+  --sap-sources-hover: #315A83;
+  --sap-sources-soft: #EFF4FA;
+  --sap-sources-border: #C8D8EA;
+  --sap-sources-ink: #2D557B;
+
+  /* Science motifs remain orthogonal to UI navigation */
+  --sap-protein: #8275AC;
+  --sap-protein-soft: #F1EDF8;
+  --sap-rna: #7DA7BC;
+  --sap-rna-soft: #EAF2F7;
+  --sap-target: #4D9290;
+  --sap-target-soft: #EAF5F3;
+  --sap-caution: #C18A47;
+  --sap-caution-soft: #FFF6E9;
+
+  /* Measurement channel encodings: NEVER replace with current module color */
+  --sap-mcherry: #CF5763;
+  --sap-mcherry-text: #A13B48;
+  --sap-egfp: #23A075;
+  --sap-egfp-text: #176D50;
+  --sap-bfp: #6075CC;
+  --sap-bfp-text: #4257A3;
+
+  --sap-sample-mock: #8995A2;
+  --sap-sample-wt: #4879B2;
+  --sap-sample-ac: #289774;
+  --sap-sample-inac: #D29357;
+
+  --sap-font: "Manrope", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --sap-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sap-shadow: 0 3px 15px rgba(32,42,53,.045);
+  --sap-radius-control: 7px;
+  --sap-radius-card: 11px;
+  --sap-radius-large: 13px;
+  --sap-gap-1: 4px; --sap-gap-2: 8px; --sap-gap-3: 12px;
+  --sap-gap-4: 16px; --sap-gap-5: 20px; --sap-gap-6: 24px;
+
+  /* Default brand affordance favors analysis; module wrapper overrides it */
+  --sap-module: var(--sap-analysis);
+  --sap-module-hover: var(--sap-analysis-hover);
+  --sap-module-soft: var(--sap-analysis-soft);
+  --sap-module-border: var(--sap-analysis-border);
+  --sap-module-ink: var(--sap-analysis-ink);
+}
+[data-sap-module="design"] {
+  --sap-module: var(--sap-design);
+  --sap-module-hover: var(--sap-design-hover);
+  --sap-module-soft: var(--sap-design-soft);
+  --sap-module-border: var(--sap-design-border);
+  --sap-module-ink: var(--sap-design-ink);
+}
+[data-sap-module="analysis"] {
+  --sap-module: var(--sap-analysis);
+  --sap-module-hover: var(--sap-analysis-hover);
+  --sap-module-soft: var(--sap-analysis-soft);
+  --sap-module-border: var(--sap-analysis-border);
+  --sap-module-ink: var(--sap-analysis-ink);
+}
+[data-sap-module="sources"] {
+  --sap-module: var(--sap-sources);
+  --sap-module-hover: var(--sap-sources-hover);
+  --sap-module-soft: var(--sap-sources-soft);
+  --sap-module-border: var(--sap-sources-border);
+  --sap-module-ink: var(--sap-sources-ink);
+}
+/* Optional reference components. Import without reworking existing logic. */
+.sap-panel { background:var(--sap-surface); border:1px solid var(--sap-line); border-radius:var(--sap-radius-card); box-shadow:var(--sap-shadow); }
+.sap-panel--accent { border-color:var(--sap-module-border); }
+.sap-action { background:var(--sap-module); color:var(--sap-white); border:1px solid transparent; border-radius:var(--sap-radius-control); padding:9px 14px; font:600 13px/1.2 var(--sap-font); cursor:pointer; }
+.sap-action:hover:not(:disabled) { background:var(--sap-module-hover); }
+.sap-action:disabled { opacity:.46; cursor:not-allowed; }
+.sap-action:focus-visible, .sap-focusable:focus-visible { outline:3px solid var(--sap-focus); outline-offset:3px; }
+.sap-subtle { background:var(--sap-module-soft); color:var(--sap-module-ink); border:1px solid var(--sap-module-border); }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; } }

@@ -1,0 +1,19 @@
+/* Original SAP layout is unchanged. Tutorial UI floats above the active control. */
+.demo-next { outline: 3px solid #00b96b !important; outline-offset: 5px; }
+#demo-target-ring { position:fixed;z-index:10001;pointer-events:none;border:3px solid #00b96b;border-radius:12px;box-shadow:0 0 0 5px #00b96b30,0 0 24px #00b96b45;animation:sap-demo-pulse 1.65s ease-in-out infinite; }
+@keyframes sap-demo-pulse { 0%,100% { box-shadow:0 0 0 5px #00b96b30,0 0 22px #00b96b40; } 50% { box-shadow:0 0 0 11px #00b96b12,0 0 32px #00b96b65; } }
+#demo-coach { position:fixed;z-index:10002;box-sizing:border-box;width:340px;max-width:calc(100vw - 28px);padding:19px 21px;background:#fff;color:#203c31;border:1px solid #99d7b9;border-top:4px solid #00b96b;border-radius:14px;box-shadow:0 12px 42px #123c3029;font:14px/1.6 var(--font);text-align:left; }
+#demo-coach .demo-coach-top {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;}
+#demo-coach-progress {font-size:10px;font-weight:750;letter-spacing:1.15px;color:#137b50;}
+#demo-coach h2 {font-size:18px;line-height:1.35;margin:0 0 9px;font-weight:700;letter-spacing:-.25px;color:#163d2c;}
+#demo-coach p {font-size:13px;line-height:1.7;margin:0;color:#50675c;}
+#demo-guide-hide {border:0;background:transparent;color:#527062;font-size:23px;line-height:1;min-height:28px;min-width:28px;padding:0;border-radius:5px;}
+#demo-guide-hide:hover {background:#eaf6ef;}
+#demo-coach .demo-coach-bottom {display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e4eee8;margin-top:15px;padding-top:12px;}
+#demo-coach .demo-coach-bottom span {font-size:10px;color:#648272;}
+#demo-guide-locate {border:0;background:#e7f8ee;color:#08783f;font-size:11px;font-weight:700;padding:7px 10px;border-radius:6px;white-space:nowrap;}
+#demo-guide-resume {position:fixed;bottom:22px;right:22px;z-index:10003;border:1px solid #159b5c;border-radius:30px;background:#fff;color:#08783f;padding:10px 18px;font-size:13px;box-shadow:0 4px 18px #174e3426;}
+@media(max-width:600px){#demo-coach{width:300px;padding:14px 16px;}#demo-coach h2{font-size:16px;}#demo-coach p{font-size:12px;}}
+@media(prefers-reduced-motion:reduce){#demo-target-ring{animation:none;}}
+
+html.demo-guided { scroll-behavior:auto!important; }

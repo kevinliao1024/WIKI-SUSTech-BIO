@@ -1,0 +1,115 @@
+/* Official SONAR Brand Kit v1.0 artwork is embedded without modification. */
+.app-header .brand{min-width:0}
+.app-header .brand-logo{display:block;width:141px;height:48px;max-width:none;object-fit:contain;flex-shrink:0}
+body[data-area=home]{background:#f7f8fa}
+body[data-area=home] main{max-width:1220px;padding:48px 42px 40px;display:flex;align-items:center;min-height:calc(100vh - var(--header) - 65px)}
+body[data-area=home] footer{max-width:1220px;padding-top:16px}
+.home-workspace{width:100%;display:grid;grid-template-columns:minmax(240px,.82fr) minmax(0,1.7fr);gap:60px;align-items:center}
+.home-welcome{text-align:center;padding:0 28px 20px 0;border-right:1px solid var(--line)}
+.home-brand-art{display:block;width:238px;max-width:100%;height:auto;margin:0 auto 28px}
+.home-welcome h1{font-size:27px;font-weight:600;line-height:1.55;letter-spacing:.3px;color:#27313d}
+.home-welcome p{margin:16px 0 0;color:var(--muted);font-size:13px;line-height:1.9}
+.home-destinations{min-width:0}
+.home-destinations-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:12px;color:var(--muted)}
+.home-local{display:inline-flex;align-items:center;gap:7px;font-size:11px}
+.home-local i{width:5px;height:5px;border-radius:50%;background:var(--sap-analysis)}
+.home-modules{gap:16px}
+.home-module{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:18px;align-items:start;min-height:0;padding:22px 24px 16px;border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:0 3px 12px #27313d03;transition:border-color .18s,box-shadow .18s}
+.home-module:before{content:'';position:absolute;left:-1px;top:24px;width:3px;height:32px;border-radius:0 3px 3px 0;background:var(--sap-module)}
+.home-module:hover,.home-module:focus-within{border-color:var(--sap-module-border);box-shadow:0 4px 18px #27313d07}
+.home-module .home-module-icon{width:40px;height:40px;border-radius:9px;margin-top:3px;background:var(--sap-module-soft);color:var(--sap-module)}
+.home-module .home-module-icon svg{width:23px;height:23px}
+.home-module-number{font:10px/1.4 var(--sap-mono);letter-spacing:1.1px;color:var(--sap-module-ink);margin-bottom:5px}
+.home-module-copy h2{font-size:21px;line-height:1.4;font-weight:600;letter-spacing:.2px}
+.home-module-copy p{font-size:13px;line-height:1.8;margin-top:7px;max-width:510px;color:var(--muted)}
+.home-module-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid #eef1f4}
+.home-module-scope{font-size:11px;color:var(--muted)}
+.home-module-entry{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:108px;min-height:34px;padding:6px 10px;border:1px solid transparent;border-radius:6px;background:var(--sap-module-soft);color:var(--sap-module-ink);font-size:12px;font-weight:600;white-space:nowrap;transition:background .18s,color .18s}
+.home-module-entry svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.home-module-entry:hover{color:#fff;background:var(--sap-module);border-color:var(--sap-module);text-decoration:none}
+@media(max-width:1100px){.home-workspace{gap:32px;grid-template-columns:240px minmax(0,1fr)}.home-welcome{padding-right:24px}.home-brand-art{width:210px}.home-module{padding:20px 20px 14px;gap:14px}.home-module-copy h2{font-size:20px}.home-welcome h1{font-size:24px}}
+@media(max-width:820px){body[data-area=home] main{padding:30px 26px}.home-workspace{grid-template-columns:1fr;gap:30px}.home-welcome{display:grid;grid-template-columns:180px minmax(0,1fr);column-gap:32px;align-items:center;text-align:left;border-right:0;border-bottom:1px solid var(--line);padding:0 0 26px}.home-brand-art{width:180px;margin:0;grid-row:1/3}.home-welcome h1{align-self:end;font-size:24px}.home-welcome p{align-self:start;margin-top:10px}.home-welcome p br{display:none}.home-module{grid-template-columns:40px minmax(0,1fr)}.home-module-copy p{max-width:none}.home-local{display:none}}
+@media(max-width:540px){body[data-area=home] main{padding:24px 18px 28px}.app-header .brand{width:auto}.app-header .brand-logo{width:141px;height:48px}.home-workspace{gap:24px}.home-welcome{grid-template-columns:130px minmax(0,1fr);gap:10px 20px;padding-bottom:24px}.home-brand-art{width:130px}.home-welcome h1{font-size:21px;line-height:1.5;letter-spacing:0}.home-welcome p{font-size:12px;margin-top:0;line-height:1.8}.home-module{padding:18px 16px 14px;gap:12px;grid-template-columns:34px minmax(0,1fr);border-radius:11px}.home-module .home-module-icon{width:34px;height:36px;border-radius:7px}.home-module .home-module-icon svg{width:20px;height:20px}.home-module-number{font-size:10px;letter-spacing:.6px}.home-module-copy h2{font-size:20px}.home-module-copy p{font-size:12px}.home-module-bottom{gap:10px;flex-wrap:wrap;margin-top:12px;padding-top:10px}.home-module-scope{font-size:10px}.home-module-entry{min-width:100px;min-height:36px;margin-left:auto}.home-destinations-heading{font-size:12px;margin-bottom:12px}.home-modules{gap:14px}}
+@media(max-width:360px){.app-header{gap:10px;padding:0 12px}.area-switch button{padding:0 8px}.home-welcome{grid-template-columns:110px minmax(0,1fr);column-gap:16px}.home-brand-art{width:110px}.home-welcome h1{font-size:19px}}
+.home-brand-picture{display:block}
+@media(max-width:820px){.home-brand-picture{grid-row:1/3}}
+@media(max-width:540px){.home-brand-art{width:110px;height:110px;margin:auto}.home-brand-picture{align-self:center}}
+/* Larger welcome mark, while preserving the supplied artwork proportions. */
+@media(min-width:1101px){.home-brand-art{width:300px}.home-workspace{grid-template-columns:minmax(300px,.95fr) minmax(0,1.7fr);gap:44px}.home-welcome{padding-right:24px}}
+@media(min-width:821px) and (max-width:1100px){.home-workspace{grid-template-columns:280px minmax(0,1fr);gap:28px}.home-brand-art{width:260px}.home-welcome{padding-right:18px}}
+@media(min-width:541px) and (max-width:820px){.home-welcome{grid-template-columns:210px minmax(0,1fr)}.home-brand-art{width:210px}}
+@media(max-width:540px){.home-brand-art{width:128px;height:128px}}
+@media(max-width:360px){.home-brand-art{width:110px;height:110px}}
+
+/* English labels: keep navigation and actions usable at narrow widths. */
+html[lang=en] .home-module-number{display:none}
+html[lang=en] .home-welcome h1{font-size:clamp(22px,2.2vw,28px);line-height:1.35;letter-spacing:-.4px}
+html[lang=en] .workflow-trail li{min-width:0}
+html[lang=en] .page-heading .actions{flex-shrink:0}
+html[lang=en] .wizard-actions{gap:16px}
+html[lang=en] .advanced-options>summary{flex-wrap:wrap}
+html[lang=en] .form-grid .field>label{min-height:42px;display:flex;align-items:flex-end}
+@media(max-width:700px){html[lang=en] .page-heading{flex-wrap:wrap;gap:16px}html[lang=en] .workflow-trail{gap:12px}html[lang=en] .workflow-trail li{flex-direction:column;text-align:center;gap:8px;font-size:11px}html[lang=en] .workflow-trail li:after{display:none}html[lang=en] .wizard-actions{flex-wrap:wrap}html[lang=en] .wizard-actions .primary{margin-left:auto}html[lang=en] .sidebar nav{gap:16px}html[lang=en] .home-welcome{grid-template-columns:1fr;text-align:center}html[lang=en] .home-brand-picture{grid-row:auto}html[lang=en] .home-brand-art{margin:0 auto 12px}html[lang=en] .home-welcome h1{font-size:24px}}
+@media(max-width:540px){html[lang=en]{--header:116px}html[lang=en] .app-header{height:var(--header);display:flex;flex-wrap:wrap;gap:4px 12px;padding:8px 18px}html[lang=en] .app-header .brand{flex:1}html[lang=en] .app-header .local-pill{display:inline-flex;order:1;margin-left:auto}html[lang=en] .area-switch{order:2;width:100%;justify-content:space-between}html[lang=en] .area-switch button{font-size:12px;height:36px;padding:6px 10px}html[lang=en] .area-switch button.active:after{bottom:-8px}html[lang=en] .sidebar nav{overflow-x:auto}html[lang=en] .sidebar nav button{white-space:nowrap}html[lang=en] .button{white-space:normal;text-align:center}html[lang=en] .form-grid .field>label{min-height:0}}
+
+/* Manrope: Wiki-hosted variable font; licensed under SIL OFL 1.1.
+   Full upstream font retained, including Greek and tabular figures. */
+@font-face {
+  font-family: "Manrope";
+  src: url("https://static.igem.wiki/teams/6085/wiki/sonar-web/manrope-variable.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --sap-font: "Manrope", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --sap-font-heading: var(--sap-font);
+}
+body { font-family:var(--sap-font); font-size:14px; line-height:1.65; font-weight:400; font-synthesis:none; }
+h1,h2,h3,h4,strong,b,.stat .value,.big,.res-number {
+  font-family:var(--sap-font); font-weight:600;
+}
+h1,.page-heading h1,.home-welcome h1,.home-module-copy h2,.welcome-copy h1 {
+  font-family:var(--sap-font); font-weight:600; letter-spacing:-.5px;
+}
+button,.button,summary,label,th,.area-switch button,.sidebar nav button,
+.home-module-entry,.workflow-trail li { font-family:var(--sap-font); font-weight:500; }
+button,.button,.home-module-entry { letter-spacing:0; }
+input,select,textarea { font-family:var(--sap-font); font-size:14px; font-weight:400; }
+.area-switch button,.sidebar nav button,.button,.home-module-entry { font-size:14px; }
+.field>label,.field p,.page-heading p,.heading-note,.card-head p,
+.home-module-copy p,.home-welcome p,.construction-file p,.plain-list,.step p { font-size:14px; line-height:1.7; }
+.home-module-copy h2 { font-size:22px; line-height:1.35; }
+.home-module-copy p { margin-top:10px; }
+.home-module-scope,.home-destinations-heading,.res-unit,.res-secondary,
+.res-focus-footer,.sequence-input-foot,.sequence-key,.readiness-note { font-size:12px; }
+.card-head h2,.section-title h2 { font-size:17px; font-weight:600; }
+th { font-size:12px; } td { font-size:14px; }
+.chart text,svg.chart text { font-family:var(--sap-font); font-weight:400; }
+.metrics dd,.stat .value,.big,.res-number,td,.chart text { font-variant-numeric:tabular-nums; }
+.res-number { font-size:56px; line-height:1.15; letter-spacing:-1.5px; }
+.res-number small { font-weight:400; letter-spacing:0; }
+/* Bases, oligos and coordinates keep their fixed-width alignment. */
+code,pre,.mono,.sequence-input,.oligo-sequence,.sequence-ribbon,
+.sequence-ribbon>span,.site-picker .site-base,.codon-flow strong { font-family:var(--sap-mono); }
+@media(max-width:540px){
+  html[lang=en] .area-switch button { font-size:13px; }
+  .sidebar nav button { font-size:13px; }
+  .res-number { font-size:48px; }
+  .home-module-copy h2 { font-size:21px; }
+  .home-module-entry { min-height:40px; }
+}
+/* Keep the five English workflow labels inside compact workspaces. */
+@media(max-width:1100px){
+  html[lang=en] .workflow-trail{gap:12px}
+  html[lang=en] .workflow-trail li,
+  html[lang=en] .workflow-trail li:last-child{flex:1;flex-direction:column;text-align:center;white-space:normal;gap:8px;font-size:11px;line-height:1.4}
+  html[lang=en] .workflow-trail li:after{display:none}
+}
+@media(max-width:540px){
+  html[lang=en] .app-header{align-content:center}
+  html[lang=en] .area-switch{height:40px;flex-shrink:0}
+  html[lang=en] .area-switch button.active:after{bottom:-4px}
+}
+/* Allow full English navigation labels without reducing their type size. */
+@media(min-width:901px){:root{--sidebar:248px}.sidebar nav button{white-space:nowrap}}

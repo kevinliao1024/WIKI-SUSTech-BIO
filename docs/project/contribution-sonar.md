@@ -21,6 +21,15 @@ eyebrow: Project / Contribution
 
 <div class="sonar-path"><a href="#step-1"><b>01</b><span>Build your reporter<small>Sequence → construct</small></span></a><a href="#step-2"><b>02</b><span>Read the response<small>Experiment → flow → analysis</small></span></a></div>
 
+### Try SAP in your browser {#sap-demo}
+
+Follow the original SAP interface from **Design** to **Analysis**, with a green highlight and a step-by-step guide. Sequence design runs in your browser; Analysis replays the prepared real-data example. The design and analysis cases are separate, and the saved fluorescence results do not establish an RNA editing percentage. File upload is available in the full application.
+
+<div class="sap-demo-embed" data-sap-embed>
+<div class="sap-demo-toolbar"><strong>SAP · Guided example</strong><div><a href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Open in a new tab ↗</a><button type="button" data-sap-fullscreen hidden>Full screen</button></div></div>
+<iframe src="static/sap-demo/index.html#design" title="SAP guided example: Design, Analysis and Data Sources" loading="lazy" allow="fullscreen; clipboard-write" allowfullscreen></iframe>
+</div>
+
 ## Reporter Design & Construction {#step-1}
 
 ### 1.1 Oligo Design {#oligo-design}
@@ -88,7 +97,7 @@ The teaching dataset below comes from real S7 CytoFLEX S acquisitions in HEK293T
 
 ### 2.3 Data Analysis {#data-analysis}
 
-**Report the strongest readout supported by the controls.** SAP’s Analysis workflow creates an experiment, accepts matched controls, previews the calibration context Θ, then accepts experimental samples for calculation and export. Check the selected population and warnings before interpreting a result. The captured walkthrough uses the actual local application, version 1.3.1, with S7_90B (corrected 75% AC DNA mass). The interactive layer example below uses S7_50B (50% AC DNA mass); an end-user installer has not been verified for public download.
+**Report the strongest readout supported by the controls.** SAP’s Analysis workflow creates an experiment, accepts matched controls, previews the calibration context Θ, then accepts experimental samples for calculation and export. Check the selected population and warnings before interpreting a result. The captured walkthrough uses the actual local application, version 1.3.1, with S7_90B (corrected 75% AC DNA mass). The interactive layer example below uses S7_50B (50% AC DNA mass); the full SAP application is available from the desktop release link in Resources.
 
 RAS compares summed background-corrected green and red signals from the same selected cells. A qualified reference curve can map RAS to RES, an AC DNA mass-equivalent response scale. Neither score is a directly measured RNA editing percentage. PER requires an independently validated relationship to paired reporter-RNA sequencing and is presented here only as a research extension.
 
@@ -123,7 +132,7 @@ These team-supplied resources are shared for inspection and adaptation. Keep the
 <div class="sonar-resources">
 <div><h4>Design & construction</h4><p><a href="static/sonar-contribution/resources/RP01.pdf">RP01 · Oligo design · PDF</a><br><a href="static/sonar-contribution/resources/RP02.pdf">RP02 · Golden Gate construction · PDF</a><br><a href="static/sonar-contribution/resources/Universal_Reporter_Plasmid.gb">Universal Reporter · GenBank</a></p><small>Protocol source snapshots and computational plasmid.</small></div>
 <div><h4>Experiment & acquisition</h4><p><a href="static/sonar-contribution/resources/C04.pdf">C04 · Cell seeding and transfection · PDF</a><br><a href="static/sonar-contribution/resources/RP06.pdf">RP06 · Flow cytometry · PDF</a><br><a href="static/sonar-contribution/data/provenance.json">Source checksums · JSON</a></p><small>Always match the source version to your assay.</small></div>
-<div><h4>Software & example data</h4><p>SAP desktop release: not yet verified for public download.</p><p><a href="static/sonar-contribution/data/flow.v1.json">S7 teaching event subset · JSON</a><br>Deterministic display subset with full-source reference statistics; original raw FCS are not bundled.</p><small>No numerical PER model is supplied.</small></div>
+<div><h4>Software & example data</h4><p><a href="static/sap-demo/index.html#design" target="_blank" rel="noopener">Open the guided SAP example</a><br><a href="https://github.com/Hansen614/SONAR-Analysis-Program/releases/tag/v1.4.0rc1" target="_blank" rel="noopener">Desktop downloads · v1.4.0rc1 preview</a><br><a href="https://github.com/Hansen614/SONAR-Analysis-Program" target="_blank" rel="noopener">SAP source code</a></p><p><a href="static/sonar-contribution/data/flow.v1.json">S7 teaching event subset · JSON</a><br>Deterministic display subset with full-source reference statistics; original raw FCS are not bundled.</p><small>No numerical PER model is supplied.</small></div>
 </div>
 
 SONAR is learned as a workflow. Reuse the components that fit your question, keep the assay context alongside your data, and recalibrate when the reporter or conditions change.

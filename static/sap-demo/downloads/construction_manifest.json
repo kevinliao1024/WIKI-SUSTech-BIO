@@ -1,0 +1,203 @@
+{
+  "package_source": "Reporter/序列/Universal_Reporter_Package.zip",
+  "package_sha256": "6f6b5e89718ff4e713e9913765bc48252380cccca80c90ad0ab62b279bec10ee",
+  "sequence_evidence": {
+    "status": "passed",
+    "date": "2026-10-15",
+    "evidence_status": "Computational design; not a sequence-confirmed physical clone",
+    "producer": "Codex with Biopython and a local SnapGene packet writer; not a Sequence Viewer export",
+    "sources": {
+      "REPORTER_vector.dna": "53b151c6f5c50be2a3c9bcaf31ec876a49f95cb67588a532bf43b75ab9860e43",
+      "REPORTER_shipping.dna": "382c9b3702220d4ca0c9924f73a3199d74ac8fcbbfda47453f9e31273295fa23",
+      "REPORTER_assembled_from_4_primers.dna": "cf25e2d239003c10c38a200bdc6cddf85d58ba2c22293514a809d6bb00d33767"
+    },
+    "assembly": "vector[1..1089] + shipping[379..2452] + vector[3264..7598]",
+    "plasmid_bp": 7498,
+    "linear_CDS_bp": 2022,
+    "CDS_plasmid_coordinates": [
+      1119,
+      3140
+    ],
+    "changes": [
+      {
+        "position": 923,
+        "old": "G",
+        "new": "A",
+        "region": "chimeric intron",
+        "effect": "Noncoding substitution; splice function not experimentally validated"
+      },
+      {
+        "position": 2543,
+        "old": "C",
+        "new": "T",
+        "region": "EGFP",
+        "effect": "GAC>GAT; Asp unchanged"
+      },
+      {
+        "position": 2711,
+        "old": "G",
+        "new": "A",
+        "region": "ecDHFR-DD",
+        "effect": "GAG>GAA; Glu unchanged"
+      },
+      {
+        "position": 6525,
+        "old": "T",
+        "new": "C",
+        "region": "AmpR",
+        "effect": "TCT>TCC; Ser unchanged"
+      }
+    ],
+    "source_BsaI_sites": [
+      [
+        921,
+        "GAGACC"
+      ],
+      [
+        2539,
+        "GAGACC"
+      ],
+      [
+        2617,
+        "GAGACC"
+      ],
+      [
+        2648,
+        "GGTCTC"
+      ],
+      [
+        2709,
+        "GAGACC"
+      ],
+      [
+        6521,
+        "GGTCTC"
+      ]
+    ],
+    "output_BsaI_sites": [
+      [
+        2617,
+        "GAGACC"
+      ],
+      [
+        2648,
+        "GGTCTC"
+      ]
+    ],
+    "CDS_BsaI_sites": [
+      [
+        1499,
+        "GAGACC"
+      ],
+      [
+        1530,
+        "GGTCTC"
+      ]
+    ],
+    "validation": {
+      "protein_reporter_unchanged": true,
+      "protein_AmpR_unchanged": true,
+      "splice_donor_acceptor_unchanged": true,
+      "intron_function_validated": false,
+      "acceptor_51nt_unchanged": true,
+      "CDS_matches_plasmid_exactly": true,
+      "GenBank_and_SnapGene_roundtrip": true
+    },
+    "outputs": {
+      "Universal_Reporter_EV.gb": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+      "Universal_Reporter_CDS.png": "75a125a84b0607eec1bf0caec4e210a015a3e0d6fcc2ec1851eee7bee6fd035c",
+      "Universal_Reporter_EV.png": "e9366ec08efa894f978194c3a407fd6cd746609ec20de1485fdc381ef497fc73",
+      "Universal_Reporter_CDS.fasta": "33db871219558bb881aca1d8e0505f5264b5fc23aa1cc4e5350dd142b6f9f7d0",
+      "Universal_Reporter_EV.svg": "c2c3e4a7f81ec5e89130e9f74113ff38c285169498e0bc78dab5100da11688dd",
+      "Universal_Reporter_CDS.svg": "19cc95c06b96170f060c8071ca016df54a4b38f8b36849f5debf9bb374e68b44",
+      "Universal_Reporter_CDS.dna": "af6341cc5432ad3be3c8b8e8162ceff2fdea6de03d71f37dba29b49215826cea",
+      "Universal_Reporter_EV.dna": "ab99146879dc9a011f59c9a01a9bb6f89ed4347189b7824420eb50a5eb730d18",
+      "Universal_Reporter_CDS.gb": "a9037d0516a34628ff9421c14d6fd9eae5f252587b62084273cf2996708a43ee",
+      "Universal_Reporter_EV.fasta": "0fbda6e25caf75e8b316e2bea1204994ac1e7773ba5ccad0bfaad1bbf1eb9ebb"
+    }
+  },
+  "validation": {
+    "three_formats_identical": true,
+    "CDS_matches_EV": true,
+    "CDS_bp": 2022,
+    "EV_bp": 7498,
+    "CDS_coordinates": [
+      1119,
+      3140
+    ],
+    "BsaI_sites": [
+      [
+        2617,
+        "GAGACC"
+      ],
+      [
+        2648,
+        "GGTCTC"
+      ]
+    ],
+    "interface": [
+      "CAGC",
+      "GGCA"
+    ]
+  },
+  "protocol_source": "Protocols/RP02/RP02_Target_Reporter_Construction_by_Golden_Gate_Assembly.md",
+  "protocol_sha256": "b19e69f0bb890a2c43db50657ba642f02922105003bd4e31c7d263911fe70a75",
+  "protocol_scope": "RP02 v1.0 describes a 4669 bp acceptor; the web page recalculates the molar ratio for the 7498 bp plasmid.",
+  "files": [
+    {
+      "source": "Reporter/序列/Universal_Reporter_Package.zip",
+      "archive_member": "Universal_Reporter/Universal_Reporter_CDS.gb",
+      "download": "Universal_Reporter_CDS.gb",
+      "source_sha256": "a9037d0516a34628ff9421c14d6fd9eae5f252587b62084273cf2996708a43ee",
+      "download_sha256": "a9037d0516a34628ff9421c14d6fd9eae5f252587b62084273cf2996708a43ee",
+      "method": "byte-identical copy from user-supplied package"
+    },
+    {
+      "source": "Reporter/序列/Universal_Reporter_Package.zip",
+      "archive_member": "Universal_Reporter/Universal_Reporter_CDS.dna",
+      "download": "Universal_Reporter_CDS.dna",
+      "source_sha256": "af6341cc5432ad3be3c8b8e8162ceff2fdea6de03d71f37dba29b49215826cea",
+      "download_sha256": "af6341cc5432ad3be3c8b8e8162ceff2fdea6de03d71f37dba29b49215826cea",
+      "method": "byte-identical copy from user-supplied package"
+    },
+    {
+      "source": "Reporter/序列/Universal_Reporter_Package.zip",
+      "archive_member": "Universal_Reporter/Universal_Reporter_EV.gb",
+      "download": "Universal_Reporter_Plasmid.gb",
+      "source_sha256": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+      "download_sha256": "febaf7f6eede2194e279ef62b71e569ab1633e08561dcc878f1e9959498475ee",
+      "method": "byte-identical copy from user-supplied package"
+    },
+    {
+      "source": "Reporter/序列/Universal_Reporter_Package.zip",
+      "archive_member": "Universal_Reporter/Universal_Reporter_EV.dna",
+      "download": "Universal_Reporter_Plasmid.dna",
+      "source_sha256": "ab99146879dc9a011f59c9a01a9bb6f89ed4347189b7824420eb50a5eb730d18",
+      "download_sha256": "ab99146879dc9a011f59c9a01a9bb6f89ed4347189b7824420eb50a5eb730d18",
+      "method": "byte-identical copy from user-supplied package"
+    },
+    {
+      "source": "Protocols/RP02/RP02_Target_Reporter_Construction_by_Golden_Gate_Assembly.pdf",
+      "download": "RP02_Target_Reporter_Construction_by_Golden_Gate_Assembly.pdf",
+      "source_sha256": "1a7bd2cc7f3e478de85eda387fe87e563f608b08852ff16a055e7143e98a8f7b",
+      "download_sha256": "1a7bd2cc7f3e478de85eda387fe87e563f608b08852ff16a055e7143e98a8f7b",
+      "method": "byte-identical mirror; maintained master remains in Protocols/RP02"
+    }
+  ],
+  "maps": [
+    {
+      "archive_member": "Universal_Reporter/Universal_Reporter_CDS.svg",
+      "asset": "Universal_Reporter_CDS.svg",
+      "source_sha256": "19cc95c06b96170f060c8071ca016df54a4b38f8b36849f5debf9bb374e68b44",
+      "asset_sha256": "19cc95c06b96170f060c8071ca016df54a4b38f8b36849f5debf9bb374e68b44",
+      "change": "none"
+    },
+    {
+      "archive_member": "Universal_Reporter/Universal_Reporter_EV.svg",
+      "asset": "Universal_Reporter_Plasmid.svg",
+      "source_sha256": "c2c3e4a7f81ec5e89130e9f74113ff38c285169498e0bc78dab5100da11688dd",
+      "asset_sha256": "b7850f66a381293c2fda1900a600e5c42f98ebcd171b0e224243f9a990542bf5",
+      "change": "EV label renamed to Plasmid"
+    }
+  ]
+}
