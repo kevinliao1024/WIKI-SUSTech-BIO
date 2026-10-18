@@ -54,6 +54,7 @@
         data-explore-select="explore-panel-{{ loop.index }}"{% if group.label == 'Project' %} data-explore-default{% endif %}
         data-selected="false" aria-controls="explore-panel-{{ loop.index }}"
         aria-label="{{ group.label }} — {{ group['items'][0][1] }}">
+        {% if compact_explore %}<span class="explore-slide__glass">{% endif %}
         {% if not compact_explore %}<span class="explore-slide__serial" aria-hidden="true">OR—{{ '%02d'|format(loop.index) }}<span class="explore-slide__mark">↗</span></span>{% endif %}
         {% if compact_explore %}
           {% set chapter_number = loop.index %}{% include 'components/home_entry_art.html' %}
@@ -62,6 +63,10 @@
           <span class="explore-slide__name">{{ group.label }}</span>
           {% if not compact_explore %}<span class="explore-slide__count">{{ '%02d'|format(group['items']|length) }} PAGES</span>{% endif %}
         </span>
+        {% if compact_explore %}
+        </span>
+        {% set companion_number = loop.index %}{% include 'components/home_slide_companion.html' %}
+        {% endif %}
       </a>
       {% endfor %}
     </div>

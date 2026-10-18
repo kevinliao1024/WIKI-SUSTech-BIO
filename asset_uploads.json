@@ -2,6 +2,11 @@
   "verified_on": "2026-10-18",
   "source": "User-provided official upload lists; flat-package additions matched by normalized filename and source Git blob fingerprint. This import does not claim remote byte identity after image conversion. M132E update on 2026-10-19: eight user-uploaded IO figures verified via HTTP 200 and AVIF decode; local hashes identify approved PNG originals, not converted AVIF bytes. Final Engineering chapter illustrations verified 2026-10-19: twelve approved PNG originals matched to uploaded AVIFs by filename SHA-256 suffix, HTTP 200, AVIF decode, exact dimensions and pixel comparison. Includes restored titles on Fundamental Research and Functional Validation; PNG and AVIF hashes identify different encodings.",
   "urls": [
+    "https://static.igem.wiki/teams/6085/wiki/home/team.avif",
+    "https://static.igem.wiki/teams/6085/wiki/home/project.avif",
+    "https://static.igem.wiki/teams/6085/wiki/home/wet-lab.avif",
+    "https://static.igem.wiki/teams/6085/wiki/home/dry-lab.avif",
+    "https://static.igem.wiki/teams/6085/wiki/home/engagement.avif",
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-domain-525ae93f89.webp",
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-plate-3901fa4861.avif",
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-sidechain-71be188a18.webp",
@@ -1863,6 +1868,36 @@
     "https://static.igem.wiki/teams/6085/wiki/engineering-new/orca-engineering-12-functional-validation-6778be681dc8.avif"
   ],
   "confirmed_mapping": [
+    {
+      "local_path": "static/onetake/companions/team.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/team.avif",
+      "sha256": "89a25c542d074beff07a4934c21d122a5ea4dcc89919a2ea75c1134b18564dfc",
+      "evidence": "user_provided_home_companion_avif_http200_rgba_same_dimensions_20261019"
+    },
+    {
+      "local_path": "static/onetake/companions/project.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/project.avif",
+      "sha256": "6cf1993401c8501d40030c1538068082309efa8c45659465c2107721281e2a28",
+      "evidence": "user_provided_home_companion_avif_http200_rgba_same_dimensions_20261019"
+    },
+    {
+      "local_path": "static/onetake/companions/wet-lab.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/wet-lab.avif",
+      "sha256": "40d30fd58a0f6424f1c4b5b1f86dc7df004526fadda501819f4430ca8800b58a",
+      "evidence": "user_provided_home_companion_avif_http200_rgba_same_dimensions_20261019"
+    },
+    {
+      "local_path": "static/onetake/companions/dry-lab.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/dry-lab.avif",
+      "sha256": "e4c9207fa42627265dcf8c7758a2b9c404e0f12974932b6b116c4ef4d221f70c",
+      "evidence": "user_provided_home_companion_avif_http200_rgba_same_dimensions_20261019"
+    },
+    {
+      "local_path": "static/onetake/companions/engagement.png",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/engagement.avif",
+      "sha256": "3eb7c870c1d7d73f859e02b5c04e742ef69962341f8c10281f0a266bbce14294",
+      "evidence": "user_provided_home_companion_avif_http200_rgba_same_dimensions_20261019"
+    },
     {
       "local_path": "assets/human-practices/images/biology-brain-model-render.webp",
       "url": "https://static.igem.wiki/teams/6085/wiki/10-18/hp-biology-brain-model-render.webp",

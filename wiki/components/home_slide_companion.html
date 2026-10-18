@@ -1,0 +1,12 @@
+{# Original cutout pixels are preserved; SVG framing removes empty margins only. #}
+{% set companions = [
+  ('team', '233 187 733 953', 1254, 1254),
+  ('project', '242 153 769 973', 1254, 1254),
+  ('wet-lab', '325 194 695 947', 1254, 1254),
+  ('dry-lab', '303 269 698 786', 1254, 1254),
+  ('engagement', '371 125 789 1007', 1254, 1254)
+] %}
+{% set slug, frame, image_width, image_height = companions[companion_number - 1] %}
+<svg class="explore-slide__companion explore-slide__companion--{{ companion_number }}" viewBox="{{ frame }}" aria-hidden="true" focusable="false">
+  <image href="{{ url_for('static', filename='onetake/companions/' ~ slug ~ '.png') }}" width="{{ image_width }}" height="{{ image_height }}"/>
+</svg>

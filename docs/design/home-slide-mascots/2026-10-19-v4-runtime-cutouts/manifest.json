@@ -1,0 +1,116 @@
+{
+  "jobs": [
+    {
+      "slug": "team",
+      "pose": "LEFTMOST Team figure: small original mascot standing and waving its left/outside mitten toward viewer, RIGHT/inward white mitten extends at shoulder height to hold the near vertical edge of a glass slide just OUTSIDE RIGHT of the character. Right hand is rightmost point. All of slide omitted, nothing else added. Feet rest on same baseline.",
+      "source": "/Users/kevinliao/.codex/generated_images/01a15062-129d-76d2-82bd-ff10db14e1c1/exec-cea7fca0-8146-4707-b044-59392e152087.png",
+      "prompt": "Use case: background-extraction / identity-preserve.\nAsset type: ONE isolated transparent PNG mascot cutout for compositing beside an EXISTING CSS microscope slide on a website.\nReference 1 is the USER APPROVED five-slide composition board. Extract/adapt ONLY the specified character and specified props from that approved scene. Reference 2 is the original standing drawing for identity. Preserve the approved mascot's flat drawing, face, proportions, colors, mittens, thin legs and shoes; do NOT redesign, beautify or render as a 3D toy.\nTarget: LEFTMOST Team figure: small original mascot standing and waving its left/outside mitten toward viewer, RIGHT/inward white mitten extends at shoulder height to hold the near vertical edge of a glass slide just OUTSIDE RIGHT of the character. Right hand is rightmost point. All of slide omitted, nothing else added. Feet rest on same baseline.\nCRITICAL output: only this single mascot and its specified props, actual transparent alpha everywhere else. Absolutely NO glass, NO slide fragments, NO frame, NO edge line, NO shadow rectangle, NO label, NO icon, NO ground/background, NO floating sparkles. Character hands pose as though touching an invisible slide boundary, but that boundary is not drawn. No dark background. Include every visible hood/fin/shoe/mitten and any books, laptop or speech bubble, in a tight centered full-body square composition with ~8% transparent margin. The inward touching hand should be the leftmost or rightmost point so it can overlap a real CSS slide edge. Sparse flat navy/lavender/pink/white shapes from originals. No text or watermark. Preserve the character from its approved scene as closely as possible.",
+      "file": "static/onetake/companions/team.png",
+      "sha256": "89a25c542d074beff07a4934c21d122a5ea4dcc89919a2ea75c1134b18564dfc",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        47,
+        49,
+        1235,
+        1232
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "slug": "project",
+      "pose": "SECOND Project figure: standing original mascot hugging/resting against a glass-slide edge just OUTSIDE RIGHT of its body, BOTH white mittens gripping near the rightmost boundary, one at cheek height, one near chest. Face leaning toward this unseen right boundary, head still fully visible. Retain exactly a pile of FOUR THICK navy/lavender hardcover books with cream page blocks and one coral spine, placed on ground beside LEFT/outside of its feet. Books about knee-high, all shoes and books visible. Omit all glass.",
+      "source": "/Users/kevinliao/.codex/generated_images/01a15062-129d-76d2-82bd-ff10db14e1c1/exec-d940e85c-ea40-414b-9813-68043b8ff2e8.png",
+      "prompt": "Use case: background-extraction / identity-preserve.\nAsset type: ONE isolated transparent PNG mascot cutout for compositing beside an EXISTING CSS microscope slide on a website.\nReference 1 is the USER APPROVED five-slide composition board. Extract/adapt ONLY the specified character and specified props from that approved scene. Reference 2 is the original standing drawing for identity. Preserve the approved mascot's flat drawing, face, proportions, colors, mittens, thin legs and shoes; do NOT redesign, beautify or render as a 3D toy.\nTarget: SECOND Project figure: standing original mascot hugging/resting against a glass-slide edge just OUTSIDE RIGHT of its body, BOTH white mittens gripping near the rightmost boundary, one at cheek height, one near chest. Face leaning toward this unseen right boundary, head still fully visible. Retain exactly a pile of FOUR THICK navy/lavender hardcover books with cream page blocks and one coral spine, placed on ground beside LEFT/outside of its feet. Books about knee-high, all shoes and books visible. Omit all glass.\nCRITICAL output: only this single mascot and its specified props, actual transparent alpha everywhere else. Absolutely NO glass, NO slide fragments, NO frame, NO edge line, NO shadow rectangle, NO label, NO icon, NO ground/background, NO floating sparkles. Character hands pose as though touching an invisible slide boundary, but that boundary is not drawn. No dark background. Include every visible hood/fin/shoe/mitten and any books, laptop or speech bubble, in a tight centered full-body square composition with ~8% transparent margin. The inward touching hand should be the leftmost or rightmost point so it can overlap a real CSS slide edge. Sparse flat navy/lavender/pink/white shapes from originals. No text or watermark. Preserve the character from its approved scene as closely as possible.",
+      "file": "static/onetake/companions/project.png",
+      "sha256": "6cf1993401c8501d40030c1538068082309efa8c45659465c2107721281e2a28",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        49,
+        19,
+        1226,
+        1254
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "slug": "wet-lab",
+      "pose": "THIRD Wet Lab figure: standing original mascot on RIGHT side of unseen slide, leaning left with both white mitten hands touching unseen edge OUTSIDE LEFT at about chest height, knees and feet braced. Wear the same TRANSPARENT LABORATORY SAFETY GOGGLES over the eyes as the approved board, pale lavender frame, pink face and angular eyes visible through clear lenses, visible strap. No lab coat, pipette or flask. Omit glass.",
+      "source": "/Users/kevinliao/.codex/generated_images/01a15062-129d-76d2-82bd-ff10db14e1c1/exec-420ca711-85da-411e-9b07-7f6ce7bf52d7.png",
+      "prompt": "Use case: background-extraction / identity-preserve.\nAsset type: ONE isolated transparent PNG mascot cutout for compositing beside an EXISTING CSS microscope slide on a website.\nReference 1 is the USER APPROVED five-slide composition board. Extract/adapt ONLY the specified character and specified props from that approved scene. Reference 2 is the original standing drawing for identity. Preserve the approved mascot's flat drawing, face, proportions, colors, mittens, thin legs and shoes; do NOT redesign, beautify or render as a 3D toy.\nTarget: THIRD Wet Lab figure: standing original mascot on RIGHT side of unseen slide, leaning left with both white mitten hands touching unseen edge OUTSIDE LEFT at about chest height, knees and feet braced. Wear the same TRANSPARENT LABORATORY SAFETY GOGGLES over the eyes as the approved board, pale lavender frame, pink face and angular eyes visible through clear lenses, visible strap. No lab coat, pipette or flask. Omit glass.\nCRITICAL output: only this single mascot and its specified props, actual transparent alpha everywhere else. Absolutely NO glass, NO slide fragments, NO frame, NO edge line, NO shadow rectangle, NO label, NO icon, NO ground/background, NO floating sparkles. Character hands pose as though touching an invisible slide boundary, but that boundary is not drawn. No dark background. Include every visible hood/fin/shoe/mitten and any books, laptop or speech bubble, in a tight centered full-body square composition with ~8% transparent margin. The inward touching hand should be the leftmost or rightmost point so it can overlap a real CSS slide edge. Sparse flat navy/lavender/pink/white shapes from originals. No text or watermark. Preserve the character from its approved scene as closely as possible.",
+      "file": "static/onetake/companions/wet-lab.png",
+      "sha256": "40d30fd58a0f6424f1c4b5b1f86dc7df004526fadda501819f4430ca8800b58a",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        65,
+        37,
+        1216,
+        1230
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "slug": "dry-lab",
+      "pose": "FOURTH Dry Lab figure: seated original mascot on ground to LEFT of unseen slide, BACK and right shoulder leaning against unseen vertical edge just OUTSIDE RIGHT of its body, both hands typing on small lavender laptop resting on lap. Slender bent legs, both navy shoes visible in front. Laptop plain, no glyphs or logos. Keep seated short silhouette and same face. Omit glass.",
+      "source": "/Users/kevinliao/.codex/generated_images/01a15062-129d-76d2-82bd-ff10db14e1c1/exec-8904d53c-7136-4175-9fb4-0366516b9cfe.png",
+      "prompt": "Use case: background-extraction / identity-preserve.\nAsset type: ONE isolated transparent PNG mascot cutout for compositing beside an EXISTING CSS microscope slide on a website.\nReference 1 is the USER APPROVED five-slide composition board. Extract/adapt ONLY the specified character and specified props from that approved scene. Reference 2 is the original standing drawing for identity. Preserve the approved mascot's flat drawing, face, proportions, colors, mittens, thin legs and shoes; do NOT redesign, beautify or render as a 3D toy.\nTarget: FOURTH Dry Lab figure: seated original mascot on ground to LEFT of unseen slide, BACK and right shoulder leaning against unseen vertical edge just OUTSIDE RIGHT of its body, both hands typing on small lavender laptop resting on lap. Slender bent legs, both navy shoes visible in front. Laptop plain, no glyphs or logos. Keep seated short silhouette and same face. Omit glass.\nCRITICAL output: only this single mascot and its specified props, actual transparent alpha everywhere else. Absolutely NO glass, NO slide fragments, NO frame, NO edge line, NO shadow rectangle, NO label, NO icon, NO ground/background, NO floating sparkles. Character hands pose as though touching an invisible slide boundary, but that boundary is not drawn. No dark background. Include every visible hood/fin/shoe/mitten and any books, laptop or speech bubble, in a tight centered full-body square composition with ~8% transparent margin. The inward touching hand should be the leftmost or rightmost point so it can overlap a real CSS slide edge. Sparse flat navy/lavender/pink/white shapes from originals. No text or watermark. Preserve the character from its approved scene as closely as possible.",
+      "file": "static/onetake/companions/dry-lab.png",
+      "sha256": "e4c9207fa42627265dcf8c7758a2b9c404e0f12974932b6b116c4ef4d221f70c",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        121,
+        69,
+        1160,
+        1166
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    },
+    {
+      "slug": "engagement",
+      "pose": "RIGHTMOST Engagement figure: original mascot peeking from RIGHT side of unseen slide, LEFT white mitten gripping an unseen edge just OUTSIDE LEFT of character at chest height, other mitten open in inviting gesture, head lightly tilted. Full body/feet remain visible. Retain ONE small PALE LAVENDER EMPTY SPEECH BALLOON above and a little right of the mascot head with tail toward mouth, clear gap between head and bubble, fully inside canvas. No words or dots. Omit glass.",
+      "source": "/Users/kevinliao/.codex/generated_images/01a15062-129d-76d2-82bd-ff10db14e1c1/exec-cd0de4fe-8ae4-4979-b31d-2d43c898bdf4.png",
+      "prompt": "Use case: background-extraction / identity-preserve.\nAsset type: ONE isolated transparent PNG mascot cutout for compositing beside an EXISTING CSS microscope slide on a website.\nReference 1 is the USER APPROVED five-slide composition board. Extract/adapt ONLY the specified character and specified props from that approved scene. Reference 2 is the original standing drawing for identity. Preserve the approved mascot's flat drawing, face, proportions, colors, mittens, thin legs and shoes; do NOT redesign, beautify or render as a 3D toy.\nTarget: RIGHTMOST Engagement figure: original mascot peeking from RIGHT side of unseen slide, LEFT white mitten gripping an unseen edge just OUTSIDE LEFT of character at chest height, other mitten open in inviting gesture, head lightly tilted. Full body/feet remain visible. Retain ONE small PALE LAVENDER EMPTY SPEECH BALLOON above and a little right of the mascot head with tail toward mouth, clear gap between head and bubble, fully inside canvas. No words or dots. Omit glass.\nCRITICAL output: only this single mascot and its specified props, actual transparent alpha everywhere else. Absolutely NO glass, NO slide fragments, NO frame, NO edge line, NO shadow rectangle, NO label, NO icon, NO ground/background, NO floating sparkles. Character hands pose as though touching an invisible slide boundary, but that boundary is not drawn. No dark background. Include every visible hood/fin/shoe/mitten and any books, laptop or speech bubble, in a tight centered full-body square composition with ~8% transparent margin. The inward touching hand should be the leftmost or rightmost point so it can overlap a real CSS slide edge. Sparse flat navy/lavender/pink/white shapes from originals. No text or watermark. Preserve the character from its approved scene as closely as possible.",
+      "file": "static/onetake/companions/engagement.png",
+      "sha256": "3eb7c870c1d7d73f859e02b5c04e742ef69962341f8c10281f0a266bbce14294",
+      "size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        97,
+        63,
+        1208,
+        1233
+      ],
+      "alpha": [
+        0,
+        255
+      ]
+    }
+  ],
+  "reference": "docs/design/home-slide-mascots/2026-10-19-v3-props/five-glass-mascot-compositions.png",
+  "tool": "built-in image_gen"
+}

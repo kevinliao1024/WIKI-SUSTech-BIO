@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19",
+  "chat_id": "01a15062-129d-76d2-82bd-ff10db14e1c1",
+  "status": "Integrated into actual local home route; not committed or deployed",
+  "preview": "http://127.0.0.1:8168/#ot-index-title",
+  "changed_source_files": [
+    "wiki/components/explore_slides.html",
+    "wiki/components/home_slide_companion.html",
+    "static/onetake/home-entry-art.css",
+    "static/onetake/home-slide-companions.css",
+    "static/onetake/companions/team.png",
+    "static/onetake/companions/project.png",
+    "static/onetake/companions/wet-lab.png",
+    "static/onetake/companions/dry-lab.png",
+    "static/onetake/companions/engagement.png"
+  ],
+  "design_records": [
+    "docs/design/home-slide-mascots/2026-10-19-v4-runtime-cutouts/manifest.json"
+  ],
+  "checks": {
+    "existing_tests": "45 passed: tests.test_wiki tests.test_reference_art tests.test_audit",
+    "smoke": "Five original chapter SVGs, five companion SVGs and PNG responses, 18 child links, /next structure isolation all passed",
+    "original_icon_source": "wiki/components/home_entry_art.html byte-identical to targeted backup",
+    "browser": "Desktop visual inspection, 390px and 320px layouts, all five labels unclipped, scrollWidth equals innerWidth; native Tab selects matching directory and Enter opens /experiments",
+    "whitespace": "git diff --check passed",
+    "motion": "Existing shared reduced-motion rule remains active; no independent OS reduced-motion preference run"
+  },
+  "framing": "Original generated PNGs copied unchanged. SVG viewBox uses alpha>64 bounding box padded by 4 pixels to exclude near-transparent generation noise; no bitmap redraw or resampling.",
+  "sizes": {
+    "png_transfer_bytes": 2886406,
+    "desktop_glass_ratio_before": 0.43,
+    "desktop_glass_ratio_after": 0.3968
+  },
+  "coordination": "Own cooperative shared integration lock acquired, live diff reread and small patch reviewed; own lock released. Existing home.html, layout, navigation, footer and other tasks' changes preserved. No shared public/ build.",
+  "limitations": [
+    "New PNGs still need iGEM upload mapping before production release.",
+    "Other tasks are active in the same checkout; verification describes the observed local state.",
+    "Earlier generated concept boards remain design-only; the actual home uses live HTML labels and the pre-existing multicolor SVG icons."
+  ]
+}

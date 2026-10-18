@@ -1,0 +1,91 @@
+{
+  "remote_checks": [
+    {
+      "slug": "team",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/team.avif",
+      "http_status": 200,
+      "mime": "image/avif",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 50899
+    },
+    {
+      "slug": "project",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/project.avif",
+      "http_status": 200,
+      "mime": "image/avif",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 63766
+    },
+    {
+      "slug": "wet-lab",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/wet-lab.avif",
+      "http_status": 200,
+      "mime": "image/avif",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 51761
+    },
+    {
+      "slug": "dry-lab",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/dry-lab.avif",
+      "http_status": 200,
+      "mime": "image/avif",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 38052
+    },
+    {
+      "slug": "engagement",
+      "url": "https://static.igem.wiki/teams/6085/wiki/home/engagement.avif",
+      "http_status": 200,
+      "mime": "image/avif",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 70484
+    }
+  ],
+  "integration_checks": "Five exact CDN URLs in production HTML; local originals retained; existing SVG dimensions/framing unchanged",
+  "changed_files": [
+    "asset_mapping.csv",
+    "asset_uploads.json"
+  ],
+  "published": false,
+  "tests": "11 existing asset tests passed; git diff --check passed"
+}
