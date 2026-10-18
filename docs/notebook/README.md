@@ -159,8 +159,8 @@ preview and static build; they are not a claim of an iGEM media upload.
 
 ## Visual hierarchy revision — 2026-10-17
 
-The title leads directly into a nine-card track selector, with one SVG
-navigation icon per track on a common 48px grid. Each card shows the indexed
+The overview opens on a descending calendar (October to June), followed by a
+nine-card track selector with one SVG navigation icon per track on a common 48px grid. Each card shows the indexed
 record count and actual date range. The redundant introductory copy is omitted.
 The shared calendar uses responsive lane positions across the available width,
 stronger lines and labels, alternating monthly bands, weekly guides and monthly
@@ -185,3 +185,14 @@ icosahedron. Reporter adapts the team's current SAP / SONAR symbol from
 `sonar_app/static/brand/sonar-symbol.svg`: broken concentric arcs and a central
 point, redrawn on the shared 48px grid in the track color. No external asset
 requests are made.
+
+
+## Timeline-first overview — 2026-10-18
+
+The overview begins with the latest date and runs downward toward the earliest
+(13 October to 21 June). Calendar bands, month headings, lane endpoints, labels,
+and pointer-to-date mapping all use this descending scale. Equal elapsed-day
+distances and concurrent dates remain aligned. The nine track cards follow the
+entire calendar in both the visible layout and DOM order. Selecting a card opens
+that track at its first record. Focus retains its chronological reading order
+and existing navigation; returning to the overview restores the saved position.
