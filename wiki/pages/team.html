@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% from 'components/team/member_card.html' import member_card with context %}
+{% block title %}{{ content.title }}{% endblock %}
+{% block body_class %}inner-page team-page{% endblock %}
+{% block reading_navigation %}{% endblock %}
+{% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='team-cards.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='team-opening.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='team-package-header.css') }}">{% endblock %}
+{% block page_scripts %}<script src="{{ url_for('static', filename='team-cards.js') }}" defer></script><script src="{{ url_for('static', filename='team-opening.js') }}" defer></script>{% endblock %}
+{% block main %}
+{% set members = content.metadata.get('members', []) %}
+<main id="main-content" class="team-main" data-content-source="{{ content.source_label }}">
+  {% include 'components/team/opening.html' %}
+  {% include 'components/team/package_header.html' %}
+  <section class="team-deck team-shell" id="team-deck">
+    {% if members %}
+    {% set categories = [('team-members', 'Team members'), ('advisors', 'Advisors'), ('instructor', 'Instructor'), ('pi', 'PI')] %}
+    {% for key, label in categories %}
+    {% set group = namespace(members=[]) %}{% for member in members %}{% if member.get('category', 'team-members') == key %}{% set group.members = group.members + [member] %}{% endif %}{% endfor %}
+    <section class="team-category" id="{{ key }}" aria-labelledby="{{ key }}-title">
+      <h3 id="{{ key }}-title">{{ label }}{% if group.members %}<span>{{ group.members|length }}</span>{% endif %}</h3>
+      {% if group.members %}<div class="team-grid{% if key == 'team-members' %} team-grid--members{% endif %}">{% for member in group.members %}{{ member_card(member, members.index(member) + 1) }}{% endfor %}</div>
+      {% elif key != 'pi' %}<p class="team-category__empty">Profiles to come.</p>{% else %}<div class="team-category__reserved" aria-hidden="true"></div>{% endif %}
+    </section>
+    {% endfor %}
+    {% else %}
+    <div class="team-pending">
+      <div class="team-pending__copy"><span class="team-eyebrow">THE DECK IS TAKING SHAPE</span><h3>Our people.<br>Their own words.</h3><p>Member portraits and personal one-liners are on their way. This card previews the layout while the team prepares their profiles.</p></div>
+      <div class="team-grid team-grid--pending">{{ member_card({'name': 'ORCA', 'card_name': 'ORCA', 'preview': true, 'number': '26'}, 1) }}</div>
+    </div>
+    {% endif %}
+    <noscript><p class="team-no-script">Each portrait is followed by its personal one-liner. Both sides are shown without animation.</p></noscript>
+  </section>
+  <section class="team-closing team-shell" aria-labelledby="team-closing-title"><p class="team-eyebrow">ONE TEAM, MANY WAYS TO CONTRIBUTE</p><h2 id="team-closing-title">Science is a team sport.</h2><p>From the lab bench to the Wiki, see how our work comes together.</p><div><a href="{{ url_for('pages', page='attributions') }}">Explore attributions <span aria-hidden="true">↗</span></a><a href="{{ url_for('pages', page='design-communication') }}">Design &amp; communication <span aria-hidden="true">↗</span></a></div></section>
+</main>
+{% endblock %}

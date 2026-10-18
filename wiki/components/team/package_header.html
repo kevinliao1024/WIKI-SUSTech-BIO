@@ -1,0 +1,34 @@
+<header class="team-package-header team-shell" data-team-package-header tabindex="-1" aria-labelledby="team-package-title">
+  <h1 id="team-package-title">Team</h1>
+  <div class="team-package-header__mount" data-team-package-mount>
+    <div class="team-opening__compile is-active team-package-header__fallback">
+      <div class="team-opening__compile-code" aria-hidden="true">
+        <span class="team-opening__compile-line">compile ORCA_TEAM.skill</span>
+        <span class="team-opening__compile-line">load modules/dry_lab</span>
+        <span class="team-opening__compile-line">load modules/wet_lab</span>
+      </div>
+      <div class="team-opening__pkg">
+        <span class="team-opening__pkg-art"><img src="{{ url_for('static', filename='assets/team/questionnaires/questionnaire-04.png') }}" alt="" width="1600" height="1600"></span>
+        <span class="team-opening__pkg-name">ORCA_TEAM.pkg</span>
+      </div>
+      <div class="team-opening__compile-code" aria-hidden="true">
+        <span class="team-opening__compile-line">load modules/human_practices</span>
+        <span class="team-opening__compile-line">load modules/design</span>
+        <span class="team-opening__compile-line">load modules/wiki</span>
+        <span class="team-opening__compile-line">{{ members|length }} skills ready</span>
+      </div>
+    </div>
+  </div>
+  <ul class="team-skill-folders" aria-label="Unpacked skill folders">
+    {% for label in ['Dry Lab', 'Wet Lab', 'Human Practices', 'Design', 'Wiki'] %}
+    <li class="team-skill-folder">
+      <svg viewBox="0 0 48 38" aria-hidden="true" focusable="false">
+        <path class="team-skill-folder__back" d="M4 9V6a3 3 0 0 1 3-3h10l5 5h19a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z"/>
+        <g class="team-skill-folder__paper"><rect x="11" y="12" width="26" height="20" rx="2"/><path d="M16 18h15 M16 23h11"/></g>
+        <path class="team-skill-folder__front" d="M4 13h40l-3 19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3Z"/>
+      </svg>
+      <span>{{ label }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</header>
