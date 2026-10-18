@@ -17,30 +17,38 @@
   let frame = 0;
   let previous = 0;
   let position = 0;
-  let maxScroll = 0;
-  let direction = 1;
+  let cycleWidth = 0;
+
+  // A visual copy joins the end of the strip to its beginning. The source list
+  // still contains each logo once, and only it is in the accessibility tree.
+  const copy = group.cloneNode(true);
+  copy.removeAttribute('data-footer-sponsor-group');
+  copy.setAttribute('aria-hidden', 'true');
+  copy.querySelectorAll('button').forEach(button => { button.tabIndex = -1; });
+  copy.querySelectorAll('img').forEach(image => { image.loading = 'eager'; });
+  group.after(copy);
 
   function measure() {
-    maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+    cycleWidth = group.getBoundingClientRect().width;
     position = scroller.scrollLeft;
   }
   function canAnimate() {
-    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && maxScroll > 0;
+    return visible && !document.hidden && !reduced.matches && !hovering && !focused && !dialog.open && cycleWidth > scroller.clientWidth;
   }
   function tick(now) {
     frame = 0;
     if (!canAnimate()) { previous = 0; return; }
     if (previous) {
-      // Reverse at each end so every emblem appears only once in the strip.
-      position += Math.min(now - previous, 64) * .06 * direction;
-      if (position >= maxScroll) { position = maxScroll; direction = -1; }
-      if (position <= 0) { position = 0; direction = 1; }
+      // Decreasing scrollLeft moves the logos right; wrapping to the identical
+      // copy preserves their on-screen positions without reversing direction.
+      position = (position - Math.min(now - previous, 64) * .06 + cycleWidth) % cycleWidth;
       scroller.scrollLeft = position;
     }
     previous = now;
     frame = requestAnimationFrame(tick);
   }
   function sync() {
+    copy.hidden = reduced.matches;
     if (canAnimate()) {
       if (!frame) { position = scroller.scrollLeft; previous = 0; frame = requestAnimationFrame(tick); }
     } else if (frame) {

@@ -1,10 +1,11 @@
 {
-  "scope": "Organizations named in the supplied Human Practices manuscript. Names describe the connection; inclusion does not assign a sponsorship category.",
+  "scope": "Organizations selected from the supplied Human Practices manuscript and the user-requested institution and club logos from the 2025 SUSTech-BIO footer. Inclusion does not assign a sponsorship category.",
   "source_manifests": [
     "manifest-part1.json",
     "manifest-part2.json",
     "manifest-teams.json",
-    "manifest-reference.json"
+    "manifest-reference.json",
+    "manifest-footer-2025-additions.json"
   ],
   "team_emblem": "The SUSTech-BIO emblem is already displayed in the main footer brand area.",
   "entries": [
@@ -17,6 +18,56 @@
       "covers": [
         "School of Life Sciences, SUSTech",
         "Department of Systems Biology, SUSTech"
+      ]
+    },
+    {
+      "name": "School of Medicine, SUSTech",
+      "logo": "sustech-school-of-medicine-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "School of Medicine, SUSTech"
+      ]
+    },
+    {
+      "name": "Department of Statistics and Data Science, SUSTech",
+      "logo": "sustech-statistics-data-science-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Department of Statistics and Data Science, SUSTech"
+      ]
+    },
+    {
+      "name": "Department of Computer Science and Engineering, SUSTech",
+      "logo": "sustech-computer-science-engineering-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "Department of Computer Science and Engineering, SUSTech"
+      ]
+    },
+    {
+      "name": "SUSTech Synthetic Biology Club",
+      "logo": "sustech-synthetic-biology-club-2025.webp",
+      "detail": "",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "SUSTech Synthetic Biology Club"
+      ]
+    },
+    {
+      "name": "iGBA",
+      "logo": "igba.webp",
+      "detail": "Greater Bay Area SynBio Alliance",
+      "background": "light",
+      "mark": "organization",
+      "covers": [
+        "iGBA"
       ]
     },
     {
@@ -117,16 +168,6 @@
       "mark": "organization",
       "covers": [
         "RiboNext"
-      ]
-    },
-    {
-      "name": "iGBA",
-      "logo": "igba.webp",
-      "detail": "Greater Bay Area SynBio Alliance",
-      "background": "light",
-      "mark": "organization",
-      "covers": [
-        "iGBA"
       ]
     },
     {
