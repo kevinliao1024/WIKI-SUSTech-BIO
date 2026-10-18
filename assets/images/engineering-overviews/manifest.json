@@ -1,0 +1,62 @@
+[
+  {
+    "overview": "deliver-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/01_DELIVER_AAV9.png",
+    "image": "deliver.png",
+    "sha256": "bbace08be292dfc04d17786fe292a8281ba2eb0b757b6e254656bc7a2e1b3865"
+  },
+  {
+    "overview": "dry-dbtl-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/02_MODEL_PUFFER.png",
+    "image": "dry-dbtl.png",
+    "sha256": "8a7dba3876517410c83b02b259178ffd97719d9661b8599b698d41de69884f8f"
+  },
+  {
+    "overview": "pod-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/03_EDIT_POD.png",
+    "image": "pod.png",
+    "sha256": "8ccc9cc4a1c8f116107a108a328ea62b7081bfeb4eff315b528b6e213e9850a6"
+  },
+  {
+    "overview": "cetus-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/04_EDIT_CETUS.png",
+    "image": "cetus.png",
+    "sha256": "96eb24a0a50b34268f5881920f5ec82ad93b94791d178ac918195228c547a5b8"
+  },
+  {
+    "overview": "integrated-orca-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/05_EDIT_Integrated_ORCA.png",
+    "image": "integrated-orca.png",
+    "sha256": "1ae0cde9a09bb2f6fdee08e4d086a5a8cc3a30511ae5b659a2b3edc40ad7cb17"
+  },
+  {
+    "overview": "measure-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/06_MEASURE_SONAR.png",
+    "image": "measure.png",
+    "sha256": "df3fb49a5a5acd0cac8af9301e3acecd7ea0697dbb38738d02064825f7536cbe"
+  },
+  {
+    "overview": "gfa-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/07_CONTROL_GFA.png",
+    "image": "gfa.png",
+    "sha256": "c7ec686ef826faaa3df5ecef77c6663ee6cd8c39568644bef814ec2692200041"
+  },
+  {
+    "overview": "mre-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/08_CONTROL_MRE.png",
+    "image": "mre.png",
+    "sha256": "e2d46f0855ccc4458bb04f74976d9033652ed9ae666fc4263f9c07b2b29bc6e7"
+  },
+  {
+    "overview": "aso-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/09_CONTROL_ASO.png",
+    "image": "aso.png",
+    "sha256": "e4dd0dbb0be40465ded6d4a2e07b3d8d9ba9fc3af9fe3e0314c4e61c316bf043"
+  },
+  {
+    "overview": "cre-loxp-overview",
+    "source": "/Users/hansensmbp/Desktop/iGEM NEW/outputs/scientific-figures/engineering-chapter-cards-v2/deliverables/10_CONTROL_Cre-loxP.png",
+    "image": "cre-loxp.png",
+    "sha256": "080d467aa02ce510d34bd444d66309a0c897b11dc4d7f06df81edcb35a994bcf"
+  }
+]
