@@ -1,0 +1,12 @@
+/* Match the approved Engineering cycle prose, scoped to selected experiment sections. */
+body .content-page .markdown-content .experiment-prose {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #2d3038;
+  letter-spacing: normal;
+  text-align: left;
+}
+@media (max-width: 760px) {
+  body .content-page .markdown-content .experiment-prose { font-size: 18px; }
+}
