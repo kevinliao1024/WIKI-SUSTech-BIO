@@ -4,7 +4,7 @@
 {% block body_class %}inner-page team-page{% endblock %}
 {% block reading_navigation %}{% endblock %}
 {% block page_styles %}<link rel="stylesheet" href="{{ url_for('static', filename='team-cards.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='team-opening.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='team-package-header.css') }}">{% endblock %}
-{% block page_scripts %}<script src="{{ url_for('static', filename='team-cards.js') }}" defer></script><script src="{{ url_for('static', filename='team-opening.js') }}" defer></script>{% endblock %}
+{% block page_scripts %}<script src="{{ url_for('static', filename='team-cards.js') }}" defer></script><script src="{{ url_for('static', filename='team-opening.js') }}" defer></script><script src="{{ url_for('static', filename='team-filters.js') }}" defer></script>{% endblock %}
 {% block main %}
 {% set members = content.metadata.get('members', []) %}
 {% set package_frames = content.metadata.get('package_frames', []) %}
@@ -17,9 +17,10 @@
     {% for key, label in categories %}
     {% set group = namespace(members=[]) %}{% for member in members %}{% if member.get('category', 'team-members') == key %}{% set group.members = group.members + [member] %}{% endif %}{% endfor %}
     <section class="team-category" id="{{ key }}" aria-labelledby="{{ key }}-title">
-      <h3 id="{{ key }}-title">{{ label }}{% if group.members %}<span>{{ group.members|length }}</span>{% endif %}</h3>
+      <h3 id="{{ key }}-title">{{ label }}{% if group.members %}<span{% if key == 'team-members' %} data-team-member-count{% endif %}>{{ group.members|length }}</span>{% endif %}</h3>
       {% if group.members %}<div class="team-grid{% if key == 'team-members' %} team-grid--members{% endif %}">{% for member in group.members %}{{ member_card(member, members.index(member) + 1) }}{% endfor %}</div>
       {% elif key != 'pi' %}<p class="team-category__empty">Profiles to come.</p>{% else %}<div class="team-category__reserved" aria-hidden="true"></div>{% endif %}
+      {% if key == 'team-members' %}<p class="team-filter-empty" data-team-filter-empty hidden></p>{% endif %}
     </section>
     {% endfor %}
     {% else %}

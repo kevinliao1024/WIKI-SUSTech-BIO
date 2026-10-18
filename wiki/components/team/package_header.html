@@ -19,16 +19,22 @@
       </div>
     </div>
   </div>
-  <ul class="team-skill-folders" aria-label="Unpacked skill folders">
+  <ul class="team-skill-folders" aria-label="Filter team members by role">
     {% for label in ['Dry Lab', 'Wet Lab', 'Human Practices', 'Design', 'Wiki'] %}
-    <li class="team-skill-folder">
+    <li class="team-skill-folders__item">
+      <button class="team-skill-folder" type="button" data-team-filter="{{ label }}" aria-pressed="false" aria-controls="team-deck" disabled>
       <svg viewBox="0 0 48 38" aria-hidden="true" focusable="false">
         <path class="team-skill-folder__back" d="M4 9V6a3 3 0 0 1 3-3h10l5 5h19a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z"/>
         <g class="team-skill-folder__paper"><rect x="11" y="12" width="26" height="20" rx="2"/><path d="M16 18h15 M16 23h11"/></g>
         <path class="team-skill-folder__front" d="M4 13h40l-3 19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3Z"/>
       </svg>
       <span>{{ label }}</span>
+      </button>
     </li>
     {% endfor %}
   </ul>
+  <div class="team-filter-summary" data-team-filter-summary hidden>
+    <p data-team-filter-status role="status" aria-live="polite" aria-atomic="true"></p>
+    <button class="team-filter-reset" type="button" data-team-filter-reset hidden>Show all</button>
+  </div>
 </header>

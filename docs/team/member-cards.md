@@ -56,8 +56,8 @@ URL generation, including relative paths in Frozen-Flask builds.
   Min Zhang (Secondary PI), confirmed from the supplied screenshot. Their
   portraits and quotes remain empty. `category` accepts `team-members`, `advisors`,
   `instructor`, or `pi`.
-- Desktop widths of 1200 px or more use eight cards per row. The current
-  fifteen team members occupy two rows. Jacky Man-leuk Yuen is listed among the
+- Desktop widths of 1001 px or more use five cards per row. The current
+  fifteen team members occupy three rows. Jacky Man-leuk Yuen is listed among the
   five Advisors, as confirmed by the user. Smaller screens reduce the column count.
   Every row is centered, including partially filled rows in Advisors and
   Instructor. All categories retain the same card width at a given breakpoint.
@@ -113,8 +113,9 @@ not enter the roster. Background scrolling stays locked from the puzzle opening
 through the blurred preview and compilation, then is restored when the roster
 opens, including reduced-motion entry. The two log columns type one line at a time and scroll to
 the newest line. Each member's `*_skill.md` appears once, followed by linking
-and completion lines. Typing and line changes run at 1.1× speed. With the current
-roster the sequence takes about 8.4 seconds, including the unchanged final reading
+and completion lines. Typing and line changes run 1.3× faster than the previous
+1.1× pace (1.43× the original pace). With the current roster the sequence takes
+about 6.6 seconds, including the unchanged final reading
 pause. The four questionnaire illustrations
 use the verified iGEM uploads `team/pkg1.avif` through `team/pkg4.avif`,
 configured once in `team.md` under `package_frames`. They are preloaded before the first click and play in the explicit order
@@ -124,17 +125,33 @@ both the code and the second image cycle; slow loads can extend the sequence.
 A bounded image-load fallback prevents an unavailable asset from trapping the
 page. A 1.4-second package pop and “Unpacked” status
 then signal completion before the longer particle transition reveals the cards.
-The pseudo-code is white, with pink prompts on the extract lines.
+The blurred opening uses a 64%-opaque indigo overlay, a 3 px white package
+outline, and a larger white package name (16 px desktop, 14 px mobile).
+The pseudo-code is white at 14 px on desktop and 12 px on mobile, with pink
+prompts on the extract lines.
 The completed package and both full logs then remain in a compact header above
 the Team members divider, using about one third of the viewport. Particles leave
 that package icon and spread toward the cards. The header displays five unpacked
-folders: Dry Lab, Wet Lab, Human Practices, Design and Wiki. These folders have no
-links or membership assignments yet. The header also has a static fallback when
-JavaScript is unavailable. Hovering over a folder opens its front flap, reveals
+folders: Dry Lab, Wet Lab, Human Practices, Design and Wiki. Each folder filters
+the formal `team-members` category by the existing role labels in `team.md`;
+`HP` is treated as Human Practices. Other labels match exactly, so an advisor's
+Wiki-related role never counts as a formal member. One folder can be selected
+at a time. Clicking it again or choosing “Show all” clears the filter. Active
+filters hide the Advisor, Instructor and PI sections; clearing restores them.
+The selected folder stays highlighted, the member count updates, and keyboard
+users can activate each folder with Enter or Space. Filtering preserves card
+widths and flips and reveals results without repeating the opening animation.
+Without JavaScript, the folders remain inactive and the full roster is readable.
+The header also has a static fallback when JavaScript is unavailable.
+Hovering over a folder opens its front flap, reveals
 a paper sheet, highlights the icon and label, and lifts them together. The hover
 area stays fixed to avoid flicker; reduced motion removes the lift and transitions.
 The puzzle outline is 17 px on desktop and 14 px on mobile, five times its
-previous width. The central light line has been removed. When blur appears,
+previous width. Its four pieces carry Wet Lab (top left), Dry Lab (top right),
+Human Practices (bottom left), and Design & Wiki (bottom right). Proportional
+HTML labels follow the matching piece transforms, with smaller wrapping text on mobile.
+Reduced motion places both outlines and labels directly in their unfolded positions.
+The central light line has been removed. When blur appears,
 the four letters in “Team” fall in sequence, bounce, and settle into one row;
 reduced motion displays the title immediately.
 Reduced motion presents the log without typing or scrolling and opens the roster
