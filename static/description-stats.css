@@ -7,20 +7,9 @@
   --stats-ink: #303c62;
   --stats-accent: #927039;
   margin: 32px 0 36px;
-  padding: 25px 0 0;
-  border-top: 1px solid #d9dee8;
   color: var(--stats-ink);
   font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
   container-type: inline-size;
-}
-
-.description-stats__eyebrow {
-  margin-bottom: 27px;
-  color: #626b7c;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .16em;
-  text-transform: uppercase;
 }
 
 .description-stats__pair {

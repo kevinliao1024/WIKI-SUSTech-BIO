@@ -14,7 +14,6 @@ status_message: Scientific content, references and media attribution await team 
 <div class="description-intro">
   <p>Alzheimer’s disease (AD) is the most common cause of dementia, accounting for an estimated 60–70% of cases. In 2021, around 57 million people worldwide were living with dementia, creating a growing burden for patients, families, and healthcare systems. [4]</p>
   <div class="description-stats" data-description-stats role="group" aria-label="Global dementia burden">
-    <div class="description-stats__eyebrow">A global perspective</div>
     <div class="description-stats__pair">
       <div class="description-stats__metric">
         <div class="description-stats__context">Worldwide · 2021</div>
