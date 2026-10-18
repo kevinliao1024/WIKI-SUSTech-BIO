@@ -19,7 +19,9 @@ async function assertColor(part,group){
  await page.waitForFunction(({part,group})=>{const a=document.querySelector('[data-engineering-overview]');return a.dataset.activeGroup===group && a.dataset.activePart===part;},{part,group});
  await page.waitForFunction(({part,group})=>[...document.querySelectorAll('[data-overview-layer]')].every(layer=>{
   const colored=layer.dataset.overviewFamily===group && (!part || layer.dataset.overviewParts.split(' ').includes(part));
-  return getComputedStyle(layer).filter===(colored?'grayscale(0)':'grayscale(1)');
+  const paint=[...layer.querySelectorAll('[fill], [stroke]')].flatMap(node=>['fill','stroke'].map(key=>node.getAttribute(key))).filter(value=>/^#[0-9a-f]{6}$/i.test(value || ''));
+  const chromatic=paint.filter(color=>color.slice(1,3)!==color.slice(3,5)||color.slice(3,5)!==color.slice(5,7));
+  return colored ? chromatic.length>0 : chromatic.length===0;
  }),{part,group});
 }
 try {
@@ -58,18 +60,14 @@ try {
  await page.screenshot({path:`${output}/desktop-control.png`});
  await page.locator('[data-overview-target="model-apobec"]').hover();await assertColor('model-apobec','model');
  await page.screenshot({path:`${output}/desktop-model.png`});
- // Fully colored QA render is checked against the unchanged source figure.
- await art().evaluate(el=>el.querySelectorAll('[data-overview-layer]').forEach(layer=>layer.style.filter='none'));
- await art().screenshot({path:`${output}/overview-all-colors.png`});
- await art().evaluate(el=>el.querySelectorAll('[data-overview-layer]').forEach(layer=>layer.style.removeProperty('filter')));
  // Motion-enabled navigation must not throw, and all touch links remain accessible.
  await page.emulateMedia({reducedMotion:'no-preference'});
  await page.locator('[data-engineering-group="edit"]').hover();await page.waitForTimeout(350);
  await page.locator('[data-engineering-part="cetus"]').click();await selected('cetus');await back();
- for (const width of [1024,768,390]){
+ for (const width of [1024,768,627,390]){
   await page.setViewportSize({width,height:844});await page.waitForTimeout(100);
   assert.ok(await map().evaluate(e=>e.scrollWidth<=e.clientWidth+1),`No horizontal overflow at ${width}px`);
-  if(width<=900){assert.equal(await page.locator('[data-map-branch-group]:visible').count(),3);}
+  if(width<600){assert.equal(await page.locator('[data-map-branch-group]:visible').count(),3);}
   await page.screenshot({path:`${output}/layout-${width}.png`});
  }
  await page.locator('[data-overview-target="cre-loxp"]').click();await selected('cre-loxp');await back();

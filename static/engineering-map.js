@@ -9,7 +9,8 @@
   const canvas = map.querySelector('[data-map-canvas]');
   const lines = map.querySelector('[data-map-lines]');
   const root = map.querySelector('.engineering-map-root');
-  const desktop = matchMedia('(min-width: 901px)');
+  const desktop = matchMedia('(min-width: 600px)');
+  const wide = matchMedia('(min-width: 901px)');
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const overview = () => !desktop.matches || !hover.matches;
@@ -32,7 +33,7 @@
   const pointer = { inside: false, x: 0, y: 0, nx: 0, ny: 0, node: null };
   const currents = map.querySelector('.engineering-map-currents');
   const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
-  const canFloat = () => !map.hidden && !document.hidden && !overview() && !reducedMotion.matches && !keyboardNavigation;
+  const canFloat = () => wide.matches && !map.hidden && !document.hidden && !overview() && !reducedMotion.matches && !keyboardNavigation;
 
   const groupButton = () => groupButtons.find(button => button.dataset.engineeringGroup === selectedGroup);
   const visibleLeaves = () => leafButtons.filter(button => !button.closest('[data-map-branch-group]').hidden);
@@ -43,11 +44,27 @@
   const art = map.querySelector('[data-engineering-overview]');
   const layers = [...art.querySelectorAll('[data-overview-layer]')];
   const diagramLinks = [...art.querySelectorAll('[data-overview-target]')];
+  // Write real SVG paint values, rather than trusting compositing filters on
+  // groups of <use> glyphs. Keep an immutable copy for exact color restoration.
+  const paints = new Map(layers.map(layer => [layer,
+    [...layer.querySelectorAll('[fill], [stroke]')].flatMap(node =>
+      ['fill', 'stroke'].flatMap(attribute => {
+        const color = node.getAttribute(attribute);
+        if (!/^#[0-9a-f]{6}$/i.test(color || '')) return [];
+        const rgb = [1, 3, 5].map(offset => parseInt(color.slice(offset, offset + 2), 16));
+        const value = Math.round(rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722);
+        return [{ node, attribute, color, gray: '#' + value.toString(16).padStart(2, '0').repeat(3) }];
+      }))
+  ]));
   function highlight(group, part = '') {
+    if (art.dataset.activeGroup === group && art.dataset.activePart === part) return;
     art.dataset.activeGroup = group;
     art.dataset.activePart = part;
-    layers.forEach(layer => layer.classList.toggle('is-active',
-      layer.dataset.overviewFamily === group && (!part || layer.dataset.overviewParts.split(' ').includes(part))));
+    layers.forEach(layer => {
+      const active = layer.dataset.overviewFamily === group && (!part || layer.dataset.overviewParts.split(' ').includes(part));
+      layer.classList.toggle('is-active', active);
+      paints.get(layer).forEach(({ node, attribute, color, gray }) => node.setAttribute(attribute, active ? color : gray));
+    });
     diagramLinks.forEach(link => link.classList.toggle('is-active', part
       ? link.dataset.overviewTarget === part && !link.dataset.overviewSelectGroup
       : link.dataset.overviewSelectGroup === group));
@@ -58,8 +75,19 @@
     else choosePart(link.dataset.overviewTarget);
   }
   diagramLinks.forEach(link => {
-    link.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') selectDiagram(link); });
-    link.addEventListener('focus', () => selectDiagram(link));
+    link.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      // Focusing/scrolling can fire hover events beneath a stationary cursor.
+      // Only a real pointer movement may override the keyboard selection.
+      if ((keyboardNavigation || performance.now() < keyboardSettlingUntil) && !event.movementX && !event.movementY) return;
+      keyboardNavigation = false;
+      selectDiagram(link);
+    });
+    link.addEventListener('focus', () => {
+      keyboardNavigation = true;
+      keyboardSettlingUntil = performance.now() + 300;
+      selectDiagram(link);
+    });
     link.addEventListener('click', () => selectDiagram(link));
   });
   function visualSurface(node) {
@@ -85,8 +113,8 @@
     const origin = box.top - bounds.top;
     const parentBox = parent.getBoundingClientRect();
     const desired = parentBox.top + parentBox.height / 2 - bounds.top - box.height / 2;
-    const inset = 22;
-    const top = Math.max(inset, Math.min(desired, bounds.height - box.height - inset));
+    const inset = wide.matches ? 22 : root.getBoundingClientRect().bottom - bounds.top + 16;
+    const top = Math.max(inset, Math.min(desired, bounds.height - box.height - 22));
     cluster.style.setProperty(property, `${Math.round(top - origin)}px`);
   }
 
@@ -119,7 +147,7 @@
 
   function paintConnection({ from, to, stream }) {
     const a = movingBox(from), b = movingBox(to);
-    const rootAbove = overview() && from === root;
+    const rootAbove = (!wide.matches || overview()) && from === root;
     const horizontal = !overview() || b.left >= a.right + 8;
     const start = rootAbove ? [a.left - 10, a.top + a.height / 2] : horizontal ? [a.right + 10, a.top + a.height / 2] : [a.left + a.width / 2, a.bottom + 10];
     const end = rootAbove ? [b.left - 10, b.top + b.height / 2] : horizontal ? [b.left - 10, b.top + b.height / 2] : [b.left + b.width / 2, b.top - 10];
