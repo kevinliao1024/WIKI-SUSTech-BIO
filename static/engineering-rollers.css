@@ -1,0 +1,69 @@
+/* Compact recessed drums; the center index and bezel stay still while ticks turn. */
+.engineering-heading { gap: 5px; flex-shrink: 0; justify-items: center; }
+.engineering-controls .engineering-heading h1 { margin-bottom: 2px; }
+.engineering-heading-row {
+  box-sizing: border-box; width: min(100%, 264px); height: 36px;
+  border: 1px solid #b7bfd4; border-radius: 9px;
+  background: linear-gradient(90deg, #c3cbdd 0%, #e4e8f2 12%, #f8f9fc 36%, #f8f9fc 64%, #e4e8f2 88%, #c3cbdd 100%);
+  box-shadow: inset 0 2px 4px #26375e26, inset 0 -1px 2px #ffffffc9, 0 1px 0 #fff;
+  mask-image: none; overflow: clip; cursor: grab; touch-action: pan-y; user-select: none;
+  font-size: 18px;
+}
+.engineering-heading-row--part { height: 54px; font-size: 15px; line-height: 1.15; }
+/* Tick marks move with the drum. The faded ends suggest its curved surface. */
+.engineering-heading-row::before {
+  content: ''; position: absolute; z-index: 0; inset: 3px 7px;
+  background-image: repeating-linear-gradient(90deg, #6f7e9c8c 0 1px, transparent 1px 8px), repeating-linear-gradient(90deg, #6f7e9c66 0 1px, transparent 1px 8px);
+  background-size: auto 4px; background-repeat: repeat-x; background-position: var(--roller-ticks, 0px) top, var(--roller-ticks, 0px) bottom;
+  mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+  pointer-events: none;
+}
+/* Small stationary index above/below the selected name, rather than a tall box. */
+.engineering-heading-row::after {
+  content: ''; position: absolute; z-index: 2; inset: 0;
+  background: linear-gradient(#6c7ca7, #6c7ca7) center top / 2px 6px no-repeat,
+    linear-gradient(#6c7ca7, #6c7ca7) center bottom / 2px 5px no-repeat;
+  box-shadow: inset 12px 0 12px -12px #3443685c, inset -12px 0 12px -12px #3443685c;
+  pointer-events: none;
+}
+.engineering-heading-row > * { width: 60%; padding: 7px 4px; color: #3b4775; }
+.engineering-heading-row .engineering-heading-preview { pointer-events: auto; cursor: pointer; }
+.engineering-heading-row:focus-visible { outline: 2px solid #8998c5; outline-offset: 2px; }
+.engineering-heading-row[data-dragging], .engineering-heading-row[data-dragging] > * { cursor: grabbing; }
+.engineering-heading-row[data-locked='true'] { cursor: default; background: #e9edf4; }
+.engineering-heading-row[data-locked='true']::before { opacity: .35; }
+.engineering-heading-row[data-locked='true']::after { opacity: .45; }
+/* Keep instructions available to assistive technology without adding a layout row. */
+.engineering-heading .engineering-roller-help { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.engineering-controls .engineering-cycles { flex-shrink: 0; }
+@media (min-width: 761px) {
+  .engineering-controls { gap: 10px; overflow-y: auto; justify-content: safe center; }
+  .engineering-controls .dbtl-directory { flex: 0 0 auto; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: clamp(96px, calc(100dvh - var(--engineering-nav-height, 112px) - 330px), 280px); }
+  .engineering-controls .dbtl-wheel__dial { margin-block: 16px; }
+}
+@media (max-width: 760px) {
+  .engineering-controls { grid-template-columns: minmax(0, 1fr) 124px; gap: 6px 14px; padding-inline: 8px; }
+  .engineering-heading { gap: 4px; }
+  .engineering-controls h1 { font-size: 23px; line-height: 1.1; }
+  .engineering-heading-row { width: min(100%, 238px); height: 34px; font-size: 16px; border-radius: 8px; }
+  .engineering-heading-row--part { height: 50px; font-size: 13px; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: 108px; }
+  .engineering-controls .dbtl-wheel__dial { margin-block: 16px; }
+  .engineering-controls .engineering-cycles { gap: 4px 8px; }
+  .engineering-controls .engineering-cycles a { min-height: 32px; padding: 5px 0 2px; }
+  .engineering-controls .engineering-cycles [data-engineering-overview] { min-height: 22px; padding: 0; }
+}
+@media (max-width: 380px) {
+  .engineering-controls { grid-template-columns: minmax(0, 1fr) 108px; gap: 6px 10px; padding-inline: 2px; }
+  .engineering-controls h1 { font-size: 21px; }
+  .engineering-controls .dbtl-wheel { --dbtl-size: 96px; }
+  .engineering-heading-row > * { width: 68%; }
+  .engineering-heading-row--part { font-size: 12px; height: 54px; }
+}
+@media (max-height: 610px) and (min-width: 761px) {
+  .engineering-controls { gap: 6px; }
+  .engineering-controls h1 { font-size: 24px; }
+  .engineering-heading-row { height: 32px; font-size: 16px; }
+  .engineering-heading-row--part { height: 48px; font-size: 13px; }
+}
