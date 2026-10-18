@@ -1,0 +1,61 @@
+/* Continue-reading links follow the Wiki's soft indigo reading navigation. */
+.markdown-content .description-next {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 32px 0 12px;
+}
+
+.markdown-content .description-next__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 58px;
+  padding: 12px 22px 12px 26px;
+  border: 1px solid #dedfed;
+  border-radius: 999px;
+  background: #f1f1f9;
+  color: #464786;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.description-next__arrow {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.markdown-content .description-next__link:hover {
+  color: #3d409b;
+  background: #eaeaf8;
+  border-color: #bfc1dd;
+}
+
+.description-next__link:hover .description-next__arrow {
+  transform: translate(2px, -2px);
+}
+
+.description-next__link:focus-visible {
+  outline: 2px solid #5f62cd;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .markdown-content .description-next { gap: 12px; }
+  .markdown-content .description-next__link { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-content .description-next__link,
+  .description-next__arrow { transition: none; }
+  .description-next__link:hover .description-next__arrow { transform: none; }
+}

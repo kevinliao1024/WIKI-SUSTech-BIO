@@ -145,10 +145,10 @@ Finally, we extended our investigation to APOE4-relevant cellular models, examin
 
 Together, these stages connect the molecular rationale for ORCA with its engineering development and biological evaluation. Our [Engineering page](/engineering) presents the design–build–test–learn cycles behind this work, while [Results](/results) brings together the findings and their limitations.
 
-<div class="button-row" aria-label="Explore ORCA development and results">
-  <a class="button button--pale" href="/engineering">To Engineering <span aria-hidden="true">→</span></a>
-  <a class="button button--pale" href="/results">To Results <span aria-hidden="true">→</span></a>
-</div>
+<nav class="description-next" aria-label="Explore ORCA development and results">
+  <a class="description-next__link" href="/engineering"><span>To Engineering</span><span class="description-next__arrow" aria-hidden="true">↗</span></a>
+  <a class="description-next__link" href="/results"><span>To Results</span><span class="description-next__arrow" aria-hidden="true">↗</span></a>
+</nav>
 
 ## References
 
