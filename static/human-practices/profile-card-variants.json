@@ -1,0 +1,27 @@
+{
+  "purpose": "Remove dates from the bottom-left profile-card badges without changing original assets or biographical dates.",
+  "scope": "Interview date labels only; biography and research-history dates remain unchanged.",
+  "assets": [
+    {
+      "source": "assets/human-practices/images/dai-ziwei-interview-profile-card.svg",
+      "display": "assets/human-practices/images/dai-ziwei-interview-profile-card.svg",
+      "sourceSha256": "39b87f96797b03322f59a9749d6cbfcf5c974686c069fb34163673be24dbefdd",
+      "displaySha256": "39b87f96797b03322f59a9749d6cbfcf5c974686c069fb34163673be24dbefdd",
+      "change": "Unchanged: bottom-left badge already reads FEATURED SCIENTIST without a date."
+    },
+    {
+      "source": "assets/human-practices/images/ye-keqiang-interview-profile-card.svg",
+      "display": "assets/human-practices/images/ye-keqiang-interview-profile-card.svg",
+      "sourceSha256": "20fc610db226e218f0bf102824c17a1ecbe25889675bccf4c433a4382912b1ed",
+      "displaySha256": "20fc610db226e218f0bf102824c17a1ecbe25889675bccf4c433a4382912b1ed",
+      "change": "Unchanged: bottom-left badge already reads FEATURED SCIENTIST without a date."
+    },
+    {
+      "source": "assets/human-practices/images/zhou-zhifan-interview-profile-card.svg",
+      "display": "assets/human-practices/images/zhou-zhifan-interview-profile-card-no-date.svg",
+      "sourceSha256": "90eda848e2f3917db05ae0378d5efff471a8768205c9be8e0b93270c3a8950c6",
+      "displaySha256": "438da2abc3ef7be11c65ad4a00d1595a316abc8ac3b06e4a39f398cd1102b4fa",
+      "change": "Removed bottom-left MAR 28 date and separator, retaining INTERVIEW and resizing its pill; removed top-right MARCH 28 date and separator, retaining NEUROLOGY."
+    }
+  ]
+}

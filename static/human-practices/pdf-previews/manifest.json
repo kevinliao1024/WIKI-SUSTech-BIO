@@ -1,0 +1,763 @@
+{
+  "curriculum-comparison-analysis.pdf": {
+    "pages": [
+      {
+        "file": "curriculum-comparison-analysis/page-001.webp",
+        "width": 1500,
+        "height": 1214
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-002.webp",
+        "width": 1500,
+        "height": 1012
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-003.webp",
+        "width": 1500,
+        "height": 1012
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-004.webp",
+        "width": 1500,
+        "height": 1012
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-005.webp",
+        "width": 1500,
+        "height": 1033
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-006.webp",
+        "width": 1500,
+        "height": 990
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-007.webp",
+        "width": 1500,
+        "height": 990
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-008.webp",
+        "width": 1500,
+        "height": 527
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-009.webp",
+        "width": 1500,
+        "height": 626
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-010.webp",
+        "width": 1500,
+        "height": 670
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-011.webp",
+        "width": 1500,
+        "height": 701
+      },
+      {
+        "file": "curriculum-comparison-analysis/page-012.webp",
+        "width": 1500,
+        "height": 812
+      }
+    ],
+    "source_sha256": "445fcdd7467abcb6fc5c7325a033cbba5634ab9b4968e3371fb07d360c51ea92",
+    "page_count": 12
+  },
+  "curriculum-comparison-reference-framework.pdf": {
+    "pages": [
+      {
+        "file": "curriculum-comparison-reference-framework/page-001.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-002.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-003.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-004.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-005.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-006.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-007.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-008.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-009.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-010.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-011.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-012.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-013.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-014.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-015.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-016.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-017.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-018.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-019.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-020.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-021.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-022.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-023.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-024.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-025.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-026.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-027.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-028.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-029.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-030.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-031.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-032.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-033.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-034.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-035.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-036.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-037.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-038.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-039.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-040.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-041.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-042.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-043.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-044.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-045.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-046.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-047.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-048.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-049.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-050.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-051.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-052.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-053.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-054.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-055.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-056.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-057.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-058.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-059.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-060.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-061.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "curriculum-comparison-reference-framework/page-062.webp",
+        "width": 1061,
+        "height": 1500
+      }
+    ],
+    "source_sha256": "917cff30c2afe2581368d125f498060aa04875eba7fa244304ce2183f0d3fd48",
+    "page_count": 62
+  },
+  "older-adults-health-workbook-v1-zh.pdf": {
+    "pages": [
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-001.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-002.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-003.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-004.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-005.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-006.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-007.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-008.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-009.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-010.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-011.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-012.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-013.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-014.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-015.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-016.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-017.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-018.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-019.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-020.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-021.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-022.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-023.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-024.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-025.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-026.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-027.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-028.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-029.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-030.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-031.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-032.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-033.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-034.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-035.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-036.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-037.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-038.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-039.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-040.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-041.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-042.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-043.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-044.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-045.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-046.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-047.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-048.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-049.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-050.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "older-adults-health-workbook-v1-zh/page-051.webp",
+        "width": 1061,
+        "height": 1500
+      }
+    ],
+    "source_sha256": "b897f225ceb9bde714da353a06603e3f7bdfe7ec08cfde750e0c37a54ad9e341",
+    "page_count": 51
+  },
+  "public-perception-questionnaire-bilingual.pdf": {
+    "pages": [
+      {
+        "file": "public-perception-questionnaire-bilingual/page-001.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-002.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-003.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-004.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-005.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-006.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-007.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-008.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-009.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-questionnaire-bilingual/page-010.webp",
+        "width": 1061,
+        "height": 1500
+      }
+    ],
+    "source_sha256": "a1cc22b9c4c4afea6df57f4a8fb9f0fcd9059fdcfa9b6dea33f52652a421550f",
+    "page_count": 10
+  },
+  "public-perception-survey-findings-en.pdf": {
+    "pages": [
+      {
+        "file": "public-perception-survey-findings-en/page-001.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-survey-findings-en/page-002.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-survey-findings-en/page-003.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-survey-findings-en/page-004.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-survey-findings-en/page-005.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "public-perception-survey-findings-en/page-006.webp",
+        "width": 1061,
+        "height": 1500
+      }
+    ],
+    "source_sha256": "4991aef80cb8b8b0dc5747029723dd3574f76723dc3501e0d0f2811a90457877",
+    "page_count": 6
+  },
+  "worldproof-hackathon-challenges-en.pdf": {
+    "pages": [
+      {
+        "file": "worldproof-hackathon-challenges-en/page-001.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "worldproof-hackathon-challenges-en/page-002.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "worldproof-hackathon-challenges-en/page-003.webp",
+        "width": 1061,
+        "height": 1500
+      },
+      {
+        "file": "worldproof-hackathon-challenges-en/page-004.webp",
+        "width": 1061,
+        "height": 1500
+      }
+    ],
+    "source_sha256": "37de7ab01bd85c1dd9739ee492bdc3c220c3b6e93a1e2a0e45300a7163b82ca6",
+    "page_count": 4
+  }
+}

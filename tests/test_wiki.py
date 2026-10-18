@@ -34,7 +34,6 @@ PUBLIC_ROUTES = [
     "/software",
     "/hardware",
     "/human-practices",
-    "/education",
     "/inclusivity",
 ]
 
@@ -53,7 +52,6 @@ PLACEHOLDER_ROUTES = [
     "/safety-and-security",
     "/hardware",
     "/human-practices",
-    "/education",
     "/inclusivity",
 ]
 
@@ -80,9 +78,11 @@ class WikiRoutesTest(unittest.TestCase):
                 self.get_text(route)
 
     def test_unknown_page_returns_designed_404(self):
-        response = self.client.get("/this-page-does-not-exist")
-        self.assertEqual(response.status_code, 404)
-        self.assertIn("Lost in the current", response.get_data(as_text=True))
+        for route in ("/this-page-does-not-exist", "/education"):
+            with self.subTest(route=route):
+                response = self.client.get(route)
+                self.assertEqual(response.status_code, 404)
+                self.assertIn("Lost in the current", response.get_data(as_text=True))
 
     def test_static_404_route_renders_for_frozen_hosting(self):
         page = self.get_text("/404.html")
@@ -96,6 +96,8 @@ class WikiRoutesTest(unittest.TestCase):
         index = re.search(r'<section\b[^>]*aria-labelledby="ot-index-title"[^>]*>(.*?)</section>', page, re.S)
         self.assertIsNotNone(menu)
         self.assertIsNotNone(index)
+        self.assertNotIn('href="/education"', menu.group(1))
+        self.assertNotIn('href="/education"', index.group(1))
         navigation_routes = [f"/{route}" for group in NAVIGATION for route, _ in group["items"]]
         for route in navigation_routes:
             with self.subTest(route=route):
@@ -198,7 +200,18 @@ class WikiRoutesTest(unittest.TestCase):
             with self.subTest(route=route):
                 page = self.get_text(route)
                 self.assertNotIn("onetake/", page)
-                self.assertNotIn('type="importmap"', page)
+                if route == "/human-practices":
+                    # The requested STL viewers use local Three.js, without the
+                    # homepage's particle scenes or animation dependencies.
+                    importmap = re.search(r'<script type="importmap">(.*?)</script>', page, re.S)
+                    self.assertIsNotNone(importmap)
+                    self.assertEqual(json.loads(importmap.group(1))["imports"], {
+                        "three": "/static/vendor/three/three.module.js",
+                        "three/addons/": "/static/vendor/three/addons/",
+                    })
+                    self.assertIn("human-practices/model-viewers/viewers.js", page)
+                else:
+                    self.assertNotIn('type="importmap"', page)
 
     def test_hero_assets_are_served_from_requested_path(self):
         response = self.client.get("/assets/hero/clearance/cleaners-ready.png")

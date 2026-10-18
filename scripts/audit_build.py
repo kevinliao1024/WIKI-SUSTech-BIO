@@ -31,7 +31,6 @@ EXPECTED_OUTPUTS = {
     "software",
     "hardware",
     "human-practices",
-    "education",
     "inclusivity",
     "404.html",
 }

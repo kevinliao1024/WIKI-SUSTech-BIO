@@ -1,0 +1,12 @@
+<section id="teacher-interviews" class="teacher-interviews" lang="en" aria-label="Conversations with biology teachers">
+  <orca-interviews
+    lang="en"
+    asset-base="{{ url_for('static', filename='human-practices/interviews/assets/interview-li-original.png').rsplit('/', 1)[0] }}/"
+  ></orca-interviews>
+  <p class="teacher-interviews__transcript">
+    <a href="{{ url_for('static', filename='human-practices/interviews/Interview-transcript-EN.txt') }}" download>Download the full English interview transcript (.txt)</a>
+  </p>
+  <noscript>
+    <p>The interactive interviews need JavaScript. Read the complete interviews in the transcript linked above.</p>
+  </noscript>
+</section>

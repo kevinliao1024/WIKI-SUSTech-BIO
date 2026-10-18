@@ -1,0 +1,90 @@
+Conversations with Biology Teachers
+Yali High School
+
+Questions have been reorganized, and answers have been paraphrased and translated from the supplied interview records. These are not verbatim quotations. The two interviews are presented separately.
+Interviewer: Jiawen Fu
+
+Jiaju Li | Yali High School · Head of Biology Teaching and Research
+
+In the Classroom
+
+Jiawen Fu: What abilities should high school biology develop, and which receive the most attention in class?
+Jiaju Li: The curriculum centres on four areas: understanding living systems, scientific thinking, experimental inquiry, and social responsibility. Scientific thinking receives substantial attention: students regularly extract information, analyse variables, and evaluate conclusions. There is less room for innovation, engineering design, and open-ended inquiry.
+
+Jiawen Fu: How does this relate to changes in the gaokao, China's university entrance examination? What does it now emphasize?
+Jiaju Li: The connection is clear. Recent biology exams in Hunan increasingly use real research contexts. Students need to analyse data, evaluate evidence, and design experiments using unfamiliar material. Memorizing facts is no longer enough; they also need to apply what they know to new problems.
+
+Concepts & Practice
+
+Jiawen Fu: If students have studied PCR, electrophoresis, and genetic engineering, does that mean they can perform these experiments?
+Jiaju Li: Not necessarily. The third textbook in the selective compulsory series introduces the principles and procedures. But in my experience, most schools do not offer accompanying hands-on work or structured laboratory simulations. Students may know the steps and answer exam questions, yet still lack practical experience.
+
+Jiawen Fu: Is a lack of equipment the main reason these experiments are difficult to offer?
+Jiaju Li: Equipment is only part of the issue. Limited class time and examination pressure are often bigger constraints, because practical work does not have an obvious short-term effect on exam scores. I still support more basic hands-on activities or high-quality simulations. They can help students understand why each step is designed as it is and prepare them for university laboratory work.
+
+Scientific Thinking
+
+Jiawen Fu: What do students most need to move from answering exam questions to doing research?
+Jiaju Li: They already practise controlling variables, setting up controls, and interpreting graphs. Engineering design needs more attention: choosing an approach for a specific goal, predicting its effects, testing it, and revising it in response to the results. Students need opportunities to experience the whole process and see how unsuccessful attempts can inform their next step.
+
+Jiawen Fu: Could research papers and real scientific data be used in regular lessons?
+Jiaju Li: Yes, if the depth is matched to students' needs. These activities are currently limited in both frequency and depth. Regular lessons could introduce simplified papers, real data, and basic models. Students with a strong interest in research could then pursue more systematic training through competitions, clubs, or long-term projects.
+
+Course Design
+
+Jiawen Fu: Where would synthetic biology fit most naturally into the high school curriculum?
+Jiaju Li: I would start with genetic engineering, especially its connection to protein engineering. Students already have some relevant knowledge. They can then ask how the relationship between structure and function might guide a modification designed to achieve a particular function.
+
+Jiawen Fu: Could you give an example of a project students could discuss?
+Jiaju Li: One example is improving natural insulin. Students could first consider limitations such as stability or duration of action, then propose possible improvements. They would discuss how to evaluate the effects and how to revise a design if the results were unsatisfactory. The aim is to work through identifying a problem, designing an approach, evaluating its effects, and improving it.
+
+Ethics & Priorities
+
+Jiawen Fu: How could ethical discussions about technologies such as gene editing go deeper?
+Jiaju Li: We already have brief discussions, but time is limited. Real cases are useful because they encourage students to go beyond listing advantages and disadvantages. Students can consider whether the evidence is sufficient, whether risks and benefits are justified, whether informed consent is valid, and what the social consequences might be.
+
+Jiawen Fu: What kind of learning experience would you most like our introductory course to offer?
+Jiaju Li: I favour project-based learning that lets students apply their existing knowledge to a real problem and work through design, evaluation, and revision. Regular lessons can offer a brief introduction, while interested students can pursue longer projects. This connects with the textbook while giving students a sense of how modern biological engineering research works.
+
+
+Sijie Wang | Yali High School · Biology Teacher
+
+In the Classroom
+
+Jiawen Fu: Which year group do you currently teach, and what enrichment courses have you offered?
+Sijie Wang: I mainly teach Grade 12. I have also offered laboratory courses and school electives based on biology. Overall, biology teaching at our school focuses largely on preparation for the gaokao, China's university entrance examination.
+
+Jiawen Fu: In your experience, how well does the textbook align with what the gaokao assesses?
+Sijie Wang: Looking at recent exams in Hunan, the alignment is generally good. Questions often draw on real production processes or research cases. They use graphs and diagrams to assess core concepts, experimental principles, methods, and workflows. Students need to apply their textbook knowledge within these contexts.
+
+Concepts & Practice
+
+Jiawen Fu: Which topics are students most likely to memorize without really understanding?
+Sijie Wang: PCR, electrophoresis, and genetic engineering stand out. The concepts are abstract, and students have few opportunities to understand the steps and their purposes through hands-on experiments. At the same time, this is an important and challenging area of the gaokao.
+
+Jiawen Fu: Could you use electrophoresis to illustrate that gap in understanding?
+Sijie Wang: In my observation, recent Hunan exams have rarely directly assessed the practical procedures for DNA amplification and electrophoretic identification. Most secondary schools cannot offer this experiment. Yet genetics and genetic engineering questions in many provinces already require students to interpret electrophoresis results.
+
+Scientific Thinking
+
+Jiawen Fu: Do students have opportunities to propose hypotheses, design investigations, and consider improvements?
+Sijie Wang: Yes. Students learn hypothetico-deductive reasoning, and they do have opportunities to propose hypotheses, design investigations, analyse why an approach failed, and suggest improvements. Much of this work still takes place on paper, though, with relatively few opportunities to test ideas through hands-on experiments.
+
+Jiawen Fu: Where are students strongest in experimental design and data analysis, and what needs more work?
+Sijie Wang: They generally do well at interpreting graphs, controlling variables, and setting up control groups. Their ability to evaluate experimental conclusions still needs improvement. The gaokao already assesses these abilities, but classroom practice can still become formulaic.
+
+Course Design
+
+Jiawen Fu: Which topics would you use to introduce synthetic biology?
+Sijie Wang: It could fit into the third textbook in the selective compulsory series, alongside relevant engineering technologies. Environmental protection, fermentation engineering, and microbial cultivation seem natural starting points. I also connect the textbook's links to society, exercise scenarios, and sidebar material to help students understand real applications.
+
+Jiawen Fu: Would short talks, simulated experiments, or club projects work best for students at your school?
+Sijie Wang: For our school, I would favour a school-based elective in Grade 11. Students already have some subject knowledge and interest, and 12–15 class periods would provide more time. Teachers also have some freedom to design the course, so they could try case studies, worksheets, simulated experiments, and other formats.
+
+Ethics & Priorities
+
+Jiawen Fu: Is there enough time to discuss bioethics and biosafety in class?
+Sijie Wang: At present, there is very little. Class time is limited, and these issues are rarely assessed in the gaokao, so they usually receive only a brief introduction. In-depth teaching is uncommon, and students' discussions tend to stay within a standard list of advantages and disadvantages.
+
+Jiawen Fu: If you could give us one piece of advice, what would you most want students to gain from this course?
+Sijie Wang: I would like it to develop authentic scientific inquiry skills that extend beyond textbook knowledge and exam practice. Students should also be able to apply what they learn to healthy living and a sense of social responsibility.
