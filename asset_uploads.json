@@ -1,6 +1,6 @@
 {
   "verified_on": "2026-10-18",
-  "source": "User-provided official upload lists; flat-package additions matched by normalized filename and source Git blob fingerprint. This import does not claim remote byte identity after image conversion.",
+  "source": "User-provided official upload lists; flat-package additions matched by normalized filename and source Git blob fingerprint. This import does not claim remote byte identity after image conversion. M132E update on 2026-10-19: eight user-uploaded IO figures verified via HTTP 200 and AVIF decode; local hashes identify approved PNG originals, not converted AVIF bytes.",
   "urls": [
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-domain-525ae93f89.webp",
     "https://static.igem.wiki/teams/6085/wiki/10-18-10-44/assets-figures-apoe112-1b68-plate-3901fa4861.avif",
@@ -1840,7 +1840,15 @@
     "https://static.igem.wiki/teams/6085/wiki/project/sonar-reporter/sonar-figure-15.avif",
     "https://static.igem.wiki/teams/6085/wiki/project/sonar-reporter/sonar-figure-16.avif",
     "https://static.igem.wiki/teams/6085/wiki/project/sonar-reporter/sonar-figure-17.avif",
-    "https://static.igem.wiki/teams/6085/wiki/project/sonar-reporter/sonar-figure-18.avif"
+    "https://static.igem.wiki/teams/6085/wiki/project/sonar-reporter/sonar-figure-18.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-01-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-02-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-03-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-04-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-10-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-11-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-13-m132e-20261019.avif",
+    "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-14-m132e-20261019.avif"
   ],
   "confirmed_mapping": [
     {
@@ -5007,27 +5015,27 @@
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_01.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-01.avif",
-      "sha256": "221eed7e0cacd622155dade89bd742d32e77d78470aeb3e35f968d891b3a7330",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-01"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-01-m132e-20261019.avif",
+      "sha256": "f1610f2116acb39d19d81dfd996783346fb021b6c71ef9ac66217cd4ea5b5d71",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_02.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-02.avif",
-      "sha256": "3e34df0c0971e2fcdf7d1bb2da824f3d2a46a461d496aabaf44bc73dd7535cb8",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-02"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-02-m132e-20261019.avif",
+      "sha256": "670636efa8bbaf6541282c5b77e918dba65bfbaa05b0dff94861b8c9c465cb57",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_03.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-03.avif",
-      "sha256": "452d71124aa2a32e55d4b39a4907bf44bd8ebec6117f71f4f19e44ebc40cce3b",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-03"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-03-m132e-20261019.avif",
+      "sha256": "f3a4944400e614d8dd8b171d4fdd4e645a73e5c023cecc5ef55779e0a3289ed9",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_04.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-04.avif",
-      "sha256": "6c34ad1f77b9705fbf6efc77631bfbfbc27af0725f5230434c13bf03e473f93b",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-04"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-04-m132e-20261019.avif",
+      "sha256": "8074a307d2424073646ba39e9de77c58196e19dff3cb6c57b77887d97baed3bf",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_05.png",
@@ -5061,15 +5069,15 @@
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_10.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-10.avif",
-      "sha256": "71d2bc1f2d1d32111e80bff8cb6ba56a693dd58253b2326652d4f2301330643a",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-10"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-10-m132e-20261019.avif",
+      "sha256": "07e8e77f7858f7df99549aff56bc7b170d3c56793f467c93d4d8860bb80ea998",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_11.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-11.avif",
-      "sha256": "2a69d9b440a1122f76f52bbd244751d3b3a0f1fe3435ba485abcc8d4f3f8e6d6",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-11"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-11-m132e-20261019.avif",
+      "sha256": "1f85aea4503d4745fdd098146592113b3c2ba4b484b0f2725cc20eee92ef68c7",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_12.png",
@@ -5079,15 +5087,15 @@
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_13.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-13.avif",
-      "sha256": "a5c0e16f4a3e571f1e205ec58ebbea2dedb5ee8396524b632bb1ccd1e4dc651d",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-13"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-13-m132e-20261019.avif",
+      "sha256": "a7d8e1c74f0d213ced6e94fdaf3d998d9d2cad647273f0b37b1f814fc963cfd9",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_14.png",
-      "url": "https://static.igem.wiki/teams/6085/wiki/project/engineering/integrated-orca/io-figure-14.avif",
-      "sha256": "f9bd0936c167630789827489f149ebaf2b97a63f70649ec2cfdd462458e48a52",
-      "evidence": "directory_and_figure_name_in_upload_record: io-figure-14"
+      "url": "https://static.igem.wiki/teams/6085/wiki/io-new-upload/io-figure-14-m132e-20261019.avif",
+      "sha256": "33ca8035d545f7626095621aa692624a2b3c216f6f03467dbbf5ecacb083d865",
+      "evidence": "user_confirmed_M132E_upload_filename_and_HTTP200_AVIF_decode_20261019"
     },
     {
       "local_path": "assets/images/submission-20261017/engineering/integrated-orca/Figure_15.png",
