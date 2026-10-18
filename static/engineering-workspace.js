@@ -98,6 +98,30 @@
   }
   article.append(...panels.values());
 
+  // Apply the approved reading face only inside authored cycle boundaries.
+  // Chapter introductions, headings, captions, tables and references keep their fonts.
+  for (const panel of panels.values()) {
+    let cycleLevel = null;
+    for (const node of panel.children) {
+      if (/^H[2-6]$/.test(node.tagName)) {
+        const level = Number(node.tagName.slice(1));
+        const cycle = node.id.match(cyclePattern);
+        if (cycle && !cycle[3]) cycleLevel = level;
+        else if (cycleLevel !== null && level <= cycleLevel) cycleLevel = null;
+        continue;
+      }
+      if (cycleLevel === null) continue;
+      const prose = [...node.querySelectorAll('p, li, blockquote')];
+      if (node.matches('p, li, blockquote')) prose.unshift(node);
+      for (const element of prose) {
+        if (!element.closest('figure, figcaption, .figure-caption, table, pre') &&
+            !element.querySelector('img, table, pre')) {
+          element.classList.add('engineering-cycle-prose');
+        }
+      }
+    }
+  }
+
   // Keep stage headings and anchor IDs semantic; decorate them as compact badges.
   for (const heading of article.querySelectorAll(':is(h3,h4,h5,h6)[id]')) {
     const stage = heading.id.match(cyclePattern)?.[3];
