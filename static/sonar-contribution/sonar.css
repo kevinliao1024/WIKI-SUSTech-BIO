@@ -22,3 +22,22 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Approved PUFFER artwork, cropped without redrawing the fish or wordmark. */
+.content-page .markdown-content #puffer .puffer-logo {
+  display: block;
+  width: 340px;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+}
+.puffer-logo-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

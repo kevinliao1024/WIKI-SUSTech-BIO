@@ -13,7 +13,7 @@ status_message: This overview is prepared for team review. Individual resources 
 
 <!-- SONAR_TUTORIAL: rendered from contribution-sonar.md, with headings nested under SONAR. -->
 
-## PUFFER {#puffer}
+## <span class="puffer-logo-label">PUFFER</span>![PUFFER logo: teal pufferfish with an RNA recognition motif and navy wordmark](/assets/images/puffer/puffer-logo.png){.puffer-logo width="922" height="227"} {#puffer data-toc-label="PUFFER"}
 
 <div class="sonar-intro" id="puffer-intro">
 <p class="sonar-kicker">From a target sequence to candidate designs</p>

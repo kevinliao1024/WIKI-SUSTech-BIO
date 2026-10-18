@@ -1,0 +1,17 @@
+{
+  "asset": "puffer-logo.png",
+  "source": "User-approved PUFFER logo composite, 18 October 2026; user-selected fish and approved wordmark",
+  "creator": "Team-directed AI-assisted artwork",
+  "license": "CC BY 4.0, repository content license",
+  "page": "/contribution#puffer",
+  "alt": "PUFFER logo: teal pufferfish with an RNA recognition motif and navy wordmark",
+  "processing": "Lossless crop only; no redraw, resampling or recoloring",
+  "source_crop_xyxy": [
+    574,
+    208,
+    1496,
+    435
+  ],
+  "source_sha256": "3f18dc228c93f402a99a0c678a375cfacdfc855b5f1996c756a8fb079c61a929",
+  "asset_sha256": "815619887fdb6ea9066c574d742e0083acfe77e848e1a25af9e49e6686f633f9"
+}
