@@ -5,7 +5,7 @@
 {% endblock %}
 {% set sections = [
   ('rewire', 'Whole-body Delivery Model', [('rewire-purpose', 'Overview'), ('rewire-logic', 'Modeling approach'), ('rewire-results', 'Results'), ('rewire-library', 'State and flux profiles'), ('rewire-references', 'References'), ('rewire-reuse', 'Reproducibility')]),
-  ('workbench', 'PUFFER', [('workbench-purpose', 'Overview'), ('workbench-tutorial', 'Tutorial'), ('workbench-logic', 'Modeling approach'), ('workbench-workflow', 'Workflow'), ('workbench-references', 'References'), ('workbench-reuse', 'Reproducibility')])
+  ('workbench', 'PUFFER', [('workbench-purpose', 'Overview'), ('workbench-logic', 'Modeling approach'), ('workbench-workflow', 'Workflow'), ('workbench-references', 'References'), ('workbench-reuse', 'Reproducibility')])
 ] %}
 {% macro figure(item) %}
 <figure class="software-figure" id="software-figure-{{ item.number }}" data-figure-number="{{ item.number }}" data-panel-count="{{ item.panels }}">
@@ -125,6 +125,7 @@
           <p>The website and its companion local application connect two workflows from our Model page: <strong>Module 2's assay-informed PUF specificity ranking</strong> and <strong>Module 4's LAMAR-based RNA-site prioritization</strong>. The browser organizes target sequences, PUF candidates and assay records; the local application performs the supported protein-ranking and RNA-context analyses. The outputs prioritize candidate proteins and RNA sites, respectively, and remain separate in the exported results.</p>
           <p>PUF repeat recognition provides the basis for assigning RNA-binding motifs (Wang et al., 2002; Zhou et al., 2021). The interface supports complete built-in 8R and 12R scaffolds; other lengths require compatible scaffold input.</p>
 
+          {# Temporarily disabled until the team provides official Video Universe URLs.
           <div class="software-tutorial software-demo" id="workbench-demo">
             <h4>Website demonstration</h4>
             <video controls playsinline preload="metadata" width="1280" height="832" poster="{{ url_for('static', filename='assets/software/demo/orca-software-demo-20261016.jpg') }}" aria-label="ORCA website demonstration">
@@ -141,7 +142,8 @@
             </video>
           </div>
 
-          <h3 id="workbench-logic" data-model-chapter><span class="chapter-number">2.3</span>Modeling approach</h3>
+          #}
+          <h3 id="workbench-logic" data-model-chapter><span class="chapter-number">2.2</span>Modeling approach</h3>
           <h4>Protein sequence supports candidate ranking</h4>
           <p>The local application sums mutant-minus-reference masked log-probability differences in the original reference sequence to obtain an ESM-2 score (Lin et al., 2023). Frozen Ridge regressors combine the standardized score with mutation indicators to predict the team's C295, C388 and C871 assay readouts (Hoerl and Kennard, 1970).</p>
           <p>The ranking score subtracts the mean predicted C295 and C871 readouts from predicted C388. The fitted coefficients and scoring definition come from the team's assay data.</p>
@@ -150,7 +152,7 @@
           <p>LAMAR represents RNA sequence context using a pretrained RNA language model (Zhou et al., 2025). The local application uses an adapted model to prioritize cytidines within RNA windows.</p>
           <p>The RNA-context score is independent of the selected PUF and is not an editing probability. Protein ranking and RNA-site ranking therefore remain separate outputs.</p>
 
-          <h3 id="workbench-workflow" data-model-chapter><span class="chapter-number">2.4</span>Workflow</h3>
+          <h3 id="workbench-workflow" data-model-chapter><span class="chapter-number">2.3</span>Workflow</h3>
           <ol class="software-workflow">
             <li><span class="software-step"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="30" height="28" rx="4"/><path d="M12 14h16M12 20h10M12 26h13"/></svg>Input</span><strong>Define the target</strong><p>Enter RNA, DNA or a single-record FASTA sequence. Select a cytidine using 1-based coordinates and inspect 8–12-nucleotide recognition windows.</p></li>
             <li><span class="software-step"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 12h12l4 5h14v17H5z"/><path d="M12 9V5h21v8M12 24h16M12 29h10"/></svg>Design</span><strong>Save the candidates</strong><p>Review repeat assignments, build or import candidate proteins, and retain the project as JSON.</p></li>
@@ -158,10 +160,10 @@
           </ol>
           <p>Additional exports include protein FASTA, matching-site TSV and a local HTML report. The run manifest records input and model hashes, software versions and completion status.</p>
 
-          <h3 id="workbench-references" data-model-chapter><span class="chapter-number">2.5</span>References</h3>
+          <h3 id="workbench-references" data-model-chapter><span class="chapter-number">2.4</span>References</h3>
           <ol class="software-references">{% for reference in content.metadata.workbench_references %}<li>{{ reference }}</li>{% endfor %}</ol>
 
-          <h3 id="workbench-reuse" data-model-chapter><span class="chapter-number">2.6</span>Reproducible Code</h3>
+          <h3 id="workbench-reuse" data-model-chapter><span class="chapter-number">2.5</span>Reproducible Code</h3>
           <p>The source repository is <code>pdx12320/igem_software</code>, released under the MIT license. Use Node.js 22.13 or newer:</p>
           <pre class="software-code"><code>git clone https://github.com/pdx12320/igem_software.git
 cd igem_software
