@@ -1,0 +1,15 @@
+{# Small original CSS ornaments; decorative and never interactive. #}
+<div class="footer-glints" aria-hidden="true">
+  <span class="footer-glow footer-glow--purple"></span>
+  <span class="footer-glow footer-glow--pink"></span>
+  <span class="footer-glow footer-glow--mint"></span>
+  {% for x, y, size in [(3, 18, 14), (18, 48, 7), (38, 8, 10), (66, 37, 9), (94, 17, 18), (85, 56, 6)] %}
+  <i class="footer-glint footer-glint--bubble" style="--x:{{ x }}%;--y:{{ y }}%;--size:{{ size }}px;--delay:-{{ loop.index * 4 }}s"></i>
+  {% endfor %}
+  {% for x, y, size in [(8, 37, 12), (28, 12, 8), (58, 53, 10), (78, 6, 14), (96, 47, 9)] %}
+  <i class="footer-glint footer-glint--star" style="--x:{{ x }}%;--y:{{ y }}%;--size:{{ size }}px;--delay:-{{ loop.index * 1.7 }}s"></i>
+  {% endfor %}
+  {% for x, y, size in [(12, 6, 7), (43, 42, 9), (71, 14, 7), (91, 33, 10)] %}
+  <i class="footer-glint footer-glint--cross" style="--x:{{ x }}%;--y:{{ y }}%;--size:{{ size }}px;--delay:-{{ loop.index * 2.3 }}s"></i>
+  {% endfor %}
+</div>
