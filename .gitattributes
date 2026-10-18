@@ -7,3 +7,6 @@ static/fonts/source-sans-3-OFL.txt whitespace=-blank-at-eol
 # Preserve supplied evidence bytes, including CSV CRLF and generated SVG paths.
 static/assets/model/integration-20261013/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 static/assets/model/integration-20261013/figures/*/figure.svg -text -whitespace
+
+# Keep the official RiboNext artwork byte-for-byte, including upstream CRLF/spacing.
+static/human-practices/organizations/ribonext-color.svg -text -whitespace

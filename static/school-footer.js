@@ -21,7 +21,7 @@
   let cycleWidth = 0;
 
   // One copy creates a seamless visual loop. Only the original group is in the
-  // accessibility tree and keyboard order; all 26 originals remain scrollable.
+  // accessibility tree and keyboard order; all original logos remain scrollable.
   const copy = group.cloneNode(true);
   copy.removeAttribute('data-footer-sponsor-group');
   copy.setAttribute('aria-hidden', 'true');
@@ -84,6 +84,7 @@
     });
     enlarged.src = image.currentSrc || image.src;
     enlarged.alt = image.alt;
+    dialog.classList.toggle('footer-lightbox--dark', Boolean(button.querySelector('.community-logo-surface--dark')));
     dialog.setAttribute('aria-label', image.alt);
     dialog.showModal();
     close.focus();

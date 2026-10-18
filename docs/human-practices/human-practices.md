@@ -78,7 +78,7 @@ This broadened our discussion from whether the intended edit could be achieved t
   <figcaption>Figure 5. Professor Keqiang Ye's profile card summarizes his research background and discussion points concerning project evaluation, delivery and specificity.</figcaption>
 </figure>
 
-After exploring clinical needs, we turned to experimental evaluation: what evidence is needed beyond observing editing at the intended site? We discussed this with **Professor Keqiang Ye, Dean and Chair Professor of the School of Life and Health Sciences at Shenzhen University of Advanced Technology**. His research focuses on neurodegenerative disease mechanisms, early diagnosis and small-molecule drug development.
+After exploring clinical needs, we turned to experimental evaluation: what evidence is needed beyond observing editing at the intended site? We discussed this with **Professor Keqiang Ye, Dean and Chair Professor of the Faculty of Life and Health Sciences at Shenzhen University of Advanced Technology**. His research focuses on neurodegenerative disease mechanisms, early diagnosis and small-molecule drug development.
 
 Professor Ye advised us to consider intervention timing, brain delivery and editing specificity together. Different disease stages may raise different research questions, and the period from mild cognitive impairment (MCI) to mild dementia merits further attention. Delivery studies need to examine whether vectors reach relevant brain regions and cells; vectors such as AAV9 could be investigated. He also advised us to examine changes beyond the target site, including nearby bystander editing and off-target changes elsewhere, and to compare different cell types.
 
@@ -381,7 +381,7 @@ We therefore organized the **WORLDPROOF Synthetic Biology Real-World Hackathon**
 - **Elzbieta Gralinska**: Lead of the iGEM Software & AI Village and Chief Scientist at Roche.
 - **Dr. Yannan Tian**: Co-founder of RiboNext.
 - **Jacky Yuen**: PI of the Chinese University of Hong Kong iGEM team.
-- **Duncan Chiu**: Chair of the Guangdong–Hong Kong–Macao Greater Bay Area Synthetic Biology Industry–Academia–Research Alliance and iGEM Ambassador for Asia and Oceania.
+- **Duncan Chiu**: Chair of the Greater Bay Area SynBio Alliance (iGBA) and iGEM Ambassador for Asia and Oceania.
 
 The judges brought expertise in software and artificial intelligence, biotechnology research, industrial translation, and iGEM project supervision. These backgrounds offered different perspectives during evaluation and professional feedback to help participating teams reconsider and revise their projects.
 

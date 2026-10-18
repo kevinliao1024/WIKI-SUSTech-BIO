@@ -1,0 +1,23 @@
+{
+  "retrieved_at": "2026-10-18",
+  "assets": [
+    {
+      "name": "Pearson Edexcel",
+      "role": "curriculum/reference",
+      "file": "pearson-edexcel.png",
+      "path": "static/human-practices/organizations/pearson-edexcel.png",
+      "url": "https://qualifications.pearson.com/content/dam/demo/stuntcontent/images/about/About%20our%20qualifications/Think-Again/PLogo_Horizontal_Edexcel_200x188.png",
+      "source_page": "https://qualifications.pearson.com/en/about-us/qualification-brands/edexcel.html",
+      "verification": "The official Edexcel qualification-brand page labels this image Pearson Edexcel and Pearson Edexcel Spec logo.",
+      "note": "The HP text explicitly mentions Pearson Edexcel when reviewing biology curricula; inclusion identifies that curriculum reference and does not imply sponsorship or Approved Centre status. No organization has been inferred from the AP exam label.",
+      "width": 909,
+      "height": 200,
+      "mode": "RGB",
+      "content_type": "image/png",
+      "sha256": "f027e86622393c87dd892f87a5c979f6a4d7a1388f17c4b1026c1a2a507fae72",
+      "bytes": 38216,
+      "transformation": "None; downloaded source bytes preserved.",
+      "attribution": "Pearson Edexcel; official Pearson qualification-brand page."
+    }
+  ]
+}
