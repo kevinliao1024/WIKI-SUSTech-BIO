@@ -51,9 +51,21 @@ Moving RNA editing from a research concept towards future applications requires 
   <figcaption>Figure 2. Dr. Zhifan Zhou's profile card outlines her clinical background and interview topics, including delivery, treatment burdens and patient acceptability.</figcaption>
 </figure>
 
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
+
 When designing ORCA, we first wanted to understand the clinical circumstances of people with AD. We therefore interviewed **Dr. Zhifan Zhou, Deputy Chief Physician in the Department of Neurology at Shenzhen People's Hospital**. Her work includes early screening, diagnosis and treatment of cognitive disorders, alongside genetic diagnosis and counselling for neurogenetic diseases.
 
 Dr. Zhou explained that diagnosing cognitive disorders requires medical history, cognitive assessment and relevant investigations, while ruling out other possible causes. Developments in blood biomarkers are also opening new approaches to disease assessment.[4] In her clinical experience, many patients receive a diagnosis only after symptoms become more apparent. However, more people are seeking care for mild memory decline. This encouraged us to consider early recognition and how intervention needs may differ across disease stages.
+
+</div>
+
+<figure class="hp-figure" id="hp-figure-4">
+  <img src="/assets/human-practices/images/zhou-zhifan-interview-announcement.png" alt="Introduction to a science communication programme featuring Dr. Zhifan Zhou" loading="lazy" decoding="async">
+  <figcaption>Figure 3. A science communication programme featuring Dr. Zhifan Zhou provides additional context for discussions of cognitive disorder screening, diagnosis and care.</figcaption>
+</figure>
+
+</div>
 
 When we introduced our RNA editing concept, Dr. Zhou emphasized **drug delivery**. How the editing system could cross the blood–brain barrier and reach relevant brain tissue remains a key question for future application. She also noted that research value alone does not determine acceptability among older patients. The duration of an effect, the need for repeated dosing and whether administration is invasive can directly affect their willingness to accept treatment.
 
@@ -63,12 +75,7 @@ This broadened our discussion from whether the intended edit could be achieved t
 
 <figure class="hp-figure" id="hp-figure-3">
   <img src="/assets/human-practices/images/zhou-zhifan-online-interview.webp" alt="Online interview with Dr. Zhifan Zhou" loading="lazy" decoding="async">
-  <figcaption>Figure 3. Team members interview Dr. Zhifan Zhou online about cognitive disorder diagnosis and care, and the needs relevant to ORCA's future applications.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-4">
-  <img src="/assets/human-practices/images/zhou-zhifan-interview-announcement.png" alt="Introduction to a science communication programme featuring Dr. Zhifan Zhou" loading="lazy" decoding="async">
-  <figcaption>Figure 4. A science communication programme featuring Dr. Zhifan Zhou provides additional context for discussions of cognitive disorder screening, diagnosis and care.</figcaption>
+  <figcaption>Figure 4. Team members interview Dr. Zhifan Zhou online about cognitive disorder diagnosis and care, and the needs relevant to ORCA's future applications.</figcaption>
 </figure>
 
 #### Professor Keqiang Ye: How should we judge whether an edit warrants further development?
@@ -78,18 +85,25 @@ This broadened our discussion from whether the intended edit could be achieved t
   <figcaption>Figure 5. Professor Keqiang Ye's profile card summarizes his research background and discussion points concerning project evaluation, delivery and specificity.</figcaption>
 </figure>
 
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
+
 After exploring clinical needs, we turned to experimental evaluation: what evidence is needed beyond observing editing at the intended site? We discussed this with **Professor Keqiang Ye, Dean and Chair Professor of the Faculty of Life and Health Sciences at Shenzhen University of Advanced Technology**. His research focuses on neurodegenerative disease mechanisms, early diagnosis and small-molecule drug development.
 
 Professor Ye advised us to consider intervention timing, brain delivery and editing specificity together. Different disease stages may raise different research questions, and the period from mild cognitive impairment (MCI) to mild dementia merits further attention. Delivery studies need to examine whether vectors reach relevant brain regions and cells; vectors such as AAV9 could be investigated. He also advised us to examine changes beyond the target site, including nearby bystander editing and off-target changes elsewhere, and to compare different cell types.
 
-He further emphasized that APOE has normal physiological functions, so research must examine how editing affects those functions. Target-site editing rates, APOE protein forms and related indicators such as Aβ and Tau address different questions. Validation should therefore be planned according to the research objective.
-
-These suggestions informed our work: **we have assessed editing efficiency and off-target effects, compared different cell types and investigated delivery approaches.** We therefore evaluate where editing occurs, whether unintended changes arise and whether cellular context affects performance. The corresponding research pages present the specific experimental methods and results.
+</div>
 
 <figure class="hp-figure" id="hp-figure-6">
   <img src="/assets/human-practices/images/ye-keqiang-interview-photo.webp" alt="Photograph after the interview with Professor Keqiang Ye" loading="lazy" decoding="async">
   <figcaption>Figure 6. A team member poses with Professor Keqiang Ye after an expert interview focused on evaluating ORCA research.</figcaption>
 </figure>
+
+</div>
+
+He further emphasized that APOE has normal physiological functions, so research must examine how editing affects those functions. Target-site editing rates, APOE protein forms and related indicators such as Aβ and Tau address different questions. Validation should therefore be planned according to the research objective.
+
+These suggestions informed our work: **we have assessed editing efficiency and off-target effects, compared different cell types and investigated delivery approaches.** We therefore evaluate where editing occurs, whether unintended changes arise and whether cellular context affects performance. The corresponding research pages present the specific experimental methods and results.
 
 #### Dr. Ziwei Dai: How do people make choices after learning about a technology?
 
@@ -168,7 +182,7 @@ However, funding and technical implementation constraints limited progress, and 
   <figcaption>Figure 11. The team discusses the proposed bone-conduction collaboration and implementation constraints, informing a subsequent change in direction.</figcaption>
 </figure>
 
-After discussion, we shifted towards software tools that we could develop and revise ourselves. We focused on observing home environments, daily reminders and care records, which subsequently became the Anjia Guardian mini-app. This change taught us to adapt implementation to practical constraints and enabled older adults' trial feedback to inform development. Section 2.5 describes the mini-app's functions and trial use.
+After discussion, we shifted towards software tools that we could develop and revise ourselves. We focused on observing home environments, daily reminders and care records, which subsequently became the Anjia Guardian mini-app. This change taught us to adapt implementation to practical constraints and enabled older adults' trial feedback to inform development. [The Anjia Guardian section in Inclusivity](/inclusivity#1-anjia-guardian-a-home-safety-mini-app-designed-for-older-adults) describes the mini-app's functions and trial use.
 
 ---
 
@@ -322,59 +336,23 @@ The concept focuses on whether participants can ask questions and explain their 
 
 <!-- Images pending from the team: game kit and prop designs. -->
 
-### 2.5 Anjia Guardian: A home-safety mini-app designed for older adults
+### 2.5 WORLDPROOF Hackathon: Challenging and Revising Designs
 
-Older adults need both health information and support with practical issues at home. Drawing on our care-related fieldwork and revised implementation approach, we developed **Anjia Guardian, a home-safety mini-app designed for older adults**. We also produced a web version that users can try and an accompanying code package.
-
-The mini-app brings together home-safety and daily-care functions. Users can take or upload photographs to start observing their home environment, then review prompts and records alongside a safety self-check. It also provides medication reminders, kitchen timers, an SOS dialling entry point and a care log. We aim to gather these common needs in one place, helping older adults review information and organize questions to discuss with caregivers.
-
-The interface uses large text, larger buttons and confirmation for key actions. Separate use contexts for older adults and family members support reading prompts, completing actions and reviewing records. By combining daily self-checks, reminders and care records, the mini-app supports conversations between older adults and relatives about practical issues at home.
-
-**We invited older adults in Shahe Subdistrict to try the mini-app and share their impressions.** Participants considered it useful for their needs. For the team, this feedback gave home-safety needs a more concrete use context and guided continued attention to usability and clear prompts.
-
-Anjia Guardian lets older adults experience and evaluate a tool directly. Alongside ORCA's RNA editing research, it responds to different needs: exploring possible future interventions while considering the support older adults can access in daily life now.
-
-[Try the Anjia Guardian mini-app →](https://288eace8d2414952bce58ec54b9154f2.app.workbuddy.host)
-
-<!-- Images pending from the team: mini-app interface screenshots and photographs of trial use. -->
-
-### 2.6 Biology Models to Explore by Touch: The Brain and the Cell
-
-Could we offer a more tangible way to introduce the brain and the cell beyond pictures? We collaborated with the **SUSTech 3D Printing Club** to turn structural models into physical teaching aids that participants could examine and touch.
-
-**SUSTech-BIO created the brain and cell models, and the 3D Printing Club produced the prints.** These objects help us explain structure and function, allowing participants to develop a more concrete understanding through observation and touch. In activities for children, they also provide a starting point for moving from visible shapes to scientific questions.
-
-<figure class="hp-figure" id="hp-figure-23">
-  <img src="/assets/human-practices/images/biology-models-printing-collage.webp" alt="Collage showing the production of physical brain and cell teaching models" loading="lazy" decoding="async">
-  <figcaption>Figure 23. This collage documents the painting of the physical biology models and shows the completed brain and cell teaching aids.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-24">
-  <img src="/assets/human-practices/images/biology-brain-model-render.webp" alt="Colored model of brain structure" loading="lazy" decoding="async">
-  <figcaption>Figure 24. The brain model shows its overall shape and surface folds, supporting observation from different angles and science outreach discussions.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-25">
-  <img src="/assets/human-practices/images/biology-cell-model-render.webp" alt="Colored model of animal cell structure" loading="lazy" decoding="async">
-  <figcaption>Figure 25. The colored animal cell model displays internal structures, providing a tangible teaching aid for observing and discussing cellular components.</figcaption>
-</figure>
-
-We have retained the model files for future teaching and fabrication:
-
-[Download the brain structure model (STL ZIP archive)](/assets/human-practices/models/biology-brain-model.stl.zip)
-
-[Download the animal cell structure model (STL ZIP archive)](/assets/human-practices/models/biology-animal-cell-model.stl.zip)
-
-### 2.7 WORLDPROOF Hackathon: Challenging and Revising Designs
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
 
 Discussions of synthetic biology applications raise questions beyond the underlying technology: who will use it, who will maintain it, and what happens when something goes wrong? Participants from different disciplines may draw on their experience to identify issues that designers have overlooked.
 
 We therefore organized the **WORLDPROOF Synthetic Biology Real-World Hackathon**, under the theme **“Build it. Break it. Fix it.”** Participants developed proposals while experiencing the process of challenging and revising them.
 
+</div>
+
 <figure class="hp-figure" id="hp-figure-26">
   <img src="/assets/human-practices/images/worldproof-event-poster.webp" alt="WORLDPROOF event poster" loading="lazy" decoding="async">
-  <figcaption>Figure 26. The WORLDPROOF poster presents the event schedule and judges, providing practical information for participants.</figcaption>
+  <figcaption>Figure 23. The WORLDPROOF poster presents the event schedule and judges, providing practical information for participants.</figcaption>
 </figure>
+
+</div>
 
 **We invited four judges from research, industry, and the iGEM community:**
 
@@ -391,31 +369,31 @@ We designed this format to bring feedback into the design process. Participants 
 
 <figure class="hp-figure" id="hp-figure-27">
   <img src="/assets/human-practices/images/worldproof-project-booth-01.webp" alt="ORCA exhibition booth at WORLDPROOF" loading="lazy" decoding="async">
-  <figcaption>Figure 27. The ORCA booth at WORLDPROOF displays the project poster and team materials together.</figcaption>
+  <figcaption>Figure 24. The ORCA booth at WORLDPROOF displays the project poster and team materials together.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-28">
   <img src="/assets/human-practices/images/worldproof-project-presentation.webp" alt="Project presentation at WORLDPROOF" loading="lazy" decoding="async">
-  <figcaption>Figure 28. Team members present the project at WORLDPROOF and discuss their research ideas with participants.</figcaption>
+  <figcaption>Figure 25. Team members present the project at WORLDPROOF and discuss their research ideas with participants.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-29">
   <img src="/assets/human-practices/images/worldproof-hackathon-group-photo.webp" alt="Group photograph of WORLDPROOF participants" loading="lazy" decoding="async">
-  <figcaption>Figure 29. WORLDPROOF participants and team members gather for a photograph documenting their in-person exchanges and collaboration.</figcaption>
+  <figcaption>Figure 26. WORLDPROOF participants and team members gather for a photograph documenting their in-person exchanges and collaboration.</figcaption>
 </figure>
 
 The event combined in-person exchanges with online judging, using Google Meet to connect judges in different locations for prototype presentations and discussion.
 
 <figure class="hp-figure" id="hp-figure-30">
   <img src="/assets/human-practices/images/worldproof-online-judging.webp" alt="WORLDPROOF online judging session" loading="lazy" decoding="async">
-  <figcaption>Figure 30. The online judging session connects guests in different locations for proposal presentations and discussion through screen sharing.</figcaption>
+  <figcaption>Figure 27. The online judging session connects guests in different locations for proposal presentations and discussion through screen sharing.</figcaption>
 </figure>
 
 After the event, **Zhang, a bioinformatics undergraduate who entered SUSTech in 2023**, shared his impressions with us. He thanked the team for organizing the event and spoke positively about its format. This was his first hackathon, and he felt that the new experience had taught him a great deal. He hoped to see more similar events in the future.
 
 <figure class="hp-figure" id="hp-figure-31">
   <img src="/assets/human-practices/images/worldproof-participant-feedback-interview.webp" alt="Post-event feedback discussion with a WORLDPROOF participant" loading="lazy" decoding="async">
-  <figcaption>Figure 31. Team members speak with a participant after WORLDPROOF to hear feedback on the hackathon format and participation experience.</figcaption>
+  <figcaption>Figure 28. Team members speak with a participant after WORLDPROOF to hear feedback on the hackathon format and participation experience.</figcaption>
 </figure>
 
 **The challenge materials** cover eight scenarios: living pollution sentinels in urban waters, engineered agricultural microorganisms, distributed biomanufacturing, and cell-free diagnostics in low-resource settings. They also address consumer programmable probiotics, engineered urban photosynthetic carbon-capture facilities, coastal pollution bioremediation, and community biology laboratories. Each scenario frames a hypothetical design task around a real-world issue. It provides background, a central conflict, relevant stakeholders, prototype directions, and scenarios for examining risks.
@@ -426,7 +404,7 @@ We have retained the challenge materials for other teams to consult:
 
 WORLDPROOF also helped us reflect on how we work on ORCA. After developing a design, we need to leave room for others to question it and influence its revision. Bringing feedback into the next design cycle was the practical approach we most wanted this event to convey.
 
-### 2.8 An Educational Website: Introducing Different Projects on a Shared Platform
+### 2.6 An Educational Website: Introducing Different Projects on a Shared Platform
 
 We participated in the **ICII (Into China, Into iGEM) educational collaboration initiated by NAU-China**. This year's page uses the theme “Garden of Unity,” connecting team projects through garden imagery and introducing synthetic biology through familiar cultural expressions.
 
@@ -436,7 +414,7 @@ NAU-China provided the website platform and overall framework, while SUSTech-BIO
 
 [Explore ORCA's garden page →](https://iciinau2026.cn/garden-atlas.html#team-sustech-bio)
 
-### 2.9 Online and In-Person Science Outreach: Starting with Familiar Topics
+### 2.7 Online and In-Person Science Outreach: Starting with Familiar Topics
 
 We held discussions in communities, on campus, and at a kindergarten, and shared content through our WeChat public account and Xiaohongshu. We adapted our topics and explanations to each audience. We began with health issues important to older adults, used models to help children observe, and discussed memory and life sciences with students at campus events.
 
@@ -452,12 +430,24 @@ At the campus charity fair, we ran a booth with **SUSTech-MED**, inviting studen
 
 <figure class="hp-figure" id="hp-figure-32">
   <img src="/assets/human-practices/images/campus-charity-fair-outreach-collage.webp" alt="Collage of science outreach activities at the campus charity fair" loading="lazy" decoding="async">
-  <figcaption>Figure 32. This collage shows the science outreach activities jointly organized by SUSTech-BIO and SUSTech-MED at the campus charity fair.</figcaption>
+  <figcaption>Figure 29. This collage shows the science outreach activities jointly organized by SUSTech-BIO and SUSTech-MED at the campus charity fair.</figcaption>
 </figure>
 
 #### Kindergarten Outreach: Starting with Things Children Can See and Touch
 
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
+
 We brought 3D brain and cell models to the SUSTech Kindergarten to introduce memory and cells. We also used simple yeast experiments to guide children in observing biological phenomena. Models, physical objects, and practical activities helped us explain ideas through things children could observe and describe, giving them starting points for questions.
+
+</div>
+
+<figure class="hp-figure" id="hp-figure-35">
+  <img src="/assets/human-practices/images/kindergarten-science-experiment-01.webp" alt="Simple science experiment at the kindergarten" loading="lazy" decoding="async">
+  <figcaption>Figure 30. Team members guide children through simple science experiments at the kindergarten, encouraging them to observe and describe what happens.</figcaption>
+</figure>
+
+</div>
 
 After the activity, the kindergarten teachers shared this feedback:
 
@@ -467,22 +457,17 @@ The teachers' encouragement suggested that explanations suited to children's und
 
 <figure class="hp-figure" id="hp-figure-33">
   <img src="/assets/human-practices/images/kindergarten-science-outreach-group-photo.webp" alt="Group photograph from the kindergarten science outreach activity" loading="lazy" decoding="async">
-  <figcaption>Figure 33. Team members and children at the SUSTech Kindergarten gather for a photograph documenting the model demonstrations and science activities.</figcaption>
+  <figcaption>Figure 31. Team members and children at the SUSTech Kindergarten gather for a photograph documenting the model demonstrations and science activities.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-34">
   <img src="/assets/human-practices/images/kindergarten-model-demonstration.webp" alt="Biology model demonstration at the kindergarten" loading="lazy" decoding="async">
-  <figcaption>Figure 34. Team members help children examine and touch biology models, using tangible shapes as starting points for scientific questions.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-35">
-  <img src="/assets/human-practices/images/kindergarten-science-experiment-01.webp" alt="Simple science experiment at the kindergarten" loading="lazy" decoding="async">
-  <figcaption>Figure 35. Team members guide children through simple science experiments at the kindergarten, encouraging them to observe and describe what happens.</figcaption>
+  <figcaption>Figure 32. Team members help children examine and touch biology models, using tangible shapes as starting points for scientific questions.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-36">
   <img src="/assets/human-practices/images/kindergarten-model-circle.webp" alt="Children and team members seated in a discussion circle at the kindergarten" loading="lazy" decoding="async">
-  <figcaption>Figure 36. Team members discuss the models and observations with children seated in a circle, leaving space for their questions.</figcaption>
+  <figcaption>Figure 33. Team members discuss the models and observations with children seated in a circle, leaving space for their questions.</figcaption>
 </figure>
 
 #### Academic Majors Fair: Introducing Biology-Related Fields and Research Practice
@@ -491,7 +476,7 @@ At the academic majors fair, team members introduced biology-related fields of s
 
 <figure class="hp-figure" id="hp-figure-37">
   <img src="/assets/human-practices/images/biology-majors-fair-conversation-collage.webp" alt="Collage of conversations about biology-related fields at the academic majors fair" loading="lazy" decoding="async">
-  <figcaption>Figure 37. Team members speak with students at the academic majors fair, introducing biology-related fields and the research ideas behind ORCA.</figcaption>
+  <figcaption>Figure 34. Team members speak with students at the academic majors fair, introducing biology-related fields and the research ideas behind ORCA.</figcaption>
 </figure>
 
 These activities gave us experience explaining ideas to people of different ages and educational backgrounds. Adapting our language, using physical objects, and starting with everyday topics provided concrete ways to help participants enter the discussion.
@@ -510,24 +495,31 @@ Our team was still developing its project ideas at the time. This exchange gave 
 
 <figure class="hp-figure" id="hp-figure-38">
   <img src="/assets/human-practices/images/hkust-guangzhou-visit-group-photo.webp" alt="Group photograph from the visit to the Hong Kong University of Science and Technology (Guangzhou)" loading="lazy" decoding="async">
-  <figcaption>Figure 38. Team members pose during their visit to the Hong Kong University of Science and Technology (Guangzhou), marking the start of that year's cross-team exchanges.</figcaption>
+  <figcaption>Figure 35. Team members pose during their visit to the Hong Kong University of Science and Technology (Guangzhou), marking the start of that year's cross-team exchanges.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-39">
   <img src="/assets/human-practices/images/hkust-guangzhou-project-meeting.webp" alt="Project discussion at the Hong Kong University of Science and Technology (Guangzhou)" loading="lazy" decoding="async">
-  <figcaption>Figure 39. Team members join a project discussion during the visit, sharing ideas and directions for the new year's iGEM work.</figcaption>
+  <figcaption>Figure 36. Team members join a project discussion during the visit, sharing ideas and directions for the new year's iGEM work.</figcaption>
 </figure>
 
 ### 3.2 March 28 | Guangzhou Meetup at South China Agricultural University
+
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
 
 On March 28, 2026, we attended the Guangzhou meetup at **South China Agricultural University**. We listened to previous teams share their experiences and visited an agricultural museum associated with the event.
 
 Previous teams' experiences offered useful references for organizing our work and advancing the project. The museum visit helped us connect life sciences with agricultural production and daily life, broadening our learning beyond our own project.
 
+</div>
+
 <figure class="hp-figure" id="hp-figure-40">
   <img src="/assets/human-practices/images/scau-guangzhou-meetup-event-poster.webp" alt="Poster for the Guangzhou meetup at South China Agricultural University" loading="lazy" decoding="async">
-  <figcaption>Figure 40. The Guangzhou meetup poster presents the agenda and speakers, documenting the context of the team's participation in regional exchanges.</figcaption>
+  <figcaption>Figure 37. The Guangzhou meetup poster presents the agenda and speakers, documenting the context of the team's participation in regional exchanges.</figcaption>
 </figure>
+
+</div>
 
 ### 3.3 May 17 | First Tsinghua University Synthetic Biology Creative Design Competition
 
@@ -539,17 +531,17 @@ The experience gave us further practice in designing RNA manipulation systems an
 
 <figure class="hp-figure" id="hp-figure-41">
   <img src="/assets/human-practices/images/tsinghua-creative-contest-poster-hall.webp" alt="Poster exhibition at the Tsinghua University Synthetic Biology Creative Design Competition" loading="lazy" decoding="async">
-  <figcaption>Figure 41. The poster exhibition presents participating teams' research concepts, providing materials for discussing design ideas and validation plans.</figcaption>
+  <figcaption>Figure 38. The poster exhibition presents participating teams' research concepts, providing materials for discussing design ideas and validation plans.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-42">
   <img src="/assets/human-practices/images/tsinghua-creative-contest-poster-display.webp" alt="Team proposal poster for the Tsinghua creative design competition" loading="lazy" decoding="async">
-  <figcaption>Figure 42. The team's competition poster outlines a conditional cleavage system targeting abnormal RNA in Huntington's disease and the plans for investigating it.</figcaption>
+  <figcaption>Figure 39. The team's competition poster outlines a conditional cleavage system targeting abnormal RNA in Huntington's disease and the plans for investigating it.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-43">
   <img src="/assets/human-practices/images/tsinghua-creative-contest-award.webp" alt="Third-prize certificate and medal from the Tsinghua creative design competition" loading="lazy" decoding="async">
-  <figcaption>Figure 43. The certificate and medal document the team's third prize at the First Tsinghua University Synthetic Biology Creative Design Competition.</figcaption>
+  <figcaption>Figure 40. The certificate and medal document the team's third prize at the First Tsinghua University Synthetic Biology Creative Design Competition.</figcaption>
 </figure>
 
 [Download the Tsinghua University Synthetic Biology Creative Design Competition presentation (PPTX)](/assets/human-practices/attachments/tsinghua-creative-contest-defense.pptx)
@@ -562,12 +554,12 @@ For our team, these exchanges offered opportunities to present ORCA, learn from 
 
 <figure class="hp-figure" id="hp-figure-44">
   <img src="/assets/human-practices/images/south-china-meetup-project-discussion.webp" alt="Project discussion at the South China meetup" loading="lazy" decoding="async">
-  <figcaption>Figure 44. Team members introduce ORCA to participants at the South China meetup and discuss the project presentation materials.</figcaption>
+  <figcaption>Figure 41. Team members introduce ORCA to participants at the South China meetup and discuss the project presentation materials.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-45">
   <img src="/assets/human-practices/images/south-china-meetup-display-materials.webp" alt="Display materials at the South China meetup" loading="lazy" decoding="async">
-  <figcaption>Figure 45. The booth displays a project introduction, brochures, and team merchandise for meetup participants to browse and discuss.</figcaption>
+  <figcaption>Figure 42. The booth displays a project introduction, brochures, and team merchandise for meetup participants to browse and discuss.</figcaption>
 </figure>
 
 ### 3.5 Exchanges with High School Teams
@@ -576,19 +568,19 @@ On June 27, 2026, teachers and students from the **High School Affiliated to SUS
 
 <figure class="hp-figure" id="hp-figure-46">
   <img src="/assets/human-practices/images/sustech-affiliated-high-school-project-presentation.webp" alt="Project presentation to teachers and students from the High School Affiliated to SUSTech" loading="lazy" decoding="async">
-  <figcaption>Figure 46. Team members introduce ORCA and share their research ideas with visiting teachers and students from the High School Affiliated to SUSTech.</figcaption>
+  <figcaption>Figure 43. Team members introduce ORCA and share their research ideas with visiting teachers and students from the High School Affiliated to SUSTech.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-47">
   <img src="/assets/human-practices/images/sustech-affiliated-high-school-group-photo.webp" alt="Group photograph with teachers and students from the High School Affiliated to SUSTech" loading="lazy" decoding="async">
-  <figcaption>Figure 47. Team members and visitors from the High School Affiliated to SUSTech gather for a photograph documenting exchanges across educational stages.</figcaption>
+  <figcaption>Figure 44. Team members and visitors from the High School Affiliated to SUSTech gather for a photograph documenting exchanges across educational stages.</figcaption>
 </figure>
 
 We also met the high school team **Cataverse-GreatBay** in person to share project introductions and research ideas.
 
 <figure class="hp-figure" id="hp-figure-48">
   <img src="/assets/human-practices/images/cataverse-greatbay-visit-group-photo.webp" alt="Group photograph from the exchange with Cataverse-GreatBay" loading="lazy" decoding="async">
-  <figcaption>Figure 48. Team members and the Cataverse-GreatBay team gather for a photograph after their in-person exchange.</figcaption>
+  <figcaption>Figure 45. Team members and the Cataverse-GreatBay team gather for a photograph after their in-person exchange.</figcaption>
 </figure>
 
 These exchanges connected with our curriculum comparison work. When speaking with high school students, we needed to start from familiar biological concepts. We then explained our design choices, how we planned to validate them, and how HP contributes to the research process. The discussions also helped us practice presenting technical content in ways that students at different educational stages could understand.
@@ -601,30 +593,44 @@ From August 16–19, 2026, **SUSTech-BIO, SUSTech-MED, and the University of Hon
 
 SUSTech-BIO contributed throughout the organization process, including **early planning, recruitment, agenda development, venue coordination, hosting, workshop organization, and publicity**. We needed to connect these activities so that teams could present their projects and participants could discuss specific questions.
 
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
+
 Registration opened on August 16, followed by project exchanges and thematic activities at SUSTech on August 17–18. The conference moved to the University of Hong Kong on August 19. Keynote talks, company presentations, project presentations, posters and booths, roundtables, and workshops offered different formats for exchange. Topics included therapeutics, environmental protection, biomanufacturing, food and agriculture, cancer diagnostics, and emerging tools.
 
+</div>
+
+<figure class="hp-figure" id="hp-figure-50">
+  <img src="/assets/human-practices/images/grand-apic-booth-conversation.webp" alt="Discussion at the ORCA booth during Grand APiC" loading="lazy" decoding="async">
+  <figcaption>Figure 46. Team members introduce ORCA to participants at the Grand APiC booth and listen to their feedback.</figcaption>
+</figure>
+
+</div>
+
+<div class="hp-media-row" markdown="1">
+<div class="hp-media-copy" markdown="1">
+
 We also presented ORCA as a participating team. According to the official agenda, our presentation was scheduled for **August 17, 16:00–16:20, in Room 402, the Therapeutics session, at the SUSTech Convention Center**. As both organizers and presenters, we needed to explain our own research clearly while arranging opportunities for other teams to present and discuss their work.
+
+</div>
+
+<figure class="hp-figure" id="hp-figure-51">
+  <img src="/assets/human-practices/images/grand-apic-booth-poster.webp" alt="ORCA project poster at Grand APiC" loading="lazy" decoding="async">
+  <figcaption>Figure 47. The ORCA poster displayed at the Grand APiC booth helps participants learn about the team's research.</figcaption>
+</figure>
+
+</div>
 
 Co-hosting Grand APiC gave us experience in cross-team collaboration and organizing a large event. At earlier meetings, we had learned from others' presentations. This time, we also took responsibility for the organizational work, providing a platform for more teams to exchange ideas.
 
 <figure class="hp-figure" id="hp-figure-49">
   <img src="/assets/human-practices/images/grand-apic-conference-group-photo.webp" alt="Group photograph from the first Grand APiC" loading="lazy" decoding="async">
-  <figcaption>Figure 49. Participants in the first Grand APiC gather at SUSTech for a photograph documenting cross-team exchanges at the conference.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-50">
-  <img src="/assets/human-practices/images/grand-apic-booth-conversation.webp" alt="Discussion at the ORCA booth during Grand APiC" loading="lazy" decoding="async">
-  <figcaption>Figure 50. Team members introduce ORCA to participants at the Grand APiC booth and listen to their feedback.</figcaption>
-</figure>
-
-<figure class="hp-figure" id="hp-figure-51">
-  <img src="/assets/human-practices/images/grand-apic-booth-poster.webp" alt="ORCA project poster at Grand APiC" loading="lazy" decoding="async">
-  <figcaption>Figure 51. The ORCA poster displayed at the Grand APiC booth helps participants learn about the team's research.</figcaption>
+  <figcaption>Figure 48. Participants in the first Grand APiC gather at SUSTech for a photograph documenting cross-team exchanges at the conference.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-52">
   <img src="/assets/human-practices/images/grand-apic-hku-group-photo.webp" alt="Group photograph during the University of Hong Kong activities at Grand APiC" loading="lazy" decoding="async">
-  <figcaption>Figure 52. Team members pose during Grand APiC activities at the University of Hong Kong, documenting exchanges at the conference's second venue.</figcaption>
+  <figcaption>Figure 49. Team members pose during Grand APiC activities at the University of Hong Kong, documenting exchanges at the conference's second venue.</figcaption>
 </figure>
 
 [Read the Grand APiC event introduction →](https://mp.weixin.qq.com/s/pQ7HIYhEZUV0aFMY5zydrg)
@@ -637,12 +643,12 @@ The competition offered an opportunity to present our project and exchange ideas
 
 <figure class="hp-figure" id="hp-figure-53">
   <img src="/assets/human-practices/images/synbio-challenges-project-presentation.webp" alt="Project presentation at the Synthetic Biology Innovation Competition" loading="lazy" decoding="async">
-  <figcaption>Figure 53. Team members present their research to the judges at the Fifth Synthetic Biology Innovation Competition.</figcaption>
+  <figcaption>Figure 50. Team members present their research to the judges at the Fifth Synthetic Biology Innovation Competition.</figcaption>
 </figure>
 
 <figure class="hp-figure" id="hp-figure-54">
   <img src="/assets/human-practices/images/synbio-challenges-silver-award-certificate.webp" alt="Silver-award certificate from the Synthetic Biology Innovation Competition" loading="lazy" decoding="async">
-  <figcaption>Figure 54. The certificate records the team's silver award in the Red Track for Health and Medicine at the Fifth Synthetic Biology Innovation Competition.</figcaption>
+  <figcaption>Figure 51. The certificate records the team's silver award in the Red Track for Health and Medicine at the Fifth Synthetic Biology Innovation Competition.</figcaption>
 </figure>
 
 ### 3.8 August 30 | Online Exchange at the Peking–Rice Global Summit
@@ -655,7 +661,7 @@ Preparing the presentation helped us reconnect activities that had initially see
 
 <figure class="hp-figure" id="hp-figure-55">
   <img src="/assets/human-practices/images/peking-rice-summit-participation-certificate.webp" alt="Certificate of participation in the Peking–Rice Human Practices Summit" loading="lazy" decoding="async">
-  <figcaption>Figure 55. The participation certificate records SUSTech-BIO's exchanges and presentation at the Peking–Rice Human Practices Summit.</figcaption>
+  <figcaption>Figure 52. The participation certificate records SUSTech-BIO's exchanges and presentation at the Peking–Rice Human Practices Summit.</figcaption>
 </figure>
 
 [Access the meeting recording](https://meeting.tencent.com/crm/2yd5G3OO81)
@@ -672,7 +678,7 @@ From a question to a suggestion, and then to changes in educational materials, t
 
 <figure class="hp-figure" id="hp-figure-56">
   <img src="/assets/human-practices/images/team-discussion-acknowledgements.webp" alt="Group photograph of the team discussing its work" loading="lazy" decoding="async">
-  <figcaption>Figure 56. Team members gather while discussing their work, documenting collaboration and the preparation of HP materials.</figcaption>
+  <figcaption>Figure 53. Team members gather while discussing their work, documenting collaboration and the preparation of HP materials.</figcaption>
 </figure>
 
 ---

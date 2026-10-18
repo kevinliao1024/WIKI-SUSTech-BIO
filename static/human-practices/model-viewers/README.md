@@ -28,6 +28,16 @@ segmentation metadata. The visible palette is therefore explicitly described as
 display color, not a reconstruction of the illustration's biological regions.
 No anatomical labels are inferred from that palette.
 
+`display-colors.js` uses display-only coordinate masks to approximate the painted
+posters: the brain has blue, cyan, yellow and red upper areas, an orange lower
+area and a cream base; the cell is predominantly yellow with blue/purple, cyan,
+orange and cream accents. These replace the former continuous rainbow gradient.
+The palette was visually compared with `biology-brain-model-render.webp` and
+`biology-cell-model-render.webp`. Neutral white lights and neutral tone mapping
+reduce hue shifts. The masks are an appearance approximation, not recovered
+STL materials or validated biological boundaries. The original images remain
+available through the viewer's **Original image** control.
+
 Derived meshes use vertex clustering on a 220-cell grid along the longest axis;
 only coincident/degenerate triangles are removed. Their manifests record original
 and derived SHA-256 hashes, bounds, triangle counts, NumPy version, and maximum
@@ -49,6 +59,7 @@ been added. From the repository root:
 python static/human-practices/model-viewers/derive_meshes.py --output work/new-model-meshes
 python static/human-practices/model-viewers/verify_meshes.py
 node --check static/human-practices/model-viewers/viewers.js
+node --check static/human-practices/model-viewers/display-colors.js
 ```
 
 The converter requires a new output directory and never rewrites the original

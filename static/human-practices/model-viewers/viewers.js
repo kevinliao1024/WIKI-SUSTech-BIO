@@ -1,4 +1,6 @@
 /* Lazy, local-only viewers for the team's supplied STL geometry. */
+import { DISPLAY_PALETTES, displayColorKey } from './display-colors.js';
+
 const MODELS = [
   { id: 'brain', image: 'biology-brain-model-render.webp', name: 'Brain structure', camera: [1.9, 0.35, 1.0] },
   { id: 'cell', image: 'biology-cell-model-render.webp', name: 'Animal cell structure', camera: [1.0, 1.9, -0.9] },
@@ -31,23 +33,15 @@ function button(label, action, title = label) {
 function addDisplayColors(THREE, geometry, modelId) {
   const positions = geometry.getAttribute('position');
   const colors = new Float32Array(positions.count * 3);
-  const palette = (modelId === 'brain'
-    ? ['#2358c9', '#00b7d4', '#f2cd18', '#ee5753', '#955ac9']
-    : ['#f0c719', '#ef9124', '#08b8d4', '#3d52c2', '#a26acb']
-  ).map(value => new THREE.Color(value));
+  const palette = Object.fromEntries(Object.entries(DISPLAY_PALETTES[modelId])
+    .map(([key, value]) => [key, new THREE.Color(value)]));
   const box = geometry.boundingBox;
   const size = box.getSize(new THREE.Vector3());
-  const color = new THREE.Color();
   for (let index = 0; index < positions.count; index += 1) {
     const x = (positions.getX(index) - box.min.x) / size.x;
     const y = (positions.getY(index) - box.min.y) / size.y;
     const z = (positions.getZ(index) - box.min.z) / size.z;
-    const value = Math.max(0, Math.min(0.9999, modelId === 'brain'
-      ? (0.55 * z + 0.35 * y + 0.1 * x)
-      : (0.52 * y + 0.35 * x + 0.13 * z))) * (palette.length - 1);
-    const first = Math.floor(value);
-    color.copy(palette[first]).lerp(palette[Math.min(first + 1, palette.length - 1)], value - first);
-    color.toArray(colors, index * 3);
+    palette[displayColorKey(modelId, x, y, z)].toArray(colors, index * 3);
   }
   geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 }
@@ -79,11 +73,12 @@ async function createScene(view, config) {
   // Supplied STL files use Z as their vertical axis; Three.js uses Y.
   mesh.rotation.x = -Math.PI / 2;
   scene.add(mesh);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x686b94, 1.7));
-  const key = new THREE.DirectionalLight(0xffffff, 2.3);
+  // Neutral illumination avoids tinting the reference colors blue/purple.
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xb0b0b0, 2.0));
+  const key = new THREE.DirectionalLight(0xffffff, 1.5);
   key.position.set(2, 3, 4);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xbecbff, 0.9);
+  const rim = new THREE.DirectionalLight(0xffffff, 0.55);
   rim.position.set(-3, 1, -2);
   scene.add(rim);
   const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 20);
@@ -91,8 +86,8 @@ async function createScene(view, config) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.9;
+  renderer.toneMapping = THREE.NeutralToneMapping;
+  renderer.toneMappingExposure = 1.0;
   renderer.domElement.className = 'hp-model-canvas';
   renderer.domElement.tabIndex = 0;
   renderer.domElement.setAttribute('aria-label', `${config.name} 3D model. Drag or use arrow keys to rotate, plus and minus to zoom, and R to reset.`);
@@ -168,7 +163,7 @@ function enhanceFigure(image, config) {
   status.setAttribute('aria-live', 'polite');
   const toolbar = element('div', 'hp-model-toolbar');
   toolbar.hidden = true;
-  const note = element('p', 'hp-model-note', 'Geometry from the original STL. Colors are for display and do not represent verified biological regions.');
+  const note = element('p', 'hp-model-note', 'Geometry from the original STL. Display colors approximate the original image; color boundaries are not verified biological regions.');
   shell.append(header, stage, toolbar, status, note);
   image.before(shell);
   image.classList.add('hp-model-poster');

@@ -200,7 +200,7 @@ class WikiRoutesTest(unittest.TestCase):
             with self.subTest(route=route):
                 page = self.get_text(route)
                 self.assertNotIn("onetake/", page)
-                if route == "/human-practices":
+                if route == "/inclusivity":
                     # The requested STL viewers use local Three.js, without the
                     # homepage's particle scenes or animation dependencies.
                     importmap = re.search(r'<script type="importmap">(.*?)</script>', page, re.S)
@@ -212,6 +212,29 @@ class WikiRoutesTest(unittest.TestCase):
                     self.assertIn("human-practices/model-viewers/viewers.js", page)
                 else:
                     self.assertNotIn('type="importmap"', page)
+
+    def test_inclusivity_owns_accessibility_content_and_model_viewers(self):
+        hp = self.get_text("/human-practices")
+        inclusivity = self.get_text("/inclusivity")
+        for title in [
+            "Anjia Guardian: A home-safety mini-app designed for older adults",
+            "Biology Models to Explore by Touch: The Brain and the Cell",
+        ]:
+            self.assertIn(title, inclusivity)
+            self.assertNotIn(title, hp)
+        # Catch an empty inherited-template body as well as missing figures.
+        self.assertIn("The interface uses large text", inclusivity)
+        self.assertIn("Could we offer a more tangible way", inclusivity)
+        for filename in [
+            "biology-brain-model-render.webp", "biology-cell-model-render.webp",
+            "biology-brain-model.stl.zip", "biology-animal-cell-model.stl.zip",
+        ]:
+            self.assertIn(filename, inclusivity)
+            self.assertNotIn(filename, hp)
+        self.assertIn('/inclusivity#1-anjia-guardian-', hp)
+        self.assertNotIn("human-practices/model-viewers/viewers.js", hp)
+        self.assertEqual(hp.count('class="hp-media-row"'), 7)
+        self.assertEqual(inclusivity.count('class="hp-media-row"'), 2)
 
     def test_hero_assets_are_served_from_requested_path(self):
         response = self.client.get("/assets/hero/clearance/cleaners-ready.png")
