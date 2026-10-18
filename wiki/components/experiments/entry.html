@@ -2,10 +2,24 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ entry.id }} · {{ entry.title }}</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p>{% for section in toc %}<a href="#{{ section.id }}">{{ section.name }}</a>{% endfor %}</nav>
-    <main id="entry-content" tabindex="-1">{{ body | safe }}</main>
-  </div>
+  <header class="page-intro">
+    {% if toc %}<details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections">{% for section in toc %}<a href="#{{ section.id }}">{{ section.title }}</a>{% endfor %}</nav></details>{% endif %}
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+    {% for page in pages %}
+    <section class="pdf-page" aria-label="Original page {{ page.number }} of {{ pages | length }}">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page {{ page.number }}">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page {{ page.number }}"><img src="{{ page.image }}" width="{{ page.width }}" height="{{ page.height }}" alt="Original {{ entry.id }} PDF, page {{ page.number }}" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async"></button>
+          {% for section in page.anchors %}<span class="pdf-section-anchor" id="{{ section.id }}" style="top:{{ section.top }}%" aria-hidden="true"></span>{% endfor %}
+          {% for link in page.links %}<a class="pdf-source-link" href="{{ link.url }}" target="_blank" rel="noopener" aria-label="Original PDF reference: {{ link.url }}" style="left:{{ link.left }}%;top:{{ link.top }}%;width:{{ link.width }}%;height:{{ link.height }}%"></a>{% endfor %}
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page {{ page.number }}</h2><p>{{ page.text }}</p></div>
+    </section>
+    {% endfor %}
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

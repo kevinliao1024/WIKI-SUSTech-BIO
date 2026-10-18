@@ -1,0 +1,152 @@
+{
+  "source_sha256": "2f64fa8daf8adcca7e0bb9073695f1abc4d0e7eebf85730800ed090970fe7886",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "bde05cfd42530d7f3eac1db65e1de3311bb842e8d5dd495a8315139b46852119",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 34.22288
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 81.9726
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7db272494607a659df87bde5d07069ac423d37b62178f8b4b3fbc5a1bcc7e5fe",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 20.32557
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "fc76340867701a2ee642e1a81470ba65f8d13a53101d865859798adc3f8d8119",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 38.08324
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 62.84895
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "59be11ef9beeffeed0bc73f9d9a78ff3c94f04096072ba6afb4caa567841b033",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 57.50383
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.microscope.healthcare.nikon.com/products/inverted-microscopes/eclipse-ti2-series",
+          "left": 81.99745,
+          "top": 60.22166,
+          "width": 3.92299,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.microscope.healthcare.nikon.com/products/inverted-microscopes/eclipse-ti2-series",
+          "left": 10.07937,
+          "top": 61.70642,
+          "width": 4.46854,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.nisoftware.net/NikonSaleApplication/Help/Docs-D/eng_d/camera.settings.common.html",
+          "left": 25.96987,
+          "top": 65.26983,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.nisoftware.net/NikonSaleApplication/Help/Docs-BR/eng_br/Mod_Cameras.html",
+          "left": 19.13603,
+          "top": 68.83324,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.microscopyu.com/techniques/fluorescence/fluorescent-protein-imaging-parameters",
+          "left": 25.96987,
+          "top": 72.39665,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.nisoftware.net/NikonSaleApplication/Help/Docs-D/eng_d/calibration.menu.html",
+          "left": 35.59128,
+          "top": 75.96006,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://downloads.microscope.healthcare.nikon.com/phase4/literature/Manuals/NIS-Elements_Viewer-en-5.21.00.pdf",
+          "left": 69.70807,
+          "top": 79.52347,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.microscopyu.com/glossary/photobleaching",
+          "left": 10.07937,
+          "top": 83.08689,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

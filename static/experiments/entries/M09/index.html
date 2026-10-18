@@ -2,366 +2,325 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M09 · Automated RNA Extraction</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M09 · <strong>Category:</strong> Molecular Biology</p>
-<p>M09 | ver 1.1 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Extract total RNA from cultured cells using the Vazyme VAMNE Magnetic Cell/Tissue Total RNA Kit (Prepackaged), RMA3302-02, on the VNP-32P. Cells are collected in PBS and washed once before lysis; magnetic-bead purification includes DNase I treatment for downstream reverse transcription and RNA analysis.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Manufacturer / model</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Prepackaged RNA extraction kit</td>
-<td>Vazyme RMA3302-02</td>
-<td>6 × 16 tests; Lysis Buffer, Proteinase K, Buffer TP, RDD Buffer, DNase I and prefilled plates.</td>
-</tr>
-<tr>
-<td>Automated extractor and magnetic rod sleeves</td>
-<td>Vazyme VNP-32P</td>
-<td>Compatible 96-deep-well plates and correctly seated sleeves.</td>
-</tr>
-<tr>
-<td>PBS</td>
-<td>Laboratory supply</td>
-<td>RNase-free PBS for cell collection and one wash.</td>
-</tr>
-<tr>
-<td>Tubes, tips and pipettes</td>
-<td>Axygen tips; laboratory supplies</td>
-<td>1.5 mL tubes, filtered tips and suitable pipettes.</td>
-</tr>
-<tr>
-<td>Centrifuge, vortex mixer and magnetic rack</td>
-<td>Eppendorf centrifuge; Kylin-Bell mixer; magnetic rack</td>
-<td>Cell collection, lysis mixing and removal of bead carryover.</td>
-</tr>
-<tr>
-<td>RNA quantification equipment</td>
-<td>Available laboratory instrument</td>
-<td>RNA concentration; purity/integrity assessment as needed.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use no more than 5 × 10^6 cultured cells per extraction. Split larger inputs into separate extractions. Store kit BOX 1 at 15-25°C and BOX 2 at -30 to -15°C. [1]</p>
-<p>Prepare an RNase-clean work area and label the receiving tubes. With samples and reagents outside the instrument, run the manufacturer-recommended 30 min UV decontamination cycle before use; keep the instrument closed during UV treatment. [1]</p>
-<p>Plan sample positions by row and six-column block: columns 1-6 form one sample path per row, and columns 7-12 form the second. Record the row and block for every sample; a prefilled 96-well plate supports 16 samples. [1]</p>
-<p>Have the RMA3302 extraction program available on the VNP-32P. The supplied Program.zip also contains RMA3303; select RMA3302 for this protocol. Verify the settings below before loading samples. [1, 2]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-collect-cells-and-prepare-reagents">A. Collect cells and prepare reagents</h3>
-<ol>
-<li>
-<p>Collect the cells in PBS into a clean tube and pellet them using centrifugation appropriate for the cell type. Remove the supernatant, resuspend the pellet in fresh PBS for one wash, pellet again and remove the PBS without disturbing the cells. Proceed promptly to lysis.</p>
-</li>
-<li>
-<p>Prepare fresh Pre-processing Solution using the recipe below. For N samples, prepare N+1 reactions and mix thoroughly. Use immediately. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Reagent</th>
-<th>Per sample</th>
-<th>For N samples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Lysis Buffer</td>
-<td>470 µL</td>
-<td>470 × (N+1) µL</td>
-</tr>
-<tr>
-<td>Proteinase K</td>
-<td>30 µL</td>
-<td>30 × (N+1) µL</td>
-</tr>
-<tr>
-<td>Buffer TP</td>
-<td>20 µL</td>
-<td>20 × (N+1) µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>520 µL</td>
-<td>520 × (N+1) µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="3">
-<li>
-<p>Prepare DNase I Working Solution separately: mix 47 µL RDD Buffer and 3 µL DNase I per sample. Prepare N+2 reactions, giving 50 × (N+2) µL total. [1]</p>
-</li>
-<li>
-<p>Invert the sealed RMA3302-02 plate several times to resuspend the beads. Gently flick it so that reagents collect at the bottoms of the wells, verify its orientation, then peel off the foil without jolting the plate. [1]</p>
-</li>
-</ol>
-<h3 id="b-lyse-cells-and-load-the-plate">B. Lyse cells and load the plate</h3>
-<ol start="5">
-<li>
-<p>Add 520 µL Pre-processing Solution to each washed cell pellet in a 1.5 mL tube. Immediately pipette or vortex until no cell clumps remain. Transfer the entire lysate to the assigned well in column 1 or 7, which already contains 230 µL Binding Buffer. [1]</p>
-</li>
-<li>
-<p>Add 50 µL DNase I Working Solution into the liquid in the corresponding well in column 2 or 8. Avoid dispensing onto the wall above the liquid. Confirm each sample path against the plate map below. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Columns</th>
-<th>Prefilled contents per well</th>
-<th>Operator addition / collection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1 / 7</td>
-<td>Binding Buffer, 230 µL</td>
-<td>Add all 520 µL cell lysate; total 750 µL.</td>
-</tr>
-<tr>
-<td>2 / 8</td>
-<td>Beads, 250 µL</td>
-<td>Add 50 µL DNase I Working Solution; total 300 µL.</td>
-</tr>
-<tr>
-<td>3 / 9</td>
-<td>Wash Buffer 1, 700 µL</td>
-<td>No manual addition.</td>
-</tr>
-<tr>
-<td>4 / 10</td>
-<td>Wash Buffer 2, 700 µL</td>
-<td>No manual addition.</td>
-</tr>
-<tr>
-<td>5 / 11</td>
-<td>Wash Buffer 3, 700 µL</td>
-<td>No manual addition.</td>
-</tr>
-<tr>
-<td>6 / 12</td>
-<td>Elution Buffer, 70 µL</td>
-<td>Collect RNA from the used sample positions after the run.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="c-run-automated-extraction">C. Run automated extraction</h3>
-<ol start="7">
-<li>
-<p>Place the plate in the VNP-32P with the notch toward the inner left front of the instrument. Install the magnetic rod sleeves and check that they are fully seated. [1]</p>
-</li>
-<li>
-<p>Select the RMA3302 program and verify both the stage table and shared settings below. Close the instrument and start extraction. Do not change temperatures or omit the DNase I and drying stages. [1, 2]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Position¹</th>
-<th>Mix (min)</th>
-<th>Capture (s)</th>
-<th>Wait (min)</th>
-<th>Volume (µL)</th>
-<th>Temp. (°C)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1 Lysis</td>
-<td>1</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>750</td>
-<td>58</td>
-</tr>
-<tr>
-<td>2 Beads</td>
-<td>2</td>
-<td>0.5</td>
-<td>30</td>
-<td>0</td>
-<td>300</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>3 Lysis</td>
-<td>1</td>
-<td>5</td>
-<td>60</td>
-<td>0</td>
-<td>750</td>
-<td>58</td>
-</tr>
-<tr>
-<td>4 Wash 1</td>
-<td>3</td>
-<td>1</td>
-<td>30</td>
-<td>0</td>
-<td>700</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>5 DNase I</td>
-<td>2</td>
-<td>10</td>
-<td>30</td>
-<td>0</td>
-<td>300</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>6 Wash 1</td>
-<td>3</td>
-<td>1</td>
-<td>30</td>
-<td>0</td>
-<td>700</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>7 Wash 2</td>
-<td>4</td>
-<td>1</td>
-<td>30</td>
-<td>0</td>
-<td>700</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>8 Wash 3</td>
-<td>5</td>
-<td>1</td>
-<td>30</td>
-<td>5</td>
-<td>700</td>
-<td>Off</td>
-</tr>
-<tr>
-<td>9 Elution</td>
-<td>6</td>
-<td>2.5</td>
-<td>80</td>
-<td>0</td>
-<td>70</td>
-<td>75</td>
-</tr>
-<tr>
-<td>10 Beads</td>
-<td>2</td>
-<td>0.1</td>
-<td>0</td>
-<td>0</td>
-<td>300</td>
-<td>Off</td>
-</tr>
-</tbody>
-</table>
-<p>¹ Positions 1-6 correspond to columns 1-6 and the parallel block at columns 7-12. Capture denotes the instrument's “Absorption Time” field. Off means no heating setpoint for that stage (shown as a dash in the IFU and as 0 in the program file). Times are stage settings, not a guaranteed total run duration. [1, 2]</p>
-<table>
-<thead>
-<tr>
-<th>Shared setting</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mixing speed / position / amplitude</td>
-<td>8 / 10% / 80%</td>
-</tr>
-<tr>
-<td>Absorption position / speed</td>
-<td>0 / 10</td>
-</tr>
-<tr>
-<td>Temperature control (TC) type</td>
-<td>Start with TC</td>
-</tr>
-<tr>
-<td>Absorption type</td>
-<td>Reciprocate absorption</td>
-</tr>
-<tr>
-<td>Drying position / fan</td>
-<td>Above the kit / OFF</td>
-</tr>
-</tbody>
-</table>
-<h3 id="d-recover-and-assess-rna">D. Recover and assess RNA</h3>
-<ol start="9">
-<li>
-<p>When extraction finishes, promptly transfer eluate from the used wells in columns 6 and 12 to the matching RNase-free tubes. The prefilled elution volume is 70 µL; record the volume actually recovered. Avoid beads. If beads enter a tube, place it on a magnetic rack and transfer the clear supernatant to a new tube. [1]</p>
-</li>
-<li>
-<p>Measure RNA concentration and assess purity or integrity as required for the downstream assay. Use the RNA promptly or store at -30 to -15°C for short-term storage and -85 to -65°C for long-term storage. [1]</p>
-</li>
-<li>
-<p>Remove used plates and sleeves. Wipe and disinfect work surfaces with 75% ethanol, then run the 30 min post-use UV cycle with the instrument empty and closed. [1]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Remove residual PBS before adding the fixed 520 µL lysis mixture; carrying a PBS suspension into the well changes the specified 750 µL loading volume.</p>
-<p>Plan the plate map, fresh solutions and instrument setup before lysing the first sample. Follow a consistent sample order during lysis and loading.</p>
-<p>DNase I belongs in the bead well (column 2 or 8), in the liquid. It does not go into the cell lysate or the final RNA eluate. [1]</p>
-<p>Keep the five-minute waiting/drying setting at stage 8. Use a magnetic rack for bead carryover instead of taking beads into reverse transcription. [1]</p>
-<p>DNase treatment does not itself demonstrate the absence of DNA. Include a no-reverse-transcriptase control when DNA contamination could affect the downstream assay.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Recover RNA-containing eluate from the assigned wells in columns 6 and 12. Yield depends on the cell type, input and sample condition; no fixed yield is assumed. Record RNA concentration, recovered volume and any purity/integrity measurements. Downstream reverse transcription and appropriate controls assess suitability for the intended assay.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observation</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cell clumps remain after lysis</td>
-<td>Cell input, residual PBS and mixing.</td>
-<td>Disperse clumps by pipetting or vortexing before transfer. Keep input within 5 × 10^6 cells per extraction.</td>
-</tr>
-<tr>
-<td>Low RNA recovery</td>
-<td>Pellet loss, complete lysate transfer, well assignment, bead resuspension and run completion.</td>
-<td>Trace the sample through the plate map. For subsequent runs, correct the identified loss or loading issue and use fresh pre-processing solution.</td>
-</tr>
-<tr>
-<td>Beads visible in the eluate</td>
-<td>Whether the transfer aspirated magnetic beads.</td>
-<td>Magnetically separate the beads and transfer the clear eluate to a fresh RNase-free tube. [1]</td>
-</tr>
-<tr>
-<td>Downstream no-RT control is positive</td>
-<td>DNase I addition, mixing, storage and the 10 min digestion stage.</td>
-<td>Check that 50 µL working solution entered the liquid in column 2/8. Assess DNA carryover before interpreting the RNA assay.</td>
-</tr>
-<tr>
-<td>RNA degradation or poor downstream performance</td>
-<td>Sample delay, RNase exposure, storage, overloading and incomplete washing/drying.</td>
-<td>Use fresh samples and RNase-free supplies; verify the complete program and RNA integrity. Purity ratios alone do not establish integrity.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Vazyme. VAMNE Magnetic Cell/Tissue Total RNA Kit (Prepackaged), RMA3302, Instruction for Use, Version 25.1. Sections 02-07, PDF pp. 3-6. User-supplied Manual_RMA3302_V25.1.pdf; reviewed 2026-09-27. Official download listing: <a href="https://bio.vazyme.com/download_xq/1847.html">Open source</a></p>
-<p>[2] Vazyme RMA3302 extraction program, supplied in Program.zip (Program/RMA3302). Embedded timestamp: 2026-03-04 16:59:36. Ten stage records checked against IFU V25.1; reviewed 2026-09-27. Official program listing: <a href="https://bio.vazyme.com/download_xq/1850.html">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M09 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:29.70922%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:64.3931%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Automated RNA Extraction
+
+ M09 | ver 1.1 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Extract total RNA from cultured cells using the Vazyme VAMNE Magnetic Cell/Tissue Total RNA Kit
+ (Prepackaged), RMA3302-02, on the VNP-32P. Cells are collected in PBS and washed once before
+  lysis; magnetic-bead purification includes DNase I treatment for downstream reverse transcription
+ and RNA analysis.
+
+ Materials &amp; Equipment
+
+
+   Item                              Manufacturer / model       Use / specification
+
+   Prepackaged RNA extraction kit    Vazyme RMA3302-02      6 × 16 tests; Lysis Buffer, Proteinase K, Buffer
+                                                                          TP, RDD Buffer, DNase I and prefilled plates.
+
+   Automated extractor and          Vazyme VNP-32P           Compatible 96-deep-well plates and correctly
+   magnetic rod sleeves                                            seated sleeves.
+
+   PBS                               Laboratory supply           RNase-free PBS for cell collection and one
+                                                              wash.
+
+   Tubes, tips and pipettes           Axygen tips; laboratory      1.5 mL tubes, filtered tips and suitable
+                                          supplies                        pipettes.
+
+   Centrifuge, vortex mixer and        Eppendorf centrifuge;         Cell collection, lysis mixing and removal of
+   magnetic rack                           Kylin-Bell mixer; magnetic    bead carryover.
+                                       rack
+
+  RNA quantification equipment        Available laboratory      RNA concentration; purity/integrity
+                                         instrument                   assessment as needed.
+
+
+ Before You Start
+
+ Use no more than 5 × 10^6 cultured cells per extraction. Split larger inputs into separate
+ extractions. Store kit BOX 1 at 15-25°C and BOX 2 at -30 to -15°C. [1]
+
+ Prepare an RNase-clean work area and label the receiving tubes. With samples and reagents
+ outside the instrument, run the manufacturer-recommended 30 min UV decontamination cycle before
+ use; keep the instrument closed during UV treatment. [1]
+
+ Plan sample positions by row and six-column block: columns 1-6 form one sample path per row, and
+ columns 7-12 form the second. Record the row and block for every sample; a prefilled 96-well plate
+ supports 16 samples. [1]
+
+ Have the RMA3302 extraction program available on the VNP-32P. The supplied Program.zip also
+ contains RMA3303; select RMA3302 for this protocol. Verify the settings below before loading
+ samples. [1, 2]
+
+
+
+
+M09 | v1.1                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M09 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Procedure
+
+ A. Collect cells and prepare reagents
+
+ 1. Collect the cells in PBS into a clean tube and pellet them using centrifugation appropriate for the
+      cell type. Remove the supernatant, resuspend the pellet in fresh PBS for one wash, pellet again
+    and remove the PBS without disturbing the cells. Proceed promptly to lysis.
+
+ 2. Prepare fresh Pre-processing Solution using the recipe below. For N samples, prepare N+1
+     reactions and mix thoroughly. Use immediately. [1]
+
+
+   Reagent                               Per sample                    For N samples
+
+    Lysis Buffer                       470 µL                   470 × (N+1) µL
+
+   Proteinase K                      30 µL                    30 × (N+1) µL
+
+    Buffer TP                        20 µL                    20 × (N+1) µL
+
+    Total                           520 µL                   520 × (N+1) µL
+
+ 3. Prepare DNase I Working Solution separately: mix 47 µL RDD Buffer and 3 µL DNase I per
+     sample. Prepare N+2 reactions, giving 50 × (N+2) µL total. [1]
+
+ 4. Invert the sealed RMA3302-02 plate several times to resuspend the beads. Gently flick it so that
+     reagents collect at the bottoms of the wells, verify its orientation, then peel off the foil without
+      jolting the plate. [1]
+
+ B. Lyse cells and load the plate
+
+ 5. Add 520 µL Pre-processing Solution to each washed cell pellet in a 1.5 mL tube. Immediately
+      pipette or vortex until no cell clumps remain. Transfer the entire lysate to the assigned well in
+     column 1 or 7, which already contains 230 µL Binding Buffer. [1]
+
+ 6. Add 50 µL DNase I Working Solution into the liquid in the corresponding well in column 2 or 8.
+     Avoid dispensing onto the wall above the liquid. Confirm each sample path against the plate
+    map below. [1]
+
+
+   Columns             Prefilled contents per well               Operator addition / collection
+
+   1 / 7              Binding Buffer, 230 µL               Add all 520 µL cell lysate; total 750 µL.
+
+   2 / 8             Beads, 250 µL                    Add 50 µL DNase I Working Solution; total 300 µL.
+
+   3 / 9          Wash Buffer 1, 700 µL             No manual addition.
+
+   4 / 10         Wash Buffer 2, 700 µL             No manual addition.
+
+   5 / 11         Wash Buffer 3, 700 µL             No manual addition.
+
+   6 / 12              Elution Buffer, 70 µL                        Collect RNA from the used sample positions after
+                                                                  the run.
+
+
+
+
+
+M09 | v1.1                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M09 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> C. Run automated extraction
+
+ 7. Place the plate in the VNP-32P with the notch toward the inner left front of the instrument. Install
+     the magnetic rod sleeves and check that they are fully seated. [1]
+
+ 8. Select the RMA3302 program and verify both the stage table and shared settings below. Close
+     the instrument and start extraction. Do not change temperatures or omit the DNase I and drying
+      stages. [1, 2]
+
+
+   Stage                      Position¹      Mix        Capture (s)     Wait       Volume (µL)     Temp.
+                                             (min)                        (min)                       (°C)
+
+   1 Lysis               1           2         0           0         750          58
+
+   2 Beads              2             0.5       30          0         300             Off
+
+   3 Lysis               1           5         60          0         750          58
+
+   4 Wash 1             3           1         30          0         700             Off
+
+   5 DNase I            2           10        30          0         300             Off
+
+   6 Wash 1             3           1         30          0         700             Off
+
+   7 Wash 2             4           1         30          0         700             Off
+
+   8 Wash 3             5           1         30          5         700             Off
+
+   9 Elution             6             2.5       80          0         70           75
+
+   10 Beads             2             0.1       0           0         300             Off
+
+ ¹ Positions 1-6 correspond to columns 1-6 and the parallel block at columns 7-12. Capture denotes
+ the instrument&#39;s “Absorption Time” field. Off means no heating setpoint for that stage (shown as a
+ dash in the IFU and as 0 in the program file). Times are stage settings, not a guaranteed total run
+ duration. [1, 2]
+
+
+   Shared setting                                    Value
+
+   Mixing speed / position / amplitude              8 / 10% / 80%
+
+   Absorption position / speed                    0 / 10
+
+   Temperature control (TC) type                           Start with TC
+
+   Absorption type                                     Reciprocate absorption
+
+   Drying position / fan                          Above the kit / OFF
+
+
+
+
+
+M09 | v1.1                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M09 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:29.64983%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:57.0881%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> D. Recover and assess RNA
+
+ 9. When extraction finishes, promptly transfer eluate from the used wells in columns 6 and 12 to the
+     matching RNase-free tubes. The prefilled elution volume is 70 µL; record the volume actually
+     recovered. Avoid beads. If beads enter a tube, place it on a magnetic rack and transfer the
+     clear supernatant to a new tube. [1]
+
+ 10. Measure RNA concentration and assess purity or integrity as required for the downstream
+     assay. Use the RNA promptly or store at -30 to -15°C for short-term storage and -85 to -65°C
+      for long-term storage. [1]
+
+ 11. Remove used plates and sleeves. Wipe and disinfect work surfaces with 75% ethanol, then run
+     the 30 min post-use UV cycle with the instrument empty and closed. [1]
+
+ p.s.
+
+
+ Remove residual PBS before adding the fixed 520 µL lysis mixture; carrying a PBS suspension into
+ the well changes the specified 750 µL loading volume.
+
+ Plan the plate map, fresh solutions and instrument setup before lysing the first sample. Follow a
+ consistent sample order during lysis and loading.
+
+ DNase I belongs in the bead well (column 2 or 8), in the liquid. It does not go into the cell lysate or
+ the final RNA eluate. [1]
+
+ Keep the five-minute waiting/drying setting at stage 8. Use a magnetic rack for bead carryover
+ instead of taking beads into reverse transcription. [1]
+
+ DNase treatment does not itself demonstrate the absence of DNA. Include a no-reverse-transcriptase
+ control when DNA contamination could affect the downstream assay.
+
+ Expected Outcome
+
+ Recover RNA-containing eluate from the assigned wells in columns 6 and 12. Yield depends on the
+ cell type, input and sample condition; no fixed yield is assumed. Record RNA concentration,
+ recovered volume and any purity/integrity measurements. Downstream reverse transcription and
+ appropriate controls assess suitability for the intended assay.
+
+
+
+
+
+M09 | v1.1                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original M09 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:44.61616%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://bio.vazyme.com/download_xq/1847.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://bio.vazyme.com/download_xq/1847.html" style="left:22.28239%;top:50.30349%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://bio.vazyme.com/download_xq/1850.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://bio.vazyme.com/download_xq/1850.html" style="left:14.90299%;top:55.35166%;width:8.85807%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Troubleshooting
+
+
+   Observation               Check first                         Action
+
+    Cell clumps remain after       Cell input, residual PBS and         Disperse clumps by pipetting or vortexing
+    lysis                          mixing.                           before transfer. Keep input within 5 × 10^6
+                                                                                    cells per extraction.
+
+   Low RNA recovery              Pellet loss, complete lysate          Trace the sample through the plate map. For
+                                      transfer, well assignment, bead     subsequent runs, correct the identified loss or
+                                resuspension and run               loading issue and use fresh pre-processing
+                                 completion.                            solution.
+
+   Beads visible in the eluate    Whether the transfer aspirated      Magnetically separate the beads and transfer
+                               magnetic beads.                     the clear eluate to a fresh RNase-free tube. [1]
+
+   Downstream no-RT control    DNase I addition, mixing,         Check that 50 µL working solution entered the
+     is positive                    storage and the 10 min digestion     liquid in column 2/8. Assess DNA carryover
+                                  stage.                            before interpreting the RNA assay.
+
+  RNA degradation or poor    Sample delay, RNase exposure,    Use fresh samples and RNase-free supplies;
+   downstream performance     storage, overloading and             verify the complete program and RNA
+                                incomplete washing/drying.           integrity. Purity ratios alone do not establish
+                                                                                  integrity.
+
+
+ Reference
+
+  [1] Vazyme. VAMNE Magnetic Cell/Tissue Total RNA Kit (Prepackaged), RMA3302, Instruction for Use, Version
+ 25.1. Sections 02-07, PDF pp. 3-6. User-supplied Manual_RMA3302_V25.1.pdf; reviewed 2026-09-27. Official
+ download listing: Open source
+
+  [2] Vazyme RMA3302 extraction program, supplied in Program.zip (Program/RMA3302). Embedded timestamp:
+ 2026-03-04 16:59:36. Ten stage records checked against IFU V25.1; reviewed 2026-09-27. Official program
+  listing: Open source
+
+
+
+
+
+M09 | v1.1                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

@@ -2,205 +2,310 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MR03 · miRNA Mimic Transfection</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> MR03 · <strong>Category:</strong> miRNA Regulation</p>
-<p>MR03 | ver 1.1 | Revised 2026-10-14</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Introduce synthetic miRNA mimics into adherent cells using Lipofectamine RNAiMAX for miRNA functional studies. The reference setup uses the existing HEK293T / miR-124-3p mimic workflow: 30 nM mimic in 1 mL final volume per 12-well plate well. [1]</p>
-<p>The 30 nM working concentration matches GenePharma’s general mimic starting guidance. Cell condition, lipid dose and RNA dose still require assessment for each cell line. [4]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>miR-124-3p mimic and matched NC mimic</td>
-<td>GenePharma; hsa-miR-124-3p and matched mimic NC</td>
-<td>Lyophilized mimic / NC, 2 OD per tube in the supplied order; prepare 20 µM stocks [5]</td>
-</tr>
-<tr>
-<td>Lipofectamine RNAiMAX</td>
-<td>Invitrogen; RNAiMAX product family [2]</td>
-<td>Small-RNA transfection reagent; store at 4°C without freezing</td>
-</tr>
-<tr>
-<td>Opti-MEM Reduced Serum Medium</td>
-<td>Gibco</td>
-<td>Serum-free dilution medium for the two complex-preparation tubes</td>
-</tr>
-<tr>
-<td>DEPC-treated water</td>
-<td>Sangon Biotech</td>
-<td>RNase-free water for oligonucleotide reconstitution and stock dilution</td>
-</tr>
-<tr>
-<td>Growth medium for HEK293T</td>
-<td>Gibco DMEM + Cellmax FBS</td>
-<td>Use the established C01 formulation without added antibiotics during this adapted transfection workflow</td>
-</tr>
-<tr>
-<td>12-well culture plate; RNase-free tubes and tips</td>
-<td>Axygen tips; laboratory cultureware</td>
-<td>Tissue-culture-treated plate; separate tubes for target and control complexes</td>
-</tr>
-<tr>
-<td>Pipettes; centrifuge; microscope</td>
-<td>Eppendorf centrifuge; laboratory equipment</td>
-<td>Liquid handling, brief tube spin and morphology / confluence checks</td>
-</tr>
-<tr>
-<td>Cell culture cabinet; CO2 incubator</td>
-<td>Laboratory equipment</td>
-<td>Aseptic handling; 37°C and 5% CO2 for routine HEK293T culture</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Plan target mimic and a matched non-targeting mimic control at equal RNA concentration and lipid dose. Include untreated cells and a reagent-only mock when assessing baseline health and lipid effects. Identify wells before preparing complexes.</p>
-<p>Target healthy, attached HEK293T cells at approximately 60–70% confluence, as in the earlier workflow. Seed in advance using C01/C04 and the observed growth rate. This target falls within both suppliers’ confluence guidance. [1, 2, 4]</p>
-<p>Check the oligonucleotide identity, amount, diluent and labeled stock concentration. Use the delivered nmol amount or the supplier’s conversion for that exact duplex. Do not treat OD as a universal molar unit.</p>
-<p>Prepare serum-free Opti-MEM for complex formation. Receiving wells may contain serum. Antibiotic-free growth medium follows the earlier project workflow; RNAiMAX itself does not universally require antibiotics to be excluded. [1, 2]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-prepare-the-oligonucleotide-stocks">A. Prepare the oligonucleotide stocks</h3>
-<ol>
-<li>Centrifuge the unopened lyophilized mimic tube below 4,000 × g for 4–5 min to collect the powder. Reconstitute target mimic and NC separately with DEPC-treated water. Pipette gently to dissolve, then briefly spin down. [5]</li>
-</ol>
-<p>For GenePharma double-stranded mimics, the manual specifies 125 µL DEPC-treated water per OD to make a nominal 20 µM stock: a 2 OD tube therefore receives 250 µL. If the batch certificate specifies the amount in nmol, calculate volume (µL) = nmol × 1000 / 20 and follow the batch-specific value. This OD conversion does not apply to single-stranded products. [3, 5]</p>
-<ol start="2">
-<li>Label stocks with identity, 20 µM concentration and preparation date. Divide into approximately 10–15 µL working aliquots, seal securely and store at -80°C. Minimize repeated freeze-thaw cycles; the supplied manual recommends using dissolved aliquots within 3 months. [1, 5]</li>
-</ol>
-<h3 id="b-calculate-each-formulation">B. Calculate each formulation</h3>
-<ol start="3">
-<li>For each target or control formulation, calculate all ingredients from the same number of well-equivalents. Use 20 µM = 20 pmol/µL; 30 pmol divided by 1 mL final culture volume gives 30 nM. [1]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component / stage</th>
-<th>One 12-well well</th>
-<th>Six wells + 10% excess</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tube A: 20 µM mimic or NC</td>
-<td>1.5 µL (30 pmol)</td>
-<td>9.9 µL (198 pmol)</td>
-</tr>
-<tr>
-<td>Tube A: Opti-MEM</td>
-<td>48.5 µL</td>
-<td>320.1 µL</td>
-</tr>
-<tr>
-<td>Tube B: RNAiMAX</td>
-<td>3.0 µL</td>
-<td>19.8 µL</td>
-</tr>
-<tr>
-<td>Tube B: Opti-MEM</td>
-<td>47.0 µL</td>
-<td>310.2 µL</td>
-</tr>
-<tr>
-<td>Combined A + B</td>
-<td>100 µL</td>
-<td>660 µL; dispense 100 µL/well</td>
-</tr>
-<tr>
-<td>Growth medium already in each well</td>
-<td>900 µL</td>
-<td>900 µL per well</td>
-</tr>
-</tbody>
-</table>
-<p>Each A or B tube totals 50 µL per well, or 330 µL for six wells plus excess. Prepare separate mixtures for target and NC. For N wells with 10% excess, multiply every single-well complex ingredient by N × 1.10. [1]</p>
-<p>The 3 µL RNAiMAX dose is the earlier 12-well adaptation of the manufacturer’s 1.5 µL per 24-well starting amount. Keep lipid dose and RNA dose separately adjustable during optimization. [1, 2]</p>
-<h3 id="c-form-and-add-the-complexes">C. Form and add the complexes</h3>
-<ol start="4">
-<li>
-<p>Inspect attachment, confluence and morphology. Adjust each receiving well to 900 µL of fresh growth medium, keeping the composition identical across groups. [1]</p>
-</li>
-<li>
-<p>Prepare Tube A by diluting the mimic or NC in Opti-MEM to the calculated total volume. Prepare Tube B separately by diluting RNAiMAX in Opti-MEM. Mix gently. [1]</p>
-</li>
-<li>
-<p>Add Tube A to its corresponding Tube B, mix gently and incubate for 5 min at room temperature. Start timing after the solutions have been combined. [1]</p>
-</li>
-<li>
-<p>Add 100 µL of the appropriate complex mixture to each well. Distribute it across the medium, then gently rock the plate forward-backward and left-right to mix. [1]</p>
-</li>
-</ol>
-<p>For a reagent-only mock, replace the 1.5 µL oligonucleotide stock with the same diluent while keeping 3 µL RNAiMAX and 100 µL total complex-preparation volume. Untreated wells receive 1 mL growth medium without lipid or mimic. These controls answer different questions.</p>
-<h3 id="d-incubate-and-assess">D. Incubate and assess</h3>
-<ol start="8">
-<li>Return HEK293T cultures to 37°C and 5% CO2. Record cell morphology around 24 h and collect the planned functional readout within the selected 24–72 h window. Compare all groups at the same elapsed time. [1]</li>
-</ol>
-<p>RNAiMAX does not require immediate complex removal. For assays continuing beyond 24 h, GenePharma suggests replacing the medium at about 24 h to support viability. Apply the same schedule to all groups; a second plasmid transfection follows C04 and the experiment-specific design. [2, 4]</p>
-<ol start="9">
-<li>Assess cell health and a target-relevant functional readout against the matched NC. For mature-miRNA measurement, use small-RNA-preserving extraction such as MR01 and an appropriate miRNA RT assay; interpret abundance together with function.</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Count the 100 µL complex mixture within the 1 mL final volume. Adding it to an existing 1 mL of medium produces 1.1 mL and approximately 27.3 nM, not 30 nM.</p>
-<p>Opti-MEM in the recipe is added to a defined total: 48.5 µL plus 1.5 µL RNA, and 47 µL plus 3 µL lipid. Adding 50 µL Opti-MEM to each tube would change the dispensing volumes.</p>
-<p>Use the matched mimic NC. The delivery also lists a separate 0.50 OD “Negative control”; its function is not established by that label, so it is not substituted for the 2 OD mimic NC. [5]</p>
-<p>Use functional evidence to judge miRNA activity. A stronger miRNA qPCR signal or uptake of a fluorescent control alone does not establish the intended target effect.</p>
-<p>For experiments involving a second transfection, monitor the combined stress and include controls that receive the same treatment schedule. A broad decrease in cell health or signal cannot be assigned specifically to an MRE.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Cells should remain suitable for the planned assay, with morphology and viability documented alongside target and control identities, RNA dose, lipid dose and timing. A mimic effect is assessed relative to its matched NC and an appropriate functional control; no fixed suppression percentage is assumed. [4]</p>
-<p>For an MRE reporter experiment, compare the mimic effect on constructs with and without the relevant MRE. This comparison helps distinguish sequence-dependent regulation from general treatment effects.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Rounding, detachment or poor viability</td>
-<td>Untreated, mock and NC cultures; input density and medium</td>
-<td>If mock is also affected, reassess lipid dose and culture condition. If the effect tracks the target mimic, assess RNA dose and biology with matched controls before attributing mechanism.</td>
-</tr>
-<tr>
-<td>Little or no functional effect</td>
-<td>Product identity, stock calculation, timing and assay responsiveness</td>
-<td>Verify the target and NC labels, then test delivery and a responsive functional control. Optimize RNA and lipid doses with viability readouts.</td>
-</tr>
-<tr>
-<td>Large variation among wells</td>
-<td>Cell distribution, final volumes, dispensing and timing</td>
-<td>Use a shared mixture for each condition, ensure equal complex volumes and distribute complexes consistently. Keep independent culture wells distinct from technical assay repeats.</td>
-</tr>
-<tr>
-<td>NC changes the readout</td>
-<td>NC chemistry, mock behavior and downstream assay</td>
-<td>Confirm a matched NC and compare with untreated/mock wells. Evaluate sequence-independent treatment effects before using the NC as the sole baseline.</td>
-</tr>
-<tr>
-<td>miRNA signal increases but target readout is unchanged</td>
-<td>Assay specificity, target responsiveness and endpoint timing</td>
-<td>Do not equate measured abundance with functional activity. Check a target-responsive assay and the relevant biological context.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Project protocols: miR-124-3p mimic 12-well transfection and GFAMRE M2 sequential transfection v1.4, sections D2 and F1–F4. GFA+MRE/M2/MRE/. Reopened 2026-10-03.</p>
-<p>[2] Thermo Fisher Scientific. Lipofectamine RNAiMAX Reagent Protocol, MAN0007825, Rev. 1.0 (2013), pp. 1–2. Product handling, confluence, complex preparation and per-well lipid dose. Accessed 2026-10-03. <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf">Open source</a></p>
-<p>[3] GenePharma. microRNA mimics Product Manual, pp. 2–4; revision/date not printed. Double-stranded product handling, OD-based reconstitution and storage. Accessed 2026-10-03. <a href="https://www.genepharma.com/public/upload/1744183177_1214846978.pdf">Open source</a></p>
-<p>[4] GenePharma. miRNA Mimics Usage: transfection starting points and optimization. 12-well dose / final volume, confluence guidance and 24 h medium replacement. Accessed 2026-10-03. <a href="https://www.genepharma.com/en/miRNA-mimics/usage/">Open source</a></p>
-<p>[5] GenePharma. Supplied miRNA manual B072-V001-20240913, pp. 2–4; delivery note dated 17 August 2026. User-supplied photographs reviewed 2026-10-03.</p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original MR03 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:32.38178%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:76.68687%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>miRNA Mimic Transfection
+
+ MR03 | ver 1.1 | Revised 2026-10-14
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Introduce synthetic miRNA mimics into adherent cells using Lipofectamine RNAiMAX for miRNA
+ functional studies. The reference setup uses the existing HEK293T / miR-124-3p mimic workflow: 30
+ nM mimic in 1 mL final volume per 12-well plate well. [1]
+
+ The 30 nM working concentration matches GenePharma’s general mimic starting guidance. Cell
+ condition, lipid dose and RNA dose still require assessment for each cell line. [4]
+
+ Materials &amp; Equipment
+
+
+   Item                             Supplier / identifier             Use / specification
+
+
+   miR-124-3p mimic and          GenePharma; hsa-miR-124-3p      Lyophilized mimic / NC, 2 OD per tube in
+   matched NC mimic            and matched mimic NC            the supplied order; prepare 20 µM stocks [5]
+
+
+   Lipofectamine RNAiMAX          Invitrogen; RNAiMAX product     Small-RNA transfection reagent; store at 4°C
+                                      family [2]                         without freezing
+
+
+   Opti-MEM Reduced Serum      Gibco                            Serum-free dilution medium for the two
+   Medium                                                         complex-preparation tubes
+
+
+   DEPC-treated water            Sangon Biotech                  RNase-free water for oligonucleotide
+                                                                              reconstitution and stock dilution
+
+
+   Growth medium for HEK293T    Gibco DMEM + Cellmax FBS     Use the established C01 formulation without
+                                                         added antibiotics during this adapted
+                                                                             transfection workflow
+
+
+   12-well culture plate;          Axygen tips; laboratory             Tissue-culture-treated plate; separate tubes
+   RNase-free tubes and tips        cultureware                          for target and control complexes
+
+
+    Pipettes; centrifuge;             Eppendorf centrifuge;              Liquid handling, brief tube spin and
+   microscope                      laboratory equipment            morphology / confluence checks
+
+
+    Cell culture cabinet; CO2        Laboratory equipment             Aseptic handling; 37°C and 5% CO2 for
+   incubator                                                              routine HEK293T culture
+
+
+ Before You Start
+
+ Plan target mimic and a matched non-targeting mimic control at equal RNA concentration and lipid
+ dose. Include untreated cells and a reagent-only mock when assessing baseline health and lipid
+ effects. Identify wells before preparing complexes.
+
+ Target healthy, attached HEK293T cells at approximately 60–70% confluence, as in the earlier
+ workflow. Seed in advance using C01/C04 and the observed growth rate. This target falls within
+ both suppliers’ confluence guidance. [1, 2, 4]
+
+
+
+MR03 | v1.1                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original MR03 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:20.32557%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Check the oligonucleotide identity, amount, diluent and labeled stock concentration. Use the
+ delivered nmol amount or the supplier’s conversion for that exact duplex. Do not treat OD as a
+ universal molar unit.
+
+ Prepare serum-free Opti-MEM for complex formation. Receiving wells may contain serum.
+ Antibiotic-free growth medium follows the earlier project workflow; RNAiMAX itself does not
+ universally require antibiotics to be excluded. [1, 2]
+
+ Procedure
+
+ A. Prepare the oligonucleotide stocks
+
+ 1. Centrifuge the unopened lyophilized mimic tube below 4,000 × g for 4–5 min to collect the
+     powder. Reconstitute target mimic and NC separately with DEPC-treated water. Pipette gently to
+      dissolve, then briefly spin down. [5]
+
+ For GenePharma double-stranded mimics, the manual specifies 125 µL DEPC-treated water per OD
+ to make a nominal 20 µM stock: a 2 OD tube therefore receives 250 µL. If the batch certificate
+ specifies the amount in nmol, calculate volume (µL) = nmol × 1000 / 20 and follow the
+ batch-specific value. This OD conversion does not apply to single-stranded products. [3, 5]
+
+ 2. Label stocks with identity, 20 µM concentration and preparation date. Divide into approximately
+    10–15 µL working aliquots, seal securely and store at -80°C. Minimize repeated freeze-thaw
+      cycles; the supplied manual recommends using dissolved aliquots within 3 months. [1, 5]
+
+ B. Calculate each formulation
+
+ 3. For each target or control formulation, calculate all ingredients from the same number of
+      well-equivalents. Use 20 µM = 20 pmol/µL; 30 pmol divided by 1 mL final culture volume gives
+    30 nM. [1]
+
+
+   Component / stage                      One 12-well well              Six wells + 10% excess
+
+
+   Tube A: 20 µM mimic or NC                     1.5 µL (30 pmol)             9.9 µL (198 pmol)
+
+
+   Tube A: Opti-MEM                            48.5 µL                   320.1 µL
+
+
+   Tube B: RNAiMAX                             3.0 µL                     19.8 µL
+
+
+   Tube B: Opti-MEM                            47.0 µL                   310.2 µL
+
+
+   Combined A + B                          100 µL                  660 µL; dispense 100 µL/well
+
+
+   Growth medium already in each well           900 µL                  900 µL per well
+
+ Each A or B tube totals 50 µL per well, or 330 µL for six wells plus excess. Prepare separate
+ mixtures for target and NC. For N wells with 10% excess, multiply every single-well complex
+ ingredient by N × 1.10. [1]
+
+ The 3 µL RNAiMAX dose is the earlier 12-well adaptation of the manufacturer’s 1.5 µL per 24-well
+ starting amount. Keep lipid dose and RNA dose separately adjustable during optimization. [1, 2]
+
+
+
+
+
+MR03 | v1.1                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original MR03 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:59.10737%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> C. Form and add the complexes
+
+ 4. Inspect attachment, confluence and morphology. Adjust each receiving well to 900 µL of fresh
+     growth medium, keeping the composition identical across groups. [1]
+
+ 5. Prepare Tube A by diluting the mimic or NC in Opti-MEM to the calculated total volume. Prepare
+     Tube B separately by diluting RNAiMAX in Opti-MEM. Mix gently. [1]
+
+ 6. Add Tube A to its corresponding Tube B, mix gently and incubate for 5 min at room temperature.
+      Start timing after the solutions have been combined. [1]
+
+ 7. Add 100 µL of the appropriate complex mixture to each well. Distribute it across the medium,
+     then gently rock the plate forward-backward and left-right to mix. [1]
+
+ For a reagent-only mock, replace the 1.5 µL oligonucleotide stock with the same diluent while
+ keeping 3 µL RNAiMAX and 100 µL total complex-preparation volume. Untreated wells receive 1
+ mL growth medium without lipid or mimic. These controls answer different questions.
+
+ D. Incubate and assess
+
+ 8. Return HEK293T cultures to 37°C and 5% CO2. Record cell morphology around 24 h and
+      collect the planned functional readout within the selected 24–72 h window. Compare all groups
+      at the same elapsed time. [1]
+
+ RNAiMAX does not require immediate complex removal. For assays continuing beyond 24 h,
+ GenePharma suggests replacing the medium at about 24 h to support viability. Apply the same
+ schedule to all groups; a second plasmid transfection follows C04 and the experiment-specific
+ design. [2, 4]
+
+ 9. Assess cell health and a target-relevant functional readout against the matched NC. For
+     mature-miRNA measurement, use small-RNA-preserving extraction such as MR01 and an
+     appropriate miRNA RT assay; interpret abundance together with function.
+
+ p.s.
+
+
+ Count the 100 µL complex mixture within the 1 mL final volume. Adding it to an existing 1 mL of
+ medium produces 1.1 mL and approximately 27.3 nM, not 30 nM.
+
+ Opti-MEM in the recipe is added to a defined total: 48.5 µL plus 1.5 µL RNA, and 47 µL plus 3 µL
+  lipid. Adding 50 µL Opti-MEM to each tube would change the dispensing volumes.
+
+ Use the matched mimic NC. The delivery also lists a separate 0.50 OD “Negative control”; its
+ function is not established by that label, so it is not substituted for the 2 OD mimic NC. [5]
+
+ Use functional evidence to judge miRNA activity. A stronger miRNA qPCR signal or uptake of a
+ fluorescent control alone does not establish the intended target effect.
+
+ For experiments involving a second transfection, monitor the combined stress and include controls
+ that receive the same treatment schedule. A broad decrease in cell health or signal cannot be
+ assigned specifically to an MRE.
+
+
+
+
+
+MR03 | v1.1                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original MR03 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="expected-outcome" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:25.25496%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:71.22297%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://assets.thermofisher.com/TFS-Assets/LSG/manuals/Lipofectamine_RNAiMAX_Reag_protocol.pdf" style="left:78.16897%;top:78.98896%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.genepharma.com/public/upload/1744183177_1214846978.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.genepharma.com/public/upload/1744183177_1214846978.pdf" style="left:58.96158%;top:82.55237%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.genepharma.com/en/miRNA-mimics/usage/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.genepharma.com/en/miRNA-mimics/usage/" style="left:62.43277%;top:86.11579%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> Expected Outcome
+
+ Cells should remain suitable for the planned assay, with morphology and viability documented
+ alongside target and control identities, RNA dose, lipid dose and timing. A mimic effect is assessed
+ relative to its matched NC and an appropriate functional control; no fixed suppression percentage is
+ assumed. [4]
+
+ For an MRE reporter experiment, compare the mimic effect on constructs with and without the
+ relevant MRE. This comparison helps distinguish sequence-dependent regulation from general
+ treatment effects.
+
+ Troubleshooting
+
+
+   Observed problem         Check first                           Action
+
+
+   Rounding, detachment or    Untreated, mock and NC cultures;        If mock is also affected, reassess lipid dose
+   poor viability                 input density and medium          and culture condition. If the effect tracks the
+                                                                         target mimic, assess RNA dose and biology
+                                                                       with matched controls before attributing
+                                                              mechanism.
+
+
+     Little or no functional        Product identity, stock calculation,     Verify the target and NC labels, then test
+    effect                        timing and assay responsiveness       delivery and a responsive functional control.
+                                                               Optimize RNA and lipid doses with viability
+                                                                     readouts.
+
+
+   Large variation among       Cell distribution, final volumes,       Use a shared mixture for each condition,
+   wells                       dispensing and timing                ensure equal complex volumes and distribute
+                                                             complexes consistently. Keep independent
+                                                                            culture wells distinct from technical assay
+                                                                       repeats.
+
+
+  NC changes the readout   NC chemistry, mock behavior and    Confirm a matched NC and compare with
+                           downstream assay                  untreated/mock wells. Evaluate
+                                                                 sequence-independent treatment effects before
+                                                                      using the NC as the sole baseline.
+
+
+  miRNA signal increases     Assay specificity, target           Do not equate measured abundance with
+   but target readout is         responsiveness and endpoint           functional activity. Check a target-responsive
+   unchanged                   timing                             assay and the relevant biological context.
+
+
+ Reference
+
+  [1] Project protocols: miR-124-3p mimic 12-well transfection and GFAMRE M2 sequential transfection v1.4, sections
+ D2 and F1–F4. GFA+MRE/M2/MRE/. Reopened 2026-10-03.
+
+  [2] Thermo Fisher Scientific. Lipofectamine RNAiMAX Reagent Protocol, MAN0007825, Rev. 1.0 (2013), pp. 1–2.
+ Product handling, confluence, complex preparation and per-well lipid dose. Accessed 2026-10-03. Open source
+
+  [3] GenePharma. microRNA mimics Product Manual, pp. 2–4; revision/date not printed. Double-stranded product
+ handling, OD-based reconstitution and storage. Accessed 2026-10-03. Open source
+
+  [4] GenePharma. miRNA Mimics Usage: transfection starting points and optimization. 12-well dose / final volume,
+ confluence guidance and 24 h medium replacement. Accessed 2026-10-03. Open source
+
+  [5] GenePharma. Supplied miRNA manual B072-V001-20240913, pp. 2–4; delivery note dated 17 August 2026.
+ User-supplied photographs reviewed 2026-10-03.
+
+
+
+MR03 | v1.1                                                                             4</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

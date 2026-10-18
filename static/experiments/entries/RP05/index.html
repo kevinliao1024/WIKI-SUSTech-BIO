@@ -2,228 +2,337 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RP05 · Fluorescence Measurement Using a Microplate Reader</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> RP05 · <strong>Category:</strong> Reporter System</p>
-<p>RP05 | ver 1.1 | Revised 2026-10-14</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Measure reporter fluorescence directly from adherent 293T cells in clear Thermo Scientific Nunc 12-well culture plates using a Varioskan LUX reader and SkanIt Software. Replace culture medium with 1 mL PBS per well, then acquire multipoint fluorescence from below the plate at 37°C without shaking.</p>
-<p>Single-point readings are generally unsuitable as a representative whole-well measurement for this adherent-cell workflow: uneven cell coverage or reporter distribution can make one location misleading. Use multipoint bottom reading with a consistent sampling pattern. [2]</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Provider / Identifier</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Adherent 293T samples</td>
-<td>Laboratory cell stocks</td>
-<td>Reporter-expressing cells at the planned measurement endpoint; retain cells in their original culture wells.</td>
-</tr>
-<tr>
-<td>Clear 12-well culture plate</td>
-<td>Thermo Scientific Nunc; catalog number not recorded</td>
-<td>Read the original plate directly. Match the software plate template and no-lid adapter to the actual plate.</td>
-</tr>
-<tr>
-<td>PBS</td>
-<td>Laboratory PBS stock</td>
-<td>Gentle rinsing; 1 mL fresh PBS per sample well and PBS-only blank well.</td>
-</tr>
-<tr>
-<td>Microplate reader and adapter</td>
-<td>Varioskan LUX; local display: 3020-460</td>
-<td>Bottom-reading configuration; compatible 6-48-well adapter for a plate without a lid; 37°C temperature control. [1,3]</td>
-</tr>
-<tr>
-<td>Reader software</td>
-<td>Thermo Scientific SkanIt 7.0.2 RE</td>
-<td>Plate layout, fluorescence settings, multipoint acquisition and raw-data export. [3]</td>
-</tr>
-<tr>
-<td>Pipettes, sterile tips and clean tissue</td>
-<td>Laboratory supplies</td>
-<td>Slow liquid exchange along the well wall; dry the outside of the plate if necessary.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Map all samples, PBS-only blanks and empty wells. Record sample identity, independent culture-well identity and the measurement endpoint.</p>
-<p>Complete the reader setup before exchanging medium for PBS. Keep the time from PBS addition to measurement short and comparable across samples; PBS is the reading liquid in this workflow, not a replacement for prolonged cell culture.</p>
-<p>Inspect the adherent layer before washing. 293T cells can lift off during liquid exchange: use slow aspiration and wall-directed addition throughout. Avoid touching the cell layer, directing a liquid jet onto it or shaking the plate.</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-set-up-the-reader-and-measurement-session">A. Set up the reader and measurement session</h3>
-<ol>
-<li>
-<p>Switch on the reader and open SkanIt. Select the connected Varioskan LUX. Enable the instrument incubator, set 37°C and wait for the displayed current temperature to reach the target before measuring. [1]</p>
-</li>
-<li>
-<p>Create a measurement session and open Plate Layout. Select the matching 12-well plate template. The archived session uses 'Thermo NUNC, Multidish, 12-well'; verify that it matches the actual plate. Check the installed 6-48-well adapter for a plate without a lid and retain the software's adapter compatibility check. [1,3]</p>
-</li>
-<li>
-<p>Select the sample and blank wells to be measured and record their identities in the plate map. Use the same acquisition settings for samples and both blank types.</p>
-</li>
-<li>
-<p>Add a Fluorescence measurement step for each required reporter channel and enter the excitation and emission wavelengths below. These values are the local acquisition settings shown in the supplied screenshots, not universal spectral maxima for all fluorescent-protein variants. [3]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Channel</th>
-<th>Excitation (nm)</th>
-<th>Emission (nm)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BFP readout, when present</td>
-<td>405</td>
-<td>460</td>
-</tr>
-<tr>
-<td>EGFP</td>
-<td>488</td>
-<td>510</td>
-</tr>
-<tr>
-<td>mCherry</td>
-<td>587</td>
-<td>611</td>
-</tr>
-</tbody>
-</table>
-<ol start="5">
-<li>For every fluorescence step, select Bottom reading, set measurement time to 100 ms, excitation bandwidth to 5 nm and Dynamic range to Auto. Enable Multipoint measurement and choose All to sample the well across the available point pattern. Apply the same pattern to every measured well and channel. Do not add a shaking step. [3]</li>
-</ol>
-<p><img alt="Figure 1. Multipoint settings in the laboratory SkanIt session. Enable Multipoint measurement and select All; the orange points show the selected sampling pattern. The EGFP step is illustrated. Repeat this setting for every required fluorescence channel. [3]" src="assets/DDJC_viewport.svg"></img></p>
-<p>Figure 1. Multipoint settings in the laboratory SkanIt session. Enable Multipoint measurement and select All; the orange points show the selected sampling pattern. The EGFP step is illustrated. Repeat this setting for every required fluorescence channel. [3]</p>
-<h3 id="b-exchange-medium-for-pbs-without-disturbing-cells">B. Exchange medium for PBS without disturbing cells</h3>
-<ol start="6">
-<li>
-<p>Aspirate the culture medium slowly from the side of each well. Keep the tip away from the adherent layer and avoid scraping the bottom. Do not leave the cells uncovered while preparing the next action.</p>
-</li>
-<li>
-<p>Gently rinse the adherent layer with PBS, using enough liquid to cover the well bottom. Add PBS slowly down the well wall and let it spread without forceful mixing. Gently aspirate the rinse from the side. Avoid repeated washing that strips loosely attached 293T cells.</p>
-</li>
-<li>
-<p>Immediately add 1 mL fresh PBS to each sample well, again slowly along the wall. Keep the cell layer covered and the reading volume the same across samples.</p>
-</li>
-<li>
-<p>Prepare the two blank types on the same plate as defined below. Keep their well identities distinct in the exported data.</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Well type</th>
-<th>Contents during reading</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sample</td>
-<td>Adherent 293T cells + 1 mL PBS</td>
-<td>Cell-associated reporter fluorescence plus background.</td>
-</tr>
-<tr>
-<td>PBS-only blank</td>
-<td>1 mL of the same PBS; no cells</td>
-<td>Matched liquid/plate background for later processing.</td>
-</tr>
-<tr>
-<td>Empty-well blank</td>
-<td>No cells and no added liquid</td>
-<td>Diagnostic baseline for the empty plate under the reading setup.</td>
-</tr>
-</tbody>
-</table>
-<ol start="10">
-<li>Inspect the cell layer after exchange. Record visible lifting, floating sheets or loss of cells; flag affected wells because their fluorescence no longer represents the intended adherent sample. Check for bubbles without shaking or pipetting across the monolayer.</li>
-</ol>
-<h3 id="c-read-the-original-culture-plate">C. Read the original culture plate</h3>
-<ol start="11">
-<li>
-<p>Remove the plate lid and check that the outside of the clear bottom is clean and dry. Seat the original culture plate correctly in the tray, with its orientation matching the plate map. Do not transfer the cells to another plate.</p>
-</li>
-<li>
-<p>Confirm incubator On, 37°C, bottom reading and multipoint acquisition in every required channel, with no shaking step. Start the measurement and retain the complete acquisition session.</p>
-</li>
-<li>
-<p>Review the well and point results for missing measurements, over-range warnings and strongly uneven spatial signals. Check these against the plate map and the post-wash cell appearance before interpreting a low or inconsistent readout.</p>
-</li>
-</ol>
-<h3 id="d-save-and-export-before-processing">D. Save and export before processing</h3>
-<ol start="14">
-<li>Save the native .skax session. In Report, select the raw results for all measured channels together with plate layout, protocol settings, instrument information and the run log, then export to Excel. Retain the per-point results as well as any displayed well summary; check that the exported file actually contains the intended point data. [3]</li>
-</ol>
-<p><img alt="Figure 2. Report export controls in SkanIt 7.0.2 RE. Select the required report contents, then use the Excel export control. Save the native session separately so that the acquisition settings and point results remain recoverable. [3]" src="assets/out_viewport.svg"></img></p>
-<p>Figure 2. Report export controls in SkanIt 7.0.2 RE. Select the required report contents, then use the Excel export control. Save the native session separately so that the acquisition settings and point results remain recoverable. [3]</p>
-<ol start="15">
-<li>
-<p>Keep the exported raw data unchanged and perform background correction and reporter analysis afterward. For sample wells containing PBS, use the PBS-only blank as the matched acellular background; retain empty wells for diagnostic comparison rather than subtracting both blank types in succession. Record the point-to-well summary rule used in later processing.</p>
-</li>
-<li>
-<p>Eject and cover the plate after reading, then handle the samples according to the experiment's endpoint plan and follow the local reader shutdown procedure.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Handle 293T cells gently at every liquid-exchange step. Aspirate from the side and add PBS down the wall; forceful addition, scraping or plate shaking can detach cells and create an apparent loss of fluorescence.</p>
-<p>Use multipoint acquisition to represent the adherent well. A central single-point reading can miss patches of cells or overrepresent a bright patch. Keep the sampling pattern fixed across conditions, rather than selecting only the brightest positions. [2]</p>
-<p>Do not double-subtract PBS-only and empty-well signals. Neither blank removes cellular autofluorescence; retain any experiment-specific cell controls in later analysis.</p>
-<p>Measurement points within one well are spatial readings, not independent culture replicates. Preserve point data and independent well identities.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>Obtain multipoint fluorescence data for the required channels, an identifiable plate map, both blank types and a saved acquisition session. The 293T layer should remain attached.</p>
-<p>The exported data support later background correction and well-level reporter comparisons. Signal detectability depends on the sample and controls; fluorescence alone does not establish RNA-editing efficiency.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cells float after PBS exchange</td>
-<td>Cell layer and liquid-exchange technique</td>
-<td>Flag affected wells. Repeat with intact cells using slow side aspiration and wall-directed addition. Do not shake.</td>
-</tr>
-<tr>
-<td>Single-point readings are inconsistent</td>
-<td>Multipoint setting in each channel; cell distribution</td>
-<td>Use multipoint bottom reading with All selected. Reacquire comparable samples; keep single-point and multipoint data separate. [2,3]</td>
-</tr>
-<tr>
-<td>Multipoint signal is patchy</td>
-<td>Bubbles, detached cells, coverage and point pattern</td>
-<td>Check cell appearance first. Keep the sampling rule fixed and retain spatial data; do not select only bright points.</td>
-</tr>
-<tr>
-<td>Weak signal, high background or over-range warning</td>
-<td>Channel, bottom optics, both blanks and plate cleanliness</td>
-<td>Verify settings and inspect the plate. Retain warnings. If settings change, reacquire samples and blanks together under matched settings.</td>
-</tr>
-<tr>
-<td>Plate rejected or export incomplete</td>
-<td>Template, no-lid adapter, orientation and report contents</td>
-<td>Correct the plate setup without bypassing compatibility checks. Re-export channels, points, layout and metadata from the saved session. [1,3]</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Thermo Fisher Scientific. Varioskan LUX User Manual, N16044, Rev. 1.4 (2023), printed pp. 16 and 19-21: temperature control, plate trays/adapters and plate-template association. Accessed 2026-10-13. <a href="https://www.thermofisher.com/TFS-Assets/LCD/manuals/Varioskan-LUX-User-Manual.pdf">Open source</a></p>
-<p>[2] Fallarero A. Practical Tips for Cellular Quantification and Imaging Using Thermo Scientific Varioskan LUX Multimode Reader and Invitrogen EVOS FL Auto Cell Imaging System. Thermo Fisher Scientific, TN_VarioskanLUX_EVOS_0217, p. 2, Tip 3 and Scheme 1: uneven cell distribution and multipoint bottom reading. Accessed 2026-10-13. <a href="https://documents.thermofisher.com/TFS-Assets/LSG/brochures/quantification-varioskan-lux-evos-technical-note.pdf">Open source</a></p>
-<p>[3] Laboratory SkanIt 7.0.2 RE screenshots: app.PNG, bfp.PNG, egfp.PNG, mc.PNG, DDJC.PNG and out.PNG; original archived sessions LAYER 2.skax and EFWRGW.skax. Screenshot copies and a session-settings extract accompany this protocol. Inspected 2026-10-13.</p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original RP05 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:39.5086%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:81.3193%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Fluorescence Measurement Using a
+Microplate Reader
+
+ RP05 | ver 1.1 | Revised 2026-10-14
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Measure reporter fluorescence directly from adherent 293T cells in clear Thermo Scientific Nunc
+ 12-well culture plates using a Varioskan LUX reader and SkanIt Software. Replace culture medium
+ with 1 mL PBS per well, then acquire multipoint fluorescence from below the plate at 37°C without
+ shaking.
+
+ Single-point readings are generally unsuitable as a representative whole-well measurement for this
+ adherent-cell workflow: uneven cell coverage or reporter distribution can make one location
+ misleading. Use multipoint bottom reading with a consistent sampling pattern. [2]
+
+ Materials &amp; Equipment
+
+
+   Item                         Provider / Identifier            Use / Specification
+
+
+   Adherent 293T samples      Laboratory cell stocks            Reporter-expressing cells at the planned
+                                                        measurement endpoint; retain cells in their original
+                                                                       culture wells.
+
+
+   Clear 12-well culture       Thermo Scientific Nunc;        Read the original plate directly. Match the
+   plate                       catalog number not recorded     software plate template and no-lid adapter to the
+                                                                   actual plate.
+
+
+   PBS                        Laboratory PBS stock            Gentle rinsing; 1 mL fresh PBS per sample well and
+                                                               PBS-only blank well.
+
+
+   Microplate reader and      Varioskan LUX; local display:     Bottom-reading configuration; compatible 6-48-well
+   adapter                  3020-460                     adapter for a plate without a lid; 37°C
+                                                             temperature control. [1,3]
+
+
+   Reader software           Thermo Scientific SkanIt 7.0.2     Plate layout, fluorescence settings, multipoint
+                          RE                                 acquisition and raw-data export. [3]
+
+
+    Pipettes, sterile tips and      Laboratory supplies            Slow liquid exchange along the well wall; dry the
+   clean tissue                                                    outside of the plate if necessary.
+
+
+ Before You Start
+
+ Map all samples, PBS-only blanks and empty wells. Record sample identity, independent culture-well
+ identity and the measurement endpoint.
+
+
+
+
+
+RP05 | v1.1                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original RP05 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:20.32557%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Complete the reader setup before exchanging medium for PBS. Keep the time from PBS addition to
+ measurement short and comparable across samples; PBS is the reading liquid in this workflow, not a
+ replacement for prolonged cell culture.
+
+ Inspect the adherent layer before washing. 293T cells can lift off during liquid exchange: use slow
+ aspiration and wall-directed addition throughout. Avoid touching the cell layer, directing a liquid jet
+ onto it or shaking the plate.
+
+ Procedure
+
+ A. Set up the reader and measurement session
+
+ 1. Switch on the reader and open SkanIt. Select the connected Varioskan LUX. Enable the
+     instrument incubator, set 37°C and wait for the displayed current temperature to reach the
+      target before measuring. [1]
+
+ 2. Create a measurement session and open Plate Layout. Select the matching 12-well plate
+     template. The archived session uses &#39;Thermo NUNC, Multidish, 12-well&#39;; verify that it matches
+     the actual plate. Check the installed 6-48-well adapter for a plate without a lid and retain the
+     software&#39;s adapter compatibility check. [1,3]
+
+ 3. Select the sample and blank wells to be measured and record their identities in the plate map.
+    Use the same acquisition settings for samples and both blank types.
+
+ 4. Add a Fluorescence measurement step for each required reporter channel and enter the
+      excitation and emission wavelengths below. These values are the local acquisition settings
+    shown in the supplied screenshots, not universal spectral maxima for all fluorescent-protein
+      variants. [3]
+
+
+   Channel                                            Excitation (nm)                  Emission (nm)
+
+
+   BFP readout, when present                  405                      460
+
+
+   EGFP                                  488                      510
+
+
+   mCherry                               587                      611
+
+
+ 5. For every fluorescence step, select Bottom reading, set measurement time to 100 ms, excitation
+     bandwidth to 5 nm and Dynamic range to Auto. Enable Multipoint measurement and choose All
+      to sample the well across the available point pattern. Apply the same pattern to every
+    measured well and channel. Do not add a shaking step. [3]
+
+
+
+
+
+RP05 | v1.1                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original RP05 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> Figure 1. Multipoint settings in the laboratory SkanIt session. Enable Multipoint measurement and select All; the
+ orange points show the selected sampling pattern. The EGFP step is illustrated. Repeat this setting for every required
+ fluorescence channel. [3]
+
+
+ B. Exchange medium for PBS without disturbing cells
+
+ 6. Aspirate the culture medium slowly from the side of each well. Keep the tip away from the
+     adherent layer and avoid scraping the bottom. Do not leave the cells uncovered while
+     preparing the next action.
+
+ 7. Gently rinse the adherent layer with PBS, using enough liquid to cover the well bottom. Add PBS
+     slowly down the well wall and let it spread without forceful mixing. Gently aspirate the rinse
+     from the side. Avoid repeated washing that strips loosely attached 293T cells.
+
+ 8. Immediately add 1 mL fresh PBS to each sample well, again slowly along the wall. Keep the cell
+     layer covered and the reading volume the same across samples.
+
+ 9. Prepare the two blank types on the same plate as defined below. Keep their well identities distinct
+      in the exported data.
+
+
+   Well type                   Contents during reading                Role
+
+
+   Sample                   Adherent 293T cells + 1 mL PBS          Cell-associated reporter fluorescence plus
+                                                                 background.
+
+
+   PBS-only blank           1 mL of the same PBS; no cells         Matched liquid/plate background for later
+                                                                         processing.
+
+
+   Empty-well blank        No cells and no added liquid            Diagnostic baseline for the empty plate
+                                                                 under the reading setup.
+
+
+ 10. Inspect the cell layer after exchange. Record visible lifting, floating sheets or loss of cells; flag
+     affected wells because their fluorescence no longer represents the intended adherent sample.
+    Check for bubbles without shaking or pipetting across the monolayer.
+
+
+
+
+RP05 | v1.1                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original RP05 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:76.48895%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> C. Read the original culture plate
+
+ 11. Remove the plate lid and check that the outside of the clear bottom is clean and dry. Seat the
+      original culture plate correctly in the tray, with its orientation matching the plate map. Do not
+      transfer the cells to another plate.
+
+ 12. Confirm incubator On, 37°C, bottom reading and multipoint acquisition in every required
+     channel, with no shaking step. Start the measurement and retain the complete acquisition
+      session.
+
+ 13. Review the well and point results for missing measurements, over-range warnings and strongly
+     uneven spatial signals. Check these against the plate map and the post-wash cell appearance
+     before interpreting a low or inconsistent readout.
+
+ D. Save and export before processing
+
+ 14. Save the native .skax session. In Report, select the raw results for all measured channels
+     together with plate layout, protocol settings, instrument information and the run log, then export
+      to Excel. Retain the per-point results as well as any displayed well summary; check that the
+     exported file actually contains the intended point data. [3]
+
+
+
+
+
+ Figure 2. Report export controls in SkanIt 7.0.2 RE. Select the required report contents, then use the Excel export
+  control. Save the native session separately so that the acquisition settings and point results remain recoverable. [3]
+
+ 15. Keep the exported raw data unchanged and perform background correction and reporter
+      analysis afterward. For sample wells containing PBS, use the PBS-only blank as the matched
+      acellular background; retain empty wells for diagnostic comparison rather than subtracting both
+     blank types in succession. Record the point-to-well summary rule used in later processing.
+
+ 16. Eject and cover the plate after reading, then handle the samples according to the experiment&#39;s
+     endpoint plan and follow the local reader shutdown procedure.
+
+ p.s.
+
+
+ Handle 293T cells gently at every liquid-exchange step. Aspirate from the side and add PBS down
+ the wall; forceful addition, scraping or plate shaking can detach cells and create an apparent loss of
+ fluorescence.
+
+ Use multipoint acquisition to represent the adherent well. A central single-point reading can miss
+ patches of cells or overrepresent a bright patch. Keep the sampling pattern fixed across conditions,
+ rather than selecting only the brightest positions. [2]
+
+
+
+RP05 | v1.1                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original RP05 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="expected-outcome" style="top:16.64338%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:31.43154%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:71.34175%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.thermofisher.com/TFS-Assets/LCD/manuals/Varioskan-LUX-User-Manual.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/TFS-Assets/LCD/manuals/Varioskan-LUX-User-Manual.pdf" style="left:76.65929%;top:75.54433%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://documents.thermofisher.com/TFS-Assets/LSG/brochures/quantification-varioskan-lux-evos-technical-note.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://documents.thermofisher.com/TFS-Assets/LSG/brochures/quantification-varioskan-lux-evos-technical-note.pdf" style="left:25.96987%;top:82.07725%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Do not double-subtract PBS-only and empty-well signals. Neither blank removes cellular
+ autofluorescence; retain any experiment-specific cell controls in later analysis.
+
+ Measurement points within one well are spatial readings, not independent culture replicates.
+ Preserve point data and independent well identities.
+
+ Expected Outcome
+
+ Obtain multipoint fluorescence data for the required channels, an identifiable plate map, both blank
+ types and a saved acquisition session. The 293T layer should remain attached.
+
+ The exported data support later background correction and well-level reporter comparisons. Signal
+ detectability depends on the sample and controls; fluorescence alone does not establish
+ RNA-editing efficiency.
+
+ Troubleshooting
+
+
+   Observed problem         Check first                       Action
+
+
+    Cells float after PBS           Cell layer and                   Flag affected wells. Repeat with intact cells using
+   exchange                   liquid-exchange technique       slow side aspiration and wall-directed addition. Do
+                                                                 not shake.
+
+
+    Single-point readings are     Multipoint setting in each       Use multipoint bottom reading with All selected.
+    inconsistent                  channel; cell distribution         Reacquire comparable samples; keep single-point
+                                                     and multipoint data separate. [2,3]
+
+
+   Multipoint signal is           Bubbles, detached cells,        Check cell appearance first. Keep the sampling
+   patchy                    coverage and point pattern       rule fixed and retain spatial data; do not select
+                                                               only bright points.
+
+
+  Weak signal, high          Channel, bottom optics, both      Verify settings and inspect the plate. Retain
+   background or              blanks and plate cleanliness      warnings. If settings change, reacquire samples
+   over-range warning                                   and blanks together under matched settings.
+
+
+    Plate rejected or export      Template, no-lid adapter,         Correct the plate setup without bypassing
+   incomplete                    orientation and report             compatibility checks. Re-export channels, points,
+                                 contents                         layout and metadata from the saved session. [1,3]
+
+
+ Reference
+
+  [1] Thermo Fisher Scientific. Varioskan LUX User Manual, N16044, Rev. 1.4 (2023), printed pp. 16 and 19-21:
+ temperature control, plate trays/adapters and plate-template association. Accessed 2026-10-13. Open source
+
+  [2] Fallarero A. Practical Tips for Cellular Quantification and Imaging Using Thermo Scientific Varioskan LUX
+ Multimode Reader and Invitrogen EVOS FL Auto Cell Imaging System. Thermo Fisher Scientific,
+ TN_VarioskanLUX_EVOS_0217, p. 2, Tip 3 and Scheme 1: uneven cell distribution and multipoint bottom reading.
+ Accessed 2026-10-13. Open source
+
+  [3] Laboratory SkanIt 7.0.2 RE screenshots: app.PNG, bfp.PNG, egfp.PNG, mc.PNG, DDJC.PNG and out.PNG;
+  original archived sessions LAYER 2.skax and EFWRGW.skax. Screenshot copies and a session-settings extract
+ accompany this protocol. Inspected 2026-10-13.
+
+
+
+
+
+RP05 | v1.1                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

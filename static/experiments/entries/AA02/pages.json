@@ -1,0 +1,117 @@
+{
+  "source_sha256": "bb24f5a4a619e22393f80cd75e03ae407feb0edf95494fdb6e1cb3c3e68805ae",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ca1a54fc13afd6d354b5fbc8775e2424c005f779f7995cbcba9f9fbbd3004042",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 34.22288
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7788251c2b7bc7b4ad26c0717749c889c1d4fb526f00d3aa610b28fad692840d",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 32.44117
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "66257e5469be60598e6e85dcbb1b90bf078fcc070e413a655abcf432f9788ca0",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 65.69968
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "dcd0708e05fc0912eb473b515c6ca2b1552372162b7a95801460e260b4ef9899",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 23.41386
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 58.45408
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.takarabiomed.com.cn/DownLoad/6675.pdf",
+          "left": 85.56461,
+          "top": 62.65666,
+          "width": 3.92299,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.takarabiomed.com.cn/DownLoad/6675.pdf",
+          "left": 10.07937,
+          "top": 64.14141,
+          "width": 4.46854,
+          "height": 1.28282
+        },
+        {
+          "url": "https://takara.co.kr/file/manual/pdf/6675_6675S_e.v2001Da.pdf",
+          "left": 64.44298,
+          "top": 67.70483,
+          "width": 8.85808,
+          "height": 1.28282
+        }
+      ]
+    }
+  ]
+}

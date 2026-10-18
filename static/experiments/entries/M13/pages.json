@@ -1,0 +1,131 @@
+{
+  "source_sha256": "008d681e7529fb4c9f5ff09e2b7b5536ce0cecafba40e0a5357b21f0b01d6545",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7b7c4e9eb66bbb229ae9780b37470ffcc8bf739d6c14e9759ecd412bca819b02",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 74.96455
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e5feb87cf105f093587c1b88dff818d89d195e871b1ceda4dc92a96633db9199",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 16.64338
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "5f8a03745995ec984c01a2995834cbc25ea6d80997b8f668a1333e125588ec30",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 39.74616
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 58.15713
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "9d547d502697953594a343ae68a8a167a1ece8b46f031880348e4c911db03007",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 48.17957
+        }
+      ],
+      "links": [
+        {
+          "url": "https://catalog.takara-bio.co.jp/com/tech_info_detail.php?masterid=M100004631&mode=2&unitid=U100003489",
+          "left": 33.18389,
+          "top": 52.38215,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://catalog.takara-bio.co.jp/PDFS/2011A_DS_j.pdf",
+          "left": 30.93302,
+          "top": 55.94556,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.neb.com/en-gb/faqs/what-are-some-causes-of-ligation-reaction-failure-that-can-lead-to-transformation-failure",
+          "left": 78.56761,
+          "top": 59.50897,
+          "width": 8.85809,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.neb.com/en-au/faqs/cloning-problem-too-much-background-in-the-transformation-step",
+          "left": 44.69742,
+          "top": 63.07239,
+          "width": 8.85806,
+          "height": 1.28282
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 70.19921,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

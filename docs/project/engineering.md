@@ -9,7 +9,10 @@ status_message: Supplied engineering manuscripts and existing model records; sci
 
 # Engineering Success
 
-## POD — Programmable On-target Docking {#pod}
+## POD {#pod .engineering-chapter-title}
+
+Programmable On-target Docking
+{.engineering-chapter-subtitle}
 
 <span id="edit"></span>
 
@@ -17,7 +20,7 @@ status_message: Supplied engineering manuscripts and existing model records; sci
 
 Selecting PUF12 gave ORCA a programmable RNA-recognition backbone for editing APOE4 at C388, but it did not confine editing to that site. **POD (Programmable On-target Docking)** addresses the recognition side of this problem. By engineering the tripartite recognition motifs (TRMs) of individual PUF repeats, we sought variants that preserve useful C388 editing while improving discrimination against unwanted APOE edits. Three engineering cycles took us from exploratory motif design and construct verification to functional screening and literature-guided expansion of the recognition repertoire.
 
-### Engineering Rationale {#pod-engineering-rationale}
+### **Engineering Rationale** {#pod-engineering-rationale .engineering-section-title}
 
 #### Why recognition needed further engineering {#pod-why-recognition-needed-further-engineering}
 
@@ -59,7 +62,7 @@ However, a motif characterized in one native PUM1 repeat need not behave identic
 
 *Source credit: Zhou et al. (2021), reproduced under CC BY 4.0 [1].*
 
-### Engineering Cycle 1 — Establishing Reliable TRM Engineering {#pod-cycle-01}
+### **Cycle 1**: Reliable TRM engineering {#pod-cycle-01 .engineering-cycle-title}
 
 #### Design {#pod-cycle-01-design}
 
@@ -89,7 +92,7 @@ A second construct was initially labeled **P7-SNE**, with the intended **SYE→S
 
 Cycle 1 established two requirements for reliable POD engineering. **Candidate selection needed a defensible recognition rationale**, while **functional comparisons needed sequence-confirmed constructs**. The repeated PUF architecture made the latter especially important: an intended local TRM edit does not guarantee that other repeats remain unchanged. In our workflow, sequence verification thus served as an active engineering checkpoint, not simply a final administrative step. With this design-and-verification workflow in place, we could move from testing whether motifs could be constructed to asking how they altered RNA-editing performance.
 
-### Engineering Cycle 2 — Relating TRM Changes to Editing Activity and Selectivity {#pod-cycle-02}
+### **Cycle 2**: Editing activity and selectivity {#pod-cycle-02 .engineering-cycle-title}
 
 #### Design {#pod-cycle-02-design}
 
@@ -131,7 +134,7 @@ This analysis sharpened the differences among variants (Figure 9). **P8-GVE reta
 
 The first functional screen demonstrated that recognition-domain mutations can **redistribute editing across APOE sites**, sometimes producing substantial relative discrimination without eliminating target activity. It also changed how we defined a useful variant. A low C871 value alone would overlook C295; low bystander editing caused by weak overall activity would be equally misleading. We therefore adopted **C388 retention plus two site-specific selectivity measures** as the basis for comparing POD candidates, and used this multi-objective view to guide a broader, knowledge-based screen.
 
-### Engineering Cycle 3 — Expanding the Recognition Repertoire {#pod-cycle-03}
+### **Cycle 3**: Expanding recognition {#pod-cycle-03 .engineering-cycle-title}
 
 #### Design {#pod-cycle-03-design}
 
@@ -175,7 +178,7 @@ The expanded screen turned published TRM preferences into a **testable repertoir
 
 P9-NTQ was therefore a **promising balanced candidate in this screen**, not an automatically superior motif for every context. More generally, Cycle 3 established a practical strategy: select plausible TRMs from experimental recognition knowledge, test them in their intended engineered-repeat positions, and evaluate each by retained target editing **and** multiple unwanted sites.
 
-### Conclusion — From TRM Mutagenesis to Recognition Engineering {#pod-conclusion-from-trm-mutagenesis-to-recognition-engineering}
+### **Conclusion** — From TRM Mutagenesis to Recognition Engineering {#pod-conclusion-from-trm-mutagenesis-to-recognition-engineering .engineering-section-title}
 
 Across B1 and B2, POD evaluated **81 variant entries** (**30 + 51**) spanning different PUF12 positions from **P1 through P11**, including some multi-repeat constructs. The progression was deliberate: establish reliable motif engineering, learn how edits redistribute across sites, then expand the candidate space with published recognition knowledge. The result was not a single universal replacement for parental PUF12, but a set of experimentally characterized recognition variants with distinct activity–selectivity profiles.
 
@@ -206,7 +209,10 @@ We carried **P8-GVE, P9-GNS, P9-NPS and P9-NTQ** forward into **Integrated ORCA*
 
 *Measurement note: Editing frequencies and normalized comparisons are descriptive summaries of recorded sequencing measurements; the available records do not independently establish biological-replicate status. B1 and B2 use their respective parental PUF12 reference measurements. In B2, the parental normalization denominator for each bystander is the average of the ratios calculated within the two labeled parental sets, not the ratio of the four-record pooled site means.*
 
-## CETUS — Engineering APOBEC Substrate Selectivity {#cetus}
+## CETUS {#cetus .engineering-chapter-title}
+
+Engineering APOBEC substrate selectivity
+{.engineering-chapter-subtitle}
 
 ### Overview {#cetus-overview}
 
@@ -214,7 +220,7 @@ Targeting the right RNA does not guarantee editing the right cytidine. In ORCA, 
 
 Using the 199-amino-acid **Pro.hA1** deaminase derived from the engineered ProAPOBEC family [2], we sought to favor the intended **c.388 (GCG)** site over the prominent **c.871 (GCA)** bystander while monitoring **c.295 (ACA)** as a distinct context. Across six design–build–test–learn (DBTL) cycles, we screened single and combined mutations, assessed amplicon-wide editing, challenged computational predictions, and retested candidates in a different library background. The resulting candidates—**G27T–K30H–Q58M** for GCG/GCA preference and **G27D** for ACA suppression—address different aspects of substrate selectivity.
 
-### Engineering Rationale {#cetus-engineering-rationale}
+### **Engineering Rationale** {#cetus-engineering-rationale .engineering-section-title}
 
 #### From RNA Recognition to Substrate Preference {#cetus-from-rna-recognition-to-substrate-preference}
 
@@ -245,7 +251,7 @@ Our initial selection gate required **+1 Ratio ≥ 2.0** and **Activity Retentio
 
 ---
 
-### Cycle 1 — Testing Structure-Guided +1-Base Recognition {#cetus-cycle-01}
+### **Cycle 1**: Testing +1-base recognition {#cetus-cycle-01 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-01-design}
 
@@ -275,7 +281,7 @@ The screen also exposed routes beyond a single direct +1 reader. **Q58M** improv
 
 **Structure and evolutionary sequence preferences generated useful hypotheses, but did not rank functional outcomes reliably.** This contrast was especially clear between T31, whose predicted +1 A contact barely affected editing after mutation, and **K30**, which showed predicted side-chain contacts to both +1 bases but more frequent contact with G (**0.81 versus 0.64**) and yielded the useful K30H phenotype. The limited +1 improvements of single substitutions contrasted with strong ACA suppression at G27: these appeared to be **different, potentially complementary recognition effects**. We therefore moved from isolated substitutions to combinations spanning distinct substrate-recognition regions.
 
-### Cycle 2 — Combining Distinct Recognition Layers {#cetus-cycle-02}
+### **Cycle 2**: Combining recognition layers {#cetus-cycle-02 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-02-design}
 
@@ -301,7 +307,7 @@ The panel also exposed **combination-background dependence**. Alone, **M132D** r
 
 The triple mutant provided evidence that **cross-region combinations can surpass the single-mutation performance boundary**. We prioritized **G27T–K30H–Q58M** and deprioritized M132D as a general combination component, while retaining its behavior as a clue to functional coupling. Since a two-site GCG/GCA ratio still could not represent all unintended edits, we next examined the **full APOE amplicon**.
 
-### Cycle 3 — Testing Selectivity Beyond Two Sites {#cetus-cycle-03}
+### **Cycle 3**: Selectivity beyond two sites {#cetus-cycle-03 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-03-design}
 
@@ -327,7 +333,7 @@ The **Amplicon Targeting Ratio** revealed a measurement trap: its median was **2
 
 We revised our evaluation to consider **three distinct layers**: RNA-site recruitment and accessibility, **−1-context** discrimination, and **+1-context** preference. Each could alter the editing landscape without necessarily changing the others. For subsequent amplicon-level bystander comparisons, we introduced a **c.388 editing floor of 0.30** and interpreted ratios alongside their denominators, detection limits, and actual site-level editing. We next interrogated a different assumption: could predicted protein–RNA contact changes reliably stand in for these functional measurements?
 
-### Cycle 4 — Checking Structural Predictions Against Function {#cetus-cycle-04}
+### **Cycle 4**: Structural predictions versus function {#cetus-cycle-04 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-04-design}
 
@@ -361,7 +367,7 @@ More strikingly, changing **only the RNA sequence** produced **D_M = 5.605**, co
 
 This was a **test of the design method itself**, not a failed attempt to find one more mutation. Static contact patterns can identify plausible interfaces and mechanistic hypotheses, but they did not reliably predict catalytic activity or GCG/GCA selectivity. RNA identity influenced the structural readout enough that apparent mutant-specific changes could not be interpreted in isolation. We therefore reassessed whether computational approaches rooted in **sequence compatibility or structural constraints** offered more useful candidate guidance.
 
-### Cycle 5 — Reassessing Computational Design {#cetus-cycle-05}
+### **Cycle 5**: Reassessing computational design {#cetus-cycle-05 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-05-design}
 
@@ -393,7 +399,7 @@ The deliberately matched wet-lab comparison was more decisive for position 132. 
 
 The methods were not interchangeable: **general sequence/structure compatibility was poorly aligned with +1 preference**, while supervised prediction offered some information about target activity. This is a distinction between designing a protein that remains compatible with a familiar fold and selecting one that **discriminates two closely related RNA contexts**. The M132D/E pair also confirmed that a distant substitution can have a substantial **combination-specific** effect. For subsequent designs, we treated computational outputs as a source of constrained hypotheses, with **direct functional assays and matched controls** determining candidate selection.
 
-### Cycle 6 — Validating Candidates in a New Library Background {#cetus-cycle-06}
+### **Cycle 6**: Testing a new library background {#cetus-cycle-06 .engineering-cycle-title}
 
 #### Design {#cetus-cycle-06-design}
 
@@ -421,7 +427,7 @@ The triple mutant retained a strong **within-batch** activity–preference balan
 
 ---
 
-### Conclusion {#cetus-conclusion}
+### **Conclusion** {#cetus-conclusion .engineering-section-title}
 
 CETUS began by searching for residues that might distinguish the +1 base of an RNA substrate. Six DBTL cycles showed that **APOBEC sequence preference is distributed across recognition regions** and must be evaluated alongside the desired editing activity—not inferred from structural proximity or a high ratio alone.
 
@@ -438,13 +444,16 @@ Equally important was the engineering method established along the way. **Matche
 5. Wu Y, Xiao Y-L, Tang W. High-precision cytosine base editors by evolving nucleic-acid-recognition hotspots in deaminase. *Nature Biotechnology*. 2026;44:587–601. https://doi.org/10.1038/s41587-025-02678-w
 6. Abramson J, et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature*. 2024;630:493–500. https://doi.org/10.1038/s41586-024-07487-w
 
-## Integrated ORCA — Engineering the Complete RNA Editor {#integrated-orca}
+## Integrated ORCA {#integrated-orca .engineering-chapter-title}
+
+Engineering the complete RNA editor
+{.engineering-chapter-subtitle}
 
 ### Overview {#integrated-orca-overview}
 
 Optimizing an RNA-binding domain and a catalytic domain separately does not guarantee that they will work better together. To move from individual protein-engineering efforts to a complete APOE4-targeting editor, we integrated selected POD and CETUS variants into ORCA and evaluated their performance against the original editor and matched single-module controls. Our objective was not simply to maximize editing at C388, but to retain useful target activity while reducing potentially consequential bystander editing. A combinatorial library, targeted and regional editing analyses, and Nanopore read-level measurements allowed us to compare these competing objectives and select two complementary candidates for further development.
 
-### Engineering Rationale {#integrated-orca-engineering-rationale}
+### **Engineering Rationale** {#integrated-orca-engineering-rationale .engineering-section-title}
 
 #### Why integrate two independently optimized modules? {#integrated-orca-why-integrate-two-independently-optimized-modules}
 
@@ -456,7 +465,7 @@ The relevant engineering question was therefore **which POD–CETUS pairings pre
 
 We also needed more than a single performance metric. A lower bystander signal may simply reflect loss of overall editing activity; a lower average burden may conceal an increase at a potentially damaging site; and site-wise frequencies cannot show which edits coexist on the same RNA-derived read. We therefore evaluated target editing, individual bystander sites, broader editing burden, and read-level co-editing as distinct but complementary outcomes.
 
-### Design–Build–Test–Learn {#integrated-orca-cycle-01 data-cycle-label="Engineering record"}
+### **Cycle 1**: Evaluating module compatibility {#integrated-orca-cycle-01 .engineering-cycle-title}
 
 #### Design — A Combinatorial Test of Module Compatibility {#integrated-orca-cycle-01-design}
 
@@ -643,13 +652,16 @@ All read-level metrics in this benchmark used the Q13 primary analysis. Rather t
 
 Both share the **P9-NTQ recognition domain**, while their different CETUS partners shape complementary outcomes. We therefore retained **IO-02 and IO-03** as the two Integrated ORCA candidates for downstream evaluation, rather than declaring the highest-activity editor or the lowest-burden editor universally best.
 
-### Conclusion — From Component Optimization to Editor-Level Selection {#integrated-orca-conclusion-from-component-optimization-to-editor-level-selection}
+### **Conclusion** — From Component Optimization to Editor-Level Selection {#integrated-orca-conclusion-from-component-optimization-to-editor-level-selection .engineering-section-title}
 
 Integrated ORCA turned independently engineered RNA-recognition and catalytic modules into a testable combinatorial system. Of **16 designed combinations**, **14 were sequence-verified** and evaluated against original and matched single-module references. Target editing, consequence-resolved bystander analysis, and long-read co-editing showed that successful assembly depends on the particular module pairing—and that no single metric captures the resulting editing profile.
 
 By selecting **IO-02 and IO-03** for their complementary activity–selectivity balances, we moved beyond optimizing individual protein parts toward **evidence-based selection of the complete RNA editor**. This provides a defined foundation for subsequent ORCA functional evaluation and further engineering.
 
-## GFA — Cell-Context-Dependent Transcriptional Control of ORCA {#gfa}
+## GFA {#gfa .engineering-chapter-title}
+
+Cell-context-dependent transcriptional control
+{.engineering-chapter-subtitle}
 
 <span id="control"></span>
 
@@ -657,7 +669,7 @@ By selecting **IO-02 and IO-03** for their complementary activity–selectivity 
 
 PUF-mediated RNA recognition determines *what* ORCA can edit, but not *where* the editor is expressed. To introduce an additional layer of control for our astrocyte-oriented system, we investigated **gfaABC1D**, a compact promoter derived from the human *GFAP* regulatory region. Through two engineering cycles, we established contrasting GFAP-associated cellular backgrounds and compared gfaABC1D with CMV in ORCA expression constructs. The resulting transcriptional and editing-associated readouts supported gfaABC1D as a cell-context-dependent control element, while revealing an unexpectedly weak CMV response in U251 cells.
 
-### Engineering Rationale {#gfa-engineering-rationale}
+### **Engineering Rationale** {#gfa-engineering-rationale .engineering-section-title}
 
 #### From RNA Recognition to Cell-Context Control {#gfa-from-rna-recognition-to-cell-context-control}
 
@@ -675,7 +687,7 @@ Simply shortening gfa2 was not an adequate solution, since earlier truncation st
 
 *Figure 1. Published GFAP promoter architecture (A; from Yeo et al. [2]) and our matched CMV–ORCA and gfaABC1D–ORCA expression constructs (B).*
 
-### Engineering Cycle 1 — Establishing Contrasting Cellular Backgrounds {#gfa-cycle-01}
+### **Cycle 1**: Contrasting cellular backgrounds {#gfa-cycle-01 .engineering-cycle-title}
 
 #### Design {#gfa-cycle-01-design}
 
@@ -697,7 +709,7 @@ U251 showed reproducible GFAP amplification (**Cq 24.33 ± 0.12**) with a distin
 
 The endogenous GFAP profiles supported using U251 and HEK293T for an initial comparison of glial-associated and non-glial contexts. However, endogenous *GFAP* expression cannot substitute for a direct test of the exogenous gfaABC1D promoter. The next cycle therefore measured ORCA expression and editing-related output from matched promoter constructs.
 
-### Engineering Cycle 2 — Evaluating gfaABC1D-Driven ORCA Expression and Editing {#gfa-cycle-02}
+### **Cycle 2**: Testing gfaABC1D-driven ORCA {#gfa-cycle-02 .engineering-cycle-title}
 
 #### Design {#gfa-cycle-02-design}
 
@@ -725,7 +737,7 @@ The reduction observed in HEK293T matched our intended regulatory direction. Mor
 
 This changed the way we approached promoter selection. Rather than treating CMV as a universally strong baseline, we would evaluate promoters in the relevant cellular background and consider both transcript-level and functional readouts. Given its compact size and the contrasting output observed in our two models, we retained **gfaABC1D** as ORCA's transcriptional control module.
 
-### Conclusion {#gfa-conclusion}
+### **Conclusion** {#gfa-conclusion .engineering-section-title}
 
 GFA introduced a **compact, GFAP-derived transcriptional control layer** into ORCA. Our two-cycle evaluation first established contrasting GFAP-associated cellular models, then showed that replacing CMV with gfaABC1D changed ORCA-associated expression and reporter editing signals in opposite directions in HEK293T and U251. The unexpectedly weak CMV response in U251 reinforced a broader engineering lesson: **promoter performance must be tested in its intended cellular context**. These results supported retaining gfaABC1D in ORCA's control architecture, without treating a two-cell-line comparison as proof of astrocyte-specific expression.
 
@@ -736,15 +748,16 @@ GFA introduced a **compact, GFAP-derived transcriptional control layer** into OR
 3. Dong JY, Fan PD, Frizzell RA. Quantitative analysis of the packaging capacity of recombinant adeno-associated virus. *Human Gene Therapy*. 1996;7(17):2101–2112. https://doi.org/10.1089/hum.1996.7.17-2101
 4. Grube S, Freitag D, Kalff R, Ewald C, Walter J. Characterization of adherent primary cell lines from fresh human glioblastoma tissue, defining glial fibrillary acidic protein as a reliable marker in establishment of glioblastoma cell culture. *Cancer Reports*. 2021;4(2):e1324. https://doi.org/10.1002/cnr2.1324
 
-## MRE Engineering {#mre}
+## MRE {#mre .engineering-chapter-title}
 
-*Evaluating microRNA-mediated post-transcriptional control for ORCA*
+Evaluating microRNA-mediated regulation
+{.engineering-chapter-subtitle}
 
 ### Overview {#mre-overview}
 
 Transcriptional control alone may not fully restrict ORCA expression to the intended cell population. We therefore explored a complementary, microRNA-responsive layer designed to suppress editor transcripts in non-target cellular environments. Inspired by an astrocyte-targeting AAV strategy, we introduced a **4×6T microRNA response element (MRE)** into the ORCA transcript and evaluated it through three Design–Build–Test–Learn (DBTL) cycles: endogenous miRNA profiling, direct editor-expression testing, and a controlled miR-124 mimic experiment. The central question was whether this extra layer could improve expression selectivity **without sacrificing functional editing output**.
 
-### Engineering Rationale {#mre-engineering-rationale}
+### **Engineering Rationale** {#mre-engineering-rationale .engineering-section-title}
 
 #### Two complementary levels of cellular control {#mre-two-complementary-levels-of-cellular-control}
 
@@ -758,7 +771,7 @@ The engineering criterion was straightforward: an additional regulatory layer wo
 
 *Figure 1. Literature-inspired 4×6T regulation and our ORCA-MRE expression architecture.* Panel A incorporates material from Gleichman *et al.* (2023), Figure 1e–f, cropped and rearranged under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); [source article](https://doi.org/10.1038/s41467-023-42746-w). Panel B is our original schematic. The published cassette (529 nt) and our synthesized insert (548 bp) are distinct.
 
-### Cycle 1 — Characterizing Endogenous miRNA Expression {#mre-cycle-01}
+### **Cycle 1**: Profiling endogenous miRNAs {#mre-cycle-01 .engineering-cycle-title}
 
 #### Design {#mre-cycle-01-design}
 
@@ -780,7 +793,7 @@ The assay did not yield a dependable endogenous-miRNA baseline. **miR-124-3p** a
 
 The failure was methodological, not evidence that the two cell models shared the same miRNA environment. Primer–reverse-transcription compatibility was one possible issue, but its cause was not established. Because the ORCA-MRE constructs were already available, we shifted from measuring endogenous miRNAs to **testing the editor transcript directly**.
 
-### Cycle 2 — Evaluating MRE-Containing ORCA Constructs {#mre-cycle-02}
+### **Cycle 2**: Testing MRE-containing constructs {#mre-cycle-02 .engineering-cycle-title}
 
 #### Design {#mre-cycle-02-design}
 
@@ -804,7 +817,7 @@ These were **descriptive, unnormalized Cq differences**, not validated fold redu
 
 The results raised a more immediate concern than cell selectivity: **the MRE-containing editor might already have an inadequate expression baseline**. Without reliable endogenous-miRNA measurements, we could not attribute the decrease to a specific miRNA or distinguish intended repression from other effects of the modified transcript. We therefore kept the cell background and promoter constant in the next cycle and experimentally varied one miRNA input.
 
-### Cycle 3 — Testing a Controlled miR-124 Input {#mre-cycle-03}
+### **Cycle 3**: Controlled miR-124 input {#mre-cycle-03 .engineering-cycle-title}
 
 #### Design {#mre-cycle-03-design}
 
@@ -834,7 +847,7 @@ This finding prompted us to revisit the original design rationale. Gleichman *et
 
 These studies did not identify the mechanism behind our ORCA-MRE results. They instead sharpened the decision criterion: **cellular de-targeting is only valuable if the target-cell editor remains functional**. For the published comparisons, see [Taschenberger *et al.*, Figures 4 and 5](https://doi.org/10.1016/j.omtn.2017.03.009).
 
-### Conclusion {#mre-conclusion}
+### **Conclusion** {#mre-conclusion .engineering-section-title}
 
 Across three DBTL cycles, we moved from attempting to characterize endogenous miRNA inputs to directly evaluating editor output and then controlling miR-124 exposure. Although the tested **4×6T** construct repeatedly showed weaker transcript signals, we could not demonstrate a selective regulatory benefit, and the final mimic experiment failed to establish a reliable baseline for functional editing.
 
@@ -846,7 +859,10 @@ We therefore **did not incorporate this 4×6T MRE configuration into the selecte
 2. Chen, C., et al. (2005). *Real-time quantification of microRNAs by stem–loop RT–PCR.* Nucleic Acids Research, **33**(20), e179. https://doi.org/10.1093/nar/gni178
 3. Taschenberger, G., Tereshchenko, J., & Kügler, S. (2017). *A MicroRNA124 Target Sequence Restores Astrocyte Specificity of gfaABC1D-Driven Transgene Expression in AAV-Mediated Gene Transfer.* Molecular Therapy – Nucleic Acids, **8**, 13–25. https://doi.org/10.1016/j.omtn.2017.03.009
 
-## ASO — Engineering an External OFF Interface for ORCA {#aso}
+## ASO {#aso .engineering-chapter-title}
+
+Engineering an external OFF interface
+{.engineering-chapter-subtitle}
 
 ### Overview {#aso-overview}
 
@@ -854,7 +870,7 @@ Controlling where ORCA is expressed does not resolve every risk associated with 
 
 Our approach evolved from searching ORCA's existing RNA sequence for ASO targets to designing a dedicated **Synthetic ASO Tag**. Four computational engineering cycles established the tag architecture and selected a candidate, C805. Two subsequent cell-based cycles tested whether C805 could suppress reporter expression and, ultimately, ORCA-mediated RNA editing.
 
-### Engineering Rationale — Why an ASO-Controlled Interface? {#aso-engineering-rationale-why-an-aso-controlled-interface}
+### **Engineering Rationale** — Why an ASO-Controlled Interface? {#aso-engineering-rationale-why-an-aso-controlled-interface .engineering-section-title}
 
 An externally triggered OFF mechanism should act independently of the transcriptional controls already built into ORCA. Endogenous miRNA regulation is useful for exploiting cell-specific expression patterns, while engineered ribozymes and aptazymes can make RNA output responsive to molecular cues. For an intervention that could be administered separately from the editor, however, we favored a **gapmer ASO** (Figure 1).
 
@@ -872,7 +888,7 @@ The central engineering challenge was **target-site design**. A suitable ASO seq
 
 ---
 
-### Engineering Cycle 1 — Searching the Native ORCA Transcript {#aso-cycle-01}
+### **Cycle 1**: Targeting native ORCA RNA {#aso-cycle-01 .engineering-cycle-title}
 
 #### Design {#aso-cycle-01-design}
 
@@ -906,7 +922,7 @@ Direct targeting was feasible, but a fixed transcript limited our ability to imp
 
 ---
 
-### Engineering Cycle 2 — Designing the Target Instead of Finding It {#aso-cycle-02}
+### **Cycle 2**: Designing a synthetic target {#aso-cycle-02 .engineering-cycle-title}
 
 #### Design {#aso-cycle-02-design}
 
@@ -940,7 +956,7 @@ We selected a **22-nt recognition core** for subsequent optimization. The next q
 
 ---
 
-### Engineering Cycle 3 — Expanding the Search and Adding CNS Context {#aso-cycle-03}
+### **Cycle 3**: Screening with CNS context {#aso-cycle-03 .engineering-cycle-title}
 
 #### Design {#aso-cycle-03-design}
 
@@ -980,7 +996,7 @@ Synthetic targeting greatly increased the available candidate space, but a favor
 
 ---
 
-### Engineering Cycle 4 — Improving Accessibility Without Changing ASO Recognition {#aso-cycle-04}
+### **Cycle 4**: Improving target accessibility {#aso-cycle-04 .engineering-cycle-title}
 
 #### Design {#aso-cycle-04-design}
 
@@ -1016,7 +1032,7 @@ The final choice was not simply the most accessible or the most sequence-distinc
 
 ---
 
-### Engineering Cycle 5 — Testing the Synthetic Tag in an mCherry Reporter {#aso-cycle-05}
+### **Cycle 5**: Testing the mCherry tag {#aso-cycle-05 .engineering-cycle-title}
 
 #### Design {#aso-cycle-05-design}
 
@@ -1054,7 +1070,7 @@ C805 was no longer only a computationally prioritized sequence: it produced a cl
 
 ---
 
-### Engineering Cycle 6 — Suppressing ORCA Editing Activity {#aso-cycle-06}
+### **Cycle 6**: Suppressing ORCA editing {#aso-cycle-06 .engineering-cycle-title}
 
 #### Design {#aso-cycle-06-design}
 
@@ -1094,7 +1110,7 @@ The synthetic interface now supported **externally induced suppression of ORCA's
 
 ---
 
-### Conclusion — From ASO Target Selection to an Engineered OFF Interface {#aso-conclusion-from-aso-target-selection-to-an-engineered-off-interface}
+### **Conclusion** — From ASO Target Selection to an Engineered OFF Interface {#aso-conclusion-from-aso-target-selection-to-an-engineered-off-interface .engineering-section-title}
 
 Across six engineering cycles, we converted a constrained search for natural ASO sites into a modular RNA-control strategy. Computational screening led us to a **22-nt synthetic recognition core**, multi-objective selection incorporating human and CNS contexts, and flank engineering that improved C805's predicted accessibility **17.4-fold without changing its ASO-binding sequence**.
 
@@ -1107,7 +1123,10 @@ The same C805 interface produced a **78.6% reduction in tagged mCherry fluoresce
 
 <!-- Editorial QA (not rendered): Scientific content is adapted exclusively from the three supplied Chinese ASO drafts, covering Cycles 1–6. Detailed bibliography entries corresponding to numerical source markers [1]–[14] and internal dataset references [D1]–[D5] were not contained in the uploaded manuscripts and should be supplied/verified before publication. Figure 5 includes a 4×6T element as part of the historical computational reference schematic; do not present it as a component of the final experimental ORCA cassette. Figure 2 is reproduced from a CC BY 4.0 article; preserve full attribution and license. -->
 
-## Cre–loxP — A Proposed Genetic Off-Switch for ORCA {#cre-loxp}
+## Cre–loxP {#cre-loxp .engineering-chapter-title}
+
+A proposed genetic off-switch
+{.engineering-chapter-subtitle}
 
 ### Overview {#cre-loxp-overview}
 
@@ -1115,7 +1134,7 @@ AAV9 offers a route to sustained ORCA expression, allowing the editor to act on 
 
 This design complements our antisense oligonucleotide (ASO) strategy. Whereas ASOs suppress ORCA at the RNA level, Cre–loxP is intended to prevent further production of the editor from recombined DNA templates. **The Cre–loxP module is a proposed design and has not been experimentally validated in ORCA.**
 
-### Engineering Rationale {#cre-loxp-engineering-rationale}
+### **Engineering Rationale** {#cre-loxp-engineering-rationale .engineering-section-title}
 
 #### Why an RNA Editor Needs a DNA-Level Off-Switch {#cre-loxp-why-an-rna-editor-needs-a-dna-level-off-switch}
 
@@ -1169,7 +1188,7 @@ The first validation question is whether adding loxP sites alters ORCA expressio
 
 Delivery introduces a further requirement: the second AAV must reach cells already carrying the ORCA cassette. Experiments would therefore need to assess AAV–Cre coverage, recombination across multiple vector copies, and barriers to repeat AAV administration, including immune responses [8]. These measurements are necessary before the proposed architecture can be described as an effective in-cell off-switch.
 
-### Conclusion {#cre-loxp-conclusion}
+### **Conclusion** {#cre-loxp-conclusion .engineering-section-title}
 
 We selected **Cre–loxP** over CRISPR-mediated deletion and Bxb1-mediated inversion because it combines **direct coding-sequence excision**, a compact cassette design, and substantial precedent for AAV–Cre use in the CNS. Coupled with sequential AAV delivery, it offers a proposed route to durable DNA-template-level shutdown, complementing the RNA-level suppression explored with ASOs. Whether it can reliably terminate ORCA activity remains a question for experimental validation.
 
@@ -1184,7 +1203,10 @@ We selected **Cre–loxP** over CRISPR-mediated deletion and Bxb1-mediated inver
 7. Wu Z, et al. Gene therapy conversion of striatal astrocytes into GABAergic neurons in mouse models of Huntington's disease. *Nature Communications*. 2020;11:1105. https://doi.org/10.1038/s41467-020-14855-3
 8. Prasad S, et al. Immune responses and immunosuppressive strategies for adeno-associated virus-based gene therapy for treatment of central nervous system disorders: Current knowledge and approaches. *Human Gene Therapy*. 2022;33(23–24):1228–1245. https://doi.org/10.1089/hum.2022.138
 
-## AAV9 Delivery — Connecting ORCA to a CNS-Oriented Editing Strategy {#deliver}
+## AAV9 {#deliver .engineering-chapter-title}
+
+Delivery toward CNS applications
+{.engineering-chapter-subtitle}
 
 ### Overview {#deliver-overview}
 
@@ -1192,7 +1214,7 @@ An RNA editor can only become a useful biological intervention if it reaches the
 
 We selected adeno-associated virus serotype 9 (AAV9) as a candidate delivery platform and developed a proof-of-concept workflow in three stages: establishing AAV9 production with a fluorescent reporter, packaging our own ORCA expression cassettes, and testing for ORCA transcripts in AAV9-treated astrocytic cells. These stages distinguish **vector production**, **genome recovery**, and **expression in recipient cells**—separate requirements for functional delivery.
 
-### Engineering Rationale {#deliver-engineering-rationale}
+### **Engineering Rationale** {#deliver-engineering-rationale .engineering-section-title}
 
 #### Choosing a delivery platform {#deliver-choosing-a-delivery-platform}
 
@@ -1232,7 +1254,7 @@ These studies made AAV9 a practical serotype for our initial experiments, while 
 
 *Figure 3. Preclinical evidence motivating AAV9 as a candidate carrier for CNS- and astrocyte-oriented ORCA delivery.*
 
-### Engineering Cycle 1 — Establishing AAV9 Production with a Reporter {#deliver-cycle-01}
+### **Cycle 1**: Reporter-based AAV9 production {#deliver-cycle-01 .engineering-cycle-title}
 
 #### Design {#deliver-cycle-01-design}
 
@@ -1260,7 +1282,7 @@ For a preliminary delivery test, we added **10 μL** of the preparation to one 9
 
 This cycle established the basic packaging and purification workflow but exposed a gap between plasmid expression in producer cells and demonstrable delivery by the recovered preparation. The late harvest, producer-cell detachment, and limited production scale motivated changes to the next packaging attempt. More importantly, we were ready to replace the reporter cassette with **ORCA itself** and assess the actual vector intended for the system.
 
-### Engineering Cycle 2 — Building and Packaging AAV9–ORCA {#deliver-cycle-02}
+### **Cycle 2**: Packaging AAV9–ORCA {#deliver-cycle-02 .engineering-cycle-title}
 
 #### Design {#deliver-cycle-02-design}
 
@@ -1286,7 +1308,7 @@ Unlike the first cycle's below-range estimates, these measurements supported pre
 
 The second cycle moved our system from a reporter-based production exercise to **self-constructed AAV9–ORCA preparations with measurable vector-genome signals**. It also made the next validation boundary clear: recovering AAV-associated DNA from a preparation does not demonstrate that the editor is expressed after recipient-cell treatment. We therefore turned from vector characterization to transcript detection in an astrocytic model.
 
-### Engineering Cycle 3 — Testing ORCA Transcript Expression in Astrocytic Cells {#deliver-cycle-03}
+### **Cycle 3**: Testing astrocytic transcript expression {#deliver-cycle-03 .engineering-cycle-title}
 
 #### Design {#deliver-cycle-03-design}
 
@@ -1308,7 +1330,7 @@ No clear band corresponding to the expected ORCA amplicon was visible in the AAV
 
 This experiment extended delivery assessment from vector preparations to recipient cells, but did not close the gap between the two. Further development requires separate evidence for **cell-associated vector DNA**, **ORCA RNA and protein expression**, and ultimately **C-to-U editing activity**. Establishing these successive readouts will be more informative than using vector-genome titer as a surrogate for functional delivery.
 
-### Conclusion {#deliver-conclusion}
+### **Conclusion** {#deliver-conclusion .engineering-section-title}
 
 AAV9 was selected through a specific engineering match: its potential for sustained expression addresses the renewal of APOE4 transcripts, while ORCA's compact architecture fits within the spatial constraints of viral delivery. Our three cycles progressed from reporter-based packaging to construction and preliminary genome quantification of **GFA–ORCA** and **CMV–ORCA**, followed by a first expression assay in human astrocytic cells.
 
@@ -1342,13 +1364,16 @@ We established a practical foundation for AAV9–ORCA vector production and iden
 
 [13] Gray SJ, et al. Preclinical differences of intravascular AAV9 delivery to neurons and glia. *Mol Ther.* 2011. https://doi.org/10.1038/mt.2011.72
 
-## SONAR — Reporter Engineering {#measure}
+## SONAR {#measure .engineering-chapter-title}
+
+Engineering an editing-responsive reporter
+{.engineering-chapter-subtitle}
 
 ### Overview {#measure-overview}
 
 RNA editing changes individual nucleotides, but those changes are not immediately visible in living cells. To evaluate ORCA more efficiently, we developed **SONAR (System for Optical Normalization and Analysis of RNA Editing)**: an editing-responsive fluorescence reporter supported by a framework for interpreting its output. Across ten engineering cycles, we established the reporter's protein-stability switch, refined its expression and target context, added an editor-expression marker, and explored fluorescence measurements across three platforms. The resulting system provides multiple optical views of reporter behavior while making clear why fluorescence alone cannot be treated as an RNA-editing percentage.
 
-### Engineering Rationale {#measure-engineering-rationale}
+### **Engineering Rationale** {#measure-engineering-rationale .engineering-section-title}
 
 #### Why build a fluorescence reporter? {#measure-why-build-a-fluorescence-reporter}
 
@@ -1398,7 +1423,7 @@ Together, these elements define the initial architecture:
 
 ### Design–Build–Test–Learn {#measure-design-build-test-learn}
 
-#### Cycle 1 — Establishing the Fluorescence Switch {#measure-cycle-01}
+#### **Cycle 1**: Building the fluorescence switch {#measure-cycle-01 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-01-design}
 
@@ -1420,7 +1445,7 @@ A preinstalled stop codon increased green output as designed, but the high basel
 
 *Figure 7. Sequence-defined reporter states show a distinguishable green-output switch but substantial background in DD-containing constructs.*
 
-#### Cycle 2 — Testing DD-Dependent Protein Stability {#measure-cycle-02}
+#### **Cycle 2**: Testing DD-dependent stability {#measure-cycle-02 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-02-design}
 
@@ -1442,7 +1467,7 @@ We had evidence for the designed protein-stability switch, but the decisive test
 
 *Figure 8. TMP selectively increases fluorescence from DD-linked reporters while leaving the DD-free AC reference largely unchanged.*
 
-#### Cycle 3 — Introducing an Active ORCA Editor {#measure-cycle-03}
+#### **Cycle 3**: Introducing active ORCA {#measure-cycle-03 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-03-design}
 
@@ -1464,7 +1489,7 @@ We prioritized three possible constraints: high basal EGFP at the reporter doses
 
 *Figure 9. Active PUF12–ORCA did not increase WT reporter fluorescence relative to E72A under the initial co-transfection conditions.*
 
-#### Cycle 4 — Reducing Basal Fluorescence without Losing Cell Coverage {#measure-cycle-04}
+#### **Cycle 4**: Reducing basal fluorescence {#measure-cycle-04 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-04-design}
 
@@ -1486,7 +1511,7 @@ We selected **200 ng reporter per six-well** as the next working starting point,
 
 *Figure 10. Reporter dose determines the trade-off between basal EGFP fluorescence and reporter-positive cell coverage.*
 
-#### Cycle 5 — Improving Target Accessibility and Editor Visibility {#measure-cycle-05}
+#### **Cycle 5**: Target access and editor tracking {#measure-cycle-05 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-05-design}
 
@@ -1512,6 +1537,8 @@ RepOpen offered a rational route to altering local RNA structure, but the fluore
 
 *Figure 12. The RepOpen matrix reveals construct-dependent green outputs and shows the value of BFP for identifying reporter/editor co-expression.*
 
+<section class="engineering-overview-card engineering-measurement-card" aria-labelledby="measure-from-fluorescence-to-measurement" markdown="1">
+
 ### From Fluorescence to Measurement {#measure-from-fluorescence-to-measurement}
 
 The first five cycles established a fluorescence switch and improved how we observe its output. They also exposed a central problem: **green fluorescence is shaped by expression and protein processing, not just by the edited RNA fraction**. We therefore separated reporter engineering from the interpretation of its optical signals.
@@ -1520,7 +1547,11 @@ The **SONAR Measurement Pipeline** follows four layers. **Layer 0** establishes 
 
 A crucial distinction guided the next experiments: **the AC fraction of mixed reporter DNA is not the fraction of edited RNA**. A reference series can characterize how the optical system responds to known input mixtures, but it cannot be presumed to measure an absolute editing percentage or to be invertible at every point.
 
-#### Cycle 6 — Establishing the First AC/INAC Reference Series {#measure-cycle-06}
+[Explore SONAR Measurement →](/measurement){.engineering-measurement-link}
+
+</section>
+
+#### **Cycle 6**: Establishing AC/INAC references {#measure-cycle-06 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-06-design}
 
@@ -1542,7 +1573,7 @@ The reference mixtures produced an input-associated optical trend, but not a rel
 
 *Figure 14. Seven AC/INAC mixtures reveal an overall EGFP response but weak low-input discrimination and limited reporter-positive cell yield.*
 
-#### Cycle 7 — Refining the Reference Experiment {#measure-cycle-07}
+#### **Cycle 7**: Refining the reference experiment {#measure-cycle-07 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-07-design}
 
@@ -1564,7 +1595,7 @@ Increasing the number of reference points improved the description of the respon
 
 *Figure 15. The expanded reference series increases analyzable cell yield and exposes differences between raw EGFP and expression-normalized RAS.*
 
-#### Cycle 8 — Exploring a More Accessible Measurement Platform {#measure-cycle-08}
+#### **Cycle 8**: Exploring an accessible measurement platform {#measure-cycle-08 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-08-design}
 
@@ -1586,7 +1617,7 @@ SONAR's optical switch was detectable without single-cell flow cytometry, but th
 
 *Figure 16. An 81-point plate-reader scan improves well-level consistency while revealing spatial heterogeneity and calibration constraints.*
 
-#### Cycle 9 — Visualizing SONAR under Real-Editor Conditions {#measure-cycle-09}
+#### **Cycle 9**: Imaging with active ORCA {#measure-cycle-09 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-09-design}
 
@@ -1608,7 +1639,7 @@ Microscopy added a direct, spatially informative way to inspect the reporter/edi
 
 *Figure 17. Representative microscopy shows heterogeneous SONAR fluorescence and three-channel reporter/editor visualization across the editor-dose series.*
 
-#### Cycle 10 — Linking Fluorescence with Reporter RNA Sequence Changes {#measure-cycle-10}
+#### **Cycle 10**: Linking fluorescence and RNA changes {#measure-cycle-10 .engineering-cycle-title}
 
 ##### Design {#measure-cycle-10-design}
 
@@ -1634,7 +1665,7 @@ SONAR successfully connected fluorescence measurements with independent evidence
 
 *Figure 18. A six-dose real-editor study compares BFP co-expression, optical RAS, and Sanger evidence of the OpenA-1 C280 substitution.*
 
-### Conclusion {#measure-conclusion}
+### **Conclusion** {#measure-conclusion .engineering-section-title}
 
 Across ten cycles, SONAR evolved from a proposed **EGFP–ecDHFR-DD switch** into a modular, multichannel reporter and an experimental foundation for relative optical measurement. The preset AC state and TMP experiments supported the fluorescence mechanism; reporter-dose optimization, RepOpen design, and P2A–BFP improved our ability to characterize its output and the relevant expression context. Flow cytometry, plate-reader scans, and microscopy then revealed both the reach and the distinct limitations of different optical readouts.
 
@@ -1669,7 +1700,10 @@ Across the five models, Design–Build–Test–Learn cycles make the computatio
 
 ---
 
-### Module 1 | RNA-seq editing-site analysis {#model-rna-seq}
+### RNA-seq {#model-rna-seq .engineering-chapter-title}
+
+Mapping candidate RNA editing sites
+{.engineering-chapter-subtitle}
 
 #### Overview {#model-rna-seq-overview}
 
@@ -1679,7 +1713,7 @@ Building on the REDItools framework (Picardi & Pesole, 2013), we extended REDIto
 
 [Read the full RNA-seq model](https://github.com/pdx12320/WIKI_SUSTech-BIO/blob/main/wiki/components/model/module1.html)
 
-#### Cycle 1.1 | Defining a reliable candidate signal {#model-rna-seq-cycle-01}
+#### **Cycle 1**: Defining candidate signals {#model-rna-seq-cycle-01 .engineering-cycle-title}
 
 ##### Design {#model-rna-seq-cycle-01-design}
 
@@ -1709,7 +1743,7 @@ Inspecting the caller's count definition exposed another problem: its non-refere
 
 Higher quality thresholds, FDR control and transcript-oriented export became the detection framework. We then separated candidate discovery from target-allele quantification, so every retained signal would be supported by the relevant substitution.
 
-#### Cycle 1.2 | Counting the intended substitution explicitly {#model-rna-seq-cycle-02}
+#### **Cycle 2**: Counting intended substitutions {#model-rna-seq-cycle-02 .engineering-cycle-title}
 
 ##### Design {#model-rna-seq-cycle-02-design}
 
@@ -1733,7 +1767,7 @@ The revised definition also kept the exported rate consistent with its numerator
 
 We retained REDItools2 for discovery and used the recount for allele support and rate estimation. This established a common quantitative input for editor comparisons and downstream learning. The next question was whether a well-supported mismatch originated from editing or from the cell line itself.
 
-#### Cycle 1.3 | Removing genetic variants and control background {#model-rna-seq-cycle-03}
+#### **Cycle 3**: Filtering variants and background {#model-rna-seq-cycle-03 .engineering-cycle-title}
 
 ##### Design {#model-rna-seq-cycle-03-design}
 
@@ -1763,7 +1797,7 @@ PUF12 still retained far more candidates than PUF10. This pattern persisted afte
 
 SNP exclusion, control-background filtering and four-replicate consistency became fixed components of the workflow. The PUF12–PUF10 difference now required a matched comparison of editing profiles, with the screening rules held constant.
 
-#### Cycle 1.4 | Testing the unexpected breadth of PUF12 editing {#model-rna-seq-cycle-04}
+#### **Cycle 4**: Testing PUF12 editing breadth {#model-rna-seq-cycle-04 .engineering-cycle-title}
 
 ##### Design {#model-rna-seq-cycle-04-design}
 
@@ -1797,7 +1831,7 @@ The matched analysis supported a broadly consistent upward shift in PUF12 rates 
 
 Han et al. (2022) reported improved specificity for a ten-repeat PUF relative to an eight-repeat configuration. Our comparison made repeat length an empirical design variable, motivating the variant-specific modelling in Module 2. Binding studies likewise distinguish recognition length, affinity and sequence discrimination as separate properties (Zhao et al., 2018).
 
-#### Cycle 1.5 | Correcting chromosome comparisons for detection opportunity {#model-rna-seq-cycle-05}
+#### **Cycle 5**: Normalizing chromosome comparisons {#model-rna-seq-cycle-05 .engineering-cycle-title}
 
 ##### Design {#model-rna-seq-cycle-05-design}
 
@@ -1827,7 +1861,10 @@ Callable-site density replaced counts as the basis for chromosome comparisons. W
 
 ---
 
-### Module 2 | PUF specificity ranking and structure-conditioned design {#model-puf}
+### PUF {#model-puf .engineering-chapter-title}
+
+Specificity ranking and structure-conditioned design
+{.engineering-chapter-subtitle}
 
 #### Overview {#model-puf-overview}
 
@@ -1837,7 +1874,7 @@ Our approach developed from AlphaFold 3 contact probabilities (CP) into the PUF-
 
 [View the complete Module 2 model.](https://github.com/pdx12320/WIKI_SUSTech-BIO/blob/main/wiki/components/model/module2.html)
 
-#### Cycle 2.1 | Testing what structural contact features can predict {#model-puf-cycle-01}
+#### **Cycle 1**: Testing structural contact features {#model-puf-cycle-01 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-01-design}
 
@@ -1865,7 +1902,7 @@ Clustering, variance selection and changes to the contact region left an informa
 
 We retained three-endpoint regression and the specificity objective as the task definition. CP supplied features through an additional structural inference step, introducing uncertainty between sequence substitution and the final prediction. The next model would obtain its representation directly from sequence, allowing us to test whether the information source was limiting performance.
 
-#### Cycle 2.2 | Replacing structural contacts with frozen ESM-2 representations {#model-puf-cycle-02}
+#### **Cycle 2**: Using frozen ESM-2 representations {#model-puf-cycle-02 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-02-design}
 
@@ -1895,7 +1932,7 @@ Ranking agreement remained modest, and these aggregate comparisons left the cont
 
 We adopted sequence-derived features as the main predictive route and removed per-candidate AlphaFold 3 inference from ranking. The local ESM result supported retaining sequence-context information. We then tested explicit amino-acid features alongside a pretrained mutation score to identify complementary information that could be combined in one model.
 
-#### Cycle 2.3 | Combining substitution identity with an evolutionary prior {#model-puf-cycle-03}
+#### **Cycle 3**: Adding evolutionary priors {#model-puf-cycle-03 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-03-design}
 
@@ -1933,7 +1970,7 @@ Performance dropped when mutation positions were held out, exposing reliance on 
 
 We retained the combined architecture for prioritization within the labelled domain. Project labels calibrated the evolutionary prior, while position and residue identity supplied complementary information. Representation depth became the next adjustable component; unseen positions also motivated a separate route for candidate exploration.
 
-#### Cycle 2.4 | Evaluating the ESM-2 layer used for mutation scoring {#model-puf-cycle-04}
+#### **Cycle 4**: Choosing an ESM-2 layer {#model-puf-cycle-04 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-04-design}
 
@@ -1961,7 +1998,7 @@ Nested selection reached <span class="engineering-math"><math xmlns="http://www.
 
 Layer 4 became a priority for independent evaluation, while layer 12 remained in the main model. The comparison identified representation depth as a useful design choice and demonstrated the importance of evaluating the selection procedure itself. Exploration beyond positions covered by existing labels called for complementary structural information.
 
-#### Cycle 2.5 | Extending candidate generation from recognition sites into the scaffold {#model-puf-cycle-05}
+#### **Cycle 5**: Extending scaffold design {#model-puf-cycle-05 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-05-design}
 
@@ -1993,7 +2030,7 @@ Inspection of structural annotations identified a separate screening defect: the
 
 Inverse folding supplied new candidate hypotheses, with model consensus and reference-background scores describing different aspects of support. The screening defect provided a concrete correction: restore the intended loop treatment using complete structural annotation. Single-substitution scores remained a diagnostic alongside the nomination rules.
 
-#### Cycle 2.6 | Restoring the loop-specific screening route {#model-puf-cycle-06}
+#### **Cycle 6**: Restoring loop-specific screening {#model-puf-cycle-06 .engineering-cycle-title}
 
 ##### Design {#model-puf-cycle-06-design}
 
@@ -2023,7 +2060,10 @@ The final workflow combined a supervised ranker with structure-conditioned explo
 
 ---
 
-### Module 3 | Refining structural models of the APOBEC catalytic module {#model-apobec}
+### APOBEC {#model-apobec .engineering-chapter-title}
+
+Refining catalytic-module structural models
+{.engineering-chapter-subtitle}
 
 #### Overview {#model-apobec-overview}
 
@@ -2033,7 +2073,7 @@ Our modelling framework combined **contact decomposition, parent-corrected subst
 
 [View the complete Module 3 model.](https://github.com/pdx12320/WIKI_SUSTech-BIO/blob/main/wiki/components/model/module3.html)
 
-#### Cycle 3.1 | Resolving what a predicted contact represents {#model-apobec-cycle-01}
+#### **Cycle 1**: Interpreting predicted contacts {#model-apobec-cycle-01 .engineering-cycle-title}
 
 ##### Design {#model-apobec-cycle-01-design}
 
@@ -2061,7 +2101,7 @@ The continuous features also revealed a substantial parental substrate response.
 
 We retained contact categories to distinguish recognition from structural support and adopted continuous CP differences for paired comparisons. The nonzero parental response established the next correction: each variant required its own matched substrates and subtraction of the parent's <span class="engineering-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>C</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">&#92;&#68;&#101;&#108;&#116;&#97;&#32;&#67;&#80;</annotation></semantics></math></span>.
 
-#### Cycle 3.2 | Isolating substitution-specific contact changes {#model-apobec-cycle-02}
+#### **Cycle 2**: Isolating substitution effects {#model-apobec-cycle-02 .engineering-cycle-title}
 
 ##### Design {#model-apobec-cycle-02-design}
 
@@ -2091,7 +2131,7 @@ The profiles still combined protein changes with RNA-dependent rearrangements wi
 
 We replaced uncorrected variant comparisons with paired, parent-corrected contact profiles and used them to organize local and cross-region hypotheses. Structural work on APOBEC substrate recognition informed this interpretation (Wolfe et al., 2020). We then added a substrate-swap control with an unchanged parent protein and new protein-only predictions to separate the input-dependent responses.
 
-#### Cycle 3.3 | Separating RNA-dependent and protein-only responses {#model-apobec-cycle-03}
+#### **Cycle 3**: Separating RNA-dependent responses {#model-apobec-cycle-03 .engineering-cycle-title}
 
 ##### Design {#model-apobec-cycle-03-design}
 
@@ -2121,7 +2161,7 @@ The plotted G27D-M130G label refers to the sequence containing G27D+W130G. Each 
 
 We adopted parallel complex and protein-only analyses for structural interpretation. Complex predictions described substrate-associated responses; protein-only predictions examined contact changes with RNA absent. To identify shared structural patterns, we then retained the contact vectors themselves and introduced network-based grouping.
 
-#### Cycle 3.4 | Retaining contact patterns instead of a single deviation score {#model-apobec-cycle-04}
+#### **Cycle 4**: Preserving contact patterns {#model-apobec-cycle-04 .engineering-cycle-title}
 
 ##### Design {#model-apobec-cycle-04-design}
 
@@ -2151,7 +2191,7 @@ Allowing cluster count to be selected again reduced recurrence to **78.5%**. The
 
 We retained contact-vector grouping and made cluster-count reselection part of model comparison. To reduce the influence of weakly varying contacts, we introduced variance-based feature selection while preserving the CP scale and complete construct coverage.
 
-#### Cycle 3.5 | Stabilizing the partition with a compact contact representation {#model-apobec-cycle-05}
+#### **Cycle 5**: Stabilizing contact-based clustering {#model-apobec-cycle-05 .engineering-cycle-title}
 
 ##### Design {#model-apobec-cycle-05-design}
 
@@ -2187,7 +2227,10 @@ We selected **spectral clustering on the 77 highest-variance contact pairs** as 
 
 ---
 
-### Module 4 | Learning to prioritize RNA editing candidates {#model-lamar}
+### LAMAR {#model-lamar .engineering-chapter-title}
+
+Prioritizing RNA editing candidates
+{.engineering-chapter-subtitle}
 
 #### Overview {#model-lamar-overview}
 
@@ -2195,7 +2238,7 @@ RNA sequencing from the wet-lab team supplied editing-site labels and their surr
 
 [Explore the Module 4 model and results](https://github.com/pdx12320/WIKI_SUSTech-BIO/blob/main/wiki/components/model/module4.html)
 
-#### Cycle 4.1 | Introducing pretrained RNA representations {#model-lamar-cycle-01}
+#### **Cycle 1**: Introducing pretrained RNA representations {#model-lamar-cycle-01 .engineering-cycle-title}
 
 ##### Design {#model-lamar-cycle-01-design}
 
@@ -2219,7 +2262,7 @@ LAMAR's multispecies pretraining also raised a specific adaptation question: how
 
 We retained pretrained sequence representations and directed development toward human-transcript adaptation. H. Zhou et al. (2025) established the RNA pretraining and downstream fine-tuning framework in LAMAR; our work applied it to editing-site prioritization.
 
-#### Cycle 4.2 | Adapting LAMAR to human transcripts {#model-lamar-cycle-02}
+#### **Cycle 2**: Adapting to human transcripts {#model-lamar-cycle-02 .engineering-cycle-title}
 
 ##### Design {#model-lamar-cycle-02-design}
 
@@ -2245,7 +2288,7 @@ Across 100 evaluations, masked nucleotide accuracy increased from **0.5321** at 
 
 The adapted encoder supplied a human-specific starting point for supervised learning. Masked reconstruction and editing prediction measure different tasks, so regional validation AP guided subsequent choices about encoder training. The domain-adaptive pretraining study by Gururangan et al. (2020) provided the methodological basis for continued pretraining and task-level assessment.
 
-#### Cycle 4.3 | Separating regional screening from local prediction {#model-lamar-cycle-03}
+#### **Cycle 3**: Regional and local prediction {#model-lamar-cycle-03 .engineering-cycle-title}
 
 ##### Design {#model-lamar-cycle-03-design}
 
@@ -2271,7 +2314,7 @@ Local editing-efficiency regression remained modest. Decomposing the task organi
 
 We retained separate regional and local tasks, allowing their training strategies and objectives to be refined independently. LoRA addresses parameter-efficient adaptation (Hu et al., 2022), while Elkan and Noto (2008) distinguish positive labels from unlabelled examples. These perspectives helped separate the adaptation method from the uncertainty in editing labels.
 
-#### Cycle 4.4 | Choosing how to adapt the regional encoder {#model-lamar-cycle-04}
+#### **Cycle 4**: Adapting the regional encoder {#model-lamar-cycle-04 .engineering-cycle-title}
 
 ##### Design {#model-lamar-cycle-04-design}
 
@@ -2308,7 +2351,7 @@ Original LAMAR with a frozen encoder reached **0.8181** in this comparison, plac
 
 We adopted full fine-tuning for the human-adapted regional model and retained original LAMAR as a reference configuration. The comparison made encoder training a task-specific choice: lower training loss alone did not identify the strongest validation result. The Optuna framework supported the hyperparameter search (Akiba et al., 2019).
 
-#### Cycle 4.5 | Training for candidate ranking {#model-lamar-cycle-05}
+#### **Cycle 5**: Training candidate ranking {#model-lamar-cycle-05 .engineering-cycle-title}
 
 ##### Design {#model-lamar-cycle-05-design}
 
@@ -2346,7 +2389,10 @@ The model now returned ordered cytidine candidates for the experimental team to 
 
 ---
 
-### Module 5 | Whole-body delivery and multisite editing {#model-whole-body}
+### Whole-body Model {#model-whole-body .engineering-chapter-title}
+
+Modelling delivery and multisite editing
+{.engineering-chapter-subtitle}
 
 #### Overview {#model-whole-body-overview}
 
@@ -2358,7 +2404,7 @@ Our contribution combines compartmental ordinary differential equations, explici
 
 [Read the full whole-body delivery model](https://github.com/pdx12320/WIKI_SUSTech-BIO/blob/main/wiki/pages/software.html#L38)
 
-#### Cycle 5.1 | Tracking the fate of the intended RNA product {#model-whole-body-cycle-01}
+#### **Cycle 1**: Tracking intended RNA products {#model-whole-body-cycle-01 .engineering-cycle-title}
 
 ##### Design {#model-whole-body-cycle-01-design}
 
@@ -2390,7 +2436,7 @@ Each scanned dose failed at least one model feasibility criterion. Dose escalati
 
 We retained explicit product states and evaluated intended-product retention alongside unwanted editing burden. Linked readouts of positions 112 and 158 became a priority for calibration because they can reveal further conversion of the intended product.
 
-#### Cycle 5.2 | Separating recognition errors from deaminase background {#model-whole-body-cycle-02}
+#### **Cycle 2**: Separating editing error sources {#model-whole-body-cycle-02 .engineering-cycle-title}
 
 ##### Design {#model-whole-body-cycle-02-design}
 
@@ -2418,7 +2464,7 @@ A separate dose comparison increased deaminase background by 3.35-fold between d
 
 We retained the three branches and their separate outputs. PUF design decisions now target the recognition-related component, while activity and background parameters govern additional trade-offs. Calibration therefore requires measurements that distinguish these sources of unwanted editing.
 
-#### Cycle 5.3 | Connecting sequence design to reaction kinetics {#model-whole-body-cycle-03}
+#### **Cycle 3**: Connecting design and kinetics {#model-whole-body-cycle-03 .engineering-cycle-title}
 
 ##### Design {#model-whole-body-cycle-03-design}
 
@@ -2446,7 +2492,7 @@ Sequence priors made candidate differences explicit, and the benchmark identifie
 
 The repeat-number prior applies to the configurations that informed it. Module 1's PUF12 profile highlights the need to recalibrate this relationship for other editor backgrounds.
 
-#### Cycle 5.4 | Replacing a single forecast with parameter-dependent outcomes {#model-whole-body-cycle-04}
+#### **Cycle 4**: Exploring parameter-dependent outcomes {#model-whole-body-cycle-04 .engineering-cycle-title}
 
 ##### Design {#model-whole-body-cycle-04-design}
 
@@ -2476,7 +2522,7 @@ We adopted outcome distributions and criterion-specific pass frequencies for sce
 
 Expression time courses, linked two-site editing and background measurements became calibration priorities. Their value lies in constraining the processes responsible for the broad product-yield distribution.
 
-#### Cycle 5.5 | Resolving delivery differences across tissue {#model-whole-body-cycle-05}
+#### **Cycle 5**: Resolving tissue-specific delivery {#model-whole-body-cycle-05 .engineering-cycle-title}
 
 ##### Design {#model-whole-body-cycle-05-design}
 

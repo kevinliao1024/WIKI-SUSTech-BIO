@@ -1,0 +1,119 @@
+{
+  "source_sha256": "772d050998cbc6fd42990429a228c68cc10bc5f41f53ecfdb8152fa438c9ca6a",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "c22357b493ed639293b21daafde51d2a2f776a989ecd8f1ccf8ef47ef7a61904",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 39.5086
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 81.3193
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "09bd03d1e8dd3c17bc77cd11b5f1c96dc5656d8322f36f981a7bc4cf1b8e1c9e",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 20.32557
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "bb84c5bdb36117e8fdf19bef99c178d163829fedf7d29cd9f4b840191cb0d6cd",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "87c82db572039965e0cf21e666355e454b13fb134cdf0c84e72df8213ebb3235",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 76.48895
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ddae69440f6f0811d457de51c389f595c8ce181ad450e7cb04bd5024f7f0b77b",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 16.64338
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 31.43154
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 71.34175
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.thermofisher.com/TFS-Assets/LCD/manuals/Varioskan-LUX-User-Manual.pdf",
+          "left": 76.65929,
+          "top": 75.54433,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/brochures/quantification-varioskan-lux-evos-technical-note.pdf",
+          "left": 25.96987,
+          "top": 82.07725,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

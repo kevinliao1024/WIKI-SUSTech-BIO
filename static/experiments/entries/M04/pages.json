@@ -1,0 +1,134 @@
+{
+  "source_sha256": "a10d5510fa85005449bc919600a175756e31d177cd2a06ad65b73afac9f721ce",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e5955ee3bb4b60d177620155df99e7b3375b8bcda06288a39509b654b0893ad7",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "25138cf0b2a8d7ff70572e32967654371a77a6aabf1f44600a411a381b208ec8",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 73.53919
+        }
+      ],
+      "links": [
+        {
+          "url": "https://crm.vazyme.com/cetool/en-us/multifragment.html",
+          "left": 10.07937,
+          "top": 46.3392,
+          "width": 53.5604,
+          "height": 1.48475
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "0be84c3afd90d80c92c219f6134407ca48ad290e87d758b71e94c009ccbf7ad0",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a2fadf94d67efdd6dde808b261b3bdf529396e8ff235c791aca8b4cc8a6a35c0",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 70.09456
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a92aeeeb18dbc33c4531fd10729e51c12fa14fe2e6674908bc9faaddd8e56558",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 18.90021
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 63.44285
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128",
+          "left": 19.13603,
+          "top": 69.13019,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://crm.vazyme.com/cetool/en-us/multifragment.html",
+          "left": 30.86584,
+          "top": 72.6936,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 76.25701,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

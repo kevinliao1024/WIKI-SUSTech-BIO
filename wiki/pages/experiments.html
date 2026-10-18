@@ -7,6 +7,7 @@
   <header class="exp-intro">
     <h1>{{ content.title }}<span>.</span></h1>
   </header>
+  {% include 'components/experiments/how-to-read.html' %}
 
   <div class="exp-layout" id="experiment-workspace">
     <aside class="exp-sidebar">
@@ -56,8 +57,12 @@
     </div>
   </div>
   <dialog class="exp-reader" data-reader aria-labelledby="reader-title">
+    <aside class="exp-reader-sidebar" aria-label="Protocol information and navigation">
     <header class="exp-reader-heading"><div><p data-reader-meta></p><h2 id="reader-title" data-reader-title></h2></div><button type="button" data-reader-close aria-label="Close experiment reader">Close ×</button></header>
     <div class="exp-reader-actions"><a data-reader-original target="_blank" rel="noopener">Open original PDF ↗</a><a data-reader-download download>Download PDF ↓</a><a href="{{ url_for('pages', page='notebook') }}">Notebook ↗</a><a data-reader-measurement href="{{ url_for('pages', page='measurement') }}" hidden>SONAR Measurement ↗</a></div>
+    <nav class="exp-reader-sections" data-reader-sections aria-label="Protocol sections"></nav>
+    <p class="exp-reader-hint">Select a page to enlarge it; select again to fit.</p>
+    </aside>
     <div class="exp-pdf-host" data-reader-host></div>
   </dialog>
   <noscript><style>.experiments-page [data-panel][hidden]{display:block!important}.exp-reader{display:none}</style></noscript>

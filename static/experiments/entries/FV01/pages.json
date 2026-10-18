@@ -1,0 +1,110 @@
+{
+  "source_sha256": "cc27ee60f09efc4844be159947d6ecbda9cd4487195fd6251f74537f0f33b716",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "271e4fcc3500073455683866787b6265e71c9c30f4f7d2d2c66b80885114292b",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.35606
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 28.6402
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f1612c7919c2aad4332acca09f65f0387227d33736233e6370875bb6c6140a1f",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 6.78461
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 36.06398
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "fe3d557ddd429d24d5ea91b4c5764799a041ba509c13209f2d1e1a032b7c5c47",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 44.02226
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 66.47175
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "25d0428e80c269a0a74664f4167afedd2f898842ecc8b14992aa923e8c9c9047",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 39.98373
+        }
+      ],
+      "links": [
+        {
+          "url": "https://documents.thermofisher.com/TFS-Assets/LSG/manuals/neon_device_man.pdf",
+          "left": 15.50687,
+          "top": 45.55228,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/MPK1025/faqs",
+          "left": 53.27717,
+          "top": 49.11569,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

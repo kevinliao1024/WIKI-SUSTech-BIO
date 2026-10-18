@@ -50,7 +50,7 @@ CONTENT_PAGES: dict[str, PageConfig] = {
     "blueprint": PageConfig("project/blueprint.md"),
     "engineering": PageConfig("project/engineering.md", "pages/engineering.html"),
     "results": PageConfig("project/results.md"),
-    "contribution": PageConfig("project/contribution.md"),
+    "contribution": PageConfig("project/contribution.md", "pages/contribution-sonar.html"),
     "project-contribution-sonar": PageConfig("project/contribution-sonar.md", "pages/contribution-sonar.html"),
     "future": PageConfig("project/future.md"),
     "parts": PageConfig("project/parts.md"),
@@ -182,6 +182,18 @@ def load_markdown_content(
     if h1:
         metadata.setdefault("title", h1.group(1).strip())
         body = body[h1.end() :]
+
+    # Reuse the maintained tutorial in the hub and its original standalone route.
+    # Nest its headings before rendering so both desktop and mobile TOCs agree.
+    if source_path == DOCS_ROOT / "project/contribution.md":
+        tutorial_path = DOCS_ROOT / "project/contribution-sonar.md"
+        _, tutorial = _parse_front_matter(tutorial_path.read_text(encoding="utf-8"), tutorial_path)
+        tutorial = LEADING_H1.sub("", tutorial, count=1)
+        tutorial = re.sub(r"^(#{2,5}) ", r"\1# ", tutorial, flags=re.MULTILINE)
+        body = body.replace(
+            "<!-- SONAR_TUTORIAL: rendered from contribution-sonar.md, with headings nested under SONAR. -->",
+            tutorial.strip(),
+        )
 
     renderer = markdown.Markdown(
         extensions=("extra", "sane_lists", "toc"),

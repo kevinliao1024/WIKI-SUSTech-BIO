@@ -14,13 +14,28 @@ page.on('pageerror',e=>errors.push(e.message));
 const requests=[];page.on('request',r=>requests.push(r.url()));
 await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');
 await page.evaluate(()=>{window.notebookOriginalMap=document.querySelector('[data-map-group]');});
+const overviewOrder=await page.evaluate(()=>({
+ months:[...document.querySelectorAll('.nb-tick.is-month')].map(n=>({label:n.querySelector('text').textContent,x:n.getBoundingClientRect().left})),
+ stage:document.querySelector('[data-stage]').getBoundingClientRect().bottom,
+ cards:document.querySelector('[data-tracks]').getBoundingClientRect().top,
+ firstMonth:document.querySelector('.nb-tick.is-month').getBoundingClientRect().top,
+ height:innerHeight,
+}));
+assert.deepEqual(overviewOrder.months.map(m=>m.label),['JUN','JUL','AUG','SEPT','OCT']);
+assert.ok(overviewOrder.months.every((m,i,all)=>!i||m.x>all[i-1].x),'Months advance from June to October');
+assert.ok(overviewOrder.cards>=overviewOrder.stage,'Track cards follow the entire timeline');
+assert.ok(overviewOrder.stage<overviewOrder.height,'All nine tracks fit in the desktop entry viewport');
+
 assert.equal(requests.filter(r=>r.includes('/previews/')||r.endsWith('.pdf')).length,0,'Overview must not preload PDF pages');
 const point=async(track,date)=>page.locator(`.nb-lane[data-track="${track}"] .nb-date-target[data-date="${date}"]`).evaluate(n=>{const b=n.getBoundingClientRect();return{x:b.x+b.width/2,y:b.y+b.height/2};});
-const a=await point('aav','2026-09-26'), b=await point('reporter','2026-09-26');assert.ok(Math.abs(a.y-b.y)<1,'Concurrent tracks share calendar y');
-await page.waitForTimeout(550);await page.screenshot({path:`${output}/desktop-overview.png`,fullPage:true});
-await page.evaluate(()=>scrollTo(0,1600));await page.waitForTimeout(150);
+const a=await point('aav','2026-09-26'), b=await point('reporter','2026-09-26');assert.ok(Math.abs(a.x-b.x)<1,'Concurrent tracks share calendar x');
+await page.waitForTimeout(700);await page.screenshot({path:`${output}/desktop-overview.png`,fullPage:true});
+await page.evaluate(()=>scrollTo(0,120));await page.waitForTimeout(150);
 await page.locator('.nb-lane[data-track="aav"]').focus();await page.keyboard.press('Enter');
-await page.waitForSelector('[data-mode="focus"]');await page.waitForTimeout(550);
+await page.waitForSelector('[data-mode="focus"]');
+assert.equal(await page.locator('.nb-rail-motion').count(),1,'Selected rail morphs into the reader');
+await page.waitForTimeout(700);
+assert.equal(await page.locator('.nb-rail-motion').count(),0,'Rail transition cleans up');
 assert.equal(await page.evaluate(()=>window.notebookOriginalMap===document.querySelector('[data-map-group]')),true,'Same timeline DOM survives reflow');
 assert.equal(await page.locator('.nb-card:not([data-track="aav"])').count(),0);
 assert.equal(await page.locator('.nb-card').count(),17);
@@ -30,14 +45,14 @@ const jumpY=await page.locator('#day-2026-09-26').evaluate(n=>n.getBoundingClien
 // Focus exposes only the selected lane; the toolbar remains the track switcher.
 assert.equal(await page.locator('.nb-lane:visible').count(),1);
 assert.equal(await page.locator('.nb-lane[aria-hidden="true"][tabindex="0"]').count(),0);
-await page.locator('[data-switch]').selectOption('reporter');await page.waitForTimeout(550);
+await page.locator('[data-switch]').selectOption('reporter');await page.waitForTimeout(700);
 assert.equal(await page.locator('.nb-card').count(),33);
 assert.equal(await page.locator('.nb-card:not([data-track="reporter"])').count(),0);
-await page.locator('[data-back]').click();await page.waitForTimeout(550);
+await page.locator('[data-back]').click();await page.waitForTimeout(700);
 
 assert.ok(Math.abs(await page.evaluate(()=>scrollY-history.state.overviewScroll))<3,'Return restores original overview context');
-results.push('Overview: no source downloads, shared calendar coordinates, persistent map DOM, strict AAV/Reporter switching, keyboard activation and overview scroll restoration.');
-await page.goto(`${base}/notebook?track=puf&date=2026-07-27&record=QX01`);await page.waitForSelector('#record-QX01 [aria-expanded="true"]');await page.waitForTimeout(550);
+results.push('Overview: horizontal real-date calendar, all nine tracks above the fold, rail morph cleanup, no source downloads, shared calendar coordinates, persistent map DOM, strict AAV/Reporter switching, keyboard activation and overview scroll restoration.');
+await page.goto(`${base}/notebook?track=puf&date=2026-07-27&record=QX01`);await page.waitForSelector('#record-QX01 [aria-expanded="true"]');await page.waitForTimeout(700);
 assert.equal(await page.locator('#record-QX01 img').count(),2);
 assert.ok((await page.locator('#record-QX01 img').first().boundingBox()).width<=500,'Original pages retain a compact reading width');
 await page.locator('#record-QX01 img').first().scrollIntoViewIfNeeded();
@@ -54,12 +69,69 @@ await page.screenshot({path:`${output}/desktop-original-pdf.png`});
 await page.locator('#record-QX01 button').click();assert.equal(await page.locator('#record-QX01 img').count(),0,'Collapse releases page DOM');
 await page.locator('[data-back]').click();await page.goBack();await page.waitForSelector('[data-mode="focus"]');await page.goForward();await page.waitForSelector('[data-mode="overview"]');
 results.push('Focus: multipage record deep link, original image load, measured node/card alignment, resource cleanup and Back/Forward.');
+// The rail must actually rotate through an intermediate frame, and dates remain exact.
+await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');
+await page.waitForTimeout(100);
+const motion=await page.evaluate(async()=>{
+ document.querySelector('.nb-lane[data-track="puf"] .nb-date-target[data-date="2026-07-28"]').dispatchEvent(new MouseEvent('click',{bubbles:true}));
+ await new Promise(resolve=>setTimeout(resolve,180));
+ const circles=[...document.querySelectorAll('.nb-rail-motion circle')];
+ return circles.map(n=>({x:+n.getAttribute('cx'),y:+n.getAttribute('cy')}));
+});
+assert.ok(motion.length>2,'Transition retains individual date nodes');
+assert.ok(Math.abs(motion[0].x-motion.at(-1).x)>10&&Math.abs(motion[0].y-motion.at(-1).y)>10,'Intermediate frame connects horizontal and vertical layouts');
+await page.waitForTimeout(700);
+assert.match(page.url(),/date=2026-07-28/);
+assert.equal(await page.locator('[data-jump]').inputValue(),'2026-07-28');
+const dates=await page.locator('.nb-day').evaluateAll(nodes=>nodes.map(n=>n.dataset.date));
+assert.deepEqual(dates,[...dates].sort(),'Reader keeps chronological order');
+await page.locator('[data-back]').click();await page.waitForTimeout(700);
+await page.locator('.nb-lane[data-track="puf"] .nb-date-target[data-date="2026-07-29"]').click();
+await page.locator('[data-back]').click();await page.waitForTimeout(700);
+assert.equal(await page.locator('.nb-rail-motion,.nb-scene-ghost').count(),0,'Rapid return removes all transient layers');
+assert.equal(await page.locator('[data-mode="overview"]').count(),1);
+results.push('Motion: intermediate rail rotation, exact dense-date selection, chronological reader and interrupted-return cleanup.');
+
+// Horizontal zoom preserves date geometry, pinning and reader return context.
+await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');
+const baseGap=(await point('aav','2026-09-26')).x-(await point('reporter','2026-08-03')).x;
+const baseLabel=await page.locator('[data-label-track="aav"]').boundingBox();
+const baseFont=await page.locator('.nb-line-label').first().evaluate(n=>getComputedStyle(n).fontSize);
+await page.locator('[data-zoom]').focus();
+for(let i=0;i<4;i++)await page.keyboard.press('ArrowRight');
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'200%');
+const wideGap=(await point('aav','2026-09-26')).x-(await point('reporter','2026-08-03')).x;
+assert.ok(Math.abs(wideGap-baseGap*2)<2,'Zoom doubles elapsed-date spacing');
+assert.equal(await page.locator('.nb-line-label').first().evaluate(n=>getComputedStyle(n).fontSize),baseFont,'Labels do not scale');
+assert.ok(Math.abs((await page.locator('[data-label-track="aav"]').boundingBox()).x-baseLabel.x)<2,'Track names stay pinned');
+const viewport=await page.locator('[data-viewport]').boundingBox();
+const panBefore=await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft);
+await page.mouse.move(viewport.x+viewport.width*.65,viewport.y+120);await page.mouse.down();
+await page.mouse.move(viewport.x+viewport.width*.65-100,viewport.y+120,{steps:6});await page.mouse.up();
+assert.ok(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft)>panBefore+80,'Mouse drag pans the calendar');
+assert.equal(await page.locator('[data-mode="overview"]').count(),1,'Dragging never opens a track');
+await page.locator('.nb-lane[data-track="aav"] .nb-date-target[data-date="2026-09-26"]').click();await page.waitForTimeout(700);
+const savedPan=await page.evaluate(()=>history.state.overviewX);
+assert.equal(await page.locator('[data-jump]').inputValue(),'2026-09-26');
+await page.locator('[data-back]').click();await page.waitForTimeout(700);
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'200%');
+assert.ok(Math.abs(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft)-savedPan)<2,'Return keeps zoomed pan position');
+await page.locator('[data-zoom-fit]').click();
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'100%');
+assert.equal(await page.locator('[data-viewport]').evaluate(n=>n.scrollLeft),0);
+assert.equal(await page.locator('[data-zoom-out]').isDisabled(),true);
+await page.locator('[data-zoom]').focus();await page.keyboard.press('End');
+assert.equal(await page.locator('[data-zoom-value]').innerText(),'300%');
+assert.equal(await page.locator('[data-zoom-in]').isDisabled(),true);
+await page.locator('[data-zoom-fit]').click();
+results.push('Zoom: keyboard slider, exact horizontal scaling, pinned labels, drag without accidental navigation, date selection, return context and fit/bounds.');
+
 // Static-host prefix is handled by relative asset paths, independently of the dev root.
 for(const size of [{width:834,height:1112},{width:390,height:844},{width:320,height:740}]) {
  await page.setViewportSize(size);await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');await page.waitForTimeout(300);
  await page.screenshot({path:`${output}/overview-${size.width}.png`});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No page-wide horizontal overflow');
- await page.locator('.nb-track-chip[data-track="puf"]').click();await page.waitForTimeout(550);
+ await page.locator('.nb-track-chip[data-track="puf"]').click();await page.waitForTimeout(700);
  await page.locator('[data-jump]').selectOption('2026-07-27');await page.locator('#record-QX01 button').click();
  await page.waitForTimeout(150);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
  await page.screenshot({path:`${output}/focus-${size.width}.png`});
@@ -67,6 +139,9 @@ for(const size of [{width:834,height:1112},{width:390,height:844},{width:320,hei
 results.push('Responsive: 834px tablet, 390px and 320px mobile; no document overflow; selected-track date jump and PDF expansion.');
 await page.emulateMedia({reducedMotion:'reduce'});
 assert.equal(await page.locator('[data-map-group]').evaluate(n=>getComputedStyle(n).transitionDuration),'0s');
+await page.locator('[data-back]').click();
+await page.locator('.nb-track-chip[data-track="puf"]').click();
+assert.equal(await page.locator('.nb-rail-motion,.nb-scene-ghost').count(),0,'Reduced motion skips both transition layers');
 results.push('Reduced motion disables the timeline movement without disabling navigation.');
 await page.route('**/previews/**',route=>route.abort());
 await page.goto(`${base}/notebook?record=QX01`);await page.waitForSelector('.nb-page-error');

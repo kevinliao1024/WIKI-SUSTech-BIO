@@ -1,0 +1,116 @@
+{
+  "source_sha256": "c8afb4df2cfe3bde3d604ac584cf0a4735973dadebc82ca210ba668ca658c9b8",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "5e01692ccda5cffac4303f1ceff30500e3baef77875214b941a7b7ebc4685581",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 29.70922
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 63.68041
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 1,
+          "top": 78.46857
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "bf61295f46ebc816d9f24e03fd64ebf10f84aa712a49c046df821b81d69da2ed",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "70922aa97dd910960841e3118d032fba58250a215682471f72fc3ad42552822f",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 48.23896
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 74.84577
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "ead71908c18b63ffe602f967e688f689890d8358b888d2d29aa1cbf44ed3fe2e",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 44.79433
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.origene.com/support/learning-resources/protocols/aav-infection-protocol",
+          "left": 56.35635,
+          "top": 48.99691,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.genemedi.net/pdf/Genemedi-AAV%28adeno%20associated%20virus%29%20User%20Manual.pdf",
+          "left": 29.32292,
+          "top": 52.56032,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.cell.com/molecular-therapy-family/molecular-therapy/fulltext/S1525-0016(19)30405-8",
+          "left": 63.97272,
+          "top": 57.60849,
+          "width": 8.85807,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

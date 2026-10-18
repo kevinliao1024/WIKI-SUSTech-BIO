@@ -1,0 +1,133 @@
+{
+  "source_sha256": "1f20ec7b9ecad99ec6c0ebc6db6c73618d28f1f87e24de73026b454cfb1f7fff",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "3d4f282e2ffa87a9e3a2dff97d03be984ab51b59c298c7bd5e7d5ba7c340d1f8",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 37.66751
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "68aa81f2950f74bd2590837b98bd83271b61d6c98ae505c228a527d97644c049",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 37.25178
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 64.74944
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "4aa903fd6b2364a4bdea0ad77efb532fd5b94e8af06d0a292d3f745930aabb29",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e62e62d434fe27a37e713ec01c6ed3511e2699e397945eeb4856ae57ed40b8e4",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 39.74616
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "b3c64d97427a2508be0abe2760c0d0e72f4e1571e34f67ff259689952f691bc4",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 56.01908
+        }
+      ],
+      "links": [
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/LSG/manuals/trizol_reagent.pdf",
+          "left": 45.76269,
+          "top": 63.78507,
+          "width": 8.85807,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/15596026CN/faqs",
+          "left": 64.78477,
+          "top": 67.34848,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://assets.thermofisher.com/TFS-Assets/CAD/Product-Bulletins/TN52646-E-0215M-NucleicAcid.pdf",
+          "left": 58.11703,
+          "top": 70.9119,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://store.sangon.com/productImage/SDS/B501005/B501005_ZH_S.pdf",
+          "left": 19.13603,
+          "top": 74.47531,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

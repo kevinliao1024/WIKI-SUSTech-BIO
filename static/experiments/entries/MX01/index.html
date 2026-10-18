@@ -2,372 +2,502 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MX01 · Site Directed Mutagenesis by Whole Plasmid PCR</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> MX01 · <strong>Category:</strong> Molecular Biology</p>
-<p>MX01 | ver 1.1 | Revised 2026-10-14</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>This integrated workflow combines the core molecular biology protocols to construct plasmid variants carrying defined nucleotide substitutions, including the repeat-specific checks needed for PUF variants.</p>
-<p>It links M01 (whole-plasmid PCR), M03 (DpnI parental-template removal), M02 (gel analysis and product recovery), M04 (overlap-mediated recircularization), M05 (transformation), M06 (individual-clone sequencing and culture return) and M07 (verified-clone plasmid preparation).</p>
-<p>MX01 explains how these modules are selected and connected for site-directed mutagenesis, from the designed mutant sequence to the verified plasmid stock; target-transcript RT-PCR and sequencing readout are covered in MX02.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Supplier / identifier</th>
-<th>Use / specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Parental plasmid and mutant reference</td>
-<td>Sequence-verified working clone</td>
-<td>Full circular sequence, resistance marker and intended substitutions</td>
-</tr>
-<tr>
-<td>Mutagenic F/R primers</td>
-<td>Custom oligos; separate 10 µM working solutions</td>
-<td>Template-binding sequences, substituted bases and compatible terminal overlap</td>
-</tr>
-<tr>
-<td>High-fidelity PCR premix</td>
-<td>Takara PrimeSTAR Max R045A/B OR ABclonal Gloria Nova HS RK20731</td>
-<td>Select the matching M01 input range and program [2,3]</td>
-</tr>
-<tr>
-<td>FastDigest DpnI and 10X FastDigest Buffer</td>
-<td>Thermo Scientific; FD1703</td>
-<td>Remove susceptible dam-methylated parental plasmid (M03) [4,5]</td>
-</tr>
-<tr>
-<td>Gel reagents and DNA ladder</td>
-<td>M02; 1X TAE and SYBR Safe</td>
-<td>Select gel concentration and a ladder spanning the full product size</td>
-</tr>
-<tr>
-<td>E.Z.N.A. Gel Extraction Kit</td>
-<td>Omega Bio-tek; D2500</td>
-<td>Recover the intended linear product using M02 [6]</td>
-</tr>
-<tr>
-<td>ClonExpress Ultra One Step Cloning Kit V3</td>
-<td>Vazyme; C117</td>
-<td>2X CE Mix V3; M04 rapid single-fragment route [9]</td>
-</tr>
-<tr>
-<td>Trans5α chemically competent cells</td>
-<td>TransGen; CD201</td>
-<td>50 µL reference scale; M05 conventional route [7]</td>
-</tr>
-<tr>
-<td>LB broth and selective agar</td>
-<td>Solarbio LB; antibiotic matched to backbone</td>
-<td>For Amp-resistant constructs: 100 µg/mL final Amp (M05/M06)</td>
-</tr>
-<tr>
-<td>FastPure EndoFree Plasmid Mini Plus Kit</td>
-<td>Vazyme; DC204</td>
-<td>Verified-clone plasmid preparation (M07)</td>
-</tr>
-<tr>
-<td>Sterilized Type II water; tubes; filter tips</td>
-<td>Laboratory water; Axygen tips</td>
-<td>Working dilutions and accurately pipettable additions</td>
-</tr>
-<tr>
-<td>Thermal cycler, gel system, imager and DNA quantification device</td>
-<td>Laboratory equipment</td>
-<td>Amplification, controlled incubation, product recovery and DNA input measurement</td>
-</tr>
-<tr>
-<td>Centrifuge, ice bath, 42°C water bath and bacterial incubator/shaker</td>
-<td>Eppendorf centrifuge; laboratory equipment</td>
-<td>M05 conventional transformation and M06/M07 propagation</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<h3 id="design-the-desired-circle-and-the-mutagenic-primers">Design the desired circle and the mutagenic primers</h3>
-<p>Mark the intended nucleotide changes on the actual parental sequence and translate the desired coding region. Check amino acid substitutions, frame, start/stop codons, linkers and neighboring repeat boundaries before ordering. A mutant name alone is insufficient to define the construct.</p>
-<p>Design an F/R pair that produces one full-length linear plasmid product with compatible homology at its two ends. Simulate the PCR product and final circle, count the shared overlap once and inspect the closure junction. Use M04's 15-20 bp terminal overlap, preferably with 40-60% GC. [9] If distant sites do not fit one primer pair, use separate construction rounds or a checked multi-fragment route rather than forcing them into one local pair.</p>
-<p>Distinguish the 3' template-binding segment from any nonbinding 5' tail when calculating annealing Tm. Avoid poorly matched 3' ends, strong dimers and alternative binding sites. For repetitive PUF sequence, compare each primer against every repeat copy, especially P4-P7, and favor informative flanking sequence. Design overlap and PCR annealing requirements together. [1]</p>
-<p>Plan sequencing coverage across each intended substitution, the closure junction and repeat copies susceptible to unintended changes. Reads anchored to repeat boundaries are more informative than a short read inside a repeated motif.</p>
-<h3 id="prepare-the-inputs-and-controls">Prepare the inputs and controls</h3>
-<p>Prepare separate 10 µM F/R working solutions. Confirm the product length and measured plasmid concentration. Choose one M01 polymerase recipe/program and keep that choice through the run; extension time depends on the full product length.</p>
-<p>For method establishment, include a no-template PCR control and a matched no-recombination-Mix DNA control. A compatible plasmid transformation control and no-DNA cell control help localize cell/selection failures. Keep control identities separate from candidate-clone identities.</p>
-<p>Keep C117 at -30 to -15°C for storage and assemble on ice. Use M04's rapid single-fragment route below; set 50°C incubation followed by cooling to 4°C or ice. [9]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-amplify-the-complete-mutagenized-plasmid">A. Amplify the complete mutagenized plasmid</h3>
-<ol>
-<li>Calculate the required parental-template volume V = DNA mass / stock concentration. In a 50 µL reaction, M01 lists 0.01-1 ng plasmid for PrimeSTAR Max or 0.001-10 ng for Gloria Nova. Dilute the stock if V is too small to dispense accurately. Use a measured input within the selected guidance; avoid unnecessary parent that can increase background. [2,3]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>50 µL</th>
-<th>25 µL</th>
-<th>Final</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Selected 2X PCR premix</td>
-<td>25 µL</td>
-<td>12.5 µL</td>
-<td>1X</td>
-</tr>
-<tr>
-<td>F primer, 10 µM</td>
-<td>1 µL</td>
-<td>0.5 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>R primer, 10 µM</td>
-<td>1 µL</td>
-<td>0.5 µL</td>
-<td>0.2 µM</td>
-</tr>
-<tr>
-<td>Parental plasmid</td>
-<td>V50 µL</td>
-<td>V25 µL</td>
-<td>Product-specific input</td>
-</tr>
-<tr>
-<td>Sterilized Type II water</td>
-<td>23 - V50 µL</td>
-<td>11.5 - V25 µL</td>
-<td>To volume</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>50 µL</td>
-<td>25 µL</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li>Assemble on ice, gently mix and briefly spin. Use the complete enzyme-specific M01 program below. Enable the heated lid and set the actual reaction volume. Preserve the lane and tube identity of each primer/condition comparison.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>PrimeSTAR Max</th>
-<th>Gloria Nova HS V2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Initial denaturation</td>
-<td>Not normally required</td>
-<td>95°C, 3 min</td>
-</tr>
-<tr>
-<td>Cycle denaturation</td>
-<td>98°C, 10 s</td>
-<td>95°C, 15 s</td>
-</tr>
-<tr>
-<td>Cycle annealing</td>
-<td>55°C, 5 or 15 s</td>
-<td>60°C starting point, 30 s</td>
-</tr>
-<tr>
-<td>Cycle extension</td>
-<td>72°C, 5 s/kb starting point</td>
-<td>72°C, 10 s/kb starting point</td>
-</tr>
-<tr>
-<td>Cycle count</td>
-<td>30-35</td>
-<td>25-35</td>
-</tr>
-<tr>
-<td>Final extension</td>
-<td>Not normally required</td>
-<td>72°C, 5 min</td>
-</tr>
-<tr>
-<td>Hold</td>
-<td>4°C</td>
-<td>4°C</td>
-</tr>
-</tbody>
-</table>
-<p>Use M01's primer-length/Tm rules and long-target adjustments when selecting annealing and extension conditions. Keep PrimeSTAR's short annealing duration; preheat the cycler to 95°C for Gloria Nova. A fixed 1 min extension is not a general whole-plasmid setting. Use M01 Optimization for a justified gradient. [2,3]</p>
-<h3 id="b-remove-parental-template-and-recover-the-intended-linear-product">B. Remove parental template and recover the intended linear product</h3>
-<ol start="3">
-<li>Check parental host methylation and GATC sites before using DpnI. The parent must be susceptible dam-methylated DNA; newly amplified products are normally unmethylated. DpnI does not remove unwanted PCR amplicons. Use the separate M03 parental-template-removal workflow. [4]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Crude-PCR reference setup from M03</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Completed PCR mixture</td>
-<td>10 µL</td>
-</tr>
-<tr>
-<td>10X FastDigest Buffer</td>
-<td>2 µL</td>
-</tr>
-<tr>
-<td>FastDigest DpnI</td>
-<td>1 µL</td>
-</tr>
-<tr>
-<td>Water</td>
-<td>17 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>30 µL</td>
-</tr>
-</tbody>
-</table>
-<ol start="4">
-<li>
-<p>Mix and briefly spin; use the M03 crude-PCR adaptation at 37°C for 15 min. If treating more input, scale the complete setup rather than adding buffer by eye to an entire PCR. When premix/additive compatibility is uncertain, use M03's purified-DNA branch. PCR-buffer carryover is why the crude setup differs from a simple 1X digest. [5]</p>
-</li>
-<li>
-<p>Run an analytical aliquot using M02, with a ladder above and below the predicted full product size. Choose agarose concentration for that size and the nearest unwanted band; 0.7-1% is a starting choice for many 5-10 kb products. Keep the rest for preparative recovery. Use M02 for loading, running and imaging defects before referring amplification problems to M01 Optimization.</p>
-</li>
-<li>
-<p>Recover the clearly resolved full-length band using the M02 Omega D2500 workflow. Prepare XP2/SPW correctly, minimize illumination and gel mass, complete the wash/dry steps and elute in 30-50 µL. Quantify the recovered DNA before assembly. D2500's maintained scope is 100 bp-10 kb; choose a verified compatible recovery method for a larger product. [6]</p>
-</li>
-</ol>
-<h3 id="c-recircularize-the-plasmid">C. Recircularize the plasmid</h3>
-<ol start="7">
-<li>Check that the two recovered product ends encode the intended complementary overlap and yield the designed circle without duplication or deletion. Calculate and record DNA mass from its measured concentration and the 10 µL input. On ice, combine the DNA and C117 Mix using the M04 rapid recipe below; gently pipette and briefly spin.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gel-purified full-length PCR product</td>
-<td>10 µL</td>
-</tr>
-<tr>
-<td>2X CE Mix V3 (C117)</td>
-<td>5 µL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>15 µL</td>
-</tr>
-</tbody>
-</table>
-<p>This is M04's laboratory-adapted rapid recipe, giving approximately 0.67X CE Mix. The manufacturer reference uses 5 µL of 2X Mix in 10 µL total (1X). If recovery is poor, compare the manufacturer setup with matched DNA mass using M04; document the route used. [9]</p>
-<ol start="8">
-<li>Prepare a no-Mix control with 10 µL of the same DNA and 5 µL water. Incubate at 50°C for 5 min, then immediately cool to 4°C or ice. Keep sample and control labels through transformation. [9]</li>
-</ol>
-<h3 id="d-transform-and-submit-individual-colonies">D. Transform and submit individual colonies</h3>
-<ol start="9">
-<li>
-<p>Use M05 Route A for the new assembly: thaw 50 µL Trans5α cells on ice and gently add 1-5 µL assembly product. C117 carryover must be at or below one-tenth of the cell volume, so 5 µL is the upper limit at this scale. Use the same transfer volume for the matched no-Mix control. [9]</p>
-</li>
-<li>
-<p>Keep on ice for 30 min, heat-shock in a 42°C water bath for 45 s and immediately return to ice for 2 min. Add 500 µL antibiotic-free LB and recover at 37°C, 200 rpm for 1 h. Keep the cell product, device, tube geometry and route consistent. [7]</p>
-</li>
-<li>
-<p>Plate 50-100 µL recovered culture on the matching selective agar and incubate inverted at 37°C overnight, unless the construct/host requires another propagation temperature. Compare sample and control plates before selecting colonies. Use M05 for shared transformation/selection failures.</p>
-</li>
-<li>
-<p>Follow M06: submit the plate and request independent picking/sequencing of 2-4 isolated colonies per construct. Give each clone a unique ID and request its raw chromatograms, required sequencing coverage and retention of the matching viable culture. Do not pool candidates.</p>
-</li>
-</ol>
-<h3 id="e-verify-the-sequence-and-prepare-the-selected-plasmid">E. Verify the sequence and prepare the selected plasmid</h3>
-<ol start="13">
-<li>
-<p>Inspect chromatograms and align high-quality reads to both the parental and intended mutant reference. Confirm every intended nucleotide substitution, translate the affected coding region and review all additional mismatches within the covered region. Check the closure junction and informative repeat boundaries.</p>
-</li>
-<li>
-<p>For PUF mutants, check every repeat that could have been unintentionally amplified or changed, especially P4-P7. Obtain overlapping reads where repeat placement or critical-site coverage is ambiguous. A correct band size or a clean trace at one intended codon does not establish the full construct. [1,8]</p>
-</li>
-<li>
-<p>Select only a clone meeting the required sequence coverage and design. Record the verified coordinates and any remaining gaps. Ask for the corresponding viable culture, directly inoculate selective LB using M06 and prepare plasmid using M07. For DC204, match the 5-15 mL preparation to its 12-14 h culture guidance and avoid growth beyond 16 h.</p>
-</li>
-<li>
-<p>Keep the final mutant name, parental clone ID, primer order, sequence files, coverage record and plasmid stock linked. Retransformation is needed only when a returned plasmid or a deliberate host transfer requires it; receiving a satisfactory matching culture does not require another routine cloning round.</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Resolve repetitive-sequence specificity before repeating PCR. An apparent full-length product can still contain the wrong-repeat mutation or an unintended rearrangement.</p>
-<p>Use working primer dilutions and measured DNA inputs. Change one PCR variable at a time and retain the identity of each tested condition.</p>
-<p>Avoid excessive illumination and residual ethanol during product recovery. A clean, quantified eluate is more useful than a large volume of poorly recovered DNA.</p>
-<p>Keep each colony independent through sequencing and culture return. Select by sequence and coverage rather than colony size or total colony count.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>One or more individually labeled bacterial clones may carry the intended substitutions and correct coding context over the required high-quality sequencing coverage. No mutation-recovery rate is guaranteed.</p>
-<p>Retain the designed circle, primer order, PCR program, gel image/lane map, assembly inputs, controls and clone-linked traces. Report local verification and any unsequenced regions accurately.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>No full-length band or extra gel products</td>
-<td>M02 loading/run/imaging; actual primer sites and product length</td>
-<td>Use M02 first, then M01 Optimization O1/O2. For PUF, compare all repeat matches and simulated product ends.</td>
-</tr>
-<tr>
-<td>Few colonies; transformation control grows</td>
-<td>Recovered DNA, overlap geometry, Mix setup and reaction carryover</td>
-<td>Quantify input and inspect the circle design. Use the kit-compatible setup; reduce inhibitory carryover or repeat cleanup where indicated.</td>
-</tr>
-<tr>
-<td>No-Mix colonies or parental clones</td>
-<td>Template input, methylation and DpnI compatibility</td>
-<td>Use M03 DpnI diagnostics. Reprepare affected DNA; unwanted new PCR products require M01 O2 rather than extra DpnI.</td>
-</tr>
-<tr>
-<td>No colonies including the transformation control</td>
-<td>Cell condition, selection and complete M05 route</td>
-<td>Correct the cell/plate/heat-shock failure before repeating mutagenesis.</td>
-</tr>
-<tr>
-<td>Partial, wrong-repeat or extra sequence changes</td>
-<td>Oligo order, primer specificity and repeat-resolving reads</td>
-<td>Check against both references; screen independent clones. Redesign unique binding/overlap regions or separate construction rounds if needed.</td>
-</tr>
-<tr>
-<td>Mixed peaks or an unresolved critical site</td>
-<td>Single-colony identity, primer specificity and read coverage</td>
-<td>Use M06 to re-isolate/rescreen or obtain overlapping reads. Do not accept an ambiguous critical region.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] Team-supplied mutation construction draft (original DOCX retained in sources/), sections 2-4 and 7; reviewed 2026-10-14. Used for workflow logic and PUF repeat-specific checks. User directed numerical conditions to follow the maintained M01-M07 protocols.</p>
-<p>[2] Takara Bio. PrimeSTAR Max DNA Polymerase, R045A; product manual v202011Da, pp. 3-6. Accessed 2026-10-14. <a href="https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf">Open source</a></p>
-<p>[3] ABclonal. Gloria Nova HS 2X Master Mix V2, RK20731; datasheet M19B05V1.1, pp. 1-2. Accessed 2026-10-14. <a href="https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf">Open source</a></p>
-<p>[4] Thermo Scientific. FastDigest DpnI, FD1703; MAN0012574, Rev. 7, pp. 2-4. Accessed 2026-10-14. <a href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf">Open source</a></p>
-<p>[5] Thermo Fisher Scientific. FastDigest DpnI FAQs, crude-PCR buffer carryover. Accessed 2026-10-14; parental-template removal follows the scoped M03 adaptation. <a href="https://www.thermofisher.com/order/catalog/product/FD1703/faqs">Open source</a></p>
-<p>[6] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit (V-spin), product specifications. Accessed 2026-10-14; detailed D2500 recovery follows maintained M02. <a href="https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/">Open source</a></p>
-<p>[7] TransGen Biotech. Trans5α Chemically Competent Cell, CD201; V1.1, one-page manual. Accessed 2026-10-14; conventional transformation follows M05. <a href="https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf">Open source</a></p>
-<p>[8] Addgene. Sequence Analysis of a Plasmid, coverage and chromatogram review. Accessed 2026-10-14. <a href="https://www.addgene.org/protocols/sequence-analysis/">Open source</a></p>
-<p>[9] Vazyme. ClonExpress Ultra One Step Cloning Kit V3 (C117), Instruction for Use, Version 24.1, sections 06-3, 07-1 to 07-3 and 08, printed pp. 4-10. Manufacturer manual hosted by Biorbyt; checked 2026-10-14. Rapid recipe follows the local M04 adaptation. <a href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original MX01 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:44.02226%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p> Site Directed Mutagenesis by Whole
+Plasmid PCR
+
+ MX01 | ver 1.1 | Revised 2026-10-14
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ This integrated workflow combines the core molecular biology protocols to construct plasmid
+ variants carrying defined nucleotide substitutions, including the repeat-specific checks needed for
+ PUF variants.
+
+  It links M01 (whole-plasmid PCR), M03 (DpnI parental-template removal), M02 (gel analysis and
+ product recovery), M04 (overlap-mediated recircularization), M05 (transformation), M06
+ (individual-clone sequencing and culture return) and M07 (verified-clone plasmid preparation).
+
+ MX01 explains how these modules are selected and connected for site-directed mutagenesis, from
+ the designed mutant sequence to the verified plasmid stock; target-transcript RT-PCR and sequencing
+ readout are covered in MX02.
+
+ Materials &amp; Equipment
+
+
+   Item                                 Supplier / identifier             Use / specification
+
+
+   Parental plasmid and mutant         Sequence-verified working          Full circular sequence, resistance marker
+   reference                           clone                       and intended substitutions
+
+
+   Mutagenic F/R primers            Custom oligos; separate 10       Template-binding sequences, substituted
+                         µM working solutions            bases and compatible terminal overlap
+
+
+    High-fidelity PCR premix            Takara PrimeSTAR Max           Select the matching M01 input range and
+                               R045A/B OR ABclonal Gloria    program [2,3]
+                             Nova HS RK20731
+
+
+   FastDigest DpnI and 10X           Thermo Scientific; FD1703       Remove susceptible dam-methylated
+   FastDigest Buffer                                                      parental plasmid (M03) [4,5]
+
+
+   Gel reagents and DNA ladder     M02; 1X TAE and SYBR Safe      Select gel concentration and a ladder
+                                                                    spanning the full product size
+
+
+   E.Z.N.A. Gel Extraction Kit       Omega Bio-tek; D2500          Recover the intended linear product using
+                                               M02 [6]
+
+
+   ClonExpress Ultra One Step        Vazyme; C117               2X CE Mix V3; M04 rapid single-fragment
+   Cloning Kit V3                                                         route [9]
+
+
+   Trans5α chemically competent       TransGen; CD201            50 µL reference scale; M05 conventional
+    cells                                                                  route [7]
+
+
+
+
+MX01 | v1.1                                                                             1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original MX01 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="before-you-start" style="top:39.15226%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p>   Item                                 Supplier / identifier             Use / specification
+
+
+   LB broth and selective agar          Solarbio LB; antibiotic matched    For Amp-resistant constructs: 100 µg/mL
+                                           to backbone                          final Amp (M05/M06)
+
+
+   FastPure EndoFree Plasmid Mini     Vazyme; DC204                   Verified-clone plasmid preparation (M07)
+    Plus Kit
+
+
+    Sterilized Type II water; tubes;       Laboratory water; Axygen tips    Working dilutions and accurately
+     filter tips                                                                pipettable additions
+
+
+   Thermal cycler, gel system,          Laboratory equipment             Amplification, controlled incubation,
+   imager and DNA quantification                                      product recovery and DNA input
+   device                                                       measurement
+
+
+   Centrifuge, ice bath, 42°C water    Eppendorf centrifuge;        M05 conventional transformation and
+   bath and bacterial                  laboratory equipment         M06/M07 propagation
+   incubator/shaker
+
+
+ Before You Start
+
+ Design the desired circle and the mutagenic primers
+
+ Mark the intended nucleotide changes on the actual parental sequence and translate the desired
+ coding region. Check amino acid substitutions, frame, start/stop codons, linkers and neighboring
+ repeat boundaries before ordering. A mutant name alone is insufficient to define the construct.
+
+ Design an F/R pair that produces one full-length linear plasmid product with compatible homology
+ at its two ends. Simulate the PCR product and final circle, count the shared overlap once and inspect
+ the closure junction. Use M04&#39;s 15-20 bp terminal overlap, preferably with 40-60% GC. [9] If
+ distant sites do not fit one primer pair, use separate construction rounds or a checked multi-fragment
+ route rather than forcing them into one local pair.
+
+ Distinguish the 3&#39; template-binding segment from any nonbinding 5&#39; tail when calculating annealing
+ Tm. Avoid poorly matched 3&#39; ends, strong dimers and alternative binding sites. For repetitive PUF
+ sequence, compare each primer against every repeat copy, especially P4-P7, and favor informative
+ flanking sequence. Design overlap and PCR annealing requirements together. [1]
+
+ Plan sequencing coverage across each intended substitution, the closure junction and repeat copies
+ susceptible to unintended changes. Reads anchored to repeat boundaries are more informative than
+ a short read inside a repeated motif.
+
+ Prepare the inputs and controls
+
+ Prepare separate 10 µM F/R working solutions. Confirm the product length and measured plasmid
+ concentration. Choose one M01 polymerase recipe/program and keep that choice through the run;
+ extension time depends on the full product length.
+
+ For method establishment, include a no-template PCR control and a matched no-recombination-Mix
+ DNA control. A compatible plasmid transformation control and no-DNA cell control help localize
+ cell/selection failures. Keep control identities separate from candidate-clone identities.
+
+
+
+
+
+MX01 | v1.1                                                                             2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original MX01 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:12.12973%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> Keep C117 at -30 to -15°C for storage and assemble on ice. Use M04&#39;s rapid single-fragment route
+ below; set 50°C incubation followed by cooling to 4°C or ice. [9]
+
+ Procedure
+
+ A. Amplify the complete mutagenized plasmid
+
+ 1. Calculate the required parental-template volume V = DNA mass / stock concentration. In a 50 µL
+      reaction, M01 lists 0.01-1 ng plasmid for PrimeSTAR Max or 0.001-10 ng for Gloria Nova.
+      Dilute the stock if V is too small to dispense accurately. Use a measured input within the selected
+     guidance; avoid unnecessary parent that can increase background. [2,3]
+
+
+   Component                      50 µL             25 µL                    Final
+
+
+   Selected 2X PCR premix             25 µL               12.5 µL             1X
+
+
+   F primer, 10 µM                   1 µL                 0.5 µL                 0.2 µM
+
+
+   R primer, 10 µM                  1 µL                 0.5 µL                 0.2 µM
+
+
+   Parental plasmid                  V50 µL            V25 µL                   Product-specific input
+
+
+    Sterilized Type II water              23 - V50 µL          11.5 - V25 µL         To volume
+
+
+    Total                           50 µL             25 µL
+
+
+ 2. Assemble on ice, gently mix and briefly spin. Use the complete enzyme-specific M01 program
+     below. Enable the heated lid and set the actual reaction volume. Preserve the lane and tube
+      identity of each primer/condition comparison.
+
+
+   Stage                      PrimeSTAR Max                          Gloria Nova HS V2
+
+
+    Initial denaturation          Not normally required                 95°C, 3 min
+
+
+   Cycle denaturation          98°C, 10 s                         95°C, 15 s
+
+
+   Cycle annealing            55°C, 5 or 15 s                   60°C starting point, 30 s
+
+
+   Cycle extension             72°C, 5 s/kb starting point             72°C, 10 s/kb starting point
+
+
+   Cycle count                 30-35                                25-35
+
+
+    Final extension              Not normally required                 72°C, 5 min
+
+
+   Hold                   4°C                           4°C
+
+
+ Use M01&#39;s primer-length/Tm rules and long-target adjustments when selecting annealing and
+ extension conditions. Keep PrimeSTAR&#39;s short annealing duration; preheat the cycler to 95°C for
+ Gloria Nova. A fixed 1 min extension is not a general whole-plasmid setting. Use M01 Optimization
+ for a justified gradient. [2,3]
+
+
+
+MX01 | v1.1                                                                             3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original MX01 PDF, page 4" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> B. Remove parental template and recover the intended linear product
+
+ 3. Check parental host methylation and GATC sites before using DpnI. The parent must be
+      susceptible dam-methylated DNA; newly amplified products are normally unmethylated. DpnI
+     does not remove unwanted PCR amplicons. Use the separate M03 parental-template-removal
+     workflow. [4]
+
+
+   Component                                     Crude-PCR reference setup from M03
+
+
+   Completed PCR mixture                        10 µL
+
+
+   10X FastDigest Buffer                         2 µL
+
+
+   FastDigest DpnI                             1 µL
+
+
+   Water                                    17 µL
+
+
+    Total                                     30 µL
+
+
+ 4. Mix and briefly spin; use the M03 crude-PCR adaptation at 37°C for 15 min. If treating more
+      input, scale the complete setup rather than adding buffer by eye to an entire PCR. When
+     premix/additive compatibility is uncertain, use M03&#39;s purified-DNA branch. PCR-buffer
+     carryover is why the crude setup differs from a simple 1X digest. [5]
+
+ 5. Run an analytical aliquot using M02, with a ladder above and below the predicted full product
+      size. Choose agarose concentration for that size and the nearest unwanted band; 0.7-1% is a
+      starting choice for many 5-10 kb products. Keep the rest for preparative recovery. Use M02 for
+     loading, running and imaging defects before referring amplification problems to M01
+     Optimization.
+
+ 6. Recover the clearly resolved full-length band using the M02 Omega D2500 workflow. Prepare
+    XP2/SPW correctly, minimize illumination and gel mass, complete the wash/dry steps and elute
+      in 30-50 µL. Quantify the recovered DNA before assembly. D2500&#39;s maintained scope is 100
+     bp-10 kb; choose a verified compatible recovery method for a larger product. [6]
+
+ C. Recircularize the plasmid
+
+ 7. Check that the two recovered product ends encode the intended complementary overlap and
+      yield the designed circle without duplication or deletion. Calculate and record DNA mass from
+        its measured concentration and the 10 µL input. On ice, combine the DNA and C117 Mix using
+     the M04 rapid recipe below; gently pipette and briefly spin.
+
+
+   Component                                                            Volume
+
+
+    Gel-purified full-length PCR product                                      10 µL
+
+
+   2X CE Mix V3 (C117)                                                5 µL
+
+
+    Total                                                            15 µL
+
+
+
+
+
+MX01 | v1.1                                                                             4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original MX01 PDF, page 5" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> This is M04&#39;s laboratory-adapted rapid recipe, giving approximately 0.67X CE Mix. The
+ manufacturer reference uses 5 µL of 2X Mix in 10 µL total (1X). If recovery is poor, compare the
+ manufacturer setup with matched DNA mass using M04; document the route used. [9]
+
+ 8. Prepare a no-Mix control with 10 µL of the same DNA and 5 µL water. Incubate at 50°C for 5
+     min, then immediately cool to 4°C or ice. Keep sample and control labels through
+     transformation. [9]
+
+ D. Transform and submit individual colonies
+
+ 9. Use M05 Route A for the new assembly: thaw 50 µL Trans5α cells on ice and gently add 1-5 µL
+     assembly product. C117 carryover must be at or below one-tenth of the cell volume, so 5 µL is
+     the upper limit at this scale. Use the same transfer volume for the matched no-Mix control. [9]
+
+ 10. Keep on ice for 30 min, heat-shock in a 42°C water bath for 45 s and immediately return to ice
+      for 2 min. Add 500 µL antibiotic-free LB and recover at 37°C, 200 rpm for 1 h. Keep the cell
+     product, device, tube geometry and route consistent. [7]
+
+ 11. Plate 50-100 µL recovered culture on the matching selective agar and incubate inverted at
+    37°C overnight, unless the construct/host requires another propagation temperature. Compare
+     sample and control plates before selecting colonies. Use M05 for shared
+     transformation/selection failures.
+
+ 12. Follow M06: submit the plate and request independent picking/sequencing of 2-4 isolated
+     colonies per construct. Give each clone a unique ID and request its raw chromatograms,
+     required sequencing coverage and retention of the matching viable culture. Do not pool
+     candidates.
+
+ E. Verify the sequence and prepare the selected plasmid
+
+ 13. Inspect chromatograms and align high-quality reads to both the parental and intended mutant
+     reference. Confirm every intended nucleotide substitution, translate the affected coding region
+    and review all additional mismatches within the covered region. Check the closure junction and
+     informative repeat boundaries.
+
+ 14. For PUF mutants, check every repeat that could have been unintentionally amplified or
+     changed, especially P4-P7. Obtain overlapping reads where repeat placement or critical-site
+     coverage is ambiguous. A correct band size or a clean trace at one intended codon does not
+      establish the full construct. [1,8]
+
+ 15. Select only a clone meeting the required sequence coverage and design. Record the verified
+     coordinates and any remaining gaps. Ask for the corresponding viable culture, directly
+     inoculate selective LB using M06 and prepare plasmid using M07. For DC204, match the 5-15
+    mL preparation to its 12-14 h culture guidance and avoid growth beyond 16 h.
+
+ 16. Keep the final mutant name, parental clone ID, primer order, sequence files, coverage record
+    and plasmid stock linked. Retransformation is needed only when a returned plasmid or a
+     deliberate host transfer requires it; receiving a satisfactory matching culture does not require
+     another routine cloning round.
+
+
+
+
+
+MX01 | v1.1                                                                             5</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 6 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 6">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 6"><img src="page-006.webp" width="1800" height="2546" alt="Original MX01 PDF, page 6" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:29.70922%" aria-hidden="true"></span><span class="pdf-section-anchor" id="troubleshooting" style="top:44.49738%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 6</h2><p> p.s.
+
+
+ Resolve repetitive-sequence specificity before repeating PCR. An apparent full-length product can
+  still contain the wrong-repeat mutation or an unintended rearrangement.
+
+ Use working primer dilutions and measured DNA inputs. Change one PCR variable at a time and
+ retain the identity of each tested condition.
+
+ Avoid excessive illumination and residual ethanol during product recovery. A clean, quantified
+ eluate is more useful than a large volume of poorly recovered DNA.
+
+ Keep each colony independent through sequencing and culture return. Select by sequence and
+ coverage rather than colony size or total colony count.
+
+ Expected Outcome
+
+ One or more individually labeled bacterial clones may carry the intended substitutions and correct
+ coding context over the required high-quality sequencing coverage. No mutation-recovery rate is
+ guaranteed.
+
+ Retain the designed circle, primer order, PCR program, gel image/lane map, assembly inputs,
+ controls and clone-linked traces. Report local verification and any unsequenced regions accurately.
+
+ Troubleshooting
+
+
+   Observed problem            Check first                       Action
+
+
+  No full-length band or extra   M02 loading/run/imaging;      Use M02 first, then M01 Optimization
+   gel products                     actual primer sites and product   O1/O2. For PUF, compare all repeat matches
+                                    length                      and simulated product ends.
+
+
+   Few colonies; transformation    Recovered DNA, overlap         Quantify input and inspect the circle design.
+   control grows                  geometry, Mix setup and        Use the kit-compatible setup; reduce inhibitory
+                                    reaction carryover               carryover or repeat cleanup where indicated.
+
+
+   No-Mix colonies or parental     Template input, methylation      Use M03 DpnI diagnostics. Reprepare affected
+   clones                     and DpnI compatibility        DNA; unwanted new PCR products require
+                                             M01 O2 rather than extra DpnI.
+
+
+  No colonies including the        Cell condition, selection and      Correct the cell/plate/heat-shock failure before
+   transformation control          complete M05 route              repeating mutagenesis.
+
+
+    Partial, wrong-repeat or        Oligo order, primer specificity    Check against both references; screen
+   extra sequence changes       and repeat-resolving reads       independent clones. Redesign unique
+                                                                  binding/overlap regions or separate
+                                                                         construction rounds if needed.
+
+
+   Mixed peaks or an              Single-colony identity, primer     Use M06 to re-isolate/rescreen or obtain
+   unresolved critical site             specificity and read coverage     overlapping reads. Do not accept an
+                                                           ambiguous critical region.
+
+
+
+
+
+MX01 | v1.1                                                                             6</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 7 of 7">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 7">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 7"><img src="page-007.webp" width="1800" height="2546" alt="Original MX01 PDF, page 7" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="reference" style="top:6.78461%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://takara.co.kr/file/manual/pdf/R045A_e.v2011Da.pdf" style="left:19.13603%;top:16.03535%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://img.abclonal.com/abclonal-manage/Datasheet/MolecularBiology/RK20731.pdf" style="left:19.13603%;top:19.59877%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf" style="left:81.54566%;top:21.67742%;width:3.92297%;height:1.28283%"></a><a class="pdf-source-link" href="https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0012574_FastDigest_DpnI_50uL_UG.pdf" style="left:10.07937%;top:23.16218%;width:4.46854%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/order/catalog/product/FD1703/faqs" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/order/catalog/product/FD1703/faqs" style="left:53.884%;top:26.72559%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://omegabiotek.com/product/pcr-gel-extraction-kit-e-z-n-a-gel-extraction-kit/" style="left:39.42272%;top:30.289%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.transgen.com/download/pdf/1/CD201_206/CD201.pdf" style="left:39.11044%;top:33.85241%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.addgene.org/protocols/sequence-analysis/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/protocols/sequence-analysis/" style="left:84.28673%;top:35.93107%;width:3.92297%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.addgene.org/protocols/sequence-analysis/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/protocols/sequence-analysis/" style="left:10.07937%;top:37.41582%;width:4.46854%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.biorbyt.com/images/pub/media/additional_documents/New_site/Manual/vazyme/C117.pdf?timestamp=20260128" style="left:33.84315%;top:42.46399%;width:8.85806%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 7</h2><p> Reference
+
+  [1] Team-supplied mutation construction draft (original DOCX retained in sources/), sections 2-4 and 7; reviewed
+ 2026-10-14. Used for workflow logic and PUF repeat-specific checks. User directed numerical conditions to follow
+ the maintained M01-M07 protocols.
+
+  [2] Takara Bio. PrimeSTAR Max DNA Polymerase, R045A; product manual v202011Da, pp. 3-6. Accessed
+ 2026-10-14. Open source
+
+  [3] ABclonal. Gloria Nova HS 2X Master Mix V2, RK20731; datasheet M19B05V1.1, pp. 1-2. Accessed
+ 2026-10-14. Open source
+
+  [4] Thermo Scientific. FastDigest DpnI, FD1703; MAN0012574, Rev. 7, pp. 2-4. Accessed 2026-10-14. Open
+ source
+
+  [5] Thermo Fisher Scientific. FastDigest DpnI FAQs, crude-PCR buffer carryover. Accessed 2026-10-14;
+ parental-template removal follows the scoped M03 adaptation. Open source
+
+  [6] Omega Bio-tek. E.Z.N.A. Gel Extraction Kit (V-spin), product specifications. Accessed 2026-10-14; detailed
+ D2500 recovery follows maintained M02. Open source
+
+  [7] TransGen Biotech. Trans5α Chemically Competent Cell, CD201; V1.1, one-page manual. Accessed 2026-10-14;
+ conventional transformation follows M05. Open source
+
+  [8] Addgene. Sequence Analysis of a Plasmid, coverage and chromatogram review. Accessed 2026-10-14. Open
+ source
+
+  [9] Vazyme. ClonExpress Ultra One Step Cloning Kit V3 (C117), Instruction for Use, Version 24.1, sections 06-3,
+ 07-1 to 07-3 and 08, printed pp. 4-10. Manufacturer manual hosted by Biorbyt; checked 2026-10-14. Rapid recipe
+ follows the local M04 adaptation. Open source
+
+
+
+
+
+MX01 | v1.1                                                                             7</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

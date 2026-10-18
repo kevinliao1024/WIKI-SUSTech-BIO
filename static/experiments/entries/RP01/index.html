@@ -2,260 +2,367 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RP01 · Custom Oligo Design for Target-Site Recognition Window</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> RP01 · <strong>Category:</strong> Reporter System</p>
-<p>RP01 | ver 1.0 | Revised 2026-10-13</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Design complementary DNA oligonucleotides to insert a target-site recognition window into the universal reporter. Prepare WT, pre-edited AC, and inactive INAC reporter sequences with the intended reading frame and directional cloning junctions.</p>
-<p>This guide covers sequence design, checks, and synthesis specifications. Oligo annealing and reporter construction are covered in RP02.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Provider / Model</th>
-<th>Specification / Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Target and editor specifications</td>
-<td>Target reference / editor design</td>
-<td>Map the RNA strand, target C, complete recognition footprint, and spacing.</td>
-</tr>
-<tr>
-<td>Universal reporter sequence</td>
-<td>Full vector / cassette reference [1]</td>
-<td>Inspect both insertion junctions and all BsaI sites.</td>
-</tr>
-<tr>
-<td>Sequence editor</td>
-<td>Software of choice</td>
-<td>Reverse-complement, translation, and restriction-site checks.</td>
-</tr>
-<tr>
-<td>Custom DNA oligos</td>
-<td>Qualified DNA synthesis provider</td>
-<td>Two single-stranded DNA oligos per design; 5'-phosphorylated, free 3'-OH; PAGE purification recommended for cloning. [3,4]</td>
-</tr>
-<tr>
-<td>RNAfold (optional)</td>
-<td>ViennaRNA Package</td>
-<td>Brief structural screen with pairing probabilities. [7]</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Fix the transcript, target C, and editor footprint before choosing insert boundaries. Design in the coding/sense DNA representation; write every ordered strand 5' to 3'.</p>
-<p>Open the full construction vector. The 2,027-bp universal GenBank reference describes the cassette; additional BsaI sites in a complete plasmid must be resolved before BsaI-based RP02 construction. [1,2]</p>
-<p>The worked example uses coding-strand fusion sequences CAGC (EGFP side) and GGCA (DHFR side). The reverse oligo starts with TGCC, the reverse complement of GGCA. Recalculate the ends if the acceptor changes. [1]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-define-the-target-window">A. Define the target window</h3>
-<ol>
-<li>
-<p>Mark the target C in the reference transcript and map the complete recognition sequence and any intervening spacer. Preserve their sequence, orientation, and spacing when transferring them into the reporter. Binding-site length and editing geometry depend on the editor; they should not be inferred solely from the oligo length. [5]</p>
-</li>
-<li>
-<p>Use the APOE4 example below as a worked design: retain 12 nucleotides immediately 5' of the target C and two nucleotides immediately 3' of it, giving a 15-nt core. The original design partitions this as the 10-nt recognition sequence ATGGAGGACG, the 2-nt spacer TG, and the target codon CGA. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Element</th>
-<th>DNA sequence (5' to 3')</th>
-<th>Position in the core</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Upstream block</td>
-<td>ATGGAGGACGTG</td>
-<td>1-12; recognition sequence plus spacer</td>
-</tr>
-<tr>
-<td>Target nucleotide</td>
-<td>C</td>
-<td>13; first base of the target codon</td>
-</tr>
-<tr>
-<td>Downstream bases</td>
-<td>GA</td>
-<td>14-15; complete the CGA codon</td>
-</tr>
-<tr>
-<td>Complete WT core</td>
-<td>ATGGAGGACGTGCGA</td>
-<td>15 nt; excludes cloning overhangs</td>
-</tr>
-</tbody>
-</table>
-<ol start="3">
-<li>Make the edited base produce a stop codon in the actual reporter reading frame. In this example, the native APOE4 arginine codon CGC is synonymously changed to CGA; RNA editing then converts CGA to UGA. WT denotes the unedited reporter, whose core therefore differs from the native target at the codon's third base. Preserve the recognition footprint and flag all engineered substitutions in the design file. [1]</li>
-</ol>
-<h3 id="b-design-matched-reporter-controls">B. Design matched reporter controls</h3>
-<ol start="4">
-<li>
-<p>Create AC by replacing only the intended C with T in the DNA sequence. Keep the same flanking sequence, length, junctions, and backbone as WT, so AC contains the pre-edited TGA codon.</p>
-</li>
-<li>
-<p>Create INAC with a disrupted recognition sequence and a codon that cannot become a stop codon through a single C-to-U change. In the worked example, the 15-nt INAC core is ACGTCAGTCATGGCC: its terminal GCC codon remains a sense codon after any single C-to-U change. Retain the same insert length and cloning interfaces as WT. [1]</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Reporter</th>
-<th>Core sequence (5' to 3')</th>
-<th>Intended role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WT</td>
-<td>ATGGAGGACGTGCGA</td>
-<td>Unedited substrate; CGA encodes Arg and permits translation into the downstream domain.</td>
-</tr>
-<tr>
-<td>AC</td>
-<td>ATGGAGGACGTGTGA</td>
-<td>Pre-edited reporter; TGA places a stop upstream of the DHFR domain.</td>
-</tr>
-<tr>
-<td>INAC</td>
-<td>ACGTCAGTCATGGCC</td>
-<td>Reporter background control; both recognition sequence and terminal codon are changed.</td>
-</tr>
-</tbody>
-</table>
-<p>AC provides a pre-edited reference, rather than a guaranteed fluorescence ceiling. INAC is a reporter-sequence control; a catalytically inactive editor is a separate control. Because INAC changes both recognition and codon sequence, it cannot by itself isolate the contribution of recognition-site binding.</p>
-<h3 id="c-add-directional-cloning-ends">C. Add directional cloning ends</h3>
-<ol start="6">
-<li>For a core sequence I, write the forward oligo as CAGC + I and the reverse oligo as TGCC + reverse-complement(I), with both strands written 5' to 3'. Only the core is fully paired after annealing; the two 4-nt 5' extensions form the cloning ends. These oligos already supply the required cohesive ends and do not need added BsaI recognition sites. [1,2]</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>Oligo</th>
-<th>Complete sequence (5' to 3')</th>
-<th>Length</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WT-F (APOE4-F)</td>
-<td>CAGCATGGAGGACGTGCGA</td>
-<td>19 nt</td>
-</tr>
-<tr>
-<td>WT-R (APOE4-R)</td>
-<td>TGCCTCGCACGTCCTCCAT</td>
-<td>19 nt</td>
-</tr>
-<tr>
-<td>AC-F</td>
-<td>CAGCATGGAGGACGTGTGA</td>
-<td>19 nt</td>
-</tr>
-<tr>
-<td>AC-R</td>
-<td>TGCCTCACACGTCCTCCAT</td>
-<td>19 nt</td>
-</tr>
-<tr>
-<td>INAC-F</td>
-<td>CAGCACGTCAGTCATGGCC</td>
-<td>19 nt</td>
-</tr>
-<tr>
-<td>INAC-R</td>
-<td>TGCCGGCCATGACTGACGT</td>
-<td>19 nt</td>
-</tr>
-</tbody>
-</table>
-<ol start="7">
-<li>Reconstruct the complete assembled coding-strand junction, including vector-derived bases on both sides. For WT it is GGCAGC | ATGGAGGACGTGCGA | GGCAGC, translating to Gly-Ser | Met-Glu-Asp-Val-Arg | Gly-Ser. The overhang bases belong to these junctions and must not be counted as extra sequence added a second time. Translate across both junctions and into the downstream domain.</li>
-</ol>
-<h3 id="d-consider-flanking-context-and-verify-the-design">D. Consider flanking context and verify the design</h3>
-<ol start="8">
-<li>
-<p>For new designs, consider short transition segments on both sides of the core to reduce unfavorable pairing with adjacent reporter RNA. Keep them outside the recognition footprint, spacer, and target codon, and identical across WT, AC, and INAC. Add complete codons when the existing core starts at a codon boundary, then recheck translation. Select segments by their sequence context; adding flanks does not guarantee improved accessibility. [6]</p>
-</li>
-<li>
-<p>Check the complete intended sequence for reverse-complement agreement, correct insertion orientation, both junctions, and the desired translation. WT and INAC must lack unintended stops before the downstream domain; AC and the simulated edited WT must stop at the intended codon. For BsaI-based construction, scan the full retained vector, insert, and new junctions for GGTCTC and GAGACC. Resolve additional sites by a compatible redesign or assembly route before construction. [2]</p>
-</li>
-<li>
-<p>Optionally screen the assembled reporter RNA (T to U) with RNAfold at 37 C using -p -T 37. Inspect pairing probabilities over the footprint and target C, including surrounding reporter sequence; compare candidates with identical context and settings. RNAplfold -u can additionally estimate a region's unpaired probability. Save the sequence, software version, and settings. Predictions guide design and require experimental validation. [6-8]</p>
-</li>
-</ol>
-<h3 id="e-prepare-the-synthesis-order">E. Prepare the synthesis order</h3>
-<ol start="11">
-<li>
-<p>Order each strand as single-stranded DNA with its complete 5'-to-3' sequence, including the 4-nt cloning end. Specify a 5' phosphate on both strands and an unblocked 3'-OH. If unphosphorylated oligos are selected instead, include a T4 polynucleotide kinase phosphorylation step before ligation in RP02. [3]</p>
-</li>
-<li>
-<p>Select PAGE purification for the cloning oligos; consider HPLC when the provider recommends it for the required purity, yield, or modification compatibility. Choose a synthesis scale that supplies the planned assemblies. Save the ordered sequences, strand names, lengths, modification and purification choices, annotated assembled sequence, and the target-site mapping. [4]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Count from the edited base, not from the first nucleotide in the recognition motif: this example has 12 bases before C and two after it. A different editor footprint may require a longer core.</p>
-<p>An additional flanking segment belongs outside the recognition-to-target interval. Adding bases inside that interval changes editing geometry even if the overall reading frame is preserved.</p>
-<p>Keep the 4-nt cohesive ends distinct from PCR homology tails. The reverse oligo is reverse-complemented before its TGCC end is added; reverse-complementing the entire forward oligo gives the wrong end arrangement.</p>
-<p>Screen the complete construction vector before ordering. A clean cassette or a filename containing 'universal' does not establish that the rest of the vector is free of BsaI sites. [2]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>The design package contains three matched reporter cores, six synthesis-ready DNA sequences, and an annotated assembled sequence for each variant. The example gives a 15-nt core and two 19-nt oligos per reporter, with correct directional ends and the intended WT/AC/INAC translation states.</p>
-<p>Sequence checks establish design compatibility. Reporter construction, fluorescence behavior, and RNA editing must be assessed experimentally; a fluorescence change alone does not establish target-site editing.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed design problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reverse strand does not give the intended cloning ends</td>
-<td>Whether the entire forward strand, including CAGC, was reverse-complemented</td>
-<td>Reverse-complement only the core, then prepend TGCC. Recheck the annealed duplex against the acceptor.</td>
-</tr>
-<tr>
-<td>Frameshift or unintended stop in the simulated junction</td>
-<td>Complete junction sequence, duplicated overhangs, codon boundary, and added segment lengths</td>
-<td>Rebuild the complete coding junction and translate it. Adjust only permitted flanking bases while preserving the recognition-to-target geometry.</td>
-</tr>
-<tr>
-<td>Editing the marked C does not produce a stop</td>
-<td>Target base position and the actual in-frame codon</td>
-<td>Use a compatible edit-to-stop codon; in this example, design CGA so C-to-U gives UGA. Recheck all intended sequence changes.</td>
-</tr>
-<tr>
-<td>Restriction scan shows extra cuts</td>
-<td>GGTCTC and GAGACC in the full retained vector, insert, and junctions</td>
-<td>Resolve incompatible sites before RP02. Use permissible substitutions or a compatible assembly route; do not rely on the cassette-only map.</td>
-</tr>
-<tr>
-<td>Optional RNAfold check predicts pairing over the core</td>
-<td>Transcript context, target coordinates, and identical settings across candidates</td>
-<td>Compare permitted external transition segments or synonymous flanking variants while preserving the core. Validate promising candidates experimentally. [6-8]</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] SUSTech-BIO local sequence sources: REPORTER OLIGO HZ.xlsx, oligos_order_sheet-2.csv, reporter_universal.gb, and APOE4-Flag.dna. Verified 2026-10-13; full source locations and checks in source-notes.md.</p>
-<p>[2] New England Biolabs. BsaI-HFv2: GGTCTC(1/5) cleavage and Golden Gate compatibility. Accessed 2026-10-13. <a href="https://www.neb.com/products/r3733-bsai-hf-v2">Open source</a></p>
-<p>[3] New England Biolabs. T4 Polynucleotide Kinase: 5' phosphorylation for oligo ligation. Accessed 2026-10-13. <a href="https://www.neb.com/products/m0201-t4-polynucleotide-kinase">Open source</a></p>
-<p>[4] IDT. Oligo purification methods: which type should I choose? Cloning and PAGE/HPLC; RUO23-1848_001. Accessed 2026-10-13. <a href="https://www.idtdna.com/page/support-and-education/decoded-plus/which-type-of-purification-should-i-choose/">Open source</a></p>
-<p>[5] Programmable RNA base editing with a single gRNA-free enzyme (2022). Nucleic Acids Research 50:9580-9595; CU-REWIRE geometry and PUF10. doi:10.1093/nar/gkac713. Accessed 2026-10-13. <a href="https://academic.oup.com/nar/article/50/16/9580/6677559">Open source</a></p>
-<p>[6] Jarmoskaite et al. (2019). A Quantitative and Predictive Model for RNA Binding by Human Pumilio Proteins; scaffold effects and accessibility. Accessed 2026-10-13. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6645366/">Open source</a></p>
-<p>[7] ViennaRNA Package. RNAfold manual, version 2.7.2; partition function (-p) and temperature (-T) options. Accessed 2026-10-13. <a href="https://www.tbi.univie.ac.at/RNA/RNAfold">Open source</a></p>
-<p>[8] ViennaRNA Package. RNAplfold manual; -u regional unpaired probabilities and _lunp output. Accessed 2026-10-13. <a href="https://www.tbi.univie.ac.at/RNA/RNAplfold">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original RP01 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:21.03825%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:35.82642%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:68.31285%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Custom Oligo Design for Target-Site
+Recognition Window
+
+ RP01 | ver 1.0 | Revised 2026-10-13
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Design complementary DNA oligonucleotides to insert a target-site recognition window into the
+ universal reporter. Prepare WT, pre-edited AC, and inactive INAC reporter sequences with the
+ intended reading frame and directional cloning junctions.
+
+ This guide covers sequence design, checks, and synthesis specifications. Oligo annealing and
+ reporter construction are covered in RP02.
+
+ Materials &amp; Equipment
+
+
+   Item                           Provider / Model             Specification / Use
+
+
+   Target and editor              Target reference / editor   Map the RNA strand, target C, complete recognition
+    specifications                 design                          footprint, and spacing.
+
+
+   Universal reporter sequence     Full vector / cassette         Inspect both insertion junctions and all BsaI sites.
+                                  reference [1]
+
+
+   Sequence editor              Software of choice          Reverse-complement, translation, and restriction-site
+                                                                checks.
+
+
+   Custom DNA oligos            Qualified DNA synthesis    Two single-stranded DNA oligos per design;
+                                 provider                     5&#39;-phosphorylated, free 3&#39;-OH; PAGE purification
+                                                   recommended for cloning. [3,4]
+
+
+   RNAfold (optional)          ViennaRNA Package          Brief structural screen with pairing probabilities. [7]
+
+
+ Before You Start
+
+ Fix the transcript, target C, and editor footprint before choosing insert boundaries. Design in the
+ coding/sense DNA representation; write every ordered strand 5&#39; to 3&#39;.
+
+ Open the full construction vector. The 2,027-bp universal GenBank reference describes the cassette;
+ additional BsaI sites in a complete plasmid must be resolved before BsaI-based RP02 construction.
+ [1,2]
+
+ The worked example uses coding-strand fusion sequences CAGC (EGFP side) and GGCA (DHFR
+ side). The reverse oligo starts with TGCC, the reverse complement of GGCA. Recalculate the ends if
+ the acceptor changes. [1]
+
+
+
+
+
+RP01 | v1.0                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original RP01 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:6.78461%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Procedure
+
+ A. Define the target window
+
+ 1. Mark the target C in the reference transcript and map the complete recognition sequence and
+    any intervening spacer. Preserve their sequence, orientation, and spacing when transferring
+     them into the reporter. Binding-site length and editing geometry depend on the editor; they
+     should not be inferred solely from the oligo length. [5]
+
+ 2. Use the APOE4 example below as a worked design: retain 12 nucleotides immediately 5&#39; of the
+      target C and two nucleotides immediately 3&#39; of it, giving a 15-nt core. The original design
+      partitions this as the 10-nt recognition sequence ATGGAGGACG, the 2-nt spacer TG, and the
+      target codon CGA. [1]
+
+
+   Element                DNA sequence (5&#39; to 3&#39;)               Position in the core
+
+
+   Upstream block           ATGGAGGACGTG                  1-12; recognition sequence plus spacer
+
+
+   Target nucleotide           C                                 13; first base of the target codon
+
+
+   Downstream bases         GA                                14-15; complete the CGA codon
+
+
+   Complete WT core          ATGGAGGACGTGCGA          15 nt; excludes cloning overhangs
+
+
+ 3. Make the edited base produce a stop codon in the actual reporter reading frame. In this
+     example, the native APOE4 arginine codon CGC is synonymously changed to CGA; RNA
+      editing then converts CGA to UGA. WT denotes the unedited reporter, whose core therefore
+      differs from the native target at the codon&#39;s third base. Preserve the recognition footprint and
+      flag all engineered substitutions in the design file. [1]
+
+ B. Design matched reporter controls
+
+ 4. Create AC by replacing only the intended C with T in the DNA sequence. Keep the same flanking
+     sequence, length, junctions, and backbone as WT, so AC contains the pre-edited TGA codon.
+
+ 5. Create INAC with a disrupted recognition sequence and a codon that cannot become a stop
+    codon through a single C-to-U change. In the worked example, the 15-nt INAC core is
+    ACGTCAGTCATGGCC: its terminal GCC codon remains a sense codon after any single C-to-U
+     change. Retain the same insert length and cloning interfaces as WT. [1]
+
+
+   Reporter        Core sequence (5&#39; to 3&#39;)                  Intended role
+
+
+  WT         ATGGAGGACGTGCGA                 Unedited substrate; CGA encodes Arg and permits
+                                                                     translation into the downstream domain.
+
+
+  AC         ATGGAGGACGTGTGA                   Pre-edited reporter; TGA places a stop upstream of
+                                                                 the DHFR domain.
+
+
+  INAC        ACGTCAGTCATGGCC                   Reporter background control; both recognition
+                                                        sequence and terminal codon are changed.
+
+
+
+
+RP01 | v1.0                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original RP01 PDF, page 3" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> AC provides a pre-edited reference, rather than a guaranteed fluorescence ceiling. INAC is a
+ reporter-sequence control; a catalytically inactive editor is a separate control. Because INAC
+ changes both recognition and codon sequence, it cannot by itself isolate the contribution of
+ recognition-site binding.
+
+ C. Add directional cloning ends
+
+ 6. For a core sequence I, write the forward oligo as CAGC + I and the reverse oligo as TGCC +
+     reverse-complement(I), with both strands written 5&#39; to 3&#39;. Only the core is fully paired after
+     annealing; the two 4-nt 5&#39; extensions form the cloning ends. These oligos already supply the
+     required cohesive ends and do not need added BsaI recognition sites. [1,2]
+
+
+   Oligo                      Complete sequence (5&#39; to 3&#39;)                                   Length
+
+
+   WT-F (APOE4-F)          CAGCATGGAGGACGTGCGA                          19 nt
+
+
+   WT-R (APOE4-R)          TGCCTCGCACGTCCTCCAT                            19 nt
+
+
+   AC-F                 CAGCATGGAGGACGTGTGA                          19 nt
+
+
+   AC-R                   TGCCTCACACGTCCTCCAT                            19 nt
+
+
+   INAC-F                CAGCACGTCAGTCATGGCC                           19 nt
+
+
+   INAC-R                TGCCGGCCATGACTGACGT                           19 nt
+
+
+ 7. Reconstruct the complete assembled coding-strand junction, including vector-derived bases on
+     both sides. For WT it is GGCAGC | ATGGAGGACGTGCGA | GGCAGC, translating to
+     Gly-Ser | Met-Glu-Asp-Val-Arg | Gly-Ser. The overhang bases belong to these junctions and
+     must not be counted as extra sequence added a second time. Translate across both junctions
+    and into the downstream domain.
+
+ D. Consider flanking context and verify the design
+
+ 8. For new designs, consider short transition segments on both sides of the core to reduce
+     unfavorable pairing with adjacent reporter RNA. Keep them outside the recognition footprint,
+     spacer, and target codon, and identical across WT, AC, and INAC. Add complete codons when
+     the existing core starts at a codon boundary, then recheck translation. Select segments by their
+     sequence context; adding flanks does not guarantee improved accessibility. [6]
+
+ 9. Check the complete intended sequence for reverse-complement agreement, correct insertion
+      orientation, both junctions, and the desired translation. WT and INAC must lack unintended
+     stops before the downstream domain; AC and the simulated edited WT must stop at the
+     intended codon. For BsaI-based construction, scan the full retained vector, insert, and new
+      junctions for GGTCTC and GAGACC. Resolve additional sites by a compatible redesign or
+     assembly route before construction. [2]
+
+ 10. Optionally screen the assembled reporter RNA (T to U) with RNAfold at 37 C using -p -T 37.
+     Inspect pairing probabilities over the footprint and target C, including surrounding reporter
+     sequence; compare candidates with identical context and settings. RNAplfold -u can
+
+
+
+
+RP01 | v1.0                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original RP01 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:33.33203%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:58.09774%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p>      additionally estimate a region&#39;s unpaired probability. Save the sequence, software version, and
+      settings. Predictions guide design and require experimental validation. [6-8]
+
+ E. Prepare the synthesis order
+
+ 11. Order each strand as single-stranded DNA with its complete 5&#39;-to-3&#39; sequence, including the 4-nt
+     cloning end. Specify a 5&#39; phosphate on both strands and an unblocked 3&#39;-OH. If
+     unphosphorylated oligos are selected instead, include a T4 polynucleotide kinase
+     phosphorylation step before ligation in RP02. [3]
+
+ 12. Select PAGE purification for the cloning oligos; consider HPLC when the provider recommends it
+      for the required purity, yield, or modification compatibility. Choose a synthesis scale that
+     supplies the planned assemblies. Save the ordered sequences, strand names, lengths,
+     modification and purification choices, annotated assembled sequence, and the target-site
+     mapping. [4]
+
+ p.s.
+
+
+ Count from the edited base, not from the first nucleotide in the recognition motif: this example has
+ 12 bases before C and two after it. A different editor footprint may require a longer core.
+
+ An additional flanking segment belongs outside the recognition-to-target interval. Adding bases
+ inside that interval changes editing geometry even if the overall reading frame is preserved.
+
+ Keep the 4-nt cohesive ends distinct from PCR homology tails. The reverse oligo is
+ reverse-complemented before its TGCC end is added; reverse-complementing the entire forward
+ oligo gives the wrong end arrangement.
+
+ Screen the complete construction vector before ordering. A clean cassette or a filename containing
+ &#39;universal&#39; does not establish that the rest of the vector is free of BsaI sites. [2]
+
+ Expected Outcome
+
+ The design package contains three matched reporter cores, six synthesis-ready DNA sequences,
+ and an annotated assembled sequence for each variant. The example gives a 15-nt core and two
+ 19-nt oligos per reporter, with correct directional ends and the intended WT/AC/INAC translation
+ states.
+
+ Sequence checks establish design compatibility. Reporter construction, fluorescence behavior, and
+ RNA editing must be assessed experimentally; a fluorescence change alone does not establish
+ target-site editing.
+
+
+
+
+
+RP01 | v1.0                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original RP01 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:52.63384%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.neb.com/products/r3733-bsai-hf-v2" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.neb.com/products/r3733-bsai-hf-v2" style="left:19.13603%;top:61.88459%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.neb.com/products/m0201-t4-polynucleotide-kinase" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.neb.com/products/m0201-t4-polynucleotide-kinase" style="left:10.07937%;top:65.448%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.idtdna.com/page/support-and-education/decoded-plus/which-type-of-purification-should-i-choose/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.idtdna.com/page/support-and-education/decoded-plus/which-type-of-purification-should-i-choose/" style="left:25.96987%;top:69.01141%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://academic.oup.com/nar/article/50/16/9580/6677559" target="_blank" rel="noopener" aria-label="Original PDF reference: https://academic.oup.com/nar/article/50/16/9580/6677559" style="left:80.75058%;top:72.57482%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6645366/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://pmc.ncbi.nlm.nih.gov/articles/PMC6645366/" style="left:48.6514%;top:76.13823%;width:8.85807%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.tbi.univie.ac.at/RNA/RNAfold" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.tbi.univie.ac.at/RNA/RNAfold" style="left:25.96987%;top:79.70165%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.tbi.univie.ac.at/RNA/RNAplfold" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.tbi.univie.ac.at/RNA/RNAplfold" style="left:19.13603%;top:83.26506%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Troubleshooting
+
+
+   Observed design problem      Check first                           Action
+
+
+   Reverse strand does not give    Whether the entire forward strand,    Reverse-complement only the core, then
+   the intended cloning ends        including CAGC, was               prepend TGCC. Recheck the annealed
+                                 reverse-complemented               duplex against the acceptor.
+
+
+   Frameshift or unintended       Complete junction sequence,          Rebuild the complete coding junction and
+   stop in the simulated junction    duplicated overhangs, codon          translate it. Adjust only permitted flanking
+                                boundary, and added segment       bases while preserving the
+                                     lengths                                  recognition-to-target geometry.
+
+
+    Editing the marked C does       Target base position and the actual   Use a compatible edit-to-stop codon; in this
+   not produce a stop              in-frame codon                     example, design CGA so C-to-U gives
+                                                    UGA. Recheck all intended sequence
+                                                                    changes.
+
+
+    Restriction scan shows extra    GGTCTC and GAGACC in the full     Resolve incompatible sites before RP02.
+    cuts                             retained vector, insert, and          Use permissible substitutions or a
+                                      junctions                            compatible assembly route; do not rely on
+                                                                           the cassette-only map.
+
+
+   Optional RNAfold check         Transcript context, target           Compare permitted external transition
+    predicts pairing over the         coordinates, and identical settings     segments or synonymous flanking variants
+   core                           across candidates                    while preserving the core. Validate
+                                                                      promising candidates experimentally. [6-8]
+
+
+ Reference
+
+  [1] SUSTech-BIO local sequence sources: REPORTER OLIGO HZ.xlsx, oligos_order_sheet-2.csv,
+ reporter_universal.gb, and APOE4-Flag.dna. Verified 2026-10-13; full source locations and checks in
+ source-notes.md.
+
+  [2] New England Biolabs. BsaI-HFv2: GGTCTC(1/5) cleavage and Golden Gate compatibility. Accessed
+ 2026-10-13. Open source
+
+  [3] New England Biolabs. T4 Polynucleotide Kinase: 5&#39; phosphorylation for oligo ligation. Accessed 2026-10-13.
+ Open source
+
+  [4] IDT. Oligo purification methods: which type should I choose? Cloning and PAGE/HPLC; RUO23-1848_001.
+ Accessed 2026-10-13. Open source
+
+  [5] Programmable RNA base editing with a single gRNA-free enzyme (2022). Nucleic Acids Research
+ 50:9580-9595; CU-REWIRE geometry and PUF10. doi:10.1093/nar/gkac713. Accessed 2026-10-13. Open source
+
+  [6] Jarmoskaite et al. (2019). A Quantitative and Predictive Model for RNA Binding by Human Pumilio Proteins;
+  scaffold effects and accessibility. Accessed 2026-10-13. Open source
+
+  [7] ViennaRNA Package. RNAfold manual, version 2.7.2; partition function (-p) and temperature (-T) options.
+ Accessed 2026-10-13. Open source
+
+  [8] ViennaRNA Package. RNAplfold manual; -u regional unpaired probabilities and _lunp output. Accessed
+ 2026-10-13. Open source
+
+
+
+
+
+RP01 | v1.0                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

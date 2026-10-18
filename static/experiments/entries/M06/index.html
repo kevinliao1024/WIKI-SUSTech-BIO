@@ -2,169 +2,267 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M06 · Colony Picking &amp; Bacterial Culture</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> M06 · <strong>Category:</strong> Molecular Biology</p>
-<p>M06 | ver 1.1 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Obtain sequence-verified bacterial clones for plasmid preparation. In our routine workflow, we submit bacterial agar plates directly to the sequencing company and request sequencing of 2-4 individually picked colonies per construct. After comparing the results with the intended sequence, we request the corresponding bacterial cultures and use them directly to inoculate fresh medium for shaking culture.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Source / Model</th>
-<th>Use / Specification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bacterial agar plate</td>
-<td>Prepared in M05</td>
-<td>Isolated colonies carrying the candidate construct; selection antibiotic identified</td>
-</tr>
-<tr>
-<td>Colony sequencing service</td>
-<td>Chosen provider</td>
-<td>Plate acceptance, separate colony IDs, sequence files and viable culture return</td>
-</tr>
-<tr>
-<td>Reference sequence and primers</td>
-<td>Construct-specific</td>
-<td>Expected plasmid sequence; provider primers or custom primers for the required regions</td>
-</tr>
-<tr>
-<td>LB broth</td>
-<td>Solarbio</td>
-<td>Sterile liquid bacterial growth medium</td>
-</tr>
-<tr>
-<td>Selection antibiotic</td>
-<td>Ampicillin or kanamycin</td>
-<td>Match the plasmid resistance marker; working concentrations below</td>
-</tr>
-<tr>
-<td>Culture tubes / flasks; pipettes and sterile tips</td>
-<td>Axygen tips; laboratory supplies</td>
-<td>Aerated culture vessels; separate inoculation of each returned clone</td>
-</tr>
-<tr>
-<td>Shaking incubator</td>
-<td>Available model</td>
-<td>Temperature and agitation appropriate to the host, construct and vessel</td>
-</tr>
-<tr>
-<td>Sequence analysis software</td>
-<td>Available software</td>
-<td>Read alignment and inspection of Sanger chromatograms (.ab1)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<p>Use this workflow for routine plasmid propagation in laboratory E. coli cloning strains. Check the host and construct for special growth requirements before selecting culture conditions.</p>
-<p>Arrange plate submission and viable culture retention with the provider in advance, including the retention deadline and return format. Use its current packing and transport instructions. Direct colony submission is supported by commercial sequencing workflows, but return services vary. [1]</p>
-<p>Prepare the intended reference sequence and identify the insert, assembly junctions and any engineered sites that must be checked. Plan additional primers if the initial reads cannot cover these regions. [2]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-submit-the-plate-for-colony-picking-and-sequencing">A. Submit the plate for colony picking and sequencing</h3>
-<ol>
-<li>
-<p>Inspect the plate for well-separated colonies and label its base with the construct ID and selection antibiotic. Submit the bacterial plate directly to the sequencing company.</p>
-</li>
-<li>
-<p>Specify 2-4 separate single colonies for each construct in the order. Ask the company to pick, culture and sequence each colony independently, assign unique clone IDs, and retain the matching viable cultures until you finish reviewing the results. Do not pool colonies.</p>
-</li>
-<li>
-<p>Provide the sequencing primer names or sequences, the expected reference, and the regions to verify. Request the base-called sequences and raw chromatograms for each clone and primer. [2]</p>
-</li>
-</ol>
-<h3 id="b-compare-sequences-and-request-the-selected-cultures">B. Compare sequences and request the selected cultures</h3>
-<ol start="4">
-<li>
-<p>Align each clone's reads to the intended reference, accounting for read orientation. Inspect the chromatograms at mismatches and ambiguous positions; exclude unreliable read ends. Check the insert, both assembly junctions and intended sequence changes within the planned coverage. [2]</p>
-</li>
-<li>
-<p>Select a clone whose readable sequence matches the required design. Resolve gaps or ambiguous critical bases with additional reads before accepting that region. Record the clone ID and verified coordinates; partial reads do not establish whole-plasmid identity. [2]</p>
-</li>
-<li>
-<p>After completing the comparison, ask the company to return the viable bacterial culture corresponding to each selected clone ID. Keep the sequencing order, result filenames and requested tube IDs linked in the same record.</p>
-</li>
-</ol>
-<h3 id="c-directly-inoculate-and-grow-the-returned-bacteria">C. Directly inoculate and grow the returned bacteria</h3>
-<ol start="7">
-<li>
-<p>On receipt, match each tube label to the selected clone and check the container for leakage or damage. Process clones separately. If a label is inconsistent or the sample is compromised, resolve it with the provider before use.</p>
-</li>
-<li>
-<p>Prepare fresh selective LB in a labeled culture vessel. A 2 mL culture is a useful starting scale for a routine miniprep; adjust the harvest volume to the M07 extraction kit. For common markers, use ampicillin at 100 µg/mL or kanamycin at 50 µg/mL, unless the construct specifies otherwise. [3]</p>
-</li>
-<li>
-<p>Gently mix the returned liquid culture and aseptically transfer a small aliquot into the fresh selective medium to seed growth. Use the provider's inoculum recommendation if supplied. The returned culture serves directly as the inoculum; routine re-plating and another colony-picking round are unnecessary when clone identity and purity are satisfactory.</p>
-</li>
-<li>
-<p>Incubate routine cloning strains at 37°C for 12-18 h with shaking. A typical starting range is 150-250 rpm; choose agitation for the actual vessel and shaker orbit. Use a vented closure and sufficient headspace. Use a strain-specific temperature, such as 30°C, where required, allowing for slower growth. [3] [4]</p>
-</li>
-<li>
-<p>Check that the inoculated medium has become turbid; an uninoculated selective-medium control should remain clear. Proceed to M07 for plasmid extraction, keeping the same clone ID on the culture, extracted plasmid and sequence record. [3]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>State the retention request when submitting the plate, then send the exact selected clone IDs after alignment. Waiting until the provider has discarded the cultures can force another round of screening.</p>
-<p>Keep every colony separate from picking through sequencing and culture return. The 2-4 colonies are independent candidates, not a guarantee that one will contain the correct construct.</p>
-<p>For aeration, use a vessel with at least four times the culture volume. Increasing culture volume also requires checking the capacity of the downstream plasmid extraction method. [4]</p>
-<p>Re-isolate and re-sequence when there is evidence of a mixed clone. A cloudy culture indicates growth but does not independently establish purity or plasmid sequence. [5]</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>One or more selected clone IDs have interpretable sequence data matching the intended design over the required regions, with the extent of verification recorded. The matching returned cultures grow in fresh selective medium and provide material for M07. If none of the 2-4 candidates passes sequence review, no clone is accepted from that submission.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Problem</th>
-<th>Check first</th>
-<th>Suggested action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Overlapping peaks across part or all of a read</td>
-<td>Check whether colonies were separate and whether the primer binds more than once.</td>
-<td>Ask for re-isolation or another independently picked clone if mixing is suspected; change the primer if it has multiple binding sites. Re-sequence before selection. [5]</td>
-</tr>
-<tr>
-<td>A critical site is ambiguous or outside read coverage</td>
-<td>Inspect trace quality, read orientation and primer position.</td>
-<td>Obtain an overlapping read from another primer or direction; keep the unconfirmed region pending. [2]</td>
-</tr>
-<tr>
-<td>All tested clones differ from the intended design</td>
-<td>Check the reference, sample IDs and whether the same discrepancy is supported by clear traces.</td>
-<td>For real sequence differences, screen additional independent colonies. If the same incorrect construct recurs, revisit the relevant assembly step in M04 and its inputs.</td>
-</tr>
-<tr>
-<td>Returned tube cannot be linked to the selected result</td>
-<td>Compare order number, clone ID and the provider's return list.</td>
-<td>Request a corrected ID mapping or replacement culture before propagation.</td>
-</tr>
-<tr>
-<td>Little or no growth after incubation</td>
-<td>Check antibiotic identity, actual temperature, aeration and returned-culture condition.</td>
-<td>Correct a mismatched condition and re-inoculate. For poor viability, request a fresh culture of the same verified clone. [3] [4]</td>
-</tr>
-<tr>
-<td>Growth in the uninoculated medium control</td>
-<td>Check the medium batch and handling for contamination.</td>
-<td>Replace the medium and restart using an uncontaminated aliquot of the verified culture. Re-isolate and verify again if the clone culture is also suspect.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] GENEWIZ / Azenta Life Sciences. Sanger Quick Tips. PDF p. 10, direct submission of colonies on agar. Accessed 2026-09-19. <a href="https://web.genewiz.com/hubfs/2017-07%20GEN%20Sanger%20-%20Sanger%20Quick%20Tips/11024-M%26G-6%200322%20Sanger%20QuickTips%20Full%20Series.pdf">Open source</a></p>
-<p>[2] Addgene. Sequence Analysis of a Plasmid. Sections on coverage, sequencing primers and trace interpretation. Accessed 2026-09-19. <a href="https://www.addgene.org/protocols/sequence-analysis/">Open source</a></p>
-<p>[3] Addgene. Inoculating a Liquid Bacterial Culture. Written Protocol, Antibiotic Concentrations, and Tips and FAQ. Accessed 2026-09-19. <a href="https://www.addgene.org/protocols/inoculate-bacterial-culture/">Open source</a></p>
-<p>[4] Addgene. Plasmids 101: Optimizing Plasmid Yields. Sections on culture volume, aeration and temperature. Accessed 2026-09-19. <a href="https://blog.addgene.org/optimizing-plasmids-101-plasmid-yields">Open source</a></p>
-<p>[5] GENEWIZ. Solutions Guide for Sanger Sequencing: Non-Specific. PDF pp. 1-2, multiple priming sites and mixed templates. Accessed 2026-09-19. <a href="https://clims4.genewiz.com/Common/TroubleShooting/en-US/Non-specific.pdf">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original M06 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:31.55032%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:77.16199%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p>Colony Picking &amp; Bacterial Culture
+
+ M06 | ver 1.1 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Obtain sequence-verified bacterial clones for plasmid preparation. In our routine workflow, we
+ submit bacterial agar plates directly to the sequencing company and request sequencing of 2-4
+ individually picked colonies per construct. After comparing the results with the intended sequence,
+ we request the corresponding bacterial cultures and use them directly to inoculate fresh medium for
+ shaking culture.
+
+ Materials &amp; Equipment
+
+
+   Item                         Source / Model         Use / Specification
+
+
+    Bacterial agar plate           Prepared in M05          Isolated colonies carrying the candidate construct;
+                                                                  selection antibiotic identified
+
+
+   Colony sequencing service     Chosen provider           Plate acceptance, separate colony IDs, sequence files
+                                                 and viable culture return
+
+
+   Reference sequence and         Construct-specific         Expected plasmid sequence; provider primers or custom
+   primers                                                  primers for the required regions
+
+
+   LB broth                       Solarbio                     Sterile liquid bacterial growth medium
+
+
+   Selection antibiotic              Ampicillin or           Match the plasmid resistance marker; working
+                              kanamycin                concentrations below
+
+
+   Culture tubes / flasks;         Axygen tips;            Aerated culture vessels; separate inoculation of each
+    pipettes and sterile tips         laboratory supplies       returned clone
+
+
+   Shaking incubator              Available model         Temperature and agitation appropriate to the host,
+                                                                 construct and vessel
+
+
+   Sequence analysis software     Available software      Read alignment and inspection of Sanger
+                                                     chromatograms (.ab1)
+
+
+ Before You Start
+
+ Use this workflow for routine plasmid propagation in laboratory E. coli cloning strains. Check the
+ host and construct for special growth requirements before selecting culture conditions.
+
+ Arrange plate submission and viable culture retention with the provider in advance, including the
+ retention deadline and return format. Use its current packing and transport instructions. Direct
+ colony submission is supported by commercial sequencing workflows, but return services vary. [1]
+
+
+
+
+M06 | v1.1                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original M06 PDF, page 2" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:13.97082%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Prepare the intended reference sequence and identify the insert, assembly junctions and any
+ engineered sites that must be checked. Plan additional primers if the initial reads cannot cover these
+ regions. [2]
+
+ Procedure
+
+ A. Submit the plate for colony picking and sequencing
+
+ 1. Inspect the plate for well-separated colonies and label its base with the construct ID and selection
+      antibiotic. Submit the bacterial plate directly to the sequencing company.
+
+ 2. Specify 2-4 separate single colonies for each construct in the order. Ask the company to pick,
+      culture and sequence each colony independently, assign unique clone IDs, and retain the
+     matching viable cultures until you finish reviewing the results. Do not pool colonies.
+
+ 3. Provide the sequencing primer names or sequences, the expected reference, and the regions to
+      verify. Request the base-called sequences and raw chromatograms for each clone and primer.
+      [2]
+
+ B. Compare sequences and request the selected cultures
+
+ 4. Align each clone&#39;s reads to the intended reference, accounting for read orientation. Inspect the
+     chromatograms at mismatches and ambiguous positions; exclude unreliable read ends. Check
+     the insert, both assembly junctions and intended sequence changes within the planned
+     coverage. [2]
+
+ 5. Select a clone whose readable sequence matches the required design. Resolve gaps or
+     ambiguous critical bases with additional reads before accepting that region. Record the clone
+     ID and verified coordinates; partial reads do not establish whole-plasmid identity. [2]
+
+ 6. After completing the comparison, ask the company to return the viable bacterial culture
+     corresponding to each selected clone ID. Keep the sequencing order, result filenames and
+     requested tube IDs linked in the same record.
+
+ C. Directly inoculate and grow the returned bacteria
+
+ 7. On receipt, match each tube label to the selected clone and check the container for leakage or
+    damage. Process clones separately. If a label is inconsistent or the sample is compromised,
+     resolve it with the provider before use.
+
+ 8. Prepare fresh selective LB in a labeled culture vessel. A 2 mL culture is a useful starting scale for a
+      routine miniprep; adjust the harvest volume to the M07 extraction kit. For common markers, use
+      ampicillin at 100 µg/mL or kanamycin at 50 µg/mL, unless the construct specifies otherwise. [3]
+
+ 9. Gently mix the returned liquid culture and aseptically transfer a small aliquot into the fresh
+      selective medium to seed growth. Use the provider&#39;s inoculum recommendation if supplied. The
+     returned culture serves directly as the inoculum; routine re-plating and another colony-picking
+     round are unnecessary when clone identity and purity are satisfactory.
+
+ 10. Incubate routine cloning strains at 37°C for 12-18 h with shaking. A typical starting range is
+    150-250 rpm; choose agitation for the actual vessel and shaker orbit. Use a vented closure and
+      sufficient headspace. Use a strain-specific temperature, such as 30°C, where required, allowing
+      for slower growth. [3] [4]
+
+
+M06 | v1.1                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original M06 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:13.97082%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:38.73653%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> 11. Check that the inoculated medium has become turbid; an uninoculated selective-medium control
+     should remain clear. Proceed to M07 for plasmid extraction, keeping the same clone ID on the
+      culture, extracted plasmid and sequence record. [3]
+
+ p.s.
+
+
+ State the retention request when submitting the plate, then send the exact selected clone IDs after
+ alignment. Waiting until the provider has discarded the cultures can force another round of
+ screening.
+
+ Keep every colony separate from picking through sequencing and culture return. The 2-4 colonies
+ are independent candidates, not a guarantee that one will contain the correct construct.
+
+ For aeration, use a vessel with at least four times the culture volume. Increasing culture volume also
+ requires checking the capacity of the downstream plasmid extraction method. [4]
+
+ Re-isolate and re-sequence when there is evidence of a mixed clone. A cloudy culture indicates
+ growth but does not independently establish purity or plasmid sequence. [5]
+
+ Expected Outcome
+
+ One or more selected clone IDs have interpretable sequence data matching the intended design
+ over the required regions, with the extent of verification recorded. The matching returned cultures
+ grow in fresh selective medium and provide material for M07. If none of the 2-4 candidates passes
+ sequence review, no clone is accepted from that submission.
+
+
+
+
+
+M06 | v1.1                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 4">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original M06 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:57.50383%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://web.genewiz.com/hubfs/2017-07%20GEN%20Sanger%20-%20Sanger%20Quick%20Tips/11024-M%26G-6%200322%20Sanger%20QuickTips%20Full%20Series.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://web.genewiz.com/hubfs/2017-07%20GEN%20Sanger%20-%20Sanger%20Quick%20Tips/11024-M%26G-6%200322%20Sanger%20QuickTips%20Full%20Series.pdf" style="left:25.96987%;top:61.70642%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.addgene.org/protocols/sequence-analysis/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/protocols/sequence-analysis/" style="left:25.96987%;top:65.26983%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.addgene.org/protocols/inoculate-bacterial-culture/" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.addgene.org/protocols/inoculate-bacterial-culture/" style="left:25.96987%;top:68.83324%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://blog.addgene.org/optimizing-plasmids-101-plasmid-yields" target="_blank" rel="noopener" aria-label="Original PDF reference: https://blog.addgene.org/optimizing-plasmids-101-plasmid-yields" style="left:25.96987%;top:72.39665%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://clims4.genewiz.com/Common/TroubleShooting/en-US/Non-specific.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://clims4.genewiz.com/Common/TroubleShooting/en-US/Non-specific.pdf" style="left:33.40167%;top:75.96006%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> Troubleshooting
+
+
+   Problem                Check first                       Suggested action
+
+
+   Overlapping peaks       Check whether colonies were      Ask for re-isolation or another independently
+   across part or all of a     separate and whether the primer    picked clone if mixing is suspected; change the
+   read                      binds more than once.             primer if it has multiple binding sites. Re-sequence
+                                                              before selection. [5]
+
+
+  A critical site is             Inspect trace quality, read         Obtain an overlapping read from another primer
+   ambiguous or outside      orientation and primer position.     or direction; keep the unconfirmed region pending.
+   read coverage                                                   [2]
+
+
+    All tested clones differ    Check the reference, sample IDs    For real sequence differences, screen additional
+   from the intended        and whether the same             independent colonies. If the same incorrect
+   design                   discrepancy is supported by         construct recurs, revisit the relevant assembly step
+                               clear traces.                            in M04 and its inputs.
+
+
+   Returned tube cannot     Compare order number, clone      Request a corrected ID mapping or replacement
+   be linked to the           ID and the provider&#39;s return list.     culture before propagation.
+   selected result
+
+
+     Little or no growth after   Check antibiotic identity, actual     Correct a mismatched condition and re-inoculate.
+   incubation                temperature, aeration and          For poor viability, request a fresh culture of the
+                                returned-culture condition.        same verified clone. [3] [4]
+
+
+   Growth in the           Check the medium batch and       Replace the medium and restart using an
+   uninoculated medium      handling for contamination.        uncontaminated aliquot of the verified culture.
+   control                                                            Re-isolate and verify again if the clone culture is
+                                                                  also suspect.
+
+
+ Reference
+
+  [1] GENEWIZ / Azenta Life Sciences. Sanger Quick Tips. PDF p. 10, direct submission of colonies on agar.
+ Accessed 2026-09-19. Open source
+
+  [2] Addgene. Sequence Analysis of a Plasmid. Sections on coverage, sequencing primers and trace interpretation.
+ Accessed 2026-09-19. Open source
+
+  [3] Addgene. Inoculating a Liquid Bacterial Culture. Written Protocol, Antibiotic Concentrations, and Tips and FAQ.
+ Accessed 2026-09-19. Open source
+
+  [4] Addgene. Plasmids 101: Optimizing Plasmid Yields. Sections on culture volume, aeration and temperature.
+ Accessed 2026-09-19. Open source
+
+  [5] GENEWIZ. Solutions Guide for Sanger Sequencing: Non-Specific. PDF pp. 1-2, multiple priming sites and mixed
+ templates. Accessed 2026-09-19. Open source
+
+
+
+
+
+M06 | v1.1                                                                              4</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

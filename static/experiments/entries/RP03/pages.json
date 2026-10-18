@@ -1,0 +1,143 @@
+{
+  "source_sha256": "2cdeee19b1a68320fd2a626ce4ef2258192aae39e972a2ac29683c18933e5329",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 6,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "727baa8e4e40387975442f4999c6a932ad19cecba6332c5ebc0b8c6ccc8d00e2",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 38.49897
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "2e495e7f91f096d97cfcfd4c34bde7a9eb11b63abb12cdb55a3def4592fee4a9",
+      "anchors": [
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 2,
+          "top": 18.18752
+        },
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 51.20847
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "08ff238a7c824c76eedf2c5558c9117a87e0b082874fa4d81737615a179567e8",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d1d754e770c11a642dd4437add9bfd56bbc2685ad4a0fc9e436a2badfdb4d952",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 43.60653
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "cf265887a828a43e8777ca3a32f0138491ab751db585e20f973ef2da7810bfa0",
+      "anchors": [
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 26.08642
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 82.74467
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.selleckchem.com/products/trimethoprim.html",
+          "left": 65.27866,
+          "top": 90.51066,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "afaca030e183f05178704f2c5ef0858e090119d417821fc90ca693f16d702ff5",
+      "anchors": [],
+      "links": [
+        {
+          "url": "https://cdn.caymanchem.com/cdn/insert/16473.pdf",
+          "left": 25.96987,
+          "top": 9.38365,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://doi.org/10.1016/j.xpro.2020.100069",
+          "left": 65.2137,
+          "top": 14.43182,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.sigmaaldrich.com/AT/en/technical-documents/technical-article/analytical-chemistry/filtration/chemical-compatibility-of-filter-components",
+          "left": 67.77389,
+          "top": 17.99523,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

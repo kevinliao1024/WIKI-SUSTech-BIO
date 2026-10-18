@@ -1,0 +1,131 @@
+{
+  "source_sha256": "509b20f0c02ff8f30564be322d77d5f796d6159cae90e4e540d94113d41c7cf4",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 4,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "eafc1ff9ee7cec7574e35473d8aa9b2904cdbe67d7f411cdb1374e9326d13996",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 70.51029
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "fe0b2d97e4117d305b99f2dc7aa988c505ac429e5e824170ad0056d55c937184",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 31.01581
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a4879953a95ed04684b023f91f2cf6a26ecdf8ff1fc286afc75e64ea9e0b5186",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 3,
+          "top": 54.23737
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 3,
+          "top": 79.00309
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "d66a8fe425311e0caaea5f31e40c6cd02af7656ccaaf175803762de4a9e59acb",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 4,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 4,
+          "top": 58.98859
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/subculturing-adherent-cells.html",
+          "left": 43.04007,
+          "top": 63.19117,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/25200056",
+          "left": 10.07937,
+          "top": 66.75458,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/15140122",
+          "left": 34.36803,
+          "top": 70.31799,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.atcc.org/products/crl-1718",
+          "left": 10.07937,
+          "top": 73.88141,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/cell-culture-useful-numbers.html",
+          "left": 36.78575,
+          "top": 77.44482,
+          "width": 8.85807,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

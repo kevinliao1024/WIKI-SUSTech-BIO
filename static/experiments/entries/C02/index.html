@@ -2,227 +2,357 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C02 · Cell Cryopreservation</title><link rel="stylesheet" href="../../reader.css"></head>
 <body>
-  <a class="skip" href="#entry-content">Skip section navigation</a>
-  <div class="reader-layout">
-    <nav aria-label="Experiment sections"><p>IN THIS EXPERIMENT</p><a href="#experiment-information">Experiment Information</a><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#ps">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav>
-    <main id="entry-content" tabindex="-1"><h2 id="experiment-information">Experiment Information</h2>
-<p><strong>ID:</strong> C02 · <strong>Category:</strong> Cell Biology</p>
-<p>C02 | ver 1.3 | Revised 2026-10-03</p>
-<p>SUSTech-BIO 2026 iGEM Team</p>
-<h2 id="purpose">Purpose</h2>
-<p>Prepare frozen stocks of healthy mammalian cells using Servicebio G1711 serum/protein-free, DMSO-free non-gradient cell freezing medium. Our stocks are frozen and stored at −80°C. Density selection covers HEK293T, U251, SH-SY5Y and CCF-STTG1.</p>
-<h2 id="materials-equipment">Materials &amp; Equipment</h2>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th>Specification / use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Serum/protein-free non-gradient cell freezing medium, DMSO-free</td>
-<td>Servicebio G1711; ready to use. Use the supplied formulation without adding serum or DMSO. [6]</td>
-</tr>
-<tr>
-<td>Healthy cells; matching complete medium</td>
-<td>Use the cell-specific maintenance conditions in C01.</td>
-</tr>
-<tr>
-<td>PBS/DPBS; dissociation reagent</td>
-<td>Ca2+/Mg2+-free wash buffer and the established dissociation reagent for adherent cells.</td>
-</tr>
-<tr>
-<td>Cell counter and viability stain</td>
-<td>Determine viable cells, not only total particles.</td>
-</tr>
-<tr>
-<td>Cryogenic vials; sterile tubes and pipettes</td>
-<td>Sterile cryovials rated for −80°C storage; 1 mL suspension per vial is the working example used here.</td>
-</tr>
-<tr>
-<td>Freezer-compatible vial holder; optional controlled-rate container</td>
-<td>Use a holder for direct −80°C freezing. A controlled-rate container is not required for this medium; discussed below for comparison.</td>
-</tr>
-<tr>
-<td>Culture cabinet; centrifuge; microscope</td>
-<td>Eppendorf refrigerated centrifuge; aseptic collection and inspection.</td>
-</tr>
-<tr>
-<td>−80°C freezer</td>
-<td>Cell freezing and storage; maintain a stable temperature.</td>
-</tr>
-<tr>
-<td>Pipette tips</td>
-<td>Axygen; sterile tips compatible with the selected pipettes.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="before-you-start">Before You Start</h2>
-<h3 id="check-the-medium-and-culture">Check the medium and culture</h3>
-<p>Use the Servicebio G1711 medium as supplied; gently mix before use and do not add serum, DMSO or basal medium. Store unused reagent at 2–8°C, protected from light; the stated unopened shelf life is 12 months, with use within 3 months after opening. The manufacturer also permits aliquoted reagent storage at −20°C. These are reagent-storage conditions, not a staged cell-freezing programme. [6]</p>
-<p>Use actively growing, uncontaminated cultures with normal morphology. Check identity, passage and mycoplasma status. Avoid banking stressed or overgrown cultures merely to rescue them. Label vials and reserve a storage position before adding cryoprotectant. [1]</p>
-<h3 id="choose-a-density-reference-ranges-not-proven-optima">Choose a density: reference ranges, not proven optima</h3>
-<p>Servicebio specifies 0.8–5 × 10^6 cells/mL for G1711. For healthy cultures, use viable-cell counts to choose a working density within this range. The four adherent lines below retain 2–5 × 10^6 viable cells/mL as a practical starting range, within the product range and consistent with general ATCC guidance. These are evaluation ranges, not experimentally established optima for each line. [1, 6]</p>
-<table>
-<thead>
-<tr>
-<th>Cell type</th>
-<th>Reference density</th>
-<th>How to apply it</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HEK293T</td>
-<td>2–5 × 10^6 viable cells/mL</td>
-<td>General mammalian monolayer starting range within the Servicebio product range. Assess post-thaw recovery. [1, 6]</td>
-</tr>
-<tr>
-<td>U251</td>
-<td>2–5 × 10^6 viable cells/mL</td>
-<td>Same general starting range within the Servicebio product range; no distinct line-specific optimum is established here. [1, 6]</td>
-</tr>
-<tr>
-<td>SH-SY5Y, undifferentiated</td>
-<td>2–5 × 10^6 viable cells/mL</td>
-<td>General starting range. A supplier uses about 3 × 10^6 cells/mL for a GFP derivative in another medium; this is supporting context, not validation for parental cells or Servicebio. [1, 3]</td>
-</tr>
-<tr>
-<td>CCF-STTG1</td>
-<td>2–5 × 10^6 viable cells/mL</td>
-<td>General starting range. Its retrieved supplier sheet gives a freezing formulation but no freezing density. Check recovery before banking the full stock. [1, 7]</td>
-</tr>
-<tr>
-<td>PBMCs (comparison only)</td>
-<td>0.5–10 × 10^6 cells/mL</td>
-<td>For CryoStor CS10 or 90% FBS/10% DMSO only. Do not transfer this upper limit to Servicebio, whose stated range ends at 5 × 10^6 cells/mL. [4, 6]</td>
-</tr>
-<tr>
-<td>Other primary cells, stem cells or differentiated neurons</td>
-<td>No common range assigned</td>
-<td>Use a matched cell/formulation protocol. Single cells and aggregates require different counting and recovery criteria. Do not transfer the tumour-cell ranges without validation.</td>
-</tr>
-</tbody>
-</table>
-<p>For a first comparison, vary density within the applicable range while holding medium, vial fill, cooling and thawing constant. Select the condition by viable cell recovery and subsequent attachment/growth or relevant function, not immediate viability percentage alone. A high survival percentage can conceal a low total recovery.</p>
-<h3 id="decide-whether-to-use-a-freezing-container">Decide whether to use a freezing container</h3>
-<table>
-<thead>
-<tr>
-<th>Situation</th>
-<th>Choice and trade-off</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Servicebio G1711: routine stock</td>
-<td>A controlled-rate freezing container is not required by the Servicebio instructions. Place aliquoted vials directly at −80°C. Our stocks remain in the −80°C freezer. [6]</td>
-</tr>
-<tr>
-<td>Considering a container with Servicebio</td>
-<td>Adding a container changes the cooling profile. The instructions do not establish a recovery advantage; use it only as a deliberately evaluated alternative, with density and fill held constant.</td>
-</tr>
-<tr>
-<td>Conventional slow-cooling formulation</td>
-<td>Use an appropriate container or controlled-rate freezer, typically around −1°C/min. This comparison is not an extra stage in the Servicebio procedure. [2, 5]</td>
-</tr>
-<tr>
-<td>New, sensitive or valuable stock</td>
-<td>Keep a recoverable backup while assessing a representative vial. A different cell-specific formulation or cooling protocol may be needed if direct freezing gives poor recovery.</td>
-</tr>
-</tbody>
-</table>
-<p>For the optional slow-cooling comparison, a freezing container is a passive device, not an electronically programmed freezer. An ordinary cryobox does not provide a controlled cooling rate. Mr. Frosty specifically starts at room temperature, uses 100% isopropanol and requires alcohol replacement after five uses; alcohol-free devices have their own instructions. These preparations are unnecessary for the main direct-freezing route. [5]</p>
-<h2 id="procedure">Procedure</h2>
-<h3 id="a-collect-and-count">A. Collect and count</h3>
-<ol>
-<li>
-<p>Harvest adherent cells using C01: wash, detach gently, neutralize the dissociation reagent and collect in complete medium. For a suspension line, collect the suspension directly using its established harvesting procedure.</p>
-</li>
-<li>
-<p>Mix gently, take a representative sample and measure viable cell concentration and total suspension volume. Record cell identity, passage and pre-freeze viability. Calculate the total viable cell number before choosing the number of vials.</p>
-</li>
-<li>
-<p>Pellet cells gently and remove the supernatant without disturbing the pellet. The Servicebio instructions state 800–1200 rpm for 3–5 min; rpm depends on rotor radius and is not interchangeable with × g. The C01 condition of 200 × g for 5 min may be retained as a laboratory adaptation where effective for the cell line, rather than presented as a conversion of the supplier's setting. [2, 6]</p>
-</li>
-</ol>
-<h3 id="b-resuspend-and-aliquot">B. Resuspend and aliquot</h3>
-<ol start="4">
-<li>
-<p>Calculate the final freezing-suspension volume: V (mL) = total viable cells / target viable cells per mL. For example, 1.2 × 10^7 viable cells at 3 × 10^6/mL require 4 mL final suspension, giving four 1 mL aliquots. This is arithmetic, not a confirmed team density.</p>
-</li>
-<li>
-<p>Gently mix the ready-to-use G1711 medium, then resuspend the pellet in the calculated volume. Proceed promptly; no additional warming or equilibration hold is specified. [6]</p>
-</li>
-<li>
-<p>Dispense 1 mL per compatible cryovial, as recommended by Servicebio. Mix gently between aliquots to limit settling; record cells/mL and cells/vial. Close vials securely and proceed promptly to freezing. [6]</p>
-</li>
-</ol>
-<h3 id="c-freeze-and-store-at-80c">C. Freeze and store at −80°C</h3>
-<ol start="7">
-<li>
-<p>Place the cryovials directly in a stable −80°C freezer using a suitable vial holder. Do not use a controlled-rate freezing container for this standard route, and do not add 4°C or −20°C holding stages. Keep the freezer temperature stable and minimize door opening. [6]</p>
-</li>
-<li>
-<p>Keep the frozen vials in the −80°C freezer. Record the freezing date and box/vial position, and record storage duration when a vial is retrieved for recovery. Minimize unnecessary handling and temperature fluctuations.</p>
-</li>
-<li>
-<p>Recover a representative vial using C03 for compatible routine adherent lines. Dilute the thawed suspension in complete medium before centrifugation: the Servicebio medium is viscous and should not be centrifuged undiluted. Assess viable recovery, attachment and subsequent growth/morphology. Keep the original culture or backup stock until the new batch has passed recovery assessment. [6]</p>
-</li>
-</ol>
-<h2 id="ps">p.s.</h2>
-<p>Prepare labels, the vial holder and freezer space before resuspending cells in freezing medium. Avoid leaving the final tubes waiting while setting up the next step.</p>
-<p>Use G1711 as supplied. It is DMSO-free; do not add DMSO, serum or basal medium to this ready-to-use reagent. Gently mix the reagent before resuspending the cells. [6]</p>
-<p>Higher density is not automatically better: clumps impair counting and even aliquoting. A sparse vial may also yield too few recoverable cells. Compare recovery under the same conditions before narrowing the range.</p>
-<p>For bank qualification, record the G1711 lot, viable cells per vial, fill volume, cooling route and thawing observations. Avoid changing density and cooling route simultaneously when diagnosing a poor batch.</p>
-<h2 id="expected-outcome">Expected Outcome</h2>
-<p>A qualified stock should recover viable cells that resume the expected morphology and growth after thawing. Report viable recovery as recovered viable cells divided by the viable cells originally frozen, using a defined counting time; assess later attachment and expansion separately. No fixed recovery percentage or Servicebio-specific optimum is claimed.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<table>
-<thead>
-<tr>
-<th>Observed problem</th>
-<th>Check first</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Clumps or unequal cells per vial</td>
-<td>Dissociation quality, counting and settling during dispensing</td>
-<td>Use gentle dispersion and regular mixing; recount a representative suspension. Do not force damaged aggregates through repeated harsh pipetting.</td>
-</tr>
-<tr>
-<td>Low viable recovery after thawing</td>
-<td>Pre-freeze health, medium identity, actual cooling route, storage and C03 thawing records</td>
-<td>Correct the identifiable fault first. Compare density within the supported range with the other conditions fixed.</td>
-</tr>
-<tr>
-<td>Good immediate viability but poor attachment or growth</td>
-<td>Recovered cell number, reseeding area, handling damage and appropriate recovery medium</td>
-<td>Assess viable yield and next-day culture as well as dye exclusion. Use a cell-appropriate recovery density and vessel.</td>
-</tr>
-<tr>
-<td>One batch performs worse than earlier batches</td>
-<td>Medium lot, vial fill, freezer temperature, unintended use of an insulating container and warming during handling</td>
-<td>Restore the established direct-freezing setup. If comparing a container, keep other conditions fixed and assess recovery before adopting the change.</td>
-</tr>
-<tr>
-<td>Cracked, leaking or poorly sealed vial</td>
-<td>Cryogenic rating, fill limit and closure</td>
-<td>Exclude compromised vials from the bank and review compatible vial handling. Use the laboratory cryogenic incident procedure.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="reference">Reference</h2>
-<p>[1] ATCC. Cryogenic Storage of Animal Cells: culture health and general 2–5 million viable cells/mL reference range. Accessed 2026-10-03. <a href="https://www.atcc.org/resources/technical-documents/cryogenic-storage-of-animal-cells">Open source</a></p>
-<p>[2] Thermo Fisher Scientific / Gibco. Cell Freezing Protocols: collection and conventional slow-cooling comparison. Accessed 2026-10-03. <a href="https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/freezing-cells.html">Open source</a></p>
-<p>[3] GenTarget. SH-SY5Y/GFP stable cell line SC042 manual, copyright 2024, p. 2: approximately 3 × 10^6 cells/mL in 90% complete medium/10% DMSO. Derivative-line context only. Accessed 2026-10-03. <a href="https://www.gentarget.com/pdf/SC042_man.pdf">Open source</a></p>
-<p>[4] STEMCELL Technologies. Protocol for Cryopreserving PBMCs, PR00022 v1.0.1, June 2024: 0.5–10 × 10^6 cells/mL and recovery evaluation. Accessed 2026-10-03. <a href="https://www.stemcell.com/how-to-cryopreserve-pbmcs.html">Open source</a></p>
-<p>[5] Thermo Scientific. Mr. Frosty Freezing Container, 5100-0001 product page and FAQs: cooling rate, room-temperature setup and isopropanol replacement. Accessed 2026-10-03. <a href="https://www.thermofisher.com/order/catalog/product/5100-0001">Open source</a></p>
-<p>[6] Servicebio. G1711 Serum/Protein-Free Non-gradient Cell Freezing Medium (without DMSO), V1.1-20260526, Chinese pp. 1–2 and English pp. 1–2. Official IFU accessed 2026-10-03. <a href="https://shoposs.servicebio.cn/2026/05/18/1779072506527qxiQEo.pdf">Open source</a></p>
-<p>[7] Procell. CCF-STTG1 cell instructions, CL-1022, Rev. V1.0, p. 1: freezing formulation specified without a freezing-density recommendation. Accessed and downloaded 2026-10-03. <a href="https://u1.procell.com.cn/index.php/viewpdf/index/id/11355.html">Open source</a></p></main>
-  </div>
+  <header class="page-intro">
+    <details class="section-links"><summary>Jump to section</summary><nav aria-label="Experiment sections"><a href="#purpose">Purpose</a><a href="#materials-equipment">Materials &amp; Equipment</a><a href="#before-you-start">Before You Start</a><a href="#procedure">Procedure</a><a href="#p-s">p.s.</a><a href="#expected-outcome">Expected Outcome</a><a href="#troubleshooting">Troubleshooting</a><a href="#reference">Reference</a></nav></details>
+    <p>Select a page to enlarge it; select again to fit.</p>
+  </header>
+  <main id="entry-content" aria-label="Original PDF pages">
+
+    <section class="pdf-page" aria-label="Original page 1 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 1">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 1"><img src="page-001.webp" width="1800" height="2546" alt="Original C02 PDF, page 1" loading="eager" decoding="async"></button>
+          <span class="pdf-section-anchor" id="purpose" style="top:17.59362%" aria-hidden="true"></span><span class="pdf-section-anchor" id="materials-equipment" style="top:27.86813%" aria-hidden="true"></span><span class="pdf-section-anchor" id="before-you-start" style="top:78.34979%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 1</h2><p> Cell Cryopreservation
+
+ C02 | ver 1.3 | Revised 2026-10-03
+
+ SUSTech-BIO 2026 iGEM Team
+
+
+ Purpose
+
+ Prepare frozen stocks of healthy mammalian cells using Servicebio G1711 serum/protein-free,
+ DMSO-free non-gradient cell freezing medium. Our stocks are frozen and stored at −80°C. Density
+ selection covers HEK293T, U251, SH-SY5Y and CCF-STTG1.
+
+ Materials &amp; Equipment
+
+
+   Item                                Specification / use
+
+
+   Serum/protein-free                Servicebio G1711; ready to use. Use the supplied formulation without adding
+   non-gradient cell freezing        serum or DMSO. [6]
+   medium, DMSO-free
+
+
+   Healthy cells; matching          Use the cell-specific maintenance conditions in C01.
+   complete medium
+
+
+   PBS/DPBS; dissociation          Ca2+/Mg2+-free wash buffer and the established dissociation reagent for
+   reagent                         adherent cells.
+
+
+    Cell counter and viability stain    Determine viable cells, not only total particles.
+
+
+   Cryogenic vials; sterile tubes       Sterile cryovials rated for −80°C storage; 1 mL suspension per vial is the
+   and pipettes                    working example used here.
+
+
+   Freezer-compatible vial holder;   Use a holder for direct −80°C freezing. A controlled-rate container is not
+   optional controlled-rate           required for this medium; discussed below for comparison.
+   container
+
+
+   Culture cabinet; centrifuge;       Eppendorf refrigerated centrifuge; aseptic collection and inspection.
+   microscope
+
+
+  −80°C freezer                     Cell freezing and storage; maintain a stable temperature.
+
+
+    Pipette tips                    Axygen; sterile tips compatible with the selected pipettes.
+
+
+ Before You Start
+
+ Check the medium and culture
+
+ Use the Servicebio G1711 medium as supplied; gently mix before use and do not add serum,
+ DMSO or basal medium. Store unused reagent at 2–8°C, protected from light; the stated unopened
+ shelf life is 12 months, with use within 3 months after opening. The manufacturer also permits
+ aliquoted reagent storage at −20°C. These are reagent-storage conditions, not a staged
+ cell-freezing programme. [6]
+
+
+C02 | v1.3                                                                              1</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 2 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 2">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 2"><img src="page-002.webp" width="1800" height="2546" alt="Original C02 PDF, page 2" loading="lazy" decoding="async"></button>
+
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 2</h2><p> Use actively growing, uncontaminated cultures with normal morphology. Check identity, passage
+ and mycoplasma status. Avoid banking stressed or overgrown cultures merely to rescue them. Label
+ vials and reserve a storage position before adding cryoprotectant. [1]
+
+ Choose a density: reference ranges, not proven optima
+
+ Servicebio specifies 0.8–5 × 10^6 cells/mL for G1711. For healthy cultures, use viable-cell counts
+ to choose a working density within this range. The four adherent lines below retain 2–5 × 10^6
+ viable cells/mL as a practical starting range, within the product range and consistent with general
+ ATCC guidance. These are evaluation ranges, not experimentally established optima for each line.
+ [1, 6]
+
+
+    Cell type                  Reference density      How to apply it
+
+
+   HEK293T              2–5 × 10^6 viable       General mammalian monolayer starting range within the
+                               cells/mL                  Servicebio product range. Assess post-thaw recovery. [1, 6]
+
+
+  U251                2–5 × 10^6 viable      Same general starting range within the Servicebio product
+                               cells/mL                 range; no distinct line-specific optimum is established here.
+                                                              [1, 6]
+
+
+   SH-SY5Y,              2–5 × 10^6 viable       General starting range. A supplier uses about 3 × 10^6
+   undifferentiated            cells/mL                   cells/mL for a GFP derivative in another medium; this is
+                                                       supporting context, not validation for parental cells or
+                                                          Servicebio. [1, 3]
+
+
+   CCF-STTG1            2–5 × 10^6 viable       General starting range. Its retrieved supplier sheet gives a
+                               cells/mL                  freezing formulation but no freezing density. Check
+                                                     recovery before banking the full stock. [1, 7]
+
+
+  PBMCs (comparison      0.5–10 × 10^6          For CryoStor CS10 or 90% FBS/10% DMSO only. Do not
+   only)                       cells/mL                    transfer this upper limit to Servicebio, whose stated range
+                                                  ends at 5 × 10^6 cells/mL. [4, 6]
+
+
+   Other primary cells,     No common range       Use a matched cell/formulation protocol. Single cells and
+   stem cells or               assigned                aggregates require different counting and recovery criteria.
+    differentiated neurons                       Do not transfer the tumour-cell ranges without validation.
+
+
+ For a first comparison, vary density within the applicable range while holding medium, vial fill,
+ cooling and thawing constant. Select the condition by viable cell recovery and subsequent
+ attachment/growth or relevant function, not immediate viability percentage alone. A high survival
+ percentage can conceal a low total recovery.
+
+
+
+
+
+C02 | v1.3                                                                              2</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 3 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 3">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 3"><img src="page-003.webp" width="1800" height="2546" alt="Original C02 PDF, page 3" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="procedure" style="top:49.78311%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 3</h2><p> Decide whether to use a freezing container
+
+
+    Situation                      Choice and trade-off
+
+
+   Servicebio G1711: routine    A controlled-rate freezing container is not required by the Servicebio instructions.
+   stock                           Place aliquoted vials directly at −80°C. Our stocks remain in the −80°C freezer.
+                                      [6]
+
+
+   Considering a container with    Adding a container changes the cooling profile. The instructions do not establish a
+   Servicebio                     recovery advantage; use it only as a deliberately evaluated alternative, with
+                                     density and fill held constant.
+
+
+   Conventional slow-cooling      Use an appropriate container or controlled-rate freezer, typically around
+   formulation                  −1°C/min. This comparison is not an extra stage in the Servicebio procedure. [2,
+                                   5]
+
+
+   New, sensitive or valuable     Keep a recoverable backup while assessing a representative vial. A different
+   stock                                 cell-specific formulation or cooling protocol may be needed if direct freezing gives
+                               poor recovery.
+
+
+ For the optional slow-cooling comparison, a freezing container is a passive device, not an
+ electronically programmed freezer. An ordinary cryobox does not provide a controlled cooling
+ rate. Mr. Frosty specifically starts at room temperature, uses 100% isopropanol and requires
+ alcohol replacement after five uses; alcohol-free devices have their own instructions. These
+ preparations are unnecessary for the main direct-freezing route. [5]
+
+ Procedure
+
+ A. Collect and count
+
+ 1. Harvest adherent cells using C01: wash, detach gently, neutralize the dissociation reagent and
+      collect in complete medium. For a suspension line, collect the suspension directly using its
+     established harvesting procedure.
+
+ 2. Mix gently, take a representative sample and measure viable cell concentration and total
+     suspension volume. Record cell identity, passage and pre-freeze viability. Calculate the total
+     viable cell number before choosing the number of vials.
+
+ 3. Pellet cells gently and remove the supernatant without disturbing the pellet. The Servicebio
+      instructions state 800–1200 rpm for 3–5 min; rpm depends on rotor radius and is not
+     interchangeable with × g. The C01 condition of 200 × g for 5 min may be retained as a
+     laboratory adaptation where effective for the cell line, rather than presented as a conversion of
+     the supplier&#39;s setting. [2, 6]
+
+ B. Resuspend and aliquot
+
+ 4. Calculate the final freezing-suspension volume: V (mL) = total viable cells / target viable cells per
+     mL. For example, 1.2 × 10^7 viable cells at 3 × 10^6/mL require 4 mL final suspension, giving
+     four 1 mL aliquots. This is arithmetic, not a confirmed team density.
+
+ 5. Gently mix the ready-to-use G1711 medium, then resuspend the pellet in the calculated volume.
+     Proceed promptly; no additional warming or equilibration hold is specified. [6]
+
+
+
+C02 | v1.3                                                                              3</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 4 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 4">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 4"><img src="page-004.webp" width="1800" height="2546" alt="Original C02 PDF, page 4" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="p-s" style="top:39.92434%" aria-hidden="true"></span><span class="pdf-section-anchor" id="expected-outcome" style="top:66.53114%" aria-hidden="true"></span>
+
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 4</h2><p> 6. Dispense 1 mL per compatible cryovial, as recommended by Servicebio. Mix gently between
+      aliquots to limit settling; record cells/mL and cells/vial. Close vials securely and proceed
+     promptly to freezing. [6]
+
+ C. Freeze and store at −80°C
+
+ 7. Place the cryovials directly in a stable −80°C freezer using a suitable vial holder. Do not use a
+      controlled-rate freezing container for this standard route, and do not add 4°C or −20°C
+     holding stages. Keep the freezer temperature stable and minimize door opening. [6]
+
+ 8. Keep the frozen vials in the −80°C freezer. Record the freezing date and box/vial position, and
+     record storage duration when a vial is retrieved for recovery. Minimize unnecessary handling
+    and temperature fluctuations.
+
+ 9. Recover a representative vial using C03 for compatible routine adherent lines. Dilute the thawed
+     suspension in complete medium before centrifugation: the Servicebio medium is viscous and
+     should not be centrifuged undiluted. Assess viable recovery, attachment and subsequent
+     growth/morphology. Keep the original culture or backup stock until the new batch has passed
+     recovery assessment. [6]
+
+ p.s.
+
+
+ Prepare labels, the vial holder and freezer space before resuspending cells in freezing medium.
+ Avoid leaving the final tubes waiting while setting up the next step.
+
+ Use G1711 as supplied. It is DMSO-free; do not add DMSO, serum or basal medium to this
+ ready-to-use reagent. Gently mix the reagent before resuspending the cells. [6]
+
+ Higher density is not automatically better: clumps impair counting and even aliquoting. A sparse vial
+ may also yield too few recoverable cells. Compare recovery under the same conditions before
+ narrowing the range.
+
+ For bank qualification, record the G1711 lot, viable cells per vial, fill volume, cooling route and
+ thawing observations. Avoid changing density and cooling route simultaneously when diagnosing a
+ poor batch.
+
+ Expected Outcome
+
+ A qualified stock should recover viable cells that resume the expected morphology and growth after
+ thawing. Report viable recovery as recovered viable cells divided by the viable cells originally
+ frozen, using a defined counting time; assess later attachment and expansion separately. No fixed
+ recovery percentage or Servicebio-specific optimum is claimed.
+
+
+
+
+
+C02 | v1.3                                                                              4</p></div>
+    </section>
+
+    <section class="pdf-page" aria-label="Original page 5 of 5">
+      <div class="page-viewport" tabindex="0" role="region" aria-label="Page 5">
+        <div class="page-sheet">
+          <button class="page-zoom" type="button" aria-pressed="false" aria-label="Enlarge original page 5"><img src="page-005.webp" width="1800" height="2546" alt="Original C02 PDF, page 5" loading="lazy" decoding="async"></button>
+          <span class="pdf-section-anchor" id="troubleshooting" style="top:6.78461%" aria-hidden="true"></span><span class="pdf-section-anchor" id="reference" style="top:49.66433%" aria-hidden="true"></span>
+          <a class="pdf-source-link" href="https://www.atcc.org/resources/technical-documents/cryogenic-storage-of-animal-cells" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.atcc.org/resources/technical-documents/cryogenic-storage-of-animal-cells" style="left:30.94557%;top:53.86691%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/freezing-cells.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/freezing-cells.html" style="left:25.96987%;top:57.43032%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://www.gentarget.com/pdf/SC042_man.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.gentarget.com/pdf/SC042_man.pdf" style="left:79.05706%;top:60.99373%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.stemcell.com/how-to-cryopreserve-pbmcs.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.stemcell.com/how-to-cryopreserve-pbmcs.html" style="left:49.66941%;top:64.55715%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://www.thermofisher.com/order/catalog/product/5100-0001" target="_blank" rel="noopener" aria-label="Original PDF reference: https://www.thermofisher.com/order/catalog/product/5100-0001" style="left:63.84352%;top:68.12056%;width:8.85808%;height:1.28282%"></a><a class="pdf-source-link" href="https://shoposs.servicebio.cn/2026/05/18/1779072506527qxiQEo.pdf" target="_blank" rel="noopener" aria-label="Original PDF reference: https://shoposs.servicebio.cn/2026/05/18/1779072506527qxiQEo.pdf" style="left:60.79609%;top:71.68397%;width:8.85808%;height:1.28283%"></a><a class="pdf-source-link" href="https://u1.procell.com.cn/index.php/viewpdf/index/id/11355.html" target="_blank" rel="noopener" aria-label="Original PDF reference: https://u1.procell.com.cn/index.php/viewpdf/index/id/11355.html" style="left:61.77573%;top:75.24738%;width:8.85808%;height:1.28283%"></a>
+        </div>
+      </div>
+      <div class="sr-only"><h2>Original page 5</h2><p> Troubleshooting
+
+
+   Observed problem        Check first                           Action
+
+
+   Clumps or unequal cells     Dissociation quality, counting and     Use gentle dispersion and regular mixing;
+   per vial                         settling during dispensing             recount a representative suspension. Do not
+                                                                       force damaged aggregates through repeated
+                                                                  harsh pipetting.
+
+
+   Low viable recovery         Pre-freeze health, medium identity,    Correct the identifiable fault first. Compare
+    after thawing                actual cooling route, storage and      density within the supported range with the
+                       C03 thawing records                  other conditions fixed.
+
+
+  Good immediate viability   Recovered cell number, reseeding     Assess viable yield and next-day culture as
+   but poor attachment or      area, handling damage and           well as dye exclusion. Use a cell-appropriate
+   growth                    appropriate recovery medium         recovery density and vessel.
+
+
+  One batch performs       Medium lot, vial fill, freezer           Restore the established direct-freezing setup. If
+   worse than earlier          temperature, unintended use of an    comparing a container, keep other conditions
+   batches                       insulating container and warming      fixed and assess recovery before adopting the
+                              during handling                     change.
+
+
+   Cracked, leaking or        Cryogenic rating, fill limit and         Exclude compromised vials from the bank and
+   poorly sealed vial           closure                             review compatible vial handling. Use the
+                                                                    laboratory cryogenic incident procedure.
+
+
+ Reference
+
+  [1] ATCC. Cryogenic Storage of Animal Cells: culture health and general 2–5 million viable cells/mL reference
+ range. Accessed 2026-10-03. Open source
+
+  [2] Thermo Fisher Scientific / Gibco. Cell Freezing Protocols: collection and conventional slow-cooling comparison.
+ Accessed 2026-10-03. Open source
+
+  [3] GenTarget. SH-SY5Y/GFP stable cell line SC042 manual, copyright 2024, p. 2: approximately 3 × 10^6
+ cells/mL in 90% complete medium/10% DMSO. Derivative-line context only. Accessed 2026-10-03. Open source
+
+  [4] STEMCELL Technologies. Protocol for Cryopreserving PBMCs, PR00022 v1.0.1, June 2024: 0.5–10 × 10^6
+ cells/mL and recovery evaluation. Accessed 2026-10-03. Open source
+
+  [5] Thermo Scientific. Mr. Frosty Freezing Container, 5100-0001 product page and FAQs: cooling rate,
+ room-temperature setup and isopropanol replacement. Accessed 2026-10-03. Open source
+
+  [6] Servicebio. G1711 Serum/Protein-Free Non-gradient Cell Freezing Medium (without DMSO), V1.1-20260526,
+ Chinese pp. 1–2 and English pp. 1–2. Official IFU accessed 2026-10-03. Open source
+
+  [7] Procell. CCF-STTG1 cell instructions, CL-1022, Rev. V1.0, p. 1: freezing formulation specified without a
+  freezing-density recommendation. Accessed and downloaded 2026-10-03. Open source
+
+
+
+
+
+C02 | v1.3                                                                              5</p></div>
+    </section>
+
+  </main>
+  <script type="module" src="../../reader.mjs"></script>
 </body>
 </html>

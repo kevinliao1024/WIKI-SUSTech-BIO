@@ -205,7 +205,7 @@
   // Markdown TOC labels may contain encoded entities; use the rendered heading.
   links.forEach(link => {
     const heading = document.getElementById(decodeURIComponent(link.hash.slice(1)));
-    if (heading) link.textContent = heading.textContent;
+    if (heading && !link.hasAttribute('data-content-custom-label')) link.textContent = heading.textContent;
     link.addEventListener('click', event => {
       if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       if (mobile?.contains(link)) mobile.open = false;

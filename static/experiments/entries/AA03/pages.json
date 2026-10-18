@@ -1,0 +1,121 @@
+{
+  "source_sha256": "6cc3829c7aec33fc5ca69575c6ce0f2839c409a18e8edc72cc72d34fc0a06a54",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 6,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "33e8bd4824a03d7507e8297eaa7ee274ea0921a0916517bef038b4e7f77cc895",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 68.6098
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "4af1dc664cb85c18bbec372a060c847843aa7422e61933fe5b8ac2bfaeb0e82a",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 13.97082
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "860ca958ccc15c5e0e47893bf6223bab5c7adeab5b9c9c48cfd0e1ed47bc4dde",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "b6685eb98acf498b5d4ef3aa15ae3a90763e44a47c03062b76d444654c68e377",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "16c5ed118e51bed74370978f64ebf0e119d8e3b90c13b666b8ef4e26da688ac3",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 5,
+          "top": 18.72204
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 5,
+          "top": 49.8425
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 6,
+      "image": "page-006.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "82e7c1d89e4207a93702bc4080989fefebc90eec17aea05283e6b9883eb6b004",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 6,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 6,
+          "top": 60.88908
+        }
+      ],
+      "links": [
+        {
+          "url": "https://m.beyotime.com/Manual/C2921%20Universal%20AAV%20Titration%20Kit%20by%20qPCR.pdf",
+          "left": 79.59598,
+          "top": 65.09166,
+          "width": 8.85808,
+          "height": 1.28282
+        }
+      ]
+    }
+  ]
+}

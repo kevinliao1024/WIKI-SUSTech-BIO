@@ -1,0 +1,92 @@
+/* Measurement keeps its document layout with the Engineering heading language. */
+.measurement-overview {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+  margin: -12px 64px 36px 0;
+  padding: 26px 30px;
+  border: 1px solid #d9dcef;
+  border-top: 3px solid #b4b9e3;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff 0%, #f5f4ff 100%);
+  box-shadow: 0 14px 30px -12px #41487335, 0 3px 8px #4148730c;
+}
+.measurement-overview h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0 0;
+  color: #66679d;
+  font: 800 13px/1.4 'Source Sans 3', 'Segoe UI', sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.measurement-overview h2::before {
+  content: '';
+  flex: 0 0 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #adaedc;
+  box-shadow: 0 0 0 4px #e9e8f7;
+}
+.measurement-overview p {
+  margin: 0;
+  color: #47536d;
+  font: 400 18px/1.7 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+}
+.markdown-page[data-content-source="docs/wet-lab/measurement.md"] .markdown-content h2 {
+  margin: 44px 0 26px;
+  padding: 14px 24px;
+  border: 1.5px solid #cbd1de;
+  border-radius: 999px;
+  background: #fff;
+  color: #303b57;
+  font: 600 24px/1.4 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0;
+  text-align: center;
+  break-after: avoid;
+}
+.markdown-page[data-content-source="docs/wet-lab/measurement.md"] .markdown-content h3 {
+  margin: 32px 0 16px;
+  color: #303b57;
+  font: 600 20px/1.45 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0;
+  break-after: avoid;
+}
+.markdown-page[data-content-source="docs/wet-lab/measurement.md"] .measurement-opening-quote {
+  position: relative;
+  margin: 0 -10px 42px;
+  padding: 34px 30px 30px 58px;
+  border: 1px solid #e1ddee;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff 0%, #f4f1fb 100%);
+  box-shadow: 0 14px 30px -12px #41487342, 0 3px 8px #4148730c;
+}
+.measurement-opening-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  color: #aaa1cc;
+  font: 400 68px/1 Georgia, 'Times New Roman', serif;
+  pointer-events: none;
+}
+.markdown-page[data-content-source="docs/wet-lab/measurement.md"] .measurement-opening-quote p {
+  margin: 0;
+  color: #56547b;
+  font: italic 400 24px/1.5 Georgia, 'Times New Roman', serif;
+}
+@media (max-width: 760px) {
+  .measurement-overview { grid-template-columns: 1fr; gap: 14px; margin: -8px 24px 28px 0; padding: 22px; border-radius: 16px; }
+  .measurement-overview p { font-size: 17px; }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] .markdown-content h2 { padding: 12px 22px; font-size: 22px; }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] .markdown-content h3 { font-size: 19px; }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] .measurement-opening-quote { margin-inline: 0; padding: 30px 22px 24px 44px; }
+  .measurement-opening-quote::before { left: 12px; font-size: 54px; }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] .measurement-opening-quote p { font-size: 21px; }
+}
+@media print {
+  .measurement-overview { box-shadow: none; background: #fff; }
+  .markdown-page[data-content-source="docs/wet-lab/measurement.md"] .measurement-opening-quote { box-shadow: none; background: #fff; }
+}

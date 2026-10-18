@@ -1,0 +1,154 @@
+{
+  "source_sha256": "be9a459bedaa95204c59fc901046a7698cef14598751ff3d38d6eedc499584ee",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "dfa24a21b5a814dab35ac07a2bffa9293900ef2f1991cdc05a0cec8408e338d6",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 17.59362
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 27.86813
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 78.34979
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "45b6473290d36812a9f70a3bde63f54bc539d539977ba3d080723ea24275980c",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "537eda6c62bd2989eeb6b4aafcf1c3c7d95747c92b8ed4919af422b79859a00c",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 3,
+          "top": 49.78311
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "a59a7c888391e16ac34af385afdcc3621a60c35cfcdbb6a11027e261914816e6",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 39.92434
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 66.53114
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "9b1e04a88f84fb25a15c2a3cdbad1daa2c003be3a483958c4fa51b7b5e217034",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 49.66433
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.atcc.org/resources/technical-documents/cryogenic-storage-of-animal-cells",
+          "left": 30.94557,
+          "top": 53.86691,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.thermofisher.com/us/en/home/references/gibco-cell-culture-basics/cell-culture-protocols/freezing-cells.html",
+          "left": 25.96987,
+          "top": 57.43032,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.gentarget.com/pdf/SC042_man.pdf",
+          "left": 79.05706,
+          "top": 60.99373,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.stemcell.com/how-to-cryopreserve-pbmcs.html",
+          "left": 49.66941,
+          "top": 64.55715,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.thermofisher.com/order/catalog/product/5100-0001",
+          "left": 63.84352,
+          "top": 68.12056,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://shoposs.servicebio.cn/2026/05/18/1779072506527qxiQEo.pdf",
+          "left": 60.79609,
+          "top": 71.68397,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://u1.procell.com.cn/index.php/viewpdf/index/id/11355.html",
+          "left": 61.77573,
+          "top": 75.24738,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}

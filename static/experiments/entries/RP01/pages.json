@@ -1,0 +1,154 @@
+{
+  "source_sha256": "d247d916da6bc55831ac3ad18d37f9aaf479cd4841e362f3ebdab1b7864f7fae",
+  "renderer": "PyMuPDF 1.27.2.3; lossless WebP; width 1800",
+  "page_count": 5,
+  "pages": [
+    {
+      "number": 1,
+      "image": "page-001.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "9a257e1c181898620c31100a606017d7ade6ab63e4be9d49007c5d7f4e145195",
+      "anchors": [
+        {
+          "id": "purpose",
+          "title": "Purpose",
+          "page": 1,
+          "top": 21.03825
+        },
+        {
+          "id": "materials-equipment",
+          "title": "Materials & Equipment",
+          "page": 1,
+          "top": 35.82642
+        },
+        {
+          "id": "before-you-start",
+          "title": "Before You Start",
+          "page": 1,
+          "top": 68.31285
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 2,
+      "image": "page-002.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "7695e1ed8427b84cc34b68c115ea2f468c05131f42ccc9dc26183990068830a4",
+      "anchors": [
+        {
+          "id": "procedure",
+          "title": "Procedure",
+          "page": 2,
+          "top": 6.78461
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 3,
+      "image": "page-003.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "05dee70e252180cf2d63fdcfe1af67af4259978e10cee47dcee62d2a1f6f1303",
+      "anchors": [],
+      "links": []
+    },
+    {
+      "number": 4,
+      "image": "page-004.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "e41239f332deeb7a38021194a8337649fa599709fb8289a2571083b71c47559d",
+      "anchors": [
+        {
+          "id": "p-s",
+          "title": "p.s.",
+          "page": 4,
+          "top": 33.33203
+        },
+        {
+          "id": "expected-outcome",
+          "title": "Expected Outcome",
+          "page": 4,
+          "top": 58.09774
+        }
+      ],
+      "links": []
+    },
+    {
+      "number": 5,
+      "image": "page-005.webp",
+      "width": 1800,
+      "height": 2546,
+      "sha256": "f080dfdea5dbcf731689362fd7926e07a66d94ff0182821798acd819f095c117",
+      "anchors": [
+        {
+          "id": "troubleshooting",
+          "title": "Troubleshooting",
+          "page": 5,
+          "top": 6.78461
+        },
+        {
+          "id": "reference",
+          "title": "Reference",
+          "page": 5,
+          "top": 52.63384
+        }
+      ],
+      "links": [
+        {
+          "url": "https://www.neb.com/products/r3733-bsai-hf-v2",
+          "left": 19.13603,
+          "top": 61.88459,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.neb.com/products/m0201-t4-polynucleotide-kinase",
+          "left": 10.07937,
+          "top": 65.448,
+          "width": 8.85808,
+          "height": 1.28282
+        },
+        {
+          "url": "https://www.idtdna.com/page/support-and-education/decoded-plus/which-type-of-purification-should-i-choose/",
+          "left": 25.96987,
+          "top": 69.01141,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://academic.oup.com/nar/article/50/16/9580/6677559",
+          "left": 80.75058,
+          "top": 72.57482,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6645366/",
+          "left": 48.6514,
+          "top": 76.13823,
+          "width": 8.85807,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.tbi.univie.ac.at/RNA/RNAfold",
+          "left": 25.96987,
+          "top": 79.70165,
+          "width": 8.85808,
+          "height": 1.28283
+        },
+        {
+          "url": "https://www.tbi.univie.ac.at/RNA/RNAplfold",
+          "left": 19.13603,
+          "top": 83.26506,
+          "width": 8.85808,
+          "height": 1.28283
+        }
+      ]
+    }
+  ]
+}
