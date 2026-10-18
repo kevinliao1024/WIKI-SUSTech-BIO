@@ -35,7 +35,40 @@
   let mapPart;
   let turning;
   let paperEntrance;
-  const pickerIdle = 140;
+  const boundary = new window.ORCAChapterBoundary();
+  const hint = document.createElement('div');
+  hint.className = 'engineering-boundary';
+  hint.setAttribute('role', 'status');
+  hint.setAttribute('aria-live', 'polite');
+  hint.setAttribute('aria-atomic', 'true');
+  hint.setAttribute('aria-hidden', 'true');
+  hint.innerHTML = '<span class="engineering-boundary__arrow" aria-hidden="true"></span><span><strong></strong><small></small></span>';
+  paper.append(hint);
+  let lastReaderTop = reader.scrollTop;
+  let gesture = 'initial';
+  let gestureNumber = 0;
+
+  function neighbor(direction) {
+    return partOrder[partOrder.indexOf(activePanel?.dataset.engineeringPanel) + direction];
+  }
+  function hideHint() {
+    hint.removeAttribute('data-open');
+    hint.setAttribute('aria-hidden', 'true');
+  }
+  function showHint(result) {
+    if (result.action !== 'hint') { hideHint(); return; }
+    const previous = result.direction < 0;
+    const label = `${previous ? 'Previous chapter' : 'Next chapter'}: ${parts.get(result.chapter)}`;
+    if (hint.hasAttribute('data-open') && hint.querySelector('strong').textContent === label) return;
+    if (hint.querySelector('strong').textContent !== label) {
+      hint.querySelector('strong').textContent = label;
+      hint.querySelector('small').textContent = previous ? 'Scroll up again to return' : 'Scroll down again to continue';
+      hint.querySelector('.engineering-boundary__arrow').textContent = previous ? '↑' : '↓';
+    }
+    hint.dataset.edge = previous ? 'top' : 'bottom';
+    hint.setAttribute('data-open', '');
+    hint.setAttribute('aria-hidden', 'false');
+  }
 
   function partAlias(id) {
     return ({ edit: 'pod', control: 'gfa', program: 'model-rna-seq', model: 'model-rna-seq' })[id] || id;
@@ -65,6 +98,50 @@
   }
   article.append(...panels.values());
 
+  // Keep stage headings and anchor IDs semantic; decorate them as compact badges.
+  for (const heading of article.querySelectorAll(':is(h3,h4,h5,h6)[id]')) {
+    const stage = heading.id.match(cyclePattern)?.[3];
+    if (!stage) continue;
+    heading.classList.add('engineering-stage-label');
+    heading.dataset.stage = stage;
+    const [name, ...description] = heading.textContent.trim().split(/\s+—\s+/);
+    const badge = document.createElement('span');
+    badge.className = 'engineering-stage-badge';
+    badge.textContent = name;
+    const icon = document.createElement('span');
+    icon.className = 'engineering-stage-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    badge.prepend(icon);
+    heading.replaceChildren(badge);
+    if (description.length) {
+      const detail = document.createElement('span');
+      detail.className = 'engineering-stage-detail';
+      detail.textContent = description.join(' — ');
+      heading.append(document.createTextNode(' '), detail);
+    }
+  }
+
+  // Lift each authored Overview into its own surface, preserving the original
+  // heading IDs, node order and section boundaries for links and scroll tracking.
+  for (const panel of panels.values()) {
+    for (const heading of panel.querySelectorAll(':is(h3,h4,h5,h6)[id$="-overview"]')) {
+      if (heading.textContent.trim().toLowerCase() !== 'overview') continue;
+      const card = document.createElement('section');
+      card.className = 'engineering-overview-card';
+      card.setAttribute('aria-labelledby', heading.id);
+      heading.before(card);
+      const level = Number(heading.tagName.slice(1));
+      let node = heading;
+      while (node) {
+        if (node !== heading && node.nodeType === Node.ELEMENT_NODE &&
+            /^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+        const next = node.nextSibling;
+        card.append(node);
+        node = next;
+      }
+    }
+  }
+
   function showReader() {
     workspace.dataset.engineeringView = 'reader';
     map.hidden = true;
@@ -75,6 +152,8 @@
 
   function showMap({ historyEntry = false, focus = false } = {}) {
     cancelTurn();
+    boundary.clear();
+    hideHint();
     workspace.dataset.engineeringView = 'map';
     map.hidden = false;
     controls.hidden = true;
@@ -122,6 +201,8 @@
 
   function destination(target) {
     target = readingTarget(target);
+    // Card-heading links reveal the whole raised surface, including its top edge.
+    if (target.matches('.engineering-overview-card > :is(h3,h4,h5,h6):first-child')) target = target.parentElement;
     return Math.max(0, Math.min(reader.scrollHeight - reader.clientHeight,
       reader.scrollTop + target.getBoundingClientRect().top - reader.getBoundingClientRect().top - 24));
   }
@@ -332,7 +413,7 @@
       finishPicker(turn, slot);
       return;
     }
-    const duration = forcedSlot === null ? 180 : 260;
+    const duration = 180;
     const started = performance.now();
     const tick = now => {
       if (turning !== turn) return;
@@ -346,18 +427,6 @@
     turn.frame = requestAnimationFrame(tick);
   }
 
-  function movePicker(turn, progress) {
-    clearTimeout(turn.timer);
-    cancelAnimationFrame(turn.frame);
-    turn.phase = 'dragging';
-    const low = turn.index > 0 ? -1 : 0;
-    const high = turn.index < partOrder.length - 1 ? 1 : 0;
-    renderPicker(turn, Math.max(low, Math.min(high, progress)));
-    if (turn.mode === 'wheel') turn.timer = setTimeout(() => settlePicker(turn), pickerIdle);
-  }
-
-  function pickerTravel() { return Math.max(72, Math.min(130, headingRows[1].clientWidth * .42)); }
-
   function focusTarget(target) {
     const temporary = !target.hasAttribute('tabindex');
     if (temporary) target.tabIndex = -1;
@@ -365,9 +434,11 @@
     if (temporary) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
   }
 
-  function go(target, { historyEntry = true, focus = true, instant = false } = {}) {
+  function go(target, { historyEntry = true, focus = true, instant = false, keepGesture = false } = {}) {
     if (!target) return;
     cancelTurn();
+    boundary.clear(!keepGesture);
+    hideHint();
     const wasMap = workspace.dataset.engineeringView === 'map';
     showReader();
     const changedPanel = showPanel(target.closest('[data-engineering-panel]'));
@@ -379,6 +450,7 @@
     if (historyEntry && location.hash !== `#${target.id}`) history.pushState(history.state, '', `#${target.id}`);
     if (focus) focusTarget(readingTarget(target));
     reader.scrollTo({ top: destination(target), behavior: instant || changedPanel || wasMap || motion.matches ? 'instant' : 'smooth' });
+    lastReaderTop = reader.scrollTop;
     pauseAnimation();
     schedule();
   }
@@ -455,120 +527,120 @@
     const { target, direction } = turn;
     const animatePaper = !motion.matches && !document.hidden;
     cancelTurn();
-    go(target, { historyEntry: false, focus: false, instant: true });
+    go(target, { historyEntry: false, focus: false, instant: true, keepGesture: true });
     reader.scrollTo({ top: direction > 0 ? 0 : reader.scrollHeight - reader.clientHeight, behavior: 'instant' });
     reader.focus({ preventScroll: true });
     pending = null;
     anchoredTarget = null;
     schedule();
     history.replaceState(history.state, '', `#${target.id}`);
-    wheelTurned = true;
-    wheelLockedUntil = performance.now() + 220;
+    lastReaderTop = reader.scrollTop;
     if (animatePaper) paperEntrance = article.animate([
       { opacity: .15, transform: `translateY(${direction * 7}px)` },
       { opacity: 1, transform: 'translateY(0)' },
     ], { duration: 180, easing: 'ease-out' });
   }
 
-  function turnPart(direction) {
-    const turn = beginPicker('key', direction);
-    if (!turn) return false;
-    settlePicker(turn, direction);
-    return true;
+  function boundaryInput(direction, distance, threshold = 32) {
+    cancelPending();
+    if (turning) {
+      if (turning.direction === direction) return true;
+      // A reversal releases the article immediately, even during the title slide.
+      cancelTurn();
+      boundary.clear();
+    }
+    const result = boundary.input({ direction, distance, threshold, gesture, edge: atEdge(direction), chapter: neighbor(direction) });
+    if (result.action === 'turn') {
+      hideHint();
+      const turn = beginPicker('boundary', direction);
+      if (turn) { turn.direction = direction; settlePicker(turn, direction); }
+    } else if (result.action !== 'absorb') showHint(result);
+    return result.action !== 'read';
   }
 
-  let lastWheelAt = -Infinity;
-  let wheelTurned = false;
-  let wheelLockedUntil = 0;
+  const wheelGestures = new window.ORCAWheelGestures();
   reader.addEventListener('wheel', event => {
     if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
-    const now = performance.now();
-    const newGesture = now - lastWheelAt > 220;
-    lastWheelAt = now;
-    if (newGesture && now >= wheelLockedUntil && !turning) wheelTurned = false;
-    if (wheelTurned || (turning && turning.mode !== 'wheel')) {
-      wheelTurned = true;
-      event.preventDefault();
+    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? reader.clientHeight : 1);
+    // Fractional tail/rebound events must not retract a revealed drawer or
+    // keep postponing recognition of the reader's next deliberate gesture.
+    if (Math.abs(delta) < 2) {
+      if (boundary.preview || turning || boundary.consumed) event.preventDefault();
       return;
     }
-    const direction = Math.sign(event.deltaY);
-    const turn = turning || (atEdge(direction) ? beginPicker('wheel', direction) : null);
-    if (!turn) { cancelPending(); return; }
-    event.preventDefault();
-    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? reader.clientHeight : 1);
-    // One large mouse notch still shows an intermediate choice. Continuous
-    // input accumulates, and reversing during a snap resumes its visible state.
-    const step = Math.sign(delta) * Math.min(.6, Math.abs(delta) / pickerTravel());
-    movePicker(turn, turn.progress + step);
+    gesture = wheelGestures.next(delta, performance.now());
+    if (boundaryInput(Math.sign(delta), Math.abs(delta), 12)) event.preventDefault();
   }, { passive: false });
 
   let swipe;
   reader.addEventListener('touchstart', event => {
     cancelPending();
-    if (event.touches.length !== 1) {
-      if (turning?.mode === 'touch') cancelTurn();
-      swipe = null;
-      return;
-    }
+    if (event.touches.length !== 1) { swipe = null; return; }
     const touch = event.touches[0];
-    // Catching a moving picker freezes its visible position until release.
-    if (turning?.mode === 'touch') movePicker(turning, turning.progress);
-    swipe = { x: touch.clientX, y: touch.clientY, top: atEdge(-1), bottom: atEdge(1), origin: turning?.mode === 'touch' ? turning.progress : 0 };
+    gesture = `touch-${++gestureNumber}`;
+    swipe = { x: touch.clientX, y: touch.clientY, lastY: touch.clientY, intercepted: false };
   }, { passive: true });
   reader.addEventListener('touchmove', event => {
-    if (!swipe || event.touches.length !== 1 || !event.cancelable) { swipe = null; return; }
+    if (!swipe || event.touches.length !== 1 || !event.cancelable) return;
     const touch = event.touches[0];
-    const dy = swipe.y - touch.clientY;
-    const dx = swipe.x - touch.clientX;
-    const direction = Math.sign(dy);
-    if (turning && turning.mode !== 'touch') { event.preventDefault(); return; }
-    if (turning?.mode === 'touch') {
+    const dy = swipe.lastY - touch.clientY;
+    const totalY = swipe.y - touch.clientY;
+    swipe.lastY = touch.clientY;
+    if (!dy || Math.abs(totalY) <= Math.abs(swipe.x - touch.clientX)) return;
+    if (boundaryInput(Math.sign(dy), Math.abs(dy))) {
       event.preventDefault();
-      movePicker(turning, swipe.origin + dy / pickerTravel());
-      return;
+      swipe.intercepted = true;
+    } else if (swipe.intercepted) {
+      // Once a touch has been cancelled, some browsers cannot resume native
+      // scrolling until release. Keep the reverse drag responsive ourselves.
+      event.preventDefault();
+      reader.scrollTop += dy;
     }
-    if (Math.abs(dy) <= Math.abs(dx) || !(direction > 0 ? swipe.bottom : swipe.top)) return;
-    if (!atEdge(direction)) {
-      if (direction > 0) swipe.bottom = false;
-      else swipe.top = false;
-      return;
-    }
-    // Cancel the first outward movement before native momentum is committed.
-    event.preventDefault();
-    const turn = beginPicker('touch', direction);
-    if (turn) movePicker(turn, dy / pickerTravel());
   }, { passive: false });
-  reader.addEventListener('touchend', () => {
-    if (turning?.mode === 'touch' && turning.phase === 'dragging') settlePicker(turning);
-    swipe = null;
-  }, { passive: true });
+  reader.addEventListener('touchend', () => { swipe = null; }, { passive: true });
   reader.addEventListener('touchcancel', () => {
-    if (turning?.mode === 'touch') cancelTurn();
     swipe = null;
+    boundary.clear();
+    hideHint();
   }, { passive: true });
   reader.addEventListener('scroll', () => {
-    if (turning && reader.scrollTop !== turning.scrollTop) reader.scrollTop = turning.scrollTop;
+    // Clamp elastic overscroll before calculating movement. Native rebound
+    // at an edge is not a request to close and reopen the drawer.
+    const maximum = Math.max(0, reader.scrollHeight - reader.clientHeight);
+    const top = Math.max(0, Math.min(maximum, reader.scrollTop));
+    const direction = Math.sign(top - lastReaderTop);
+    lastReaderTop = top;
+    if (!turning && direction) {
+      const preview = boundary.preview;
+      if (preview && (preview.direction < 0 ? top <= 8 : maximum - top <= 8)) {
+        // Keep the already-open drawer stationary at the boundary.
+      } else if (atEdge(direction) && neighbor(direction) && !pending) {
+        showHint(boundary.offer(direction, neighbor(direction), gesture));
+      } else {
+        boundary.clear(false);
+        hideHint();
+      }
+    }
     schedule();
   }, { passive: true });
-  let keyTurned = false;
-  reader.addEventListener('keyup', () => { keyTurned = false; });
-  reader.addEventListener('blur', () => { keyTurned = false; });
+  let keyGesture;
+  reader.addEventListener('keyup', () => { keyGesture = null; });
+  reader.addEventListener('blur', () => { keyGesture = null; });
   reader.addEventListener('keydown', event => {
     if (event.target.closest('input, textarea, select, button, [contenteditable="true"]') || event.altKey || event.ctrlKey || event.metaKey) return;
-    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Escape', ' '].includes(event.key)) {
-      if (turning || (event.repeat && keyTurned)) { keyTurned = true; event.preventDefault(); return; }
-      cancelPending();
+    if (event.key === 'Escape') { cancelTurn(); boundary.clear(); hideHint(); return; }
+    if (['Home', 'End'].includes(event.key)) {
+      cancelTurn(); cancelPending(); boundary.clear(); hideHint();
+      gesture = `key-${++gestureNumber}`;
+      return;
     }
     const direction = ['ArrowDown', 'PageDown'].includes(event.key) ? 1
       : ['ArrowUp', 'PageUp'].includes(event.key) ? -1
       : event.key === ' ' ? (event.shiftKey ? -1 : 1) : 0;
     if (!direction) return;
-    if (!event.repeat) keyTurned = false;
-    if (keyTurned) { event.preventDefault(); return; }
-    if (!event.repeat && atEdge(direction) && turnPart(direction)) {
-      keyTurned = true;
-      event.preventDefault();
-    }
+    if (!event.repeat || !keyGesture) keyGesture = `key-${++gestureNumber}`;
+    gesture = keyGesture;
+    if (boundaryInput(direction, 40)) event.preventDefault();
   });
   back.addEventListener('click', () => showMap({ historyEntry: true, focus: true }));
   addEventListener('hashchange', syncHash);

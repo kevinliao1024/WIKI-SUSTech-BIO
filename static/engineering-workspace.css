@@ -86,8 +86,8 @@ body.engineering-workspace-page {
 }
 .engineering-scroll { overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #959fce #efeffa; scroll-padding: 24px; }
 .engineering-scroll:focus-visible { outline: 3px solid #989fd3; outline-offset: -5px; }
-/* Match Model's paper insets while the fixed studio owns the outer height. */
-.engineering-copy { padding: 12px clamp(30px, 4vw, 56px) 40px; }
+/* Fixed end space keeps the last lines readable above the chapter drawer. */
+.engineering-copy { padding: 12px clamp(30px, 4vw, 56px) 112px; }
 .engineering-copy .content-status { margin: 0 0 26px; padding: 13px 16px; background: #f2f3fc; border: 0; border-left: 3px solid #c38a9a; border-radius: 0 10px 10px 0; }
 .engineering-copy .content-status strong { display: block; color: #8f596c; font: 700 10px/1.5 "Avenir Next", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 .engineering-copy .content-status p { margin: 5px 0 0; color: #68708f; font-size: 12px; line-height: 1.6; }
@@ -101,7 +101,18 @@ body.engineering-workspace-page {
 .engineering-copy .markdown-content h4,
 .engineering-copy .markdown-content h5,
 .engineering-copy .markdown-content h6 { margin: 28px 0 12px; font: 700 19px/1.25 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #25314c; }
-.engineering-copy .markdown-content :is(h3, h4)[id*="-cycle-"]:not([id$="-design"], [id$="-build"], [id$="-test"], [id$="-learn"]) { border-top: 2px solid #b5bade; margin-top: 40px; padding-top: 15px; color: #334071; font-size: 23px; }
+.engineering-copy .markdown-content :is(.engineering-cycle-title, .engineering-section-title) {
+  margin: 40px 0 24px;
+  padding: 11px 16px;
+  border: 1.5px solid #cbd1de;
+  border-radius: 999px;
+  background: #fff;
+  color: #59647a;
+  font: 500 21px/1.4 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  text-align: center;
+  break-after: avoid;
+}
+:is(.engineering-cycle-title, .engineering-section-title) > strong { color: #303b57; font-weight: 750; white-space: nowrap; }
 .engineering-copy .markdown-content p:has(> span[id^="cycle-"]:only-child) { margin: 0; height: 0; }
 .engineering-copy .markdown-content a { color: #6765aa; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .engineering-copy .markdown-content img { max-width: 100%; height: auto; }
@@ -135,11 +146,12 @@ body.engineering-workspace-page {
   .engineering-cycles { padding-inline: 0; gap: 10px; }
   .engineering-cycles a { font-size: 11px; }
   .engineering-paper { --engineering-surface-feather: 10px; grid-column: 1; grid-row: 2; margin-right: 0; border-radius: 20px; }
-  .engineering-copy { padding: 0 24px 40px 20px; }
+  .engineering-copy { padding: 0 24px 112px 20px; }
   .engineering-copy .markdown-content { font-size: 18px; }
   .engineering-copy .markdown-content h2 { font-size: 28px; }
   .engineering-copy .markdown-content h3 { font-size: 21px; }
   .engineering-copy .markdown-content :is(h4, h5) { font-size: 18px; }
+  .engineering-copy .markdown-content :is(.engineering-cycle-title, .engineering-section-title) { padding: 10px 13px; font-size: 19px; }
 }
 @media (max-width: 380px) {
   .engineering-copy { padding-left: 14px; }
@@ -178,4 +190,161 @@ body.engineering-workspace-page {
 }
 @media print {
   .engineering-heading-preview { display: none; }
+}
+
+/* A pull-out drawer lives above the paper, without reflowing its long article. */
+.engineering-boundary {
+  position: absolute; z-index: 4; left: 18px; right: 18px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 74px; padding: 12px 20px; border: 1px solid #cbd0e6;
+  border-radius: 0 0 18px 18px; background: #f0f1fc;
+  box-shadow: 0 8px 20px #3340711a; color: #334071;
+  pointer-events: none; visibility: hidden; opacity: 0;
+  font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+  transition: transform 180ms ease-out, opacity 140ms ease-out, visibility 180ms;
+}
+.engineering-boundary[data-edge='top'] { top: 0; transform: translateY(-110%); }
+.engineering-boundary[data-edge='bottom'] { bottom: 0; border-radius: 18px 18px 0 0; transform: translateY(110%); box-shadow: 0 -8px 20px #3340711a; }
+.engineering-boundary[data-open] { visibility: visible; opacity: 1; }
+.engineering-boundary[data-open][data-edge='top'] { transform: translateY(0); }
+.engineering-boundary[data-open][data-edge='bottom'] { transform: translateY(0); }
+.engineering-boundary strong { display: block; font-size: 17px; line-height: 1.3; }
+.engineering-boundary small { display: block; margin-top: 3px; font-size: 13px; line-height: 1.3; color: #68759c; }
+.engineering-boundary__arrow { flex: 0 0 auto; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #dfe3f7; font-size: 23px; }
+@media (max-width: 760px) {
+  .engineering-boundary { left: 8px; right: 8px; gap: 8px; padding: 10px 12px; min-height: 66px; }
+  .engineering-boundary strong { font-size: 15px; }
+  .engineering-boundary small { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .engineering-boundary { transition: none; } }
+@media print { .engineering-boundary { display: none; } }
+
+/* Overview sits on a separate, raised card within the existing reading paper.
+   It scrolls with its chapter so long summaries never trap or cover the article. */
+.engineering-overview-card {
+  position: relative;
+  z-index: 1;
+  margin: 28px -12px 42px;
+  padding: 26px 28px 28px;
+  border: 1px solid #d9dcef;
+  border-top: 3px solid #b4b9e3;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff 0%, #f5f4ff 100%);
+  box-shadow: 0 14px 30px -12px #41487342, 0 3px 8px #4148730c;
+}
+.engineering-copy .markdown-content .engineering-overview-card > :is(h3,h4,h5,h6):first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  color: #66679d;
+  font: 800 13px/1.4 'Source Sans 3', 'Segoe UI', sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.engineering-overview-card > :is(h3,h4,h5,h6):first-child::before {
+  content: '';
+  flex: 0 0 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #adaedc;
+  box-shadow: 0 0 0 4px #e9e8f7;
+}
+.engineering-overview-card > p { margin-block: 0 16px; }
+.engineering-overview-card > :last-child { margin-bottom: 0; }
+.engineering-measurement-card {
+  border-color: #cfe5da;
+  border-top-color: #8cbaa5;
+  background: linear-gradient(135deg, #f3fbf6 0%, #e7f4ec 100%);
+  box-shadow: 0 14px 30px -12px #3d775c38, 0 3px 8px #3d775c0c;
+}
+.engineering-copy .markdown-content .engineering-measurement-card > h3:first-child { color: #3e725b; }
+.engineering-measurement-card > h3:first-child::before { background: #8cbaa5; box-shadow: 0 0 0 4px #dceee3; }
+.engineering-copy .markdown-content .engineering-measurement-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 10px 18px;
+  border: 1.5px solid #8cbaa5;
+  border-radius: 999px;
+  background: #fff;
+  color: #315f4c;
+  font: 700 16px/1.4 'Source Sans 3', 'Segoe UI', sans-serif;
+  text-decoration: none;
+}
+.engineering-copy .markdown-content .engineering-measurement-link:hover { background: #dceee3; }
+.engineering-measurement-link:focus-visible { outline: 2px solid #3e725b; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .engineering-overview-card { margin: 22px -6px 34px; padding: 20px 20px 22px; border-radius: 16px; }
+  .engineering-copy .markdown-content .engineering-overview-card > :is(h3,h4,h5,h6):first-child { font-size: 12px; margin-bottom: 14px; }
+}
+@media print {
+  .engineering-overview-card { box-shadow: none; background: #fff; margin-inline: 0; border: 1px solid #ccd0df; }
+}
+
+/* One title hierarchy for wet-lab chapters and modelling modules. */
+.engineering-copy .markdown-content .engineering-stage-label {
+  margin: 30px 0 16px;
+  padding: 0;
+  border: 0;
+  color: #343c60;
+  font: 700 16px/1.3 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: .015em;
+  break-after: avoid;
+}
+.engineering-stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 15px 5px 6px;
+  border: 1px solid var(--stage-border);
+  border-radius: 999px;
+  background: var(--stage-surface);
+}
+.engineering-stage-detail { display: block; margin-top: 12px; font-size: 18px; line-height: 1.5; font-weight: 600; letter-spacing: 0; }
+.engineering-stage-label[data-stage="design"] { --stage-surface: #f6f3fc; --stage-border: #e8e1f5; --stage-icon: url('icons/dbtl/design.png'); }
+.engineering-stage-label[data-stage="build"] { --stage-surface: #f1f5fb; --stage-border: #e0e7f2; --stage-icon: url('icons/dbtl/build.png'); }
+.engineering-stage-label[data-stage="test"] { --stage-surface: #f0f8f5; --stage-border: #dceee5; --stage-icon: url('icons/dbtl/test.png'); }
+.engineering-stage-label[data-stage="learn"] { --stage-surface: #fff8ee; --stage-border: #f3e7d3; --stage-icon: url('icons/dbtl/learn.png'); --icon-scale: 147%; --icon-offset: 39%; }
+.engineering-stage-icon {
+  display: block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  /* Frame only the circular artwork; use live text for the stage name. */
+  background-image: var(--stage-icon);
+  background-repeat: no-repeat;
+  background-size: var(--icon-scale, 164%);
+  background-position: center var(--icon-offset, 38%);
+}
+
+/* Chapter names remain visually stronger than the repeated stage labels. */
+.engineering-copy .markdown-content .engineering-chapter-title {
+  margin: 30px 0 12px;
+  padding: 0;
+  border: 0;
+  color: #25314c;
+  font: 800 clamp(42px, 4.5vw, 58px)/1.08 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.engineering-copy .markdown-content .engineering-chapter-subtitle {
+  margin: 0 0 32px;
+  color: #69708b;
+  font: 400 22px/1.45 Georgia, 'Times New Roman', serif;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+@media (max-width: 760px) {
+  .engineering-copy .markdown-content .engineering-chapter-title { margin-top: 24px; font-size: 38px; }
+  .engineering-copy .markdown-content .engineering-chapter-subtitle { margin-bottom: 26px; font-size: 19px; }
+}
+@media print {
+  .engineering-copy .markdown-content .engineering-chapter-title { break-after: avoid; }
+  .engineering-copy .markdown-content .engineering-chapter-subtitle { break-after: avoid; }
 }
