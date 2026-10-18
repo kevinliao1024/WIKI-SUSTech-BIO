@@ -50,9 +50,9 @@ try {
   for (const group of groups) {
     await page.locator(`[data-engineering-group="${group.id}"]`).click();
     await expectPart(group.parts[0].id);
-    assert.equal(new URL(page.url()).hash, `#${group.parts[0].id}-cycle-01`);
+    assert.equal(new URL(page.url()).hash, `#${group.parts[0].id}`);
     assert.equal(await page.locator('[data-engineering-heading-group]').textContent(), group.label);
-    assert.equal(await page.locator('[data-engineering-heading-part]').textContent(), group.parts[0].label === group.label ? '' : group.parts[0].label);
+    assert.equal(await page.locator('[data-engineering-heading-part]').textContent(), group.parts[0].label);
     await page.locator('[data-engineering-map-back]').click();
   }
   for (const group of groups.filter(group => group.parts.length > 1)) {
@@ -60,11 +60,11 @@ try {
     for (const part of group.parts) {
       await page.locator(`[data-engineering-part="${part.id}"]`).click();
       await expectPart(part.id);
-      assert.equal(new URL(page.url()).hash, `#${part.id}-cycle-01`);
+      assert.equal(new URL(page.url()).hash, `#${part.id}`);
       await page.locator('[data-engineering-map-back]').click();
     }
   }
-  console.log('All five category labels and twelve branch labels enter their first cycle directly.');
+  console.log('All five category labels and twelve branch labels enter their chapter directly.');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForFunction(() => document.querySelector('[data-engineering-map]').dataset.overview === 'true');
   assert.equal(await page.locator('[data-map-branch-group]:visible').count(), 3);
@@ -78,8 +78,8 @@ try {
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.evaluate(() => document.activeElement.dataset.engineeringPart), 'pod');
   await page.keyboard.press('ArrowRight');
-  assert.equal(await page.evaluate(() => document.activeElement.dataset.mapCycle), '01');
-  await page.keyboard.press('ArrowLeft');
+  assert.equal(await page.evaluate(() => document.activeElement.dataset.engineeringPart), 'pod');
+  assert.equal(await page.locator('[data-map-cycle]').count(), 0);
   await page.keyboard.press('Enter');
   await expectPart('pod');
   await page.locator('[data-engineering-cycle="02"]').click();
