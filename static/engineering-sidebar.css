@@ -1,0 +1,100 @@
+/* Engineering module navigation and vertical cycle tuner. */
+body.engineering-workspace-page{background:#f5f6fb}
+.engineering-workspace[data-engineering-view='reader']{grid-template-columns:240px minmax(0,1fr) 240px;gap:24px;padding:24px 26px 25px;max-width:1680px}
+.engineering-workspace[data-engineering-view='reader'] .engineering-paper{grid-column:2;margin-right:0}
+.engineering-workspace .engineering-sidebar-left{justify-content:flex-start;overflow:hidden;gap:16px;padding:0 3px;scrollbar-width:thin}
+.engineering-sidebar-left .engineering-heading{display:none}
+.sidebar-diagram{width:100%;flex:1 1 auto;min-height:0;overflow:auto;scrollbar-width:thin;display:flex;flex-direction:column;padding:2px 1px}
+.diagram-heading{display:flex;align-items:center;justify-content:space-between;margin:0 1px 16px;font:750 22px/1 'Avenir Next','Segoe UI',sans-serif;color:#334071;letter-spacing:-.8px}
+
+.project-diagram{width:100%;display:flex;flex-direction:column;gap:7px;font-family:'Avenir Next','Segoe UI',sans-serif}
+.diagram-stack{display:flex;flex-direction:column;gap:7px}
+.diagram-tile{position:relative;display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0;min-height:58px;box-sizing:border-box;border:1px solid #d8deea;border-radius:8px;background:#f8f9fc;color:#7a8497;text-decoration:none;padding:8px 10px;transition:background .2s,border-color .2s}
+.diagram-label{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+.diagram-tab{font:650 16px/1.3 'Avenir Next','Segoe UI',sans-serif;color:#65728c}
+.diagram-tile img{width:58px;height:33px;flex:0 0 58px;object-fit:contain;filter:grayscale(.5);opacity:.7}
+.diagram-tile small{font-size:10px;color:#8a94a6}
+.diagram-tile:hover{border-color:#899abd;background:#fff}
+.diagram-tile.is-active{border-color:#9aa9cb;background:#edf1fb}
+.diagram-tile.is-active img{filter:none;opacity:1}
+.diagram-tile.is-active .diagram-tab{color:#334071}
+.tile-fundamental-research .diagram-tab,.tile-functional-validation .diagram-tab{font-size:14px}
+.diagram-arrow{height:17px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.diagram-arrow span{height:10px;width:1px;background:#b6c0d4;position:relative}
+.diagram-arrow span:after{content:'';position:absolute;bottom:0;left:-3px;width:7px;height:7px;border-right:1px solid #b6c0d4;border-bottom:1px solid #b6c0d4;transform:rotate(45deg)}
+.diagram-platform{margin:0;display:flex;flex-direction:column}
+.diagram-platform h2{display:flex;align-items:center;gap:10px;font:650 12px/1.2 'Avenir Next','Segoe UI',sans-serif;color:#687692;margin:0 0 8px}
+.diagram-platform h2:after{content:'';height:1px;background:#d6dce7;flex:1}
+.diagram-branch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:7px 0 4px;padding:0 3px}
+.branch-control{grid-template-columns:repeat(2,minmax(0,1fr))}
+.branch-model{grid-template-columns:repeat(3,minmax(0,1fr))}
+.diagram-branch a{position:relative;min-width:0;min-height:88px;box-sizing:border-box;display:flex;flex-direction:column-reverse;align-items:center;justify-content:center;gap:6px;border:1px solid #dce2ed;border-radius:7px;background:#f8f9fc;padding:6px 3px;color:#78839a;text-decoration:none;text-align:center;line-height:1.2}
+.diagram-branch img{height:36px;width:100%;object-fit:contain;filter:grayscale(.65);opacity:.7}
+.branch-label{display:flex;flex-direction:column;justify-content:center;gap:3px;min-height:28px;font-size:12px;font-weight:600}
+.branch-label small{font-size:9px;font-weight:400;color:#8190a5;line-height:1.15}
+.branch-model .branch-label{font-size:11px;overflow-wrap:normal}
+.diagram-branch a:hover{background:#fff;border-color:#a5b3d1;color:#334071}
+.diagram-branch a.is-current{background:#fff;border-color:#a5b3d1;color:#334071}
+.diagram-branch a.is-current:after{content:'';height:3px;width:18px;background:#bd8a9c;position:absolute;bottom:-2px;left:calc(50% - 9px);border-radius:2px}
+.diagram-branch a.is-current img{filter:none;opacity:1}
+.branch-functional-validation a{min-height:96px}
+.project-diagram a:focus-visible{outline:2px solid #8a97ba;outline-offset:3px}
+.engineering-workspace .engineering-sidebar-right .engineering-cycles{margin:0;max-width:none;flex-shrink:0}
+.engineering-workspace.engineering-fv .engineering-sidebar-right .engineering-cycles{display:none!important}
+.engineering-workspace.engineering-fv .sidebar-diagram{padding-bottom:20px}
+.engineering-workspace .engineering-sidebar-right{grid-column:3;grid-row:1;align-items:center;justify-content:flex-start;gap:36px;overflow:visible;padding:2px 3px 0}
+.engineering-workspace .engineering-sidebar-right .dbtl-directory{width:100%}
+.engineering-workspace .engineering-sidebar-right .dbtl-wheel{--dbtl-size:180px}
+.engineering-workspace .engineering-sidebar-right .dbtl-wheel__dial{margin:13px auto}
+.engineering-workspace .engineering-paper>.reading-orbit{position:absolute;top:24px;bottom:24px;right:7px;width:32px;margin:0;z-index:3}
+.engineering-paper .reading-orbit__traveler{left:0;width:32px;height:49px;padding:0}
+.engineering-paper .reading-orbit__form{width:32px;height:32px}
+.engineering-paper .reading-orbit__value{font-size:8px;margin-top:4px}
+.engineering-paper .reading-orbit__soundings{inset:24px 15px}
+.engineering-workspace .engineering-copy{padding-right:56px}
+.engineering-workspace .engineering-sidebar-right .engineering-map-back{position:relative;right:auto;bottom:auto;margin-top:auto;min-height:0;width:85px;transform:none}
+.engineering-workspace[data-engineering-view='map'] .engineering-sidebar-right{display:none}
+.engineering-nav-toggle{display:none}
+@media(min-width:901px) and (max-height:820px){.engineering-workspace[data-engineering-view='reader']{padding-block:15px;gap:20px}.diagram-heading{margin-bottom:10px;font-size:20px}.diagram-tile{min-height:54px;padding-block:6px}.diagram-tile img{height:29px}.diagram-stack{gap:6px}.diagram-arrow{height:18px}.diagram-branch{margin-block:5px 3px}.diagram-branch a{min-height:82px;padding-block:6px;gap:5px}.diagram-branch img{height:32px}.branch-functional-validation a{min-height:92px}.diagram-platform h2{margin-bottom:6px}.engineering-workspace .engineering-sidebar-left{gap:10px}.engineering-workspace .engineering-sidebar-right{gap:28px;padding-top:2px}}
+@media(min-width:901px) and (max-width:1100px){.engineering-workspace[data-engineering-view='reader']{grid-template-columns:220px minmax(0,1fr) 220px;gap:14px;padding:15px}.engineering-workspace .engineering-sidebar-right .dbtl-wheel{--dbtl-size:135px}.diagram-heading{font-size:19px;margin-bottom:10px}.diagram-tile{padding-inline:9px;gap:6px}.diagram-tile img{width:58px;flex-basis:58px}.diagram-label{gap:5px}.diagram-tab{font-size:15px}.tile-fundamental-research .diagram-tab,.tile-functional-validation .diagram-tab{font-size:14px}.engineering-workspace .engineering-copy{padding-inline:28px}.engineering-workspace .engineering-sidebar-left{gap:10px}}
+@media(max-width:900px){.engineering-workspace[data-engineering-view='reader']{display:grid;grid-template-columns:minmax(0,1fr) 115px;grid-template-rows:minmax(0,1fr);gap:12px;padding:48px 12px 14px}.engineering-workspace[data-engineering-view='reader'] .engineering-paper{grid-column:1;grid-row:1;margin:0}.engineering-workspace .engineering-sidebar-right{grid-column:2;grid-row:1;padding-top:10px;gap:25px}.engineering-workspace .engineering-sidebar-right .dbtl-wheel{--dbtl-size:104px}.engineering-workspace .engineering-sidebar-left{position:fixed;z-index:45;left:10px;top:calc(var(--engineering-nav-height,100px) + 42px);bottom:14px;width:285px;display:none;padding:18px 12px;background:#f5f6fb;border:1px solid #d2d8e7;border-radius:15px;box-shadow:0 8px 30px #33407133}.engineering-workspace.engineering-nav-open .engineering-sidebar-left{display:flex}.engineering-nav-toggle{position:absolute;left:18px;top:12px;display:block;border:1px solid #c5cee0;border-radius:7px;background:#f9faff;color:#334071;font:600 12px 'Avenir Next',sans-serif;padding:5px 12px}.engineering-workspace[data-engineering-view='map'] .engineering-nav-toggle{display:none}.engineering-workspace .engineering-copy{padding-inline:20px}.engineering-workspace .engineering-sidebar-right .engineering-map-back{width:65px}.engineering-workspace .engineering-sidebar-right .engineering-cycles{grid-column:auto;grid-row:auto}}
+@media(max-width:550px){.engineering-workspace[data-engineering-view='reader']{grid-template-columns:minmax(0,1fr);padding-bottom:105px}.engineering-workspace .engineering-sidebar-right{position:absolute;bottom:6px;left:15px;right:15px;height:89px;display:flex;flex-direction:row;justify-content:space-between;gap:14px;padding:0}.engineering-workspace .engineering-sidebar-right .dbtl-directory{width:88px}.engineering-workspace .engineering-sidebar-right .dbtl-wheel{--dbtl-size:72px}.engineering-workspace .engineering-sidebar-right .dbtl-wheel__dial{margin:0}.engineering-workspace .engineering-sidebar-right .dbtl-wheel__stage{min-width:23px}.engineering-workspace .engineering-sidebar-right .dbtl-wheel__stage span{font-size:7px}.engineering-workspace .engineering-sidebar-right .engineering-map-back{width:52px;margin:0}.engineering-workspace .engineering-sidebar-left{bottom:104px}.engineering-workspace .engineering-copy{padding-inline:18px}.engineering-workspace .engineering-paper{border-radius:20px}}
+
+@media(max-width:550px){.engineering-workspace .engineering-sidebar-right .engineering-cycles{width:150px;flex:1;min-width:0}.engineering-workspace .engineering-copy{padding-right:48px}}
+
+.engineering-sidebar-right .cycle-tuner-track{min-width:max(100%,calc(var(--tuner-count) * 100px))}
+
+.diagram-symbol{width:46px;height:42px;flex:0 0 46px;color:#8592a6}.diagram-tile.is-active .diagram-symbol{color:#5d5ad7}
+
+.diagram-tile img.diagram-symbol{width:46px;height:42px;flex:0 0 46px;filter:none;opacity:1}
+
+/* One ink, one stroke system for every navigation icon. */
+.diagram-tile,.diagram-branch a{--icon-paper:#f8f9fc}
+.diagram-tile.is-active{--icon-paper:#edf1fb}
+.diagram-branch a.is-current{--icon-paper:#fff}
+.diagram-tile .diagram-symbol,.diagram-tile.is-active .diagram-symbol{width:46px;height:46px;flex:0 0 46px;color:#64728d;filter:none;opacity:1}
+.diagram-branch .branch-symbol{display:block;width:42px;height:42px;flex:0 0 42px;color:#64728d;filter:none;opacity:1}
+@media(min-width:901px) and (max-height:820px){.diagram-tile .diagram-symbol{height:40px}.diagram-branch .branch-symbol{height:36px;flex-basis:36px}}
+
+@media(min-width:551px){.engineering-workspace .engineering-copy{padding-right:56px}}
+
+/* Original tuner restyled along a vertical axis. */
+.engineering-workspace .engineering-sidebar-right{position:relative;gap:24px;padding-top:6px}
+.engineering-workspace .engineering-sidebar-right .dbtl-directory{position:static;transform:none;flex-shrink:0}
+.engineering-workspace .engineering-sidebar-right .engineering-cycle-tuner{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:18px minmax(0,1fr) 18px;justify-items:center;width:200px;max-width:100%;gap:3px;margin:0;flex-shrink:1;min-height:0}
+.engineering-sidebar-right .cycle-tuner-viewport{width:100%;max-height:clamp(140px,calc(100dvh - 500px),260px);overflow-x:hidden;overflow-y:auto;background:linear-gradient(90deg,#e1e7f0,#f8f9fc 30px,#eef1f7)}
+.engineering-sidebar-right .cycle-tuner-track,.engineering-sidebar-right .cycle-tuner-track[data-expanded='true']{display:flex;flex-direction:column;width:100%;min-width:0}
+.engineering-sidebar-right .cycle-tuner-track:before{inset:0 auto 0 6px;width:12px;height:auto;border-bottom:0;border-right:1px solid #9eaac3;background:repeating-linear-gradient(180deg,#7c8aaa99 0 1px,transparent 1px 8px)}
+.engineering-workspace .engineering-sidebar-right .engineering-cycle-tuner a{flex:0 0 72px;min-height:72px;box-sizing:border-box;justify-content:center;align-items:flex-start;padding:8px 12px 8px 33px;text-align:left}
+.engineering-workspace .engineering-sidebar-right .engineering-cycle-tuner a:after{left:6px;top:calc(50% - 1px);width:12px;height:2px}
+.engineering-sidebar-right .cycle-tuner-needle{left:1px;top:calc((var(--tuner-index,0) + .5)*100%/var(--tuner-count));width:23px;height:2px;transform:translateY(-50%);transition:top 220ms ease-out}
+.engineering-sidebar-right .cycle-tuner-needle:before{top:-3px;left:0;border:0;border-block:4px solid transparent;border-left:5px solid #b8657d}
+.engineering-sidebar-right .cycle-tuner-step{width:30px;height:18px;line-height:18px;transform:rotate(90deg);font-size:23px}
+.engineering-sidebar-right .cycle-tuner-label{font-size:12px}.engineering-sidebar-right .cycle-tuner-subtitle{font-size:11px;line-height:1.3}
+@media(max-width:550px){
+ .engineering-workspace[data-engineering-view='reader']{padding-bottom:218px}
+ .engineering-workspace .engineering-sidebar-right{position:absolute;grid-column:auto;grid-row:auto;top:auto;bottom:6px;left:15px;right:15px;height:202px;gap:12px;padding:0;align-items:center}
+ .engineering-workspace .engineering-sidebar-right .engineering-cycle-tuner{width:150px;flex:1;flex-shrink:1}
+ .engineering-sidebar-right .cycle-tuner-viewport{max-height:156px}
+ .engineering-workspace .engineering-sidebar-left{bottom:218px}
+}

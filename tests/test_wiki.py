@@ -351,7 +351,10 @@ class WikiRoutesTest(unittest.TestCase):
         self.assertEqual(len(re.findall(r'\bdata-engineering-map-back(?=[\s>])', page)), 1)
         self.assertGreater(page.index("data-engineering-cycles"), page.index("data-dbtl-wheel"))
         self.assertNotIn("engineering-module-nav", page)
-        self.assertNotIn("data-reading-orbit", page)
+        self.assertEqual(len(re.findall(r"\bdata-reading-orbit(?=[\s>])", page)), 1)
+        self.assertIn('data-reading-scroll-target="#engineering-reading"', page)
+        self.assertIn("/static/engineering-sidebar.js", page)
+        self.assertNotIn("/preview-files/", page)
         self.assertNotRegex(page, r"<footer\b")
 
     def test_engineering_parts_have_complete_authored_cycles_and_portrait_pool(self):
