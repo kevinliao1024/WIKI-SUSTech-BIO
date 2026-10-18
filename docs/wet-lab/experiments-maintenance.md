@@ -28,8 +28,9 @@ The reader displays lossless 1800-pixel-wide page images rendered directly from
 each original PDF, preserving its fonts, pagination, tables, figures and footer.
 It contains no browser PDF plug-in, viewer toolbar or gray canvas. The Wiki's
 own information, download links and section navigation occupy a left column;
-the original pages scroll independently on the right. The 94dvh window fits
-the complete first page by default. On narrow phones, the information moves
+the original pages scroll independently on the right. The 94dvh window starts
+at 120% of whole-page scale, capped by the reading column's width, prioritizing
+legibility over showing the entire first page. On narrow phones, the information moves
 into a compact, independently scrollable region above the document.
 Select a page to enlarge it within a horizontally scrollable page region; select
 again to fit. The section navigation uses actual Georgia Bold 14pt headings

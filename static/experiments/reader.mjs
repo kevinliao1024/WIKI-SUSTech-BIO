@@ -2,12 +2,12 @@
 const intro = document.querySelector('.page-intro');
 const sheets = [...document.querySelectorAll('.page-sheet')];
 function fitPages() {
-  // Reserve the actual controls height so the first page fits from top to bottom.
+  // Start 20% larger than a whole-page view, capped by the reading column's width.
   const height = Math.max(1, window.innerHeight - intro.getBoundingClientRect().height - 16);
   for (const sheet of sheets) {
     const image = sheet.querySelector('img');
     const ratio = Number(image.getAttribute('width')) / Number(image.getAttribute('height'));
-    sheet.style.setProperty('--page-fit-width', `${height * ratio}px`);
+    sheet.style.setProperty('--page-fit-width', `${height * ratio * 1.2}px`);
   }
 }
 fitPages();

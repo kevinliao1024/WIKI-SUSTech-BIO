@@ -14,14 +14,14 @@ page.on('pageerror', e => errors.push(e.message));
 page.on('response', r => {if(r.status()>=400 && r.url().includes('/experiments/')) failedResources.push(r.url());});
 const count = () => page.locator('[data-protocol]:visible').count();
 const shot = async name => {await page.screenshot({path:output+'/'+name+'.png'});};
-const assertFirstPageFits = async () => {
+const assertReaderSizing = async () => {
   await page.waitForFunction(() => {
     const frame = document.querySelector('[data-reader] iframe');
     const image = frame?.contentDocument?.querySelector('.page-zoom img');
     if (!image || !frame.contentDocument.documentElement.classList.contains('is-embedded') || !image.closest('.page-sheet').style.getPropertyValue('--page-fit-width')) return false;
     const rect = image.getBoundingClientRect();
     const outer = frame.getBoundingClientRect();
-    return rect.top >= 0 && rect.bottom <= frame.clientHeight && rect.left >= 0
+    return rect.top >= 0 && rect.height > 0 && rect.left >= 0
       && rect.right <= frame.clientWidth && outer.bottom <= innerHeight;
   });
 };
@@ -77,11 +77,11 @@ await page.locator('#M01').focus();await page.keyboard.press('Enter');
 await page.waitForSelector('[data-reader][open] iframe');
 const reader=page.frameLocator('[data-reader] iframe');
 await reader.locator('#procedure').waitFor();
-await assertFirstPageFits();
+await assertReaderSizing();
 await reader.locator('.page-zoom img').first().evaluate(img=>img.decode());
 await shot('first-page-desktop');
 assert.ok(await page.locator('.exp-reader-sidebar').evaluate(sidebar => sidebar.getBoundingClientRect().right <= document.querySelector('[data-reader-host]').getBoundingClientRect().left));
-assert.ok(await reader.locator('.page-zoom img').first().evaluate(img => img.getBoundingClientRect().height > 850));
+assert.ok(await reader.locator('.page-zoom img').first().evaluate(img => img.getBoundingClientRect().height > innerHeight * 1.15));
 assert.match(await reader.locator('body').evaluate(e=>getComputedStyle(e).fontFamily), /Source Sans 3/);
 const toc=await reader.locator('nav a').evaluateAll(ns=>ns.map(n=>n.hash.slice(1)));
 const headings=await reader.locator('.pdf-section-anchor').evaluateAll(ns=>ns.map(n=>n.id));
@@ -136,7 +136,7 @@ for (const width of [834,390,320]) {
   await page.locator('#M02').click();
   const small=page.frameLocator('iframe');
   await small.locator('#procedure').waitFor();
-  await assertFirstPageFits();
+  await assertReaderSizing();
   await small.locator('.page-zoom img').first().evaluate(img=>img.decode());
   await shot('first-page-'+width);
   assert.ok(await small.locator('html').evaluate(e=>e.scrollWidth<=innerWidth+1),'No reader overflow at '+width);
