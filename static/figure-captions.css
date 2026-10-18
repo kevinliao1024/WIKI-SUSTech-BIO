@@ -1,0 +1,16 @@
+/* Shared typography for scientific figure legends across reading pages. */
+body.inner-page :is(.markdown-content, .model-prose, .software-figure) :is(figcaption, .figure-caption) {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+body.inner-page :is(.markdown-content, .model-prose, .software-figure) figcaption p {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media (max-width: 760px) {
+  body.inner-page :is(.markdown-content, .model-prose, .software-figure) :is(figcaption, .figure-caption) {
+    font-size: 14px;
+  }
+}

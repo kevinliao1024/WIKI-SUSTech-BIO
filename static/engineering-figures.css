@@ -1,0 +1,114 @@
+/* Each figure's preferred width follows its labels, not its pixel resolution.
+   Dense figures may use the article gutter, but never cover the paper edge. */
+.engineering-copy { --engineering-figure-bleed: clamp(14px, 2.3vw, 36px); }
+.engineering-copy .markdown-content :is(img.engineering-figure, a.engineering-figure-link) {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--engineering-figure-width, 720px), calc(100% + 2 * var(--engineering-figure-bleed)));
+  max-width: none;
+  height: auto;
+  margin: 28px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+.engineering-copy .markdown-content a.engineering-figure-link { cursor: zoom-in; text-decoration: none; }
+.engineering-copy .markdown-content .engineering-figure-link > img.engineering-figure {
+  position: static;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+.engineering-figure-link:focus-visible { outline: 3px solid #7774b6; outline-offset: 5px; }
+.engineering-figure-link::after {
+  content: '↗';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: #334071;
+  background: #f4f3fce8;
+  font: 20px/1 sans-serif;
+  opacity: 0;
+  pointer-events: none;
+}
+.engineering-figure-link:is(:hover, :focus-visible)::after { opacity: 1; }
+.engineering-figure-dialog {
+  box-sizing: border-box;
+  width: min(1440px, calc(100vw - 40px));
+  max-width: none;
+  height: calc(100dvh - 40px);
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #d9dce9;
+  border-radius: 18px;
+  background: #fff;
+  color: #25314c;
+  box-shadow: 0 16px 70px #15203b40;
+  font: 16px/1.4 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+}
+.engineering-figure-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.engineering-figure-dialog::backdrop { background: #16203bb8; }
+.engineering-figure-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e4ee;
+}
+.engineering-figure-title { flex: 1; min-width: 0; margin: 0; font-size: 16px; font-weight: 600; }
+.engineering-figure-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.engineering-figure-actions :is(button, a) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #d2d5e4;
+  border-radius: 8px;
+  background: #fff;
+  color: #334071;
+  font: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.engineering-figure-actions button[aria-pressed='true'] { background: #edecfa; border-color: #8d89c4; }
+.engineering-figure-dialog :focus-visible { outline: 3px solid #7774b6; outline-offset: 2px; }
+.engineering-figure-viewport { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 20px; }
+.engineering-figure-dialog .engineering-figure-detail {
+  display: block;
+  width: min(100%, var(--engineering-detail-width, 1200px));
+  max-width: none;
+  height: auto;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 0;
+}
+.engineering-figure-dialog[data-detail='true'] .engineering-figure-detail { width: var(--engineering-detail-width, 1200px); }
+@media (max-width: 1100px) { .engineering-copy { --engineering-figure-bleed: 12px; } }
+@media (max-width: 760px) {
+  .engineering-copy { --engineering-figure-bleed: 8px; }
+  .engineering-copy .markdown-content :is(img.engineering-figure, a.engineering-figure-link) { margin-block: 20px; }
+  .engineering-figure-dialog { width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 12px; }
+  .engineering-figure-toolbar { flex-wrap: wrap; gap: 8px; padding: 10px; }
+  .engineering-figure-title { flex-basis: 100%; font-size: 14px; }
+  .engineering-figure-actions { width: 100%; justify-content: flex-end; gap: 6px; font-size: 14px; }
+  .engineering-figure-actions :is(button, a) { padding-inline: 10px; }
+  .engineering-figure-viewport { padding: 10px; }
+}
+@media print {
+  .engineering-figure-link::after, .engineering-figure-dialog { display: none !important; }
+  .engineering-copy { --engineering-figure-bleed: 0px; }
+}

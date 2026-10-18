@@ -1,0 +1,59 @@
+/* Cumulative module evidence, distinct from the illustrated DBTL stage pills. */
+.control-milestones {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.control-milestones .control-milestone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+  font: 600 13px/18px 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.control-milestone svg { flex: 0 0 14px; width: 14px; height: 14px; }
+.control-milestone--designed { color: #626581; background: #fffefc; border-color: #999cb4; }
+.control-milestone--built { color: #475b83; background: #edf1f8; border-color: #c7d1e3; }
+.control-milestone--validated { color: #fffefc; background: #326c60; border-color: #326c60; }
+.markdown-content .control-overview-card .control-evidence-note,
+.engineering-copy .markdown-content .control-evidence-note,
+.content-page .markdown-content .control-milestone-legend {
+  color: #59617a;
+  font: 400 14px/1.55 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  margin: 12px 0 0;
+}
+.content-page .markdown-content .control-milestone-legend { margin: 0 0 18px; }
+.engineering-copy .markdown-content .control-module-title {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-bottom: 12px;
+}
+.engineering-copy .control-module-title + .control-milestones { margin-block: 12px; }
+.engineering-copy .control-module-title + .control-milestones + .engineering-chapter-subtitle { margin-bottom: 10px; }
+.engineering-copy .engineering-chapter-subtitle + .control-evidence-note { margin-bottom: 28px; }
+.control-overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 20px 0 28px; }
+.control-overview-card { min-width: 0; padding: 20px; border: 1px solid #e0e4ed; border-radius: 16px; background: #fffefc; }
+.content-page .markdown-content .control-overview-card h4 { margin: 0 0 6px; font: 700 24px/1.2 'Source Sans 3', 'Segoe UI', Arial, sans-serif; }
+.markdown-content .control-overview-card h4 a { color: #343c60; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.markdown-content .control-overview-card .control-overview-role { margin: 0 0 14px; color: #59617a; font: 400 14px/1.5 'Source Sans 3', 'Segoe UI', Arial, sans-serif; }
+@media (max-width: 800px) {
+  .control-overview-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 440px) {
+  .control-overview-card { padding: 16px; }
+  .engineering-copy .control-module-title + .control-milestones { display: flex; margin-top: 0; }
+}
+@media print {
+  .control-overview-card, .control-milestones { break-inside: avoid; }
+  .control-milestone--validated { color: #285b50; background: #fff; border-color: #326c60; }
+}

@@ -208,6 +208,12 @@ def load_markdown_content(
         output_format="html5",
     )
     rendered = renderer.convert(body)
+    # Markdown legends share typography with native figure captions.
+    rendered = re.sub(
+        r'<p>(?=(?:<(?:em|strong)>)*Figure\s+\d+[A-Za-z]?(?:[.\s|:—–]))',
+        '<p class="figure-caption">',
+        rendered,
+    )
     rendered = _rewrite_asset_urls(rendered, asset_url)
     toc = _flatten_toc(getattr(renderer, "toc_tokens", []))
 
