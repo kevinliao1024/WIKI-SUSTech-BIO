@@ -105,6 +105,19 @@ def runtime_script(mapping):
 })();'''.replace('MAPPING', json.dumps(mapping, ensure_ascii=True).replace('</', '<\\/'))
 
 
+def localize_text(text, mapping, script_root=''):
+    """Use original media for explicit CDN references during local development.
+
+    Many originals can share one uploaded image. Pick a stable local path;
+    leave remote-only assets and scientific data documents untouched.
+    """
+    reverse = {}
+    for local, remote in sorted(mapping.items()):
+        reverse.setdefault(remote, script_root + local)
+    return re.sub(r'https://static\.igem\.wiki/[^\s\"\'<>?#)]+',
+                  lambda match: reverse.get(match[0], match[0]), text)
+
+
 def install(app):
     from flask import Response, request, url_for
 
@@ -122,7 +135,17 @@ def install(app):
 
     @app.after_request
     def rewrite_media(response):
-        if app.config['WIKI_ASSET_MODE'] != 'igem' or response.status_code != 200:
+        if response.status_code not in {200, 404}:
+            return response
+        if app.config['WIKI_ASSET_MODE'] == 'local':
+            if response.mimetype in {'text/html', 'text/css', 'image/svg+xml',
+                                     'text/javascript', 'application/javascript'}:
+                response.direct_passthrough = False
+                original = response.get_data(as_text=True)
+                localized = localize_text(original, mapping, request.script_root)
+                if localized != original:
+                    response.set_data(localized)
+                    response.headers.pop('ETag', None)
             return response
         # SAP is a sealed standalone app with explicit official media URLs.
         # Re-serializing its JSON would invalidate the in-app SHA-256 checks.

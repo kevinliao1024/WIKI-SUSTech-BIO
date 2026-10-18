@@ -86,3 +86,41 @@ python -m pip install -r dependencies.txt
 ```bash
 conda run -n xbx_env python app.py
 ```
+
+### Local images and production CDN images
+
+`WIKI_ASSET_MODE` selects the media environment. The default is `local`:
+Flask serves the original files from `assets/` and `static/`. Explicit CDN
+references with a confirmed local original (including the 404 artwork) also
+resolve locally. Remote-only assets keep their existing URL.
+
+```bash
+WIKI_ASSET_MODE=local flask --app app run --host 127.0.0.1 --port 8080
+```
+
+GitLab's `pages` job sets `WIKI_ASSET_MODE=igem`. HTML, CSS and supported dynamic
+image consumers use the confirmed `static.igem.wiki` URLs in `asset_mapping.csv`;
+the original files remain unchanged. JavaScript and CSS source stay in the build,
+so uploading a copy of a script does not silently replace the maintained source.
+The CI tests explicitly run in local mode, then freeze and audit production:
+
+```bash
+python scripts/build_asset_mapping.py
+WIKI_ASSET_MODE=local python -m unittest discover -s tests -v
+WIKI_ASSET_MODE=igem FREEZER_DESTINATION=public flask --app app freeze
+python scripts/audit_build.py --require-cdn --asset-report asset-build-report.json
+```
+
+After uploading a flat asset package, save the returned URLs as a text file and
+import them before rebuilding the mapping:
+
+```bash
+python scripts/import_asset_uploads.py /path/to/upload-links.txt
+python scripts/build_asset_mapping.py
+```
+
+The importer checks the filename's source Git fingerprint, tolerates upload-tool
+image conversion and corrected font extensions, and rejects ambiguous matches.
+It does not invent CDN URLs or alter the original images. Unknown mappings remain
+local and the production audit reports reachable media that still needs attention.
+Notebook archival JSON and the standalone SAP dataset retain their original bytes.

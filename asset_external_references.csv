@@ -13,9 +13,11 @@ https://external.example/art.svg,tests/test_audit.py:70,review_external_referenc
 https://github.com/openai/openai/blob/master/codex/codex-apps/webview/src/icons/chevron.svg,docs/previews/exploration-atlas-2026-10-13/compact-preview.html:2366; docs/previews/exploration-atlas-2026-10-13/preview.html:2360; docs/previews/exploration-atlas-2026-10-13/sound-library-vertical-preview.html:2362,review_external_reference
 https://lhs.suat-sz.edu.cn/images/logo.svg,static/human-practices/organizations/manifest-part1.json:34,review_external_reference
 https://qualifications.pearson.com/content/dam/demo/stuntcontent/images/about/About%20our%20qualifications/Think-Again/PLogo_Horizontal_Edexcel_200x188.png,static/human-practices/organizations/manifest-reference.json:9,review_external_reference
+https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf,static/sap-demo/fonts/Manrope-source.json:3,review_external_reference
 https://shokz.com.cn/_nuxt/img/shokz.90cadc3.png,static/human-practices/organizations/manifest-part1.json:123,review_external_reference
 https://static.igem.org/websites/common/2022/logos/igem-logo-dark.svg,static/human-practices/organizations/manifest-part2.json:179,review_external_reference
 https://static.igem.wiki/common/icons/favicons/igem-2022.svg,tests/test_audit.py:20,official
+https://static.igem.wiki/teams/0000/your-approved-portrait.avif,docs/team/member-cards.md:12,official
 https://static.igem.wiki/teams/5873/fonts/afacad-bold.ttf,static/assets/brand/footer-2025-provenance.json:54; static/school-footer.css:13,official
 https://static.igem.wiki/teams/5873/fonts/afacad-regular.ttf,static/assets/brand/footer-2025-provenance.json:53; static/school-footer.css:6,official
 https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp,static/assets/brand/footer-2025-provenance.json:19; wiki/footer.html:36,official
@@ -50,6 +52,29 @@ https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/yixueyuan
 https://static.igem.wiki/teams/5873/images/footer/sustech.webp,static/assets/brand/footer-2025-provenance.json:18; wiki/footer.html:20,official
 https://static.igem.wiki/teams/5919/images/logo.webp,static/human-practices/organizations/manifest-part1.json:199; static/human-practices/organizations/manifest-teams.json:55,official
 https://static.igem.wiki/teams/6085/wiki/figure.avif,tests/test_igem_assets.py:14,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-background.avif,wiki/pages/404.html:14,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-bubbles.avif,wiki/pages/404.html:15,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-island-sign.avif,wiki/pages/404.html:17,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-mascot.avif,wiki/pages/404.html:18,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-question-mark.avif,wiki/pages/404.html:19,official
+https://static.igem.wiki/teams/6085/wiki/not-found/not-found-stars.avif,wiki/pages/404.html:16,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/apple-touch-icon.avif,static/sap-demo/index.html:3; static/sap-demo/wiki-media.json:7,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/favicon.svg,static/sap-demo/index.html:3; static/sap-demo/wiki-media.json:14,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/manrope-variable.ttf,static/sap-demo/brand-home.css:59; static/sap-demo/wiki-media.json:58; tests/test_sap_demo.py:77,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/sonar-compact.svg,static/sap-demo/index.html:7; static/sap-demo/wiki-media.json:21,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/sonar-symbol.svg,static/sap-demo/app.js:58; static/sap-demo/wiki-media.json:28,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/sonar-welcome.svg,static/sap-demo/app.js:58; static/sap-demo/wiki-media.json:35; tests/test_sap_demo.py:86,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/universal-reporter-cds.svg,static/sap-demo/reporter-designer.js:108; static/sap-demo/wiki-media.json:42; tests/test_sap_demo.py:84,official
+https://static.igem.wiki/teams/6085/wiki/sonar-web/universal-reporter-plasmid.svg,static/sap-demo/reporter-designer.js:109; static/sap-demo/wiki-media.json:49; tests/test_sap_demo.py:85,official
+https://static.igem.wiki/teams/6085/wiki/team/huiwen-ma.avif,docs/team/team.md:265,official
+https://static.igem.wiki/teams/6085/wiki/team/jacky-yuen-advisor.avif,docs/team/team.md:285,official
+https://static.igem.wiki/teams/6085/wiki/team/junming-feng.avif,docs/team/team.md:255,official
+https://static.igem.wiki/teams/6085/wiki/team/pkg1.avif,docs/releases/team-github-2026-10-18/README.md:18; docs/team/team.md:6,official
+https://static.igem.wiki/teams/6085/wiki/team/pkg2.avif,docs/team/team.md:7,official
+https://static.igem.wiki/teams/6085/wiki/team/pkg3.avif,docs/team/team.md:8,official
+https://static.igem.wiki/teams/6085/wiki/team/pkg4.avif,docs/team/team.md:9,official
+https://static.igem.wiki/teams/6085/wiki/team/xueyin-lu.avif,docs/team/team.md:295,official
+https://static.igem.wiki/teams/6085/wiki/team/yanfei-pu.avif,docs/team/team.md:275,official
 https://static.igem.wiki/teams/6193/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:23,official
 https://static.igem.wiki/teams/6309/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:39,official
 https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable-italic.woff2,static/fonts/source-sans-3-provenance.json:17,official

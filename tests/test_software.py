@@ -51,7 +51,7 @@ class SoftwareDeliveryTest(unittest.TestCase):
         self.assertIn('<h2>PUFFER</h2>', self.html)
         self.assertNotRegex(self.html, r'[\u4e00-\u9fff]')
         chapter_numbers = re.findall(r'<h3 id="[^"]+" data-model-chapter><span class="chapter-number">([\d.]+)</span>', self.html)
-        expected_numbers = [f'{section}.{chapter}' for section in (1, 2) for chapter in range(1, 7)]
+        expected_numbers = [f'1.{chapter}' for chapter in range(1, 7)] + [f'2.{chapter}' for chapter in range(1, 6)]
         self.assertEqual(chapter_numbers, expected_numbers)
         sidebar_numbers = re.findall(r'<span class="module-chapter-number">([\d.]+)</span>', self.html)
         self.assertEqual(sidebar_numbers, expected_numbers)
@@ -151,11 +151,14 @@ class SoftwareDeliveryTest(unittest.TestCase):
                 record = json.loads((base / 'provenance.json').read_text())
                 video = base / record['asset_filename']
                 self.assertEqual(hashlib.sha256(video.read_bytes()).hexdigest(), record['sha256'])
-                self.assertIn('/' + video.as_posix(), self.html)
+                self.assertNotIn('/' + video.as_posix(), self.html)
                 response = self.client.get('/' + video.as_posix(), headers={'Range': 'bytes=0-1023'})
                 self.assertEqual(response.status_code, 206)
                 self.assertEqual(len(response.data), 1024)
                 response.close()
-        self.assertEqual(self.html.count('controls playsinline preload="metadata"'), 2)
-        self.assertLess(self.html.index('id="workbench-demo"'), self.html.index('id="workbench-tutorial"'))
+        # Original files stay available locally; video players are hidden until
+        # official Video Universe URLs are supplied by the team.
+        self.assertNotIn('<video', self.html)
+        self.assertNotIn('id="workbench-demo"', self.html)
+        self.assertNotIn('href="#workbench-tutorial"', self.html)
         self.assertNotIn('autoplay', self.html)
