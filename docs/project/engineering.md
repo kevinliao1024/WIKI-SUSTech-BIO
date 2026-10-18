@@ -178,7 +178,7 @@ The expanded screen turned published TRM preferences into a **testable repertoir
 
 P9-NTQ was therefore a **promising balanced candidate in this screen**, not an automatically superior motif for every context. More generally, Cycle 3 established a practical strategy: select plausible TRMs from experimental recognition knowledge, test them in their intended engineered-repeat positions, and evaluate each by retained target editing **and** multiple unwanted sites.
 
-### **Conclusion** — From TRM Mutagenesis to Recognition Engineering {#pod-conclusion-from-trm-mutagenesis-to-recognition-engineering .engineering-section-title}
+### **Conclusion** {#pod-conclusion-from-trm-mutagenesis-to-recognition-engineering .engineering-section-title}
 
 Across B1 and B2, POD evaluated **81 variant entries** (**30 + 51**) spanning different PUF12 positions from **P1 through P11**, including some multi-repeat constructs. The progression was deliberate: establish reliable motif engineering, learn how edits redistribute across sites, then expand the candidate space with published recognition knowledge. The result was not a single universal replacement for parental PUF12, but a set of experimentally characterized recognition variants with distinct activity–selectivity profiles.
 
@@ -652,7 +652,7 @@ All read-level metrics in this benchmark used the Q13 primary analysis. Rather t
 
 Both share the **P9-NTQ recognition domain**, while their different CETUS partners shape complementary outcomes. We therefore retained **IO-02 and IO-03** as the two Integrated ORCA candidates for downstream evaluation, rather than declaring the highest-activity editor or the lowest-burden editor universally best.
 
-### **Conclusion** — From Component Optimization to Editor-Level Selection {#integrated-orca-conclusion-from-component-optimization-to-editor-level-selection .engineering-section-title}
+### **Conclusion** {#integrated-orca-conclusion-from-component-optimization-to-editor-level-selection .engineering-section-title}
 
 Integrated ORCA turned independently engineered RNA-recognition and catalytic modules into a testable combinatorial system. Of **16 designed combinations**, **14 were sequence-verified** and evaluated against original and matched single-module references. Target editing, consequence-resolved bystander analysis, and long-read co-editing showed that successful assembly depends on the particular module pairing—and that no single metric captures the resulting editing profile.
 
@@ -870,7 +870,7 @@ Controlling where ORCA is expressed does not resolve every risk associated with 
 
 Our approach evolved from searching ORCA's existing RNA sequence for ASO targets to designing a dedicated **Synthetic ASO Tag**. Four computational engineering cycles established the tag architecture and selected a candidate, C805. Two subsequent cell-based cycles tested whether C805 could suppress reporter expression and, ultimately, ORCA-mediated RNA editing.
 
-### **Engineering Rationale** — Why an ASO-Controlled Interface? {#aso-engineering-rationale-why-an-aso-controlled-interface .engineering-section-title}
+### **Engineering Rationale** {#aso-engineering-rationale-why-an-aso-controlled-interface .engineering-section-title}
 
 An externally triggered OFF mechanism should act independently of the transcriptional controls already built into ORCA. Endogenous miRNA regulation is useful for exploiting cell-specific expression patterns, while engineered ribozymes and aptazymes can make RNA output responsive to molecular cues. For an intervention that could be administered separately from the editor, however, we favored a **gapmer ASO** (Figure 1).
 
@@ -1110,7 +1110,7 @@ The synthetic interface now supported **externally induced suppression of ORCA's
 
 ---
 
-### **Conclusion** — From ASO Target Selection to an Engineered OFF Interface {#aso-conclusion-from-aso-target-selection-to-an-engineered-off-interface .engineering-section-title}
+### **Conclusion** {#aso-conclusion-from-aso-target-selection-to-an-engineered-off-interface .engineering-section-title}
 
 Across six engineering cycles, we converted a constrained search for natural ASO sites into a modular RNA-control strategy. Computational screening led us to a **22-nt synthetic recognition core**, multi-objective selection incorporating human and CNS contexts, and flank engineering that improved C805's predicted accessibility **17.4-fold without changing its ASO-binding sequence**.
 
