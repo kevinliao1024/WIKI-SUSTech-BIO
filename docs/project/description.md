@@ -121,42 +121,70 @@ For us, this combination of programmable recognition, C-to-U editing, and modula
 
 CU-REWIRE provided a molecular starting point for APOE4 RNA editing. Building on this foundation, ORCA addresses a broader question: how can a programmable editor become a system whose activity can be refined, regulated, delivered, and meaningfully evaluated? We organized our work into three connected stages: **Fundamental Research, Platform Development, and Functional Validation**.
 
+<div class="description-card" markdown="1">
+
 ### Fundamental Research <span class="description-heading-subtitle">— Establishing the Foundation</span>
 
 We began by adapting the REWIRE framework to APOE4 and comparing PUF recognition architectures. These initial experiments examined how recognition-domain design affected editing at our target, informing the choice of a molecular backbone for subsequent engineering.
 
+</div>
+
 ### Platform Development <span class="description-heading-subtitle">— Five Connected Workstreams</span>
 
 Improving the editor alone would not address every requirement of the system. We therefore developed five complementary workstreams, each focused on a distinct engineering question.
+
+<div class="description-card description-card--workstream" markdown="1">
 
 **EDIT — Refining recognition and catalysis.**
 {: .description-workstream-title}
 
 Through POD and CETUS, we investigated changes to the PUF recognition domain and APOBEC catalytic domain. Integrated ORCA brought selected variants together to examine their combined behavior.
 
+</div>
+
+<div class="description-card description-card--workstream" markdown="1">
+
 **CONTROL — Regulating expression and activity.**
 {: .description-workstream-title}
 
 We explored complementary strategies for cell-context-dependent expression and externally controlled suppression, addressing where the editor acts and how its activity might be limited.
+
+</div>
+
+<div class="description-card description-card--workstream" markdown="1">
 
 **DELIVER — Developing a delivery route.**
 {: .description-workstream-title}
 
 We investigated AAV-compatible constructs and packaging as steps toward delivering the editing machinery to relevant cells.
 
+</div>
+
+<div class="description-card description-card--workstream" markdown="1">
+
 **MEASURE — Making editing assessable.**
 {: .description-workstream-title}
 
 We developed an editing-responsive reporter and the SONAR analysis framework to support comparable fluorescence measurements and examine their relationship to sequencing-based editing evidence.
+
+</div>
+
+<div class="description-card description-card--workstream" markdown="1">
 
 **MODEL — Supporting design decisions.**
 {: .description-workstream-title}
 
 We used computational approaches to investigate molecular recognition, prioritize candidate designs, and explore how delivery and editing parameters could influence system behavior.
 
+</div>
+
+<div class="description-card" markdown="1">
+
 ### Functional Validation <span class="description-heading-subtitle">— Connecting Editing to Biological Context</span>
 
 Finally, we extended our investigation to APOE4-relevant cellular models, examining editor introduction and disease-related cellular readouts. This stage asks whether molecular editing is accompanied by measurable biological changes, while distinguishing evidence of editing from evidence of functional benefit.
+
+</div>
 
 Together, these stages connect the molecular rationale for ORCA with its engineering development and biological evaluation. Our [Engineering page](/engineering) presents the design–build–test–learn cycles behind this work, while [Results](/results) brings together the findings and their limitations.
 

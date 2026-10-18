@@ -23,7 +23,12 @@
     {% set directory.current = {'heading': heading, 'children': []} %}
     {% set directory.groups = directory.groups + [directory.current] %}
   {% else %}
-    {% set _ = directory.current.children.append(item) %}
+    {% if is_description %}
+      {% set child = {'id': item.id, 'name': item.name.split(' — ', 1)[0], 'level': item.level, 'custom_label': true} %}
+      {% set _ = directory.current.children.append(child) %}
+    {% else %}
+      {% set _ = directory.current.children.append(item) %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 {% block page_styles %}
