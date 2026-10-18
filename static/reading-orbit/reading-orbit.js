@@ -1,5 +1,10 @@
 (() => {
   const orbit = document.querySelector('[data-reading-orbit]');
+  const scrollSelector = orbit?.dataset.scrollTarget || orbit?.closest('[data-reading-scroll-target]')?.dataset.readingScrollTarget;
+  const scrollRoot = scrollSelector ? document.querySelector(scrollSelector) : null;
+  const scrollPosition = () => scrollRoot ? scrollRoot.scrollTop : scrollY;
+  const viewportHeight = () => scrollRoot ? scrollRoot.clientHeight : innerHeight;
+  const scrollToPosition = options => (scrollRoot || window).scrollTo(options);
   const traveler = orbit?.querySelector('[data-orbit-traveler]');
   const value = orbit?.querySelector('[data-orbit-value]');
   const progress = orbit?.querySelector('[data-orbit-progress]');
@@ -11,10 +16,10 @@
   let drag = null;
   const clamp = value => Math.max(0, Math.min(1, value));
   function measure() {
-    const scrollable = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const scrollable = Math.max(0, (scrollRoot ? scrollRoot.scrollHeight : document.documentElement.scrollHeight) - viewportHeight());
     return {
       scrollable,
-      ratio: scrollable ? clamp(scrollY / scrollable) : 0,
+      ratio: scrollable ? clamp(scrollPosition() / scrollable) : 0,
       travel: Math.max(0, orbit.clientHeight - traveler.offsetHeight),
       top: orbit.getBoundingClientRect().top,
     };
@@ -88,7 +93,7 @@
     drag.lastY = event.clientY;
     const ratio = clamp((event.clientY - metrics.top - drag.offset) / metrics.travel);
     // Explicitly override page-level smooth scrolling so the handle follows the pointer.
-    scrollTo({ top: ratio * metrics.scrollable, behavior: 'instant' });
+    scrollToPosition({ top: ratio * metrics.scrollable, behavior: 'instant' });
     update();
   });
   traveler.addEventListener('pointerup', endDrag);
@@ -101,26 +106,27 @@
     const { scrollable, travel } = measure();
     if (!scrollable || !travel) return;
     const positions = {
-      ArrowUp: scrollY - 40,
-      ArrowDown: scrollY + 40,
-      PageUp: scrollY - innerHeight * .9,
-      PageDown: scrollY + innerHeight * .9,
+      ArrowUp: scrollPosition() - 40,
+      ArrowDown: scrollPosition() + 40,
+      PageUp: scrollPosition() - viewportHeight() * .9,
+      PageDown: scrollPosition() + viewportHeight() * .9,
       Home: 0,
       End: scrollable,
     };
     if (!Object.hasOwn(positions, event.key)) return;
     event.preventDefault();
     orbit.classList.remove('is-pointer-focused');
-    scrollTo({ top: Math.max(0, Math.min(scrollable, positions[event.key])), behavior: 'instant' });
+    scrollToPosition({ top: Math.max(0, Math.min(scrollable, positions[event.key])), behavior: 'instant' });
     update();
   });
-  addEventListener('scroll', schedule, { passive: true });
+  (scrollRoot || window).addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule);
   addEventListener('load', schedule);
   addEventListener('pageshow', schedule);
   if ('ResizeObserver' in window) {
     const observer = new ResizeObserver(schedule);
-    observer.observe(document.body);
+    observer.observe(scrollRoot || document.body);
+    if (scrollRoot?.firstElementChild) observer.observe(scrollRoot.firstElementChild);
     observer.observe(orbit);
   }
   document.fonts?.ready.then(schedule);
