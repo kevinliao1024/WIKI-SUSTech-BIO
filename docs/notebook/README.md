@@ -157,18 +157,17 @@ publication step, follow the repository's requirement to upload media to
 `static.igem.wiki`. The committed local assets provide an operational repository
 preview and static build; they are not a claim of an iGEM media upload.
 
-## Visual hierarchy revision — 2026-10-17
+## Overview and navigation
 
-The overview opens on a descending calendar (October to June), followed by a
-nine-card track selector with one SVG navigation icon per track on a common 48px grid. Each card shows the indexed
-record count and actual date range. The redundant introductory copy is omitted.
-The shared calendar uses responsive lane positions across the available width,
-stronger lines and labels, alternating monthly bands, weekly guides and monthly
-record totals calculated from the index. Counts beside a date node indicate
-multiple separate records on that date. No dates, milestones or source files
-were added or altered. On narrow screens, the track cards use two columns and
-the calendar remains horizontally scrollable at a readable minimum width.
+The overview presents all nine tracks as horizontal rows, with a shared June-to-October
+calendar. Real elapsed days determine horizontal spacing; concurrent dates align
+vertically across tracks. The chart adapts its height to the desktop viewport so
+all rows are visible on entry. Monthly bands and restrained date nodes emphasize
+when each track was active without inventing milestones or outcomes.
 
+The nine-card track directory follows the chart, retaining each track's icon,
+description and actual date range. On narrow screens the directory uses two
+columns and the chart scrolls horizontally at a readable minimum width.
 
 ## Activity cards and icon refinement
 
@@ -187,12 +186,22 @@ point, redrawn on the shared 48px grid in the track color. No external asset
 requests are made.
 
 
-## Timeline-first overview — 2026-10-18
+## Horizontal overview and continuous reader transition — 2026-10-18
 
-The overview begins with the latest date and runs downward toward the earliest
-(13 October to 21 June). Calendar bands, month headings, lane endpoints, labels,
-and pointer-to-date mapping all use this descending scale. Equal elapsed-day
-distances and concurrent dates remain aligned. The nine track cards follow the
-entire calendar in both the visible layout and DOM order. Selecting a card opens
-that track at its first record. Focus retains its chronological reading order
-and existing navigation; returning to the overview restores the saved position.
+Selecting a row or track card opens its records from the beginning; selecting a
+date node opens that exact day. Record groups and the date selector remain in
+ascending chronological order. The focused reader hides the track directory and
+other lanes, with track switching available in its sticky toolbar.
+
+The selected colored rail rotates from its horizontal row into the left reader
+rail, then unfolds to the measured record positions. Each original date node
+keeps its identity through the 620ms transition. The outgoing scene fades beneath
+the rail, and record content fades in after a short delay. Returning reverses the
+motion and restores the overview's vertical and horizontal scroll position.
+
+The actual map DOM is retained. Temporary, inert, aria-hidden scene/rail layers
+exist only during the transition and are removed on completion, navigation,
+resize or a user scroll gesture. Reduced-motion preferences bypass these layers.
+Offscreen transitions fall back to an immediate layout instead of flying a rail
+across an unrelated part of the page. Expanded PDF pages continue to drive the
+measured node-to-card alignment; no record or source attachment is changed.
