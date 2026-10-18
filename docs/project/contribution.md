@@ -15,11 +15,12 @@ status_message: This overview is prepared for team review. Individual resources 
 
 ## PUFFER {#puffer}
 
-PUFFER provides a workflow for evaluating potential PUF target sites.
+<div class="sonar-intro" id="puffer-intro">
+<p class="sonar-kicker">From a target sequence to candidate designs</p>
+<p>PUFFER connects a browser-based PUF design workspace with local computational analysis. Start with a target RNA sequence, inspect recognition windows, assemble candidate PUF proteins and keep the designs alongside measured assay records. The companion application supports assay-informed protein ranking and LAMAR-based RNA-site prioritization, with these two outputs kept separate. Together, the tools help organize candidates for experimental follow-up while preserving the inputs and analysis context. Rankings guide prioritization; they do not establish RNA editing efficiency or replace experimental validation.</p>
+</div>
 
-The PUF website and its companion local application connect the Model page's analyses with a workspace for organizing candidate records and measured assay data. Their exported results keep protein comparisons and RNA-site rankings distinct. This gives collaborators a common record of the computational question, its inputs and the observations available for interpretation.
-
-[Explore the analysis framework](/model).
+[Explore PUFFER: overview, tutorial and workflow](/software#workbench).
 
 ## Other {#other}
 

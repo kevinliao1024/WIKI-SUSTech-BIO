@@ -5,7 +5,7 @@
 {% endblock %}
 {% set sections = [
   ('rewire', 'Whole-body Delivery Model', [('rewire-purpose', 'Overview'), ('rewire-logic', 'Modeling approach'), ('rewire-results', 'Results'), ('rewire-library', 'State and flux profiles'), ('rewire-references', 'References'), ('rewire-reuse', 'Reproducibility')]),
-  ('workbench', 'PUF Website', [('workbench-purpose', 'Overview'), ('workbench-tutorial', 'Tutorial'), ('workbench-logic', 'Modeling approach'), ('workbench-workflow', 'Workflow'), ('workbench-references', 'References'), ('workbench-reuse', 'Reproducibility')])
+  ('workbench', 'PUFFER', [('workbench-purpose', 'Overview'), ('workbench-tutorial', 'Tutorial'), ('workbench-logic', 'Modeling approach'), ('workbench-workflow', 'Workflow'), ('workbench-references', 'References'), ('workbench-reuse', 'Reproducibility')])
 ] %}
 {% macro figure(item) %}
 <figure class="software-figure" id="software-figure-{{ item.number }}" data-figure-number="{{ item.number }}" data-panel-count="{{ item.panels }}">
@@ -118,10 +118,10 @@
       </section>
 
       <section class="model-module" id="workbench" data-model-module>
-        <header class="module-heading"><div><h2>PUF Website</h2></div></header>
+        <header class="module-heading"><div><h2>PUFFER</h2></div></header>
         <div class="model-prose">
           <h3 id="workbench-purpose" data-model-chapter><span class="chapter-number">2.1</span>Overview</h3>
-          <p>The PUF website provides a browser workspace for selecting RNA recognition windows, assembling PUF candidates and exporting records for local analysis. A saved project keeps the target sequence, candidate proteins and measured assay records together.</p>
+          <p>PUFFER provides a browser workspace for selecting RNA recognition windows, assembling PUF candidates and exporting records for local analysis. A saved project keeps the target sequence, candidate proteins and measured assay records together.</p>
           <p>The website and its companion local application connect two workflows from our Model page: <strong>Module 2's assay-informed PUF specificity ranking</strong> and <strong>Module 4's LAMAR-based RNA-site prioritization</strong>. The browser organizes target sequences, PUF candidates and assay records; the local application performs the supported protein-ranking and RNA-context analyses. The outputs prioritize candidate proteins and RNA sites, respectively, and remain separate in the exported results.</p>
           <p>PUF repeat recognition provides the basis for assigning RNA-binding motifs (Wang et al., 2002; Zhou et al., 2021). The interface supports complete built-in 8R and 12R scaffolds; other lengths require compatible scaffold input.</p>
 
@@ -135,7 +135,7 @@
 
           <h3 id="workbench-tutorial" data-model-chapter><span class="chapter-number">2.2</span>Tutorial</h3>
           <div class="software-tutorial">
-            <video controls playsinline preload="metadata" width="3024" height="2144" poster="{{ url_for('static', filename='assets/software/puf-tutorial/poster.jpg') }}" aria-label="PUF website tutorial with English subtitles">
+            <video controls playsinline preload="metadata" width="3024" height="2144" poster="{{ url_for('static', filename='assets/software/puf-tutorial/poster.jpg') }}" aria-label="PUFFER tutorial with English subtitles">
               <source src="{{ url_for('static', filename='assets/software/puf-tutorial/puf-website-tutorial-en.mp4') }}" type="video/mp4">
               Your browser does not support HTML video.
             </video>
