@@ -1,0 +1,334 @@
+{
+  "created_utc": "2026-10-17T12:11:44.079641+00:00",
+  "source_folder": "wiki相关文档/队伍合照&单人照_副本",
+  "originals_untouched": true,
+  "max_long_edge": 2560,
+  "photo_budget_bytes": 8000000,
+  "total_source_bytes": 132942663,
+  "total_output_bytes": 7476335,
+  "files": [
+    {
+      "source_name": "benxiang_xiao.JPG",
+      "source_bytes": 4996837,
+      "source_sha256": "4577baca4ff8617da30d752f96aad23036a15704f387ccb2a64b0ed2a0bcd1ab",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "benxiang_xiao.avif",
+      "output_bytes": 439581,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "bolin_dong.JPG",
+      "source_bytes": 6683964,
+      "source_sha256": "457640894d7431efb15bf21c9bbd3677188a8db76c85ed493379d218c19c958e",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "bolin_dong.avif",
+      "output_bytes": 475345,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 84,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "chenfan_liao.jpg",
+      "source_bytes": 2756942,
+      "source_sha256": "4a0be824921c5362273f35168d21efcad7b612e0f10aa90d0f1d9bdbe358d1a9",
+      "source_dimensions": [
+        1366,
+        2048
+      ],
+      "output_name": "chenfan_liao.avif",
+      "output_bytes": 461844,
+      "output_dimensions": [
+        1366,
+        2048
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "dengxiang_yang.JPG",
+      "source_bytes": 1515210,
+      "source_sha256": "3abbfb8b19893e7872a2cbe25e3a2a7efa6f8c99773e100ad104ec837bdd0548",
+      "source_dimensions": [
+        1440,
+        2160
+      ],
+      "output_name": "dengxiang_yang.avif",
+      "output_bytes": 385876,
+      "output_dimensions": [
+        1440,
+        2160
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": true
+    },
+    {
+      "source_name": "fengyi_tang.jpg",
+      "source_bytes": 24672531,
+      "source_sha256": "8269cf3efa34015a16a488f9cad06e4be66ed512edc09b3f3ced107dd6be3db4",
+      "source_dimensions": [
+        3648,
+        5472
+      ],
+      "output_name": "fengyi_tang.avif",
+      "output_bytes": 446933,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 86,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "hansen_zhang.jpg",
+      "source_bytes": 12618493,
+      "source_sha256": "411d1e8ca9917b3c212b28601cc36d7b87a8aac223dcdbe00d907619ba426bd0",
+      "source_dimensions": [
+        3648,
+        5472
+      ],
+      "output_name": "hansen_zhang.avif",
+      "output_bytes": 387897,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "hengwei_su_advisor.JPG",
+      "source_bytes": 5085667,
+      "source_sha256": "b22cc6789553b5830c6caf8c46414c84055bcd1c40aebf4a00e0646e31b14ea8",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "hengwei_su_advisor.avif",
+      "output_bytes": 441403,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 87,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "jiawen_fu.jpg",
+      "source_bytes": 13775228,
+      "source_sha256": "3dfcfba0d7ba841b237a776a5de80b09c08d8ca42536c42fc2c02009879e96c6",
+      "source_dimensions": [
+        3648,
+        5472
+      ],
+      "output_name": "jiawen_fu.avif",
+      "output_bytes": 424494,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 87,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "lili_yu.JPG",
+      "source_bytes": 4552927,
+      "source_sha256": "6209eca67cb05e4a981274e8991c438b410cfc9bd4f435cfbbad5d76be05aa05",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "lili_yu.avif",
+      "output_bytes": 338417,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "muyin_guo.JPG",
+      "source_bytes": 5771502,
+      "source_sha256": "723792ed1abce02c7f0cb6b4c6ddd68f36316eb5fa81c1168110122c001fa309",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "muyin_guo.avif",
+      "output_bytes": 427361,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 86,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "ping_sun.JPG",
+      "source_bytes": 5077432,
+      "source_sha256": "45f033947beafb83858ddac2220a14b66cc99946c4f152274c264088cfdb021c",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "ping_sun.avif",
+      "output_bytes": 391457,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "wenxiang_huang.jpg",
+      "source_bytes": 15373991,
+      "source_sha256": "bc682ac2ba36823f50210007945981d56c8f7d5ef44f96f20b6565759fba9ead",
+      "source_dimensions": [
+        3648,
+        5472
+      ],
+      "output_name": "wenxiang_huang.avif",
+      "output_bytes": 484252,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 84,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "xiaoyu_que.JPG",
+      "source_bytes": 6216331,
+      "source_sha256": "75c88164a75295dd7fcfaaa38232e047a4ef1dc5617fa0a019a5d4d2ca1aa3f0",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "xiaoyu_que.avif",
+      "output_bytes": 453405,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 85,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "xinyi_liu_advisor.JPG",
+      "source_bytes": 5028747,
+      "source_sha256": "6d914da92eceb4488e15295342d13b11058a00a64ab6dc0521cfcf0f35a8ffe7",
+      "source_dimensions": [
+        5472,
+        3648
+      ],
+      "output_name": "xinyi_liu_advisor.avif",
+      "output_bytes": 442055,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 88,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "yilin_liu.JPG",
+      "source_bytes": 4717113,
+      "source_sha256": "3aa2fa60fe3f0f3343e1c7e896b83f76e63bd1915d188225c960dbb0e8c2c874",
+      "source_dimensions": [
+        2730,
+        4096
+      ],
+      "output_name": "yilin_liu.avif",
+      "output_bytes": 451371,
+      "output_dimensions": [
+        1706,
+        2560
+      ],
+      "quality": 85,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": true
+    },
+    {
+      "source_name": "yukang_qi.jpg",
+      "source_bytes": 1431949,
+      "source_sha256": "8ba34e4f318567fef16519adb0c87389cd2c2b87c42236e4042d4c8503e862ae",
+      "source_dimensions": [
+        2335,
+        3505
+      ],
+      "output_name": "yukang_qi.avif",
+      "output_bytes": 577435,
+      "output_dimensions": [
+        1705,
+        2560
+      ],
+      "quality": 84,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    },
+    {
+      "source_name": "yunxiang_zhang.jpg",
+      "source_bytes": 12667799,
+      "source_sha256": "d61a72522af87758c5dc5acf390f85d50fb124c9d31525ff31359c8062e17da7",
+      "source_dimensions": [
+        3648,
+        5472
+      ],
+      "output_name": "yunxiang_zhang.avif",
+      "output_bytes": 447209,
+      "output_dimensions": [
+        1707,
+        2560
+      ],
+      "quality": 85,
+      "subsampling": "4:4:4",
+      "orientation_applied": true,
+      "icc_profile_preserved": false
+    }
+  ]
+}

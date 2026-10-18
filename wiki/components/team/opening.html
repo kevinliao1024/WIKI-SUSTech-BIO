@@ -18,8 +18,8 @@
         <span class="team-opening__compile-line" data-team-compile-order="{{ members|length + 6 }}" hidden>link skills → ORCA_TEAM.skill</span>
       </div>
       <button class="team-opening__pkg" type="button" data-team-package aria-label="Open ORCA team package"
-        data-team-package-frames="{{ url_for('static', filename='assets/team/questionnaires/questionnaire-01.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-02.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-03.png') }}|{{ url_for('static', filename='assets/team/questionnaires/questionnaire-04.png') }}">
-        <span class="team-opening__pkg-art"><img src="{{ url_for('static', filename='assets/team/questionnaires/questionnaire-01.png') }}" alt="" width="240" height="240" data-team-package-frame></span>
+        data-team-package-frames="{{ package_frames|join('|') }}">
+        <span class="team-opening__pkg-art"><img src="{{ package_frames[0] }}" alt="" width="240" height="240" data-team-package-frame></span>
         <span class="team-opening__pkg-name">ORCA_TEAM.pkg</span>
         <span class="team-opening__sr-status" data-team-package-status aria-live="polite"></span>
       </button>

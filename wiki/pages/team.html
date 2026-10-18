@@ -7,6 +7,7 @@
 {% block page_scripts %}<script src="{{ url_for('static', filename='team-cards.js') }}" defer></script><script src="{{ url_for('static', filename='team-opening.js') }}" defer></script>{% endblock %}
 {% block main %}
 {% set members = content.metadata.get('members', []) %}
+{% set package_frames = content.metadata.get('package_frames', []) %}
 <main id="main-content" class="team-main" data-content-source="{{ content.source_label }}">
   {% include 'components/team/opening.html' %}
   {% include 'components/team/package_header.html' %}
@@ -29,6 +30,6 @@
     {% endif %}
     <noscript><p class="team-no-script">Each portrait is followed by its personal one-liner. Both sides are shown without animation.</p></noscript>
   </section>
-  <section class="team-closing team-shell" aria-labelledby="team-closing-title"><p class="team-eyebrow">ONE TEAM, MANY WAYS TO CONTRIBUTE</p><h2 id="team-closing-title">Science is a team sport.</h2><p>From the lab bench to the Wiki, see how our work comes together.</p><div><a href="{{ url_for('pages', page='attributions') }}">Explore attributions <span aria-hidden="true">↗</span></a><a href="{{ url_for('pages', page='design-communication') }}">Design &amp; communication <span aria-hidden="true">↗</span></a></div></section>
+  <section class="team-closing team-shell" aria-labelledby="team-closing-title"><p class="team-eyebrow">ONE TEAM, MANY WAYS TO CONTRIBUTE</p><h2 id="team-closing-title">Science is a team sport.</h2><p>From the lab bench to the Wiki, see how our work comes together.</p><div><a href="{{ url_for('pages', page='attributions') }}">Explore attributions <span aria-hidden="true">↗</span></a></div></section>
 </main>
 {% endblock %}
