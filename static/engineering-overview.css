@@ -1,0 +1,54 @@
+/* The overview is native vector geometry, with one original AAV raster icon. */
+.engineering-workspace[data-engineering-view='map'] { padding:14px 28px 18px; background:#fff; }
+.engineering-map { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); gap:28px; align-items:center; }
+.engineering-map-canvas { height:100%; min-height:480px; padding:24px 8px; column-gap:7%; grid-template-columns:minmax(0,.95fr) minmax(0,.8fr) minmax(0,1.35fr); }
+.engineering-map-canvas::before { background:none; }
+.engineering-map-root { padding-inline:0; }
+.engineering-map-root h1 { font-size:clamp(24px,2.2vw,34px); }
+.engineering-map-groups { gap:26px; }
+.engineering-map-group { height:58px; padding:12px 8px; font-size:clamp(18px,1.6vw,23px); }
+.engineering-map-leaf { min-height:58px; padding:12px 14px; font-size:clamp(16px,1.4vw,20px); }
+.engineering-map[data-selected-group='model'] .engineering-map-leaf { font-size:clamp(15px,1.2vw,18px); }
+.engineering-overview { display:flex; flex-direction:column; align-items:center; justify-content:center; align-self:stretch; min-width:0; min-height:0; margin:0; }
+.engineering-overview-art { display:block; width:100%; height:100%; min-height:0; max-height:calc(100svh - var(--engineering-nav-height,112px) - 60px); overflow:visible; }
+.engineering-overview figcaption { flex:none; margin:6px 0 0; color:#657184; font-size:13px; text-align:center; }
+.overview-layer { pointer-events:none; }
+.overview-layer image { filter:grayscale(1); }
+.overview-layer.is-active image { filter:none; }
+.overview-links a { cursor:pointer; outline:none; }
+.overview-links rect { fill:transparent; stroke:transparent; stroke-width:2; pointer-events:all; }
+.overview-links a:focus-visible > rect { stroke:#263f73; stroke-dasharray:5 4; }
+@media (max-width:1150px) and (min-width:901px) {
+  .engineering-workspace[data-engineering-view='map'] { padding-inline:18px; }
+  .engineering-map { gap:12px; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
+  .engineering-map-canvas { column-gap:5%; grid-template-columns:minmax(0,.9fr) minmax(0,.75fr) minmax(0,1.35fr); }
+  .engineering-map-root h1 { font-size:23px; }
+  .engineering-map-leaf { padding-inline:10px; }
+}
+@media (max-width:599px), (hover:none) {
+  .engineering-map { grid-template-columns:minmax(0,1fr); grid-template-rows:max-content max-content; gap:24px; align-items:start; align-content:start; }
+  .engineering-map-canvas { height:auto; }
+  .engineering-overview { width:min(100%,600px); justify-self:center; }
+  .engineering-overview-art { flex:none; height:auto; max-height:none; aspect-ratio:732 / 1017; }
+  .engineering-overview figcaption { margin-bottom:18px; }
+}
+@media (prefers-reduced-motion:reduce) { .overview-layer { transition:none; } }
+@media (forced-colors:active) {
+  .engineering-overview-art { forced-color-adjust:none; }
+  .overview-links a:focus-visible > rect { stroke:#000; }
+}
+
+/* Keep both representations in view in a narrow desktop preview panel. */
+@media (min-width:600px) and (max-width:900px) and (hover:hover) and (pointer:fine) {
+  .engineering-workspace[data-engineering-view='map'] { padding:10px 12px 14px; }
+  .engineering-map { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px; }
+  .engineering-map-canvas { min-height:440px; grid-template-columns:minmax(64px,.7fr) minmax(0,1.3fr); grid-template-rows:64px auto; align-content:center; gap:18px 20px; padding:10px 2px; }
+  .engineering-map-root { grid-column:1/-1; grid-row:1; min-height:0; }
+  .engineering-map-root h1 { font-size:24px; }
+  .engineering-map-groups { grid-column:1; grid-row:2; gap:16px; }
+  .engineering-map-group { height:46px; padding:8px 4px; font-size:15px; }
+  .engineering-map-branches { grid-column:2; grid-row:2; position:relative; align-self:start; top:var(--branch-top,0px); }
+  .engineering-map-leaves { gap:12px; }
+  .engineering-map-leaf, .engineering-map[data-selected-group='model'] .engineering-map-leaf { min-height:46px; padding:8px; font-size:13px; }
+  .engineering-overview figcaption { font-size:11px; }
+}
