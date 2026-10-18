@@ -46,7 +46,8 @@
         panel.hidden = true;
         anchor.hidden = false;
       }, {once: true});
-      image.src = new URL(page.file, base);
+      const url = new URL(page.file, base).href;
+      image.src = globalThis.wikiAssetURL?.(url) ?? url;
       wrap.append(image);
       pages.append(wrap);
     }

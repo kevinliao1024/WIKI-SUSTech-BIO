@@ -4,9 +4,10 @@ pages:
   stage: build
   script:
     - pip install --no-cache-dir -r dependencies.txt
-    - python -m unittest discover -s tests -v
-    - FLASK_APP=app.py flask freeze
-    - python scripts/audit_build.py
+    - python scripts/build_asset_mapping.py
+    - WIKI_ASSET_MODE=local python -m unittest discover -s tests -v
+    - WIKI_ASSET_MODE=igem FLASK_APP=app.py flask freeze
+    - python scripts/audit_build.py --require-cdn --asset-report asset-build-report.json
   artifacts:
     paths:
       - public

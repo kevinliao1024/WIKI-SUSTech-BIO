@@ -1,18 +1,21 @@
-from os import path
+from os import environ, path
 from flask import Flask, abort, render_template, send_from_directory, url_for
 from flask_frozen import Freezer
 from markupsafe import Markup
 
 from wiki_content import CONTENT_PAGES, NAVIGATION, load_markdown_content
+from igem_assets import install as install_igem_assets
 
 
 template_folder = path.abspath("./wiki")
 
 app = Flask(__name__, template_folder=template_folder)
-app.config["FREEZER_DESTINATION"] = "public"
+app.config["FREEZER_DESTINATION"] = environ.get("FREEZER_DESTINATION", "public")
+app.config["FREEZER_REMOVE_EXTRA_FILES"] = False
 app.config["FREEZER_RELATIVE_URLS"] = True
 app.config["FREEZER_IGNORE_MIMETYPE_WARNINGS"] = True
 freezer = Freezer(app)
+install_igem_assets(app)
 
 
 @freezer.register_generator

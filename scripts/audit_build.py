@@ -170,7 +170,7 @@ def audit_build(public_dir: Path = Path("public")) -> list[str]:
     issues.extend(f"missing evidence archive: {path}" for path in missing_evidence)
 
     for path in sorted(public_dir.iterdir()):
-        if path.is_file():
+        if path.is_file() and (not path.suffix or path.suffix == '.html'):
             document = path.read_text(encoding="utf-8")
             issues.extend(audit_document(path.name, document))
             issues.extend(audit_internal_links(path.name, document, public_dir))
@@ -184,7 +184,21 @@ def audit_build(public_dir: Path = Path("public")) -> list[str]:
 
 
 def main() -> int:
-    issues = audit_build()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--public-dir', type=Path, default=Path('public'))
+    parser.add_argument('--require-cdn', action='store_true', help='Reject reachable media that still uses local URLs')
+    parser.add_argument('--asset-report', type=Path)
+    args = parser.parse_args()
+    issues = audit_build(args.public_dir)
+    if args.require_cdn or args.asset_report:
+        from audit_igem_assets import inspect_build, issues_for_report
+        from igem_assets import read_mapping
+        report = inspect_build(args.public_dir, read_mapping(Path(__file__).resolve().parents[1] / 'asset_mapping.csv'))
+        if args.asset_report:
+            args.asset_report.write_text(json.dumps(report, indent=2), encoding='utf-8')
+        if args.require_cdn:
+            issues.extend(issues_for_report(report))
     if issues:
         print("Build audit failed:")
         for issue in issues:
