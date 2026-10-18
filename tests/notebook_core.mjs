@@ -8,7 +8,10 @@ assert.equal(index.records.reduce((n,r)=>n+r.pages.length,0),171);
 const bounds=dateBounds(index.records);
 assert.equal(isoDay(bounds.start),'2026-06-21');assert.equal(isoDay(bounds.end),'2026-10-13');
 // Equal calendar gaps stay equal, including months and unrecorded dates.
-assert.equal(overviewY('2026-07-11',bounds.start)-overviewY('2026-07-01',bounds.start),overviewY('2026-09-11',bounds.start)-overviewY('2026-09-01',bounds.start));
+assert.equal(overviewY('2026-07-11',bounds.end)-overviewY('2026-07-01',bounds.end),overviewY('2026-09-11',bounds.end)-overviewY('2026-09-01',bounds.end));
+assert.equal(overviewY('2026-10-13',bounds.end,14),70);
+assert.equal(overviewY('2026-06-21',bounds.end,14),70+(bounds.end-bounds.start)*14);
+assert.ok(overviewY('2026-10-01',bounds.end)<overviewY('2026-07-01',bounds.end));
 const day='2026-09-26';
 assert.ok(index.records.some(r=>r.trackId==='aav'&&r.date===day));
 assert.ok(index.records.some(r=>r.trackId==='reporter'&&r.date===day));

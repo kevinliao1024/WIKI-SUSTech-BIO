@@ -14,6 +14,18 @@ page.on('pageerror',e=>errors.push(e.message));
 const requests=[];page.on('request',r=>requests.push(r.url()));
 await page.goto(`${base}/notebook`);await page.waitForSelector('[data-mode="overview"]');
 await page.evaluate(()=>{window.notebookOriginalMap=document.querySelector('[data-map-group]');});
+const overviewOrder=await page.evaluate(()=>({
+ months:[...document.querySelectorAll('.nb-tick.is-month')].map(n=>({label:n.querySelector('text').textContent,y:n.getBoundingClientRect().top})),
+ stage:document.querySelector('[data-stage]').getBoundingClientRect().bottom,
+ cards:document.querySelector('[data-tracks]').getBoundingClientRect().top,
+ firstMonth:document.querySelector('.nb-tick.is-month').getBoundingClientRect().top,
+ height:innerHeight,
+}));
+assert.deepEqual(overviewOrder.months.map(m=>m.label),['OCT','SEPT','AUG','JUL','JUN']);
+assert.ok(overviewOrder.months.every((m,i,all)=>!i||m.y>all[i-1].y),'Months descend from October to June');
+assert.ok(overviewOrder.cards>=overviewOrder.stage,'Track cards follow the entire timeline');
+assert.ok(overviewOrder.firstMonth<overviewOrder.height,'October is visible on entry');
+
 assert.equal(requests.filter(r=>r.includes('/previews/')||r.endsWith('.pdf')).length,0,'Overview must not preload PDF pages');
 const point=async(track,date)=>page.locator(`.nb-lane[data-track="${track}"] .nb-date-target[data-date="${date}"]`).evaluate(n=>{const b=n.getBoundingClientRect();return{x:b.x+b.width/2,y:b.y+b.height/2};});
 const a=await point('aav','2026-09-26'), b=await point('reporter','2026-09-26');assert.ok(Math.abs(a.y-b.y)<1,'Concurrent tracks share calendar y');

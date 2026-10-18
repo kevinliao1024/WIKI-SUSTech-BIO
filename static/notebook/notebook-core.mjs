@@ -21,7 +21,7 @@ export function dateBounds(records) {
   const dates = records.map(r => dayNumber(r.date));
   return dates.length ? {start: Math.min(...dates), end: Math.max(...dates)} : null;
 }
-export const overviewY = (date, start, scale = 20) => 70 + (dayNumber(date) - start) * scale;
+export const overviewY = (date, end, scale = 20) => 70 + (end - dayNumber(date)) * scale;
 export function focusY(date, rows, height) {
   const n = dayNumber(date);
   if (!rows.length) return 30;

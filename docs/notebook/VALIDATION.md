@@ -91,3 +91,18 @@ Notebook Python checks, Node core checks, frozen build/link audit and exact
 PDF/preview inventory checks passed after removal. Chrome confirmed the updated
 overview totals, 15 focused records, no date options after July 31, and a
 390px layout without document overflow. See [Fundmental cutoff](qa/fundmental-cutoff.png).
+
+
+## Timeline-first descending overview — 2026-10-18
+
+Notebook Python checks, descending-scale Node checks and the frozen build audit
+passed. Browser assertions verify October is visible at entry, month headings
+run OCT / SEPT / AUG / JUL / JUN down the page, and all track cards sit below the
+calendar. Existing focus, date alignment, return-position, keyboard, multipage
+and mobile behavior is also covered by the browser suite.
+
+- [Overview on entry](qa/overview-entry.png)
+- [Track cards below June](qa/track-cards.png)
+
+The same checks passed after rebasing onto current main, preserving its Source
+Sans typography, grey canvas, white cards and removal of count annotations.

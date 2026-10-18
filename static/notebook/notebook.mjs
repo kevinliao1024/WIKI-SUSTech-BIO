@@ -72,7 +72,7 @@ function navigate(track, date, record) {
   }
   if(track && !date) {
     if(selected) date=activeDate;
-    else date=isoDay(Math.min(bounds.end, Math.max(bounds.start, bounds.start + Math.round((-$('stage').getBoundingClientRect().top + innerHeight*.45 - 70)/OVERVIEW_SCALE))));
+    else date=isoDay(Math.min(bounds.end, Math.max(bounds.start, bounds.end - Math.round((-$('stage').getBoundingClientRect().top + innerHeight*.45 - 70)/OVERVIEW_SCALE))));
   }
   writeURL(track,date,record);
   renderState({track,date,record},true);
@@ -82,8 +82,8 @@ function buildMap() {
   const bands=svg('g',{class:'nb-calendar-bands','aria-hidden':'true'});map.append(bands);
   map.append(svg('rect',{class:'nb-axis-panel',x:-54,width:108,rx:24,'data-axis-panel':''}));
   map.append(svg('line',{class:'nb-axis','data-axis':'',x1:0,x2:0}));
-  for(let n=bounds.start;n<=bounds.end;n++) {
-    const date=isoDay(n), d=new Date(n*DAY), major=d.getUTCDate()===1 || n===bounds.start, week=d.getUTCDay()===1;
+  for(let n=bounds.end;n>=bounds.start;n--) {
+    const date=isoDay(n), d=new Date(n*DAY), major=new Date((n+1)*DAY).getUTCMonth()!==d.getUTCMonth() || n===bounds.end, week=d.getUTCDay()===1;
     const node=svg('g',{class:`nb-tick${major?' is-month':''}`,'data-date':date});
     const line=svg('line',{class:'nb-tick-line',x1:major?-16:week?-9:-4,x2:major?16:week?9:4});
     const label=svg('text',{x:0,y:-10,'text-anchor':'middle'},major?new Intl.DateTimeFormat('en-GB',{month:'short',year:'numeric',timeZone:'UTC'}).format(d):week?String(d.getUTCDate()):'');
@@ -135,10 +135,6 @@ function buildMap() {
 }
 function highlight(id) {
   for(const lane of lanes) {lane.g.classList.toggle('is-highlighted',lane.track.id===id);lane.g.classList.toggle('is-muted',!!id&&lane.track.id!==id);}
-  if(!selected) {
-    const lane=lanes.find(l=>l.track.id===id);
-    $('instruction').textContent=lane?`${lane.track.label} · ${lane.track.description}`:'Select a line or track name to follow its experiments. On small screens, swipe the map sideways.';
-  }
 }
 function layoutMap() {
   if(!bounds) return;
@@ -148,7 +144,7 @@ function layoutMap() {
   const axisX=selected?(small?10:innerWidth<=1000?70:100):width/2;
   $('map-group').style.transform=`translateX(${axisX}px)`;
   const rows=rowElements.map(row=>({day:dayNumber(row.dataset.date),y:row.offsetTop + row.querySelector('.nb-card').offsetTop + 25}));
-  const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.start,OVERVIEW_SCALE);
+  const y=date=>selected?focusY(date,rows,height):overviewY(date,bounds.end,OVERVIEW_SCALE);
   attr(app.querySelector('[data-axis]'),{y1:24,y2:height-28});
   attr(app.querySelector('[data-axis-panel]'),{y:14,height:height-28});
   for(const [i,month] of months.entries()) {
@@ -173,8 +169,9 @@ function layoutMap() {
     const laneX=selected?0:overviewLaneX(lane.index,width);
     lane.g.style.transform=`translateX(${laneX}px)`;
     const startY=y(isoDay(lane.range.start)),endY=y(isoDay(lane.range.end));
-    const d=`M 0 ${startY} L 0 ${Math.max(endY,startY+1)}`;
-    attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:startY-24});attr(lane.labelPanel,{y:startY-45});
+    const topY=Math.min(startY,endY), bottomY=Math.max(startY,endY);
+    const d=`M 0 ${topY} L 0 ${Math.max(bottomY,topY+1)}`;
+    attr(lane.hit,{d});attr(lane.wash,{d});attr(lane.path,{d});attr(lane.start,{cy:startY});attr(lane.end,{cy:endY});attr(lane.label,{y:topY-24});attr(lane.labelPanel,{y:topY-45});
     const hidden=!!selected&&lane.track.id!==selected;
     lane.g.style.display=hidden?'none':'';
     lane.g.setAttribute('aria-hidden',String(hidden));
@@ -249,15 +246,16 @@ function renderState(state,userAction=false) {
   selected=track?.id||null;groups=selected?groupTrack(index.records,selected):[];
   if(state.record)expanded.add(state.record);
   app.classList.toggle('is-focus',!!selected);app.dataset.mode=selected?'focus':'overview';
+  // Move the same navigation nodes so visual and keyboard order stay together.
+  if(selected)app.insertBefore($('tracks'),app.querySelector('.nb-toolbar'));
+  else $('end').after($('tracks'));
   app.style.setProperty('--track',track?.color||'#3d409b');
   $('back').hidden=!selected;$('jump-label').hidden=!selected;$('switch-label').hidden=!selected;if(selected)$('switch').value=selected;$('focus-heading').hidden=!selected;$('end').hidden=!selected;
   for(const button of $('tracks').children) button.setAttribute('aria-pressed',String(button.dataset.track===selected));
-  $('view-label').textContent=track?track.label:'Research timeline';
+  $('view-label').textContent=track?track.label:'';
   $('status').textContent='';
   if(track) {
     $('viewport').scrollLeft=0;
-    $('instruction').textContent='Follow the dates. Open a title to read the original notebook pages.';
-    $('date-range').textContent=`${formatDate(groups[0].date)} — ${formatDate(groups.at(-1).date)}`;
     $('focus-heading').replaceChildren(el('h2','',track.label),el('p','',track.description));
     $('jump').replaceChildren(...groups.map(g=>{const o=el('option','',formatDate(g.date));o.value=g.date;return o;}));
     renderRecords(track);
@@ -268,7 +266,6 @@ function renderState(state,userAction=false) {
     const back=el('button','nb-back','← Return to all tracks');back.type='button';back.addEventListener('click',()=>navigate(null));$('end').append(back);
   } else {
     resizeObserver.disconnect();dateObserver?.disconnect();$('records').replaceChildren();rowElements=[];
-    $('date-range').textContent=`${formatDate(isoDay(bounds.start))} — ${formatDate(isoDay(bounds.end))}`;
     highlight(null);resizeObserver.observe($('viewport'));
   }
   layoutMap();
@@ -295,7 +292,7 @@ async function init() {
       const title=el('span','nb-track-title',track.label);
       const description=el('span','nb-track-description',track.description);
       const dates=el('span','nb-track-dates',`${shortDate(isoDay(range.start))} — ${shortDate(isoDay(range.end))}`);
-      button.append(icon,title,description,dates);button.addEventListener('click',()=>navigate(track.id));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
+      button.append(icon,title,description,dates);button.addEventListener('click',()=>navigate(track.id,isoDay(range.start)));button.addEventListener('pointerenter',()=>highlight(track.id));button.addEventListener('pointerleave',()=>highlight(null));$('tracks').append(button);
     }
     $('switch').replaceChildren(...index.tracks.filter(t=>index.records.some(r=>r.trackId===t.id)).map(t=>{const option=el('option','',t.label);option.value=t.id;return option;}));
     $('switch').addEventListener('change',()=>navigate($('switch').value,activeDate));
