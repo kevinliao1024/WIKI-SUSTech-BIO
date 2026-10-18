@@ -43,7 +43,8 @@
       if(this._assetMap[key])return new URL(this._assetMap[key],document.baseURI).href;
       const configured=this.getAttribute('asset-base');
       const base=configured?new URL(configured.replace(/\/?$/,'/'),document.baseURI):new URL('assets/',MODULE_BASE);
-      return new URL(FILES[key],base).href;
+      const url = new URL(FILES[key],base).href;
+      return globalThis.wikiAssetURL?.(url) ?? url;
     }
     _portrait(person,extra='') {
       const ui=LABELS;

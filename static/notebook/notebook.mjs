@@ -10,7 +10,10 @@ const el = (tag, className, text) => { const node = document.createElement(tag);
 const svg = (tag, attrs = {}, text) => { const node = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const [key,value] of Object.entries(attrs)) node.setAttribute(key, value); if(text) node.textContent = text; return node; };
 const attr = (node, values) => {for (const [key,value] of Object.entries(values)) node.setAttribute(key,value);};
 const baseURL = new URL(app.dataset.index, location.href);
-const sourceURL = path => new URL(path, baseURL).href;
+const sourceURL = path => {
+  const url = new URL(path, baseURL).href;
+  return globalThis.wikiAssetURL?.(url) ?? url;
+};
 const shortDate = iso => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(new Date(dayNumber(iso)*DAY));
 let index, bounds, selected = null, groups = [], activeDate = null, overviewScroll = 0, overviewX = 0, overviewZoom = 100;
 let labelLayer;

@@ -1,0 +1,70 @@
+url,references,host_status
+//external.example/art.svg,tests/test_audit.py:70,review_external_reference
+https://assets.roche.com/f/176343/801x529/f89c88a24c/roche-logo-blue.png,static/human-practices/organizations/manifest-part2.json:103,review_external_reference
+https://bio.sustech.edu.cn/uploads/202204/20144203_59696.png,static/human-practices/organizations/manifest-part1.json:70,review_external_reference
+https://brand.rice.edu/sites/g/files/bxs5371/files/2019-07/Rice_University_Horizontal_Blue.svg,static/human-practices/organizations/manifest-part2.json:91,review_external_reference
+https://cdn.example.com/hero.png,tests/test_audit.py:58,review_external_reference
+https://commons.wikimedia.org/wiki/File:Agarose_gel_electrophoresis_of_DNA_with_annotation.png,static/experiments/entries/M02/index.html:572; static/experiments/entries/M02/pages.json:232,review_external_reference
+https://commons.wikimedia.org/wiki/File:GelDoc_DNA_gel_electrophoresis_photograph_stained_with_ethidium_bromide_01.jpg,static/experiments/entries/M02/index.html:572; static/experiments/entries/M02/pages.json:225,review_external_reference
+https://commons.wikimedia.org/wiki/File:Unspecific_pcr.jpg,static/experiments/entries/M02/index.html:572; static/experiments/entries/M02/pages.json:218,review_external_reference
+https://evil.example/x.png,tests/test_igem_assets.py:31,review_external_reference
+https://example.org/assets/figure.png,tests/test_igem_assets.py:19,review_external_reference
+https://external.example/art.svg,tests/test_audit.py:70,review_external_reference
+https://github.com/openai/openai/blob/master/codex/codex-apps/webview/src/icons/chevron.svg,docs/previews/exploration-atlas-2026-10-13/compact-preview.html:2366; docs/previews/exploration-atlas-2026-10-13/preview.html:2360; docs/previews/exploration-atlas-2026-10-13/sound-library-vertical-preview.html:2362,review_external_reference
+https://lhs.suat-sz.edu.cn/images/logo.svg,static/human-practices/organizations/manifest-part1.json:34,review_external_reference
+https://qualifications.pearson.com/content/dam/demo/stuntcontent/images/about/About%20our%20qualifications/Think-Again/PLogo_Horizontal_Edexcel_200x188.png,static/human-practices/organizations/manifest-reference.json:9,review_external_reference
+https://shokz.com.cn/_nuxt/img/shokz.90cadc3.png,static/human-practices/organizations/manifest-part1.json:123,review_external_reference
+https://static.igem.org/websites/common/2022/logos/igem-logo-dark.svg,static/human-practices/organizations/manifest-part2.json:179,review_external_reference
+https://static.igem.wiki/common/icons/favicons/igem-2022.svg,tests/test_audit.py:20,official
+https://static.igem.wiki/teams/5873/fonts/afacad-bold.ttf,static/assets/brand/footer-2025-provenance.json:54; static/school-footer.css:13,official
+https://static.igem.wiki/teams/5873/fonts/afacad-regular.ttf,static/assets/brand/footer-2025-provenance.json:53; static/school-footer.css:6,official
+https://static.igem.wiki/teams/5873/images/footer/contactus/ins.webp,static/assets/brand/footer-2025-provenance.json:19; wiki/footer.html:36,official
+https://static.igem.wiki/teams/5873/images/footer/contactus/rednote.webp,static/assets/brand/footer-2025-provenance.json:20; wiki/footer.html:42,official
+https://static.igem.wiki/teams/5873/images/footer/contactus/wechat.webp,static/assets/brand/footer-2025-provenance.json:21; static/assets/brand/wechat-team-provenance.json:2,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/1-nankeda.webp,static/assets/brand/footer-2025-provenance.json:22,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/2-shengkeyuan.webp,static/assets/brand/footer-2025-provenance.json:23,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/3-nankedatuanwei.webp,static/assets/brand/footer-2025-provenance.json:24,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bgi.webp,static/assets/brand/footer-2025-provenance.json:25,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/bnuzh-china.webp,static/assets/brand/footer-2025-provenance.json:26,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/cau-china.webp,static/assets/brand/footer-2025-provenance.json:27,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/chuangxinchuangxixueyuan.webp,static/assets/brand/footer-2025-provenance.json:28,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/dikongxi.webp,static/assets/brand/footer-2025-provenance.json:29,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/fluidiclab-logo-cn.webp,static/assets/brand/footer-2025-provenance.json:30,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hechengshegnwuxueyushengwugongchengshe.webp,static/assets/brand/footer-2025-provenance.json:31; static/human-practices/organizations/manifest-footer-2025-additions.json:94,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hku-hongkong.webp,static/assets/brand/footer-2025-provenance.json:32; static/human-practices/organizations/manifest-part2.json:167,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust-gz.webp,static/assets/brand/footer-2025-provenance.json:33,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hkust.webp,static/assets/brand/footer-2025-provenance.json:34,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/hongxun.webp,static/assets/brand/footer-2025-provenance.json:35,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/huaxuexi.webp,static/assets/brand/footer-2025-provenance.json:36,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/igba.webp,static/assets/brand/footer-2025-provenance.json:37; static/human-practices/organizations/manifest-footer-2025-additions.json:54; static/human-practices/organizations/manifest-part2.json:139,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/jisuanjixi.webp,static/assets/brand/footer-2025-provenance.json:38; static/human-practices/organizations/manifest-footer-2025-additions.json:73,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/ju-yuan-bio-chem.webp,static/assets/brand/footer-2025-provenance.json:39,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/minghang.webp,static/assets/brand/footer-2025-provenance.json:40,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/shengyigong.webp,static/assets/brand/footer-2025-provenance.json:41,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustech-med.webp,static/assets/brand/footer-2025-provenance.json:42; static/human-practices/organizations/manifest-part2.json:155,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/sustechocean.webp,static/assets/brand/footer-2025-provenance.json:43,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/szu-china.webp,static/assets/brand/footer-2025-provenance.json:44,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongji-china.webp,static/assets/brand/footer-2025-provenance.json:45,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/tongjishuke.webp,static/assets/brand/footer-2025-provenance.json:46; static/human-practices/organizations/manifest-footer-2025-additions.json:36,official
+https://static.igem.wiki/teams/5873/images/footer/sponsors-cooperators/yixueyuan.webp,static/assets/brand/footer-2025-provenance.json:47; static/human-practices/organizations/manifest-footer-2025-additions.json:17,official
+https://static.igem.wiki/teams/5873/images/footer/sustech.webp,static/assets/brand/footer-2025-provenance.json:18; wiki/footer.html:20,official
+https://static.igem.wiki/teams/5919/images/logo.webp,static/human-practices/organizations/manifest-part1.json:199; static/human-practices/organizations/manifest-teams.json:55,official
+https://static.igem.wiki/teams/6085/wiki/figure.avif,tests/test_igem_assets.py:14,official
+https://static.igem.wiki/teams/6193/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:23,official
+https://static.igem.wiki/teams/6309/wiki/home/team-logo.avif,static/human-practices/organizations/manifest-teams.json:39,official
+https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable-italic.woff2,static/fonts/source-sans-3-provenance.json:17,official
+https://static.igem.wiki/teams/6366/wiki/fonts/source-sans-3-variable.woff2,static/fonts/source-sans-3-provenance.json:11,official
+https://static.igem.wiki/teams/6419/wiki/common/logo3.webp,static/human-practices/organizations/manifest-teams.json:7,official
+https://sustech.edu.cn/uploads/logo1.png,static/human-practices/organizations/manifest-part1.json:142; static/human-practices/organizations/manifest-part1.json:161; static/human-practices/organizations/manifest-part1.json:51,review_external_reference
+https://www.cuhk.edu.hk/english/images/cuhk_logo_2x.png?20221027,static/human-practices/organizations/manifest-part2.json:43,review_external_reference
+https://www.hku.hk/adobe/dynamicmedia/deliver/dm-aid--afc8d43c-587a-43f0-b93c-26f8bd397e0e/logo-hku.svg.webp?width=208&preferwebp=true,static/human-practices/organizations/manifest-part2.json:55,review_external_reference
+https://www.hkust-gz.edu.cn/wp-content/themes/hkust-gz-official-0827/images/logo-e-white-2x.png,static/human-practices/organizations/manifest-part2.json:7,review_external_reference
+https://www.hsas.edu.cn/lib/img/logo-2.3e1d0ecf.png,static/human-practices/organizations/manifest-part1.json:180,review_external_reference
+https://www.pku.edu.cn/pku_logo_red.png,static/human-practices/organizations/manifest-part2.json:79,review_external_reference
+https://www.ribonext.com/public/static/home/images/logob.svg,static/human-practices/organizations/manifest-part2.json:115,review_external_reference
+https://www.scau.edu.cn/_upload/tpl/06/94/1684/template1684/images/logo_green.svg,static/human-practices/organizations/manifest-part2.json:19,review_external_reference
+https://www.suat-sz.edu.cn/images/logo0605.png,static/human-practices/organizations/manifest-part2.json:127,review_external_reference
+https://www.szhospital.com/asset/images/nww/logo.png?ver=2024,static/human-practices/organizations/manifest-part1.json:8,review_external_reference
+https://www.szu.edu.cn/images/logo_03.png,static/human-practices/organizations/manifest-part2.json:67,review_external_reference
+https://www.tsinghua.edu.cn/image/logo180.png,static/human-practices/organizations/manifest-part2.json:31,review_external_reference
+https://www.yali.edu.cn/upload/ylzx/site/logo/image/5938843afdc24d70bf75e23683bac43a.png,static/human-practices/organizations/manifest-part1.json:97,review_external_reference
