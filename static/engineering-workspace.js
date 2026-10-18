@@ -240,7 +240,12 @@
     wheel.dataset.part = part;
     wheel.dataset.cycle = cycle;
     wheel.dataset.stage = stage || '';
-    wheel.closest('.dbtl-directory').hidden = !number;
+    // Design-only chapters retain the mascot without implying a DBTL cycle.
+    wheel.closest('.dbtl-directory').hidden = false;
+    wheel.toggleAttribute('data-mascot-only', !number);
+    wheel.setAttribute('aria-label', number
+      ? 'Engineering cycle: Design, Build, Test, Learn'
+      : `${parts.get(part)} proposed design`);
     const portrait = portraits.get(cycle) || portraits.get(`${part}-cycle-01`) || portraits.values().next().value;
     if (portrait && selectedPortrait !== portrait) {
       portraits.forEach(image => image.classList.toggle('is-hidden', image !== portrait));
