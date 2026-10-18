@@ -7,5 +7,9 @@
       <img src="{{ url_for('static', filename='human-practices/organizations/' + organization.logo) }}" alt="{{ organization.name }}{% if organization.mark == 'parent-institution' %} — parent institution mark{% endif %}" class="sponsor-logo" width="124" height="56" loading="lazy">
     </span>
   </button>
+  {% if footer_show_organization_names | default(false) %}
+  <p class="footer-organization-name">{{ organization.name }}</p>
+  {% if organization.detail %}<span class="footer-organization-detail">{{ organization.detail }}</span>{% endif %}
+  {% endif %}
 </div>
 {% endfor %}

@@ -3,6 +3,16 @@
 (() => {
   const footer = document.querySelector('[data-school-footer]');
   if (!footer) return;
+  // Only run decorative currents while this closing panel is on screen.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      footer.toggleAttribute('data-footer-visible', entries.some(entry => entry.isIntersecting) && !document.hidden);
+    }).observe(footer);
+  } else { footer.setAttribute('data-footer-visible', ''); }
+  document.addEventListener('visibilitychange', () => {
+    const bounds = footer.getBoundingClientRect();
+    footer.toggleAttribute('data-footer-visible', !document.hidden && bounds.top < innerHeight && bounds.bottom > 0);
+  });
   const scroller = footer.querySelector('[data-footer-sponsor-scroll]');
   const group = footer.querySelector('[data-footer-sponsor-group]');
   const dialog = footer.querySelector('[data-footer-lightbox]');

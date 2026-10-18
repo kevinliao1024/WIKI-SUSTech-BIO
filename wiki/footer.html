@@ -1,7 +1,21 @@
 {# Footer layout and original media: https://2025.igem.wiki/sustech-bio/ (CC BY 4.0).
    Source inventory and local adaptations: static/assets/brand/footer-2025-provenance.json. #}
 <footer class="site-footer site-footer--school" data-school-footer>
+  {% include 'components/footer_glints.html' %}
   <div class="footer-content">
+    <section class="footer-intro" aria-label="About SUSTech-BIO">
+      <div id="footer-about-title" class="footer-intro-brand">
+        <span class="footer-eyebrow">SUSTech · iGEM 2026 · ORCA</span>
+        <button class="footer-image-button footer-intro-logo" type="button" data-footer-image aria-label="Enlarge SUSTech-BIO team logo">
+          <img src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO team logo" width="128" height="90" loading="lazy">
+        </button>
+      </div>
+      <div class="footer-about">
+        {# Summarized from docs/team/team.md and the project / Human Practices pages. #}
+        <p>We are SUSTech-BIO, an interdisciplinary student team at Southern University of Science and Technology in Shenzhen. Through ORCA, we explore programmable RNA editing for Alzheimer’s disease, bringing together wet-lab engineering, computational modeling, and conversations with the people our work hopes to serve. We connect research with education, inclusive design, and public dialogue to build synthetic biology with care.</p>
+        <a href="{{ url_for('pages', page='team') }}">Meet the people behind ORCA <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
     <nav class="footer-nav" aria-label="Footer navigation">
       {% for group in navigation_groups %}
       <div class="footer-nav-column">
@@ -21,15 +35,9 @@
         </button>
         <div class="logo-text"><span>Southern University</span><span>of Science and Technology</span></div>
       </div>
-      <div class="logo-container">
-        <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge SUSTech-BIO team logo">
-          <img src="{{ url_for('static', filename='assets/brand/sustech-bio-logo.png') }}" alt="SUSTech-BIO team logo" class="logo-image bio-logo" width="128" height="90" loading="lazy">
-        </button>
-        <div class="logo-text bio-name">SUSTech-BIO</div>
-      </div>
     </div>
     <section class="footer-contact" aria-labelledby="footer-contact-title">
-      <h4 id="footer-contact-title">CONTACT WITH US !</h4>
+      <h4 id="footer-contact-title">CONNECT WITH US</h4>
       <div class="qr-codes">
         <div class="qr-code-item">
           <button class="footer-image-button" type="button" data-footer-image aria-label="Enlarge Instagram QR code">
@@ -52,11 +60,16 @@
       </div>
     </section>
     <section class="footer-sponsors" aria-labelledby="footer-sponsors-title">
-      <h4 id="footer-sponsors-title">SPONSORS &amp; COOPERATORS</h4>
-      <div class="sponsor-logos-scroll" data-footer-sponsor-scroll tabindex="0" aria-label="Sponsors and cooperators. Scroll horizontally to see all logos.">
+      <div class="footer-community-heading">
+        <h4 id="footer-sponsors-title">OUR COMMUNITY</h4>
+        <a href="{{ url_for('pages', page='human-practices') }}">Explore our connections ↗</a>
+      </div>
+      <div class="sponsor-logos-scroll" data-footer-sponsor-scroll tabindex="0" aria-label="Community organizations and resources. Scroll horizontally to explore names and logos.">
         <div class="sponsor-logos-track" data-footer-sponsor-track>
           <div class="sponsor-logos-group" data-footer-sponsor-group>
+            {% with footer_show_organization_names = true %}
             {% include 'components/community_organizations.html' %}
+            {% endwith %}
           </div>
         </div>
       </div>
@@ -72,3 +85,4 @@
   </dialog>
 </footer>
 <script src="{{ url_for('static', filename='school-footer.js') }}" defer></script>
+<script src="{{ url_for('static', filename='footer-atmosphere.js') }}" defer></script>
